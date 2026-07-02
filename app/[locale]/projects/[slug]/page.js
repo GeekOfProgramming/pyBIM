@@ -1,0 +1,49 @@
+import { notFound } from "next/navigation";
+import projectsData from "@/lib/data/projects-data.json";
+import ProjectDetailLayout from "@/components/project-detail-layout";
+import { db } from "@/lib/db";
+
+// Keep static params for JSON data. For dynamic DB data, Next.js will generate them on demand if not in this list.
+export async function generateStaticParams() {
+  return projectsData.map((project) => ({ slug: project.slug }));
+}
+
+async function getProject(slug) {
+  // First try DB
+  const p = await db.project.findUnique({ where: { slug } });
+  if (p) {
+    return {
+      slug: p.slug,
+      title: { it: p.titleIt, en: p.titleEn },
+      category: { it: p.categoryIt, en: p.categoryEn },
+      date: { it: p.dateIt, en: p.dateEn },
+      location: { it: p.locationIt, en: p.locationEn },
+      client: { it: p.clientIt, en: p.clientEn },
+      image: p.image,
+      description: { it: p.descriptionIt, en: p.descriptionEn },
+      process: p.process ? JSON.parse(p.process) : [],
+      results: p.results ? JSON.parse(p.results) : [],
+      stats: p.stats ? JSON.parse(p.stats) : {},
+      challenges: p.challenges ? JSON.parse(p.challenges) : [],
+      faq: p.faq ? JSON.parse(p.faq) : []
+    };
+  }
+  // Fallback to JSON
+  return projectsData.find((item) => item.slug === slug) || null;
+}
+
+export async function generateMetadata({ params }) {
+  const project = await getProject(params.slug);
+  if (!project) return {};
+  return {
+    title: project.title?.it || project.title?.en || project.slug,
+    description: project.description?.it || project.description?.en || ""
+  };
+}
+
+export default async function ProjectDetailPage({ params }) {
+  const project = await getProject(params.slug);
+  if (!project) notFound();
+
+  return <ProjectDetailLayout project={project} />;
+}

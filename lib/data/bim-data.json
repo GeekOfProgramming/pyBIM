@@ -1,0 +1,581 @@
+{
+  "id": "bim",
+  "title": {
+    "it": "Servizi e Progettazione BIM",
+    "en": "BIM Services"
+  },
+  "description": {
+    "it": "Ottimizziamo la progettazione, l'installazione e la manutenzione dei tuoi impianti e ristrutturazioni attraverso la tecnologia BIM, garantendo massima precisione e zero imprevisti.",
+    "en": "We optimize the design, installation, and maintenance of your systems and renovations through BIM technology, guaranteeing maximum precision and zero surprises."
+  },
+  "bimServices": [
+    {
+      "id": "mep",
+      "icon": "Layers",
+      "title": {
+        "it": "Modellazione Impianti MEP",
+        "en": "MEP Modeling"
+      },
+      "subtitle": {
+        "it": "Progettazione tridimensionale avanzata per impianti perfetti al millimetro, senza margini di errore.",
+        "en": "Advanced 3D design for perfect millimeter-accurate systems, with no margin for error."
+      },
+      "description": {
+        "it": "In Arvand Termo Tec, superiamo i limiti del disegno tradizionale 2D. Attraverso la Modellazione MEP (Mechanical, Electrical, Plumbing), creiamo un vero e proprio \"gemello digitale\" tridimensionale dei tuoi impianti prima ancora di posare il primo cavo o tubo.",
+        "en": "At Arvand Termo Tec, we push beyond the limits of traditional 2D drafting. Through MEP (Mechanical, Electrical, Plumbing) modeling, we create a true three-dimensional \"digital twin\" of your systems before laying a single cable or pipe."
+      },
+      "longDescription": {
+        "it": "Che si tratti di un nuovo impianto di climatizzazione, del rifacimento completo dell'impianto elettrico o di una rete idraulica complessa, progettiamo ogni dettaglio all'interno di un ambiente virtuale. Questo ci permette di integrare perfettamente i nuovi impianti con l'architettura della tua casa o della tua azienda, garantendo massima efficienza e un'estetica impeccabile.",
+        "en": "Whether it is a new air conditioning system, a complete electrical rewiring, or a complex plumbing network, we design every detail in a virtual environment. This allows us to perfectly integrate the new systems with your home or business architecture, ensuring maximum efficiency and flawless aesthetics."
+      },
+      "offerTitle": {
+        "it": "Integrazione Perfetta",
+        "en": "Perfect Integration"
+      },
+      "sliderImages": [
+        "/Pictures/BIM/bim-0011.jpg",
+        "/Pictures/BIM/bim-0012.jpg",
+        "/Pictures/BIM/bim-0013.jpg",
+        "/Pictures/BIM/bim-0014.jpg"
+      ],
+      "mediaSrc": "/Pictures/BIM/bim-0015.jpg",
+      "offerDescription": {
+        "it": "Ottimizziamo gli spazi nascosti per far passare gli impianti in modo intelligente e invisibile.",
+        "en": "We optimize hidden spaces to route systems intelligently and invisibly."
+      },
+      "grid": {
+        "it": [
+          "Precisione Assoluta",
+          "Chiarezza Visiva",
+          "Integrazione Perfetta",
+          "Esecuzione più Rapida"
+        ],
+        "en": [
+          "Absolute Precision",
+          "Visual Clarity",
+          "Perfect Integration",
+          "Faster Execution"
+        ]
+      },
+      "types": {
+        "it": [
+          "Modellazione 3D",
+          "Ingegneria MEP",
+          "Progettazione Virtuale",
+          "Impianti HVAC"
+        ],
+        "en": [
+          "3D Modeling",
+          "MEP Engineering",
+          "Virtual Design",
+          "HVAC Systems"
+        ]
+      },
+      "faq": {
+        "it": [
+          {
+            "q": "Precisione Assoluta",
+            "a": "Posizionamento esatto di tubazioni, quadri elettrici, split e prese, calcolato al millimetro prima dell'inizio dei lavori."
+          },
+          {
+            "q": "Chiarezza Visiva",
+            "a": "Potrai vedere e comprendere esattamente come sarà il tuo impianto finito attraverso modelli 3D navigabili, prima ancora di aprire il cantiere."
+          },
+          {
+            "q": "Integrazione Perfetta",
+            "a": "Ottimizziamo gli spazi nascosti (come controsoffitti e pareti in cartongesso) per far passare gli impianti in modo intelligente e invisibile."
+          },
+          {
+            "q": "Esecuzione più Rapida",
+            "a": "Sapendo già esattamente dove andrà ogni singolo componente, i nostri tecnici lavorano in modo più veloce, pulito e senza interruzioni."
+          }
+        ],
+        "en": [
+          {
+            "q": "Absolute Precision",
+            "a": "Exact positioning of pipes, electrical panels, splits, and outlets, calculated to the millimeter before work begins."
+          },
+          {
+            "q": "Visual Clarity",
+            "a": "You can see and understand exactly what your finished system will look like through navigable 3D models before starting the site."
+          },
+          {
+            "q": "Perfect Integration",
+            "a": "We optimize hidden spaces (like drop ceilings and drywall) to route systems intelligently and invisibly."
+          },
+          {
+            "q": "Faster Execution",
+            "a": "Knowing exactly where every component goes, our technicians work faster, cleaner, and without interruptions."
+          }
+        ]
+      }
+    },
+    {
+      "id": "clash",
+      "icon": "ShieldAlert",
+      "title": {
+        "it": "Clash Detection",
+        "en": "Clash Detection"
+      },
+      "subtitle": {
+        "it": "Zero imprevisti in cantiere: anticipiamo e risolviamo ogni problema prima ancora di iniziare i lavori.",
+        "en": "Zero surprises on site: we anticipate and resolve every issue before work begins."
+      },
+      "description": {
+        "it": "Nei cantieri tradizionali, non è raro scoprire durante i lavori che una tubazione idraulica ostacola il passaggio di un condotto di aerazione, o che i cavi elettrici entrano in conflitto con le strutture. Questo significa inevitabilmente ritardi, demolizioni impreviste e costi extra per il cliente.",
+        "en": "In traditional sites, it is common to discover during work that a plumbing pipe obstructs an air duct, or electrical cables conflict with structures. This inevitably means delays, unforeseen demolitions, and extra costs for the client."
+      },
+      "longDescription": {
+        "it": "Con il servizio di Clash Detection di Arvand Termo Tec, questi problemi appartengono al passato. Utilizzando software BIM avanzati, sovrapponiamo i modelli tridimensionali di tutti gli impianti (elettrico, idraulico, climatizzazione) e della struttura. Il sistema identifica automaticamente qualsiasi \"scontro\" (clash) tra i vari elementi. Risolviamo tutte queste interferenze virtualmente al computer, garantendo che tutto proceda in modo fluido e senza intoppi.",
+        "en": "With Arvand Termo Tec's Clash Detection service, these problems belong to the past. Using advanced BIM software, we overlay 3D models of all systems (electrical, plumbing, HVAC) and the structure. The system automatically identifies any \"clash\" between elements. We resolve all these interferences virtually on the computer, ensuring smooth, uninterrupted progress."
+      },
+      "offerTitle": {
+        "it": "Coordinamento Perfetto",
+        "en": "Perfect Coordination"
+      },
+      "sliderImages": [
+        "/Pictures/BIM/bim-0021.jpg",
+        "/Pictures/BIM/bim-0022.jpg",
+        "/Pictures/BIM/bim-0023.jpg",
+        "/Pictures/BIM/bim-0024.jpg"
+      ],
+      "mediaSrc": "/Pictures/BIM/bim-0025.jpg",
+      "offerDescription": {
+        "it": "Le nostre squadre lavorano in totale sinergia, guidate da un unico modello digitale condiviso e privo di errori.",
+        "en": "Our teams work in total synergy, guided by a single, error-free shared digital model."
+      },
+      "grid": {
+        "it": [
+          "Zero Costi Extra",
+          "Rispetto dei Tempi",
+          "Coordinamento",
+          "Tranquillità Totale"
+        ],
+        "en": [
+          "Zero Extra Costs",
+          "Strict Timelines",
+          "Coordination",
+          "Total Peace of Mind"
+        ]
+      },
+      "types": {
+        "it": [
+          "Risoluzione Interferenze",
+          "Coordinamento 3D",
+          "Analisi di Progetto",
+          "Simulazione Virtuale"
+        ],
+        "en": [
+          "Clash Resolution",
+          "3D Coordination",
+          "Design Analysis",
+          "Virtual Simulation"
+        ]
+      },
+      "faq": {
+        "it": [
+          {
+            "q": "Zero Costi Extra",
+            "a": "Eliminando gli errori in fase di progettazione virtuale, diciamo addio alle spese impreviste per modifiche o riparazioni in corso d'opera."
+          },
+          {
+            "q": "Rispetto Rigoroso dei Tempi",
+            "a": "Senza la necessità di fermare i lavori per risolvere problemi tecnici o tappare buchi sbagliati sul posto, il cantiere procede spedito e viene consegnato puntualmente."
+          },
+          {
+            "q": "Tranquillità Totale (Stress-Free)",
+            "a": "Vivi la tua ristrutturazione o l'installazione dei tuoi nuovi impianti con la massima serenità, sapendo che ogni dettaglio è stato verificato in anticipo."
+          }
+        ],
+        "en": [
+          {
+            "q": "Zero Extra Costs",
+            "a": "By eliminating errors during virtual design, we say goodbye to unexpected expenses for on-the-fly modifications or repairs."
+          },
+          {
+            "q": "Strict Timelines",
+            "a": "Without having to stop work to fix technical issues or patch wrong holes on site, work proceeds quickly and on schedule."
+          },
+          {
+            "q": "Total Peace of Mind (Stress-Free)",
+            "a": "Experience your renovation or new system installation with maximum serenity, knowing every detail was verified in advance."
+          }
+        ]
+      }
+    },
+    {
+      "id": "scan",
+      "icon": "Scan",
+      "title": {
+        "it": "Scan-to-BIM",
+        "en": "Scan-to-BIM"
+      },
+      "subtitle": {
+        "it": "Dal rilievo reale al modello digitale: la massima precisione per la ristrutturazione della tua casa.",
+        "en": "From real-world survey to digital model: maximum precision for your home renovation."
+      },
+      "description": {
+        "it": "Ristrutturare un edificio esistente presenta sempre delle sfide uniche, legate spesso a pareti fuori squadro, misurazioni manuali imprecise o alla totale mancanza di planimetrie storiche affidabili. Con il nostro servizio di Scan-to-BIM, Arvand Termo Tec elimina ogni incertezza geometrica fin dall'inizio.",
+        "en": "Renovating an existing building always presents unique challenges, often linked to out-of-square walls, imprecise manual measurements, or the lack of reliable historical floor plans. With our Scan-to-BIM service, Arvand Termo Tec eliminates geometrical uncertainty from the start."
+      },
+      "longDescription": {
+        "it": "Utilizzando strumenti di rilievo digitali e avanzati, catturiamo ogni dettaglio dello stato di fatto dell'immobile con una precisione millimetrica. Questa \"nuvola di punti\" tridimensionale viene convertita direttamente in un modello BIM completo. Che si tratti di pianificare demolizioni, ridistribuire gli spazi interni, rifare le finiture o applicare una nuova Tinteggiatura, lavoriamo su una base digitale identica alla realtà.",
+        "en": "Using advanced digital surveying tools, we capture every detail of the property's current state with millimeter precision. This 3D \"point cloud\" is converted directly into a complete BIM model. Whether planning demolitions, redistributing interior spaces, redoing finishes, or applying new paint, we work on a digital base identical to reality."
+      },
+      "offerTitle": {
+        "it": "Rilievo Millimetrico",
+        "en": "Millimeter Survey"
+      },
+      "sliderImages": [
+        "/Pictures/BIM/bim-0031.jpg",
+        "/Pictures/BIM/bim-0032.jpg",
+        "/Pictures/BIM/bim-0033.jpg"
+      ],
+      "mediaSrc": "/Pictures/BIM/bim-0034.jpg",
+      "offerDescription": {
+        "it": "Azzeriamo gli errori umani legati alle misurazioni tradizionali, ottenendo dati perfetti.",
+        "en": "We eliminate human errors associated with traditional measurements, obtaining perfect data."
+      },
+      "grid": {
+        "it": [
+          "Precisione Laser",
+          "Progettazione su Misura",
+          "Ottimizzazione Materiali",
+          "Prima e Dopo Virtuale"
+        ],
+        "en": [
+          "Laser Precision",
+          "Custom Design",
+          "Material Optimization",
+          "Virtual Before & After"
+        ]
+      },
+      "types": {
+        "it": [
+          "Rilievi 3D",
+          "Nuvola di Punti",
+          "Modellazione da Scansione",
+          "Ristrutturazione Digitale"
+        ],
+        "en": [
+          "3D Surveying",
+          "Point Cloud",
+          "Scan Modeling",
+          "Digital Renovation"
+        ]
+      },
+      "faq": {
+        "it": [
+          {
+            "q": "Rilievo Millimetrico",
+            "a": "Azzeriamo gli errori umani legati alle misurazioni tradizionali con il metro, ottenendo dati perfetti su altezze, spessori e angoli delle pareti."
+          },
+          {
+            "q": "Progettazione su Misura",
+            "a": "Ideale per interventi di Ristrutturazioni Edilizie e Chiavi in Mano, dove ogni nuovo elemento deve integrarsi al millimetro con le strutture esistenti."
+          },
+          {
+            "q": "Ottimizzazione dei Materiali",
+            "a": "Conoscendo la superficie esatta di ogni muro o soffitto, calcoliamo con precisione assoluta la quantità di materiali necessari, riducendo gli sprechi."
+          },
+          {
+            "q": "Prima e Dopo Virtuale",
+            "a": "Potrai confrontare visivamente il modello 3D della tua casa attuale con il progetto futuro, comprendendo chiaramente ogni singola modifica."
+          }
+        ],
+        "en": [
+          {
+            "q": "Millimeter Survey",
+            "a": "We eliminate human errors linked to traditional tape measurements, securing perfect data on wall heights, thicknesses, and angles."
+          },
+          {
+            "q": "Custom Design",
+            "a": "Ideal for Turnkey Renovations, where every new element must integrate with existing structures to the millimeter."
+          },
+          {
+            "q": "Material Optimization",
+            "a": "Knowing the exact surface area of every wall or ceiling, we precisely calculate materials needed, reducing waste."
+          },
+          {
+            "q": "Virtual Before & After",
+            "a": "Visually compare the 3D model of your current home with the future project, clearly understanding every modification."
+          }
+        ]
+      }
+    },
+    {
+      "id": "5d",
+      "icon": "Calculator",
+      "title": {
+        "it": "BIM 5D e Computo Metrico",
+        "en": "5D BIM and Cost Estimation"
+      },
+      "subtitle": {
+        "it": "Nessuna sorpresa sul preventivo: costi trasparenti e quantità esatte estratte direttamente dal modello 3D.",
+        "en": "No surprises on the quote: transparent costs and exact quantities extracted directly from the 3D model."
+      },
+      "description": {
+        "it": "Una delle maggiori preoccupazioni quando si affronta una ristrutturazione o l'installazione di nuovi impianti è che il costo finale superi il preventivo iniziale. Con Arvand Termo Tec, eliminiamo questo rischio alla radice grazie all'integrazione del BIM 5D, dove la quinta dimensione rappresenta proprio il controllo dei costi.",
+        "en": "One of the biggest concerns during renovation or new system installation is the final cost exceeding the initial quote. With Arvand Termo Tec, we eliminate this risk at the root through 5D BIM, where the fifth dimension represents cost control."
+      },
+      "longDescription": {
+        "it": "Nel nostro processo di progettazione, ogni elemento inserito nel modello tridimensionale (che sia un pannello fotovoltaico, un metro di tubo idraulico, un interruttore o la superficie esatta per la tinteggiatura) contiene informazioni dettagliate. Attraverso software avanzati, estraiamo automaticamente un computo metrico estremamente preciso. Questo ci permette di offrirti preventivi chiari, basati su dati reali e non su stime approssimative.",
+        "en": "In our design process, every element in the 3D model (be it a solar panel, a meter of pipe, a switch, or the exact surface for painting) contains detailed information. Through advanced software, we automatically extract highly precise quantity take-offs. This allows us to offer clear quotes, based on real data, not rough estimates."
+      },
+      "offerTitle": {
+        "it": "Preventivi Trasparenti",
+        "en": "Transparent Quotes"
+      },
+      "sliderImages": [
+        "/Pictures/BIM/bim-0041.jpg",
+        "/Pictures/BIM/bim-0042.jpg",
+        "/Pictures/BIM/bim-0043.jpg",
+        "/Pictures/BIM/bim-0044.jpg"
+      ],
+      "mediaSrc": "/Pictures/BIM/bim-0045.jpg",
+      "offerDescription": {
+        "it": "Saprai esattamente per cosa stai pagando, eliminando il rischio di spese extra o imprevisti.",
+        "en": "You will know exactly what you are paying for, eliminating the risk of extra or unforeseen expenses."
+      },
+      "grid": {
+        "it": [
+          "Trasparenza Costi",
+          "Zero Sprechi",
+          "Aggiornamenti Live",
+          "Pianificazione Sicura"
+        ],
+        "en": [
+          "Cost Transparency",
+          "Zero Waste",
+          "Live Updates",
+          "Secure Planning"
+        ]
+      },
+      "types": {
+        "it": [
+          "Computo Metrico 5D",
+          "Stima dei Costi",
+          "Controllo Budget",
+          "Prevenzione Rischi"
+        ],
+        "en": [
+          "5D Quantity Take-off",
+          "Cost Estimation",
+          "Budget Control",
+          "Risk Prevention"
+        ]
+      },
+      "faq": {
+        "it": [
+          {
+            "q": "Preventivi Trasparenti e Affidabili",
+            "a": "Saprai esattamente per cosa stai pagando. Le quantità dei materiali sono calcolate in modo scientifico dal modello digitale, eliminando il rischio di spese extra o imprevisti."
+          },
+          {
+            "q": "Zero Sprechi di Materiale",
+            "a": "Ordinando l'esatta quantità di cavi, vernici, piastrelle o tubazioni necessarie, riduciamo gli sprechi, facendoti risparmiare sul costo dei materiali."
+          },
+          {
+            "q": "Aggiornamento in Tempo Reale",
+            "a": "Se decidi di apportare una modifica al progetto (ad esempio, aggiungere un climatizzatore in più), il modello 3D si aggiorna e il calcolo dei costi si adegua automaticamente."
+          },
+          {
+            "q": "Pianificazione Finanziaria Sicura",
+            "a": "Avendo una stima precisa fin dall'inizio, puoi pianificare il tuo investimento con totale serenità e senza stress."
+          }
+        ],
+        "en": [
+          {
+            "q": "Transparent and Reliable Quotes",
+            "a": "You will know exactly what you are paying for. Material quantities are calculated scientifically from the digital model."
+          },
+          {
+            "q": "Zero Material Waste",
+            "a": "By ordering the exact quantity of cables, paint, tiles, or pipes needed, we reduce waste, saving you money."
+          },
+          {
+            "q": "Real-Time Updates",
+            "a": "If you decide to modify the project (e.g., add an AC unit), the 3D model updates and cost calculation adjusts automatically."
+          },
+          {
+            "q": "Secure Financial Planning",
+            "a": "With a precise estimate from the start, you can plan your investment with total serenity and no stress."
+          }
+        ]
+      }
+    },
+    {
+      "id": "energy",
+      "icon": "Leaf",
+      "title": {
+        "it": "Efficienza Energetica (BIM 6D)",
+        "en": "Energy Efficiency (6D BIM)"
+      },
+      "subtitle": {
+        "it": "Massimizza il risparmio in bolletta e il comfort abitativo con simulazioni energetiche avanzate.",
+        "en": "Maximize bill savings and living comfort with advanced energy simulations."
+      },
+      "description": {
+        "it": "Il modello BIM non è solo geometria e misure, ma contiene informazioni preziose sui materiali e sulle loro prestazioni. Con l'integrazione del BIM 6D, dedicato alla sostenibilità e all'efficienza energetica, Arvand Termo Tec ti aiuta a trasformare la tua casa in un edificio \"green\" e a basso consumo.",
+        "en": "The BIM model isn't just geometry and measurements; it holds precious information about materials and their performance. Integrating 6D BIM, dedicated to sustainability and energy efficiency, Arvand Termo Tec helps transform your home into a low-consumption \"green\" building."
+      },
+      "longDescription": {
+        "it": "Prima di procedere con l'installazione di Impianti Fotovoltaici e Sistemi di Accumulo o la Sostituzione Caldaie, i nostri software simulano il comportamento energetico dell'edificio. Analizziamo l'esposizione solare per orientare al meglio i pannelli solari, calcoliamo le dispersioni termiche per scegliere il miglior isolamento e valutiamo soluzioni per il comfort acustico. Il risultato è un sistema impiantistico che garantisce il massimo rendimento con il minimo impatto ambientale.",
+        "en": "Before installing Photovoltaic Systems or replacing boilers, our software simulates the building's energy behavior. We analyze solar exposure to best orient solar panels, calculate thermal dispersion to choose the best insulation, and evaluate acoustic comfort solutions. The result is a system guaranteeing maximum yield with minimum environmental impact."
+      },
+      "offerTitle": {
+        "it": "Taglio Netto delle Bollette",
+        "en": "Sharp Bill Reduction"
+      },
+      "sliderImages": [
+        "/Pictures/BIM/bim-0051.jpg",
+        "/Pictures/BIM/bim-0052.jpg",
+        "/Pictures/BIM/bim-0053.jpg",
+        "/Pictures/BIM/bim-0054.jpg"
+      ],
+      "mediaSrc": "/Pictures/BIM/bim-0055.jpg",
+      "offerDescription": {
+        "it": "Scegliamo e dimensioniamo gli impianti per garantirti il massimo risparmio fin dal primo mese.",
+        "en": "We choose and size systems to guarantee maximum savings from the very first month."
+      },
+      "grid": {
+        "it": [
+          "Risparmio Garantito",
+          "Rendimento Ottimale",
+          "Comfort Acustico",
+          "Incentivi Fiscali"
+        ],
+        "en": [
+          "Guaranteed Savings",
+          "Optimal Yield",
+          "Acoustic Comfort",
+          "Tax Incentives"
+        ]
+      },
+      "types": {
+        "it": [
+          "Simulazione Energetica",
+          "Analisi Termica",
+          "Sostenibilità",
+          "Certificazione APE"
+        ],
+        "en": [
+          "Energy Simulation",
+          "Thermal Analysis",
+          "Sustainability",
+          "EPC Certification"
+        ]
+      },
+      "faq": {
+        "it": [
+          {
+            "q": "Taglio Netto delle Bollette",
+            "a": "Grazie alle simulazioni energetiche, scegliamo e dimensioniamo gli impianti per garantirti il massimo risparmio sui consumi di luce e gas fin dal primo mese."
+          },
+          {
+            "q": "Massimo Rendimento del Fotovoltaico",
+            "a": "Calcoliamo l'esatta esposizione al sole del tuo tetto nel modello 3D, posizionando i pannelli fotovoltaici con l'inclinazione perfetta per catturare ogni raggio di sole."
+          },
+          {
+            "q": "Comfort Termico e Acustico",
+            "a": "Scegliendo i materiali giusti all'interno del modello digitale, assicuriamo che i tuoi ambienti siano freschi d'estate, caldi d'inverno e perfettamente isolati dai rumori."
+          },
+          {
+            "q": "Accesso agli Incentivi",
+            "a": "Dati chiari e simulazioni precise ti aiutano a ottenere certificazioni energetiche (APE) migliori, facilitando l'accesso ai bonus fiscali e agli incentivi statali."
+          }
+        ],
+        "en": [
+          {
+            "q": "Sharp Bill Reduction",
+            "a": "Thanks to energy simulations, we size systems to guarantee maximum savings on electricity and gas bills from month one."
+          },
+          {
+            "q": "Maximum Photovoltaic Yield",
+            "a": "We calculate the exact solar exposure of your roof in 3D, placing panels at the perfect angle to catch every sun ray."
+          },
+          {
+            "q": "Thermal & Acoustic Comfort",
+            "a": "By selecting the right materials digitally, we ensure your rooms are cool in summer, warm in winter, and perfectly isolated from noise."
+          },
+          {
+            "q": "Access to Incentives",
+            "a": "Clear data and precise simulations help you achieve better energy certifications (EPC), facilitating access to state tax bonuses."
+          }
+        ]
+      }
+    },
+    {
+      "id": "coming-soon",
+      "icon": "Clock",
+      "isUpcoming": true,
+      "title": {
+        "it": "Innovazione e Servizi Premium (Prossimamente)",
+        "en": "Innovation & Premium Services (Coming Soon)"
+      },
+      "sliderImages": [
+        "/Pictures/BIM/bim-0061.jpg",
+        "/Pictures/BIM/bim-0062.jpg",
+        "/Pictures/BIM/bim-0063.jpg",
+        "/Pictures/BIM/bim-0064.jpg",
+        "/Pictures/BIM/bim-0065.jpg",
+        "/Pictures/BIM/bim-0066.jpg",
+        "/Pictures/BIM/bim-0067.jpg",
+        "/Pictures/BIM/bim-0068.jpg",
+        "/Pictures/BIM/bim-0069.jpg",
+        "/Pictures/BIM/bim-0071.jpg",
+        "/Pictures/BIM/bim-0072.jpg",
+        "/Pictures/BIM/bim-0073.jpg",
+        "/Pictures/BIM/bim-0074.jpg",
+        "/Pictures/BIM/bim-0075.jpg",
+        "/Pictures/BIM/bim-0076.jpg",
+        "/Pictures/BIM/bim-0077.jpg",
+        "/Pictures/BIM/bim-0078.jpg"
+      ],
+      "intro": {
+        "it": "In Arvand Termo Tec lavoriamo costantemente per offrirti un'esperienza di progettazione e cantiere ancora più avanzata, confortevole e senza stress. Presto integreremo tre nuove tecnologie al nostro metodo di lavoro:",
+        "en": "At Arvand Termo Tec we constantly work to offer you an even more advanced, comfortable and stress-free design and construction experience. Soon we will integrate three new technologies into our workflow:"
+      },
+      "upcomingFeatures": {
+        "it": [
+          {
+            "icon": "🕶️",
+            "title": "Realtà Virtuale (VR) e Navigazione 3D",
+            "desc": "Esplora i tuoi progetti prima dell'inizio dei lavori. Potrai \"camminare\" virtualmente all'interno della tua casa, valutare le finiture e visualizzare l'esatta posizione dei nuovi impianti in anteprima, per scelte consapevoli e senza ripensamenti."
+          },
+          {
+            "icon": "🔇",
+            "title": "Progettazione Acustica BIM",
+            "desc": "Il vero comfort è anche sonoro. Introdurremo simulazioni acustiche avanzate per garantirti impianti di climatizzazione silenziosi e ambienti perfettamente isolati dai rumori esterni, migliorando la qualità della tua vita."
+          },
+          {
+            "icon": "☁️",
+            "title": "Portale Clienti in Cloud (CDE)",
+            "desc": "Il tuo cantiere a portata di clic. Avrai accesso a un portale dedicato dove potrai monitorare in tempo reale l'avanzamento dei lavori, visionare i modelli 3D e avere un archivio digitale sicuro con tutte le certificazioni e garanzie sempre a disposizione."
+          }
+        ],
+        "en": [
+          {
+            "icon": "🕶️",
+            "title": "Virtual Reality (VR) & 3D Navigation",
+            "desc": "Explore your projects before work begins. You can virtually \"walk\" inside your home, evaluate finishes and preview the exact position of new systems, for conscious choices and no second thoughts."
+          },
+          {
+            "icon": "🔇",
+            "title": "BIM Acoustic Design",
+            "desc": "True comfort is also sonic. We will introduce advanced acoustic simulations to guarantee silent HVAC systems and environments perfectly isolated from external noise, improving your quality of life."
+          },
+          {
+            "icon": "☁️",
+            "title": "Cloud Client Portal (CDE)",
+            "desc": "Your construction site just a click away. You will have access to a dedicated portal where you can monitor work progress in real time, view 3D models and have a secure digital archive with all certifications."
+          }
+        ]
+      },
+      "ctaButton": {
+        "it": "Scopri le Nostre Innovazioni ⏳",
+        "en": "Discover Our Innovations ⏳"
+      }
+    }
+  ]
+}

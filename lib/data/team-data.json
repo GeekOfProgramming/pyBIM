@@ -1,0 +1,928 @@
+{
+  "teamMembers": [
+    {
+      "id": "t1",
+      "image": "/Pictures/General/hvac-industrial.jpg",
+      "it": {
+        "name": "John Smith",
+        "role": "Responsabile di Progetto",
+        "bio": "Esperto nella gestione di progetti HVAC industriali complessi, John coordina i team per garantire consegne puntuali e nel rispetto del budget.",
+        "skills": [
+          {
+            "name": "Ingegneria",
+            "value": 95
+          },
+          {
+            "name": "Project Management",
+            "value": 98
+          },
+          {
+            "name": "Problem Solving",
+            "value": 90
+          }
+        ]
+      },
+      "en": {
+        "name": "John Smith",
+        "role": "Project Manager",
+        "bio": "Expert in managing projects HVAC industriali complessi, John coordina i team per garantire consegne puntuali e nel rispetto del budget.",
+        "skills": [
+          {
+            "name": "Engineering",
+            "value": 95
+          },
+          {
+            "name": "Project Management",
+            "value": 98
+          },
+          {
+            "name": "Problem Solving",
+            "value": 90
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com/in/johnsmith",
+      "email": "john.smith@arvandtermotec.it"
+    },
+    {
+      "id": "t2",
+      "image": "/Pictures/General/hvac-commercial.jpg",
+      "it": {
+        "name": "Michael Brown",
+        "role": "Controllo Qualità",
+        "bio": "Michael assicura che ogni installazione rispetti i rigorosi standard qualitativi e normativi europei.",
+        "skills": [
+          {
+            "name": "Controllo Qualità",
+            "value": 100
+          },
+          {
+            "name": "Normative HVAC",
+            "value": 95
+          },
+          {
+            "name": "Analisi Dati",
+            "value": 85
+          }
+        ]
+      },
+      "en": {
+        "name": "Michael Brown",
+        "role": "Quality Control",
+        "bio": "Michael ensures that every installation rispetti i rigorosi standard qualitativi e normativi europei.",
+        "skills": [
+          {
+            "name": "Quality Control",
+            "value": 100
+          },
+          {
+            "name": "Normative HVAC",
+            "value": 95
+          },
+          {
+            "name": "Data Analysis",
+            "value": 85
+          }
+        ]
+      },
+      "instagram": "https://instagram.com/michaelbrown",
+      "phone": "+39 333 1234567"
+    },
+    {
+      "id": "t3",
+      "image": "/Pictures/Team/hamid-lotfalian.png",
+      "it": {
+        "name": "Hamid Lotfalian",
+        "role": "Dir. Marketing & Sviluppo Business",
+        "bio": "Hamid ha ideato e sviluppato l'intero ecosistema digitale di Arvand Termo Tec. Con oltre 7 anni di esperienza ingegneristica, guida la strategia digitale, le PR e il marketing aziendale, allineando la presenza online agli obiettivi di business.",
+        "skills": [
+          {
+            "name": "Digital Strategy",
+            "value": 98
+          },
+          {
+            "name": "Web Architecture",
+            "value": 95
+          },
+          {
+            "name": "Social Media & PR",
+            "value": 92
+          }
+        ],
+        "skillsDesc": "Promuovere la crescita attraverso strategie digitali innovative, architetture web avanzate e campagne marketing su misura per il settore termotecnico.",
+        "commitments": [
+          "Gestione completa dell'ecosistema digitale",
+          "Marketing guidato dai dati e lead generation",
+          "Sviluppo dell'identità del brand",
+          "Allineamento delle soluzioni agli obiettivi aziendali"
+        ]
+      },
+      "en": {
+        "name": "Hamid Lotfalian",
+        "role": "Director of Marketing & Business Dev.",
+        "bio": "Hamid engineered Arvand Termo Tec's digital ecosystem from the ground up. Leveraging 7+ years of full-stack engineering experience, he spearheads the digital strategy, public relations, and marketing campaigns to drive customer acquisition and business growth.",
+        "skills": [
+          {
+            "name": "Digital Strategy",
+            "value": 98
+          },
+          {
+            "name": "Web Architecture",
+            "value": 95
+          },
+          {
+            "name": "Social Media & PR",
+            "value": 92
+          }
+        ],
+        "skillsDesc": "Driving growth through innovative digital strategies, robust web architectures, and data-driven marketing campaigns tailored for the HVAC industry.",
+        "commitments": [
+          "End-to-end digital ecosystem management",
+          "Data-driven marketing and lead generation",
+          "Fostering community trust and brand identity",
+          "Aligning technical solutions with business goals"
+        ]
+      },
+      "linkedin": "https://www.linkedin.com/in/hamid-lotfalian",
+      "facebook": "https://www.facebook.com/hamid.lotfalian/",
+      "instagram": "https://www.instagram.com/better.call.hamid/"
+    },
+    {
+      "id": "t4",
+      "image": "/Pictures/General/hvac-industrial.jpg",
+      "it": {
+        "name": "James Miller",
+        "role": "Ingegnere HVAC",
+        "bio": "Progettista di sistemi termotecnici avanzati, James ottimizza il design per massimizzare l'efficienza energetica.",
+        "skills": [
+          {
+            "name": "Progettazione 3D",
+            "value": 95
+          },
+          {
+            "name": "Termodinamica",
+            "value": 90
+          },
+          {
+            "name": "Efficienza Energetica",
+            "value": 98
+          }
+        ]
+      },
+      "en": {
+        "name": "James Miller",
+        "role": "HVAC Engineer",
+        "bio": "Designer of systems termotecnici avanzati, James ottimizza il design per massimizzare l'efficienza energetica.",
+        "skills": [
+          {
+            "name": "3D Design",
+            "value": 95
+          },
+          {
+            "name": "Thermodynamics",
+            "value": 90
+          },
+          {
+            "name": "Energy Efficiency",
+            "value": 98
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "t5",
+      "image": "/Pictures/General/hvac-commercial.jpg",
+      "it": {
+        "name": "Sarah Williams",
+        "role": "Coordinatrice Supporto",
+        "bio": "Sarah gestisce le richieste di supporto post-installazione, assicurando interventi tempestivi e massima soddisfazione.",
+        "skills": [
+          {
+            "name": "Customer Service",
+            "value": 100
+          },
+          {
+            "name": "Pianificazione",
+            "value": 95
+          },
+          {
+            "name": "Logistica",
+            "value": 90
+          }
+        ]
+      },
+      "en": {
+        "name": "Sarah Williams",
+        "role": "Support Coordinator",
+        "bio": "Sarah manages support requests di supporto post-installazione, assicurando interventi tempestivi e massima soddisfazione.",
+        "skills": [
+          {
+            "name": "Customer Service",
+            "value": 100
+          },
+          {
+            "name": "Planning",
+            "value": 95
+          },
+          {
+            "name": "Logistics",
+            "value": 90
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    }
+  ],
+  "individualPartners": [
+    {
+      "id": "i1",
+      "image": "/Pictures/General/hvac-commercial.jpg",
+      "it": {
+        "name": "Collaboratore 1",
+        "role": "Architetto Associato",
+        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Design Architettonico",
+            "value": 95
+          },
+          {
+            "name": "Integrazione Impianti",
+            "value": 90
+          },
+          {
+            "name": "Sostenibilità",
+            "value": 92
+          }
+        ]
+      },
+      "en": {
+        "name": "Collaboratore 1",
+        "role": "Associate Architect",
+        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Architectural Design",
+            "value": 95
+          },
+          {
+            "name": "System Integration",
+            "value": 90
+          },
+          {
+            "name": "Sustainability",
+            "value": 92
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "i2",
+      "image": "/Pictures/General/hvac-residential.jpg",
+      "it": {
+        "name": "Collaboratore 2",
+        "role": "Consulente Energetico",
+        "bio": "Marco ci affianca nella redazione delle certificazioni energetiche (APE) e nelle pratiche per le detrazioni fiscali dei nostri clienti.",
+        "skills": [
+          {
+            "name": "Certificazione Energetica",
+            "value": 98
+          },
+          {
+            "name": "Pratiche Fiscali",
+            "value": 95
+          },
+          {
+            "name": "Consulenza",
+            "value": 90
+          }
+        ]
+      },
+      "en": {
+        "name": "Collaboratore 2",
+        "role": "Energy Consultant",
+        "bio": "Marco ci affianca nella redazione delle certificazioni energetiche (APE) e nelle pratiche per le detrazioni fiscali dei nostri clienti. (EN)",
+        "skills": [
+          {
+            "name": "Energy Certification",
+            "value": 98
+          },
+          {
+            "name": "Tax Procedures",
+            "value": 95
+          },
+          {
+            "name": "Consulting",
+            "value": 90
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "mock-collab-2",
+      "image": "/Pictures/General/hvac-commercial.jpg",
+      "it": {
+        "name": "Collaboratore 3",
+        "role": "Architetto Associato",
+        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Design Architettonico",
+            "value": 95
+          },
+          {
+            "name": "Integrazione Impianti",
+            "value": 90
+          },
+          {
+            "name": "Sostenibilità",
+            "value": 92
+          }
+        ]
+      },
+      "en": {
+        "name": "Collaboratore 3",
+        "role": "Associate Architect",
+        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Architectural Design",
+            "value": 95
+          },
+          {
+            "name": "System Integration",
+            "value": 90
+          },
+          {
+            "name": "Sustainability",
+            "value": 92
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "mock-collab-3",
+      "image": "/Pictures/General/hvac-commercial.jpg",
+      "it": {
+        "name": "Collaboratore 4",
+        "role": "Architetto Associato",
+        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Design Architettonico",
+            "value": 95
+          },
+          {
+            "name": "Integrazione Impianti",
+            "value": 90
+          },
+          {
+            "name": "Sostenibilità",
+            "value": 92
+          }
+        ]
+      },
+      "en": {
+        "name": "Collaboratore 4",
+        "role": "Associate Architect",
+        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Architectural Design",
+            "value": 95
+          },
+          {
+            "name": "System Integration",
+            "value": 90
+          },
+          {
+            "name": "Sustainability",
+            "value": 92
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "mock-collab-4",
+      "image": "/Pictures/General/hvac-commercial.jpg",
+      "it": {
+        "name": "Collaboratore 5",
+        "role": "Architetto Associato",
+        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Design Architettonico",
+            "value": 95
+          },
+          {
+            "name": "Integrazione Impianti",
+            "value": 90
+          },
+          {
+            "name": "Sostenibilità",
+            "value": 92
+          }
+        ]
+      },
+      "en": {
+        "name": "Collaboratore 5",
+        "role": "Associate Architect",
+        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Architectural Design",
+            "value": 95
+          },
+          {
+            "name": "System Integration",
+            "value": 90
+          },
+          {
+            "name": "Sustainability",
+            "value": 92
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "mock-collab-5",
+      "image": "/Pictures/General/hvac-commercial.jpg",
+      "it": {
+        "name": "Collaboratore 6",
+        "role": "Architetto Associato",
+        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Design Architettonico",
+            "value": 95
+          },
+          {
+            "name": "Integrazione Impianti",
+            "value": 90
+          },
+          {
+            "name": "Sostenibilità",
+            "value": 92
+          }
+        ]
+      },
+      "en": {
+        "name": "Collaboratore 6",
+        "role": "Associate Architect",
+        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Architectural Design",
+            "value": 95
+          },
+          {
+            "name": "System Integration",
+            "value": 90
+          },
+          {
+            "name": "Sustainability",
+            "value": 92
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "mock-collab-6",
+      "image": "/Pictures/General/hvac-commercial.jpg",
+      "it": {
+        "name": "Collaboratore 7",
+        "role": "Architetto Associato",
+        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Design Architettonico",
+            "value": 95
+          },
+          {
+            "name": "Integrazione Impianti",
+            "value": 90
+          },
+          {
+            "name": "Sostenibilità",
+            "value": 92
+          }
+        ]
+      },
+      "en": {
+        "name": "Collaboratore 7",
+        "role": "Associate Architect",
+        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
+        "skills": [
+          {
+            "name": "Architectural Design",
+            "value": 95
+          },
+          {
+            "name": "System Integration",
+            "value": 90
+          },
+          {
+            "name": "Sustainability",
+            "value": 92
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    }
+  ],
+  "corporatePartners": [
+    {
+      "id": "c1",
+      "isCompany": true,
+      "image": "/Pictures/General/hvac-industrial.jpg",
+      "it": {
+        "name": "Azienda Partner 1",
+        "role": "Partner Tecnologico",
+        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "Fornitura Sistemi",
+            "value": 100
+          },
+          {
+            "name": "Innovazione",
+            "value": 95
+          },
+          {
+            "name": "Affidabilità",
+            "value": 98
+          }
+        ]
+      },
+      "en": {
+        "name": "Azienda Partner 1",
+        "role": "Technology Partner",
+        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "System Supply",
+            "value": 100
+          },
+          {
+            "name": "Innovation",
+            "value": 95
+          },
+          {
+            "name": "Reliability",
+            "value": 98
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "c2",
+      "isCompany": true,
+      "image": "/Pictures/General/hvac-commercial.jpg",
+      "it": {
+        "name": "Azienda Partner 2",
+        "role": "Fornitore Ufficiale",
+        "bio": "Collaborazione diretta con Mitsubishi per la fornitura di pompe di calore ad altissima efficienza e sistemi VRF industriali.",
+        "skillsDesc": "Tecnologie silenziose e a basso impatto ambientale per il comfort residenziale e commerciale.",
+        "skills": [
+          {
+            "name": "Sistemi VRF",
+            "value": 98
+          },
+          {
+            "name": "Efficienza",
+            "value": 95
+          },
+          {
+            "name": "Supporto Tecnico",
+            "value": 90
+          }
+        ]
+      },
+      "en": {
+        "name": "Azienda Partner 2",
+        "role": "Official Supplier",
+        "bio": "Collaborazione diretta con Mitsubishi per la fornitura di pompe di calore ad altissima efficienza e sistemi VRF industriali. (EN)",
+        "skillsDesc": "Tecnologie silenziose e a basso impatto ambientale per il comfort residenziale e commerciale.",
+        "skills": [
+          {
+            "name": "VRF Systems",
+            "value": 98
+          },
+          {
+            "name": "Efficiency",
+            "value": 95
+          },
+          {
+            "name": "Technical Support",
+            "value": 90
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "mock-partner-2",
+      "isCompany": true,
+      "image": "/Pictures/General/hvac-industrial.jpg",
+      "it": {
+        "name": "Azienda Partner 3",
+        "role": "Partner Tecnologico",
+        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "Fornitura Sistemi",
+            "value": 100
+          },
+          {
+            "name": "Innovazione",
+            "value": 95
+          },
+          {
+            "name": "Affidabilità",
+            "value": 98
+          }
+        ]
+      },
+      "en": {
+        "name": "Azienda Partner 3",
+        "role": "Technology Partner",
+        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "System Supply",
+            "value": 100
+          },
+          {
+            "name": "Innovation",
+            "value": 95
+          },
+          {
+            "name": "Reliability",
+            "value": 98
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "mock-partner-3",
+      "isCompany": true,
+      "image": "/Pictures/General/hvac-industrial.jpg",
+      "it": {
+        "name": "Azienda Partner 4",
+        "role": "Partner Tecnologico",
+        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "Fornitura Sistemi",
+            "value": 100
+          },
+          {
+            "name": "Innovazione",
+            "value": 95
+          },
+          {
+            "name": "Affidabilità",
+            "value": 98
+          }
+        ]
+      },
+      "en": {
+        "name": "Azienda Partner 4",
+        "role": "Technology Partner",
+        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "System Supply",
+            "value": 100
+          },
+          {
+            "name": "Innovation",
+            "value": 95
+          },
+          {
+            "name": "Reliability",
+            "value": 98
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "mock-partner-4",
+      "isCompany": true,
+      "image": "/Pictures/General/hvac-industrial.jpg",
+      "it": {
+        "name": "Azienda Partner 5",
+        "role": "Partner Tecnologico",
+        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "Fornitura Sistemi",
+            "value": 100
+          },
+          {
+            "name": "Innovazione",
+            "value": 95
+          },
+          {
+            "name": "Affidabilità",
+            "value": 98
+          }
+        ]
+      },
+      "en": {
+        "name": "Azienda Partner 5",
+        "role": "Technology Partner",
+        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "System Supply",
+            "value": 100
+          },
+          {
+            "name": "Innovation",
+            "value": 95
+          },
+          {
+            "name": "Reliability",
+            "value": 98
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "mock-partner-5",
+      "isCompany": true,
+      "image": "/Pictures/General/hvac-industrial.jpg",
+      "it": {
+        "name": "Azienda Partner 6",
+        "role": "Partner Tecnologico",
+        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "Fornitura Sistemi",
+            "value": 100
+          },
+          {
+            "name": "Innovazione",
+            "value": 95
+          },
+          {
+            "name": "Affidabilità",
+            "value": 98
+          }
+        ]
+      },
+      "en": {
+        "name": "Azienda Partner 6",
+        "role": "Technology Partner",
+        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "System Supply",
+            "value": 100
+          },
+          {
+            "name": "Innovation",
+            "value": 95
+          },
+          {
+            "name": "Reliability",
+            "value": 98
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    },
+    {
+      "id": "mock-partner-6",
+      "isCompany": true,
+      "image": "/Pictures/General/hvac-industrial.jpg",
+      "it": {
+        "name": "Azienda Partner 7",
+        "role": "Partner Tecnologico",
+        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "Fornitura Sistemi",
+            "value": 100
+          },
+          {
+            "name": "Innovazione",
+            "value": 95
+          },
+          {
+            "name": "Affidabilità",
+            "value": 98
+          }
+        ]
+      },
+      "en": {
+        "name": "Azienda Partner 7",
+        "role": "Technology Partner",
+        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
+        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
+        "skills": [
+          {
+            "name": "System Supply",
+            "value": 100
+          },
+          {
+            "name": "Innovation",
+            "value": 95
+          },
+          {
+            "name": "Reliability",
+            "value": 98
+          }
+        ]
+      },
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "phone": "+39 041 8944704",
+      "email": "info@arvandtermotec.it"
+    }
+  ]
+}
