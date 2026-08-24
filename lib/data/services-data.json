@@ -1,7 +1,7 @@
 [
   {
     "slug": "core-bim",
-    "title": { "en": "3D / 4D / 5D Rapid Delivery", "it": "3D / 4D / 5D Rapid Delivery" },
+    "title": { "en": "Algorithmic Engineering", "it": "Algorithmic Engineering" },
     "subtitle": { "en": "High-Speed Coordination & Algorithmic Delivery", "it": "High-Speed Coordination & Algorithmic Delivery" },
     "description": { "en": "Bypass manual modeling delays. Execution of algorithmic clash resolution, point cloud processing (Scan-to-BIM), and dynamic cost estimation. Coordination cycles are automated through proprietary scripts and rule-based auditing, delivering constructible, ISO-compliant models at accelerated speeds.", "it": "Supera i ritardi della modellazione manuale. Esecuzione della risoluzione algoritmica dei clash, elaborazione delle nuvole di punti (Scan-to-BIM) e stima dinamica dei costi. I cicli di coordinamento sono automatizzati tramite script proprietari e audit basati su regole." },
     "longDescription": { "en": "", "it": "" },
@@ -54,7 +54,7 @@
   },
   {
     "slug": "custom-plugins",
-    "title": { "en": "Custom Plugins & Automation", "it": "Custom Plugins & Automation" },
+    "title": { "en": "Code & Automation", "it": "Code & Automation" },
     "subtitle": { "en": "Bespoke software for your studio", "it": "Software su misura per il tuo studio" },
     "description": { "en": "Software has limits; our code doesn't. We develop bespoke Revit Add-ins and Dynamo scripts for your studio. Turn a 3-hour repetitive task into a 3-second click.", "it": "Il software ha dei limiti..." },
     "longDescription": { "en": "We specialize in developing custom automation tools that plug directly into your existing software stack. Utilizing C#, Python, and the Revit API, we build add-ins that automate highly repetitive tasks, enforce modeling standards across your team, and extract complex data. Whether you need a simple pyRevit script to rename views or a complex C# application to automate wall reinforcements, we tailor the solution to your specific workflow.", "it": "Siamo specializzati..." },
@@ -103,7 +103,7 @@
   },
   {
     "slug": "data-integration",
-    "title": { "en": "Data & API Integration (6D - 11D)", "it": "Data & API Integration (6D - 11D)" },
+    "title": { "en": "CDE & Lifecycle Data", "it": "CDE & Lifecycle Data" },
     "subtitle": { "en": "Connecting BIM to the future", "it": "Connettere il BIM al futuro" },
     "description": { "en": "We are the bridge between your 3D models and future technologies. We prepare and program your models to connect seamlessly with Facility Management systems, IoT sensors, and Digital Twins.", "it": "..." },
     "longDescription": { "en": "The true value of BIM lies in the \"Information\". We structure, normalize, and expose your model data so it can be consumed by external databases, ERPs, and Facility Management (FM) platforms. We build API bridges that allow bi-directional data flow—meaning your Digital Twin can reflect real-time IoT sensor data, and changes in your FM database can automatically update the Revit model.", "it": "..." },
