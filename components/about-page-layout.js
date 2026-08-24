@@ -72,7 +72,7 @@ export default function AboutPageLayout() {
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center mb-24">
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary mb-6">Our Journey</h2>
-            <p className="text-brand-textSecondary text-lg font-medium">The evolution of our tech-enabled architecture.</p>
+            <p className="text-brand-textSecondary text-lg font-medium">The evolution from manual coordination to automated engineering.</p>
           </div>
           
           <div className="relative space-y-24 md:space-y-32">
@@ -84,9 +84,9 @@ export default function AboutPageLayout() {
               <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-white border-2 border-brand-primary shadow-[0_0_0_4px_rgba(37,99,235,0.1)] group-hover:shadow-[0_0_0_6px_rgba(37,99,235,0.2)] transition-shadow" />
               <div className="md:w-[45%] md:ml-auto md:pl-16">
                 <div className="text-sm font-mono font-bold text-brand-primary mb-2">Phase 1</div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">Identifying the Bottleneck</h3>
+                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">The Operational Bottleneck</h3>
                 <p className="text-brand-textSecondary leading-relaxed text-lg font-medium">
-                  Years of managing massive BIM projects revealed a harsh truth: powerful tools like Revit are still hindered by slow, manual processes.
+                  Managing complex BIM projects exposed a systemic industry flaw: highly skilled engineers waste up to 40% of their billable hours on repetitive data entry, parameter mapping, and manual quality control.
                 </p>
               </div>
             </div>
@@ -96,9 +96,9 @@ export default function AboutPageLayout() {
               <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-white border-2 border-brand-primary shadow-[0_0_0_4px_rgba(37,99,235,0.1)] group-hover:shadow-[0_0_0_6px_rgba(37,99,235,0.2)] transition-shadow" />
               <div className="md:w-[45%] md:pr-16 md:text-right">
                 <div className="text-sm font-mono font-bold text-brand-primary mb-2">Phase 2</div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">The Code Paradigm Shift</h3>
+                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">The Algorithmic Shift</h3>
                 <p className="text-brand-textSecondary leading-relaxed text-lg font-medium">
-                  Instead of hiring more manual modelers, we transitioned to coding (Python, C#, DesignScript) to break software limitations and automate the workflows.
+                  Instead of scaling through headcount, we transitioned to code. By integrating Python, C#, and Revit APIs into our core workflow, we replaced manual drafting with programmatic execution, reducing processing time from days to seconds.
                 </p>
               </div>
             </div>
@@ -108,9 +108,9 @@ export default function AboutPageLayout() {
               <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-brand-primary border-2 border-brand-primary shadow-[0_0_0_6px_rgba(37,99,235,0.2)] group-hover:shadow-[0_0_0_8px_rgba(37,99,235,0.3)] transition-shadow" />
               <div className="md:w-[45%] md:ml-auto md:pl-16">
                 <div className="text-sm font-mono font-bold text-brand-primary mb-2">Phase 3</div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">Birth of a Tech-Enabled Agency</h3>
+                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">The Hybrid B2B Agency</h3>
                 <p className="text-brand-textSecondary leading-relaxed text-lg font-medium">
-                  We launched as a hybrid studio. We don't just deliver 3D to 11D models; we build the software infrastructure, plugins, and APIs behind them.
+                  Today, pyBIM operates as a silent technical partner for AEC firms. We deliver zero-error BIM coordination and develop the custom software infrastructure required to scale your project capacity without increasing overhead.
                 </p>
               </div>
             </div>
