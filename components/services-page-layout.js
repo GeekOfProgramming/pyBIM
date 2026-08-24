@@ -93,42 +93,48 @@ export default function ServicesPageLayout() {
       {/* SECTION 3: AUTOMATION WORKFLOW */}
       <section className="py-32 bg-brand-base">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary mb-24 tracking-tight">The Automation Workflow</h2>
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-xs font-mono font-bold text-brand-primary uppercase tracking-widest mb-4">
+            SYSTEMATIC METHODOLOGY
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary mb-4 tracking-tight">The Algorithmic Execution Pipeline</h2>
+          <p className="text-brand-textSecondary text-base md:text-lg font-medium max-w-2xl mx-auto mb-20">
+            A structured, three-stage engineering process ensuring absolute data precision and zero-error model delivery.
+          </p>
           
-          <div className="grid md:grid-cols-3 gap-16 md:gap-8 relative">
+          <div className="grid md:grid-cols-3 gap-12 md:gap-8 relative">
             {/* Connecting Line (Desktop) */}
-            <div className="hidden md:block absolute top-8 left-[15%] right-[15%] h-[2px] bg-brand-border" />
+            <div className="hidden md:block absolute top-10 left-[18%] right-[18%] h-[2px] bg-brand-border" />
             
             {/* Step 1 */}
-            <div className="relative flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-brand-surface border-4 border-white flex items-center justify-center shadow-md z-10 text-xl font-bold text-brand-textPrimary mb-8">
-                1
+            <div className="relative flex flex-col items-center group">
+              <div className="w-20 h-20 rounded-full bg-white border-2 border-brand-border group-hover:border-brand-primary flex items-center justify-center shadow-md z-10 text-xl font-bold text-brand-textPrimary mb-8 transition-all duration-300">
+                01
               </div>
-              <h4 className="text-xl font-bold text-brand-textPrimary mb-4">Input</h4>
-              <p className="text-brand-textSecondary font-medium leading-relaxed max-w-xs mx-auto">
-                You send us the 2D CAD or raw models.
+              <h4 className="text-xl font-bold text-brand-textPrimary mb-3">Raw Data & Requirements Ingestion</h4>
+              <p className="text-brand-textSecondary text-sm font-medium leading-relaxed max-w-xs mx-auto">
+                Ingestion of native Revit models, point cloud scans, 2D CAD layouts, or EIR/BEP protocols. Spatial parameters are validated prior to execution.
               </p>
             </div>
 
             {/* Step 2 */}
-            <div className="relative flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-brand-primary border-4 border-white flex items-center justify-center shadow-lg shadow-brand-primary/30 z-10 text-xl font-bold text-white mb-8">
-                2
+            <div className="relative flex flex-col items-center group">
+              <div className="w-20 h-20 rounded-full bg-brand-primary border-4 border-white flex items-center justify-center shadow-xl shadow-brand-primary/30 z-10 text-xl font-bold text-white mb-8 transition-all duration-300 group-hover:scale-105">
+                02
               </div>
-              <h4 className="text-xl font-bold text-brand-textPrimary mb-4">Processing</h4>
-              <p className="text-brand-textSecondary font-medium leading-relaxed max-w-xs mx-auto">
-                Our scripts and algorithms automate the heavy lifting and detect errors.
+              <h4 className="text-xl font-bold text-brand-textPrimary mb-3">Programmatic Processing & Rule Auditing</h4>
+              <p className="text-brand-textSecondary text-sm font-medium leading-relaxed max-w-xs mx-auto">
+                Execution of custom Python pipelines, C# Add-ins, and Solibri/Navisworks rule engines. Automated clash grouping & QTO extraction.
               </p>
             </div>
 
             {/* Step 3 */}
-            <div className="relative flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-emerald-500 border-4 border-white flex items-center justify-center shadow-lg shadow-emerald-500/30 z-10 text-xl font-bold text-white mb-8">
-                3
+            <div className="relative flex flex-col items-center group">
+              <div className="w-20 h-20 rounded-full bg-emerald-500 border-4 border-white flex items-center justify-center shadow-xl shadow-emerald-500/30 z-10 text-xl font-bold text-white mb-8 transition-all duration-300 group-hover:scale-105">
+                03
               </div>
-              <h4 className="text-xl font-bold text-brand-textPrimary mb-4">Output</h4>
-              <p className="text-brand-textSecondary font-medium leading-relaxed max-w-xs mx-auto">
-                Delivery of a clean, data-rich, error-free BIM database.
+              <h4 className="text-xl font-bold text-brand-textPrimary mb-3">ISO-Compliant Handover & CDE Sync</h4>
+              <p className="text-brand-textSecondary text-sm font-medium leading-relaxed max-w-xs mx-auto">
+                Delivery of federated, clash-free BIM databases, 5D QTO cost reports, COBie asset schedules, and seamless cloud synchronization into your CDE.
               </p>
             </div>
           </div>
@@ -137,34 +143,69 @@ export default function ServicesPageLayout() {
 
 
       {/* 5. WHO WE SERVE */}
-      <section className="py-24 bg-brand-base border-b border-brand-border">
+      <section className="py-24 bg-brand-surface border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">Built for Enterprise.</h2>
-            <p className="text-lg text-brand-textSecondary max-w-2xl mx-auto">We understand the specific bottlenecks of your industry.</p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-xs font-mono font-bold text-brand-primary uppercase tracking-widest mb-4">
+              SECTOR-SPECIFIC PROTOCOLS
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">Built for Enterprise & High-Precision AEC Firms.</h2>
+            <p className="text-lg text-brand-textSecondary max-w-2xl mx-auto font-medium">Tailored engineering automation addressing specific operational bottlenecks.</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-brand-background border border-[#262626] p-8 rounded-3xl shadow-sm hover:shadow-md transition">
-              <HardHat className="w-10 h-10 text-brand-primary mb-6" />
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-4">General Contractors</h3>
-              <p className="text-brand-textSecondary leading-relaxed font-medium">
-                Eliminate on-site surprises. We use 4D algorithms and automated clash detection to ensure constructability before the first brick is laid.
-              </p>
+            {/* Card 1 */}
+            <div className="bg-white border border-brand-border p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6">
+                  <HardHat className="w-7 h-7 text-brand-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-brand-textPrimary mb-4">General Contractors & Design-Build</h3>
+                <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
+                  Mitigation of site re-work and budget overruns. We deploy rule-based 3D clash resolution, 4D construction sequencing, and dynamic 5D QTO extraction to guarantee constructability before site mobilization.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-brand-border/60">
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">CONSTRUCTABILITY</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">4D / 5D QTO</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">RISK MITIGATION</span>
+              </div>
             </div>
-            <div className="bg-brand-background border border-[#262626] p-8 rounded-3xl shadow-sm hover:shadow-md transition">
-              <Building2 className="w-10 h-10 text-brand-primary mb-6" />
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-4">Architecture & MEP Studios</h3>
-              <p className="text-brand-textSecondary leading-relaxed font-medium">
-                Stop wasting billable hours on repetitive tasks. We build custom pyRevit plugins so your team can focus on design, not data entry.
-              </p>
+
+            {/* Card 2 */}
+            <div className="bg-white border border-brand-border p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6">
+                  <Building2 className="w-7 h-7 text-brand-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-brand-textPrimary mb-4">Architecture & Engineering Studios</h3>
+                <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
+                  Reallocation of billable hours from repetitive data entry to design. We develop proprietary pyRevit toolbars, custom C# add-ins, and automated sheet creation pipelines to accelerate delivery timelines.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-brand-border/60">
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">REVIT ADD-INS</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">AUTOMATED SHEETS</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">BILLABLE EFFICIENCY</span>
+              </div>
             </div>
-            <div className="bg-brand-background border border-[#262626] p-8 rounded-3xl shadow-sm hover:shadow-md transition">
-              <Factory className="w-10 h-10 text-brand-primary mb-6" />
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-4">Manufacturers</h3>
-              <p className="text-brand-textSecondary leading-relaxed font-medium">
-                Turn your products into smart data. We develop lightweight, highly parametric BIM families ready for Digital Twin integration.
-              </p>
+
+            {/* Card 3 */}
+            <div className="bg-white border border-brand-border p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6">
+                  <Factory className="w-7 h-7 text-brand-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-brand-textPrimary mb-4">Asset Owners & Product Manufacturers</h3>
+                <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
+                  Conversion of static product catalogs into lightweight, data-rich BIM families (LOD 100-500). We structure asset metadata for COBie compliance, CDE hosting, and real-time Digital Twin telemetry.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-brand-border/60">
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">PARAMETRIC FAMILIES</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">COBIE HANDOVER</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">DIGITAL TWINS</span>
+              </div>
             </div>
           </div>
         </div>
