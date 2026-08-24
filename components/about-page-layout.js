@@ -124,7 +124,7 @@ export default function AboutPageLayout() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-xs font-mono font-bold text-brand-primary uppercase tracking-widest mb-4">
-              <Cpu className="w-3.5 h-3.5" /> 3D to 10D BIM Dimensions & Tech Arsenal
+              <Cpu className="w-3.5 h-3.5" /> OUR TECHNICAL ARSENAL
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
               The tools & standards we use to engineer the process.
