@@ -96,45 +96,50 @@ export default function ServicesPageLayout() {
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-xs font-mono font-bold text-brand-primary uppercase tracking-widest mb-4">
             SYSTEMATIC METHODOLOGY
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary mb-4 tracking-tight">The Algorithmic Execution Pipeline</h2>
-          <p className="text-brand-textSecondary text-base md:text-lg font-medium max-w-2xl mx-auto mb-20">
-            A structured, three-stage engineering process ensuring absolute data precision and zero-error model delivery.
+          <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary mb-4 tracking-tight">
+            Stop coordinating by hand. Engineer the process.
+          </h2>
+          <h3 className="text-xl md:text-2xl font-bold text-brand-primary mb-4">
+            The Algorithmic Execution Pipeline
+          </h3>
+          <p className="text-brand-textSecondary text-base md:text-lg font-medium max-w-3xl mx-auto mb-20 leading-relaxed">
+            Manual clash detection and repetitive data entry are destroying your project margins. We replace human error with a structured, three-stage programmatic workflow ensuring absolute data precision and legal compliance.
           </p>
           
-          <div className="grid md:grid-cols-3 gap-12 md:gap-8 relative">
+          <div className="grid md:grid-cols-3 gap-12 md:gap-8 relative text-left">
             {/* Connecting Line (Desktop) */}
-            <div className="hidden md:block absolute top-10 left-[18%] right-[18%] h-[2px] bg-brand-border" />
+            <div className="hidden md:block absolute top-10 left-[18%] right-[18%] h-[2px] bg-brand-border z-0" />
             
             {/* Step 1 */}
-            <div className="relative flex flex-col items-center group">
+            <div className="relative flex flex-col items-center group text-center">
               <div className="w-20 h-20 rounded-full bg-white border-2 border-brand-border group-hover:border-brand-primary flex items-center justify-center shadow-md z-10 text-xl font-bold text-brand-textPrimary mb-8 transition-all duration-300">
                 01
               </div>
-              <h4 className="text-xl font-bold text-brand-textPrimary mb-3">Raw Data & Requirements Ingestion</h4>
-              <p className="text-brand-textSecondary text-sm font-medium leading-relaxed max-w-xs mx-auto">
-                Ingestion of native Revit models, point cloud scans, 2D CAD layouts, or EIR/BEP protocols. Spatial parameters are validated prior to execution.
+              <h4 className="text-xl font-bold text-brand-textPrimary mb-3">Data Parsing & Requirements Ingestion</h4>
+              <p className="text-brand-textSecondary text-sm font-medium leading-relaxed max-w-sm mx-auto">
+                <strong className="text-brand-textPrimary font-bold">Garbage in, garbage out.</strong> Before a single clash is run, our scripts algorithmically parse your native Revit databases, point cloud arrays, and EIR/BEP protocols. Spatial boundaries and geometric parameters are validated via code to ensure strict data integrity.
               </p>
             </div>
 
             {/* Step 2 */}
-            <div className="relative flex flex-col items-center group">
+            <div className="relative flex flex-col items-center group text-center">
               <div className="w-20 h-20 rounded-full bg-brand-primary border-4 border-white flex items-center justify-center shadow-xl shadow-brand-primary/30 z-10 text-xl font-bold text-white mb-8 transition-all duration-300 group-hover:scale-105">
                 02
               </div>
               <h4 className="text-xl font-bold text-brand-textPrimary mb-3">Programmatic Processing & Rule Auditing</h4>
-              <p className="text-brand-textSecondary text-sm font-medium leading-relaxed max-w-xs mx-auto">
-                Execution of custom Python pipelines, C# Add-ins, and Solibri/Navisworks rule engines. Automated clash grouping & QTO extraction.
+              <p className="text-brand-textSecondary text-sm font-medium leading-relaxed max-w-sm mx-auto">
+                <strong className="text-brand-textPrimary font-bold">If a task is repeated twice, we script it.</strong> Instead of manual clicking, we deploy bespoke Python data pipelines and custom C# APIs. We execute automated clash grouping, metadata injection, and dynamic QTO extraction with zero human error.
               </p>
             </div>
 
             {/* Step 3 */}
-            <div className="relative flex flex-col items-center group">
+            <div className="relative flex flex-col items-center group text-center">
               <div className="w-20 h-20 rounded-full bg-emerald-500 border-4 border-white flex items-center justify-center shadow-xl shadow-emerald-500/30 z-10 text-xl font-bold text-white mb-8 transition-all duration-300 group-hover:scale-105">
                 03
               </div>
-              <h4 className="text-xl font-bold text-brand-textPrimary mb-3">ISO-Compliant Handover & CDE Sync</h4>
-              <p className="text-brand-textSecondary text-sm font-medium leading-relaxed max-w-xs mx-auto">
-                Delivery of federated, clash-free BIM databases, 5D QTO cost reports, COBie asset schedules, and seamless cloud synchronization into your CDE.
+              <h4 className="text-xl font-bold text-brand-textPrimary mb-3">ISO-Compliant Handover & Cloud API Sync</h4>
+              <p className="text-brand-textSecondary text-sm font-medium leading-relaxed max-w-sm mx-auto">
+                <strong className="text-brand-textPrimary font-bold">Tender rejection is not an option.</strong> We deliver compiled, clash-free BIM databases and automated COBie asset schedules. Our API-driven synchronization pushes models directly into your Common Data Environment (CDE), guaranteeing absolute compliance with ISO 19650 and UNI 11337 standards.
               </p>
             </div>
           </div>
@@ -147,10 +152,10 @@ export default function ServicesPageLayout() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-xs font-mono font-bold text-brand-primary uppercase tracking-widest mb-4">
-              SECTOR-SPECIFIC PROTOCOLS
+              SECTOR-SPECIFIC AUTOMATION
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">Built for Enterprise & High-Precision AEC Firms.</h2>
-            <p className="text-lg text-brand-textSecondary max-w-2xl mx-auto font-medium">Tailored engineering automation addressing specific operational bottlenecks.</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">Built for Enterprise. Engineered for Precision.</h2>
+            <p className="text-lg text-brand-textSecondary max-w-2xl mx-auto font-medium">Tailored software automation addressing specific operational bottlenecks for high-precision AEC firms.</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -160,14 +165,17 @@ export default function ServicesPageLayout() {
                 <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6">
                   <HardHat className="w-7 h-7 text-brand-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-textPrimary mb-4">General Contractors & Design-Build</h3>
+                <h3 className="text-xl font-bold text-brand-textPrimary mb-2">General Contractors & Design-Build</h3>
+                <p className="text-xs font-bold text-brand-primary mb-4 leading-snug">
+                  Site rework and budget overruns are burning your margins.
+                </p>
                 <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
-                  Mitigation of site re-work and budget overruns. We deploy rule-based 3D clash resolution, 4D construction sequencing, and dynamic 5D QTO extraction to guarantee constructability before site mobilization.
+                  Instead of relying on slow, manual 3D coordination, we deploy algorithmic clash resolution scripts, programmatic 4D sequencing, and dynamic 5D QTO data extraction. We guarantee constructability and mitigate financial risk long before site mobilization.
                 </p>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-4 border-t border-brand-border/60">
-                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">CONSTRUCTABILITY</span>
-                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">4D / 5D QTO</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">ALGORITHMIC CONSTRUCTABILITY</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">ZERO HUMAN ERROR</span>
                 <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">RISK MITIGATION</span>
               </div>
             </div>
@@ -178,14 +186,17 @@ export default function ServicesPageLayout() {
                 <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6">
                   <Building2 className="w-7 h-7 text-brand-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-textPrimary mb-4">Architecture & Engineering Studios</h3>
+                <h3 className="text-xl font-bold text-brand-textPrimary mb-2">Architecture & Engineering Studios</h3>
+                <p className="text-xs font-bold text-brand-primary mb-4 leading-snug">
+                  Your senior engineers are wasting thousands of hours on repetitive data entry.
+                </p>
                 <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
-                  Reallocation of billable hours from repetitive data entry to design. We develop proprietary pyRevit toolbars, custom C# add-ins, and automated sheet creation pipelines to accelerate delivery timelines.
+                  We reallocate your billable hours from mechanical tasks to core design. Our developers engineer proprietary pyRevit toolbars, custom C# add-ins, and batch documentation pipelines to automate your workflows and exponentially accelerate delivery timelines.
                 </p>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-4 border-t border-brand-border/60">
-                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">REVIT ADD-INS</span>
-                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">AUTOMATED SHEETS</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">CUSTOM REVIT APIs</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">SCRIPTED WORKFLOWS</span>
                 <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">BILLABLE EFFICIENCY</span>
               </div>
             </div>
@@ -196,15 +207,18 @@ export default function ServicesPageLayout() {
                 <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6">
                   <Factory className="w-7 h-7 text-brand-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-textPrimary mb-4">Asset Owners & Product Manufacturers</h3>
+                <h3 className="text-xl font-bold text-brand-textPrimary mb-2">Asset Owners & Product Manufacturers</h3>
+                <p className="text-xs font-bold text-brand-primary mb-4 leading-snug">
+                  Static 3D components fail modern public tender requirements.
+                </p>
                 <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
-                  Conversion of static product catalogs into lightweight, data-rich BIM families (LOD 100-500). We structure asset metadata for COBie compliance, CDE hosting, and real-time Digital Twin telemetry.
+                  We programmatically convert your physical catalogs into data-rich, parametric BIM assets (LOD 100-500). We script asset metadata for automated COBie extraction, API-based CDE hosting, and real-time Digital Twin telemetry, ensuring you win strict European mandates (Decreto BIM).
                 </p>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-4 border-t border-brand-border/60">
-                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">PARAMETRIC FAMILIES</span>
-                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">COBIE HANDOVER</span>
-                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">DIGITAL TWINS</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">PARAMETRIC ASSETS</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">AUTOMATED COBIE</span>
+                <span className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-textPrimary text-[10px] font-mono font-bold uppercase">D.M. 560/312 COMPLIANCE</span>
               </div>
             </div>
           </div>
