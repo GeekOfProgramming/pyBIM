@@ -106,46 +106,48 @@
   {
     "slug": "cde-lifecycle-data",
     "title": { "en": "CDE & Lifecycle Data", "it": "CDE & Lifecycle Data" },
-    "subtitle": { "en": "Connecting BIM to the future", "it": "Connettere il BIM al futuro" },
-    "description": { "en": "We are the bridge between your 3D models and future technologies. We prepare and program your models to connect seamlessly with Facility Management systems, IoT sensors, and Digital Twins.", "it": "..." },
-    "longDescription": { "en": "The true value of BIM lies in the \"Information\". We structure, normalize, and expose your model data so it can be consumed by external databases, ERPs, and Facility Management (FM) platforms. We build API bridges that allow bi-directional data flow—meaning your Digital Twin can reflect real-time IoT sensor data, and changes in your FM database can automatically update the Revit model.", "it": "..." },
+    "subtitle": { "en": "Single Source of Truth & Asset Data Structuring", "it": "Single Source of Truth & Asset Data Structuring" },
+    "description": { "en": "The true value of BIM resides in its underlying database. We structure, normalize, and expose geometric data for post-construction operations. By bridging 3D models with external relational databases and Facility Management (FM) platforms, we establish the strictly ISO-compliant data foundations required for lifecycle analysis and Digital Twin integration.", "it": "Il vero valore del BIM risiede nel suo database sottostante. Strutturiamo, normalizziamo ed esponiamo i dati geometrici per le operazioni post-costruzione." },
+    "longDescription": { "en": "", "it": "" },
     "features": [
       {
-        "title": { "en": "Digital Twin Development", "it": "Digital Twin Development" },
-        "description": { "en": "We transform your static models into living Digital Twins. By linking external databases and web interfaces to your BIM models, we create interactive dashboards for facility owners to monitor their assets in real-time.", "it": "..." },
+        "title": { "en": "COBie Extraction & FM Handover", "it": "Estrazione COBie e Handover FM" },
+        "description": { "en": "Transition seamlessly from construction to operations. We automate the extraction, mapping, and formatting of critical asset data (COBie), ensuring absolute compliance with client Employer's Information Requirements (EIR). This structured data is optimized for immediate ingestion into enterprise Facility Management and ERP systems.", "it": "Passaggio fluido dalla costruzione alla gestione operativa. Automatizziamo l'estrazione e formattazione dei dati COBie." },
         "image": "/Pictures/Uncategorized/uncategorized-009.jpg"
       },
       {
-        "title": { "en": "IoT Sensor Integration", "it": "IoT Sensor Integration" },
-        "description": { "en": "Connect your HVAC, lighting, and occupancy sensors directly to the 3D model environment. We build the API bridges necessary to visualize live telemetry data overlaid onto the physical space.", "it": "..." },
+        "title": { "en": "Cloud CDE & Data Management", "it": "CDE Cloud e Gestione Dati" },
+        "description": { "en": "Maintain a secure, centralized Single Source of Truth (SSOT). We manage and configure project environments across Autodesk Construction Cloud (ACC) and bespoke servers. Our protocols enforce strict ISO 19650 naming conventions, granular access controls, and transparent version tracking throughout the project lifecycle.", "it": "Gestione e configurazione di ambienti CDE su Autodesk Construction Cloud ed infrastrutture dedicate con regole ISO 19650." },
         "image": "/Pictures/Uncategorized/uncategorized-004.jpg"
       },
       {
-        "title": { "en": "Bi-directional FM Data Flow", "it": "Bi-directional FM Data Flow" },
-        "description": { "en": "We extract COBie data and map it seamlessly into standard Facility Management platforms. Our custom integrations allow for bi-directional syncing, ensuring the model and the FM database are never out of sync.", "it": "..." },
+        "title": { "en": "API Bridges & Digital Twin Baselines", "it": "Ponti API e Baseline Digital Twin" },
+        "description": { "en": "Transform static geometry into dynamic data environments. Utilizing REST APIs and Autodesk Platform Services (APS / Forge), we engineer bi-directional data workflows. This programmatic approach connects Revit metadata directly to external SQL databases, IoT telemetry networks, and custom web-based monitoring dashboards.", "it": "Sviluppo di flussi di dati bidirezionali tramite REST API ed Autodesk Platform Services (APS / Forge)." },
         "image": "/Pictures/Uncategorized/uncategorized-017.jpg"
       }
     ],
     "grid": [
-      { "en": "Digital Twin Development", "it": "Digital Twin Development" },
-      { "en": "IoT Sensor Integration", "it": "IoT Sensor Integration" },
-      { "en": "Bi-directional Data Flow", "it": "Bi-directional Data Flow" },
-      { "en": "COBie Data Extraction", "it": "COBie Data Extraction" }
+      { "en": "Automated COBie Handover & FM Formatting", "it": "Automated COBie Handover & FM Formatting" },
+      { "en": "ISO 19650 CDE Setup & Administration", "it": "ISO 19650 CDE Setup & Administration" },
+      { "en": "Bi-Directional API Development", "it": "Bi-Directional API Development" },
+      { "en": "Digital Twin Data Foundations", "it": "Digital Twin Data Foundations" },
+      { "en": "Autodesk APS (Forge) Web Integration", "it": "Autodesk APS (Forge) Web Integration" }
     ],
     "types": [
+      { "en": "AUTODESK APS", "it": "AUTODESK APS" },
       { "en": "REST APIs", "it": "REST APIs" },
+      { "en": "SQL / POSTGRESQL", "it": "SQL / POSTGRESQL" },
       { "en": "JSON / XML", "it": "JSON / XML" },
-      { "en": "SQL / NoSQL", "it": "SQL / NoSQL" },
-      { "en": "React / Next.js", "it": "React / Next.js" }
+      { "en": "REACT.JS", "it": "REACT.JS" }
     ],
     "faq": [
       {
-        "q": { "en": "Can you connect a Revit model to our custom database?", "it": "..." },
-        "a": { "en": "Yes, we specialize in extracting raw data from the Revit API and parsing it into standard formats (JSON/SQL) for seamless integration with any modern web infrastructure or database.", "it": "..." }
+        "q": { "en": "Can geometric model data be synchronized with our proprietary enterprise databases?", "it": "I dati del modello geometrico possono essere sincronizzati con i nostri database aziendali proprietari?" },
+        "a": { "en": "Yes. We bypass standard export limitations by developing custom API bridges and utilizing Autodesk APS (Forge). We extract raw metadata directly from the BIM database, parsing it into standardized formats (JSON/SQL) for seamless, real-time integration with your internal web infrastructure, IoT platforms, or ERP systems.", "it": "Sì. Sviluppiamo ponti API su misura ed utilizziamo Autodesk APS (Forge) per estrarre i metadati in formati standard (JSON/SQL)." }
       }
     ],
-    "offerTitle": { "en": "Future-Proof Data", "it": "Dati a prova di futuro" },
-    "offerDescription": { "en": "Turn your static 3D models into living, breathing data environments.", "it": "..." },
+    "offerTitle": { "en": "Future-Proof Asset Data", "it": "Dati Asset a Prova di Futuro" },
+    "offerDescription": { "en": "Guarantee the integrity of your handover deliverables through programmatic data validation and secure cloud synchronization.", "it": "Garantisci l'integrità dei deliverable di handover con la validazione programmatica dei dati e la sincronizzazione cloud sicura." },
     "color": "purple",
     "images": [
       "/Pictures/Uncategorized/uncategorized-009.jpg",
