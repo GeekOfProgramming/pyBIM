@@ -158,7 +158,7 @@ export default function HomePageLayout() {
               </p>
               
               <div>
-                <Link href="/services/bim" className="inline-flex items-center justify-center text-base font-bold text-white bg-brand-accent hover:bg-brand-accent px-8 py-4 rounded-full transition-all duration-300 gap-3 shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:-translate-y-1">
+                <Link href="/services/algorithmic-engineering" className="inline-flex items-center justify-center text-base font-bold text-white bg-brand-accent hover:bg-brand-accent px-8 py-4 rounded-full transition-all duration-300 gap-3 shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:-translate-y-1">
                   {t("home.bim.btn") || "Scopri i Servizi BIM"} <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>

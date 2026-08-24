@@ -135,11 +135,9 @@ export default function Footer() {
               <div>
                 <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">Our Services</h4>
                 <ul className="space-y-4 text-brand-textSecondary font-medium">
-                  <li><Link href="/services/bim" className="hover:text-brand-primary transition">3D / 4D / 5D BIM Modeling</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition">Custom Revit Plugins</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition">Scan-to-BIM & Point Cloud</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition">BIM Automation & APIs</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition">Digital Twins & IoT</Link></li>
+                  <li><Link href="/services/algorithmic-engineering" className="hover:text-brand-primary transition">Algorithmic Engineering</Link></li>
+                  <li><Link href="/services/code-automation" className="hover:text-brand-primary transition">Code & Automation</Link></li>
+                  <li><Link href="/services/cde-lifecycle-data" className="hover:text-brand-primary transition">CDE & Lifecycle Data</Link></li>
                 </ul>
               </div>
 

@@ -43,7 +43,7 @@ export default function ServicesPageLayout() {
                 <span className="px-3 py-1.5 rounded-full bg-yellow-400/10 text-yellow-600 text-[10px] font-bold uppercase tracking-wider">SCAN-TO-BIM</span>
                 <span className="px-3 py-1.5 rounded-full bg-yellow-400/10 text-yellow-600 text-[10px] font-bold uppercase tracking-wider">RULE-BASED QA</span>
               </div>
-              <Link href="/services/core-bim" className="mt-auto inline-flex items-center justify-center w-full py-4 rounded-xl border-2 border-yellow-400/30 text-yellow-600 font-bold hover:bg-yellow-400 hover:text-white hover:border-yellow-400 transition-all gap-2 uppercase tracking-widest text-sm shadow-sm">
+              <Link href="/services/algorithmic-engineering" className="mt-auto inline-flex items-center justify-center w-full py-4 rounded-xl border-2 border-yellow-400/30 text-yellow-600 font-bold hover:bg-yellow-400 hover:text-white hover:border-yellow-400 transition-all gap-2 uppercase tracking-widest text-sm shadow-sm">
                 EXPLORE ENGINEERING <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -62,7 +62,7 @@ export default function ServicesPageLayout() {
                 <span className="px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-wider">REVIT API</span>
                 <span className="px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-wider">AUTOMATED INJECTION</span>
               </div>
-              <Link href="/services/custom-plugins" className="mt-auto inline-flex items-center justify-center w-full py-4 rounded-xl border-2 border-brand-primary/30 text-brand-primary font-bold hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all gap-2 uppercase tracking-widest text-sm shadow-sm">
+              <Link href="/services/code-automation" className="mt-auto inline-flex items-center justify-center w-full py-4 rounded-xl border-2 border-brand-primary/30 text-brand-primary font-bold hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all gap-2 uppercase tracking-widest text-sm shadow-sm">
                 REQUEST AUTOMATION <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -81,7 +81,7 @@ export default function ServicesPageLayout() {
                 <span className="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-600 text-[10px] font-bold uppercase tracking-wider">COBIE HANDOVER</span>
                 <span className="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-600 text-[10px] font-bold uppercase tracking-wider">ISO 19650</span>
               </div>
-              <Link href="/services/data-integration" className="mt-auto inline-flex items-center justify-center w-full py-4 rounded-xl border-2 border-purple-500/30 text-purple-600 font-bold hover:bg-purple-500 hover:text-white hover:border-purple-500 transition-all gap-2 uppercase tracking-widest text-sm shadow-sm">
+              <Link href="/services/cde-lifecycle-data" className="mt-auto inline-flex items-center justify-center w-full py-4 rounded-xl border-2 border-purple-500/30 text-purple-600 font-bold hover:bg-purple-500 hover:text-white hover:border-purple-500 transition-all gap-2 uppercase tracking-widest text-sm shadow-sm">
                 DISCOVER DATA SOLUTIONS <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

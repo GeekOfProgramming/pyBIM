@@ -1,6 +1,6 @@
 [
   {
-    "slug": "core-bim",
+    "slug": "algorithmic-engineering",
     "title": { "en": "Algorithmic Engineering", "it": "Algorithmic Engineering" },
     "subtitle": { "en": "High-Speed Coordination & Algorithmic Delivery", "it": "High-Speed Coordination & Algorithmic Delivery" },
     "description": { "en": "Bypass manual modeling delays. Execution of algorithmic clash resolution, point cloud processing (Scan-to-BIM), and dynamic cost estimation. Coordination cycles are automated through proprietary scripts and rule-based auditing, delivering constructible, ISO-compliant models at accelerated speeds.", "it": "Supera i ritardi della modellazione manuale. Esecuzione della risoluzione algoritmica dei clash, elaborazione delle nuvole di punti (Scan-to-BIM) e stima dinamica dei costi. I cicli di coordinamento sono automatizzati tramite script proprietari e audit basati su regole." },
@@ -53,7 +53,7 @@
     ]
   },
   {
-    "slug": "custom-plugins",
+    "slug": "code-automation",
     "title": { "en": "Code & Automation", "it": "Code & Automation" },
     "subtitle": { "en": "Bespoke software for your studio", "it": "Software su misura per il tuo studio" },
     "description": { "en": "Software has limits; our code doesn't. We develop bespoke Revit Add-ins and Dynamo scripts for your studio. Turn a 3-hour repetitive task into a 3-second click.", "it": "Il software ha dei limiti..." },
@@ -102,7 +102,7 @@
     ]
   },
   {
-    "slug": "data-integration",
+    "slug": "cde-lifecycle-data",
     "title": { "en": "CDE & Lifecycle Data", "it": "CDE & Lifecycle Data" },
     "subtitle": { "en": "Connecting BIM to the future", "it": "Connettere il BIM al futuro" },
     "description": { "en": "We are the bridge between your 3D models and future technologies. We prepare and program your models to connect seamlessly with Facility Management systems, IoT sensors, and Digital Twins.", "it": "..." },
