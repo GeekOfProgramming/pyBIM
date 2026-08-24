@@ -3,51 +3,54 @@ import { motion } from 'framer-motion';
 export default function TechStackSection() {
   const categories = [
     {
-      title: "Core Automation & Development Stack",
-      tagline: "Programmatic control over manual workflows.",
+      title: "01. Core Automation & Scripts",
+      tagline: "Programmatic execution to eliminate manual bottlenecks.",
       skills: [
-        { name: "Python", desc: "Automated Parameter Injection & Bulk Processing" },
-        { name: "C# & Revit API", desc: "Custom Code & Rule-Based Logic" },
-        { name: "Dynamo / pyRevit", desc: "Visual Scripting & Rapid Prototyping" },
-        { name: "Autodesk APS (Forge)", desc: "Cloud Automation & CDE Integration" },
-        { name: "REST APIs", desc: "Cross-Platform Data Synchronization" },
-        { name: "SQL / PostgreSQL", desc: "Relational BIM Database Management" },
-        { name: "LangChain (RAG)", desc: "Automated BEP/EIR Document Auditing" },
+        { name: "Automated Parameter Injection", desc: "Bulk data mapping and entry utilizing Python." },
+        { name: "Workflow Scripting", desc: "Visual and text-based automation via Dynamo and pyRevit." },
+        { name: "Algorithmic Auditing", desc: "Automated rule-based model checking for zero-error delivery." },
+        { name: "API Integration", desc: "Connecting geometric models to external relational databases." },
+        { name: "Custom Add-in Development", desc: "Proprietary C#/.NET tool creation addressing firm-specific structural constraints." },
+        { name: "Batch Documentation Generation", desc: "Automated creation of views, sheets, and viewport alignments." },
+        { name: "Data Extraction Pipelines", desc: "Programmatic export of model metadata directly to SQL databases or BI platforms." },
       ]
     },
     {
-      title: "Engineering & BIM Platforms",
-      tagline: "ISO-compliant authoring and clash resolution.",
+      title: "02. 3D/4D/5D Rapid Delivery",
+      tagline: "High-speed coordination, sequencing, and dynamic estimation.",
       skills: [
-        { name: "Autodesk Revit", desc: "Multidisciplinary 3D Coordination" },
-        { name: "Navisworks Manage", desc: "Advanced Clash Detection & Federated Models" },
-        { name: "Solibri Office", desc: "Automated Code Checking & QA/QC" },
-        { name: "PriMus-IFC / CostX", desc: "Dynamic 5D Quantity Take-off" },
-        { name: "Synchro PRO", desc: "4D Construction Sequencing" },
-        { name: "ReCap Pro", desc: "Point Cloud-to-BIM Conversion" },
+        { name: "Algorithmic Clash Resolution (3D)", desc: "Automated clash detection, grouping, and BCF routing." },
+        { name: "Scan-to-BIM & As-Built", desc: "Conversion of point cloud data to precise LOD-compliant models." },
+        { name: "Construction Sequencing (4D)", desc: "Linking federated models to Gantt charts for visual planning." },
+        { name: "Dynamic Costing (5D)", desc: "Automated Quantity Take-Off (QTO) for real-time budget control." },
+        { name: "Federated Model Assembly", desc: "Structuring multi-disciplinary matrices for unified coordination." },
+        { name: "Automated Model Upgrades", desc: "Algorithmic escalation of LOD 200 elements to fabrication-ready LOD 400." },
+        { name: "Constructability Mock-ups", desc: "Virtual testing of spatial tolerances prior to site execution." },
       ]
     },
     {
-      title: "CDE, Cloud & Data Management",
-      tagline: "Secure, centralized Single Source of Truth (SSOT).",
+      title: "03. 6D+ Lifecycle & Operations",
+      tagline: "Structuring asset data for post-construction facility management.",
       skills: [
-        { name: "Autodesk Construction Cloud", desc: "Cloud Worksharing & CDE Hosting" },
-        { name: "dRofus", desc: "Master Data & Room Requirements Management" },
-        { name: "BIMcollab / Dalux", desc: "Cloud-Based Issue Tracking (BCF)" },
-        { name: "Power BI", desc: "Live Project Analytics & Clash Dashboards" },
-        { name: "Speckle", desc: "Open Data Infrastructure & Version Control" },
+        { name: "COBie & FM Handover (6D)", desc: "Extraction and formatting of asset data for maintenance integration." },
+        { name: "Energy Analysis Prep (7D)", desc: "Structuring spatial boundaries and thermal properties for LCA." },
+        { name: "CDE Management", desc: "Maintaining the Single Source of Truth within cloud environments." },
+        { name: "Digital Twin Baselines", desc: "Establishing geometric and data foundations for IoT sensors." },
+        { name: "As-Built Verification", desc: "Reconciling final contractor deviations with the central BIM database." },
+        { name: "Asset & Space Management", desc: "Synchronizing spatial logic and equipment schedules utilizing dRofus." },
       ]
     },
     {
-      title: "Standards & OpenBIM Protocols",
-      tagline: "Strict compliance with EU & UK mandates.",
+      title: "04. Compliance & BIM Mandates",
+      tagline: "Strict alignment with EU, UK, and Italian legal frameworks.",
       skills: [
-        { name: "ISO 19650", desc: "International Information Management Framework" },
-        { name: "UNI 11337", desc: "Italian National BIM Mandates" },
-        { name: "IFC (ISO 16739) & BCF", desc: "OpenBIM Interoperability Formats" },
-        { name: "COBie", desc: "Standardized Facility Management Handover" },
-        { name: "Decreto BIM (D.M. 560/312)", desc: "Italian Public Procurement Compliance" },
-        { name: "EIR, BEP & MIDP", desc: "Strategic Information Delivery Planning" },
+        { name: "ISO 19650 Execution", desc: "International information management and delivery protocols." },
+        { name: "UNI 11337 Validation", desc: "Italian National BIM standardization and public tender compliance." },
+        { name: "EIR & BEP Alignment", desc: "Execution of models according to strategic project documentation." },
+        { name: "OpenBIM Interoperability", desc: "Vendor-neutral data exchange utilizing IFC and BCF formats." },
+        { name: "Classification Mapping", desc: "Automated assignment of OmniClass, UniClass, or MasterFormat codes." },
+        { name: "Model Health Dashboards", desc: "Real-time Power BI reporting on data compliance and coordination progress." },
+        { name: "LOIN Validation", desc: "Auditing Level of Information Need against contractual data requirements." },
       ]
     }
   ];
