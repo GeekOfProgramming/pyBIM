@@ -21,7 +21,7 @@ export default function AboutPreview() {
           
           {/* Bottom Left Card */}
           <div className="absolute -bottom-8 -left-4 sm:left-8 bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-3xl shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
-            <div className="text-4xl font-black text-orange-400 mb-1">12+</div>
+            <div className="text-4xl font-black text-brand-accent mb-1">12+</div>
             <div className="text-sm font-semibold text-white/90 leading-tight" dangerouslySetInnerHTML={{ __html: t("about.stats.exp.label").replace(' ', '<br/>') }}></div>
           </div>
           
@@ -38,8 +38,8 @@ export default function AboutPreview() {
 
         {/* Right Column: Content */}
         <div>
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-400 mb-4 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-orange-400" /> {t("home.about.badge")}
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-accent mb-4 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-brand-accent" /> {t("home.about.badge")}
           </p>
           
           <h2 className="text-3xl md:text-5xl font-semibold text-white mb-6 leading-tight">
@@ -52,20 +52,20 @@ export default function AboutPreview() {
           
           <ul className="space-y-5 mb-12">
             <li className="flex items-start gap-4">
-              <CheckCircle2 className="w-6 h-6 text-orange-400 shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-6 h-6 text-brand-accent shrink-0 mt-0.5" />
               <span className="text-white/80 text-lg">{t("home.about.cert1")}</span>
             </li>
             <li className="flex items-start gap-4">
-              <CheckCircle2 className="w-6 h-6 text-orange-400 shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-6 h-6 text-brand-accent shrink-0 mt-0.5" />
               <span className="text-white/80 text-lg">{t("home.about.cert2")}</span>
             </li>
             <li className="flex items-start gap-4">
-              <CheckCircle2 className="w-6 h-6 text-orange-400 shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-6 h-6 text-brand-accent shrink-0 mt-0.5" />
               <span className="text-white/80 text-lg">{t("home.about.cert3")}</span>
             </li>
           </ul>
           
-          <Link href="/about" className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-8 py-4 text-base font-bold text-white shadow-[0_10px_30px_rgba(249,115,22,0.4)] transition hover:bg-orange-600 hover:-translate-y-1">
+          <Link href="/about" className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-8 py-4 text-base font-bold text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] transition hover:bg-orange-600 hover:-translate-y-1">
             {t("nav.about")}
           </Link>
         </div>

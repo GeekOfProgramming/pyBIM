@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ChevronRight, ChevronDown, ArrowRight, CheckCircle, Play, Phone, Mail, Layers, ShieldAlert, Scan, Calculator, Leaf, Clock } from "lucide-react";
 import bimDataRaw from "@/lib/data/bim-data.json";
 import { useLanguage } from "@/lib/LanguageContext";
+import MethodComparisonSection from "./method-comparison-section";
 
 export default function BimPageLayout() {
   const { language, t } = useLanguage();
@@ -52,7 +53,7 @@ export default function BimPageLayout() {
             alt="Service Background" 
             className="h-full w-full object-cover opacity-20 mix-blend-overlay grayscale"
           />
-          <div className="absolute inset-0 bg-[#081730]/80" />
+          <div className="absolute inset-0 bg-brand-background/80" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#081730] via-transparent to-[#081730]" />
         </div>
         <div className="text-center relative z-10 px-6">
@@ -60,13 +61,13 @@ export default function BimPageLayout() {
             {pageTitle}
           </h1>
           <div className="flex items-center justify-center gap-2 text-sm md:text-base font-medium text-white/50">
-            <Link href="/" className="hover:text-orange-400 transition">{t('services.hero.breadcrumb_home') || 'Home'}</Link>
+            <Link href="/" className="hover:text-brand-accent transition">{t('services.hero.breadcrumb_home') || 'Home'}</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/services" className="hover:text-orange-400 transition">
+            <Link href="/services" className="hover:text-brand-accent transition">
               {t('services.hero.breadcrumb_services') || 'Services'}
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-orange-400">{pageTitle}</span>
+            <span className="text-brand-accent">{pageTitle}</span>
           </div>
         </div>
       </section>
@@ -91,7 +92,7 @@ export default function BimPageLayout() {
                     <li key={srv.id}>
                       <button 
                         onClick={() => { setActiveId(srv.id); setOpenFaq(0); }}
-                        className={`w-full text-start flex items-center justify-between px-4 py-3 rounded-xl transition-all ${isActive ? 'bg-orange-500 text-white font-semibold' : 'text-white/60 hover:bg-white/10 hover:text-white'}`}
+                        className={`w-full text-start flex items-center justify-between px-4 py-3 rounded-xl transition-all ${isActive ? 'bg-brand-accent text-white font-semibold' : 'text-white/60 hover:bg-white/10 hover:text-white'}`}
                       >
                         <span className="text-sm leading-relaxed max-w-[85%]">{srvTitle}</span>
                         {isActive ? <ChevronRight className="w-4 h-4" /> : null}
@@ -104,7 +105,7 @@ export default function BimPageLayout() {
 
             {/* Expert Help Card */}
             <div className="rounded-3xl border border-blue-500/20 bg-gradient-to-b from-blue-900/20 to-transparent p-6 text-center relative overflow-hidden">
-              <div className="w-20 h-20 mx-auto rounded-full overflow-hidden mb-4 border-2 border-sky-400/30">
+              <div className="w-20 h-20 mx-auto rounded-full overflow-hidden mb-4 border-2 border-brand-accent/30">
                 <img src="/Pictures/Contact/contact-003.jpg" alt="Operator" className="w-full h-full object-cover" />
               </div>
               <h4 className="text-xl font-semibold text-white mb-2">
@@ -116,12 +117,12 @@ export default function BimPageLayout() {
               
               <div className="space-y-4">
                 <a href="tel:+390418944704" className="flex items-center justify-center gap-3 bg-white/5 rounded-xl py-3 hover:bg-white/10 transition border border-white/10">
-                  <Phone className="w-4 h-4 text-orange-400" />
+                  <Phone className="w-4 h-4 text-brand-accent" />
                   <span className="text-sm font-semibold text-white">041 894 4704</span>
                 </a>
-                <a href="mailto:info@arvandtermotec.it" className="flex items-center justify-center gap-3 bg-white/5 rounded-xl py-3 hover:bg-white/10 transition border border-white/10">
-                  <Mail className="w-4 h-4 text-blue-300" />
-                  <span className="text-sm font-semibold text-white truncate px-2">info@arvandtermotec.it</span>
+                <a href="mailto:info@pybim.com" className="flex items-center justify-center gap-3 bg-white/5 rounded-xl py-3 hover:bg-white/10 transition border border-white/10">
+                  <Mail className="w-4 h-4 text-brand-accentHover" />
+                  <span className="text-sm font-semibold text-white truncate px-2">info@pybim.com</span>
                 </a>
               </div>
             </div>
@@ -150,7 +151,7 @@ export default function BimPageLayout() {
                     <button
                       key={idx}
                       onClick={() => setCurrentImageIndex(idx)}
-                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === currentImageIndex ? 'bg-orange-500 w-8' : 'bg-white/50 hover:bg-white/80'}`}
+                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === currentImageIndex ? 'bg-brand-accent w-8' : 'bg-white/50 hover:bg-white/80'}`}
                       aria-label={`Go to slide ${idx + 1}`}
                     />
                   ))}
@@ -225,7 +226,7 @@ export default function BimPageLayout() {
                       <img src={data.mediaSrc} alt="Preview" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700" />
                     </div>
                     <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-blue-900/20 to-transparent p-8 flex flex-col justify-center">
-                      <div className="text-blue-300 mb-4"><CheckCircle className="w-10 h-10" /></div>
+                      <div className="text-brand-accentHover mb-4"><CheckCircle className="w-10 h-10" /></div>
                       <h4 className="text-2xl font-bold text-white mb-2">{data.offerTitle}</h4>
                       <p className="text-white/60">{data.offerDescription}</p>
                     </div>
@@ -241,7 +242,7 @@ export default function BimPageLayout() {
                     <div className="grid sm:grid-cols-2 gap-4">
                       {data.grid.map((item, idx) => (
                         <div key={idx} className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10">
-                          <div className="bg-orange-500/20 text-orange-400 p-2 rounded-lg">
+                          <div className="bg-brand-accent/20 text-brand-accent p-2 rounded-lg">
                             <CheckCircle className="w-5 h-5" />
                           </div>
                           <span className="font-semibold text-white">{item}</span>
@@ -259,7 +260,7 @@ export default function BimPageLayout() {
                     </h3>
                     <div className="flex flex-wrap gap-3">
                       {data.types.map((type, idx) => (
-                        <div key={idx} className="px-5 py-3 rounded-full border border-sky-400/30 bg-sky-400/5 text-sky-100 text-sm font-medium">
+                        <div key={idx} className="px-5 py-3 rounded-full border border-brand-accent/30 bg-brand-accent/5 text-sky-100 text-sm font-medium">
                           {type}
                         </div>
                       ))}
@@ -269,7 +270,7 @@ export default function BimPageLayout() {
 
                 {/* CTA Button */}
                 <div className="pt-6">
-                  <Link href="/contact" className="inline-flex items-center gap-3 rounded-full bg-orange-500 px-8 py-4 text-base font-semibold text-white shadow-[0_10px_35px_rgba(249,115,22,0.3)] transition hover:-translate-y-1 hover:bg-orange-400">
+                  <Link href="/contact" className="inline-flex items-center gap-3 rounded-full bg-brand-accent px-8 py-4 text-base font-semibold text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] transition hover:-translate-y-1 hover:bg-brand-accent">
                     {language === 'en' ? 'Free Inspection: Contact Us Now' : 'Sopralluogo Gratuito: Contattaci Ora'} <ArrowRight className="w-5 h-5" />
                   </Link>
                 </div>
@@ -289,7 +290,7 @@ export default function BimPageLayout() {
                             className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                           >
                             <span className="font-medium text-white">{item.q}</span>
-                            <ChevronDown className={`h-5 w-5 text-orange-400 transition-transform ${openFaq === idx ? "rotate-180" : ""}`} />
+                            <ChevronDown className={`h-5 w-5 text-brand-accent transition-transform ${openFaq === idx ? "rotate-180" : ""}`} />
                           </button>
                           {openFaq === idx && (
                             <div className="px-6 pb-6 text-sm leading-relaxed text-white/60">
@@ -307,6 +308,9 @@ export default function BimPageLayout() {
           </div>
         </div>
       </section>
+
+      {/* METHOD COMPARISON SECTION */}
+      <MethodComparisonSection />
     </div>
   );
 }

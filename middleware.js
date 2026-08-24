@@ -5,7 +5,7 @@ const secretKey = new TextEncoder().encode(
   process.env.JWT_SECRET || "default_super_secret_key_arvand_2026"
 );
 
-const locales = ['it', 'en'];
+const locales = ['it', 'en', 'de'];
 const defaultLocale = 'it';
 
 export async function middleware(req) {

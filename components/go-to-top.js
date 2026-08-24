@@ -32,7 +32,7 @@ export default function GoToTop() {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-20 lg:bottom-5 right-5 z-40 inline-flex items-center justify-center rounded-full bg-orange-500 p-3 text-white shadow-[0_15px_40px_rgba(249,115,22,0.35)] transition hover:bg-orange-400 hover:translate-y-[-2px]"
+      className="fixed bottom-20 lg:bottom-5 right-5 z-40 inline-flex items-center justify-center rounded-full bg-brand-accent p-3 text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] transition hover:bg-brand-accent hover:translate-y-[-2px]"
       aria-label="Go to top"
     >
       <ArrowUp className="h-6 w-6" />

@@ -37,7 +37,7 @@ export default function AnimatedStatsSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {stats.map((item) => (
-            <div key={item.label} className="rounded-3xl border border-white/5 bg-[#1f2937]/50 p-8 text-center shadow-lg hover:border-orange-500/30 transition-colors">
+            <div key={item.label} className="rounded-3xl border border-white/5 bg-[#1f2937]/50 p-8 text-center shadow-lg hover:border-brand-accent/30 transition-colors">
               <div className="text-4xl font-bold text-white mb-2">
                 <CountUp target={item.value} suffix={item.suffix} />
               </div>

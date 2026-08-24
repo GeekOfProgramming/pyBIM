@@ -9,24 +9,24 @@ export default function CareerDetailLayout({ job }) {
   if (!job) return null;
 
   return (
-    <div className="bg-[#081730] min-h-screen pt-24">
+    <div className="bg-brand-background min-h-screen pt-24">
       {/* Hero Content */}
-      <section className="relative overflow-hidden pt-24 pb-12 border-b border-sky-400/10">
+      <section className="relative overflow-hidden pt-24 pb-12 border-b border-brand-accent/10">
         <div className="absolute inset-0 -z-10">
           <img 
             src="/Pictures/General/hvac-industrial.jpg" 
             alt="Hero Background" 
             className="w-full h-full object-cover opacity-20 mix-blend-overlay grayscale" 
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#081730]/90 via-[#081730]/80 to-[#081730]" />
+          <div className="absolute inset-0 bg-brand-background" />
         </div>
         <div className="mx-auto max-w-4xl px-6 lg:px-8 relative z-10">
-          <Link href="/careers" className="inline-flex items-center text-sm font-bold text-orange-400 uppercase tracking-widest hover:text-white transition-colors mb-6">
+          <Link href="/careers" className="inline-flex items-center text-sm font-bold text-brand-accent uppercase tracking-widest hover:text-white transition-colors mb-6">
             <ChevronLeft className="w-4 h-4 mr-1" />
             {language === "it" ? "Torna alle posizioni" : "Back to Careers"}
           </Link>
           <div className="flex items-center gap-3 mb-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 font-medium text-xs">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-brand-accent font-medium text-xs">
               <Briefcase className="w-3.5 h-3.5" />
               {language === "it" ? job.departmentIt : job.departmentEn}
             </div>
@@ -40,7 +40,7 @@ export default function CareerDetailLayout({ job }) {
       {/* Main Content */}
       <section className="py-16">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <div className="bg-[#102A5C]/30 border border-white/10 rounded-3xl p-8 md:p-12">
+          <div className="bg-brand-surface/30 border border-white/10 rounded-3xl p-8 md:p-12">
             {/* Main Job Details */}
             <h2 className="text-2xl font-bold text-white mb-6">
               {language === "it" ? "Descrizione del Ruolo" : "Role Description"}
@@ -60,7 +60,7 @@ export default function CareerDetailLayout({ job }) {
 
           {/* How to Apply Section (Moved from Main Page) */}
           <div className="text-center pt-12 pb-24 border-t border-white/10 mt-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-500/10 text-orange-500 mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-accent/10 text-brand-accent mb-6">
               <Mail className="w-8 h-8" />
             </div>
             <h2 className="text-3xl font-bold text-white mb-6">
@@ -73,10 +73,10 @@ export default function CareerDetailLayout({ job }) {
                   <p className="text-white/70 mb-6 text-center">
                     Per candidarti a questa posizione, inviaci il tuo CV e una lettera di presentazione indicando il titolo della posizione nell'oggetto.
                   </p>
-                  <div className="p-5 bg-sky-950/40 border border-sky-400/20 rounded-2xl text-sm shadow-inner">
-                    <strong className="text-sky-300 block mb-2 font-bold uppercase tracking-wider text-xs">Informativa Privacy per i candidati (GDPR)</strong>
+                  <div className="p-5 bg-sky-950/40 border border-brand-accent/20 rounded-2xl text-sm shadow-inner">
+                    <strong className="text-brand-accentHover block mb-2 font-bold uppercase tracking-wider text-xs">Informativa Privacy per i candidati (GDPR)</strong>
                     Per permetterci di valutare legalmente il tuo profilo, <span className="text-white font-medium">inserisci obbligatoriamente in fondo al tuo CV</span> la seguente dicitura:
-                    <div className="mt-3 p-3 bg-[#081730] rounded-lg border border-white/5 font-mono text-xs text-white/80 break-words">
+                    <div className="mt-3 p-3 bg-brand-background rounded-lg border border-white/5 font-mono text-xs text-white/80 break-words">
                       "Autorizzo il trattamento dei miei dati personali ai sensi del D.lgs. 196/2003 e del GDPR (Regolamento UE 2016/679)."
                     </div>
                   </div>
@@ -86,10 +86,10 @@ export default function CareerDetailLayout({ job }) {
                   <p className="text-white/70 mb-6 text-center">
                     To apply for this position, please send us your CV and a cover letter indicating the job title in the subject line.
                   </p>
-                  <div className="p-5 bg-sky-950/40 border border-sky-400/20 rounded-2xl text-sm shadow-inner">
-                    <strong className="text-sky-300 block mb-2 font-bold uppercase tracking-wider text-xs">Privacy Information for Candidates (GDPR)</strong>
+                  <div className="p-5 bg-sky-950/40 border border-brand-accent/20 rounded-2xl text-sm shadow-inner">
+                    <strong className="text-brand-accentHover block mb-2 font-bold uppercase tracking-wider text-xs">Privacy Information for Candidates (GDPR)</strong>
                     To allow us to legally process your application, <span className="text-white font-medium">you must include</span> the following statement at the bottom of your CV:
-                    <div className="mt-3 p-3 bg-[#081730] rounded-lg border border-white/5 font-mono text-xs text-white/80 break-words">
+                    <div className="mt-3 p-3 bg-brand-background rounded-lg border border-white/5 font-mono text-xs text-white/80 break-words">
                       "Autorizzo il trattamento dei miei dati personali ai sensi del D.lgs. 196/2003 e del GDPR (Regolamento UE 2016/679)."
                     </div>
                   </div>
@@ -98,10 +98,10 @@ export default function CareerDetailLayout({ job }) {
             </div>
 
             <a 
-              href={`mailto:job@arvandtermotec.it?subject=Candidatura: ${language === "it" ? job.titleIt : job.titleEn}`} 
-              className="inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-400 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-[0_10px_40px_rgba(249,115,22,0.3)] hover:-translate-y-1 mb-16"
+              href={`mailto:job@pybim.com?subject=Candidatura: ${language === "it" ? job.titleIt : job.titleEn}`} 
+              className="inline-flex items-center gap-3 bg-brand-accent hover:bg-brand-accent text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:-translate-y-1 mb-16"
             >
-              job@arvandtermotec.it
+              job@pybim.com
               <ChevronRight className="w-5 h-5" />
             </a>
 

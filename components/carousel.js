@@ -55,14 +55,14 @@ export default function Carousel({ children, itemsPerViewDesktop = 3, hideDots =
       {/* Navigation Buttons */}
       <button
         onClick={scrollPrev}
-        className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 hidden md:flex items-center justify-center rounded-full bg-[#102A5C] border border-white/20 text-white shadow-xl hover:bg-orange-500 hover:border-orange-500 transition-all z-10 disabled:opacity-50"
+        className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 hidden md:flex items-center justify-center rounded-full bg-brand-surface border border-white/20 text-white shadow-xl hover:bg-brand-accent hover:border-brand-accent transition-all z-10 disabled:opacity-50"
         aria-label="Previous slide"
       >
         <ArrowLeft className="w-5 h-5" />
       </button>
       <button
         onClick={scrollNext}
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 hidden md:flex items-center justify-center rounded-full bg-[#102A5C] border border-white/20 text-white shadow-xl hover:bg-orange-500 hover:border-orange-500 transition-all z-10 disabled:opacity-50"
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 hidden md:flex items-center justify-center rounded-full bg-brand-surface border border-white/20 text-white shadow-xl hover:bg-brand-accent hover:border-brand-accent transition-all z-10 disabled:opacity-50"
         aria-label="Next slide"
       >
         <ArrowRight className="w-5 h-5" />
@@ -76,7 +76,7 @@ export default function Carousel({ children, itemsPerViewDesktop = 3, hideDots =
               key={index}
               onClick={() => emblaApi.scrollTo(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === selectedIndex ? "bg-orange-500 scale-125" : "bg-white/20 hover:bg-white/40"
+                index === selectedIndex ? "bg-brand-accent scale-125" : "bg-white/20 hover:bg-white/40"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

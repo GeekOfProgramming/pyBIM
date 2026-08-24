@@ -38,7 +38,7 @@ export default function MobileBottomNav() {
         onClick={() => setIsOpen(false)}
       />
       <div 
-        className={`fixed right-3 bottom-[60px] w-60 max-w-[calc(100vw-2rem)] z-50 rounded-3xl border border-white/10 bg-[#081730]/95 p-4 shadow-2xl backdrop-blur-xl transition-all duration-300 origin-bottom-right lg:hidden flex flex-col ${isOpen ? "scale-100 opacity-100" : "scale-90 opacity-0 pointer-events-none"}`}
+        className={`fixed right-3 bottom-[60px] w-60 max-w-[calc(100vw-2rem)] z-50 rounded-3xl border border-white/10 bg-brand-background/95 p-4 shadow-2xl backdrop-blur-xl transition-all duration-300 origin-bottom-right lg:hidden flex flex-col ${isOpen ? "scale-100 opacity-100" : "scale-90 opacity-0 pointer-events-none"}`}
       >
 
         <div className="flex flex-col gap-3">
@@ -49,9 +49,9 @@ export default function MobileBottomNav() {
               <Link 
                 key={item.href} 
                 href={item.href}
-                className={`flex items-center gap-4 rounded-2xl p-4 transition-all ${isActive ? "bg-orange-500/10 text-orange-400" : "bg-white/5 text-white/80 hover:bg-white/10"}`}
+                className={`flex items-center gap-4 rounded-2xl p-4 transition-all ${isActive ? "bg-brand-accent/10 text-brand-accent" : "bg-white/5 text-white/80 hover:bg-white/10"}`}
               >
-                <div className={`flex h-10 w-10 items-center justify-center rounded-full ${isActive ? "bg-orange-500/20 text-orange-500" : "bg-white/10 text-white/60"}`}>
+                <div className={`flex h-10 w-10 items-center justify-center rounded-full ${isActive ? "bg-brand-accent/20 text-brand-accent" : "bg-white/10 text-white/60"}`}>
                   <Icon className="h-5 w-5" />
                 </div>
                 <span className="text-sm font-semibold">{t(item.tKey)}</span>
@@ -62,7 +62,7 @@ export default function MobileBottomNav() {
       </div>
 
       {/* Main Bottom Tab Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around border-t border-sky-400/10 bg-[#081730]/90 px-1 py-1.5 backdrop-blur-xl lg:hidden shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+      <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around border-t border-brand-accent/10 bg-brand-background/90 px-1 py-1.5 backdrop-blur-xl lg:hidden shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
         {mainNavItems.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
@@ -70,9 +70,9 @@ export default function MobileBottomNav() {
             <Link 
               key={item.href} 
               href={item.href}
-              className={`flex flex-col items-center justify-center w-14 gap-0.5 transition-colors ${isActive ? "text-orange-500" : "text-white/50 hover:text-white"}`}
+              className={`flex flex-col items-center justify-center w-14 gap-0.5 transition-colors ${isActive ? "text-brand-accent" : "text-white/50 hover:text-white"}`}
             >
-              <div className={`flex h-7 w-7 items-center justify-center rounded-full transition-all ${isActive ? "bg-orange-500/20" : "bg-transparent"}`}>
+              <div className={`flex h-7 w-7 items-center justify-center rounded-full transition-all ${isActive ? "bg-brand-accent/20" : "bg-transparent"}`}>
                 <Icon className={`h-4 w-4 ${isActive ? "scale-110" : ""}`} />
               </div>
               <span className="text-[9px] font-medium tracking-wide">{t(item.tKey)}</span>
@@ -85,13 +85,13 @@ export default function MobileBottomNav() {
           onClick={() => setIsOpen(!isOpen)}
           className={`flex flex-col items-center justify-center w-14 gap-0.5 transition-colors ${
             isOpen || moreNavItems.some((item) => pathname.startsWith(item.href)) 
-              ? "text-orange-500" 
+              ? "text-brand-accent" 
               : "text-white/50 hover:text-white"
           }`}
         >
           <div className={`flex h-7 w-7 items-center justify-center rounded-full transition-all ${
             isOpen || moreNavItems.some((item) => pathname.startsWith(item.href)) 
-              ? "bg-orange-500/20" 
+              ? "bg-brand-accent/20" 
               : "bg-transparent"
           }`}>
             <Menu className={`h-4 w-4 ${

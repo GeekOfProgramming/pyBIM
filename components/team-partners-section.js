@@ -15,10 +15,10 @@ export default function TeamPartnersSection({ teamData }) {
   return (
     <>
       {/* TEAM SECTION (GRID, 4 PER ROW) */}
-      <section id="team" className="bg-gradient-to-b from-white/[0.03] to-transparent w-full border-t border-white/5 overflow-hidden">
+      <section id="team" className="bg-brand-background w-full border-b border-brand-border overflow-hidden">
         <div className="mx-auto max-w-[90rem] px-6 py-24 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-sm font-bold uppercase tracking-[0.35em] text-orange-400 mb-4">{t("about.team.sec1.badge")}</h2>
+            <h2 className="text-sm font-bold uppercase tracking-[0.35em] text-brand-accent mb-4">{t("about.team.sec1.badge")}</h2>
             <h3 className="text-3xl md:text-5xl font-semibold text-white leading-tight">{t("about.team.sec1.title")}</h3>
           </div>
           <Carousel itemsPerViewDesktop={4}>
@@ -36,7 +36,7 @@ export default function TeamPartnersSection({ teamData }) {
       <section className="bg-gradient-to-b from-transparent to-blue-900/10 w-full border-t border-white/5 overflow-hidden">
         <div className="mx-auto max-w-[90rem] px-6 py-24 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-sm font-bold uppercase tracking-[0.35em] text-blue-300 mb-4">{t("about.team.sec2.badge")}</h2>
+            <h2 className="text-sm font-bold uppercase tracking-[0.35em] text-brand-accentHover mb-4">{t("about.team.sec2.badge")}</h2>
             <h3 className="text-3xl md:text-5xl font-semibold text-white leading-tight">{t("about.team.sec2.title")}</h3>
           </div>
           <Carousel itemsPerViewDesktop={4}>

@@ -11,11 +11,11 @@ export default function TermsLayout() {
     <div className="w-full">
       {/* 1. HERO SECTION */}
       <section className="relative py-24 px-6 lg:px-8 bg-[#050D1A] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A162B] to-[#050D1A]" />
+        <div className="absolute inset-0 bg-brand-background" />
         
         <div className="relative z-10 max-w-4xl mx-auto mt-16 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md">
-            <Link href="/" className="text-sm font-medium text-white/60 hover:text-orange-400 transition-colors">
+            <Link href="/" className="text-sm font-medium text-white/60 hover:text-brand-accent transition-colors">
               Home
             </Link>
             <ChevronRight className="w-4 h-4 text-white/40" />
@@ -24,7 +24,7 @@ export default function TermsLayout() {
           
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 rounded-full bg-sky-500/10 border border-sky-500/20 flex items-center justify-center">
-              <FileText className="w-8 h-8 text-sky-400" />
+              <FileText className="w-8 h-8 text-brand-accent" />
             </div>
           </div>
           
@@ -132,7 +132,7 @@ export default function TermsLayout() {
             {/* Section 6 */}
             <div className="bg-sky-500/5 rounded-3xl p-8 border border-sky-500/20 mt-8">
               <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                <FileText className="w-6 h-6 text-sky-400" />
+                <FileText className="w-6 h-6 text-brand-accent" />
                 {t("terms.sec6.title")}
               </h2>
               <p className="mb-4">{t("terms.sec6.desc")}</p>
@@ -142,7 +142,7 @@ export default function TermsLayout() {
                   <span>{t("terms.sec6.item1")}</span>
                 </li>
               </ul>
-              <p className="text-sky-300 font-medium">
+              <p className="text-brand-accentHover font-medium">
                 {t("terms.sec6.contact")}
               </p>
             </div>

@@ -21,7 +21,7 @@ export default function CitySolarPage({ params }) {
     <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
       <p className="text-sm uppercase tracking-[0.35em] text-orange-400">Fotovoltaico {city}</p>
       <h1 className="mt-4 text-4xl font-semibold text-white md:text-6xl">Impianti Fotovoltaici a {city}</h1>
-      <p className="mt-6 max-w-2xl text-lg text-white/65">Arvand Termo Tec realizza impianti fotovoltaici a {city} e in tutta Italia, offrendo soluzioni solari moderne per edifici residenziali, commerciali e industriali.</p>
+      <p className="mt-6 max-w-2xl text-lg text-white/65">pyBIM realizza impianti fotovoltaici a {city} e in tutta Italia, offrendo soluzioni solari moderne per edifici residenziali, commerciali e industriali.</p>
       <div className="mt-10 rounded-[2rem] border border-white/10 bg-[#0a1321] p-8">
         <div className="mb-6 inline-flex rounded-2xl bg-white/5 p-4 text-orange-400"><Sun className="h-6 w-6" /></div>
         <h2 className="text-2xl font-semibold text-white">Installazione pannelli solari a {city}</h2>

@@ -4,20 +4,52 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Globe } from "lucide-react";
+import { Globe, ChevronDown, ChevronRight, Briefcase, FileText, Code2, Users, Building, Activity, Shield, Terminal, Cog } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const navItems = [
   { href: "/", tKey: "nav.home" },
   { href: "/services", tKey: "nav.services" },
-  { href: "/projects", tKey: "nav.projects" },
   { href: "/blog", tKey: "nav.blog" },
-  { href: "/about", tKey: "nav.about" },
-  { href: "/contact", tKey: "nav.contact" }
 ];
+
+const pyBimLeftMenu = [
+  { id: "who_we_are", label: "Who we are", href: "/about" },
+  { id: "success_stories", label: "Success Stories", href: "/projects" },
+  { id: "work_with_us", label: "Work with us", href: "/careers" },
+  { id: "contact_us", label: "Contact us", href: "/contact" },
+];
+
+const pyBimRightMenu = {
+  who_we_are: [
+    { label: "The Manifesto", icon: Terminal, href: "/about#manifesto" },
+    { label: "Our Journey", icon: Activity, href: "/about#journey" },
+    { label: "Tech Stack & Standards", icon: Code2, href: "/about#tech-stack" },
+    { label: "Our Impact", icon: Shield, href: "/about#impact" },
+  ],
+  success_stories: [
+    { label: "All Projects", icon: Briefcase, href: "/projects" },
+    { label: "Featured Case Studies", icon: FileText, href: "/projects#featured" },
+    { label: "Client Testimonials", icon: Users, href: "/projects#testimonials" },
+  ],
+  work_with_us: [
+    { label: "Open Positions", icon: Briefcase, href: "/careers#positions" },
+    { label: "Culture & Benefits", icon: Users, href: "/careers#culture" },
+    { label: "Life at pyBIM", icon: Building, href: "/careers#life" },
+  ],
+  contact_us: [
+    { label: "Headquarters", icon: Building, href: "/contact#headquarters" },
+    { label: "Technical Support", icon: Cog, href: "/contact#support" },
+    { label: "Sales Inquiry", icon: Briefcase, href: "/contact#sales" },
+  ],
+};
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [activeMegaMenuItem, setActiveMegaMenuItem] = useState("who_we_are");
+  
   const { t, language, changeLanguage, getLocalizedUrl } = useLanguage();
   const pathname = usePathname();
 
@@ -32,13 +64,13 @@ export default function Header() {
   if (pathname?.startsWith("/admin")) return null;
 
   return (
-    <header className={`sticky top-0 z-50 border-b border-sky-400/10 bg-[#081730]/85 backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-lg" : "py-4"}`}>
+    <header className={`sticky top-0 z-50 border-b border-brand-border bg-brand-base/90 backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-sm" : "py-4"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-300">
-        <Link href={`/${language}`} className="flex items-center gap-4 text-left" aria-label="Arvand Termo Tec home">
+        <Link href={`/${language}`} className="flex items-center gap-4 text-left" aria-label="pyBIM home">
           <div className="flex items-center">
             <Image 
-              src="/logo-new-2.png" 
-              alt="Arvand Termo Tec logo" 
+              src="/logo_black_transparent.png" 
+              alt="pyBIM logo" 
               width={180} 
               height={80} 
               className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-10" : "h-14"}`} 
@@ -53,32 +85,98 @@ export default function Header() {
               <Link 
                 key={item.href} 
                 href={localizedHref} 
-                className={`transition px-4 py-2 rounded-full ${isActive ? "bg-orange-500/10 text-blue-100 font-bold border border-orange-500/20" : "text-white/70 hover:text-blue-300 hover:bg-white/5"}`}
+                className={`transition px-4 py-2 rounded-full font-medium ${isActive ? "text-brand-primary bg-brand-primary/10" : "text-brand-textSecondary hover:text-brand-primary hover:bg-brand-surface"}`}
               >
                 {t(item.tKey)}
               </Link>
             );
           })}
+
+          {/* Megamenu Trigger */}
+          <div 
+            className="relative"
+            onMouseEnter={() => setMegaMenuOpen(true)}
+            onMouseLeave={() => setMegaMenuOpen(false)}
+          >
+            <button className={`flex items-center gap-1 transition px-4 py-2 rounded-full font-medium ${megaMenuOpen ? 'text-brand-primary bg-brand-surface' : 'text-brand-textSecondary hover:text-brand-primary hover:bg-brand-surface'}`}>
+              pyBIM <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${megaMenuOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {/* Megamenu Dropdown */}
+            {megaMenuOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px] z-50">
+                <div className="bg-brand-base border border-brand-border rounded-2xl shadow-xl overflow-hidden flex">
+                  
+                  {/* Left Column */}
+                  <div className="w-[45%] bg-brand-surface border-r border-brand-border p-4 flex flex-col gap-1">
+                    {pyBimLeftMenu.map(item => {
+                      const isActiveLink = pathname === getLocalizedUrl(item.href);
+                      return (
+                        <Link
+                          key={item.id}
+                          href={getLocalizedUrl(item.href)}
+                          onMouseEnter={() => setActiveMegaMenuItem(item.id)}
+                          className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${activeMegaMenuItem === item.id ? 'bg-white shadow-sm text-brand-primary' : 'text-brand-textSecondary hover:bg-white hover:text-brand-primary'} ${isActiveLink && activeMegaMenuItem !== item.id ? 'text-brand-primary font-bold' : 'font-medium'}`}
+                        >
+                          <span className="text-sm tracking-wide">{item.label}</span>
+                          <ChevronRight className={`w-4 h-4 transition-transform ${activeMegaMenuItem === item.id ? 'translate-x-1 text-brand-primary' : 'text-transparent'}`} />
+                        </Link>
+                      );
+                    })}
+                  </div>
+
+                  {/* Right Column */}
+                  <div className="w-[55%] bg-brand-base p-6">
+                    <div className="flex flex-col gap-4 h-full justify-center">
+                      {pyBimRightMenu[activeMegaMenuItem].map((subItem, idx) => {
+                        const Icon = subItem.icon;
+                        return (
+                          <Link key={idx} href={getLocalizedUrl(subItem.href)} className="group flex items-center gap-4 p-2 rounded-lg hover:bg-brand-surface transition">
+                            <div className="shrink-0 w-10 h-10 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
+                              <Icon className="w-5 h-5" />
+                            </div>
+                            <span className="font-semibold text-sm text-brand-textPrimary group-hover:text-brand-primary transition-colors">{subItem.label}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            )}
+          </div>
         </nav>
         <div className="flex items-center gap-3">
           
-          {/* Language Toggle */}
-          <div className="flex items-center bg-white/5 p-1 rounded-full border border-white/10">
+          {/* Language Dropdown */}
+          <div className="relative">
             <button 
-              onClick={() => changeLanguage("it")}
-              className={`px-3 py-1.5 text-xs font-bold rounded-full transition ${language === "it" ? "bg-orange-500 text-white" : "text-white/50 hover:text-white"}`}
+              onClick={() => setLangOpen(!langOpen)}
+              className="flex items-center gap-2 bg-brand-surface border border-brand-border px-3 py-2 rounded-full transition hover:border-brand-primary/50 hover:bg-brand-surfaceHover"
             >
-              IT
+              <Globe className="w-4 h-4 text-brand-textSecondary" />
+              <span className="text-xs font-bold text-brand-textSecondary uppercase">{language}</span>
             </button>
-            <button 
-              onClick={() => changeLanguage("en")}
-              className={`px-3 py-1.5 text-xs font-bold rounded-full transition ${language === "en" ? "bg-blue-500 text-white" : "text-white/50 hover:text-white"}`}
-            >
-              EN
-            </button>
+            {langOpen && (
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setLangOpen(false)}></div>
+                <div className="absolute right-0 mt-2 w-24 bg-brand-base border border-brand-border rounded-xl overflow-hidden shadow-lg z-50">
+                  {['en', 'it', 'de'].map(lang => (
+                    <button
+                      key={lang}
+                      onClick={() => { changeLanguage(lang); setLangOpen(false); }}
+                      className={`block w-full text-left px-4 py-3 text-sm font-bold uppercase transition ${language === lang ? 'bg-brand-primary/10 text-brand-primary' : 'text-brand-textSecondary hover:bg-brand-surface'}`}
+                    >
+                      {lang}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
-          <Link href={`/${language}/contact`} className="hidden rounded-2xl border border-orange-400/35 bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_40px_rgba(249,115,22,0.28)] transition hover:translate-y-[-1px] md:block">
+          <Link href={`/${language}/contact`} className="hidden rounded-full bg-brand-accent px-6 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-brand-accentHover hover:-translate-y-0.5 md:block">
             {t("nav.consultation")}
           </Link>
         </div>

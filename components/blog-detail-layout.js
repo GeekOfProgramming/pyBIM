@@ -52,7 +52,7 @@ export default function BlogDetailLayout({ post, prevPost, nextPost }) {
             alt="Blog Detail Background" 
             className="h-full w-full object-cover opacity-20 mix-blend-overlay grayscale"
           />
-          <div className="absolute inset-0 bg-[#081730]/80" />
+          <div className="absolute inset-0 bg-brand-background/80" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#081730] via-transparent to-[#081730]" />
         </div>
         <div className="text-center relative z-10 px-6 max-w-4xl mx-auto">
@@ -61,11 +61,11 @@ export default function BlogDetailLayout({ post, prevPost, nextPost }) {
           </h1>
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm font-medium text-white/50">
             <span className="flex items-center gap-2 bg-white/5 px-3 py-1 rounded-full border border-white/10">
-              <Calendar className="w-4 h-4 text-orange-400" />
+              <Calendar className="w-4 h-4 text-brand-accent" />
               {data.date}
             </span>
             <span className="flex items-center gap-2 bg-white/5 px-3 py-1 rounded-full border border-white/10">
-              <Tag className="w-4 h-4 text-blue-300" />
+              <Tag className="w-4 h-4 text-brand-accentHover" />
               {language === "en" ? "Category:" : "Categoria:"} {data.category}
             </span>
             {post.author && (
@@ -102,7 +102,7 @@ export default function BlogDetailLayout({ post, prevPost, nextPost }) {
           )}
 
           {data.orangeBoxHighlight && (
-            <div className="my-12 p-8 rounded-3xl bg-orange-500 text-white shadow-xl relative overflow-hidden">
+            <div className="my-12 p-8 rounded-3xl bg-brand-accent text-white shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
               <p className="text-xl font-bold relative z-10 m-0">
                 {data.orangeBoxHighlight}
@@ -140,7 +140,7 @@ export default function BlogDetailLayout({ post, prevPost, nextPost }) {
               <button onClick={() => handleShare("facebook")} className="w-10 h-10 rounded-full bg-blue-600/20 text-blue-500 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors">
                 <Facebook className="w-5 h-5" />
               </button>
-              <button onClick={() => handleShare("twitter")} className="w-10 h-10 rounded-full bg-blue-500/20 text-blue-300 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors">
+              <button onClick={() => handleShare("twitter")} className="w-10 h-10 rounded-full bg-blue-500/20 text-brand-accentHover flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors">
                 <Twitter className="w-5 h-5" />
               </button>
               <button onClick={() => handleShare("linkedin")} className="w-10 h-10 rounded-full bg-blue-800/20 text-blue-400 flex items-center justify-center hover:bg-blue-800 hover:text-white transition-colors">
@@ -154,7 +154,7 @@ export default function BlogDetailLayout({ post, prevPost, nextPost }) {
         <div className="flex flex-row items-center justify-between gap-2 sm:gap-4 mb-20">
           <div className="w-1/2 flex justify-start">
             {prevPost && (
-              <Link href={`/blog/${prevPost.slug}`} className="group flex items-center justify-center gap-1 sm:gap-3 px-3 py-3 sm:px-8 sm:py-4 bg-orange-500 text-white font-bold rounded-full uppercase tracking-wider text-[10px] sm:text-sm hover:bg-orange-600 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full sm:w-auto">
+              <Link href={`/blog/${prevPost.slug}`} className="group flex items-center justify-center gap-1 sm:gap-3 px-3 py-3 sm:px-8 sm:py-4 bg-brand-accent text-white font-bold rounded-full uppercase tracking-wider text-[10px] sm:text-sm hover:bg-orange-600 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-accent/30 transition-all duration-300 w-full sm:w-auto">
                 <ArrowLeft className="w-3 h-3 sm:w-5 sm:h-5 group-hover:-translate-x-1 transition-transform shrink-0" />
                 <span className="text-center leading-tight truncate sm:whitespace-normal">{language === "en" ? "Previous" : "Precedente"}</span>
               </Link>
@@ -162,7 +162,7 @@ export default function BlogDetailLayout({ post, prevPost, nextPost }) {
           </div>
           <div className="w-1/2 flex justify-end">
             {nextPost && (
-              <Link href={`/blog/${nextPost.slug}`} className="group flex items-center justify-center gap-1 sm:gap-3 px-3 py-3 sm:px-8 sm:py-4 bg-orange-500 text-white font-bold rounded-full uppercase tracking-wider text-[10px] sm:text-sm hover:bg-orange-600 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full sm:w-auto">
+              <Link href={`/blog/${nextPost.slug}`} className="group flex items-center justify-center gap-1 sm:gap-3 px-3 py-3 sm:px-8 sm:py-4 bg-brand-accent text-white font-bold rounded-full uppercase tracking-wider text-[10px] sm:text-sm hover:bg-orange-600 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-accent/30 transition-all duration-300 w-full sm:w-auto">
                 <span className="text-center leading-tight truncate sm:whitespace-normal">{language === "en" ? "Next" : "Successivo"}</span>
                 <ArrowRight className="w-3 h-3 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform shrink-0" />
               </Link>

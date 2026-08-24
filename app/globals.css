@@ -8,5 +8,29 @@ html {
 
 body {
   font-family: Inter, Arial, Helvetica, sans-serif;
-  background: #081730;
+  background: #0A0A0A;
+}
+
+/* 1. Custom Text Selection (Matches your Electric Blue) */
+::selection {
+  background-color: #3B82F6; 
+  color: #ffffff;
+}
+
+/* 2. Enterprise Dark Theme Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0A; /* Matches brand-background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626; /* Matches brand-border */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3B82F6; /* Matches brand-accent on hover */
 }

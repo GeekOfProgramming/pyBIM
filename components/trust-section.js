@@ -11,8 +11,8 @@ export default function TrustSection() {
           
           {/* Left Column */}
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-400 mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-orange-400" /> {t("home.trust.badge")}
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-accent mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-brand-accent" /> {t("home.trust.badge")}
             </p>
             <h2 className="text-3xl md:text-5xl font-semibold text-white mb-6 leading-tight">
               {t("home.trust.title")}
@@ -20,7 +20,7 @@ export default function TrustSection() {
             <p className="text-lg text-white/60 mb-10 leading-relaxed">
               {t("home.trust.subtitle")}
             </p>
-            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-8 py-4 text-base font-bold text-white shadow-[0_10px_30px_rgba(249,115,22,0.4)] transition hover:bg-orange-600 hover:-translate-y-1">
+            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-8 py-4 text-base font-bold text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] transition hover:bg-orange-600 hover:-translate-y-1">
               {t("home.trust.cta")}
             </Link>
           </div>
@@ -42,7 +42,7 @@ export default function TrustSection() {
               {/* Large Image Right */}
               <div className="rounded-[2rem] overflow-hidden border border-white/10 relative group h-full min-h-0">
                 <img src="/Pictures/HVAC/hvac-024.jpg" alt="Centrale termica" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-[#081730]/20 group-hover:bg-transparent transition-colors duration-500" />
+                <div className="absolute inset-0 bg-brand-background/20 group-hover:bg-transparent transition-colors duration-500" />
               </div>
               
             </div>

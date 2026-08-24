@@ -10,7 +10,7 @@ export default function TeamPartnerModal({ person, onClose }) {
   const data = person[language] || person.it;
 
   return (
-    <div className="fixed inset-0 z-50 flex p-4 sm:p-6 bg-[#081730]/80 backdrop-blur-md overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex p-4 sm:p-6 bg-brand-background/80 backdrop-blur-md overflow-y-auto">
       {/* Click outside to close */}
       <div className="fixed inset-0" onClick={onClose} />
 
@@ -41,8 +41,8 @@ export default function TeamPartnerModal({ person, onClose }) {
             (person.instagram && person.instagram !== "#") || 
             (person.linkedin && person.linkedin !== "#")) && (
             <div className="p-6 pt-10">
-              <div className="bg-[#081730] rounded-2xl p-8 pt-12 text-center relative shadow-xl">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center border-4 border-white shadow-lg">
+              <div className="bg-brand-background rounded-2xl p-8 pt-12 text-center relative shadow-xl">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center border-4 border-white shadow-lg">
                   <Mail className="w-6 h-6 text-white" />
                 </div>
                 <h4 className="text-xl font-bold text-white mb-6">
@@ -50,14 +50,14 @@ export default function TeamPartnerModal({ person, onClose }) {
                 </h4>
                 <div className="flex flex-col gap-4 text-sm text-white/80">
                   {person.phone && person.phone !== "#" && person.phone !== "" && (
-                    <a href={`tel:${person.phone}`} className="flex flex-col xl:flex-row items-center justify-center gap-2 xl:gap-3 hover:text-orange-400 transition-colors bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-orange-500/50 text-center">
-                      <Phone className="w-4 h-4 text-orange-500 shrink-0" />
+                    <a href={`tel:${person.phone}`} className="flex flex-col xl:flex-row items-center justify-center gap-2 xl:gap-3 hover:text-brand-accent transition-colors bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-brand-accent/50 text-center">
+                      <Phone className="w-4 h-4 text-brand-accent shrink-0" />
                       <span className="font-medium break-all text-xs lg:text-sm">{person.phone}</span>
                     </a>
                   )}
                   {person.email && person.email !== "#" && person.email !== "" && (
-                    <a href={`mailto:${person.email}`} className="flex flex-col xl:flex-row items-center justify-center gap-2 xl:gap-3 hover:text-orange-400 transition-colors bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-orange-500/50 text-center">
-                      <Mail className="w-4 h-4 text-orange-500 shrink-0" />
+                    <a href={`mailto:${person.email}`} className="flex flex-col xl:flex-row items-center justify-center gap-2 xl:gap-3 hover:text-brand-accent transition-colors bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-brand-accent/50 text-center">
+                      <Mail className="w-4 h-4 text-brand-accent shrink-0" />
                       <span className="font-medium break-all text-xs lg:text-sm">{person.email}</span>
                     </a>
                   )}
@@ -66,17 +66,17 @@ export default function TeamPartnerModal({ person, onClose }) {
                   {((person.facebook && person.facebook !== "#") || (person.instagram && person.instagram !== "#") || (person.linkedin && person.linkedin !== "#")) && (
                     <div className="flex justify-center gap-3 mt-4">
                       {person.facebook && person.facebook !== "#" && (
-                        <a href={person.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-orange-500 hover:scale-110 transition-all duration-300">
+                        <a href={person.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-brand-accent hover:scale-110 transition-all duration-300">
                           <Facebook className="w-5 h-5" />
                         </a>
                       )}
                       {person.instagram && person.instagram !== "#" && (
-                        <a href={person.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-orange-500 hover:scale-110 transition-all duration-300">
+                        <a href={person.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-brand-accent hover:scale-110 transition-all duration-300">
                           <Instagram className="w-5 h-5" />
                         </a>
                       )}
                       {person.linkedin && person.linkedin !== "#" && (
-                        <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-orange-500 hover:scale-110 transition-all duration-300">
+                        <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-brand-accent hover:scale-110 transition-all duration-300">
                           <Linkedin className="w-5 h-5" />
                         </a>
                       )}
@@ -116,7 +116,7 @@ export default function TeamPartnerModal({ person, onClose }) {
                     <span>{skill.value}%</span>
                   </div>
                   <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-orange-500 rounded-full" style={{ width: `${skill.value}%` }} />
+                    <div className="h-full bg-brand-accent rounded-full" style={{ width: `${skill.value}%` }} />
                   </div>
                 </div>
               ))}
@@ -134,7 +134,7 @@ export default function TeamPartnerModal({ person, onClose }) {
                 "Efficienza nel rispetto delle scadenze"
               ]).map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
                   <span className="text-gray-600 font-medium">{item}</span>
                 </div>
               ))}

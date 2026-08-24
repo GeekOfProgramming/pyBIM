@@ -1,14 +1,14 @@
 {
   "terms.hero.title": "Termini e Condizioni",
   "terms.hero.breadcrumb": "Termini e Condizioni",
-  "terms.intro": "Benvenuto sul sito web di Arvand Termo Tec. Navigando e utilizzando questo sito, accetti di rispettare i seguenti Termini e Condizioni d'uso.",
+  "terms.intro": "Benvenuto sul sito web di pyBIM. Navigando e utilizzando questo sito, accetti di rispettare i seguenti Termini e Condizioni d'uso.",
 
   "terms.sec1.title": "1. Introduzione e Dati Aziendali",
-  "terms.sec1.desc": "Il presente sito web è gestito da Arvand Termo Tec SRLS. L'utilizzo del sito implica l'accettazione completa e incondizionata delle presenti Condizioni Generali di Utilizzo.",
-  "terms.sec1.list1": "Ragione Sociale: Arvand Termo Tec SRLS",
-  "terms.sec1.list2": "Partita IVA: 4992890279",
+  "terms.sec1.desc": "Il presente sito web è gestito da pyBIM SRLS. L'utilizzo del sito implica l'accettazione completa e incondizionata delle presenti Condizioni Generali di Utilizzo.",
+  "terms.sec1.list1": "Ragione Sociale: pyBIM SRLS",
+  "terms.sec1.list2": "Partita IVA: 04992890279",
   "terms.sec1.list3": "Sede Legale: Via Verrocchio, 2, 30035 Mirano (VE)",
-  "terms.sec1.list4": "Email: info@arvandtermotec.it",
+  "terms.sec1.list4": "Email: info@pybim.com",
 
   "terms.sec2.title": "2. Richieste di Preventivo e Servizi",
   "terms.sec2.desc": "La compilazione dei moduli di contatto sul sito per richiedere informazioni o preventivi è completamente gratuita e non costituisce in alcun modo un vincolo contrattuale tra l'utente e l'Azienda.",
@@ -16,7 +16,7 @@
   "terms.sec2.item2": "L'eventuale stipula di un contratto di servizio o fornitura (es. installazione, manutenzione, ristrutturazione) avverrà solo a seguito di un sopralluogo tecnico e previa firma di un contratto formale separato.",
 
   "terms.sec3.title": "3. Proprietà Intellettuale e Copyright",
-  "terms.sec3.desc": "Tutti i contenuti presenti su questo sito sono di proprietà esclusiva di Arvand Termo Tec SRLS o dei rispettivi proprietari e sono protetti dalle leggi sul diritto d'autore.",
+  "terms.sec3.desc": "Tutti i contenuti presenti su questo sito sono di proprietà esclusiva di pyBIM SRLS o dei rispettivi proprietari e sono protetti dalle leggi sul diritto d'autore.",
   "terms.sec3.item1": "Testi, articoli del blog, guide tecniche, grafiche, loghi e immagini non possono essere copiati, riprodotti o distribuiti senza la preventiva autorizzazione scritta dell'Azienda.",
   "terms.sec3.item2": "Qualsiasi utilizzo non autorizzato dei contenuti sarà perseguito a norma di legge.",
 
@@ -27,12 +27,12 @@
   "terms.sec4.item3": "L'Azienda si riserva il diritto di bloccare l'accesso al sito agli utenti che violino tali disposizioni.",
 
   "terms.sec5.title": "5. Limitazione di Responsabilità",
-  "terms.sec5.desc": "Arvand Termo Tec si impegna a mantenere aggiornate le informazioni sul sito, ma non fornisce alcuna garanzia sull'assoluta correttezza o completezza delle stesse.",
+  "terms.sec5.desc": "pyBIM si impegna a mantenere aggiornate le informazioni sul sito, ma non fornisce alcuna garanzia sull'assoluta correttezza o completezza delle stesse.",
   "terms.sec5.item1": "I contenuti degli articoli del blog (es. guide per la risoluzione di problemi) hanno scopo puramente informativo. L'Azienda declina ogni responsabilità per danni a persone o cose derivanti da interventi \"fai-da-te\" basati sulle informazioni lette sul sito.",
   "terms.sec5.item2": "L'Azienda non garantisce che il sito sia sempre accessibile, potendo verificarsi interruzioni per manutenzione o cause di forza maggiore.",
 
   "terms.sec6.title": "6. Legge Applicabile e Foro Competente",
   "terms.sec6.desc": "Le presenti Condizioni d'Uso sono regolate e interpretate secondo la legge della Repubblica Italiana.",
   "terms.sec6.item1": "Per qualsiasi controversia derivante o connessa all'utilizzo del sito web o ai servizi presentati, sarà competente in via esclusiva il Foro di Venezia.",
-  "terms.sec6.contact": "Per domande sui Termini e Condizioni, contattaci a: info@arvandtermotec.it"
+  "terms.sec6.contact": "Per domande sui Termini e Condizioni, contattaci a: info@pybim.com"
 }

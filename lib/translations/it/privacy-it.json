@@ -1,14 +1,14 @@
 {
   "privacy.hero.title": "Informativa sulla Privacy",
   "privacy.hero.breadcrumb": "Privacy Policy",
-  "privacy.intro": "Arvand Termo Tec SRLS rispetta la tua privacy e si impegna a proteggere i tuoi dati personali. Questa informativa sulla privacy ti informerà su come gestiamo i tuoi dati personali quando visiti il nostro sito web e sui tuoi diritti alla privacy.",
+  "privacy.intro": "pyBIM SRLS rispetta la tua privacy e si impegna a proteggere i tuoi dati personali. Questa informativa sulla privacy ti informerà su come gestiamo i tuoi dati personali quando visiti il nostro sito web e sui tuoi diritti alla privacy.",
   
   "privacy.sec1.title": "1. Titolare del Trattamento",
   "privacy.sec1.desc": "Il Titolare del Trattamento dei dati è:",
-  "privacy.sec1.list1": "Nome Azienda: Arvand Termo Tec SRLS",
-  "privacy.sec1.list2": "P.IVA: 4992890279",
+  "privacy.sec1.list1": "Nome Azienda: pyBIM SRLS",
+  "privacy.sec1.list2": "P.IVA: 04992890279",
   "privacy.sec1.list3": "Sede Legale: Via Verrocchio, 2, 30035 Mirano (VE)",
-  "privacy.sec1.list4": "Email di contatto: info@arvandtermotec.it",
+  "privacy.sec1.list4": "Email di contatto: info@pybim.com",
   "privacy.sec1.list5": "Telefono: +39 351 974 2579",
 
   "privacy.sec2.title": "2. Tipologia di Dati Raccolti",
@@ -51,5 +51,5 @@
   "privacy.sec8.item2": "Richiedere la correzione dei dati personali in nostro possesso.",
   "privacy.sec8.item3": "Richiedere la cancellazione dei tuoi dati personali (Diritto all'oblio).",
   "privacy.sec8.item4": "Opporti al trattamento o richiederne la limitazione.",
-  "privacy.sec8.contact": "Per esercitare i tuoi diritti, puoi contattarci in qualsiasi momento inviando un'e-mail a: info@arvandtermotec.it."
+  "privacy.sec8.contact": "Per esercitare i tuoi diritti, puoi contattarci in qualsiasi momento inviando un'e-mail a: info@pybim.com."
 }

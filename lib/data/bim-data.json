@@ -21,8 +21,8 @@
         "en": "Advanced 3D design for perfect millimeter-accurate systems, with no margin for error."
       },
       "description": {
-        "it": "In Arvand Termo Tec, superiamo i limiti del disegno tradizionale 2D. Attraverso la Modellazione MEP (Mechanical, Electrical, Plumbing), creiamo un vero e proprio \"gemello digitale\" tridimensionale dei tuoi impianti prima ancora di posare il primo cavo o tubo.",
-        "en": "At Arvand Termo Tec, we push beyond the limits of traditional 2D drafting. Through MEP (Mechanical, Electrical, Plumbing) modeling, we create a true three-dimensional \"digital twin\" of your systems before laying a single cable or pipe."
+        "it": "In pyBIM, superiamo i limiti del disegno tradizionale 2D. Attraverso la Modellazione MEP (Mechanical, Electrical, Plumbing), creiamo un vero e proprio \"gemello digitale\" tridimensionale dei tuoi impianti prima ancora di posare il primo cavo o tubo.",
+        "en": "At pyBIM, we push beyond the limits of traditional 2D drafting. Through MEP (Mechanical, Electrical, Plumbing) modeling, we create a true three-dimensional \"digital twin\" of your systems before laying a single cable or pipe."
       },
       "longDescription": {
         "it": "Che si tratti di un nuovo impianto di climatizzazione, del rifacimento completo dell'impianto elettrico o di una rete idraulica complessa, progettiamo ogni dettaglio all'interno di un ambiente virtuale. Questo ci permette di integrare perfettamente i nuovi impianti con l'architettura della tua casa o della tua azienda, garantendo massima efficienza e un'estetica impeccabile.",
@@ -126,8 +126,8 @@
         "en": "In traditional sites, it is common to discover during work that a plumbing pipe obstructs an air duct, or electrical cables conflict with structures. This inevitably means delays, unforeseen demolitions, and extra costs for the client."
       },
       "longDescription": {
-        "it": "Con il servizio di Clash Detection di Arvand Termo Tec, questi problemi appartengono al passato. Utilizzando software BIM avanzati, sovrapponiamo i modelli tridimensionali di tutti gli impianti (elettrico, idraulico, climatizzazione) e della struttura. Il sistema identifica automaticamente qualsiasi \"scontro\" (clash) tra i vari elementi. Risolviamo tutte queste interferenze virtualmente al computer, garantendo che tutto proceda in modo fluido e senza intoppi.",
-        "en": "With Arvand Termo Tec's Clash Detection service, these problems belong to the past. Using advanced BIM software, we overlay 3D models of all systems (electrical, plumbing, HVAC) and the structure. The system automatically identifies any \"clash\" between elements. We resolve all these interferences virtually on the computer, ensuring smooth, uninterrupted progress."
+        "it": "Con il servizio di Clash Detection di pyBIM, questi problemi appartengono al passato. Utilizzando software BIM avanzati, sovrapponiamo i modelli tridimensionali di tutti gli impianti (elettrico, idraulico, climatizzazione) e della struttura. Il sistema identifica automaticamente qualsiasi \"scontro\" (clash) tra i vari elementi. Risolviamo tutte queste interferenze virtualmente al computer, garantendo che tutto proceda in modo fluido e senza intoppi.",
+        "en": "With pyBIM's Clash Detection service, these problems belong to the past. Using advanced BIM software, we overlay 3D models of all systems (electrical, plumbing, HVAC) and the structure. The system automatically identifies any \"clash\" between elements. We resolve all these interferences virtually on the computer, ensuring smooth, uninterrupted progress."
       },
       "offerTitle": {
         "it": "Coordinamento Perfetto",
@@ -215,8 +215,8 @@
         "en": "From real-world survey to digital model: maximum precision for your home renovation."
       },
       "description": {
-        "it": "Ristrutturare un edificio esistente presenta sempre delle sfide uniche, legate spesso a pareti fuori squadro, misurazioni manuali imprecise o alla totale mancanza di planimetrie storiche affidabili. Con il nostro servizio di Scan-to-BIM, Arvand Termo Tec elimina ogni incertezza geometrica fin dall'inizio.",
-        "en": "Renovating an existing building always presents unique challenges, often linked to out-of-square walls, imprecise manual measurements, or the lack of reliable historical floor plans. With our Scan-to-BIM service, Arvand Termo Tec eliminates geometrical uncertainty from the start."
+        "it": "Ristrutturare un edificio esistente presenta sempre delle sfide uniche, legate spesso a pareti fuori squadro, misurazioni manuali imprecise o alla totale mancanza di planimetrie storiche affidabili. Con il nostro servizio di Scan-to-BIM, pyBIM elimina ogni incertezza geometrica fin dall'inizio.",
+        "en": "Renovating an existing building always presents unique challenges, often linked to out-of-square walls, imprecise manual measurements, or the lack of reliable historical floor plans. With our Scan-to-BIM service, pyBIM eliminates geometrical uncertainty from the start."
       },
       "longDescription": {
         "it": "Utilizzando strumenti di rilievo digitali e avanzati, catturiamo ogni dettaglio dello stato di fatto dell'immobile con una precisione millimetrica. Questa \"nuvola di punti\" tridimensionale viene convertita direttamente in un modello BIM completo. Che si tratti di pianificare demolizioni, ridistribuire gli spazi interni, rifare le finiture o applicare una nuova Tinteggiatura, lavoriamo su una base digitale identica alla realtà.",
@@ -315,8 +315,8 @@
         "en": "No surprises on the quote: transparent costs and exact quantities extracted directly from the 3D model."
       },
       "description": {
-        "it": "Una delle maggiori preoccupazioni quando si affronta una ristrutturazione o l'installazione di nuovi impianti è che il costo finale superi il preventivo iniziale. Con Arvand Termo Tec, eliminiamo questo rischio alla radice grazie all'integrazione del BIM 5D, dove la quinta dimensione rappresenta proprio il controllo dei costi.",
-        "en": "One of the biggest concerns during renovation or new system installation is the final cost exceeding the initial quote. With Arvand Termo Tec, we eliminate this risk at the root through 5D BIM, where the fifth dimension represents cost control."
+        "it": "Una delle maggiori preoccupazioni quando si affronta una ristrutturazione o l'installazione di nuovi impianti è che il costo finale superi il preventivo iniziale. Con pyBIM, eliminiamo questo rischio alla radice grazie all'integrazione del BIM 5D, dove la quinta dimensione rappresenta proprio il controllo dei costi.",
+        "en": "One of the biggest concerns during renovation or new system installation is the final cost exceeding the initial quote. With pyBIM, we eliminate this risk at the root through 5D BIM, where the fifth dimension represents cost control."
       },
       "longDescription": {
         "it": "Nel nostro processo di progettazione, ogni elemento inserito nel modello tridimensionale (che sia un pannello fotovoltaico, un metro di tubo idraulico, un interruttore o la superficie esatta per la tinteggiatura) contiene informazioni dettagliate. Attraverso software avanzati, estraiamo automaticamente un computo metrico estremamente preciso. Questo ci permette di offrirti preventivi chiari, basati su dati reali e non su stime approssimative.",
@@ -416,8 +416,8 @@
         "en": "Maximize bill savings and living comfort with advanced energy simulations."
       },
       "description": {
-        "it": "Il modello BIM non è solo geometria e misure, ma contiene informazioni preziose sui materiali e sulle loro prestazioni. Con l'integrazione del BIM 6D, dedicato alla sostenibilità e all'efficienza energetica, Arvand Termo Tec ti aiuta a trasformare la tua casa in un edificio \"green\" e a basso consumo.",
-        "en": "The BIM model isn't just geometry and measurements; it holds precious information about materials and their performance. Integrating 6D BIM, dedicated to sustainability and energy efficiency, Arvand Termo Tec helps transform your home into a low-consumption \"green\" building."
+        "it": "Il modello BIM non è solo geometria e misure, ma contiene informazioni preziose sui materiali e sulle loro prestazioni. Con l'integrazione del BIM 6D, dedicato alla sostenibilità e all'efficienza energetica, pyBIM ti aiuta a trasformare la tua casa in un edificio \"green\" e a basso consumo.",
+        "en": "The BIM model isn't just geometry and measurements; it holds precious information about materials and their performance. Integrating 6D BIM, dedicated to sustainability and energy efficiency, pyBIM helps transform your home into a low-consumption \"green\" building."
       },
       "longDescription": {
         "it": "Prima di procedere con l'installazione di Impianti Fotovoltaici e Sistemi di Accumulo o la Sostituzione Caldaie, i nostri software simulano il comportamento energetico dell'edificio. Analizziamo l'esposizione solare per orientare al meglio i pannelli solari, calcoliamo le dispersioni termiche per scegliere il miglior isolamento e valutiamo soluzioni per il comfort acustico. Il risultato è un sistema impiantistico che garantisce il massimo rendimento con il minimo impatto ambientale.",
@@ -533,8 +533,8 @@
         "/Pictures/BIM/bim-0078.jpg"
       ],
       "intro": {
-        "it": "In Arvand Termo Tec lavoriamo costantemente per offrirti un'esperienza di progettazione e cantiere ancora più avanzata, confortevole e senza stress. Presto integreremo tre nuove tecnologie al nostro metodo di lavoro:",
-        "en": "At Arvand Termo Tec we constantly work to offer you an even more advanced, comfortable and stress-free design and construction experience. Soon we will integrate three new technologies into our workflow:"
+        "it": "In pyBIM lavoriamo costantemente per offrirti un'esperienza di progettazione e cantiere ancora più avanzata, confortevole e senza stress. Presto integreremo tre nuove tecnologie al nostro metodo di lavoro:",
+        "en": "At pyBIM we constantly work to offer you an even more advanced, comfortable and stress-free design and construction experience. Soon we will integrate three new technologies into our workflow:"
       },
       "upcomingFeatures": {
         "it": [

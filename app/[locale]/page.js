@@ -7,21 +7,21 @@ import { northItalyCities, northItalyRegions } from "@/lib/seo-data";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Arvand Termo Tec",
-  url: "https://arvandtermotec.it",
-  logo: "https://arvandtermotec.it/logo-new-1.png",
-  email: "info@arvandtermotec.it",
+  name: "pyBIM",
+  url: "https://pybim.com",
+  logo: "https://pybim.com/logo_black_transparent.png",
+  email: "info@pybim.com",
   telephone: "+39 351 974 2579",
-  sameAs: ["https://arvandtermotec.com"]
+  sameAs: ["https://pybim.com"]
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "HVACBusiness",
-  name: "Arvand Termo Tec",
-  image: "https://arvandtermotec.it/og-image.jpg",
+  "@type": "ProfessionalService",
+  name: "pyBIM",
+  image: "https://pybim.com/og-image.jpg",
   telephone: "+39 351 974 2579",
-  email: "info@arvandtermotec.it",
+  email: "info@pybim.com",
   priceRange: "€€",
   address: {
     "@type": "PostalAddress",
@@ -30,18 +30,18 @@ const localBusinessSchema = {
     addressCountry: "IT"
   },
   areaServed: northItalyRegions,
-  url: "https://arvandtermotec.it",
+  url: "https://pybim.com",
   serviceArea: northItalyCities.map((city) => ({
     "@type": "City",
     name: city.name
   })),
   knowsAbout: [
-    "HVAC industriale",
-    "HVAC commerciale",
-    "HVAC residenziale",
-    "Ventilazione industriale",
-    "Impianti di riscaldamento",
-    "Impianti di raffrescamento"
+    "BIM Automation",
+    "Revit API",
+    "Dynamo Scripts",
+    "Python for Architecture",
+    "Software Development for AEC",
+    "Digital Twin"
   ]
 };
 
@@ -54,7 +54,7 @@ const faqSchema = {
       name: "Lavorate solo a Venezia?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. Arvand Termo Tec opera da Venezia e serve tutto il Nord Italia, inclusi Veneto, Lombardia, Emilia-Romagna e Friuli-Venezia Giulia."
+        text: "No. pyBIM opera da Venezia e serve tutto il Nord Italia, inclusi Veneto, Lombardia, Emilia-Romagna e Friuli-Venezia Giulia."
       }
     },
     {

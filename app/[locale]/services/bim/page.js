@@ -1,7 +1,7 @@
 import BimPageLayout from "@/components/bim-page-layout";
 
 export const metadata = {
-  title: "خدمات نوین BIM | Arvand Termotec",
+  title: "خدمات نوین BIM | pyBIM",
   description: "خدمات مدلسازی اطلاعات ساختمان (BIM) شامل MEP، تشخیص تداخل، اسکن به بیم، بیم ۵ بعدی و یکپارچگی با بهره‌وری انرژی"
 };
 

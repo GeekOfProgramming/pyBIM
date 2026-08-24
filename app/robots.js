@@ -4,7 +4,7 @@ export default function robots() {
       userAgent: "*",
       allow: "/"
     },
-    sitemap: "https://arvandtermotec.it/sitemap.xml",
-    host: "https://arvandtermotec.it"
+    sitemap: "https://pybim.com/sitemap.xml",
+    host: "https://pybim.com"
   };
 }

@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
   if (!city) return {};
   return {
     title: `Impianti HVAC a ${city.name}`,
-    description: `${city.intro} Arvand Termo Tec serve ${city.name} e il mercato ${city.region} dalla sede di Venezia.`
+    description: `${city.intro} pyBIM serve ${city.name} e il mercato ${city.region} dalla sede di Venezia.`
   };
 }
 
@@ -27,7 +27,7 @@ export default function ServiceAreaPage({ params }) {
     areaServed: city.name,
     provider: {
       "@type": "HVACBusiness",
-      name: "Arvand Termo Tec",
+      name: "pyBIM",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Venezia",
@@ -57,7 +57,7 @@ export default function ServiceAreaPage({ params }) {
         </div>
         <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8">
           <h2 className="text-2xl font-semibold text-white">Richiedi un preventivo</h2>
-          <p className="mt-4 text-white/65">Contatta Arvand Termo Tec per sopralluoghi, installazioni, ristrutturazioni e aggiornamenti di ventilazione per abitazioni, attività commerciali e strutture industriali.</p>
+          <p className="mt-4 text-white/65">Contatta pyBIM per sopralluoghi, installazioni, ristrutturazioni e aggiornamenti di ventilazione per abitazioni, attività commerciali e strutture industriali.</p>
           <Link href="/contact" className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-orange-500 px-6 py-4 text-sm font-semibold text-white">
             Contatta il team <ArrowRight className="h-4 w-4" />
           </Link>

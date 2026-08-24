@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function SectionCarousel({ title, badge, badgeColor = "text-orange-400", items, renderItem }) {
+export default function SectionCarousel({ title, badge, badgeColor = "text-brand-accent", items, renderItem }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -35,14 +35,14 @@ export default function SectionCarousel({ title, badge, badgeColor = "text-orang
           </span>
           <button 
             onClick={scrollPrev}
-            className="w-12 h-12 rounded-full border border-white/20 bg-[#102A5C]/80 flex items-center justify-center text-white hover:bg-orange-500 hover:border-orange-500 transition-all shadow-xl"
+            className="w-12 h-12 rounded-full border border-white/20 bg-brand-surface/80 flex items-center justify-center text-white hover:bg-brand-accent hover:border-brand-accent transition-all shadow-xl"
             aria-label="Previous"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button 
             onClick={scrollNext}
-            className="w-12 h-12 rounded-full border border-white/20 bg-[#102A5C]/80 flex items-center justify-center text-white hover:bg-orange-500 hover:border-orange-500 transition-all shadow-xl"
+            className="w-12 h-12 rounded-full border border-white/20 bg-brand-surface/80 flex items-center justify-center text-white hover:bg-brand-accent hover:border-brand-accent transition-all shadow-xl"
             aria-label="Next"
           >
             <ChevronRight className="w-6 h-6" />

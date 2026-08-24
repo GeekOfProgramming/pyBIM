@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 export const metadata = {
   title: "Progetti",
   description:
-    "Scopri progetti HVAC, ventilazione e climatizzazione realizzati da Arvand Termo Tec per settori residenziali, commerciali e industriali."
+    "Scopri progetti HVAC, ventilazione e climatizzazione realizzati da pyBIM per settori residenziali, commerciali e industriali."
 };
 
 export default async function ProjectsPage() {

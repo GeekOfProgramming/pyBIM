@@ -3,7 +3,7 @@ import servicePages from "@/lib/data/services-data.json";
 import projectPages from "@/lib/data/projects-data.json";
 import blogPosts from "@/lib/data/blog-data.json";
 export default function sitemap() {
-  const baseUrl = "https://arvandtermotec.it";
+  const baseUrl = "https://pybim.com";
   const now = new Date();
 
   const corePages = [
