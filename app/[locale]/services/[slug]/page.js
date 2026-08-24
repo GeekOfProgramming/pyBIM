@@ -3,7 +3,13 @@ import servicesData from "@/lib/data/services-data.json";
 import ServiceDetailLayout from "@/components/service-detail-layout";
 
 export function generateStaticParams() {
-  return servicesData.map((service) => ({ slug: service.slug }));
+  const locales = ["en", "it", "de"];
+  return locales.flatMap((locale) =>
+    servicesData.map((service) => ({
+      locale,
+      slug: service.slug
+    }))
+  );
 }
 
 export async function generateMetadata({ params }) {

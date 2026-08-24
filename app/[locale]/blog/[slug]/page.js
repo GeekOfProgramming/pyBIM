@@ -3,7 +3,13 @@ import blogData from "@/lib/data/blog-data.json";
 import BlogDetailLayout from "@/components/blog-detail-layout";
 
 export function generateStaticParams() {
-  return blogData.map((post) => ({ slug: post.slug }));
+  const locales = ["en", "it", "de"];
+  return locales.flatMap((locale) =>
+    blogData.map((post) => ({
+      locale,
+      slug: post.slug
+    }))
+  );
 }
 
 export async function generateMetadata({ params }) {

@@ -1,41 +1,64 @@
-import { northItalyCities } from "@/lib/seo-data";
 import servicePages from "@/lib/data/services-data.json";
 import projectPages from "@/lib/data/projects-data.json";
 import blogPosts from "@/lib/data/blog-data.json";
+
 export default function sitemap() {
   const baseUrl = "https://pybim.com";
   const now = new Date();
+  const locales = ["en", "it", "de"];
 
-  const corePages = [
+  const coreRoutes = [
     "",
     "/services",
     "/projects",
+    "/careers",
     "/blog",
     "/about",
     "/contact",
     "/privacy-policy",
-    "/cookie-policy"
-  ].map((path) => ({ url: `${baseUrl}${path}`, lastModified: now }));
+    "/cookie-policy",
+    "/terms-and-conditions"
+  ];
 
-  const cityPages = northItalyCities.map((city) => ({
-    url: `${baseUrl}/service-areas/${city.slug}`,
-    lastModified: now
-  }));
+  let entries = [];
 
-  const serviceDetailPages = servicePages.map((service) => ({
-    url: `${baseUrl}/services/${service.slug}`,
-    lastModified: now
-  }));
+  locales.forEach((locale) => {
+    coreRoutes.forEach((route) => {
+      entries.push({
+        url: `${baseUrl}/${locale}${route}`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: route === "" ? 1.0 : 0.8
+      });
+    });
 
-  const projectDetailPages = projectPages.map((project) => ({
-    url: `${baseUrl}/projects/${project.slug}`,
-    lastModified: now
-  }));
+    servicePages.forEach((service) => {
+      entries.push({
+        url: `${baseUrl}/${locale}/services/${service.slug}`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: 0.9
+      });
+    });
 
-  const blogDetailPages = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: now
-  }));
+    projectPages.forEach((project) => {
+      entries.push({
+        url: `${baseUrl}/${locale}/projects/${project.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.7
+      });
+    });
 
-  return [...corePages, ...cityPages, ...serviceDetailPages, ...projectDetailPages, ...blogDetailPages];
+    blogPosts.forEach((post) => {
+      entries.push({
+        url: `${baseUrl}/${locale}/blog/${post.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.7
+      });
+    });
+  });
+
+  return entries;
 }

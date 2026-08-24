@@ -3,9 +3,14 @@ import projectsData from "@/lib/data/projects-data.json";
 import ProjectDetailLayout from "@/components/project-detail-layout";
 import { db } from "@/lib/db";
 
-// Keep static params for JSON data. For dynamic DB data, Next.js will generate them on demand if not in this list.
 export async function generateStaticParams() {
-  return projectsData.map((project) => ({ slug: project.slug }));
+  const locales = ["en", "it", "de"];
+  return locales.flatMap((locale) =>
+    projectsData.map((project) => ({
+      locale,
+      slug: project.slug
+    }))
+  );
 }
 
 async function getProject(slug) {

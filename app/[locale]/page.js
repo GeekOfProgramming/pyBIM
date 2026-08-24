@@ -1,9 +1,5 @@
-import fs from "fs";
-import path from "path";
 import HomePageLayout from "@/components/home-page-layout";
-import { northItalyCities, northItalyRegions } from "@/lib/seo-data";
 
-// Schema objects remain the same...
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -11,37 +7,34 @@ const organizationSchema = {
   url: "https://pybim.com",
   logo: "https://pybim.com/logo_black_transparent.png",
   email: "info@pybim.com",
-  telephone: "+39 351 974 2579",
+  telephone: "+39 351 837 3043",
+  description: "pyBIM is an engineering & software development lab for the AEC industry specializing in BIM automation, Revit API C# plugins, and ISO 19650 compliance.",
   sameAs: ["https://pybim.com"]
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "pyBIM",
+  name: "pyBIM - Advanced BIM & Software Development Lab",
   image: "https://pybim.com/og-image.jpg",
-  telephone: "+39 351 974 2579",
+  telephone: "+39 351 837 3043",
   email: "info@pybim.com",
-  priceRange: "€€",
+  priceRange: "€€€",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Venezia",
-    addressRegion: "Veneto",
     addressCountry: "IT"
   },
-  areaServed: northItalyRegions,
+  areaServed: ["European Union", "DACH Region", "Italy", "United Kingdom"],
   url: "https://pybim.com",
-  serviceArea: northItalyCities.map((city) => ({
-    "@type": "City",
-    name: city.name
-  })),
   knowsAbout: [
     "BIM Automation",
-    "Revit API",
-    "Dynamo Scripts",
-    "Python for Architecture",
-    "Software Development for AEC",
-    "Digital Twin"
+    "Revit API Development",
+    "Dynamo Scripting",
+    "Python Data Pipelines",
+    "ISO 19650 Compliance",
+    "UNI 11337 Standard",
+    "COBie Asset Handover",
+    "Digital Twins"
   ]
 };
 
@@ -51,18 +44,18 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Lavorate solo a Venezia?",
+      name: "Is specialized coding expertise required to operate your custom plugins?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. pyBIM opera da Venezia e serve tutto il Nord Italia, inclusi Veneto, Lombardia, Emilia-Romagna e Friuli-Venezia Giulia."
+        text: "No. All programmatic logic is encapsulated within intuitive Graphical User Interfaces (WPF) or custom ribbon toolbars. Execution requires zero syntax knowledge from the end-user."
       }
     },
     {
       "@type": "Question",
-      name: "Seguite sia progetti industriali che residenziali?",
+      name: "How does pyBIM ensure compliance with European BIM mandates?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sì. L'azienda è posizionata per impianti industriali, commerciali e residenziali, con servizi di ventilazione, riscaldamento e raffrescamento."
+        text: "Our workflows strictly adhere to ISO 19650, UNI 11337, and Decreto BIM protocols. We automate COBie extraction and CDE data validation to guarantee 100% tender compliance."
       }
     }
   ]
