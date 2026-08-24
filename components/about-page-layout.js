@@ -136,25 +136,35 @@ export default function AboutPageLayout() {
           
           <div className="grid gap-8 lg:grid-cols-3">
             
-            {/* 1. ENGINEERING PLATFORMS */}
+            {/* 1. ENGINEERING TOOLS (13 Items) */}
             <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
               <div>
                 <div className="border-b border-brand-border pb-6 mb-6">
-                  <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block mb-1">01. AUTHORING & COORDINATION</span>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block">01. SOFTWARE & COORDINATION</span>
+                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-surface border border-brand-border text-brand-textSecondary">13 Tools</span>
+                  </div>
                   <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
-                    <Cog className="w-5 h-5 text-brand-primary" /> Engineering Platforms
+                    <Cog className="w-5 h-5 text-brand-primary" /> Engineering Tools
                   </h3>
                   <p className="text-xs text-brand-primary font-mono italic">ISO-compliant authoring and clash resolution.</p>
                 </div>
 
                 <div className="space-y-3.5">
                   {[
-                    { name: "Autodesk Revit", tag: "3D", desc: "Multidisciplinary 3D Coordination" },
-                    { name: "Navisworks Manage", tag: "Clash/4D", desc: "Advanced Clash Detection & Federated Models" },
-                    { name: "Solibri Office", tag: "QA/QC", desc: "Automated Code Checking & Rule Audits" },
-                    { name: "PriMus-IFC / CostX", tag: "5D", desc: "Dynamic 5D Quantity Take-off" },
-                    { name: "Synchro PRO", tag: "4D", desc: "4D Construction Sequencing" },
-                    { name: "ReCap Pro", tag: "Scan-to-BIM", desc: "Point Cloud-to-BIM Conversion" },
+                    { name: "Autodesk Revit", tag: "3D/7D", desc: "Multidisciplinary 3D Modeling & Energy Analysis" },
+                    { name: "Navisworks Manage", tag: "Clash/4D", desc: "Clash Detection & 4D Time/Gantt Chart Integration" },
+                    { name: "ACC (Autodesk Cloud)", tag: "6D CDE", desc: "Common Data Environment & As-Built FM Hosting" },
+                    { name: "PriMus-IFC", tag: "5D AI", desc: "AI-Driven Quantity Surveying & Dynamic Cost Estimating" },
+                    { name: "ReCap Pro", tag: "Scan-to-BIM", desc: "Laser Scan & Drone Point Cloud Processing" },
+                    { name: "Solibri Office", tag: "QA/QC", desc: "Rule-Based Automated Model Checking & QA Audit" },
+                    { name: "BIMcollab / Dalux", tag: "Issue Mgmt", desc: "Cloud-Based BCF Issue Tracking & Coordination" },
+                    { name: "Synchro PRO", tag: "4D Sim", desc: "4D Construction Process Sequencing & Scheduling" },
+                    { name: "dRofus", tag: "Data Mgmt", desc: "Centralized Spatial Data & Room Requirements" },
+                    { name: "Tekla Structures", tag: "LOD 400", desc: "High-Detail Steel & Concrete Structural Modeling" },
+                    { name: "Civil 3D / InfraWorks", tag: "GIS/Infra", desc: "Infrastructure Modeling & GIS Data Exchange" },
+                    { name: "CostX", tag: "5D Cost", desc: "Dynamic 2D/3D Quantity Take-off Engine" },
+                    { name: "Revizto", tag: "VR/Coord", desc: "2D/3D VR Model Coordination & Clash Tracking" },
                   ].map((item, idx) => (
                     <div key={idx} className="p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 hover:shadow-sm transition-all">
                       <div className="flex items-center justify-between mb-1">
@@ -168,12 +178,15 @@ export default function AboutPageLayout() {
               </div>
             </div>
 
-            {/* 2. DEVELOPMENT STACK */}
+            {/* 2. DEVELOPMENT STACK (12 Items) */}
             <div className="rounded-3xl bg-white border border-brand-primary/30 shadow-lg p-8 flex flex-col justify-between relative group hover:border-brand-primary/50 transition-all">
               <div className="absolute inset-0 bg-brand-primary/[0.02] rounded-3xl pointer-events-none" />
               <div className="relative z-10">
                 <div className="border-b border-brand-primary/20 pb-6 mb-6">
-                  <span className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-widest block mb-1">02. CODE & AUTOMATION</span>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-widest block">02. CODE & AUTOMATION</span>
+                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary">12 Techs</span>
+                  </div>
                   <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
                     <Terminal className="w-5 h-5 text-brand-primary" /> Development Stack
                   </h3>
@@ -183,12 +196,17 @@ export default function AboutPageLayout() {
                 <div className="space-y-3.5">
                   {[
                     { name: "Python", tag: "Automation", desc: "Automated Parameter Injection & Bulk Processing" },
-                    { name: "C# & Revit API", tag: "Plugins", desc: "Custom Code & Rule-Based Logic" },
-                    { name: "Dynamo / pyRevit", tag: "Scripting", desc: "Visual Scripting & Rapid Prototyping" },
-                    { name: "Autodesk APS (Forge)", tag: "Cloud API", desc: "Cloud Automation & CDE Integration" },
-                    { name: "REST APIs", tag: "Sync", desc: "Cross-Platform Data Synchronization" },
-                    { name: "SQL / PostgreSQL", tag: "Database", desc: "Relational BIM Database Management" },
-                    { name: "LangChain (RAG)", tag: "AI Audit", desc: "Automated BEP/EIR Document Auditing" },
+                    { name: "Dynamo & pyRevit", tag: "Scripting", desc: "Visual & Text Scripting for Modeling Automation" },
+                    { name: "C# & Revit API", tag: "Plugins", desc: "Native Add-ins & Deep Software Customization" },
+                    { name: "REST APIs", tag: "10D / IoT", desc: "Real-Time Sensor & Digital Twin Data Sync" },
+                    { name: "Autodesk APS (Forge)", tag: "Cloud API", desc: "Cloud App Development & Web BIM Processing" },
+                    { name: "Power BI", tag: "Analytics", desc: "Live Project Analytics & Model Dashboards" },
+                    { name: "Speckle", tag: "Open Data", desc: "Open-Source Real-Time Data Streaming" },
+                    { name: "FastAPI / Node.js", tag: "Backend", desc: "Custom Microservices for Network Automation" },
+                    { name: "React.js / Next.js", tag: "Web Portals", desc: "Client Web Dashboards for Real-Time Monitoring" },
+                    { name: "SQL / PostgreSQL", tag: "BIM DB", desc: "Relational DB for Thousands of BIM Parameters" },
+                    { name: "IFC.js", tag: "Browser 3D", desc: "In-Browser 3D BIM Rendering Without Desktop Software" },
+                    { name: "LangChain & ChromaDB", tag: "AI / RAG", desc: "RAG-Based Automated BEP/EIR Document Auditing" },
                   ].map((item, idx) => (
                     <div key={idx} className="p-3.5 rounded-2xl bg-brand-primary/5 border border-brand-primary/15 hover:bg-white hover:border-brand-primary/40 hover:shadow-sm transition-all">
                       <div className="flex items-center justify-between mb-1">
@@ -202,13 +220,16 @@ export default function AboutPageLayout() {
               </div>
             </div>
 
-            {/* 3. STANDARDS & CDE */}
+            {/* 3. STANDARDS & PROTOCOLS (12 Items) */}
             <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
               <div>
                 <div className="border-b border-brand-border pb-6 mb-6">
-                  <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block mb-1">03. COMPLIANCE & CDE</span>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block">03. MANDATES & OPENBIM</span>
+                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-surface border border-brand-border text-brand-textSecondary">12 Standards</span>
+                  </div>
                   <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
-                    <Code2 className="w-5 h-5 text-brand-primary" /> Standards & CDE
+                    <Code2 className="w-5 h-5 text-brand-primary" /> Standards & Protocols
                   </h3>
                   <p className="text-xs text-brand-primary font-mono italic">Strict compliance with EU & UK mandates.</p>
                 </div>
@@ -216,11 +237,17 @@ export default function AboutPageLayout() {
                 <div className="space-y-3.5">
                   {[
                     { name: "ISO 19650", tag: "Global Framework", desc: "International Information Management Framework" },
-                    { name: "UNI 11337", tag: "Italian Standard", desc: "Italian National BIM Mandates" },
-                    { name: "IFC & BCF", tag: "OpenBIM", desc: "OpenBIM Interoperability Formats (ISO 16739)" },
-                    { name: "COBie", tag: "FM Handover", desc: "Standardized Facility Management Handover" },
-                    { name: "Autodesk ACC / Speckle", tag: "CDE & SSOT", desc: "Cloud Worksharing & Open Data Infrastructure" },
-                    { name: "EIR, BEP & MIDP", tag: "Delivery", desc: "Strategic Information Delivery Planning" },
+                    { name: "UNI 11337", tag: "Italian Standard", desc: "Italian National BIM Mandates & Project Validation" },
+                    { name: "COBie", tag: "FM Handover", desc: "Standardized Facility Management Data Handover" },
+                    { name: "EIR / BEP", tag: "8D / 9D Protocols", desc: "Employer Requirements, BEP & Safety/Lean Plans" },
+                    { name: "IFC (ISO 16739)", tag: "OpenBIM", desc: "Universal Open Format for Vendor-Neutral Data" },
+                    { name: "BCF", tag: "OpenBIM BCF", desc: "Standardized Issue Reporting & Clash Communication" },
+                    { name: "Decreto BIM (D.M. 560/312)", tag: "Italian Mandate", desc: "Italian Legal Mandates for Public Tenders" },
+                    { name: "LOD / LOIN (EN 17412)", tag: "Level of Need", desc: "Level of Development & Information Need Standards" },
+                    { name: "OmniClass / MasterFormat", tag: "Classification", desc: "International Classification & Element Coding" },
+                    { name: "MIDP / TIDP", tag: "ISO 19650 Delivery", desc: "Master & Task Information Delivery Plans" },
+                    { name: "bsDD (buildingSMART)", tag: "Data Dict", desc: "Global Dictionary for OpenBIM Semantic Interoperability" },
+                    { name: "IDM (ISO 29481)", tag: "Workflow Standard", desc: "Information Delivery Manual Workflow Standard" },
                   ].map((item, idx) => (
                     <div key={idx} className="p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 hover:shadow-sm transition-all">
                       <div className="flex items-center justify-between mb-1">
