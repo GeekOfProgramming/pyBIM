@@ -36,7 +36,7 @@ export default function ServicesPageLayout() {
               </div>
               <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">Algorithmic Engineering</h3>
               <p className="text-brand-textSecondary font-medium leading-relaxed flex-grow mb-8">
-                Execution of constructible models utilizing Navisworks and Solibri. Coordination cycles are accelerated through rule-based clash detection and programmatic BCF routing. Standard delivery encompasses Scan-to-BIM, 4D sequencing, and dynamic 5D QTO workflows.
+                Execution of constructible models utilizing <strong className="text-brand-textPrimary font-bold">Navisworks</strong> and <strong className="text-brand-textPrimary font-bold">Solibri</strong>. Coordination cycles are accelerated through <strong className="text-brand-textPrimary font-bold">rule-based clash detection</strong> and <strong className="text-brand-textPrimary font-bold">programmatic BCF routing</strong>. Standard delivery encompasses <strong className="text-brand-textPrimary font-bold">Scan-to-BIM</strong>, <strong className="text-brand-textPrimary font-bold">4D sequencing</strong>, and dynamic <strong className="text-brand-textPrimary font-bold">5D QTO workflows</strong>.
               </p>
               <div className="flex flex-wrap gap-2 mb-8">
                 <span className="px-3 py-1.5 rounded-full bg-yellow-400/10 text-yellow-600 text-[10px] font-bold uppercase tracking-wider">ALGORITHMIC COORDINATION</span>
@@ -55,7 +55,7 @@ export default function ServicesPageLayout() {
               </div>
               <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">Code & Automation</h3>
               <p className="text-brand-textSecondary font-medium leading-relaxed flex-grow mb-8">
-                Elimination of manual data entry and software limitations. Custom Python pipelines and C# Add-ins automate parameter injection, naming conventions, and repetitive modeling tasks. Execution times are reduced from multi-hour manual processes to immediate algorithmic outputs.
+                Elimination of manual data entry and software limitations. Custom <strong className="text-brand-textPrimary font-bold">Python pipelines</strong> and <strong className="text-brand-textPrimary font-bold">C# Add-ins</strong> automate parameter injection, naming conventions, and repetitive modeling tasks. Execution times are reduced from multi-hour manual processes to <strong className="text-brand-textPrimary font-bold">immediate algorithmic outputs</strong>.
               </p>
               <div className="flex flex-wrap gap-2 mb-8">
                 <span className="px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-wider">PYTHON PIPELINES</span>
@@ -74,7 +74,7 @@ export default function ServicesPageLayout() {
               </div>
               <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">CDE & Lifecycle Data</h3>
               <p className="text-brand-textSecondary font-medium leading-relaxed flex-grow mb-8">
-                Structuring of geometric and metadata baselines for post-construction operations. Automated extraction of COBie deliverables, maintenance of Cloud CDE protocols, and establishment of strictly ISO-compliant databases for digital twin integration.
+                Structuring of geometric and metadata baselines for post-construction operations. Automated extraction of <strong className="text-brand-textPrimary font-bold">COBie deliverables</strong>, maintenance of <strong className="text-brand-textPrimary font-bold">Cloud CDE protocols</strong>, and establishment of strictly <strong className="text-brand-textPrimary font-bold">ISO-compliant databases</strong> for <strong className="text-brand-textPrimary font-bold">digital twin integration</strong>.
               </p>
               <div className="flex flex-wrap gap-2 mb-8">
                 <span className="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-600 text-[10px] font-bold uppercase tracking-wider">CDE MANAGEMENT</span>
