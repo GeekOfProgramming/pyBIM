@@ -327,7 +327,7 @@ export default function AboutPageLayout() {
               <div className="relative z-10 w-full">
                 <Code2 className="w-12 h-12 text-brand-primary mb-10" />
                 <h3 className="text-3xl font-bold text-brand-textPrimary leading-snug mb-12">
-                  Are you an architect who fell in love with Python? You belong here.
+                  Are you an engineer who fell in love with Python? You belong here.
                 </h3>
               </div>
               <Link href="/contact" className="relative z-10 inline-flex items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-bold text-white hover:bg-brand-accentHover transition-all shadow-md hover:shadow-lg hover:-translate-y-1">
