@@ -55,46 +55,48 @@
   {
     "slug": "code-automation",
     "title": { "en": "Code & Automation", "it": "Code & Automation" },
-    "subtitle": { "en": "Bespoke software for your studio", "it": "Software su misura per il tuo studio" },
-    "description": { "en": "Software has limits; our code doesn't. We develop bespoke Revit Add-ins and Dynamo scripts for your studio. Turn a 3-hour repetitive task into a 3-second click.", "it": "Il software ha dei limiti..." },
-    "longDescription": { "en": "We specialize in developing custom automation tools that plug directly into your existing software stack. Utilizing C#, Python, and the Revit API, we build add-ins that automate highly repetitive tasks, enforce modeling standards across your team, and extract complex data. Whether you need a simple pyRevit script to rename views or a complex C# application to automate wall reinforcements, we tailor the solution to your specific workflow.", "it": "Siamo specializzati..." },
+    "subtitle": { "en": "Programmatic Execution & Custom Software Development", "it": "Programmatic Execution & Custom Software Development" },
+    "description": { "en": "Standard BIM authoring tools operate within rigid constraints. We engineer custom C# Add-ins, Python pipelines, and Dynamo algorithms to bypass manual workflows. By embedding programmatic logic directly into your production environment, we automate bulk data entry, enforce modeling standards, and reduce multi-hour engineering tasks to instantaneous algorithmic executions.", "it": "I tradizionali strumenti di authoring BIM operano entro vincoli rigidi. Progettiamo Add-in C# personalizzati, pipeline Python ed algoritmi Dynamo per superare i flussi di lavoro manuali." },
+    "longDescription": { "en": "", "it": "" },
     "features": [
       {
-        "title": { "en": "Bespoke pyRevit Toolbars", "it": "Bespoke pyRevit Toolbars" },
-        "description": { "en": "We design and deploy custom pyRevit toolbars tailored to your firm's specific workflows. Automate sheet creation, view management, and parameter syncing with lightweight, highly efficient Python scripts.", "it": "..." },
+        "title": { "en": "Python & pyRevit Pipelines", "it": "Pipeline Python e pyRevit" },
+        "description": { "en": "Deployment of firm-specific toolbars and lightweight Python scripts. Automated execution of sheet generation, view management, and bulk parameter injection. This methodology eliminates manual data mapping and ensures strict adherence to project naming conventions without human intervention.", "it": "Implementazione di toolbar aziendali personalizzate e script Python leggeri per l'esecuzione automatica di viste e parametri." },
         "image": "/Pictures/Uncategorized/uncategorized-005.jpg"
       },
       {
-        "title": { "en": "C# Advanced Add-ins", "it": "C# Advanced Add-ins" },
-        "description": { "en": "For complex geometric calculations or heavy data processing, we develop robust C# applications utilizing the Revit API. We wrap these tools in beautiful WPF user interfaces so anyone in your office can use them without knowing how to code.", "it": "..." },
+        "title": { "en": "C# Revit Add-ins & API Integration", "it": "Add-in C# Revit e Integrazione API" },
+        "description": { "en": "Development of proprietary .NET applications for heavy computational processes. Execution of complex geometric calculations, automated structural detailing, and cross-platform data synchronization. Tools are deployed with WPF-based graphical user interfaces for seamless internal adoption.", "it": "Sviluppo di applicazioni .NET proprietarie per processi computazionali complessi e calcoli geometrici avanzati." },
         "image": "/Pictures/Uncategorized/uncategorized-009.jpg"
       },
       {
-        "title": { "en": "Dynamo Graph Automation", "it": "Dynamo Graph Automation" },
-        "description": { "en": "We streamline your repetitive tasks by building and standardizing Dynamo graphs. From automated rebar detailing to complex facade panelization, our computational design experts turn hours of manual modeling into seconds.", "it": "..." },
+        "title": { "en": "Dynamo Graph Standardization", "it": "Standardizzazione dei Grafi Dynamo" },
+        "description": { "en": "Consolidation of computational design workflows. Conversion of unstructured visual scripts into deployed, firm-wide automation tools. Applied to algorithmic facade panelization, automated rebar generation, and rule-based geometric modifications.", "it": "Consolidamento dei flussi di lavoro di progettazione computazionale ed automazione aziendale." },
         "image": "/Pictures/Uncategorized/uncategorized-004.jpg"
       }
     ],
     "grid": [
-      { "en": "C# Revit Add-ins", "it": "C# Revit Add-ins" },
-      { "en": "pyRevit Toolbars", "it": "pyRevit Toolbars" },
-      { "en": "Dynamo Graph Automation", "it": "Dynamo Graph Automation" },
-      { "en": "Forge / APS Integration", "it": "Forge / APS Integration" }
+      { "en": "Automated Parameter Injection", "it": "Automated Parameter Injection" },
+      { "en": "C# Add-in Development", "it": "C# Add-in Development" },
+      { "en": "pyRevit Toolbar Deployment", "it": "pyRevit Toolbar Deployment" },
+      { "en": "Dynamo Graph Standardization", "it": "Dynamo Graph Standardization" },
+      { "en": "Autodesk APS (Forge) Integration", "it": "Autodesk APS (Forge) Integration" }
     ],
     "types": [
-      { "en": "Python", "it": "Python" },
-      { "en": "C#", "it": "C#" },
-      { "en": "Revit API", "it": "Revit API" },
-      { "en": "WPF / UI Design", "it": "WPF / UI Design" }
+      { "en": "PYTHON", "it": "PYTHON" },
+      { "en": "C# / .NET", "it": "C# / .NET" },
+      { "en": "REVIT API", "it": "REVIT API" },
+      { "en": "DYNAMO", "it": "DYNAMO" },
+      { "en": "WPF", "it": "WPF" }
     ],
     "faq": [
       {
-        "q": { "en": "Do we need coding experience to use your plugins?", "it": "..." },
-        "a": { "en": "Not at all. We build clean, intuitive User Interfaces (WPF) so that your architects and engineers can run complex automations with the click of a button.", "it": "..." }
+        "q": { "en": "Is specialized coding expertise required to operate the deployed automation tools?", "it": "È richiesta esperienza di programmazione per utilizzare gli strumenti di automazione forniti?" },
+        "a": { "en": "No. All programmatic logic is encapsulated within intuitive Graphical User Interfaces (WPF) or custom ribbon toolbars. Execution requires zero syntax knowledge from the end-user, ensuring immediate adoption across architectural and engineering teams.", "it": "No. Tutta la logica programmatica è racchiusa in interfacce grafiche intuitive (WPF) o toolbar personalizzate." }
       }
     ],
-    "offerTitle": { "en": "Save 1000+ Hours", "it": "Risparmia 1000+ Ore" },
-    "offerDescription": { "en": "Automate the boring stuff so your team can focus on design and engineering.", "it": "..." },
+    "offerTitle": { "en": "Eliminate Manual Bottlenecks", "it": "Elimina i Bottleneck Manuali" },
+    "offerDescription": { "en": "Reallocate billable engineering hours from repetitive data entry to high-value coordination and design.", "it": "Rialloca le ore ingegneristiche fatturabili dall'inserimento manuale dati al coordinamento e alla progettazione ad alto valore." },
     "color": "brand-primary",
     "images": [
       "/Pictures/Uncategorized/uncategorized-005.jpg",
