@@ -1,47 +1,51 @@
 [
   {
     "slug": "core-bim",
-    "title": { "en": "Core BIM (3D / 4D / 5D)", "it": "Core BIM (3D / 4D / 5D)" },
-    "subtitle": { "en": "Precision modeling and algorithmic workflows", "it": "Modellazione di precisione e flussi di lavoro algoritmici" },
-    "description": { "en": "We provide standard BIM services, but our competitive edge is our tooling. We use custom scripts for algorithmic clash detection and automated quantity take-offs (QTO) to deliver 100% precision.", "it": "Forniamo servizi BIM standard, ma il nostro vantaggio competitivo è..." },
-    "longDescription": { "en": "Our Core BIM services go beyond traditional 3D modeling. By implementing algorithmic clash detection, we identify and resolve complex geometric conflicts before they reach the construction site. Our 4D scheduling integrates time parameters directly into the model, allowing for precise project phasing. Finally, our automated 5D Quantity Take-Offs (QTO) eliminate human error in cost estimation, providing highly accurate material schedules directly from the database.", "it": "I nostri servizi Core BIM vanno oltre..." },
+    "title": { "en": "3D / 4D / 5D Rapid Delivery", "it": "3D / 4D / 5D Rapid Delivery" },
+    "subtitle": { "en": "High-Speed Coordination & Algorithmic Delivery", "it": "High-Speed Coordination & Algorithmic Delivery" },
+    "description": { "en": "Bypass manual modeling delays. Execution of algorithmic clash resolution, point cloud processing (Scan-to-BIM), and dynamic cost estimation. Coordination cycles are automated through proprietary scripts and rule-based auditing, delivering constructible, ISO-compliant models at accelerated speeds.", "it": "Supera i ritardi della modellazione manuale. Esecuzione della risoluzione algoritmica dei clash, elaborazione delle nuvole di punti (Scan-to-BIM) e stima dinamica dei costi. I cicli di coordinamento sono automatizzati tramite script proprietari e audit basati su regole." },
+    "longDescription": { "en": "", "it": "" },
     "features": [
       {
-        "title": { "en": "Algorithmic Clash Detection", "it": "Algorithmic Clash Detection" },
-        "description": { "en": "Instead of manually reviewing thousands of false positives, our algorithmic approach automatically groups, filters, and assigns clashes based on spatial constraints and element properties. This allows us to resolve the most critical structural and MEP conflicts in a fraction of the time.", "it": "..." },
+        "title": { "en": "Algorithmic Clash Resolution (3D)", "it": "Risoluzione Algoritmica dei Clash (3D)" },
+        "description": { "en": "Elimination of manual, error-prone clash detection. Utilizing Navisworks Manage and Solibri, custom scripts automatically identify, group, and route spatial conflicts via BCF. Critical structural and MEP conflicts are resolved systematically, ensuring a zero-error federated model prior to site execution.", "it": "Eliminazione della rilevazione manuale e soggetta ad errori. Utilizzando Navisworks Manage e Solibri, script personalizzati identificano, raggruppano e smistano automaticamente i conflitti spaziali via BCF." },
         "image": "/Pictures/BIM/bim-0080.jpg"
       },
       {
-        "title": { "en": "Automated 5D Quantity Take-Off (QTO)", "it": "Automated 5D QTO" },
-        "description": { "en": "We eliminate human error from your cost estimations. By embedding precise cost parameters directly into the Revit models and using custom extraction scripts, we generate instantaneous and 100% accurate Bill of Quantities (BOQ).", "it": "..." },
+        "title": { "en": "Automated 5D Quantity Take-Off (QTO)", "it": "Quantity Take-Off 5D Automatizzato (QTO)" },
+        "description": { "en": "Eradication of human error in project budgeting. Precise cost parameters are embedded directly into LOD-compliant models. Automated extraction workflows generate instantaneous, dynamically updated Bill of Quantities (BOQ) that respond to geometric modifications in real-time.", "it": "Eliminazione dell'errore umano nel budget di progetto. Parametri di costo precisi sono incorporati direttamente nei modelli conformi ai LOD." },
         "image": "/Pictures/Uncategorized/uncategorized-004.jpg"
       },
       {
-        "title": { "en": "4D Scheduling Simulation", "it": "4D Scheduling Simulation" },
-        "description": { "en": "Connect your Primavera or MS Project schedules directly to the 3D model. We build comprehensive 4D simulations that allow you to visually track construction progress, identify logistical bottlenecks, and ensure on-time delivery.", "it": "..." },
+        "title": { "en": "4D Construction Sequencing", "it": "Pianificazione e Sequenziamento 4D" },
+        "description": { "en": "Synchronization of geometry and time. Multi-disciplinary federated models are linked directly to project Gantt charts utilizing Synchro PRO. Comprehensive 4D simulations validate construction phases, isolate logistical bottlenecks, and guarantee schedule adherence.", "it": "Sincronizzazione di geometria e tempo. Modelli federati multidisciplinari collegati direttamente ai diagrammi di Gantt utilizzando Synchro PRO." },
         "image": "/Pictures/Uncategorized/uncategorized-017.jpg"
       }
     ],
     "grid": [
-      { "en": "Algorithmic Clash Detection", "it": "Algorithmic Clash Detection" },
-      { "en": "Automated 5D QTO", "it": "Automated 5D QTO" },
-      { "en": "4D Scheduling Simulation", "it": "4D Scheduling Simulation" },
-      { "en": "LOD 100 to LOD 500 Modeling", "it": "LOD 100 to LOD 500 Modeling" }
+      { "en": "Algorithmic Clash Detection & BCF Routing", "it": "Algorithmic Clash Detection & BCF Routing" },
+      { "en": "Automated 5D QTO & Dynamic Budgeting", "it": "Automated 5D QTO & Dynamic Budgeting" },
+      { "en": "4D Construction Sequencing & Simulation", "it": "4D Construction Sequencing & Simulation" },
+      { "en": "LOD 100 to LOD 500 Constructible Modeling", "it": "LOD 100 to LOD 500 Constructible Modeling" },
+      { "en": "Scan-to-BIM (Point Cloud Processing)", "it": "Scan-to-BIM (Point Cloud Processing)" },
+      { "en": "Federated Model Assembly", "it": "Federated Model Assembly" }
     ],
     "types": [
-      { "en": "Revit", "it": "Revit" },
-      { "en": "Navisworks", "it": "Navisworks" },
-      { "en": "Civil 3D", "it": "Civil 3D" },
-      { "en": "BIM 360", "it": "BIM 360" }
+      { "en": "REVIT", "it": "REVIT" },
+      { "en": "NAVISWORKS MANAGE", "it": "NAVISWORKS MANAGE" },
+      { "en": "SOLIBRI", "it": "SOLIBRI" },
+      { "en": "SYNCHRO PRO", "it": "SYNCHRO PRO" },
+      { "en": "COSTX / PRIMUS", "it": "COSTX / PRIMUS" },
+      { "en": "RECAP PRO", "it": "RECAP PRO" }
     ],
     "faq": [
       {
-        "q": { "en": "How does algorithmic clash detection differ from standard clash detection?", "it": "Come differisce..." },
-        "a": { "en": "Instead of manually reviewing thousands of false positives, we write scripts that group, filter, and assign clashes automatically based on spatial constraints and element properties.", "it": "Invece di..." }
+        "q": { "en": "How does algorithmic clash resolution differ from standard practices?", "it": "In cosa differisce la risoluzione algoritmica dei clash rispetto alle pratiche standard?" },
+        "a": { "en": "Standard protocols require manual review of irrelevant spatial intersections. Algorithmic resolution deploys programmatic logic to automatically filter false positives, group conflicts by proximity, and assign actionable data directly to responsible disciplines via BCF. This methodology reduces coordination timelines and guarantees data accuracy.", "it": "I protocolli standard richiedono la revisione manuale di intersezioni irrilevanti. La risoluzione algoritmica applica logiche programmatiche per filtrare i falsi positivi ed assegnare dati direttamente ai responsabili via BCF." }
       }
     ],
-    "offerTitle": { "en": "100% Precision", "it": "100% Precisione" },
-    "offerDescription": { "en": "Eliminate human error from your models with our automated QTO and Clash processes.", "it": "Elimina..." },
+    "offerTitle": { "en": "Zero-Error Execution", "it": "Esecuzione a Zero Errori" },
+    "offerDescription": { "en": "Mitigation of construction risk through script-driven QA/QC and automated model auditing.", "it": "Mitigazione del rischio di costruzione tramite QA/QC guidato da script ed audit automatizzato." },
     "color": "yellow",
     "images": [
       "/Pictures/BIM/bim-0080.jpg",

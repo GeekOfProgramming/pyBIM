@@ -144,9 +144,11 @@ export default function ServiceDetailLayout({ service }) {
               <p className="text-lg text-brand-textSecondary font-medium leading-relaxed mb-6">
                 {data.description}
               </p>
-              <p className="text-lg text-brand-textSecondary font-medium leading-relaxed">
-                {data.longDescription}
-              </p>
+              {data.longDescription && (
+                <p className="text-lg text-brand-textSecondary font-medium leading-relaxed">
+                  {data.longDescription}
+                </p>
+              )}
             </div>
 
             {/* Deep-Dive Features */}
