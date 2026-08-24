@@ -29,62 +29,60 @@ export default function ServicesPageLayout() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-8">
             
-            {/* Card 1: Tech-Enabled BIM */}
+            {/* Card 1: Algorithmic Engineering */}
             <div className="group rounded-3xl bg-white border border-brand-border p-8 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:border-brand-primary transition-all duration-300 hover:-translate-y-2 flex flex-col">
               <div className="w-14 h-14 rounded-2xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center mb-8">
                 <Box className="w-7 h-7 text-yellow-500" />
               </div>
-              <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">Core BIM (3D / 4D / 5D)</h3>
+              <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">Algorithmic Engineering</h3>
               <p className="text-brand-textSecondary font-medium leading-relaxed flex-grow mb-8">
-                We provide standard BIM services, but our competitive edge is our tooling. We use custom scripts for <strong className="text-brand-textPrimary">Algorithmic Clash Detection</strong> and automated workflows to deliver 100% precision with <strong className="text-brand-textPrimary">Zero Human Error</strong>.
+                Execution of constructible models utilizing Navisworks and Solibri. Coordination cycles are accelerated through rule-based clash detection and programmatic BCF routing. Standard delivery encompasses Scan-to-BIM, 4D sequencing, and dynamic 5D QTO workflows.
               </p>
               <div className="flex flex-wrap gap-2 mb-8">
-                <span className="px-3 py-1.5 rounded-full bg-yellow-400/10 text-yellow-600 text-[10px] font-bold uppercase tracking-wider">Algorithmic Clash Detection</span>
-                <span className="px-3 py-1.5 rounded-full bg-yellow-400/10 text-yellow-600 text-[10px] font-bold uppercase tracking-wider">Zero Error</span>
-                <span className="px-3 py-1.5 rounded-full bg-yellow-400/10 text-yellow-600 text-[10px] font-bold uppercase tracking-wider">4D Scheduling</span>
+                <span className="px-3 py-1.5 rounded-full bg-yellow-400/10 text-yellow-600 text-[10px] font-bold uppercase tracking-wider">ALGORITHMIC COORDINATION</span>
+                <span className="px-3 py-1.5 rounded-full bg-yellow-400/10 text-yellow-600 text-[10px] font-bold uppercase tracking-wider">SCAN-TO-BIM</span>
+                <span className="px-3 py-1.5 rounded-full bg-yellow-400/10 text-yellow-600 text-[10px] font-bold uppercase tracking-wider">RULE-BASED QA</span>
               </div>
               <Link href="/services/core-bim" className="mt-auto inline-flex items-center justify-center w-full py-4 rounded-xl border-2 border-yellow-400/30 text-yellow-600 font-bold hover:bg-yellow-400 hover:text-white hover:border-yellow-400 transition-all gap-2 uppercase tracking-widest text-sm shadow-sm">
-                Explore BIM Services <ArrowRight className="w-4 h-4" />
+                EXPLORE ENGINEERING <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
-            {/* Card 2: Custom Development */}
+            {/* Card 2: Code & Automation */}
             <div className="group rounded-3xl bg-white border border-brand-border p-8 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:border-brand-primary transition-all duration-300 hover:-translate-y-2 flex flex-col relative overflow-hidden border-b-4 border-b-brand-primary">
               <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-8">
                 <Code className="w-7 h-7 text-brand-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">Custom Plugins & Automation</h3>
+              <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">Code & Automation</h3>
               <p className="text-brand-textSecondary font-medium leading-relaxed flex-grow mb-8">
-                Software has limits; our code doesn't. We develop bespoke <strong className="text-brand-textPrimary">Revit Add-ins</strong> using <strong className="text-brand-textPrimary">Python</strong> and C#. Turn a 3-hour repetitive task into a 3-second click.
+                Elimination of manual data entry and software limitations. Custom Python pipelines and C# Add-ins automate parameter injection, naming conventions, and repetitive modeling tasks. Execution times are reduced from multi-hour manual processes to immediate algorithmic outputs.
               </p>
               <div className="flex flex-wrap gap-2 mb-8">
-                <span className="px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-wider">Python</span>
-                <span className="px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-wider">Revit Add-ins</span>
-                <span className="px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-wider">C#</span>
-                <span className="px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-wider">Revit API</span>
+                <span className="px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-wider">PYTHON PIPELINES</span>
+                <span className="px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-wider">REVIT API</span>
+                <span className="px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-wider">AUTOMATED INJECTION</span>
               </div>
               <Link href="/services/custom-plugins" className="mt-auto inline-flex items-center justify-center w-full py-4 rounded-xl border-2 border-brand-primary/30 text-brand-primary font-bold hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all gap-2 uppercase tracking-widest text-sm shadow-sm">
-                Request a Plugin <ArrowRight className="w-4 h-4" />
+                REQUEST AUTOMATION <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
-            {/* Card 3: Data Infrastructure */}
+            {/* Card 3: CDE & Lifecycle Data */}
             <div className="group rounded-3xl bg-white border border-brand-border p-8 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:border-brand-primary transition-all duration-300 hover:-translate-y-2 flex flex-col">
               <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-8">
                 <Database className="w-7 h-7 text-purple-600" />
               </div>
-              <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">Data & API Integration (6D - 11D)</h3>
+              <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">CDE & Lifecycle Data</h3>
               <p className="text-brand-textSecondary font-medium leading-relaxed flex-grow mb-8">
-                We prepare and program your models to connect seamlessly with <strong className="text-brand-textPrimary">Facility Management</strong> systems, <strong className="text-brand-textPrimary">IoT</strong> sensors, and immersive <strong className="text-brand-textPrimary">Digital Twins</strong>.
+                Structuring of geometric and metadata baselines for post-construction operations. Automated extraction of COBie deliverables, maintenance of Cloud CDE protocols, and establishment of strictly ISO-compliant databases for digital twin integration.
               </p>
               <div className="flex flex-wrap gap-2 mb-8">
-                <span className="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-600 text-[10px] font-bold uppercase tracking-wider">Digital Twin</span>
-                <span className="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-600 text-[10px] font-bold uppercase tracking-wider">IoT</span>
-                <span className="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-600 text-[10px] font-bold uppercase tracking-wider">Facility Management</span>
-                <span className="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-600 text-[10px] font-bold uppercase tracking-wider">Forge / APS</span>
+                <span className="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-600 text-[10px] font-bold uppercase tracking-wider">CDE MANAGEMENT</span>
+                <span className="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-600 text-[10px] font-bold uppercase tracking-wider">COBIE HANDOVER</span>
+                <span className="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-600 text-[10px] font-bold uppercase tracking-wider">ISO 19650</span>
               </div>
               <Link href="/services/data-integration" className="mt-auto inline-flex items-center justify-center w-full py-4 rounded-xl border-2 border-purple-500/30 text-purple-600 font-bold hover:bg-purple-500 hover:text-white hover:border-purple-500 transition-all gap-2 uppercase tracking-widest text-sm shadow-sm">
-                Discover Data Solutions <ArrowRight className="w-4 h-4" />
+                DISCOVER DATA SOLUTIONS <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
