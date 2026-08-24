@@ -1,9 +1,29 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "@/components/LocalizedLink";
 import { ArrowRight, Code2, Cpu, Cog, Briefcase, Terminal } from "lucide-react";
 
 export default function AboutPageLayout() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        if (window.location.hash === "#tech-stack") {
+          const el = document.getElementById("tech-stack");
+          if (el) {
+            setTimeout(() => {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 150);
+          }
+        }
+      };
+
+      handleScroll();
+      window.addEventListener("hashchange", handleScroll);
+      return () => window.removeEventListener("hashchange", handleScroll);
+    }
+  }, []);
+
   return (
     <div className="w-full bg-brand-base">
       {/* SECTION 1: Hero Section (The Manifesto) */}
