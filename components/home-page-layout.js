@@ -9,41 +9,39 @@ export default function HomePageLayout() {
   return (
     <div className="w-full bg-brand-base text-brand-textPrimary">
       
-      {/* 1. HERO SECTION WITH FULL BACKGROUND IMAGE & HIGHLIGHT */}
+      {/* 1. HERO SECTION WITH FULL VISIBLE BACKGROUND IMAGE & UNBOXED TEXT */}
       <section className="relative py-28 md:py-36 px-6 lg:px-8 w-full bg-brand-base overflow-hidden border-b border-brand-border">
         {/* Full Background Image Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <img
             src="/Pictures/BIM/bim-0080.jpg"
             alt="BIM Engineering Background"
-            className="w-full h-full object-cover opacity-15 mix-blend-luminosity scale-105"
+            className="w-full h-full object-cover opacity-35 mix-blend-multiply scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-base via-brand-base/95 to-brand-base/70" />
-          <div className="absolute top-1/4 left-1/3 w-[600px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.12),transparent_70%)] pointer-events-none" />
+          {/* Gradient fade from left to right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-base via-brand-base/80 to-brand-base/30" />
+          {/* Center glow radial shadow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.15),transparent_70%)] pointer-events-none" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-3xl flex flex-col items-start text-left">
             
-            {/* Highlighted Backdrop Container */}
-            <div className="p-6 md:p-8 rounded-3xl bg-white/70 backdrop-blur-md border border-white/80 shadow-[0_10px_30px_rgba(0,0,0,0.03)] mb-8">
-              
-              {/* Top Tech Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-xs font-semibold uppercase tracking-widest mb-6">
-                <Terminal className="w-3.5 h-3.5" />
-                <span>ENGINEERING AUTOMATION & OPEN BIM</span>
-              </div>
-
-              {/* Hero Title */}
-              <h1 className="text-4xl sm:text-6xl lg:text-6xl font-bold text-brand-textPrimary tracking-tight leading-[1.1] mb-6">
-                Engineering the Future of <span className="text-brand-primary drop-shadow-sm">BIM & Custom Code.</span>
-              </h1>
-
-              {/* Hero Sub-title */}
-              <p className="text-brand-textSecondary text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
-                Programmatic coordination, Revit API plugins, and ISO 19650 & UNI 11337 compliance engineered for high-precision European AEC firms.
-              </p>
+            {/* Top Tech Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm">
+              <Terminal className="w-3.5 h-3.5" />
+              <span>ENGINEERING AUTOMATION & OPEN BIM</span>
             </div>
+
+            {/* Hero Title */}
+            <h1 className="text-4xl sm:text-6xl lg:text-6xl font-bold text-brand-textPrimary tracking-tight leading-[1.1] mb-6">
+              Engineering the Future of <span className="text-brand-primary">BIM & Custom Code.</span>
+            </h1>
+
+            {/* Hero Sub-title */}
+            <p className="text-brand-textSecondary text-lg sm:text-xl font-medium leading-relaxed max-w-2xl mb-10">
+              Programmatic coordination, Revit API plugins, and ISO 19650 & UNI 11337 compliance engineered for high-precision European AEC firms.
+            </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-12">
