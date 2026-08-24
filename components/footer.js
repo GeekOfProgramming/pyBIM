@@ -4,10 +4,8 @@ import { useState } from "react";
 import Link from "@/components/LocalizedLink";
 import { usePathname } from "next/navigation";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send, MessageCircle } from "lucide-react";
-import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Footer() {
-  const { t } = useLanguage();
   const pathname = usePathname();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -25,10 +23,10 @@ export default function Footer() {
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.error || "Failed");
-      setStatus(t("contact.form.success") || "Iscrizione completata!");
+      setStatus("Subscription completed!");
       setEmail("");
     } catch {
-      setStatus("Errore durante l'iscrizione.");
+      setStatus("Error during subscription.");
     } finally {
       setLoading(false);
     }
@@ -48,21 +46,15 @@ export default function Footer() {
           {/* LEFT SIDE: BRAND & SLOGAN */}
           <div className="flex flex-col">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              {t("nav.home") === "Home" && t("nav.services") === "Services" ? 
-                <p>Building your comfort<br />together</p> : 
-                <p>Costruiamo insieme<br />il vostro comfort</p>
-              }
+              <p>Engineering the Future<br />of BIM & Code</p>
             </h2>
-            <p className="text-white/80 mb-8 max-w-sm">
-              {t("nav.home") === "Home" && t("nav.services") === "Services" ?
-                "Fast technicians in Northern Italy: installations, climate, boilers, and renovations." :
-                "Tecnici rapidi in Veneto: impianti, clima, caldaie e ristrutturazioni."
-              }
+            <p className="text-white/80 mb-8 max-w-sm font-medium leading-relaxed">
+              Automated BIM coordination, custom Revit software development, and ISO 19650 compliance.
             </p>
             
             {/* Social Icons */}
             <div className="flex gap-4 mb-10 text-white">
-              <a href="https://web.whatsapp.com/send?phone=393518373043" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:bg-white hover:text-brand-primary transition bg-white/10 p-2.5 rounded-full border border-white/20">
+              <a href="https://web.whatsapp.com/send?phone=393792943476" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:bg-white hover:text-brand-primary transition bg-white/10 p-2.5 rounded-full border border-white/20">
                 <MessageCircle className="w-5 h-5" />
               </a>
               <a href="https://www.facebook.com/pybim" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:bg-white hover:text-brand-primary transition bg-white/10 p-2.5 rounded-full border border-white/20">
@@ -78,11 +70,11 @@ export default function Footer() {
 
             {/* Legal Box */}
             <div className="rounded-2xl border border-white/20 bg-white/10 p-5 text-sm text-white/90">
-              <div className="mb-4 inline-block">
+              <div className="mb-3 inline-block">
                 <img src="/logo_white_transparent.png" alt="pyBIM logo" className="h-8 w-auto object-contain" />
               </div>
-              <div>P.IVA - C.F.: 04992890279</div>
-              <div className="mt-1">Sede Legale: Via Verrocchio, 2, 30035 Mirano (VE)</div>
+              <div className="font-medium text-white/90">pyBIM Engineering Studio</div>
+              <div className="mt-1 text-white/80">Padova Arcella, Italy</div>
             </div>
           </div>
 
@@ -90,14 +82,14 @@ export default function Footer() {
           <div className="rounded-[2.5rem] border border-brand-border bg-white p-8 md:p-12 shadow-2xl">
             {/* Newsletter Block */}
             <div className="mb-12 border-b border-brand-border pb-10">
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-6">{t("footer.newsletter.title")}</h3>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-6">Subscribe to our Newsletter</h3>
               <form className="group flex flex-col gap-4" onSubmit={handleNewsletter}>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <input 
                     type="email" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder={t("footer.newsletter.placeholder")}
+                    placeholder="Your email address"
                     required
                     className="flex-1 rounded-2xl border border-brand-border bg-brand-surface px-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
                   />
@@ -115,11 +107,10 @@ export default function Footer() {
                   />
                   <label htmlFor="privacy-footer" className="text-xs">
                     <span className="text-xs text-brand-textSecondary">
-                      {t("forms.accept.part1")}
+                      I accept the{" "}
                       <Link href="/privacy-policy" className="text-brand-primary font-semibold hover:underline">
-                        {t("forms.accept.privacy")}
-                      </Link>
-                      {t("forms.accept.part3_short")}
+                        Privacy Policy
+                      </Link>.
                     </span>
                   </label>
                 </div>
@@ -130,13 +121,13 @@ export default function Footer() {
             <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {/* Quick Links */}
               <div>
-                <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">{t("footer.links")}</h4>
+                <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
                 <ul className="space-y-4 text-brand-textSecondary font-medium">
-                  <li><Link href="/" className="hover:text-brand-primary transition">{t("nav.home")}</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition">{t("nav.services")}</Link></li>
-                  <li><Link href="/projects" className="hover:text-brand-primary transition">{t("nav.projects")}</Link></li>
-                  <li><Link href="/about" className="hover:text-brand-primary transition">{t("nav.about")}</Link></li>
-                  <li><Link href="/contact" className="hover:text-brand-primary transition">{t("nav.contact")}</Link></li>
+                  <li><Link href="/" className="hover:text-brand-primary transition">Home</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition">Services</Link></li>
+                  <li><Link href="/projects" className="hover:text-brand-primary transition">Projects</Link></li>
+                  <li><Link href="/about" className="hover:text-brand-primary transition">About Us</Link></li>
+                  <li><Link href="/contact" className="hover:text-brand-primary transition">Contact</Link></li>
                 </ul>
               </div>
 
@@ -144,42 +135,38 @@ export default function Footer() {
               <div>
                 <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">Our Services</h4>
                 <ul className="space-y-4 text-brand-textSecondary font-medium">
-                  <li><Link href="/services" className="hover:text-brand-primary transition">Impianti Elettrici</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition">Climatizzatori e Caldaie</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition">Idraulica e Riparazioni</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition">Ristrutturazioni e Tinteggiatura</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition">Telecamere e Sicurezza</Link></li>
+                  <li><Link href="/services/bim" className="hover:text-brand-primary transition">3D / 4D / 5D BIM Modeling</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition">Custom Revit Plugins</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition">Scan-to-BIM & Point Cloud</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition">BIM Automation & APIs</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition">Digital Twins & IoT</Link></li>
                 </ul>
               </div>
 
               {/* Contact Info */}
               <div>
-                <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">{t("footer.contact")}</h4>
+                <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">Contact Us</h4>
                 <ul className="space-y-5 text-brand-textSecondary font-medium">
                   <li className="flex gap-3">
                     <Phone className="w-5 h-5 text-brand-primary shrink-0" />
                     <div>
-                      <div className="text-xs text-brand-textSecondary/70 mb-1">Telefono Fisso</div>
-                      <a href="tel:+390418944704" className="hover:text-brand-primary transition text-sm">+39 041 894 4704</a>
-                    </div>
-                  </li>
-                  <li className="flex gap-3">
-                    <Phone className="w-5 h-5 text-brand-primary shrink-0" />
-                    <div>
-                      <div className="text-xs text-brand-textSecondary/70 mb-1">Cellulare</div>
-                      <a href="tel:+393518373043" className="hover:text-brand-primary transition text-sm">+39 351 837 3043</a>
+                      <div className="text-xs text-brand-textSecondary/70 mb-1">Mobile</div>
+                      <a href="tel:+393792943476" className="hover:text-brand-primary transition text-sm font-semibold text-brand-textPrimary">+39 379 294 3476</a>
                     </div>
                   </li>
                   <li className="flex gap-3">
                     <Mail className="w-5 h-5 text-brand-primary shrink-0" />
                     <div>
                       <div className="text-xs text-brand-textSecondary/70 mb-1">E-mail</div>
-                      <a href="mailto:info@pybim.com" className="hover:text-brand-primary transition text-sm break-all">info@pybim.com</a>
+                      <a href="mailto:info@pybim.com" className="hover:text-brand-primary transition text-sm break-all font-semibold text-brand-textPrimary">info@pybim.com</a>
                     </div>
                   </li>
                   <li className="flex gap-3">
                     <MapPin className="w-5 h-5 text-brand-primary shrink-0" />
-                    <div className="text-sm">Via Verrocchio, 2,<br />30035 Mirano (VE)</div>
+                    <div>
+                      <div className="text-xs text-brand-textSecondary/70 mb-1">Location</div>
+                      <div className="text-sm font-semibold text-brand-textPrimary">Padova Arcella, Italy</div>
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -190,11 +177,11 @@ export default function Footer() {
         {/* BOTTOM BAR */}
         <div className="border-t border-white/20 pt-8 pb-28 lg:pb-8 mt-4 flex flex-col lg:flex-row items-center justify-between gap-4">
           <p className="text-sm text-white/80 font-medium text-center md:text-left">
-            Copyright © 2026 pyBIM SRLS. {t("footer.rights")}
+            Copyright © 2026 pyBIM. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-white/80 font-medium justify-center flex-wrap">
-            <Link href="/privacy-policy" className="hover:text-white transition">{t("footer.privacy")}</Link>
-            <Link href="/terms-and-conditions" className="hover:text-white transition">{t("forms.accept.terms")}</Link>
+            <Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
+            <Link href="/terms-and-conditions" className="hover:text-white transition">Terms and Conditions</Link>
           </div>
         </div>
       </div>
