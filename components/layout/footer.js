@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { usePathname } from "next/navigation";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send, MessageCircle } from "lucide-react";
 

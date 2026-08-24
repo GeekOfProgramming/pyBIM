@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { ArrowLeft, Home, Cpu, Layers, Compass, Mail, Terminal } from "lucide-react";
 
 export default function NotFound() {

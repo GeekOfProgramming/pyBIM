@@ -1,4 +1,4 @@
-import ProjectsPageLayout from "@/components/projects-page-layout";
+import ProjectsPageLayout from "@/components/pages/projects-page-layout";
 import projectsData from "@/lib/data/projects-data.json";
 import { db } from "@/lib/db";
 

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import projectsData from "@/lib/data/projects-data.json";
-import ProjectDetailLayout from "@/components/project-detail-layout";
+import ProjectDetailLayout from "@/components/pages/project-detail-layout";
 import { db } from "@/lib/db";
 
 export async function generateStaticParams() {

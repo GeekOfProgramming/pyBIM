@@ -1,4 +1,4 @@
-import ServicesPageLayout from "@/components/services-page-layout";
+import ServicesPageLayout from "@/components/pages/services-page-layout";
 
 export const metadata = {
   title: "Servizi"

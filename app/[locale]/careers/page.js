@@ -1,4 +1,4 @@
-import CareersPageLayout from "@/components/careers-page-layout";
+import CareersPageLayout from "@/components/pages/careers-page-layout";
 import { db } from "@/lib/db";
 import { dummyJobs } from "@/lib/dummy-jobs";
 

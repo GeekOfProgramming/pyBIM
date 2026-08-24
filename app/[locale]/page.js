@@ -1,4 +1,4 @@
-import HomePageLayout from "@/components/home-page-layout";
+import HomePageLayout from "@/components/pages/home-page-layout";
 
 const organizationSchema = {
   "@context": "https://schema.org",

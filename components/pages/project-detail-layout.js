@@ -1,5 +1,5 @@
 "use client";
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { useState } from "react";
 import { ChevronRight, ChevronDown, Phone, Mail, CheckCircle, Info, Calendar, MapPin, Building, Users, Settings } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";

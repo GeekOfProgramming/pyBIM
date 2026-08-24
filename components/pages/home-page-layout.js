@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, Code, Database, Cpu, Layers, CheckCircle2, ShieldCheck, Zap, Terminal, ExternalLink } from "lucide-react";
-import ProjectsGrid from "./projects-grid";
+import ProjectsGrid from "@/components/ui/projects-grid";
 import projectsData from "@/lib/data/projects-data.json";
 
 export default function HomePageLayout() {

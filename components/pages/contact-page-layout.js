@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Linkedin, MessageCircle } from "lucide-react";
 import { emailAddress, phoneDisplay, phoneHref } from "@/lib/site-copy";
-import FAQSection from "@/components/faq-section";
+import FAQSection from "@/components/sections/faq-section";
 import { useLanguage } from "@/lib/LanguageContext";
-import BimCalculatorCta from "@/components/bim-calculator-cta";
+import BimCalculatorCta from "@/components/sections/bim-calculator-cta";
 
 export default function ContactPageLayout() {
   const { t } = useLanguage();

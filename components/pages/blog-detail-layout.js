@@ -1,5 +1,5 @@
 "use client";
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { ChevronRight, Calendar, User, Tag, Facebook, Linkedin, Twitter, MessageCircle, ArrowLeft, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import ReactMarkdown from "react-markdown";

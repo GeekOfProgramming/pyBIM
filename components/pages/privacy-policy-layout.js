@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { ChevronRight, ShieldCheck } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 

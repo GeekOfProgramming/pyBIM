@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import servicesData from "@/lib/data/services-data.json";
-import ServiceDetailLayout from "@/components/service-detail-layout";
+import ServiceDetailLayout from "@/components/pages/service-detail-layout";
 
 export function generateStaticParams() {
   const locales = ["en", "it", "de"];

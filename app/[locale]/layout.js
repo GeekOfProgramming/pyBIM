@@ -1,9 +1,9 @@
 import "../globals.css";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import GoToTop from "@/components/go-to-top";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import GoToTop from "@/components/layout/go-to-top";
 import { LanguageProvider } from "@/lib/LanguageContext";
-import MobileBottomNav from "@/components/mobile-bottom-nav";
+import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
 import { Analytics } from "@vercel/analytics/react";
 
 const siteUrl = "https://pybim.com";

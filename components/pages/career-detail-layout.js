@@ -1,5 +1,5 @@
 "use client";
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { ChevronLeft, ChevronRight, Briefcase, Mail } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, Code2, Cpu, Cog, Briefcase, Terminal } from "lucide-react";
 
 export default function AboutPageLayout() {

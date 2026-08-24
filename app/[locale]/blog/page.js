@@ -1,4 +1,4 @@
-import BlogPageLayout from "@/components/blog-page-layout";
+import BlogPageLayout from "@/components/pages/blog-page-layout";
 import blogData from "@/lib/data/blog-data.json";
 
 export const metadata = {

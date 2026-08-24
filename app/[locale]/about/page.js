@@ -1,4 +1,4 @@
-import AboutPageLayout from "@/components/about-page-layout";
+import AboutPageLayout from "@/components/pages/about-page-layout";
 import teamData from "@/lib/data/team-data.json";
 import { db } from "@/lib/db";
 

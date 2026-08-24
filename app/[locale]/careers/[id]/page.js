@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import CareerDetailLayout from "@/components/career-detail-layout";
+import CareerDetailLayout from "@/components/pages/career-detail-layout";
 import { db } from "@/lib/db";
 import { dummyJobs } from "@/lib/dummy-jobs";
 

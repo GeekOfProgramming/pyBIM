@@ -1,4 +1,4 @@
-import ContactPageLayout from "@/components/contact-page-layout";
+import ContactPageLayout from "@/components/pages/contact-page-layout";
 
 export const metadata = {
   title: "Contatti"

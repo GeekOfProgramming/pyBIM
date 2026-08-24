@@ -1,9 +1,11 @@
 "use client";
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, Box, Code, Database, ChevronRight, HardHat, Building2, Factory, ShieldCheck, FileText, Landmark } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import TechStackSection from "@/components/ui/TechStackSection";
 import ComplianceSection from "@/components/ui/ComplianceSection";
+import BimCalculatorCta from "@/components/sections/bim-calculator-cta";
+import FAQSection from "@/components/sections/faq-section";
 
 export default function ServicesPageLayout() {
   const { language } = useLanguage();

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { ChevronRight, ArrowRight, Calendar, Quote } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 

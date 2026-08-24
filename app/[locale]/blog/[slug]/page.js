@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import blogData from "@/lib/data/blog-data.json";
-import BlogDetailLayout from "@/components/blog-detail-layout";
+import BlogDetailLayout from "@/components/pages/blog-detail-layout";
 
 export function generateStaticParams() {
   const locales = ["en", "it", "de"];

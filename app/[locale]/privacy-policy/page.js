@@ -1,4 +1,4 @@
-import PrivacyPolicyLayout from "@/components/privacy-policy-layout";
+import PrivacyPolicyLayout from "@/components/pages/privacy-policy-layout";
 
 export const metadata = { title: "Informativa sulla privacy" };
 

@@ -1,4 +1,4 @@
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { Play } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 

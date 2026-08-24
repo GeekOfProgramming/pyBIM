@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { usePathname } from "next/navigation";
 import { Home, Wrench, Briefcase, Menu, X, Info, FileText, Phone } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";

@@ -1,4 +1,4 @@
-import TermsLayout from "@/components/terms-layout";
+import TermsLayout from "@/components/pages/terms-layout";
 
 export const metadata = { title: "Termini e Condizioni" };
 

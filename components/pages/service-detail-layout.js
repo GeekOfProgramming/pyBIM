@@ -1,5 +1,5 @@
 "use client";
-import Link from "@/components/LocalizedLink";
+import Link from "@/components/layout/LocalizedLink";
 import { useState, useEffect } from "react";
 import { ArrowRight, ChevronDown, ChevronRight, CheckCircle, Phone, Mail } from "lucide-react";
 import servicesData from "@/lib/data/services-data.json";
