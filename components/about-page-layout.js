@@ -292,7 +292,7 @@ export default function AboutPageLayout() {
 
             <div className="text-center group">
               <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-6 group-hover:scale-105 transition-transform duration-500">
-                +500
+                +50
               </div>
               <div className="text-brand-textSecondary font-bold uppercase tracking-widest text-sm leading-relaxed max-w-xs mx-auto">
                 Custom scripts and plugins deployed
