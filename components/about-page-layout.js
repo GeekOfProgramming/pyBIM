@@ -134,118 +134,100 @@ export default function AboutPageLayout() {
             </p>
           </div>
           
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 lg:grid-cols-3">
             
-            {/* 1. CORE AUTOMATION */}
-            <div className="rounded-3xl bg-white border border-brand-primary/30 shadow-lg p-7 flex flex-col justify-between hover:border-brand-primary/50 transition-all group">
+            {/* 1. ENGINEERING PLATFORMS */}
+            <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
               <div>
-                <div className="border-b border-brand-primary/20 pb-5 mb-5">
-                  <span className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-widest block mb-1">01. CODE & AUTOMATION</span>
-                  <h3 className="text-lg font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
-                    <Terminal className="w-4 h-4 text-brand-primary" /> Development Stack
-                  </h3>
-                  <p className="text-xs text-brand-primary font-mono italic">Programmatic control over manual workflows.</p>
-                </div>
-
-                <div className="space-y-3.5">
-                  {[
-                    { name: "Python", desc: "Automated Parameter Injection & Bulk Processing" },
-                    { name: "C# & Revit API", desc: "Custom Code & Rule-Based Logic" },
-                    { name: "Dynamo / pyRevit", desc: "Visual Scripting & Rapid Prototyping" },
-                    { name: "Autodesk APS (Forge)", desc: "Cloud Automation & CDE Integration" },
-                    { name: "REST APIs", desc: "Cross-Platform Data Synchronization" },
-                    { name: "SQL / PostgreSQL", desc: "Relational BIM Database Management" },
-                    { name: "LangChain (RAG)", desc: "Automated BEP/EIR Document Auditing" },
-                  ].map((item, idx) => (
-                    <div key={idx} className="p-3 rounded-xl bg-brand-primary/5 border border-brand-primary/15 hover:bg-white hover:border-brand-primary/40 hover:shadow-sm transition-all">
-                      <span className="font-bold text-xs text-brand-textPrimary block mb-0.5">{item.name}</span>
-                      <p className="text-[11px] text-brand-textSecondary font-medium leading-snug">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* 2. ENGINEERING PLATFORMS */}
-            <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-7 flex flex-col justify-between hover:shadow-md transition-all">
-              <div>
-                <div className="border-b border-brand-border pb-5 mb-5">
-                  <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block mb-1">02. AUTHORING & COORDINATION</span>
-                  <h3 className="text-lg font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
-                    <Cog className="w-4 h-4 text-brand-primary" /> Engineering Platforms
+                <div className="border-b border-brand-border pb-6 mb-6">
+                  <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block mb-1">01. AUTHORING & COORDINATION</span>
+                  <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
+                    <Cog className="w-5 h-5 text-brand-primary" /> Engineering Platforms
                   </h3>
                   <p className="text-xs text-brand-primary font-mono italic">ISO-compliant authoring and clash resolution.</p>
                 </div>
 
                 <div className="space-y-3.5">
                   {[
-                    { name: "Autodesk Revit", desc: "Multidisciplinary 3D Coordination" },
-                    { name: "Navisworks Manage", desc: "Advanced Clash Detection & Federated Models" },
-                    { name: "Solibri Office", desc: "Automated Code Checking & QA/QC" },
-                    { name: "PriMus-IFC / CostX", desc: "Dynamic 5D Quantity Take-off" },
-                    { name: "Synchro PRO", desc: "4D Construction Sequencing" },
-                    { name: "ReCap Pro", desc: "Point Cloud-to-BIM Conversion" },
+                    { name: "Autodesk Revit", tag: "3D", desc: "Multidisciplinary 3D Coordination" },
+                    { name: "Navisworks Manage", tag: "Clash/4D", desc: "Advanced Clash Detection & Federated Models" },
+                    { name: "Solibri Office", tag: "QA/QC", desc: "Automated Code Checking & Rule Audits" },
+                    { name: "PriMus-IFC / CostX", tag: "5D", desc: "Dynamic 5D Quantity Take-off" },
+                    { name: "Synchro PRO", tag: "4D", desc: "4D Construction Sequencing" },
+                    { name: "ReCap Pro", tag: "Scan-to-BIM", desc: "Point Cloud-to-BIM Conversion" },
                   ].map((item, idx) => (
-                    <div key={idx} className="p-3 rounded-xl bg-brand-surface/60 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 hover:shadow-sm transition-all">
-                      <span className="font-bold text-xs text-brand-textPrimary block mb-0.5">{item.name}</span>
-                      <p className="text-[11px] text-brand-textSecondary font-medium leading-snug">{item.desc}</p>
+                    <div key={idx} className="p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 hover:shadow-sm transition-all">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-bold text-sm text-brand-textPrimary">{item.name}</span>
+                        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-100">{item.tag}</span>
+                      </div>
+                      <p className="text-xs text-brand-textSecondary font-medium leading-relaxed">{item.desc}</p>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* 3. CDE & CLOUD */}
-            <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-7 flex flex-col justify-between hover:shadow-md transition-all">
-              <div>
-                <div className="border-b border-brand-border pb-5 mb-5">
-                  <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block mb-1">03. DATA & SINGLE SOURCE OF TRUTH</span>
-                  <h3 className="text-lg font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
-                    <Cpu className="w-4 h-4 text-brand-primary" /> CDE & Data Management
+            {/* 2. DEVELOPMENT STACK */}
+            <div className="rounded-3xl bg-white border border-brand-primary/30 shadow-lg p-8 flex flex-col justify-between relative group hover:border-brand-primary/50 transition-all">
+              <div className="absolute inset-0 bg-brand-primary/[0.02] rounded-3xl pointer-events-none" />
+              <div className="relative z-10">
+                <div className="border-b border-brand-primary/20 pb-6 mb-6">
+                  <span className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-widest block mb-1">02. CODE & AUTOMATION</span>
+                  <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
+                    <Terminal className="w-5 h-5 text-brand-primary" /> Development Stack
                   </h3>
-                  <p className="text-xs text-brand-primary font-mono italic">Secure, centralized Single Source of Truth (SSOT).</p>
+                  <p className="text-xs text-brand-primary font-mono italic">Programmatic control over manual workflows.</p>
                 </div>
 
                 <div className="space-y-3.5">
                   {[
-                    { name: "Autodesk Construction Cloud", desc: "Cloud Worksharing & CDE Hosting" },
-                    { name: "dRofus", desc: "Master Data & Room Requirements Management" },
-                    { name: "BIMcollab / Dalux", desc: "Cloud-Based Issue Tracking (BCF)" },
-                    { name: "Power BI", desc: "Live Project Analytics & Clash Dashboards" },
-                    { name: "Speckle", desc: "Open Data Infrastructure & Version Control" },
+                    { name: "Python", tag: "Automation", desc: "Automated Parameter Injection & Bulk Processing" },
+                    { name: "C# & Revit API", tag: "Plugins", desc: "Custom Code & Rule-Based Logic" },
+                    { name: "Dynamo / pyRevit", tag: "Scripting", desc: "Visual Scripting & Rapid Prototyping" },
+                    { name: "Autodesk APS (Forge)", tag: "Cloud API", desc: "Cloud Automation & CDE Integration" },
+                    { name: "REST APIs", tag: "Sync", desc: "Cross-Platform Data Synchronization" },
+                    { name: "SQL / PostgreSQL", tag: "Database", desc: "Relational BIM Database Management" },
+                    { name: "LangChain (RAG)", tag: "AI Audit", desc: "Automated BEP/EIR Document Auditing" },
                   ].map((item, idx) => (
-                    <div key={idx} className="p-3 rounded-xl bg-brand-surface/60 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 hover:shadow-sm transition-all">
-                      <span className="font-bold text-xs text-brand-textPrimary block mb-0.5">{item.name}</span>
-                      <p className="text-[11px] text-brand-textSecondary font-medium leading-snug">{item.desc}</p>
+                    <div key={idx} className="p-3.5 rounded-2xl bg-brand-primary/5 border border-brand-primary/15 hover:bg-white hover:border-brand-primary/40 hover:shadow-sm transition-all">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-bold text-sm text-brand-textPrimary">{item.name}</span>
+                        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-brand-primary text-white">{item.tag}</span>
+                      </div>
+                      <p className="text-xs text-brand-textSecondary font-medium leading-relaxed">{item.desc}</p>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* 4. STANDARDS */}
-            <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-7 flex flex-col justify-between hover:shadow-md transition-all">
+            {/* 3. STANDARDS & CDE */}
+            <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
               <div>
-                <div className="border-b border-brand-border pb-5 mb-5">
-                  <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block mb-1">04. MANDATES & OPENBIM</span>
-                  <h3 className="text-lg font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
-                    <Code2 className="w-4 h-4 text-brand-primary" /> Standards & Protocols
+                <div className="border-b border-brand-border pb-6 mb-6">
+                  <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block mb-1">03. COMPLIANCE & CDE</span>
+                  <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
+                    <Code2 className="w-5 h-5 text-brand-primary" /> Standards & CDE
                   </h3>
                   <p className="text-xs text-brand-primary font-mono italic">Strict compliance with EU & UK mandates.</p>
                 </div>
 
                 <div className="space-y-3.5">
                   {[
-                    { name: "ISO 19650", desc: "International Information Management Framework" },
-                    { name: "UNI 11337", desc: "Italian National BIM Mandates" },
-                    { name: "IFC (ISO 16739) & BCF", desc: "OpenBIM Interoperability Formats" },
-                    { name: "COBie", desc: "Standardized Facility Management Handover" },
-                    { name: "Decreto BIM (D.M. 560/312)", desc: "Italian Public Procurement Compliance" },
-                    { name: "EIR, BEP & MIDP", desc: "Strategic Information Delivery Planning" },
+                    { name: "ISO 19650", tag: "Global Framework", desc: "International Information Management Framework" },
+                    { name: "UNI 11337", tag: "Italian Standard", desc: "Italian National BIM Mandates" },
+                    { name: "IFC & BCF", tag: "OpenBIM", desc: "OpenBIM Interoperability Formats (ISO 16739)" },
+                    { name: "COBie", tag: "FM Handover", desc: "Standardized Facility Management Handover" },
+                    { name: "Autodesk ACC / Speckle", tag: "CDE & SSOT", desc: "Cloud Worksharing & Open Data Infrastructure" },
+                    { name: "EIR, BEP & MIDP", tag: "Delivery", desc: "Strategic Information Delivery Planning" },
                   ].map((item, idx) => (
-                    <div key={idx} className="p-3 rounded-xl bg-brand-surface/60 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 hover:shadow-sm transition-all">
-                      <span className="font-bold text-xs text-brand-textPrimary block mb-0.5">{item.name}</span>
-                      <p className="text-[11px] text-brand-textSecondary font-medium leading-snug">{item.desc}</p>
+                    <div key={idx} className="p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 hover:shadow-sm transition-all">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-bold text-sm text-brand-textPrimary">{item.name}</span>
+                        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-100">{item.tag}</span>
+                      </div>
+                      <p className="text-xs text-brand-textSecondary font-medium leading-relaxed">{item.desc}</p>
                     </div>
                   ))}
                 </div>
