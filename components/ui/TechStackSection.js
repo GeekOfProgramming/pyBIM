@@ -4,49 +4,50 @@ export default function TechStackSection() {
   const categories = [
     {
       title: "Core Automation & Development Stack",
+      tagline: "Programmatic control over manual workflows.",
       skills: [
-        { name: "Python", desc: "Data Processing & Bulk Automation" },
-        { name: "C# & Revit API", desc: "Custom Engineering Plugins" },
-        { name: "Dynamo & pyRevit", desc: "Visual Scripting & Workflow Automation" },
-        { name: "Autodesk APS (Forge)", desc: "Cloud Data Extraction & Integration" },
-        { name: "REST APIs & Webhooks", desc: "System Connectivity & IoT" },
+        { name: "Python", desc: "Automated Parameter Injection & Bulk Processing" },
+        { name: "C# & Revit API", desc: "Custom Code & Rule-Based Logic" },
+        { name: "Dynamo / pyRevit", desc: "Visual Scripting & Rapid Prototyping" },
+        { name: "Autodesk APS (Forge)", desc: "Cloud Automation & CDE Integration" },
+        { name: "REST APIs", desc: "Cross-Platform Data Synchronization" },
         { name: "SQL / PostgreSQL", desc: "Relational BIM Database Management" },
-        { name: "LangChain & AI", desc: "RAG-based Automated Document Auditing" },
+        { name: "LangChain (RAG)", desc: "Automated BEP/EIR Document Auditing" },
       ]
     },
     {
       title: "Engineering & BIM Platforms",
+      tagline: "ISO-compliant authoring and clash resolution.",
       skills: [
         { name: "Autodesk Revit", desc: "Multidisciplinary 3D Coordination" },
-        { name: "Navisworks Manage", desc: "Clash Detection & 4D Simulation" },
-        { name: "Solibri Office", desc: "Rule-based Model Checking & QA/QC" },
-        { name: "PriMus-IFC & CostX", desc: "Dynamic 5D Quantity Take-off" },
-        { name: "Synchro PRO", desc: "Advanced Construction Scheduling" },
-        { name: "ReCap Pro", desc: "Point Cloud Processing (Scan-to-BIM)" },
-        { name: "Tekla Structures", desc: "Structural Detailing (LOD 400)" },
+        { name: "Navisworks Manage", desc: "Advanced Clash Detection & Federated Models" },
+        { name: "Solibri Office", desc: "Automated Code Checking & QA/QC" },
+        { name: "PriMus-IFC / CostX", desc: "Dynamic 5D Quantity Take-off" },
+        { name: "Synchro PRO", desc: "4D Construction Sequencing" },
+        { name: "ReCap Pro", desc: "Point Cloud-to-BIM Conversion" },
       ]
     },
     {
       title: "CDE, Cloud & Data Management",
+      tagline: "Secure, centralized Single Source of Truth (SSOT).",
       skills: [
-        { name: "Autodesk Construction Cloud (ACC)", desc: "Common Data Environment" },
-        { name: "dRofus", desc: "Spatial & Equipment Data Management" },
-        { name: "BIMcollab / Dalux", desc: "Cloud-based Issue Tracking & BCF" },
-        { name: "Power BI", desc: "Project Analytics & Data Dashboards" },
+        { name: "Autodesk Construction Cloud", desc: "Cloud Worksharing & CDE Hosting" },
+        { name: "dRofus", desc: "Master Data & Room Requirements Management" },
+        { name: "BIMcollab / Dalux", desc: "Cloud-Based Issue Tracking (BCF)" },
+        { name: "Power BI", desc: "Live Project Analytics & Clash Dashboards" },
         { name: "Speckle", desc: "Open Data Infrastructure & Version Control" },
-        { name: "Revizto", desc: "Immersive VR & Visual Coordination" },
       ]
     },
     {
       title: "Standards & OpenBIM Protocols",
+      tagline: "Strict compliance with EU & UK mandates.",
       skills: [
         { name: "ISO 19650", desc: "International Information Management Framework" },
-        { name: "UNI 11337", desc: "Italian National BIM Standard" },
-        { name: "IFC (ISO 16739) & BCF", desc: "OpenBIM Exchange Formats" },
-        { name: "COBie", desc: "Facility Management Data Handover" },
-        { name: "Decreto BIM (D.M. 560/312)", desc: "Italian Public Procurement Mandates" },
-        { name: "EIR & BEP", desc: "Employer Requirements & Execution Planning" },
-        { name: "bsDD & IDM (ISO 29481)", desc: "Data Dictionaries & Delivery Manuals" },
+        { name: "UNI 11337", desc: "Italian National BIM Mandates" },
+        { name: "IFC (ISO 16739) & BCF", desc: "OpenBIM Interoperability Formats" },
+        { name: "COBie", desc: "Standardized Facility Management Handover" },
+        { name: "Decreto BIM (D.M. 560/312)", desc: "Italian Public Procurement Compliance" },
+        { name: "EIR, BEP & MIDP", desc: "Strategic Information Delivery Planning" },
       ]
     }
   ];
@@ -61,21 +62,24 @@ export default function TechStackSection() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category, index) => (
-            <div key={index} className="bg-[#171717] border border-[#262626] p-6 rounded-xl hover:border-[#3B82F6] transition-colors duration-300">
-              <h4 className="text-[#FAFAFA] font-semibold mb-5 pb-3 border-b border-[#262626] text-base leading-snug">{category.title}</h4>
-              <ul className="space-y-3.5">
-                {category.skills.map((skill, i) => (
-                  <li key={i} className="text-sm">
-                    <div className="flex items-start">
-                      <span className="text-[#3B82F6] mr-2 shrink-0 font-bold">▹</span>
-                      <div>
-                        <span className="text-[#FAFAFA] font-semibold block leading-tight">{skill.name}</span>
-                        <span className="text-[#A3A3A3] text-xs font-normal block leading-snug mt-0.5">{skill.desc}</span>
+            <div key={index} className="bg-[#171717] border border-[#262626] p-6 rounded-xl hover:border-[#3B82F6] transition-colors duration-300 flex flex-col justify-between">
+              <div>
+                <h4 className="text-[#FAFAFA] font-semibold text-base leading-snug mb-1">{category.title}</h4>
+                <p className="text-[#3B82F6] text-xs font-mono italic mb-5 pb-3 border-b border-[#262626]">{category.tagline}</p>
+                <ul className="space-y-3.5">
+                  {category.skills.map((skill, i) => (
+                    <li key={i} className="text-sm">
+                      <div className="flex items-start">
+                        <span className="text-[#3B82F6] mr-2 shrink-0 font-bold">▹</span>
+                        <div>
+                          <span className="text-[#FAFAFA] font-semibold block leading-tight">{skill.name}</span>
+                          <span className="text-[#A3A3A3] text-xs font-normal block leading-snug mt-0.5">{skill.desc}</span>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>
