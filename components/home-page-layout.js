@@ -1,328 +1,284 @@
 "use client";
 
 import Link from "@/components/LocalizedLink";
-import { ArrowRight, Play, CheckCircle, Droplets, Zap, Hammer, ChevronRight, Flame, Paintbrush, Wind, Snowflake, Cctv, Home, Sun, Layers, Monitor, Glasses } from "lucide-react";
-import HeroSection from "./hero-section";
-import AboutPreview from "./about-preview";
+import { ArrowRight, Code, Database, Cpu, Layers, CheckCircle2, ShieldCheck, Zap, Terminal, ExternalLink } from "lucide-react";
 import ProjectsGrid from "./projects-grid";
-import AnimatedStatsSection from "./animated-stats-section";
-import TrustSection from "./trust-section";
-import BlogPreview from "./blog-preview";
-import TeamPartnerCard from "./team-partner-card";
-import { useLanguage } from "@/lib/LanguageContext";
-import Carousel from "./carousel";
-import servicesData from "@/lib/data/services-data.json";
 import projectsData from "@/lib/data/projects-data.json";
-import blogData from "@/lib/data/blog-data.json";
-
-const iconMap = {
-  elettrici: Zap,
-  clima: Snowflake,
-  caldaie: Flame,
-  sicurezza: Cctv,
-  idraulica: Droplets,
-  tinteggiatura: Paintbrush,
-  ristrutturazioni: Home,
-  fotovoltaici: Sun
-};
-
-const imgMap = {
-  elettrici: "/Pictures/Electrical/electrical-008.jpg",
-  clima: "/Pictures/HVAC/hvac-002.jpg",
-  caldaie: "/Pictures/HVAC/hvac-029.jpg",
-  sicurezza: "/Pictures/Security/security-002.jpg",
-  idraulica: "/Pictures/Plumbing/plumbing-008.jpg",
-  tinteggiatura: "/Pictures/Painting/painting-005.jpg",
-  ristrutturazioni: "/Pictures/Renovations/renovations-012.jpg",
-  fotovoltaici: "/Pictures/Solar/solar-002.jpg"
-};
-
-const colorMap = {
-  elettrici: "text-yellow-400 bg-yellow-400/20 border-yellow-400/30 group-hover:bg-yellow-400 group-hover:text-[#081730]",
-  clima: "text-brand-accent bg-brand-accent/20 border-brand-accent/30 group-hover:bg-brand-accent group-hover:text-[#081730]",
-  caldaie: "text-brand-accent bg-brand-accent/20 border-brand-accent/30 group-hover:bg-brand-accent group-hover:text-white",
-  sicurezza: "text-emerald-400 bg-emerald-400/20 border-emerald-400/30 group-hover:bg-emerald-400 group-hover:text-[#081730]",
-  idraulica: "text-blue-400 bg-blue-400/20 border-blue-400/30 group-hover:bg-blue-400 group-hover:text-[#081730]",
-  tinteggiatura: "text-purple-400 bg-purple-400/20 border-purple-400/30 group-hover:bg-purple-400 group-hover:text-white",
-  ristrutturazioni: "text-stone-300 bg-stone-500/20 border-stone-500/30 group-hover:bg-stone-300 group-hover:text-[#081730]",
-  fotovoltaici: "text-red-500 bg-red-500/20 border-red-500/30 group-hover:bg-red-500 group-hover:text-white"
-};
 
 export default function HomePageLayout() {
-  const { t, language } = useLanguage();
-  const services = servicesData.filter(srv => srv.slug !== 'bim');
-
   return (
-    <div className="w-full">
+    <div className="w-full bg-[#0A0A0A] text-white">
+      
       {/* 1. HERO SECTION */}
-      <HeroSection />
+      <section className="relative py-28 md:py-36 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center overflow-hidden">
+        {/* Ambient Radial Background Glow */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-radial from-[#3B82F6]/20 via-[#2563EB]/5 to-transparent blur-3xl pointer-events-none" />
 
-      {/* 2. ABOUT PREVIEW */}
-      <AboutPreview lang={language} />
+        {/* Top Tech Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/25 text-[#3B82F6] font-mono text-xs font-semibold uppercase tracking-widest mb-8 backdrop-blur-md">
+          <Terminal className="w-3.5 h-3.5" />
+          <span>ENGINEERING AUTOMATION & OPEN BIM</span>
+        </div>
 
-      {/* 3. SERVICES PREVIEW */}
-      <section className="bg-brand-background mx-auto w-full px-6 py-24 lg:px-8 border-t border-white/5 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,rgba(14,165,233,0.05),transparent_70%)] pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="mb-16">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-accent mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-brand-accent shadow-[0_0_10px_rgba(249,115,22,1)]" /> {t("home.services.badge")}
-            </p>
-            <h2 className="text-3xl md:text-5xl font-semibold text-white max-w-3xl leading-tight">
-              {t("home.services.title")}
+        {/* Hero Title */}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight max-w-5xl leading-[1.1] mb-6">
+          Engineering the Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500">BIM & Custom Code.</span>
+        </h1>
+
+        {/* Hero Sub-title */}
+        <p className="text-gray-400 text-lg sm:text-xl font-medium max-w-3xl leading-relaxed mb-10">
+          Programmatic coordination, Revit API plugins, and ISO 19650 compliance engineered for high-precision European AEC firms.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md mb-16">
+          <Link
+            href="/services"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#3B82F6] hover:bg-blue-600 text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:shadow-[0_0_45px_rgba(59,130,246,0.6)] hover:-translate-y-0.5"
+          >
+            <span>Explore Services</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+
+          <Link
+            href="/contact"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#171717] hover:bg-[#262626] border border-[#262626] hover:border-[#3B82F6]/50 text-gray-200 hover:text-white font-bold text-sm uppercase tracking-wider transition-all duration-300"
+          >
+            <span>Request Audit</span>
+          </Link>
+        </div>
+
+        {/* Stat Bar */}
+        <div className="grid grid-cols-3 gap-6 sm:gap-12 pt-8 border-t border-[#262626] w-full max-w-2xl text-center">
+          <div>
+            <div className="text-2xl sm:text-3xl font-black text-white font-mono">100%</div>
+            <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold mt-1">Data Accuracy</div>
+          </div>
+          <div>
+            <div className="text-2xl sm:text-3xl font-black text-blue-400 font-mono">+10,000h</div>
+            <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold mt-1">Hours Saved</div>
+          </div>
+          <div>
+            <div className="text-2xl sm:text-3xl font-black text-emerald-400 font-mono">ISO 19650</div>
+            <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold mt-1">Certified Compliant</div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* 2. THE 3 CORE PILLARS GATEWAY */}
+      <section className="py-24 bg-[#0F0F0F] border-y border-[#262626] px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest px-3 py-1 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20">
+              CORE SPECIALIZATIONS
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mt-4">
+              Three Pillars of Engineering Excellence
             </h2>
           </div>
-          
-          <Carousel>
-            {services.map((service) => {
-              const Icon = iconMap[service.slug] || Droplets;
-              const colorClass = colorMap[service.slug] || "text-brand-accentHover bg-blue-500/20 border-white/10";
-              const img = imgMap[service.slug] || "/Pictures/General/hvac-industrial.jpg";
-              
-              return (
-                <div key={service.slug} id={service.slug} className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-md flex flex-col h-full transition-all duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_40px_rgba(14,165,233,0.1)] min-h-[420px]">
-                  
-                  {/* Full Card Background Image */}
-                  <div className="absolute inset-0 z-0 overflow-hidden">
-                    <img 
-                      src={img} 
-                      alt={service.title[language] || service.title.it} 
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-30 grayscale group-hover:grayscale-0 mix-blend-luminosity"
-                    />
-                    <div className="absolute inset-0 bg-brand-background/40" />
-                  </div>
 
-                  {/* Card Content */}
-                  <div className="relative z-10 p-8 flex flex-col flex-grow h-full">
-                    <div className={`w-14 h-14 flex items-center justify-center rounded-2xl backdrop-blur-md border mb-8 transition-colors duration-500 shadow-lg ${colorClass}`}>
-                      <Icon className="w-7 h-7 transition-transform duration-500 group-hover:scale-110" />
-                    </div>
-                    
-                    <h3 className="text-xl font-bold text-white mb-4 group-hover:text-brand-accentHover transition-colors drop-shadow-md">{service.title[language] || service.title.it}</h3>
-                    <p className="text-sm text-white/70 mb-8 line-clamp-3 leading-relaxed flex-grow drop-shadow">{service.description[language] || service.description.it}</p>
-                    
-                    <div className="mt-auto">
-                      <Link href={`/services/${service.slug}`} className="inline-flex items-center justify-center w-full text-sm font-bold text-white bg-white/5 border border-white/10 hover:bg-brand-accent hover:border-brand-accent px-4 py-3 rounded-xl transition-all duration-300 gap-2 backdrop-blur-md hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]">
-                        {t("home.services.readMore")} <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </div>
-
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="group bg-[#171717] border border-[#262626] hover:border-[#3B82F6]/50 rounded-3xl p-8 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center mb-6 text-yellow-400">
+                  <Layers className="w-7 h-7" />
                 </div>
-              );
-            })}
-          </Carousel>
-          
-          <div className="mt-16 text-center">
-            <Link href="/services" className="inline-flex items-center gap-3 text-sm font-bold text-white/70 hover:text-brand-accent transition-colors uppercase tracking-widest border border-white/10 rounded-full px-8 py-4 hover:border-brand-accent/50 hover:bg-brand-accent/10">
-              {t("home.services.all")} <ArrowRight className="w-4 h-4" />
+                <h3 className="text-2xl font-bold text-white mb-3">Algorithmic Engineering</h3>
+                <p className="text-gray-400 text-sm leading-relaxed font-medium mb-6">
+                  Rule-based 3D clash resolution, point cloud processing (Scan-to-BIM), 4D sequencing, and dynamic 5D QTO cost extraction.
+                </p>
+              </div>
+              <Link
+                href="/services/algorithmic-engineering"
+                className="inline-flex items-center gap-2 text-xs font-bold text-yellow-400 uppercase tracking-widest hover:gap-3 transition-all mt-4"
+              >
+                <span>Learn More</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Card 2 */}
+            <div className="group bg-[#171717] border border-[#262626] hover:border-[#3B82F6]/50 rounded-3xl p-8 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 text-blue-400">
+                  <Code className="w-7 h-7" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-3">Code & Automation</h3>
+                <p className="text-gray-400 text-sm leading-relaxed font-medium mb-6">
+                  Bespoke C# Revit API Add-ins, Python data pipelines, pyRevit toolbars, and firm-wide Dynamo graph standardization.
+                </p>
+              </div>
+              <Link
+                href="/services/code-automation"
+                className="inline-flex items-center gap-2 text-xs font-bold text-blue-400 uppercase tracking-widest hover:gap-3 transition-all mt-4"
+              >
+                <span>Learn More</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Card 3 */}
+            <div className="group bg-[#171717] border border-[#262626] hover:border-[#3B82F6]/50 rounded-3xl p-8 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 text-purple-400">
+                  <Database className="w-7 h-7" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-3">CDE & Lifecycle Data</h3>
+                <p className="text-gray-400 text-sm leading-relaxed font-medium mb-6">
+                  COBie asset schedules, Autodesk Construction Cloud (ACC) CDE administration, and API bridges for Digital Twins.
+                </p>
+              </div>
+              <Link
+                href="/services/cde-lifecycle-data"
+                className="inline-flex items-center gap-2 text-xs font-bold text-purple-400 uppercase tracking-widest hover:gap-3 transition-all mt-4"
+              >
+                <span>Learn More</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* 3. TECHNICAL ARSENAL TEASER */}
+      <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="bg-gradient-to-b from-[#141414] to-[#0A0A0A] border border-[#262626] rounded-3xl p-8 md:p-12 relative overflow-hidden">
+          <div className="max-w-3xl">
+            <span className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest px-3 py-1 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 mb-4 inline-block">
+              TECH STACK & STANDARDS
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Engineered with 37+ Industry-Standard Tools & Protocols
+            </h2>
+            <p className="text-gray-400 text-base leading-relaxed mb-8">
+              We leverage Revit API, C#, Python, Solibri, and OpenBIM specifications (ISO 19650 / UNI 11337) to deliver zero-error constructible models.
+            </p>
+
+            <div className="flex flex-wrap gap-2 mb-10">
+              {["Python", "C# / .NET", "Revit API", "Autodesk APS", "Solibri", "Navisworks", "Synchro PRO", "ISO 19650", "UNI 11337", "COBie"].map((tool, i) => (
+                <span key={i} className="px-3.5 py-1.5 rounded-xl bg-[#1F1F1F] border border-[#333] text-xs font-mono text-gray-300 font-semibold">
+                  {tool}
+                </span>
+              ))}
+            </div>
+
+            <Link
+              href="/about#tech-stack"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#3B82F6] hover:bg-blue-600 text-white font-bold text-xs uppercase tracking-wider transition-all"
+            >
+              <span>View Full Technical Arsenal</span>
+              <ExternalLink className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 3.5. PREMIUM BIM HIGHLIGHT SECTION */}
-      <section className="bg-gradient-to-b from-transparent to-[#0A162B] py-24 w-full border-t border-b border-white/5 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.05),transparent_60%)] pointer-events-none" />
-        
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-          <div className="group relative overflow-hidden rounded-[2.5rem] border border-brand-accent/20 bg-brand-background flex flex-col lg:flex-row transition-all hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] min-h-[500px]">
-            
-            {/* Background Layers */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
-              <img 
-                src="/Pictures/BIM/bim-0014.png" 
-                alt="BIM Services" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-40 mix-blend-overlay"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#061224] via-[#061224]/90 to-transparent lg:bg-gradient-to-r lg:from-[#061224] lg:via-[#061224]/95 lg:to-transparent" />
+
+      {/* 4. THE ALGORITHMIC EDGE (COMPARISON) */}
+      <section className="py-20 bg-[#0F0F0F] border-y border-[#262626] px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+              PARADIGM SHIFT
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mt-4">
+              Traditional Modeling vs. pyBIM Automation
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Traditional */}
+            <div className="bg-[#141414] border border-red-500/20 rounded-3xl p-8">
+              <div className="text-red-400 font-mono text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-red-500" />
+                TRADITIONAL MANUAL WORKFLOW
+              </div>
+              <ul className="space-y-4 text-gray-400 text-sm font-medium">
+                <li className="flex items-start gap-3">
+                  <span className="text-red-400 font-bold">✕</span> Slow, manual 3D clash resolution prone to human oversight.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-400 font-bold">✕</span> Thousands of billable hours wasted on repetitive parameter entry.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-400 font-bold">✕</span> High risk of public tender rejection due to non-compliant COBie data.
+                </li>
+              </ul>
             </div>
 
-            {/* Content Left */}
-            <div className="relative z-10 p-10 md:p-16 lg:w-1/2 flex flex-col justify-center h-full">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-16 h-16 flex items-center justify-center rounded-2xl backdrop-blur-md border text-brand-accent bg-brand-accent/20 border-brand-accent/30 shadow-[0_0_20px_rgba(249,115,22,0.2)]">
-                  <Layers className="w-8 h-8" />
-                </div>
-                <div className="px-4 py-2 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-sm font-bold tracking-widest uppercase backdrop-blur-sm">
-                  {t("home.bim.badge") || "Premium Services"}
-                </div>
+            {/* pyBIM Engine */}
+            <div className="bg-[#141414] border border-emerald-500/30 rounded-3xl p-8 relative overflow-hidden">
+              <div className="text-emerald-400 font-mono text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                pyBIM PROGRAMMATIC ENGINE
               </div>
-              
-              <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                {t("home.bim.title") || "Innovazione BIM: Il futuro del cantiere"}
-              </h3>
-              <p className="text-lg text-white/70 mb-10 leading-relaxed max-w-md">
-                {t("home.bim.subtitle") || "Esplora in Realtà Virtuale, ottimizza l'acustica e gestisci tutto in Cloud."}
-              </p>
-              
-              <div>
-                <Link href="/services/algorithmic-engineering" className="inline-flex items-center justify-center text-base font-bold text-white bg-brand-accent hover:bg-brand-accent px-8 py-4 rounded-full transition-all duration-300 gap-3 shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:-translate-y-1">
-                  {t("home.bim.btn") || "Scopri i Servizi BIM"} <ArrowRight className="w-5 h-5" />
-                </Link>
-              </div>
+              <ul className="space-y-4 text-gray-200 text-sm font-medium">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" /> Programmatic clash grouping, automated BCF routing & zero-error QA.
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" /> Instantaneous C# & Python parameter injection pipelines.
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" /> 100% compliance with ISO 19650, UNI 11337 & European BIM mandates.
+                </li>
+              </ul>
             </div>
-
-            {/* Content Right (Upcoming features teaser) */}
-            <div className="relative z-10 p-10 md:p-16 lg:w-1/2 flex flex-col justify-center h-full border-t lg:border-t-0 lg:border-l border-white/10 bg-white/[0.02] backdrop-blur-sm">
-              <div className="space-y-8">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-sky-500/10 border border-sky-500/20 text-brand-accent shrink-0">
-                    <Glasses className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">Realtà Virtuale (VR)</h4>
-                    <p className="text-sm text-white/60 leading-relaxed">Esplora e \"cammina\" nei tuoi progetti prima dell'inizio dei lavori.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 shrink-0">
-                    <Wind className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">Acustica Avanzata</h4>
-                    <p className="text-sm text-white/60 leading-relaxed">Simulazioni per impianti silenziosi e isolamento perfetto.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 shrink-0">
-                    <Monitor className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">Portale in Cloud (CDE)</h4>
-                    <p className="text-sm text-white/60 leading-relaxed">Monitora il cantiere e i documenti da qualsiasi dispositivo, 24/7.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
 
-      {/* 4. WHY CHOOSE US */}
-      <section className="bg-[#0A162B]">
-        <TrustSection lang={language} />
-      </section>
 
-      {/* 5. STATS COUNTERS */}
-      <section className="bg-[#02040A] border-t border-white/5 relative">
-        <AnimatedStatsSection />
-      </section>
+      {/* 5. FEATURED PROJECTS SHOWCASE */}
+      <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <span className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest px-3 py-1 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20">
+              FEATURED CASE STUDIES
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mt-4">
+              Proven Engineering Execution
+            </h2>
+          </div>
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-xs font-bold text-[#3B82F6] uppercase tracking-widest hover:gap-3 transition-all"
+          >
+            <span>Explore All Projects</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
 
-      {/* 6. PROJECTS PREVIEW */}
-      <section className="bg-brand-background border-t border-white/5">
         <ProjectsGrid projects={projectsData} />
       </section>
 
-      {/* 7. VR / VIDEO BANNER (Hidden until video is ready) */}
-      <section className="hidden relative py-40 px-6 items-center justify-center text-center overflow-hidden border-t border-white/5">
-        <div className="absolute inset-0 -z-10">
-          <img src="/Pictures/General/hvac-industrial.jpg" alt="Virtual Reality Blueprint" className="w-full h-full object-cover opacity-20 mix-blend-screen" />
-          <div className="absolute inset-0 bg-brand-background/90" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.15),transparent_50%)]" />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center group">
-          <div className="relative">
-            <div className="absolute inset-0 bg-sky-500 rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 animate-pulse" />
-            <button className="relative w-24 h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white mb-10 group-hover:scale-110 group-hover:bg-sky-500 group-hover:border-brand-accent transition-all duration-500 shadow-[0_0_30px_rgba(14,165,233,0.2)] group-hover:shadow-[0_0_50px_rgba(14,165,233,0.5)]">
-              <Play className="w-10 h-10 fill-current ml-2" />
-            </button>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-semibold text-white leading-tight drop-shadow-lg">
-            {t("home.video.title")}
+
+      {/* 6. ENTERPRISE CALL TO ACTION */}
+      <section className="py-24 bg-gradient-to-b from-[#0F0F0F] to-[#050505] border-t border-[#262626] px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto flex flex-col items-center">
+          <span className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 mb-6">
+            TECHNICAL CONSULTATION
+          </span>
+          <h2 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-6">
+            Ready to Automate Your BIM Workflows?
           </h2>
+          <p className="text-gray-400 text-lg font-medium max-w-xl mb-10">
+            Schedule a technical consultation or request a demo of our custom Revit API plugins and Python pipelines.
+          </p>
+
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-[#3B82F6] hover:bg-blue-600 text-white font-bold text-base uppercase tracking-wider transition-all duration-300 shadow-[0_0_40px_rgba(59,130,246,0.5)] hover:shadow-[0_0_60px_rgba(59,130,246,0.7)] hover:-translate-y-1"
+          >
+            <span>Get in Touch With Us</span>
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </section>
 
-      {/* 8. OUR EXPERTISE */}
-      <section className="bg-[#050D1A] w-full border-t border-white/5 py-24 relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[radial-gradient(circle_at_bottom_left,rgba(249,115,22,0.05),transparent_70%)] pointer-events-none" />
-        
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-accent mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-brand-accent shadow-[0_0_10px_rgba(249,115,22,1)]" /> {t("home.expertise.badge")}
-              </p>
-              <h2 className="text-3xl md:text-5xl font-semibold text-white mb-8 leading-tight">
-                {t("home.expertise.title")}
-              </h2>
-              <p className="text-lg text-white/60 mb-12">
-                {t("home.expertise.subtitle")}
-              </p>
-              
-              <div className="space-y-8 mb-12">
-                <div className="group">
-                  <div className="flex justify-between text-sm font-bold text-white mb-3">
-                    <span>{t("home.expertise.skill1")}</span>
-                    <span className="text-brand-accent drop-shadow-[0_0_5px_rgba(249,115,22,0.8)]">90%</span>
-                  </div>
-                  <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/10">
-                    <div className="h-full bg-brand-accent rounded-full relative group-hover:opacity-90 transition-opacity" style={{ width: "90%" }}>
-                      <div className="absolute inset-0 bg-white/20 w-1/3 blur-sm animate-[shimmer_2s_infinite]" />
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="group">
-                  <div className="flex justify-between text-sm font-bold text-white mb-3">
-                    <span>{t("home.expertise.skill2")}</span>
-                    <span className="text-brand-accentHover drop-shadow-[0_0_5px_rgba(14,165,233,0.8)]">95%</span>
-                  </div>
-                  <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/10">
-                    <div className="h-full bg-blue-500 rounded-full relative group-hover:opacity-90 transition-opacity" style={{ width: "95%" }}>
-                      <div className="absolute inset-0 bg-white/20 w-1/3 blur-sm animate-[shimmer_2s_infinite_0.5s]" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 w-max backdrop-blur-sm">
-                <Link href="/contact" className="px-6 py-3 bg-brand-accent hover:bg-brand-accent text-white font-bold rounded-full text-sm transition-colors shadow-[0_0_15px_rgba(59,130,246,0.4)]">
-                  {t("home.expertise.contact")}
-                </Link>
-                <div>
-                  <p className="text-sm text-white/50 mb-0.5">{t("home.expertise.support.label")}</p>
-                  <p className="font-semibold text-white">{t("home.expertise.support.phone")}</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-brand-accent/20 to-blue-500/20 blur-2xl opacity-30 rounded-[3rem]" />
-              <div className="relative rounded-[3rem] border border-white/10 overflow-hidden bg-[#0A162B] aspect-[4/5] max-h-[600px] mx-auto">
-                <img src="/Pictures/HVAC/hvac-014.jpg" alt="Expertise" className="w-full h-full object-cover opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#081730] to-transparent" />
-                
-                <div className="absolute bottom-10 left-10 right-10 flex gap-4">
-                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 flex-1">
-                    <CheckCircle className="w-8 h-8 text-brand-accent mb-3" />
-                    <h4 className="font-bold text-white mb-1">{t("home.expertise.cert1")}</h4>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 flex-1">
-                    <CheckCircle className="w-8 h-8 text-blue-400 mb-3" />
-                    <h4 className="font-bold text-white mb-1">{t("home.expertise.cert2")}</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. BLOG PREVIEW */}
-      <section className="bg-[#0A162B] border-t border-white/5 relative">
-        <BlogPreview posts={blogData} />
-      </section>
-
-      <style jsx global>{`
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(300%); }
-        }
-      `}</style>
     </div>
   );
 }
