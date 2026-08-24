@@ -9,64 +9,94 @@ export default function HomePageLayout() {
   return (
     <div className="w-full bg-brand-base text-brand-textPrimary">
       
-      {/* 1. HERO SECTION */}
-      <section className="relative py-28 md:py-36 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center overflow-hidden">
+      {/* 1. HERO SECTION WITH RICH 3D VISUAL */}
+      <section className="relative py-20 md:py-32 px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
         {/* Ambient Radial Background Glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.08),transparent_70%)] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.08),transparent_70%)] pointer-events-none" />
 
-        {/* Top Tech Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-xs font-semibold uppercase tracking-widest mb-8">
-          <Terminal className="w-3.5 h-3.5" />
-          <span>ENGINEERING AUTOMATION & OPEN BIM</span>
-        </div>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left Hero Content */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            {/* Top Tech Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-xs font-semibold uppercase tracking-widest mb-6">
+              <Terminal className="w-3.5 h-3.5" />
+              <span>ENGINEERING AUTOMATION & OPEN BIM</span>
+            </div>
 
-        {/* Hero Title */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-brand-textPrimary tracking-tight max-w-5xl leading-[1.1] mb-6">
-          Engineering the Future of <span className="text-brand-primary">BIM & Custom Code.</span>
-        </h1>
+            {/* Hero Title */}
+            <h1 className="text-4xl sm:text-6xl lg:text-6xl font-bold text-brand-textPrimary tracking-tight leading-[1.1] mb-6">
+              Engineering the Future of <span className="text-brand-primary">BIM & Custom Code.</span>
+            </h1>
 
-        {/* Hero Sub-title */}
-        <p className="text-brand-textSecondary text-lg sm:text-xl font-medium max-w-3xl leading-relaxed mb-10">
-          Programmatic coordination, Revit API plugins, and ISO 19650 compliance engineered for high-precision European AEC firms.
-        </p>
+            {/* Hero Sub-title */}
+            <p className="text-brand-textSecondary text-lg sm:text-xl font-medium leading-relaxed mb-10 max-w-2xl">
+              Programmatic coordination, Revit API plugins, and ISO 19650 compliance engineered for high-precision European AEC firms.
+            </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md mb-16">
-          <Link
-            href="/services"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-brand-primary hover:bg-blue-700 text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] hover:-translate-y-0.5"
-          >
-            <span>Explore Services</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-12">
+              <Link
+                href="/services"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-brand-primary hover:bg-blue-700 text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] hover:-translate-y-0.5"
+              >
+                <span>Explore Services</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
 
-          <Link
-            href="/contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-white hover:bg-gray-50 border border-brand-border text-brand-textPrimary font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-sm"
-          >
-            <span>Request Audit</span>
-          </Link>
-        </div>
+              <Link
+                href="/contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-white hover:bg-gray-50 border border-brand-border text-brand-textPrimary font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-sm"
+              >
+                <span>Request Audit</span>
+              </Link>
+            </div>
 
-        {/* Stat Bar */}
-        <div className="grid grid-cols-3 gap-6 sm:gap-12 pt-8 border-t border-brand-border w-full max-w-2xl text-center">
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold text-brand-textPrimary font-mono">100%</div>
-            <div className="text-xs text-brand-textSecondary uppercase tracking-widest font-semibold mt-1">Data Accuracy</div>
+            {/* Stat Bar */}
+            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-brand-border w-full text-left">
+              <div>
+                <div className="text-2xl sm:text-3xl font-bold text-brand-textPrimary font-mono">100%</div>
+                <div className="text-xs text-brand-textSecondary uppercase tracking-widest font-semibold mt-1">Data Accuracy</div>
+              </div>
+              <div>
+                <div className="text-2xl sm:text-3xl font-bold text-brand-primary font-mono">+10,000h</div>
+                <div className="text-xs text-brand-textSecondary uppercase tracking-widest font-semibold mt-1">Hours Saved</div>
+              </div>
+              <div>
+                <div className="text-2xl sm:text-3xl font-bold text-emerald-600 font-mono">ISO 19650</div>
+                <div className="text-xs text-brand-textSecondary uppercase tracking-widest font-semibold mt-1">Certified</div>
+              </div>
+            </div>
           </div>
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold text-brand-primary font-mono">+10,000h</div>
-            <div className="text-xs text-brand-textSecondary uppercase tracking-widest font-semibold mt-1">Hours Saved</div>
-          </div>
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold text-emerald-600 font-mono">ISO 19650</div>
-            <div className="text-xs text-brand-textSecondary uppercase tracking-widest font-semibold mt-1">Certified Compliant</div>
+
+          {/* Right Hero Image Card */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative rounded-3xl overflow-hidden border border-brand-border bg-white shadow-2xl group">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <img
+                  src="/Pictures/BIM/bim-0080.jpg"
+                  alt="3D Federated BIM Model Coordination"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              </div>
+
+              {/* Floating Badge Overlay */}
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-widest block mb-0.5">ALGORITHMIC COORDINATION</span>
+                  <span className="text-sm font-bold text-slate-900 block">LOD 500 Federated Model</span>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 font-bold text-xs">
+                  ✓
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
 
-      {/* 2. THE 3 CORE PILLARS GATEWAY */}
+      {/* 2. THE 3 CORE PILLARS GATEWAY (WITH CARD THUMBNAILS) */}
       <section className="py-24 bg-brand-surface border-y border-brand-border px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -80,80 +110,115 @@ export default function HomePageLayout() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="group bg-white border border-brand-border hover:border-brand-primary rounded-3xl p-8 transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-1">
-              <div>
-                <div className="w-14 h-14 rounded-2xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center mb-6 text-yellow-600">
-                  <Layers className="w-7 h-7" />
+            <div className="group bg-white border border-brand-border hover:border-brand-primary rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-1">
+              <div className="h-44 relative overflow-hidden">
+                <img
+                  src="/Pictures/BIM/bim-0080.jpg"
+                  alt="Algorithmic Engineering"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
+                <div className="absolute top-4 left-4 w-10 h-10 rounded-xl bg-yellow-400/90 text-slate-900 flex items-center justify-center shadow-md">
+                  <Layers className="w-5 h-5" />
                 </div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-3">Algorithmic Engineering</h3>
-                <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
-                  Rule-based 3D clash resolution, point cloud processing (Scan-to-BIM), 4D sequencing, and dynamic 5D QTO cost extraction.
-                </p>
               </div>
-              <Link
-                href="/services/algorithmic-engineering"
-                className="inline-flex items-center gap-2 text-xs font-bold text-yellow-600 uppercase tracking-widest hover:gap-3 transition-all mt-4"
-              >
-                <span>Learn More</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+
+              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-2xl font-bold text-brand-textPrimary mb-3">Algorithmic Engineering</h3>
+                  <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
+                    Rule-based 3D clash resolution, point cloud processing (Scan-to-BIM), 4D sequencing, and dynamic 5D QTO cost extraction.
+                  </p>
+                </div>
+                <Link
+                  href="/services/algorithmic-engineering"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-yellow-600 uppercase tracking-widest hover:gap-3 transition-all mt-4"
+                >
+                  <span>Learn More</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
 
             {/* Card 2 */}
-            <div className="group bg-white border border-brand-border hover:border-brand-primary rounded-3xl p-8 transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-1">
-              <div>
-                <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6 text-brand-primary">
-                  <Code className="w-7 h-7" />
+            <div className="group bg-white border border-brand-border hover:border-brand-primary rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-1">
+              <div className="h-44 relative overflow-hidden">
+                <img
+                  src="/Pictures/Uncategorized/uncategorized-005.jpg"
+                  alt="Code & Automation"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
+                <div className="absolute top-4 left-4 w-10 h-10 rounded-xl bg-brand-primary text-white flex items-center justify-center shadow-md">
+                  <Code className="w-5 h-5" />
                 </div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-3">Code & Automation</h3>
-                <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
-                  Bespoke C# Revit API Add-ins, Python data pipelines, pyRevit toolbars, and firm-wide Dynamo graph standardization.
-                </p>
               </div>
-              <Link
-                href="/services/code-automation"
-                className="inline-flex items-center gap-2 text-xs font-bold text-brand-primary uppercase tracking-widest hover:gap-3 transition-all mt-4"
-              >
-                <span>Learn More</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+
+              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-2xl font-bold text-brand-textPrimary mb-3">Code & Automation</h3>
+                  <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
+                    Bespoke C# Revit API Add-ins, Python data pipelines, pyRevit toolbars, and firm-wide Dynamo graph standardization.
+                  </p>
+                </div>
+                <Link
+                  href="/services/code-automation"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-brand-primary uppercase tracking-widest hover:gap-3 transition-all mt-4"
+                >
+                  <span>Learn More</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
 
             {/* Card 3 */}
-            <div className="group bg-white border border-brand-border hover:border-brand-primary rounded-3xl p-8 transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-1">
-              <div>
-                <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 text-purple-600">
-                  <Database className="w-7 h-7" />
+            <div className="group bg-white border border-brand-border hover:border-brand-primary rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-1">
+              <div className="h-44 relative overflow-hidden">
+                <img
+                  src="/Pictures/BIM/bim-0032.jpg"
+                  alt="CDE & Lifecycle Data"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
+                <div className="absolute top-4 left-4 w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center shadow-md">
+                  <Database className="w-5 h-5" />
                 </div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-3">CDE & Lifecycle Data</h3>
-                <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
-                  COBie asset schedules, Autodesk Construction Cloud (ACC) CDE administration, and API bridges for Digital Twins.
-                </p>
               </div>
-              <Link
-                href="/services/cde-lifecycle-data"
-                className="inline-flex items-center gap-2 text-xs font-bold text-purple-600 uppercase tracking-widest hover:gap-3 transition-all mt-4"
-              >
-                <span>Learn More</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+
+              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-2xl font-bold text-brand-textPrimary mb-3">CDE & Lifecycle Data</h3>
+                  <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
+                    COBie asset schedules, Autodesk Construction Cloud (ACC) CDE administration, and API bridges for Digital Twins.
+                  </p>
+                </div>
+                <Link
+                  href="/services/cde-lifecycle-data"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-purple-600 uppercase tracking-widest hover:gap-3 transition-all mt-4"
+                >
+                  <span>Learn More</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
 
-      {/* 3. TECHNICAL ARSENAL TEASER (HIGH-TECH DARK TERMINAL CARD) */}
+      {/* 3. TECHNICAL ARSENAL TEASER WITH IMAGE OVERLAY */}
       <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="bg-[#0A0A0A] border border-[#262626] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden shadow-xl">
-          <div className="max-w-3xl">
+        <div className="bg-[#0A0A0A] border border-[#262626] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden shadow-xl grid lg:grid-cols-12 gap-8 items-center">
+          
+          {/* Left Text */}
+          <div className="lg:col-span-8 relative z-10">
             <span className="text-xs font-mono font-bold text-brand-primary uppercase tracking-widest px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20 mb-4 inline-block">
               TECH STACK & STANDARDS
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Engineered with 37+ Industry-Standard Tools & Protocols
             </h2>
-            <p className="text-gray-400 text-base leading-relaxed mb-8">
+            <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-2xl">
               We leverage Revit API, C#, Python, Solibri, and OpenBIM specifications (ISO 19650 / UNI 11337) to deliver zero-error constructible models.
             </p>
 
@@ -173,6 +238,17 @@ export default function HomePageLayout() {
               <ExternalLink className="w-3.5 h-3.5" />
             </Link>
           </div>
+
+          {/* Right Overlay Image */}
+          <div className="lg:col-span-4 relative h-64 lg:h-full rounded-2xl overflow-hidden border border-[#262626]">
+            <img
+              src="/Pictures/BIM/bim-0071.jpg"
+              alt="BIM Engineering Software Stack"
+              className="w-full h-full object-cover opacity-60 mix-blend-luminosity"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A]/40" />
+          </div>
+
         </div>
       </section>
 
@@ -256,9 +332,19 @@ export default function HomePageLayout() {
       </section>
 
 
-      {/* 6. ENTERPRISE CALL TO ACTION (HIGH IMPACT DARK BANNER) */}
-      <section className="py-24 bg-[#0A0A0A] text-white border-t border-[#262626] px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto flex flex-col items-center">
+      {/* 6. ENTERPRISE CALL TO ACTION WITH BACKGROUND IMAGE */}
+      <section className="relative py-28 bg-[#0A0A0A] text-white border-t border-[#262626] px-6 lg:px-8 text-center overflow-hidden">
+        {/* Background Image Layer */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/Pictures/BIM/bim-0022.jpg"
+            alt="Engineering Infrastructure"
+            className="w-full h-full object-cover opacity-20 mix-blend-overlay"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/90 to-[#0A0A0A]/70" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
           <span className="text-xs font-mono font-bold text-brand-primary uppercase tracking-widest px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 mb-6">
             TECHNICAL CONSULTATION
           </span>
