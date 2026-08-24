@@ -3,20 +3,20 @@ import { motion } from 'framer-motion';
 export default function TechStackSection() {
   const categories = [
     {
-      title: "Core Automation & Code",
-      skills: ["Python", "C#", "Dynamo", "pyRevit", "Autodesk Forge (APS)", "REST APIs"]
+      title: "Core Automation & Code (BIM 8D-10D)",
+      skills: ["Python", "C# & Revit API", "Dynamo & pyRevit", "Autodesk APS (Forge)", "REST APIs & IoT", "IFC.js & Web 3D", "LangChain & AI (RAG)"]
     },
     {
-      title: "3D/4D/5D Engines",
-      skills: ["Autodesk Revit", "Navisworks Manage", "Solibri", "Synchro 4D"]
+      title: "Engineering & 3D/4D/5D Tools",
+      skills: ["Autodesk Revit (3D/7D)", "Navisworks Manage (4D)", "PriMus-IFC & CostX (5D)", "Solibri Office (QA Audit)", "Synchro PRO (4D)", "ReCap Pro (Scan-to-BIM)", "BIMcollab / Dalux", "Tekla Structures"]
     },
     {
-      title: "Advanced Dimensions (6D-11D)",
-      skills: ["One Click LCA", "dRofus / COBie", "Autodesk Tandem", "PowerBI"]
+      title: "CDE, Data & Cloud (BIM 6D)",
+      skills: ["Autodesk Construction Cloud (ACC)", "dRofus (Spatial Data)", "Power BI (Analytics)", "Speckle (Open Data)", "SQL / PostgreSQL", "Revizto (VR)"]
     },
     {
-      title: "CDE & Scan-to-BIM",
-      skills: ["Autodesk Construction Cloud", "BIMcollab", "ReCap Pro", "Leica Cyclone"]
+      title: "Standards & OpenBIM Protocols",
+      skills: ["ISO 19650 (Information Mgmt)", "UNI 11337 (Italian Standard)", "COBie (Facility Mgmt)", "IFC (ISO 16739) & BCF", "Decreto BIM (D.M. 560/312)", "EIR / BEP (Safety 8D, Lean 9D)", "bsDD & IDM (ISO 29481)"]
     }
   ];
 
