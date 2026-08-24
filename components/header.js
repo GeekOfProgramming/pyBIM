@@ -116,6 +116,7 @@ export default function Header() {
                           key={item.id}
                           href={getLocalizedUrl(item.href)}
                           onMouseEnter={() => setActiveMegaMenuItem(item.id)}
+                          onClick={() => setMegaMenuOpen(false)}
                           className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${activeMegaMenuItem === item.id ? 'bg-white shadow-sm text-brand-primary' : 'text-brand-textSecondary hover:bg-white hover:text-brand-primary'} ${isActiveLink && activeMegaMenuItem !== item.id ? 'text-brand-primary font-bold' : 'font-medium'}`}
                         >
                           <span className="text-sm tracking-wide">{item.label}</span>
@@ -131,7 +132,12 @@ export default function Header() {
                       {pyBimRightMenu[activeMegaMenuItem].map((subItem, idx) => {
                         const Icon = subItem.icon;
                         return (
-                          <Link key={idx} href={getLocalizedUrl(subItem.href)} className="group flex items-center gap-4 p-2 rounded-lg hover:bg-brand-surface transition">
+                          <Link 
+                            key={idx} 
+                            href={getLocalizedUrl(subItem.href)} 
+                            onClick={() => setMegaMenuOpen(false)}
+                            className="group flex items-center gap-4 p-2 rounded-lg hover:bg-brand-surface transition"
+                          >
                             <div className="shrink-0 w-10 h-10 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
                               <Icon className="w-5 h-5" />
                             </div>

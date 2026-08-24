@@ -1,12 +1,34 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import Link from "@/components/LocalizedLink";
-import { ChevronRight, ArrowRight, Calendar } from "lucide-react";
+import { ChevronRight, ArrowRight, Calendar, Quote } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function ProjectsPageLayout({ projects = [] }) {
   const { t, language } = useLanguage();
   const [visibleCount, setVisibleCount] = useState(6);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        const hash = window.location.hash;
+        if (hash) {
+          const id = hash.replace("#", "");
+          const el = document.getElementById(id);
+          if (el) {
+            setTimeout(() => {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 150);
+          }
+        }
+      };
+
+      handleScroll();
+      window.addEventListener("hashchange", handleScroll);
+      return () => window.removeEventListener("hashchange", handleScroll);
+    }
+  }, []);
 
   const sortedProjects = [...projects];
   const visibleProjects = sortedProjects.slice(0, visibleCount);
@@ -99,7 +121,40 @@ export default function ProjectsPageLayout({ projects = [] }) {
           </div>
         )}
         </div>
-        <div id="testimonials"></div>
+      </section>
+
+      {/* TESTIMONIALS SECTION */}
+      <section id="testimonials" className="py-24 bg-brand-base border-t border-brand-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono font-bold text-brand-primary uppercase tracking-widest px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20">
+              CLIENT FEEDBACK
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mt-4">
+              What European AEC Leaders Say
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm">
+              <Quote className="w-8 h-8 text-brand-primary/40 mb-4" />
+              <p className="text-brand-textSecondary text-base leading-relaxed font-medium mb-6">
+                "pyBIM's automated clash resolution scripts cut our coordination cycles in half on the DACH hospital project. Their C# plugins operate flawlessly within our Revit environment."
+              </p>
+              <div className="font-bold text-brand-textPrimary text-sm">Senior BIM Manager</div>
+              <div className="text-xs text-brand-textSecondary">Tier-1 European General Contractor (Germany)</div>
+            </div>
+
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm">
+              <Quote className="w-8 h-8 text-brand-primary/40 mb-4" />
+              <p className="text-brand-textSecondary text-base leading-relaxed font-medium mb-6">
+                "Their ISO 19650 and COBie data structuring guaranteed zero-error tender submissions for our public infrastructure project in Milan."
+              </p>
+              <div className="font-bold text-brand-textPrimary text-sm">Lead Technical Director</div>
+              <div className="text-xs text-brand-textSecondary">Engineering Studio (Italy)</div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );

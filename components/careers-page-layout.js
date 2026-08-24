@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "@/components/LocalizedLink";
 import { useLanguage } from "@/lib/LanguageContext";
 import { Mail, Briefcase, ChevronRight, CheckCircle2 } from "lucide-react";
@@ -8,6 +8,27 @@ import { Mail, Briefcase, ChevronRight, CheckCircle2 } from "lucide-react";
 export default function CareersPageLayout({ jobs }) {
   const { t, language } = useLanguage();
   const [visibleCount, setVisibleCount] = useState(6);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        const hash = window.location.hash;
+        if (hash) {
+          const id = hash.replace("#", "");
+          const el = document.getElementById(id);
+          if (el) {
+            setTimeout(() => {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 150);
+          }
+        }
+      };
+
+      handleScroll();
+      window.addEventListener("hashchange", handleScroll);
+      return () => window.removeEventListener("hashchange", handleScroll);
+    }
+  }, []);
 
   const visibleJobs = jobs.slice(0, visibleCount);
   const hasMore = visibleCount < jobs.length;

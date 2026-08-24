@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "@/components/LocalizedLink";
 import { ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Linkedin, MessageCircle } from "lucide-react";
 import { emailAddress, phoneDisplay, phoneHref } from "@/lib/site-copy";
@@ -12,6 +12,27 @@ export default function ContactPageLayout() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        const hash = window.location.hash;
+        if (hash) {
+          const id = hash.replace("#", "");
+          const el = document.getElementById(id);
+          if (el) {
+            setTimeout(() => {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 150);
+          }
+        }
+      };
+
+      handleScroll();
+      window.addEventListener("hashchange", handleScroll);
+      return () => window.removeEventListener("hashchange", handleScroll);
+    }
+  }, []);
 
   function updateField(key, value) {
     setForm((prev) => ({ ...prev, [key]: value }));
