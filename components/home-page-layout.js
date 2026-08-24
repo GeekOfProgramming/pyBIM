@@ -9,35 +9,47 @@ export default function HomePageLayout() {
   return (
     <div className="w-full bg-brand-base text-brand-textPrimary">
       
-      {/* 1. HERO SECTION WITH RICH 3D VISUAL */}
-      <section className="relative py-20 md:py-32 px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
-        {/* Ambient Radial Background Glow */}
-        <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.08),transparent_70%)] pointer-events-none" />
+      {/* 1. HERO SECTION WITH FULL BACKGROUND IMAGE & HIGHLIGHT */}
+      <section className="relative py-28 md:py-36 px-6 lg:px-8 w-full bg-brand-base overflow-hidden border-b border-brand-border">
+        {/* Full Background Image Layer */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <img
+            src="/Pictures/BIM/bim-0080.jpg"
+            alt="BIM Engineering Background"
+            className="w-full h-full object-cover opacity-15 mix-blend-luminosity scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-base via-brand-base/95 to-brand-base/70" />
+          <div className="absolute top-1/4 left-1/3 w-[600px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.12),transparent_70%)] pointer-events-none" />
+        </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Hero Content */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
-            {/* Top Tech Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-xs font-semibold uppercase tracking-widest mb-6">
-              <Terminal className="w-3.5 h-3.5" />
-              <span>ENGINEERING AUTOMATION & OPEN BIM</span>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="max-w-3xl flex flex-col items-start text-left">
+            
+            {/* Highlighted Backdrop Container */}
+            <div className="p-6 md:p-8 rounded-3xl bg-white/70 backdrop-blur-md border border-white/80 shadow-[0_10px_30px_rgba(0,0,0,0.03)] mb-8">
+              
+              {/* Top Tech Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-xs font-semibold uppercase tracking-widest mb-6">
+                <Terminal className="w-3.5 h-3.5" />
+                <span>ENGINEERING AUTOMATION & OPEN BIM</span>
+              </div>
+
+              {/* Hero Title */}
+              <h1 className="text-4xl sm:text-6xl lg:text-6xl font-bold text-brand-textPrimary tracking-tight leading-[1.1] mb-6">
+                Engineering the Future of <span className="text-brand-primary drop-shadow-sm">BIM & Custom Code.</span>
+              </h1>
+
+              {/* Hero Sub-title */}
+              <p className="text-brand-textSecondary text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
+                Programmatic coordination, Revit API plugins, and ISO 19650 & UNI 11337 compliance engineered for high-precision European AEC firms.
+              </p>
             </div>
-
-            {/* Hero Title */}
-            <h1 className="text-4xl sm:text-6xl lg:text-6xl font-bold text-brand-textPrimary tracking-tight leading-[1.1] mb-6">
-              Engineering the Future of <span className="text-brand-primary">BIM & Custom Code.</span>
-            </h1>
-
-            {/* Hero Sub-title */}
-            <p className="text-brand-textSecondary text-lg sm:text-xl font-medium leading-relaxed mb-10 max-w-2xl">
-              Programmatic coordination, Revit API plugins, and ISO 19650 compliance engineered for high-precision European AEC firms.
-            </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-12">
               <Link
                 href="/services"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-brand-primary hover:bg-blue-700 text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-brand-primary hover:bg-blue-700 text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_25px_rgba(37,99,235,0.35)] hover:shadow-[0_0_35px_rgba(37,99,235,0.5)] hover:-translate-y-0.5"
               >
                 <span>Explore Services</span>
                 <ArrowRight className="w-4 h-4" />
@@ -51,8 +63,8 @@ export default function HomePageLayout() {
               </Link>
             </div>
 
-            {/* Stat Bar */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-brand-border w-full text-left">
+            {/* Stat Bar with ISO 19650 & UNI 11337 */}
+            <div className="grid grid-cols-3 gap-6 md:gap-12 pt-8 border-t border-brand-border/80 w-full text-left">
               <div>
                 <div className="text-2xl sm:text-3xl font-bold text-brand-textPrimary font-mono">100%</div>
                 <div className="text-xs text-brand-textSecondary uppercase tracking-widest font-semibold mt-1">Data Accuracy</div>
@@ -62,35 +74,11 @@ export default function HomePageLayout() {
                 <div className="text-xs text-brand-textSecondary uppercase tracking-widest font-semibold mt-1">Hours Saved</div>
               </div>
               <div>
-                <div className="text-2xl sm:text-3xl font-bold text-emerald-600 font-mono">ISO 19650</div>
-                <div className="text-xs text-brand-textSecondary uppercase tracking-widest font-semibold mt-1">Certified</div>
+                <div className="text-xl sm:text-2xl font-bold text-emerald-600 font-mono">ISO 19650 & UNI 11337</div>
+                <div className="text-xs text-brand-textSecondary uppercase tracking-widest font-semibold mt-1">Certified Compliance</div>
               </div>
             </div>
-          </div>
 
-          {/* Right Hero Image Card */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden border border-brand-border bg-white shadow-2xl group">
-              <div className="aspect-[4/3] relative overflow-hidden">
-                <img
-                  src="/Pictures/BIM/bim-0080.jpg"
-                  alt="3D Federated BIM Model Coordination"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              </div>
-
-              {/* Floating Badge Overlay */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-widest block mb-0.5">ALGORITHMIC COORDINATION</span>
-                  <span className="text-sm font-bold text-slate-900 block">LOD 500 Federated Model</span>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 font-bold text-xs">
-                  ✓
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
