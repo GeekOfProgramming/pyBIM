@@ -2,42 +2,837 @@
   "teamMembers": [
     {
       "id": "t1",
-      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop",
-      "it": {
-        "name": "Alessandro Rossi",
-        "role": "BIM Manager",
-        "bio": "Esperto in automazione BIM e standard ISO 19650.",
+      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Marcus Weber",
+        "role": "Co-Founder & Chief Technology Officer",
+        "bio": "Focus: C# Revit API, Python Pipelines, Cloud Automation",
         "skills": [
           {
-            "name": "Revit API",
+            "name": "C#",
             "value": 95
           }
         ]
       },
-      "en": {
-        "name": "Alessandro Rossi",
-        "role": "BIM Manager",
-        "bio": "Expert in BIM automation and ISO 19650 standards.",
+      "it": {
+        "name": "Marcus Weber",
+        "role": "Co-Founder & Chief Technology Officer",
+        "bio": "Focus: C# Revit API, Python Pipelines, Cloud Automation",
         "skills": [
           {
-            "name": "Revit API",
+            "name": "C#",
             "value": 95
           }
         ]
       },
       "de": {
-        "name": "Alessandro Rossi",
-        "role": "BIM Manager",
-        "bio": "Experte für BIM-Automatisierung und ISO 19650-Standards.",
+        "name": "Marcus Weber",
+        "role": "Co-Founder & Chief Technology Officer",
+        "bio": "Focus: C# Revit API, Python Pipelines, Cloud Automation",
         "skills": [
           {
-            "name": "Revit API",
+            "name": "C#",
             "value": 95
+          }
+        ]
+      }
+    },
+    {
+      "id": "t2",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "David Chen",
+        "role": "Co-Founder & Head of Algorithmic Engineering",
+        "bio": "Focus: BIM Coordination, Parametric Modeling, ISO 19650 Compliance",
+        "skills": [
+          {
+            "name": "BIM",
+            "value": 90
+          }
+        ]
+      },
+      "it": {
+        "name": "David Chen",
+        "role": "Co-Founder & Head of Algorithmic Engineering",
+        "bio": "Focus: BIM Coordination, Parametric Modeling, ISO 19650 Compliance",
+        "skills": [
+          {
+            "name": "BIM",
+            "value": 90
+          }
+        ]
+      },
+      "de": {
+        "name": "David Chen",
+        "role": "Co-Founder & Head of Algorithmic Engineering",
+        "bio": "Focus: BIM Coordination, Parametric Modeling, ISO 19650 Compliance",
+        "skills": [
+          {
+            "name": "BIM",
+            "value": 90
+          }
+        ]
+      }
+    },
+    {
+      "id": "t3",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Sarah Jenkins",
+        "role": "Director of Commercial Growth",
+        "bio": "Focus: Enterprise Acquisition, Strategic AEC Partnerships",
+        "skills": [
+          {
+            "name": "Strategy",
+            "value": 95
+          }
+        ]
+      },
+      "it": {
+        "name": "Sarah Jenkins",
+        "role": "Director of Commercial Growth",
+        "bio": "Focus: Enterprise Acquisition, Strategic AEC Partnerships",
+        "skills": [
+          {
+            "name": "Strategy",
+            "value": 95
+          }
+        ]
+      },
+      "de": {
+        "name": "Sarah Jenkins",
+        "role": "Director of Commercial Growth",
+        "bio": "Focus: Enterprise Acquisition, Strategic AEC Partnerships",
+        "skills": [
+          {
+            "name": "Strategy",
+            "value": 95
+          }
+        ]
+      }
+    },
+    {
+      "id": "t4",
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Alex Rivera",
+        "role": "Full-Stack Software Engineer",
+        "bio": "Focus: ACC Web Integrations, Custom UI/WPF Development",
+        "skills": [
+          {
+            "name": "ACC API",
+            "value": 92
+          }
+        ]
+      },
+      "it": {
+        "name": "Alex Rivera",
+        "role": "Full-Stack Software Engineer",
+        "bio": "Focus: ACC Web Integrations, Custom UI/WPF Development",
+        "skills": [
+          {
+            "name": "ACC API",
+            "value": 92
+          }
+        ]
+      },
+      "de": {
+        "name": "Alex Rivera",
+        "role": "Full-Stack Software Engineer",
+        "bio": "Focus: ACC Web Integrations, Custom UI/WPF Development",
+        "skills": [
+          {
+            "name": "ACC API",
+            "value": 92
           }
         ]
       }
     }
   ],
-  "partnersIndividual": [],
-  "partnersCorporate": []
+  "individualPartners": [
+    {
+      "id": "i1",
+      "image": "https://images.unsplash.com/photo-1500000001000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 1",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 1",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 1",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i2",
+      "image": "https://images.unsplash.com/photo-1500000002000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 2",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 2",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 2",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i3",
+      "image": "https://images.unsplash.com/photo-1500000003000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 3",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 3",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 3",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i4",
+      "image": "https://images.unsplash.com/photo-1500000004000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 4",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 4",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 4",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i5",
+      "image": "https://images.unsplash.com/photo-1500000005000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 5",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 5",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 5",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i6",
+      "image": "https://images.unsplash.com/photo-1500000006000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 6",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 6",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 6",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i7",
+      "image": "https://images.unsplash.com/photo-1500000007000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 7",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 7",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 7",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i8",
+      "image": "https://images.unsplash.com/photo-1500000008000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 8",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 8",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 8",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i9",
+      "image": "https://images.unsplash.com/photo-1500000009000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 9",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 9",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 9",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i10",
+      "image": "https://images.unsplash.com/photo-1500000010000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 10",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 10",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 10",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    }
+  ],
+  "corporatePartners": [
+    {
+      "id": "c1",
+      "image": "https://images.unsplash.com/photo-1600000001000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 1",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 1",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 1",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c2",
+      "image": "https://images.unsplash.com/photo-1600000002000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 2",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 2",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 2",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c3",
+      "image": "https://images.unsplash.com/photo-1600000003000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 3",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 3",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 3",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c4",
+      "image": "https://images.unsplash.com/photo-1600000004000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 4",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 4",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 4",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c5",
+      "image": "https://images.unsplash.com/photo-1600000005000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 5",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 5",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 5",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c6",
+      "image": "https://images.unsplash.com/photo-1600000006000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 6",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 6",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 6",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c7",
+      "image": "https://images.unsplash.com/photo-1600000007000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 7",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 7",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 7",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c8",
+      "image": "https://images.unsplash.com/photo-1600000008000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 8",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 8",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 8",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c9",
+      "image": "https://images.unsplash.com/photo-1600000009000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 9",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 9",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 9",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c10",
+      "image": "https://images.unsplash.com/photo-1600000010000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 10",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 10",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 10",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    }
+  ],
+  "clients": [
+    {
+      "id": "client1",
+      "image": "https://images.unsplash.com/photo-1550000001000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 1",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 1",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 1",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client2",
+      "image": "https://images.unsplash.com/photo-1550000002000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 2",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 2",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 2",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client3",
+      "image": "https://images.unsplash.com/photo-1550000003000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 3",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 3",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 3",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client4",
+      "image": "https://images.unsplash.com/photo-1550000004000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 4",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 4",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 4",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client5",
+      "image": "https://images.unsplash.com/photo-1550000005000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 5",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 5",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 5",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client6",
+      "image": "https://images.unsplash.com/photo-1550000006000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 6",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 6",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 6",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client7",
+      "image": "https://images.unsplash.com/photo-1550000007000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 7",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 7",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 7",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client8",
+      "image": "https://images.unsplash.com/photo-1550000008000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 8",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 8",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 8",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client9",
+      "image": "https://images.unsplash.com/photo-1550000009000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 9",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 9",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 9",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client10",
+      "image": "https://images.unsplash.com/photo-1550000010000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 10",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 10",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 10",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    }
+  ]
 }

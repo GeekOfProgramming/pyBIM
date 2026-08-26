@@ -218,104 +218,101 @@ export default function AboutPageLayout({ teamData }) {
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm">
               <Code2 className="w-4 h-4" /> {t("about.tech.badge")}
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
-              The tools & standards we use to engineer the process.
+                        <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
+              {t("about.tech.title")}
             </h2>
-            <p className="text-brand-textSecondary text-base md:text-lg font-medium">
-              Eliminating manual bottlenecks through programmatic execution, CDE hosting, and strict ISO compliance.
-            </p>
+            <div className="text-left space-y-4">
+              <p className="text-brand-textSecondary text-base md:text-lg font-medium">
+                <strong className="text-brand-textPrimary">{t("about.tech.p1_title")}:</strong> {t("about.tech.p1_desc")}
+              </p>
+              <p className="text-brand-textSecondary text-base md:text-lg font-medium">
+                <strong className="text-brand-textPrimary">{t("about.tech.p2_title")}:</strong> {t("about.tech.p2_desc")}
+              </p>
+              <p className="text-brand-textSecondary text-base md:text-lg font-medium">
+                <strong className="text-brand-textPrimary">{t("about.tech.p3_title")}:</strong> <span dangerouslySetInnerHTML={{ __html: t("about.tech.p3_desc") }} />
+              </p>
+            </div>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-3">
 
-            {/* 1. ENGINEERING TOOLS (13 Items) */}
+            {/* 1. ENGINEERING TOOLS */}
             <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
               <div>
                 <div className="border-b border-brand-border pb-6 mb-6">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block">{t("about.tech.box1_top")}</span>
-                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-surface border border-brand-border text-brand-textSecondary">{t("about.tech.box1_top_right")}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
+                  <h3 className="text-xl font-bold text-brand-textPrimary mb-2 flex items-center gap-2">
                     <Cog className="w-5 h-5 text-brand-primary" /> {t("about.tech.box1_title")}
                   </h3>
-                  <p className="text-xs text-brand-primary font-mono italic">{t("about.tech.box1_sub")}</p>
+                  <p className="text-sm text-brand-textSecondary font-medium">{t("about.tech.box1_sub")}</p>
                 </div>
 
-                <div className="space-y-3.5">
-                  {(t("about.tech.tools") || []).map((item, idx) => (
-                    <div key={idx} className="p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 hover:shadow-sm transition-all">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="font-bold text-sm text-brand-textPrimary">{item.name}</span>
-                        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-100">{item.tag}</span>
-                      </div>
-                      <p className="text-xs text-brand-textSecondary font-medium leading-relaxed">{item.desc}</p>
+                <div className="space-y-4 mb-6">
+                  {(t("about.tech.box1_items") || []).map((item, idx) => (
+                    <div key={idx} className="bg-brand-surface/60 rounded-xl p-4 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 transition-colors">
+                      <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
+                      <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />
                     </div>
                   ))}
                 </div>
               </div>
+              <div className="text-xs text-brand-textSecondary/70 italic mt-4 pt-4 border-t border-brand-border/50">
+                {t("about.tech.box1_footer")}
+              </div>
             </div>
 
-            {/* 2. DEVELOPMENT STACK (12 Items) */}
-            <div className="rounded-3xl bg-white border border-brand-primary/30 shadow-lg p-8 flex flex-col justify-between relative group hover:border-brand-primary/50 transition-all">
+            {/* 2. DEVELOPMENT STACK */}
+            <div className="rounded-3xl bg-white border-2 border-brand-primary/40 shadow-[0_0_40px_-10px_rgba(37,99,235,0.15)] p-8 flex flex-col justify-between relative group hover:border-brand-primary/60 transition-all z-10 lg:-translate-y-4">
               <div className="absolute inset-0 bg-brand-primary/[0.02] rounded-3xl pointer-events-none" />
               <div className="relative z-10">
                 <div className="border-b border-brand-primary/20 pb-6 mb-6">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-widest block">{t("about.tech.box2_top")}</span>
-                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary">{t("about.tech.box2_top_right")}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
+                  <h3 className="text-xl font-bold text-brand-primary mb-2 flex items-center gap-2">
                     <Terminal className="w-5 h-5 text-brand-primary" /> {t("about.tech.box2_title")}
                   </h3>
-                  <p className="text-xs text-brand-primary font-mono italic">{t("about.tech.box2_sub")}</p>
+                  <p className="text-sm text-brand-textSecondary font-medium">{t("about.tech.box2_sub")}</p>
                 </div>
 
-                <div className="space-y-3.5">
-                  {(t("about.tech.dev") || []).map((item, idx) => (
-                    <div key={idx} className="p-3.5 rounded-2xl bg-brand-primary/5 border border-brand-primary/15 hover:bg-white hover:border-brand-primary/40 hover:shadow-sm transition-all">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="font-bold text-sm text-brand-textPrimary">{item.name}</span>
-                        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-brand-primary text-white">{item.tag}</span>
-                      </div>
-                      <p className="text-xs text-brand-textSecondary font-medium leading-relaxed">{item.desc}</p>
+                <div className="space-y-4 mb-6">
+                  {(t("about.tech.box2_items") || []).map((item, idx) => (
+                    <div key={idx} className="bg-brand-primary/5 rounded-xl p-4 border border-brand-primary/15 hover:bg-white hover:border-brand-primary/40 transition-colors">
+                      <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
+                      <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />
                     </div>
                   ))}
                 </div>
               </div>
+              <div className="relative z-10 text-xs text-brand-textSecondary/70 italic mt-4 pt-4 border-t border-brand-primary/20">
+                {t("about.tech.box2_footer")}
+              </div>
             </div>
 
-            {/* 3. STANDARDS & PROTOCOLS (12 Items) */}
+            {/* 3. STANDARDS & PROTOCOLS */}
             <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
               <div>
                 <div className="border-b border-brand-border pb-6 mb-6">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block">{t("about.tech.box3_top")}</span>
-                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-surface border border-brand-border text-brand-textSecondary">{t("about.tech.box3_top_right")}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
+                  <h3 className="text-xl font-bold text-brand-textPrimary mb-2 flex items-center gap-2">
                     <Code2 className="w-5 h-5 text-brand-primary" /> {t("about.tech.box3_title")}
                   </h3>
-                  <p className="text-xs text-brand-primary font-mono italic">{t("about.tech.box3_sub")}</p>
+                  <p className="text-sm text-brand-textSecondary font-medium">{t("about.tech.box3_sub")}</p>
                 </div>
 
-                <div className="space-y-3.5">
-                  {(t("about.tech.stds") || []).map((item, idx) => (
-                    <div key={idx} className="p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 hover:shadow-sm transition-all">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="font-bold text-sm text-brand-textPrimary">{item.name}</span>
-                        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-100">{item.tag}</span>
-                      </div>
-                      <p className="text-xs text-brand-textSecondary font-medium leading-relaxed">{item.desc}</p>
+                <div className="space-y-4 mb-6">
+                  {(t("about.tech.box3_items") || []).map((item, idx) => (
+                    <div key={idx} className="bg-brand-surface/60 rounded-xl p-4 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 transition-colors">
+                      <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
+                      <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />
                     </div>
                   ))}
                 </div>
+              </div>
+              <div className="text-xs text-brand-textSecondary/70 italic mt-4 pt-4 border-t border-brand-border/50">
+                {t("about.tech.box3_footer")}
               </div>
             </div>
 
           </div>
         </div>
       </section>
+
 
       {/* SECTION 5: Our Impact (Stats/Counters) */}
       <section id="impact" className="bg-brand-surface w-full border-b border-brand-border py-24 lg:py-32">
@@ -325,29 +322,32 @@ export default function AboutPageLayout({ teamData }) {
               <Shield className="w-4 h-4" /> {t("about.impact.badge")}
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
-              Measurable Efficiency & Zero-Error Results
+              {t("about.impact.title")}
             </h2>
           </div>
           <div className="grid gap-16 md:grid-cols-3">
             <div className="text-center group">
-              <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-6 group-hover:scale-105 transition-transform duration-500">
+              <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-4 group-hover:scale-105 transition-transform duration-500">
                 {t("about.impact.stat1.val")}
               </div>
-              <div className="text-brand-textSecondary font-bold uppercase tracking-widest text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat1.desc") }} />
+              <h4 className="text-brand-textPrimary font-bold text-lg mb-2">{t("about.impact.stat1.title")}</h4>
+              <p className="text-brand-textSecondary text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat1.desc") }} />
             </div>
 
             <div className="text-center group">
-              <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-6 group-hover:scale-105 transition-transform duration-500">
+              <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-4 group-hover:scale-105 transition-transform duration-500">
                 {t("about.impact.stat2.val")}
               </div>
-              <div className="text-brand-textSecondary font-bold uppercase tracking-widest text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat2.desc") }} />
+              <h4 className="text-brand-textPrimary font-bold text-lg mb-2">{t("about.impact.stat2.title")}</h4>
+              <p className="text-brand-textSecondary text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat2.desc") }} />
             </div>
 
             <div className="text-center group">
-              <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-6 group-hover:scale-105 transition-transform duration-500">
+              <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-4 group-hover:scale-105 transition-transform duration-500">
                 {t("about.impact.stat3.val")}
               </div>
-              <div className="text-brand-textSecondary font-bold uppercase tracking-widest text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat3.desc") }} />
+              <h4 className="text-brand-textPrimary font-bold text-lg mb-2">{t("about.impact.stat3.title")}</h4>
+              <p className="text-brand-textSecondary text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat3.desc") }} />
             </div>
           </div>
         </div>
@@ -361,29 +361,57 @@ export default function AboutPageLayout({ teamData }) {
             {/* Card 1 For Clients */}
             <div className="rounded-[2.5rem] border border-brand-border bg-white shadow-lg p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/30 transition-colors">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand-surface blur-[80px] rounded-full pointer-events-none group-hover:bg-brand-primary/5 transition-colors" />
-              <div className="relative z-10 w-full">
-                <Briefcase className="w-12 h-12 text-brand-primary/60 mb-10 group-hover:text-brand-primary transition-colors" />
-                <h3 className="text-3xl font-bold text-brand-textPrimary leading-snug mb-12">
-                  Are your company's BIM workflows slowing you down? Let's optimize them.
+              <div className="relative z-10 w-full mb-10">
+                <Briefcase className="w-12 h-12 text-brand-primary/60 mb-6 group-hover:text-brand-primary transition-colors" />
+                <h3 className="text-3xl font-bold text-brand-textPrimary leading-snug mb-8">
+                  {t("about.cta.c1_title")}
                 </h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-bold text-brand-textPrimary text-base">{t("about.cta.c1_b_title")}:</h4>
+                    <p className="text-brand-textSecondary text-base leading-relaxed">{t("about.cta.c1_b_desc")}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-brand-textPrimary text-base">{t("about.cta.c1_p_title")}:</h4>
+                    <p className="text-brand-textSecondary text-base leading-relaxed">{t("about.cta.c1_p_desc")}</p>
+                  </div>
+                </div>
               </div>
-              <Link href="/contact" className="relative z-10 inline-flex items-center justify-center gap-2 rounded-full border border-brand-border bg-brand-surface px-8 py-4 font-bold text-brand-textPrimary hover:bg-white hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all">
-                {t("about.cta.card1.btn")} <ArrowRight className="w-5 h-5" />
-              </Link>
+              <div className="relative z-10 w-full">
+                <Link href="/contact" className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full border border-brand-border bg-brand-surface px-8 py-4 font-bold text-brand-textPrimary hover:bg-white hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all mb-6">
+                  {t("about.cta.c1_btn")} <ArrowRight className="w-5 h-5" />
+                </Link>
+                <p className="text-xs text-brand-textSecondary italic leading-relaxed border-t border-brand-border/60 pt-4">
+                  {t("about.cta.c1_sub")}
+                </p>
+              </div>
             </div>
 
             {/* Card 2 For Talent */}
             <div className="rounded-[2.5rem] border border-brand-primary/20 bg-white shadow-xl p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/50 transition-colors">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 blur-[80px] rounded-full group-hover:bg-brand-primary/10 transition-colors pointer-events-none" />
-              <div className="relative z-10 w-full">
-                <Code2 className="w-12 h-12 text-brand-primary mb-10" />
-                <h3 className="text-3xl font-bold text-brand-textPrimary leading-snug mb-12">
-                  Are you an engineer who fell in love with Python? You belong here.
+              <div className="relative z-10 w-full mb-10">
+                <Code2 className="w-12 h-12 text-brand-primary mb-6" />
+                <h3 className="text-3xl font-bold text-brand-textPrimary leading-snug mb-8">
+                  {t("about.cta.c2_title")}
                 </h3>
+                <div className="space-y-4">
+                  <p className="text-brand-textPrimary font-bold text-lg leading-relaxed">
+                    {t("about.cta.c2_desc1")}
+                  </p>
+                  <p className="text-brand-textSecondary text-base leading-relaxed">
+                    {t("about.cta.c2_desc2")}
+                  </p>
+                </div>
               </div>
-              <Link href="/contact" className="relative z-10 inline-flex items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-bold text-white hover:bg-brand-accentHover transition-all shadow-md hover:shadow-lg hover:-translate-y-1">
-                {t("about.cta.card2.btn")} <ArrowRight className="w-5 h-5" />
-              </Link>
+              <div className="relative z-10 w-full">
+                <Link href="/contact" className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-bold text-white hover:bg-brand-accentHover transition-all shadow-md hover:shadow-lg hover:-translate-y-1 mb-6">
+                  {t("about.cta.c2_btn")} <ArrowRight className="w-5 h-5" />
+                </Link>
+                <p className="text-xs text-brand-textSecondary/80 italic leading-relaxed border-t border-brand-primary/10 pt-4">
+                  {t("about.cta.c2_sub")}
+                </p>
+              </div>
             </div>
 
           </div>

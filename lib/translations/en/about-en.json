@@ -9,82 +9,15 @@
   "about.journey.p2_title": "The Algorithmic Shift",
   "about.journey.p3_badge": "Phase 3",
   "about.journey.p3_title": "The Hybrid B2B Tech Partner",
-  "about.tech.badge": "TECH STACK & STANDARDS",
-  "about.tech.title": "The tools & standards we use to engineer the process.",
+  "about.tech.badge": "THE PYBIM TECH STACK",
+  "about.tech.title": "Engineered for Output, Not Effort.",
   "about.tech.desc": "Eliminating manual bottlenecks through programmatic execution, CDE hosting, and strict ISO compliance.",
   "about.tech.box1_top": "01. SOFTWARE & COORDINATION",
-  "about.tech.box1_title": "Engineering Tools",
-  "about.tech.box1_sub": "ISO-compliant authoring and clash resolution.",
-  "about.tech.tools": [
-    {
-      "name": "Autodesk Revit",
-      "tag": "3D/7D",
-      "desc": "Multidisciplinary 3D Modeling & Energy Analysis"
-    },
-    {
-      "name": "Navisworks Manage",
-      "tag": "Clash/4D",
-      "desc": "Clash Detection & 4D Time/Gantt Chart Integration"
-    },
-    {
-      "name": "ACC (Autodesk Cloud)",
-      "tag": "6D CDE",
-      "desc": "Common Data Environment & As-Built FM Hosting"
-    },
-    {
-      "name": "PriMus-IFC",
-      "tag": "5D AI",
-      "desc": "AI-Driven Quantity Surveying & Dynamic Cost Estimating"
-    },
-    {
-      "name": "ReCap Pro",
-      "tag": "Scan-to-BIM",
-      "desc": "Laser Scan & Drone Point Cloud Processing"
-    },
-    {
-      "name": "Solibri Office",
-      "tag": "QA/QC",
-      "desc": "Rule-Based Automated Model Checking & QA Audit"
-    },
-    {
-      "name": "BIMcollab / Dalux",
-      "tag": "Issue Mgmt",
-      "desc": "Cloud-Based BCF Issue Tracking & Coordination"
-    },
-    {
-      "name": "Synchro PRO",
-      "tag": "4D Sim",
-      "desc": "4D Construction Process Sequencing & Scheduling"
-    },
-    {
-      "name": "dRofus",
-      "tag": "Data Mgmt",
-      "desc": "Centralized Spatial Data & Room Requirements"
-    },
-    {
-      "name": "Tekla Structures",
-      "tag": "LOD 400",
-      "desc": "High-Detail Steel & Concrete Structural Modeling"
-    },
-    {
-      "name": "Civil 3D / InfraWorks",
-      "tag": "GIS/Infra",
-      "desc": "Infrastructure Modeling & GIS Data Exchange"
-    },
-    {
-      "name": "CostX",
-      "tag": "5D Cost",
-      "desc": "Dynamic 2D/3D Quantity Take-off Engine"
-    },
-    {
-      "name": "Revizto",
-      "tag": "VR/Coord",
-      "desc": "2D/3D VR Model Coordination & Clash Tracking"
-    }
-  ],
+  "about.tech.box1_title": "01. SOFTWARE & COORDINATION",
+  "about.tech.box1_sub": "Enterprise-grade authoring, configured to eliminate geometric and data conflicts before they reach the construction site.",
   "about.tech.box2_top": "02. CODE & AUTOMATION",
-  "about.tech.box2_title": "Development Stack",
-  "about.tech.box2_sub": "Programmatic control over manual workflows.",
+  "about.tech.box2_title": "02. CODE & AUTOMATION",
+  "about.tech.box2_sub": "Algorithmic control over manual workflows. We replace redundant human effort with scalable code infrastructure.",
   "about.tech.dev": [
     {
       "name": "Python",
@@ -148,8 +81,8 @@
     }
   ],
   "about.tech.box3_top": "03. MANDATES & OPENBIM",
-  "about.tech.box3_title": "Standards & Protocols",
-  "about.tech.box3_sub": "Strict compliance with EU & UK mandates.",
+  "about.tech.box3_title": "03. MANDATES & OPENBIM",
+  "about.tech.box3_sub": "Zero-risk data delivery. Absolute compliance with European and Italian legal mandates to secure your public tenders.",
   "about.tech.stds": [
     {
       "name": "ISO 19650",
@@ -213,13 +146,13 @@
     }
   ],
   "about.impact.badge": "OUR IMPACT",
-  "about.impact.title": "Measurable Efficiency & Zero-Error Results",
+  "about.impact.title": "Measurable Efficiency. Zero-Error Execution.",
   "about.impact.stat1.val": "+10,000",
-  "about.impact.stat1.desc": "Hours saved through custom automation",
+  "about.impact.stat1.desc": "Redirected from manual data entry and visual clash detection to high-margin, billable project execution.",
   "about.impact.stat2.val": "100%",
-  "about.impact.stat2.desc": "Algorithmic precision <br />(Zero human error)",
+  "about.impact.stat2.desc": "Absolute elimination of human error in model auditing, ensuring flawless compliance for high-stakes European tenders.",
   "about.impact.stat3.val": "+50",
-  "about.impact.stat3.desc": "Custom scripts and plugins deployed",
+  "about.impact.stat3.desc": "Scalable Python and C# infrastructure actively protecting project margins across the DACH region and Italy.",
   "about.cta.card1.title": "Are your company's BIM workflows slowing you down? Let's optimize them.",
   "about.cta.card1.btn": "Contact Us",
   "about.cta.card2.title": "Are you an engineer who fell in love with Python? You belong here.",
@@ -253,5 +186,109 @@
   "about.journey.p3_item1_title": "Zero-Error Deliverables",
   "about.journey.p3_item1_desc": "Today, pyBIM operates as the silent technical backbone for tier-one <strong>AEC firms</strong> across the DACH region and Italy.",
   "about.journey.p3_item2_title": "Infinite Scalability",
-  "about.journey.p3_item2_desc": "We develop the custom software infrastructure required to multiply your project capacity without increasing overhead, guaranteeing absolute output compliance with <strong>ISO 19650</strong>, <strong>openBIM/IFC</strong>, and <strong>UNI 11337</strong>."
+  "about.journey.p3_item2_desc": "We develop the custom software infrastructure required to multiply your project capacity without increasing overhead, guaranteeing absolute output compliance with <strong>ISO 19650</strong>, <strong>openBIM/IFC</strong>, and <strong>UNI 11337</strong>.",
+  "about.tech.p1_title": "The Limitation",
+  "about.tech.p1_desc": "Off-the-shelf AEC software forces your engineers into rigid workflows, creating data silos and requiring thousands of manual clicks.",
+  "about.tech.p2_title": "The Agitation",
+  "about.tech.p2_desc": "This operational bottleneck drains your project margins, delays delivery, and introduces fatal human errors during critical public tenders.",
+  "about.tech.p3_title": "The pyBIM Solution",
+  "about.tech.p3_desc": "We bypass default software limitations. Operating as your external R&D lab, we fuse enterprise-grade software with custom automation algorithms to guarantee <strong>100% compliant delivery</strong> at unprecedented speeds.",
+  "about.tech.box1_items": [
+    {
+      "name": "Autodesk Revit & ACC",
+      "desc": "Cloud-hosted, multidisciplinary 6D environments ensuring zero data loss during facility management handover."
+    },
+    {
+      "name": "Navisworks & Solibri",
+      "desc": "Rule-based automated model checking and clash detection to instantly clear visual bottlenecks."
+    },
+    {
+      "name": "PriMus-IFC & CostX",
+      "desc": "AI-driven, dynamic 5D quantity surveying to lock in financial accuracy."
+    },
+    {
+      "name": "Speckle & BIMcollab",
+      "desc": "Cloud-based BCF tracking and real-time open-source data streaming across fragmented teams."
+    }
+  ],
+  "about.tech.box1_footer": "(Includes: Synchro PRO, dRofus, Tekla, Civil 3D, Revizto, ReCap Pro)",
+  "about.tech.box2_items": [
+    {
+      "name": "Python, C# & Revit API",
+      "desc": "Deep software customization that automates parameter injection, cutting <strong>100+ hours</strong> of manual data entry per project."
+    },
+    {
+      "name": "Dynamo & pyRevit",
+      "desc": "Visual and text scripting to force modeling automation and standardize output across your entire workforce."
+    },
+    {
+      "name": "Speckle, FastAPI & React.js",
+      "desc": "Custom microservices and client web portals for real-time, C-level project monitoring."
+    },
+    {
+      "name": "LangChain & ChromaDB",
+      "desc": "RAG-based AI pipelines for automated, instantaneous BEP/EIR document auditing."
+    }
+  ],
+  "about.tech.box2_footer": "(Includes: REST APIs, Autodesk APS, Power BI, SQL/PostgreSQL, IFC.js)",
+  "about.tech.box3_items": [
+    {
+      "name": "ISO 19650 (DACH & Global)",
+      "desc": "Strict adherence to the international Information Management framework."
+    },
+    {
+      "name": "UNI 11337 & Decreto BIM (Italy)",
+      "desc": "Flawless compliance with Italian National BIM mandates and public tender legalities."
+    },
+    {
+      "name": "IFC (ISO 16739) & bSDD",
+      "desc": "Universal vendor-neutral data formatting and semantic interoperability to prevent software lock-in."
+    },
+    {
+      "name": "COBie & EIR/BEP",
+      "desc": "Standardized Facility Management handover and strict 8D/9D protocol execution."
+    }
+  ],
+  "about.tech.box3_footer": "(Includes: BCF, LOD/LOIN EN 17412, OmniClass, MIDP/TIDP, IDM ISO 29481)",
+  "about.tech.cta": "Claim Your Free Tech Stack Audit",
+  "about.tech.cta_sub": "(100% Free & Secure. Let us review your current software pipeline and show you exactly where a custom Python script can save you €10,000+ per project. No credit card required.)",
+  "about.impact.stat1.title": "Engineering Hours Reclaimed",
+  "about.impact.stat2.title": "Algorithmic Precision",
+  "about.impact.stat3.title": "Custom Automation Pipelines Deployed",
+  "about.cta.c1_title": "SCALE THROUGH CODE, NOT HEADCOUNT.",
+  "about.cta.c1_b_title": "The Bottleneck",
+  "about.cta.c1_b_desc": "Relying on manual engineering hours to clear software limitations drains project budgets and delays delivery.",
+  "about.cta.c1_p_title": "The Automation Pivot",
+  "about.cta.c1_p_desc": "Our R&D lab in Padua engineers custom algorithms that reduce clash resolution and data mapping from days to seconds.",
+  "about.cta.c1_btn": "Claim Your Free BIM Data Audit",
+  "about.cta.c1_sub": "(100% Secure Data Handling. We process your heaviest Revit model through our Python pipelines to prove instant ROI. No credit card required.)",
+  "about.cta.c2_title": "JOIN THE R&D LAB",
+  "about.cta.c2_desc1": "Architects and engineers who write code replace manual labor.",
+  "about.cta.c2_desc2": "If you have transitioned from traditional BIM management to programmatic execution using Python, C#, or the Revit API, your technical ceiling is here.",
+  "about.cta.c2_btn": "Submit Your Code",
+  "about.cta.c2_sub": "(No traditional modeling portfolios. Send us your GitHub repository, custom Revit add-in, or Dynamo scripts.)",
+  "about.team.sec1.badge": "01. THE CORE ARCHITECTS",
+  "about.team.sec1.title": "Engineering Algorithms, Not Just Models.",
+  "about.team.sec1.desc": "Our core technical unit operates from the R&D tech hub of <strong>Padua, Italy</strong>. We fuse <strong>Senior BIM Management</strong> with <strong>Full-Stack Software Engineering</strong> to build the custom code that automates your AEC workflows.",
+  "about.team.sec2.badge": "02. THE EXTENDED LAB",
+  "about.team.sec2.title": "Infinite Scalability. Zero Overhead.",
+  "about.team.sec2.b_title": "The Bottleneck",
+  "about.team.sec2.b_desc": "Traditional AEC firms struggle to scale their workforce for massive infrastructure tenders without bloating internal payroll and management overhead.",
+  "about.team.sec2.a_title": "The Agitation",
+  "about.team.sec2.a_desc": "Rushing to hire unvetted freelancers compromises your proprietary data security and introduces <strong>fatal geometric errors</strong> into the final <strong>IFC models</strong>, risking public tender disqualification.",
+  "about.team.sec2.s_title": "The pyBIM Solution",
+  "about.team.sec2.s_desc": "We maintain a highly vetted, private network of specialized computational designers across Europe. We scale execution capacity instantly to meet project demands, with all external work strictly audited by our <strong>internal Python QA/QC scripts</strong> to guarantee <strong>100% compliance</strong> with <strong>UNI 11337</strong> and <strong>ISO 19650</strong>.",
+  "about.team.sec3.badge": "03. STRATEGIC ECOSYSTEM",
+  "about.team.sec3.title": "Backed by Academic Rigor and Enterprise Tech.",
+  "about.team.sec3.desc": "We bridge the gap between high-level algorithmic research and industrial AEC execution. Our strategic ecosystem ensures your projects benefit from the absolute frontier of <strong>BIM technology</strong>.",
+  "about.team.sec3.l1_title": "Academic R&D",
+  "about.team.sec3.l1_desc": "Rooted in the engineering excellence of the <strong>University of Padua</strong> and <strong>Politecnico di Torino</strong>. We directly translate advanced university computational research into tangible, <strong>margin-saving workflows</strong> for your enterprise.",
+  "about.team.sec3.l2_title": "Enterprise Integration",
+  "about.team.sec3.l2_desc": "Partnered with leading AEC technology providers like <strong>Autodesk</strong> to guarantee seamless, native API integrations and absolute data security for your proprietary <strong>Revit</strong> and <strong>ACC</strong> environments.",
+  "about.team.sec2.network": "<strong>The Extended Network:</strong> On-Demand <strong>BIM Coordinators</strong> & <strong>Parametric Modelers</strong> deployed exclusively through our automated validation pipelines.",
+  "about.team.sec3.cta_btn": "Claim Your Free BIM Data Audit",
+  "about.team.sec3.cta_sub": "(100% Free & Secure Data Handling. Bypass the sales team and speak directly with our core engineers to audit your current software workflow. No credit card required.)",
+  "about.team.sec4.badge": "04. TRUSTED BY",
+  "about.team.sec4.title": "Executed for Industry Leaders.",
+  "about.team.sec4.desc": "Delivering algorithmic BIM solutions, automated QTO, and ISO-compliant databases for top-tier architecture studios and general contractors across the DACH region and Italy."
 }
