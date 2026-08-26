@@ -179,7 +179,9 @@ export default function Footer() {
           </p>
           <div className="flex gap-6 text-sm text-white/80 font-medium justify-center flex-wrap">
             <Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
+            <Link href="/cookie-policy" className="hover:text-white transition">Cookie Policy</Link>
             <Link href="/terms-and-conditions" className="hover:text-white transition">Terms and Conditions</Link>
+            <button className="iubenda-cs-preferences-link hover:text-white transition">Cookie Preferences</button>
           </div>
         </div>
       </div>
