@@ -2,9 +2,18 @@ import CareersPageLayout from "@/components/pages/careers-page-layout";
 import { db } from "@/lib/db";
 import { dummyJobs } from "@/lib/dummy-jobs";
 
-export const metadata = {
-  title: "Careers"
-};
+export async function generateMetadata({ params }) {
+  const locale = params?.locale || "en";
+  const titles = {
+    en: "Careers",
+    it: "Lavora con noi",
+    de: "Karriere"
+  };
+  
+  return {
+    title: titles[locale] || titles.en
+  };
+}
 
 export const dynamic = "force-dynamic";
 

@@ -2,9 +2,18 @@ import AboutPageLayout from "@/components/pages/about-page-layout";
 import teamData from "@/lib/data/team-data.json";
 import { db } from "@/lib/db";
 
-export const metadata = {
-  title: "Chi siamo"
-};
+export async function generateMetadata({ params }) {
+  const locale = params?.locale || "en";
+  const titles = {
+    en: "About Us",
+    it: "Chi siamo",
+    de: "Über uns"
+  };
+  
+  return {
+    title: titles[locale] || titles.en
+  };
+}
 
 export default async function AboutPage() {
   const dbTeam = await db.teamMember.findMany({

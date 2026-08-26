@@ -24,7 +24,7 @@ export async function POST(req) {
       });
 
       await transporter.sendMail({
-        from: `Arvand Website <${process.env.SMTP_FROM}>`,
+        from: `pyBIM Website <${process.env.SMTP_FROM}>`,
         to: process.env.CONTACT_TO,
         subject: `New contact request from ${name}`,
         replyTo: email,

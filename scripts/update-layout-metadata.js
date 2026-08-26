@@ -1,16 +1,11 @@
-import "../globals.css";
-import Header from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
-import GoToTop from "@/components/layout/go-to-top";
-import { LanguageProvider } from "@/lib/LanguageContext";
-import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
-import { Analytics } from "@vercel/analytics/next";
+const fs = require('fs');
 
-const siteUrl = "https://pybim.com";
+const path = 'c:/bim/app/[locale]/layout.js';
+let content = fs.readFileSync(path, 'utf8');
 
-export async function generateMetadata({ params }) {
+const newMetadata = `export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const currentUrl = `${siteUrl}/${locale}`;
+  const currentUrl = \`\${siteUrl}/\${locale}\`;
 
   const titles = {
     en: "pyBIM | Advanced BIM & Software Development Lab",
@@ -42,10 +37,10 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: currentUrl,
       languages: {
-        "en-US": `${siteUrl}/en`,
-        "it-IT": `${siteUrl}/it`,
-        "de-DE": `${siteUrl}/de`,
-        "x-default": `${siteUrl}/en`
+        "en-US": \`\${siteUrl}/en\`,
+        "it-IT": \`\${siteUrl}/it\`,
+        "de-DE": \`\${siteUrl}/de\`,
+        "x-default": \`\${siteUrl}/en\`
       }
     },
     keywords: [
@@ -89,26 +84,8 @@ export async function generateMetadata({ params }) {
       ]
     }
   };
-}
+}`;
 
-export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "it" }, { locale: "de" }];
-}
-
-export default function RootLayout({ children, params }) {
-  return (
-    <html lang={params?.locale || "en"}>
-      <body className="min-h-screen bg-brand-base text-brand-textPrimary antialiased">
-        <LanguageProvider>
-          <div className="fixed inset-0 -z-10 bg-brand-base" />
-          <Header />
-          <main className="pb-20 lg:pb-0">{children}</main>
-          <GoToTop />
-          <Footer />
-          <MobileBottomNav />
-        </LanguageProvider>
-        <Analytics />
-      </body>
-    </html>
-  );
-}
+content = content.replace(/export async function generateMetadata\(\{ params \}\) \{[\s\S]*?\n\}/, newMetadata);
+fs.writeFileSync(path, content, 'utf8');
+console.log('Layout metadata updated.');

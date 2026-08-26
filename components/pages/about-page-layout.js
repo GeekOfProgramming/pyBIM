@@ -2,10 +2,13 @@
 
 import { useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { ArrowRight, Code2, Cpu, Cog, Briefcase, Terminal, Activity, Shield, Users } from "lucide-react";
+import { ArrowRight, Code2, Cpu, Cog, Briefcase, Terminal, Activity, Shield, Users, Zap, Building } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 import TeamPartnersSection from "@/components/sections/team-partners-section";
 
 export default function AboutPageLayout({ teamData }) {
+  const { t } = useLanguage();
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handleScroll = () => {
@@ -30,59 +33,101 @@ export default function AboutPageLayout({ teamData }) {
   return (
     <div className="w-full bg-brand-base">
       {/* SECTION 1: Hero Section (The Manifesto) */}
-      <section id="manifesto" className="relative flex min-h-[85vh] items-center justify-center overflow-hidden border-b border-brand-border bg-brand-surface pt-20">
+      <section id="manifesto" className="relative flex min-h-[90vh] items-center justify-center overflow-hidden border-b border-brand-border bg-brand-surface pt-24 pb-12">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.05),transparent_60%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(37,99,235,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(37,99,235,0.03)_1px,transparent_1px)] bg-[size:32px_32px]" />
         </div>
-        
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center relative z-10 py-32">
+
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center relative z-10 mt-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-8 backdrop-blur-sm shadow-sm">
             <Terminal className="w-4 h-4" /> THE MANIFESTO
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-brand-textPrimary tracking-tight mb-8">
-            We are engineers who speak the <br className="hidden md:block" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400">language of machines.</span>
-          </h1>
-          <h2 className="text-lg md:text-xl text-brand-textSecondary leading-relaxed max-w-4xl mx-auto font-medium">
-            We are not just another BIM studio; we are a software development lab for the AEC industry. Our mission is to eliminate human error and automate repetitive workflows in complex construction projects.
-          </h2>
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-brand-textPrimary tracking-tight mb-8 leading-tight max-w-5xl mx-auto" dangerouslySetInnerHTML={{ __html: t("about.manifesto.title") }} />
+          <h2 className="text-lg md:text-xl text-brand-textSecondary leading-relaxed max-w-3xl mx-auto font-medium mb-12" dangerouslySetInnerHTML={{ __html: t("about.manifesto.subtitle") }} />
+
+          <div className="flex flex-col items-center justify-center gap-4">
+            <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-brand-primary hover:bg-brand-secondary rounded-full shadow-lg hover:shadow-brand-primary/30 transition-all duration-300 transform hover:-translate-y-1">
+              {t("about.manifesto.cta")}
+            </Link>
+            <p className="text-sm text-brand-textSecondary max-w-md mx-auto">
+              {t("about.manifesto.cta_sub")}
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* SECTION 2: Who We Are (Split Design Layout) */}
+      {/* SECTION 2: Core Philosophy (3 Column Grid) */}
       <section className="bg-brand-base w-full border-b border-brand-border py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-2">
-            
-            {/* The Traditional Way */}
-            <div className="rounded-3xl border border-red-200 bg-white p-10 md:p-14 relative overflow-hidden group hover:border-red-300 transition-colors shadow-sm">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-red-50 blur-[80px] rounded-full group-hover:bg-red-100 transition-colors" />
-              <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-8">
+          <div className="grid gap-8 lg:grid-cols-3 max-w-7xl mx-auto">
+
+            {/* Box 1: The Traditional "Modeling Farm" */}
+            <div className="rounded-3xl border border-red-200 bg-white p-8 md:p-10 relative overflow-hidden group hover:border-red-300 transition-colors shadow-sm flex flex-col h-full">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-red-50 blur-[60px] rounded-full group-hover:bg-red-100 transition-colors" />
+              <div className="relative z-10 flex-grow">
+                <div className="flex items-center gap-4 mb-6">
                   <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-red-50 text-red-500 border border-red-100">
-                    <Cog className="w-6 h-6" />
+                    <Users className="w-6 h-6" />
                   </div>
-                  <h3 className="text-2xl font-bold text-brand-textPrimary">The Traditional Way</h3>
+                  <h3 className="text-xl font-bold text-brand-textPrimary">{t("about.manifesto.box1_title")}</h3>
                 </div>
-                <p className="text-brand-textSecondary text-lg leading-relaxed font-medium">
-                  "The industry wastes thousands of hours on manual clicks, visual clash detection, and redundant data entry. This drains both time and budget."
-                </p>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-bold text-sm text-brand-textPrimary mb-1">{t("about.manifesto.box1_subtitle")}:</h4>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box1_desc1")}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-brand-textPrimary mb-1">{t("about.manifesto.box1_desc2_title")}:</h4>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box1_desc2")}</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Our Approach */}
-            <div className="rounded-3xl border border-brand-primary/20 bg-white p-10 md:p-14 relative overflow-hidden group shadow-lg hover:shadow-xl hover:border-brand-primary/40 transition-all">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 blur-[80px] rounded-full group-hover:bg-brand-primary/10 transition-colors" />
-              <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-8">
+            {/* Box 2: The pyBIM Automation Lab */}
+            <div className="rounded-3xl border-2 border-brand-primary/40 bg-white p-8 md:p-10 relative overflow-hidden group shadow-[0_0_40px_-10px_rgba(37,99,235,0.25)] hover:shadow-[0_0_50px_-10px_rgba(37,99,235,0.4)] hover:border-brand-primary/60 transition-all flex flex-col h-full lg:-translate-y-4 z-10">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-brand-primary/5 blur-[60px] rounded-full group-hover:bg-brand-primary/10 transition-colors" />
+              <div className="relative z-10 flex-grow">
+                <div className="flex items-center gap-4 mb-6">
                   <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary border border-brand-primary/20">
-                    <Cpu className="w-6 h-6" />
+                    <Terminal className="w-6 h-6" />
                   </div>
-                  <h3 className="text-2xl font-bold text-brand-textPrimary">Our Approach</h3>
+                  <h3 className="text-xl font-bold text-brand-textPrimary">{t("about.manifesto.box3_title")}</h3>
                 </div>
-                <p className="text-brand-textSecondary text-lg leading-relaxed font-medium">
-                  "We believe that if a task is done twice in Revit, it deserves a script. Our team blends Senior BIM Managers with Full-Stack Developers, leveraging Python and custom APIs to make the impossible possible."
-                </p>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-bold text-sm text-brand-primary mb-1">{t("about.manifesto.box3_subtitle")}:</h4>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box3_desc1")}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-brand-primary mb-1">{t("about.manifesto.box3_desc2_title")}:</h4>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box3_desc2")}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Box 3: The Generic Software Vendor */}
+            <div className="rounded-3xl border border-orange-200 bg-white p-8 md:p-10 relative overflow-hidden group hover:border-orange-300 transition-colors shadow-sm flex flex-col h-full">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-orange-50 blur-[60px] rounded-full group-hover:bg-orange-100 transition-colors" />
+              <div className="relative z-10 flex-grow">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-orange-50 text-orange-500 border border-orange-100">
+                    <Building className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-brand-textPrimary">{t("about.manifesto.box2_title")}</h3>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-bold text-sm text-brand-textPrimary mb-1">{t("about.manifesto.box2_subtitle")}:</h4>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box2_desc1")}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-brand-textPrimary mb-1">{t("about.manifesto.box2_desc2_title")}:</h4>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box2_desc2")}</p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -100,20 +145,27 @@ export default function AboutPageLayout({ teamData }) {
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary mb-6">Our Journey</h2>
             <p className="text-brand-textSecondary text-lg font-medium">The evolution from manual coordination to automated engineering.</p>
           </div>
-          
+
           <div className="relative space-y-24 md:space-y-32">
             {/* Vertical Line */}
             <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-[2px] bg-brand-border md:-translate-x-1/2" />
-            
+
             {/* Phase 1 */}
             <div className="relative pl-16 md:pl-0 group">
               <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-white border-2 border-brand-primary shadow-[0_0_0_4px_rgba(37,99,235,0.1)] group-hover:shadow-[0_0_0_6px_rgba(37,99,235,0.2)] transition-shadow" />
               <div className="md:w-[45%] md:ml-auto md:pl-16">
-                <div className="text-sm font-mono font-bold text-brand-primary mb-2">Phase 1</div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">The Operational Bottleneck</h3>
-                <p className="text-brand-textSecondary leading-relaxed text-lg font-medium">
-                  Managing complex BIM projects exposed a systemic industry flaw: highly skilled engineers waste up to 40% of their billable hours on repetitive data entry, parameter mapping, and manual quality control.
-                </p>
+                <div className="text-sm font-mono font-bold text-brand-primary mb-2">{t("about.journey.badge")}</div>
+                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">{t("about.journey.p1_title")}</h3>
+                <ul className="space-y-4">
+                  <li className="text-brand-textSecondary text-base leading-relaxed">
+                    <strong className="text-brand-textPrimary">{t("about.journey.p1_item1_title")}: </strong> 
+                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p1_item1_desc") }} />
+                  </li>
+                  <li className="text-brand-textSecondary text-base leading-relaxed">
+                    <strong className="text-brand-textPrimary">{t("about.journey.p1_item2_title")}: </strong> 
+                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p1_item2_desc") }} />
+                  </li>
+                </ul>
               </div>
             </div>
 
@@ -121,11 +173,18 @@ export default function AboutPageLayout({ teamData }) {
             <div className="relative pl-16 md:pl-0 group">
               <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-white border-2 border-brand-primary shadow-[0_0_0_4px_rgba(37,99,235,0.1)] group-hover:shadow-[0_0_0_6px_rgba(37,99,235,0.2)] transition-shadow" />
               <div className="md:w-[45%] md:pr-16 md:text-right">
-                <div className="text-sm font-mono font-bold text-brand-primary mb-2">Phase 2</div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">The Algorithmic Shift</h3>
-                <p className="text-brand-textSecondary leading-relaxed text-lg font-medium">
-                  Instead of scaling through headcount, we transitioned to code. By integrating Python, C#, and Revit APIs into our core workflow, we replaced manual drafting with programmatic execution, reducing processing time from days to seconds.
-                </p>
+                <div className="text-sm font-mono font-bold text-brand-primary mb-2">{t("about.journey.p2_badge")}</div>
+                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">{t("about.journey.p2_title")}</h3>
+                <ul className="space-y-4">
+                  <li className="text-brand-textSecondary text-base leading-relaxed">
+                    <strong className="text-brand-textPrimary">{t("about.journey.p2_item1_title")}: </strong> 
+                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p2_item1_desc") }} />
+                  </li>
+                  <li className="text-brand-textSecondary text-base leading-relaxed">
+                    <strong className="text-brand-textPrimary">{t("about.journey.p2_item2_title")}: </strong> 
+                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p2_item2_desc") }} />
+                  </li>
+                </ul>
               </div>
             </div>
 
@@ -133,11 +192,18 @@ export default function AboutPageLayout({ teamData }) {
             <div className="relative pl-16 md:pl-0 group">
               <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-brand-primary border-2 border-brand-primary shadow-[0_0_0_6px_rgba(37,99,235,0.2)] group-hover:shadow-[0_0_0_8px_rgba(37,99,235,0.3)] transition-shadow" />
               <div className="md:w-[45%] md:ml-auto md:pl-16">
-                <div className="text-sm font-mono font-bold text-brand-primary mb-2">Phase 3</div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">The Hybrid B2B Agency</h3>
-                <p className="text-brand-textSecondary leading-relaxed text-lg font-medium">
-                  Today, pyBIM operates as a silent technical partner for AEC firms. We deliver zero-error BIM coordination and develop the custom software infrastructure required to scale your project capacity without increasing overhead.
-                </p>
+                <div className="text-sm font-mono font-bold text-brand-primary mb-2">{t("about.journey.p3_badge")}</div>
+                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">{t("about.journey.p3_title")}</h3>
+                <ul className="space-y-4">
+                  <li className="text-brand-textSecondary text-base leading-relaxed">
+                    <strong className="text-brand-textPrimary">{t("about.journey.p3_item1_title")}: </strong> 
+                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p3_item1_desc") }} />
+                  </li>
+                  <li className="text-brand-textSecondary text-base leading-relaxed">
+                    <strong className="text-brand-textPrimary">{t("about.journey.p3_item2_title")}: </strong> 
+                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p3_item2_desc") }} />
+                  </li>
+                </ul>
               </div>
             </div>
 
@@ -150,7 +216,7 @@ export default function AboutPageLayout({ teamData }) {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm">
-              <Code2 className="w-4 h-4" /> TECH STACK & STANDARDS
+              <Code2 className="w-4 h-4" /> {t("about.tech.badge")}
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
               The tools & standards we use to engineer the process.
@@ -159,39 +225,25 @@ export default function AboutPageLayout({ teamData }) {
               Eliminating manual bottlenecks through programmatic execution, CDE hosting, and strict ISO compliance.
             </p>
           </div>
-          
+
           <div className="grid gap-8 lg:grid-cols-3">
-            
+
             {/* 1. ENGINEERING TOOLS (13 Items) */}
             <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
               <div>
                 <div className="border-b border-brand-border pb-6 mb-6">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block">01. SOFTWARE & COORDINATION</span>
-                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-surface border border-brand-border text-brand-textSecondary">13 Tools</span>
+                    <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block">{t("about.tech.box1_top")}</span>
+                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-surface border border-brand-border text-brand-textSecondary">{t("about.tech.box1_top_right")}</span>
                   </div>
                   <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
-                    <Cog className="w-5 h-5 text-brand-primary" /> Engineering Tools
+                    <Cog className="w-5 h-5 text-brand-primary" /> {t("about.tech.box1_title")}
                   </h3>
-                  <p className="text-xs text-brand-primary font-mono italic">ISO-compliant authoring and clash resolution.</p>
+                  <p className="text-xs text-brand-primary font-mono italic">{t("about.tech.box1_sub")}</p>
                 </div>
 
                 <div className="space-y-3.5">
-                  {[
-                    { name: "Autodesk Revit", tag: "3D/7D", desc: "Multidisciplinary 3D Modeling & Energy Analysis" },
-                    { name: "Navisworks Manage", tag: "Clash/4D", desc: "Clash Detection & 4D Time/Gantt Chart Integration" },
-                    { name: "ACC (Autodesk Cloud)", tag: "6D CDE", desc: "Common Data Environment & As-Built FM Hosting" },
-                    { name: "PriMus-IFC", tag: "5D AI", desc: "AI-Driven Quantity Surveying & Dynamic Cost Estimating" },
-                    { name: "ReCap Pro", tag: "Scan-to-BIM", desc: "Laser Scan & Drone Point Cloud Processing" },
-                    { name: "Solibri Office", tag: "QA/QC", desc: "Rule-Based Automated Model Checking & QA Audit" },
-                    { name: "BIMcollab / Dalux", tag: "Issue Mgmt", desc: "Cloud-Based BCF Issue Tracking & Coordination" },
-                    { name: "Synchro PRO", tag: "4D Sim", desc: "4D Construction Process Sequencing & Scheduling" },
-                    { name: "dRofus", tag: "Data Mgmt", desc: "Centralized Spatial Data & Room Requirements" },
-                    { name: "Tekla Structures", tag: "LOD 400", desc: "High-Detail Steel & Concrete Structural Modeling" },
-                    { name: "Civil 3D / InfraWorks", tag: "GIS/Infra", desc: "Infrastructure Modeling & GIS Data Exchange" },
-                    { name: "CostX", tag: "5D Cost", desc: "Dynamic 2D/3D Quantity Take-off Engine" },
-                    { name: "Revizto", tag: "VR/Coord", desc: "2D/3D VR Model Coordination & Clash Tracking" },
-                  ].map((item, idx) => (
+                  {(t("about.tech.tools") || []).map((item, idx) => (
                     <div key={idx} className="p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 hover:shadow-sm transition-all">
                       <div className="flex items-center justify-between mb-1">
                         <span className="font-bold text-sm text-brand-textPrimary">{item.name}</span>
@@ -210,30 +262,17 @@ export default function AboutPageLayout({ teamData }) {
               <div className="relative z-10">
                 <div className="border-b border-brand-primary/20 pb-6 mb-6">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-widest block">02. CODE & AUTOMATION</span>
-                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary">12 Techs</span>
+                    <span className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-widest block">{t("about.tech.box2_top")}</span>
+                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary">{t("about.tech.box2_top_right")}</span>
                   </div>
                   <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
-                    <Terminal className="w-5 h-5 text-brand-primary" /> Development Stack
+                    <Terminal className="w-5 h-5 text-brand-primary" /> {t("about.tech.box2_title")}
                   </h3>
-                  <p className="text-xs text-brand-primary font-mono italic">Programmatic control over manual workflows.</p>
+                  <p className="text-xs text-brand-primary font-mono italic">{t("about.tech.box2_sub")}</p>
                 </div>
 
                 <div className="space-y-3.5">
-                  {[
-                    { name: "Python", tag: "Automation", desc: "Automated Parameter Injection & Bulk Processing" },
-                    { name: "Dynamo & pyRevit", tag: "Scripting", desc: "Visual & Text Scripting for Modeling Automation" },
-                    { name: "C# & Revit API", tag: "Plugins", desc: "Native Add-ins & Deep Software Customization" },
-                    { name: "REST APIs", tag: "10D / IoT", desc: "Real-Time Sensor & Digital Twin Data Sync" },
-                    { name: "Autodesk APS (Forge)", tag: "Cloud API", desc: "Cloud App Development & Web BIM Processing" },
-                    { name: "Power BI", tag: "Analytics", desc: "Live Project Analytics & Model Dashboards" },
-                    { name: "Speckle", tag: "Open Data", desc: "Open-Source Real-Time Data Streaming" },
-                    { name: "FastAPI / Node.js", tag: "Backend", desc: "Custom Microservices for Network Automation" },
-                    { name: "React.js / Next.js", tag: "Web Portals", desc: "Client Web Dashboards for Real-Time Monitoring" },
-                    { name: "SQL / PostgreSQL", tag: "BIM DB", desc: "Relational DB for Thousands of BIM Parameters" },
-                    { name: "IFC.js", tag: "Browser 3D", desc: "In-Browser 3D BIM Rendering Without Desktop Software" },
-                    { name: "LangChain & ChromaDB", tag: "AI / RAG", desc: "RAG-Based Automated BEP/EIR Document Auditing" },
-                  ].map((item, idx) => (
+                  {(t("about.tech.dev") || []).map((item, idx) => (
                     <div key={idx} className="p-3.5 rounded-2xl bg-brand-primary/5 border border-brand-primary/15 hover:bg-white hover:border-brand-primary/40 hover:shadow-sm transition-all">
                       <div className="flex items-center justify-between mb-1">
                         <span className="font-bold text-sm text-brand-textPrimary">{item.name}</span>
@@ -251,30 +290,17 @@ export default function AboutPageLayout({ teamData }) {
               <div>
                 <div className="border-b border-brand-border pb-6 mb-6">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block">03. MANDATES & OPENBIM</span>
-                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-surface border border-brand-border text-brand-textSecondary">12 Standards</span>
+                    <span className="text-[10px] font-mono font-bold text-brand-textSecondary uppercase tracking-widest block">{t("about.tech.box3_top")}</span>
+                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-surface border border-brand-border text-brand-textSecondary">{t("about.tech.box3_top_right")}</span>
                   </div>
                   <h3 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2 mb-1">
-                    <Code2 className="w-5 h-5 text-brand-primary" /> Standards & Protocols
+                    <Code2 className="w-5 h-5 text-brand-primary" /> {t("about.tech.box3_title")}
                   </h3>
-                  <p className="text-xs text-brand-primary font-mono italic">Strict compliance with EU & UK mandates.</p>
+                  <p className="text-xs text-brand-primary font-mono italic">{t("about.tech.box3_sub")}</p>
                 </div>
 
                 <div className="space-y-3.5">
-                  {[
-                    { name: "ISO 19650", tag: "Global Framework", desc: "International Information Management Framework" },
-                    { name: "UNI 11337", tag: "Italian Standard", desc: "Italian National BIM Mandates & Project Validation" },
-                    { name: "COBie", tag: "FM Handover", desc: "Standardized Facility Management Data Handover" },
-                    { name: "EIR / BEP", tag: "8D / 9D Protocols", desc: "Employer Requirements, BEP & Safety/Lean Plans" },
-                    { name: "IFC (ISO 16739)", tag: "OpenBIM", desc: "Universal Open Format for Vendor-Neutral Data" },
-                    { name: "BCF", tag: "OpenBIM BCF", desc: "Standardized Issue Reporting & Clash Communication" },
-                    { name: "Decreto BIM (D.M. 560/312)", tag: "Italian Mandate", desc: "Italian Legal Mandates for Public Tenders" },
-                    { name: "LOD / LOIN (EN 17412)", tag: "Level of Need", desc: "Level of Development & Information Need Standards" },
-                    { name: "OmniClass / MasterFormat", tag: "Classification", desc: "International Classification & Element Coding" },
-                    { name: "MIDP / TIDP", tag: "ISO 19650 Delivery", desc: "Master & Task Information Delivery Plans" },
-                    { name: "bsDD (buildingSMART)", tag: "Data Dict", desc: "Global Dictionary for OpenBIM Semantic Interoperability" },
-                    { name: "IDM (ISO 29481)", tag: "Workflow Standard", desc: "Information Delivery Manual Workflow Standard" },
-                  ].map((item, idx) => (
+                  {(t("about.tech.stds") || []).map((item, idx) => (
                     <div key={idx} className="p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 hover:shadow-sm transition-all">
                       <div className="flex items-center justify-between mb-1">
                         <span className="font-bold text-sm text-brand-textPrimary">{item.name}</span>
@@ -296,7 +322,7 @@ export default function AboutPageLayout({ teamData }) {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
-              <Shield className="w-4 h-4" /> OUR IMPACT
+              <Shield className="w-4 h-4" /> {t("about.impact.badge")}
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
               Measurable Efficiency & Zero-Error Results
@@ -305,29 +331,23 @@ export default function AboutPageLayout({ teamData }) {
           <div className="grid gap-16 md:grid-cols-3">
             <div className="text-center group">
               <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-6 group-hover:scale-105 transition-transform duration-500">
-                +10,000
+                {t("about.impact.stat1.val")}
               </div>
-              <div className="text-brand-textSecondary font-bold uppercase tracking-widest text-sm leading-relaxed max-w-xs mx-auto">
-                Hours saved through custom automation
-              </div>
-            </div>
-            
-            <div className="text-center group">
-              <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-6 group-hover:scale-105 transition-transform duration-500">
-                100%
-              </div>
-              <div className="text-brand-textSecondary font-bold uppercase tracking-widest text-sm leading-relaxed max-w-xs mx-auto">
-                Algorithmic precision <br />(Zero human error)
-              </div>
+              <div className="text-brand-textSecondary font-bold uppercase tracking-widest text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat1.desc") }} />
             </div>
 
             <div className="text-center group">
               <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-6 group-hover:scale-105 transition-transform duration-500">
-                +50
+                {t("about.impact.stat2.val")}
               </div>
-              <div className="text-brand-textSecondary font-bold uppercase tracking-widest text-sm leading-relaxed max-w-xs mx-auto">
-                Custom scripts and plugins deployed
+              <div className="text-brand-textSecondary font-bold uppercase tracking-widest text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat2.desc") }} />
+            </div>
+
+            <div className="text-center group">
+              <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-6 group-hover:scale-105 transition-transform duration-500">
+                {t("about.impact.stat3.val")}
               </div>
+              <div className="text-brand-textSecondary font-bold uppercase tracking-widest text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat3.desc") }} />
             </div>
           </div>
         </div>
@@ -337,7 +357,7 @@ export default function AboutPageLayout({ teamData }) {
       <section className="bg-brand-base w-full py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-8 md:grid-cols-2">
-            
+
             {/* Card 1 For Clients */}
             <div className="rounded-[2.5rem] border border-brand-border bg-white shadow-lg p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/30 transition-colors">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand-surface blur-[80px] rounded-full pointer-events-none group-hover:bg-brand-primary/5 transition-colors" />
@@ -348,7 +368,7 @@ export default function AboutPageLayout({ teamData }) {
                 </h3>
               </div>
               <Link href="/contact" className="relative z-10 inline-flex items-center justify-center gap-2 rounded-full border border-brand-border bg-brand-surface px-8 py-4 font-bold text-brand-textPrimary hover:bg-white hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all">
-                Contact Us <ArrowRight className="w-5 h-5" />
+                {t("about.cta.card1.btn")} <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
 
@@ -362,7 +382,7 @@ export default function AboutPageLayout({ teamData }) {
                 </h3>
               </div>
               <Link href="/contact" className="relative z-10 inline-flex items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-bold text-white hover:bg-brand-accentHover transition-all shadow-md hover:shadow-lg hover:-translate-y-1">
-                Work With Us <ArrowRight className="w-5 h-5" />
+                {t("about.cta.card2.btn")} <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
 
