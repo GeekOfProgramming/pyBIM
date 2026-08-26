@@ -4,7 +4,8 @@ import Footer from "@/components/layout/footer";
 import GoToTop from "@/components/layout/go-to-top";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
-import { Analytics } from "@vercel/analytics/next";
+import IsolatedAnalytics from "@/components/ui/IsolatedAnalytics";
+import CookieConsent from "@/components/ui/CookieConsent";
 
 const siteUrl = "https://pybim.com";
 
@@ -107,7 +108,8 @@ export default function RootLayout({ children, params }) {
           <Footer />
           <MobileBottomNav />
         </LanguageProvider>
-        <Analytics />
+        <CookieConsent />
+        <IsolatedAnalytics />
       </body>
     </html>
   );

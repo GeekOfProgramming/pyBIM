@@ -4,7 +4,7 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin/"]
+        disallow: ["/api/", "/test/", "/admin/"]
       }
     ],
     sitemap: "https://pybim.com/sitemap.xml"
