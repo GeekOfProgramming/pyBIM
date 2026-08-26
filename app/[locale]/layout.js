@@ -5,7 +5,7 @@ import GoToTop from "@/components/layout/go-to-top";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
 import IsolatedAnalytics from "@/components/ui/IsolatedAnalytics";
-import Script from "next/script";
+import CookieConsent from "@/components/ui/CookieConsent";
 const siteUrl = "https://pybim.com";
 
 export async function generateMetadata({ params }) {
@@ -98,10 +98,6 @@ export function generateStaticParams() {
 export default function RootLayout({ children, params }) {
   return (
     <html lang={params?.locale || "en"}>
-      <head>
-        <Script id="iubenda-cookie-banner" strategy="beforeInteractive" src="https://embeds.iubenda.com/widgets/eedcc230-7814-4450-9adf-6b78912f4614.js" />
-        <Script id="iubenda-loader" strategy="lazyOnload" src="https://cdn.iubenda.com/iubenda.js" />
-      </head>
       <body className="min-h-screen bg-brand-base text-brand-textPrimary antialiased">
         <LanguageProvider>
           <div className="fixed inset-0 -z-10 bg-brand-base" />
@@ -111,6 +107,7 @@ export default function RootLayout({ children, params }) {
           <Footer />
           <MobileBottomNav />
         </LanguageProvider>
+        <CookieConsent />
         <IsolatedAnalytics />
       </body>
     </html>

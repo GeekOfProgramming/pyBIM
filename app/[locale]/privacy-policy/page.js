@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
         
         <div className="prose prose-lg prose-blue max-w-none">
           <div className="p-6 bg-brand-surface border border-brand-border rounded-2xl text-brand-textSecondary font-medium leading-relaxed">
-            <a href="https://www.iubenda.com/privacy-policy/49952074" className="iubenda-white iubenda-noiframe iubenda-embed" title="Privacy Policy">Privacy Policy</a>
+            {placeholder[language] || placeholder.en}
           </div>
         </div>
       </div>
