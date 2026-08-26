@@ -106,9 +106,9 @@ export default function RootLayout({ children, params }) {
           <GoToTop />
           <Footer />
           <MobileBottomNav />
+          <CookieConsent />
+          <IsolatedAnalytics />
         </LanguageProvider>
-        <CookieConsent />
-        <IsolatedAnalytics />
       </body>
     </html>
   );
