@@ -7,7 +7,7 @@ const organizationSchema = {
   url: "https://pybim.com",
   logo: "https://pybim.com/logo_black_transparent.png",
   email: "info@pybim.com",
-  telephone: "+39 351 837 3043",
+  telephone: "+39 123 456 7890",
   description: "pyBIM is an engineering & software development lab for the AEC industry specializing in BIM automation, Revit API C# plugins, and ISO 19650 compliance.",
   sameAs: ["https://pybim.com"]
 };
@@ -17,7 +17,7 @@ const localBusinessSchema = {
   "@type": "ProfessionalService",
   name: "pyBIM - Advanced BIM & Software Development Lab",
   image: "https://pybim.com/og-image.jpg",
-  telephone: "+39 351 837 3043",
+  telephone: "+39 123 456 7890",
   email: "info@pybim.com",
   priceRange: "€€€",
   address: {

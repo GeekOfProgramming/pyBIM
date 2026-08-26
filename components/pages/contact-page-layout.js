@@ -215,7 +215,7 @@ export default function ContactPageLayout() {
             <div className="flex flex-col items-center">
               <h4 className="mb-8 text-sm font-bold uppercase tracking-widest text-brand-textSecondary text-center">{t("contact.info.socials")}</h4>
               <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-                <a href="https://web.whatsapp.com/send?phone=393518373043" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 transition">
+                <a href="https://web.whatsapp.com/send?phone=391234567890" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 transition">
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white border border-brand-border text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-all duration-300 shadow-sm hover:shadow-md">
                     <MessageCircle className="h-8 w-8" />
                   </div>
