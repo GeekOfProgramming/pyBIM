@@ -31,12 +31,7 @@ export default function CookiePolicyPage() {
         
         <div className="prose prose-lg prose-blue max-w-none">
           <div className="p-6 bg-brand-surface border border-brand-border rounded-2xl text-brand-textSecondary font-medium leading-relaxed">
-            {placeholder[language] || placeholder.en}
-            <br /><br />
-            {/* 
-              IUBENDA EMBED CODE GOES HERE 
-              Example: <a href="https://www.iubenda.com/privacy-policy/.../cookie-policy" className="iubenda-white no-brand iubenda-embed" title="Cookie Policy">Cookie Policy</a>
-            */}
+            <a href="https://www.iubenda.com/privacy-policy/49952074/cookie-policy" className="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
           </div>
         </div>
       </div>
