@@ -1,4 +1,15 @@
-export const metadata = { title: "Politica sui cookie" };
+export async function generateMetadata({ params }) {
+  const locale = params?.locale || "en";
+  const titles = {
+    en: "Cookie Policy",
+    it: "Politica sui cookie",
+    de: "Cookie-Richtlinie"
+  };
+  
+  return {
+    title: titles[locale] || titles.en
+  };
+}
 
 export default function CookiePolicyPage() {
   return <main className="mx-auto max-w-3xl px-6 py-20 text-white/70 lg:px-8">

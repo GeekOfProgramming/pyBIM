@@ -2,927 +2,837 @@
   "teamMembers": [
     {
       "id": "t1",
-      "image": "/Pictures/General/hvac-industrial.jpg",
-      "it": {
-        "name": "John Smith",
-        "role": "Responsabile di Progetto",
-        "bio": "Esperto nella gestione di progetti HVAC industriali complessi, John coordina i team per garantire consegne puntuali e nel rispetto del budget.",
-        "skills": [
-          {
-            "name": "Ingegneria",
-            "value": 95
-          },
-          {
-            "name": "Project Management",
-            "value": 98
-          },
-          {
-            "name": "Problem Solving",
-            "value": 90
-          }
-        ]
-      },
+      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop",
       "en": {
-        "name": "John Smith",
-        "role": "Project Manager",
-        "bio": "Expert in managing projects HVAC industriali complessi, John coordina i team per garantire consegne puntuali e nel rispetto del budget.",
+        "name": "Marcus Weber",
+        "role": "Co-Founder & Chief Technology Officer",
+        "bio": "Focus: C# Revit API, Python Pipelines, Cloud Automation",
         "skills": [
           {
-            "name": "Engineering",
+            "name": "C#",
             "value": 95
-          },
-          {
-            "name": "Project Management",
-            "value": 98
-          },
-          {
-            "name": "Problem Solving",
-            "value": 90
           }
         ]
       },
-      "linkedin": "https://linkedin.com/in/johnsmith",
-      "email": "john.smith@pybim.com"
+      "it": {
+        "name": "Marcus Weber",
+        "role": "Co-Founder & Chief Technology Officer",
+        "bio": "Focus: C# Revit API, Python Pipelines, Cloud Automation",
+        "skills": [
+          {
+            "name": "C#",
+            "value": 95
+          }
+        ]
+      },
+      "de": {
+        "name": "Marcus Weber",
+        "role": "Co-Founder & Chief Technology Officer",
+        "bio": "Focus: C# Revit API, Python Pipelines, Cloud Automation",
+        "skills": [
+          {
+            "name": "C#",
+            "value": 95
+          }
+        ]
+      }
     },
     {
       "id": "t2",
-      "image": "/Pictures/General/hvac-commercial.jpg",
-      "it": {
-        "name": "Michael Brown",
-        "role": "Controllo Qualità",
-        "bio": "Michael assicura che ogni installazione rispetti i rigorosi standard qualitativi e normativi europei.",
-        "skills": [
-          {
-            "name": "Controllo Qualità",
-            "value": 100
-          },
-          {
-            "name": "Normative HVAC",
-            "value": 95
-          },
-          {
-            "name": "Analisi Dati",
-            "value": 85
-          }
-        ]
-      },
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
       "en": {
-        "name": "Michael Brown",
-        "role": "Quality Control",
-        "bio": "Michael ensures that every installation rispetti i rigorosi standard qualitativi e normativi europei.",
+        "name": "David Chen",
+        "role": "Co-Founder & Head of Algorithmic Engineering",
+        "bio": "Focus: BIM Coordination, Parametric Modeling, ISO 19650 Compliance",
         "skills": [
           {
-            "name": "Quality Control",
-            "value": 100
-          },
-          {
-            "name": "Normative HVAC",
-            "value": 95
-          },
-          {
-            "name": "Data Analysis",
-            "value": 85
+            "name": "BIM",
+            "value": 90
           }
         ]
       },
-      "instagram": "https://instagram.com/michaelbrown",
-      "phone": "+39 333 1234567"
+      "it": {
+        "name": "David Chen",
+        "role": "Co-Founder & Head of Algorithmic Engineering",
+        "bio": "Focus: BIM Coordination, Parametric Modeling, ISO 19650 Compliance",
+        "skills": [
+          {
+            "name": "BIM",
+            "value": 90
+          }
+        ]
+      },
+      "de": {
+        "name": "David Chen",
+        "role": "Co-Founder & Head of Algorithmic Engineering",
+        "bio": "Focus: BIM Coordination, Parametric Modeling, ISO 19650 Compliance",
+        "skills": [
+          {
+            "name": "BIM",
+            "value": 90
+          }
+        ]
+      }
     },
     {
       "id": "t3",
-      "image": "/Pictures/Team/hamid-lotfalian.png",
-      "it": {
-        "name": "Hamid Lotfalian",
-        "role": "Dir. Marketing & Sviluppo Business",
-        "bio": "Hamid ha ideato e sviluppato l'intero ecosistema digitale di pyBIM. Con oltre 7 anni di esperienza ingegneristica, guida la strategia digitale, le PR e il marketing aziendale, allineando la presenza online agli obiettivi di business.",
-        "skills": [
-          {
-            "name": "Digital Strategy",
-            "value": 98
-          },
-          {
-            "name": "Web Architecture",
-            "value": 95
-          },
-          {
-            "name": "Social Media & PR",
-            "value": 92
-          }
-        ],
-        "skillsDesc": "Promuovere la crescita attraverso strategie digitali innovative, architetture web avanzate e campagne marketing su misura per il settore termotecnico.",
-        "commitments": [
-          "Gestione completa dell'ecosistema digitale",
-          "Marketing guidato dai dati e lead generation",
-          "Sviluppo dell'identità del brand",
-          "Allineamento delle soluzioni agli obiettivi aziendali"
-        ]
-      },
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop",
       "en": {
-        "name": "Hamid Lotfalian",
-        "role": "Director of Marketing & Business Dev.",
-        "bio": "Hamid engineered pyBIM's digital ecosystem from the ground up. Leveraging 7+ years of full-stack engineering experience, he spearheads the digital strategy, public relations, and marketing campaigns to drive customer acquisition and business growth.",
+        "name": "Sarah Jenkins",
+        "role": "Director of Commercial Growth",
+        "bio": "Focus: Enterprise Acquisition, Strategic AEC Partnerships",
         "skills": [
           {
-            "name": "Digital Strategy",
-            "value": 98
-          },
-          {
-            "name": "Web Architecture",
+            "name": "Strategy",
             "value": 95
-          },
-          {
-            "name": "Social Media & PR",
-            "value": 92
           }
-        ],
-        "skillsDesc": "Driving growth through innovative digital strategies, robust web architectures, and data-driven marketing campaigns tailored for the HVAC industry.",
-        "commitments": [
-          "End-to-end digital ecosystem management",
-          "Data-driven marketing and lead generation",
-          "Fostering community trust and brand identity",
-          "Aligning technical solutions with business goals"
         ]
       },
-      "linkedin": "https://www.linkedin.com/in/hamid-lotfalian",
-      "facebook": "https://www.facebook.com/hamid.lotfalian/",
-      "instagram": "https://www.instagram.com/better.call.hamid/"
+      "it": {
+        "name": "Sarah Jenkins",
+        "role": "Director of Commercial Growth",
+        "bio": "Focus: Enterprise Acquisition, Strategic AEC Partnerships",
+        "skills": [
+          {
+            "name": "Strategy",
+            "value": 95
+          }
+        ]
+      },
+      "de": {
+        "name": "Sarah Jenkins",
+        "role": "Director of Commercial Growth",
+        "bio": "Focus: Enterprise Acquisition, Strategic AEC Partnerships",
+        "skills": [
+          {
+            "name": "Strategy",
+            "value": 95
+          }
+        ]
+      }
     },
     {
       "id": "t4",
-      "image": "/Pictures/General/hvac-industrial.jpg",
-      "it": {
-        "name": "James Miller",
-        "role": "Ingegnere HVAC",
-        "bio": "Progettista di sistemi termotecnici avanzati, James ottimizza il design per massimizzare l'efficienza energetica.",
-        "skills": [
-          {
-            "name": "Progettazione 3D",
-            "value": 95
-          },
-          {
-            "name": "Termodinamica",
-            "value": 90
-          },
-          {
-            "name": "Efficienza Energetica",
-            "value": 98
-          }
-        ]
-      },
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop",
       "en": {
-        "name": "James Miller",
-        "role": "HVAC Engineer",
-        "bio": "Designer of systems termotecnici avanzati, James ottimizza il design per massimizzare l'efficienza energetica.",
+        "name": "Alex Rivera",
+        "role": "Full-Stack Software Engineer",
+        "bio": "Focus: ACC Web Integrations, Custom UI/WPF Development",
         "skills": [
           {
-            "name": "3D Design",
-            "value": 95
-          },
-          {
-            "name": "Thermodynamics",
-            "value": 90
-          },
-          {
-            "name": "Energy Efficiency",
-            "value": 98
+            "name": "ACC API",
+            "value": 92
           }
         ]
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
-    },
-    {
-      "id": "t5",
-      "image": "/Pictures/General/hvac-commercial.jpg",
       "it": {
-        "name": "Sarah Williams",
-        "role": "Coordinatrice Supporto",
-        "bio": "Sarah gestisce le richieste di supporto post-installazione, assicurando interventi tempestivi e massima soddisfazione.",
+        "name": "Alex Rivera",
+        "role": "Full-Stack Software Engineer",
+        "bio": "Focus: ACC Web Integrations, Custom UI/WPF Development",
         "skills": [
           {
-            "name": "Customer Service",
-            "value": 100
-          },
-          {
-            "name": "Pianificazione",
-            "value": 95
-          },
-          {
-            "name": "Logistica",
-            "value": 90
+            "name": "ACC API",
+            "value": 92
           }
         ]
       },
-      "en": {
-        "name": "Sarah Williams",
-        "role": "Support Coordinator",
-        "bio": "Sarah manages support requests di supporto post-installazione, assicurando interventi tempestivi e massima soddisfazione.",
+      "de": {
+        "name": "Alex Rivera",
+        "role": "Full-Stack Software Engineer",
+        "bio": "Focus: ACC Web Integrations, Custom UI/WPF Development",
         "skills": [
           {
-            "name": "Customer Service",
-            "value": 100
-          },
-          {
-            "name": "Planning",
-            "value": 95
-          },
-          {
-            "name": "Logistics",
-            "value": 90
+            "name": "ACC API",
+            "value": 92
           }
         ]
-      },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      }
     }
   ],
   "individualPartners": [
     {
       "id": "i1",
-      "image": "/Pictures/General/hvac-commercial.jpg",
-      "it": {
-        "name": "Collaboratore 1",
-        "role": "Architetto Associato",
-        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Design Architettonico",
-            "value": 95
-          },
-          {
-            "name": "Integrazione Impianti",
-            "value": 90
-          },
-          {
-            "name": "Sostenibilità",
-            "value": 92
-          }
-        ]
-      },
+      "image": "https://images.unsplash.com/photo-1500000001000?q=80&w=600&auto=format&fit=crop",
       "en": {
-        "name": "Collaboratore 1",
-        "role": "Associate Architect",
-        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Architectural Design",
-            "value": 95
-          },
-          {
-            "name": "System Integration",
-            "value": 90
-          },
-          {
-            "name": "Sustainability",
-            "value": 92
-          }
-        ]
+        "name": "Collaborator 1",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Collaborator 1",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 1",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
     },
     {
       "id": "i2",
-      "image": "/Pictures/General/hvac-residential.jpg",
-      "it": {
-        "name": "Collaboratore 2",
-        "role": "Consulente Energetico",
-        "bio": "Marco ci affianca nella redazione delle certificazioni energetiche (APE) e nelle pratiche per le detrazioni fiscali dei nostri clienti.",
-        "skills": [
-          {
-            "name": "Certificazione Energetica",
-            "value": 98
-          },
-          {
-            "name": "Pratiche Fiscali",
-            "value": 95
-          },
-          {
-            "name": "Consulenza",
-            "value": 90
-          }
-        ]
-      },
+      "image": "https://images.unsplash.com/photo-1500000002000?q=80&w=600&auto=format&fit=crop",
       "en": {
-        "name": "Collaboratore 2",
-        "role": "Energy Consultant",
-        "bio": "Marco ci affianca nella redazione delle certificazioni energetiche (APE) e nelle pratiche per le detrazioni fiscali dei nostri clienti. (EN)",
-        "skills": [
-          {
-            "name": "Energy Certification",
-            "value": 98
-          },
-          {
-            "name": "Tax Procedures",
-            "value": 95
-          },
-          {
-            "name": "Consulting",
-            "value": 90
-          }
-        ]
+        "name": "Collaborator 2",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Collaborator 2",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 2",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
     },
     {
-      "id": "mock-collab-2",
-      "image": "/Pictures/General/hvac-commercial.jpg",
-      "it": {
-        "name": "Collaboratore 3",
-        "role": "Architetto Associato",
-        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Design Architettonico",
-            "value": 95
-          },
-          {
-            "name": "Integrazione Impianti",
-            "value": 90
-          },
-          {
-            "name": "Sostenibilità",
-            "value": 92
-          }
-        ]
-      },
+      "id": "i3",
+      "image": "https://images.unsplash.com/photo-1500000003000?q=80&w=600&auto=format&fit=crop",
       "en": {
-        "name": "Collaboratore 3",
-        "role": "Associate Architect",
-        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Architectural Design",
-            "value": 95
-          },
-          {
-            "name": "System Integration",
-            "value": 90
-          },
-          {
-            "name": "Sustainability",
-            "value": 92
-          }
-        ]
+        "name": "Collaborator 3",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Collaborator 3",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 3",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
     },
     {
-      "id": "mock-collab-3",
-      "image": "/Pictures/General/hvac-commercial.jpg",
-      "it": {
-        "name": "Collaboratore 4",
-        "role": "Architetto Associato",
-        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Design Architettonico",
-            "value": 95
-          },
-          {
-            "name": "Integrazione Impianti",
-            "value": 90
-          },
-          {
-            "name": "Sostenibilità",
-            "value": 92
-          }
-        ]
-      },
+      "id": "i4",
+      "image": "https://images.unsplash.com/photo-1500000004000?q=80&w=600&auto=format&fit=crop",
       "en": {
-        "name": "Collaboratore 4",
-        "role": "Associate Architect",
-        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Architectural Design",
-            "value": 95
-          },
-          {
-            "name": "System Integration",
-            "value": 90
-          },
-          {
-            "name": "Sustainability",
-            "value": 92
-          }
-        ]
+        "name": "Collaborator 4",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Collaborator 4",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 4",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
     },
     {
-      "id": "mock-collab-4",
-      "image": "/Pictures/General/hvac-commercial.jpg",
-      "it": {
-        "name": "Collaboratore 5",
-        "role": "Architetto Associato",
-        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Design Architettonico",
-            "value": 95
-          },
-          {
-            "name": "Integrazione Impianti",
-            "value": 90
-          },
-          {
-            "name": "Sostenibilità",
-            "value": 92
-          }
-        ]
-      },
+      "id": "i5",
+      "image": "https://images.unsplash.com/photo-1500000005000?q=80&w=600&auto=format&fit=crop",
       "en": {
-        "name": "Collaboratore 5",
-        "role": "Associate Architect",
-        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Architectural Design",
-            "value": 95
-          },
-          {
-            "name": "System Integration",
-            "value": 90
-          },
-          {
-            "name": "Sustainability",
-            "value": 92
-          }
-        ]
+        "name": "Collaborator 5",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Collaborator 5",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 5",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
     },
     {
-      "id": "mock-collab-5",
-      "image": "/Pictures/General/hvac-commercial.jpg",
-      "it": {
-        "name": "Collaboratore 6",
-        "role": "Architetto Associato",
-        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Design Architettonico",
-            "value": 95
-          },
-          {
-            "name": "Integrazione Impianti",
-            "value": 90
-          },
-          {
-            "name": "Sostenibilità",
-            "value": 92
-          }
-        ]
-      },
+      "id": "i6",
+      "image": "https://images.unsplash.com/photo-1500000006000?q=80&w=600&auto=format&fit=crop",
       "en": {
-        "name": "Collaboratore 6",
-        "role": "Associate Architect",
-        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Architectural Design",
-            "value": 95
-          },
-          {
-            "name": "System Integration",
-            "value": 90
-          },
-          {
-            "name": "Sustainability",
-            "value": 92
-          }
-        ]
+        "name": "Collaborator 6",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Collaborator 6",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 6",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
     },
     {
-      "id": "mock-collab-6",
-      "image": "/Pictures/General/hvac-commercial.jpg",
-      "it": {
-        "name": "Collaboratore 7",
-        "role": "Architetto Associato",
-        "bio": "Collaboriamo strettamente con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Design Architettonico",
-            "value": 95
-          },
-          {
-            "name": "Integrazione Impianti",
-            "value": 90
-          },
-          {
-            "name": "Sostenibilità",
-            "value": 92
-          }
-        ]
-      },
+      "id": "i7",
+      "image": "https://images.unsplash.com/photo-1500000007000?q=80&w=600&auto=format&fit=crop",
       "en": {
-        "name": "Collaboratore 7",
-        "role": "Associate Architect",
-        "bio": "We collaborate closely con Laura per integrare i nostri sistemi HVAC in modo invisibile ed elegante nei design architettonici moderni.",
-        "skills": [
-          {
-            "name": "Architectural Design",
-            "value": 95
-          },
-          {
-            "name": "System Integration",
-            "value": 90
-          },
-          {
-            "name": "Sustainability",
-            "value": 92
-          }
-        ]
+        "name": "Collaborator 7",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Collaborator 7",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 7",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i8",
+      "image": "https://images.unsplash.com/photo-1500000008000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 8",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 8",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 8",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i9",
+      "image": "https://images.unsplash.com/photo-1500000009000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 9",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 9",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 9",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
+    },
+    {
+      "id": "i10",
+      "image": "https://images.unsplash.com/photo-1500000010000?q=80&w=600&auto=format&fit=crop",
+      "en": {
+        "name": "Collaborator 10",
+        "role": "Computational Designer",
+        "bio": "Parametric modeling specialist in the extended network.",
+        "skills": []
+      },
+      "it": {
+        "name": "Collaborator 10",
+        "role": "Computational Designer",
+        "bio": "Specialista in modellazione parametrica.",
+        "skills": []
+      },
+      "de": {
+        "name": "Collaborator 10",
+        "role": "Computational Designer",
+        "bio": "Spezialist für parametrische Modellierung.",
+        "skills": []
+      }
     }
   ],
   "corporatePartners": [
     {
       "id": "c1",
+      "image": "https://images.unsplash.com/photo-1600000001000?q=80&w=600&auto=format&fit=crop",
       "isCompany": true,
-      "image": "/Pictures/General/hvac-industrial.jpg",
-      "it": {
-        "name": "Azienda Partner 1",
-        "role": "Partner Tecnologico",
-        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "Fornitura Sistemi",
-            "value": 100
-          },
-          {
-            "name": "Innovazione",
-            "value": 95
-          },
-          {
-            "name": "Affidabilità",
-            "value": 98
-          }
-        ]
-      },
       "en": {
-        "name": "Azienda Partner 1",
-        "role": "Technology Partner",
-        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "System Supply",
-            "value": 100
-          },
-          {
-            "name": "Innovation",
-            "value": 95
-          },
-          {
-            "name": "Reliability",
-            "value": 98
-          }
-        ]
+        "name": "Partner Firm 1",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Partner Firm 1",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 1",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
     },
     {
       "id": "c2",
+      "image": "https://images.unsplash.com/photo-1600000002000?q=80&w=600&auto=format&fit=crop",
       "isCompany": true,
-      "image": "/Pictures/General/hvac-commercial.jpg",
-      "it": {
-        "name": "Azienda Partner 2",
-        "role": "Fornitore Ufficiale",
-        "bio": "Collaborazione diretta con Mitsubishi per la fornitura di pompe di calore ad altissima efficienza e sistemi VRF industriali.",
-        "skillsDesc": "Tecnologie silenziose e a basso impatto ambientale per il comfort residenziale e commerciale.",
-        "skills": [
-          {
-            "name": "Sistemi VRF",
-            "value": 98
-          },
-          {
-            "name": "Efficienza",
-            "value": 95
-          },
-          {
-            "name": "Supporto Tecnico",
-            "value": 90
-          }
-        ]
-      },
       "en": {
-        "name": "Azienda Partner 2",
-        "role": "Official Supplier",
-        "bio": "Collaborazione diretta con Mitsubishi per la fornitura di pompe di calore ad altissima efficienza e sistemi VRF industriali. (EN)",
-        "skillsDesc": "Tecnologie silenziose e a basso impatto ambientale per il comfort residenziale e commerciale.",
-        "skills": [
-          {
-            "name": "VRF Systems",
-            "value": 98
-          },
-          {
-            "name": "Efficiency",
-            "value": 95
-          },
-          {
-            "name": "Technical Support",
-            "value": 90
-          }
-        ]
+        "name": "Partner Firm 2",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Partner Firm 2",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 2",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
     },
     {
-      "id": "mock-partner-2",
+      "id": "c3",
+      "image": "https://images.unsplash.com/photo-1600000003000?q=80&w=600&auto=format&fit=crop",
       "isCompany": true,
-      "image": "/Pictures/General/hvac-industrial.jpg",
-      "it": {
-        "name": "Azienda Partner 3",
-        "role": "Partner Tecnologico",
-        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "Fornitura Sistemi",
-            "value": 100
-          },
-          {
-            "name": "Innovazione",
-            "value": 95
-          },
-          {
-            "name": "Affidabilità",
-            "value": 98
-          }
-        ]
-      },
       "en": {
-        "name": "Azienda Partner 3",
-        "role": "Technology Partner",
-        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "System Supply",
-            "value": 100
-          },
-          {
-            "name": "Innovation",
-            "value": 95
-          },
-          {
-            "name": "Reliability",
-            "value": 98
-          }
-        ]
+        "name": "Partner Firm 3",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Partner Firm 3",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 3",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
     },
     {
-      "id": "mock-partner-3",
+      "id": "c4",
+      "image": "https://images.unsplash.com/photo-1600000004000?q=80&w=600&auto=format&fit=crop",
       "isCompany": true,
-      "image": "/Pictures/General/hvac-industrial.jpg",
-      "it": {
-        "name": "Azienda Partner 4",
-        "role": "Partner Tecnologico",
-        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "Fornitura Sistemi",
-            "value": 100
-          },
-          {
-            "name": "Innovazione",
-            "value": 95
-          },
-          {
-            "name": "Affidabilità",
-            "value": 98
-          }
-        ]
-      },
       "en": {
-        "name": "Azienda Partner 4",
-        "role": "Technology Partner",
-        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "System Supply",
-            "value": 100
-          },
-          {
-            "name": "Innovation",
-            "value": 95
-          },
-          {
-            "name": "Reliability",
-            "value": 98
-          }
-        ]
+        "name": "Partner Firm 4",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Partner Firm 4",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 4",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
     },
     {
-      "id": "mock-partner-4",
+      "id": "c5",
+      "image": "https://images.unsplash.com/photo-1600000005000?q=80&w=600&auto=format&fit=crop",
       "isCompany": true,
-      "image": "/Pictures/General/hvac-industrial.jpg",
-      "it": {
-        "name": "Azienda Partner 5",
-        "role": "Partner Tecnologico",
-        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "Fornitura Sistemi",
-            "value": 100
-          },
-          {
-            "name": "Innovazione",
-            "value": 95
-          },
-          {
-            "name": "Affidabilità",
-            "value": 98
-          }
-        ]
-      },
       "en": {
-        "name": "Azienda Partner 5",
-        "role": "Technology Partner",
-        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "System Supply",
-            "value": 100
-          },
-          {
-            "name": "Innovation",
-            "value": 95
-          },
-          {
-            "name": "Reliability",
-            "value": 98
-          }
-        ]
+        "name": "Partner Firm 5",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Partner Firm 5",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 5",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
     },
     {
-      "id": "mock-partner-5",
+      "id": "c6",
+      "image": "https://images.unsplash.com/photo-1600000006000?q=80&w=600&auto=format&fit=crop",
       "isCompany": true,
-      "image": "/Pictures/General/hvac-industrial.jpg",
-      "it": {
-        "name": "Azienda Partner 6",
-        "role": "Partner Tecnologico",
-        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "Fornitura Sistemi",
-            "value": 100
-          },
-          {
-            "name": "Innovazione",
-            "value": 95
-          },
-          {
-            "name": "Affidabilità",
-            "value": 98
-          }
-        ]
-      },
       "en": {
-        "name": "Azienda Partner 6",
-        "role": "Technology Partner",
-        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "System Supply",
-            "value": 100
-          },
-          {
-            "name": "Innovation",
-            "value": 95
-          },
-          {
-            "name": "Reliability",
-            "value": 98
-          }
-        ]
+        "name": "Partner Firm 6",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Partner Firm 6",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 6",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
     },
     {
-      "id": "mock-partner-6",
+      "id": "c7",
+      "image": "https://images.unsplash.com/photo-1600000007000?q=80&w=600&auto=format&fit=crop",
       "isCompany": true,
-      "image": "/Pictures/General/hvac-industrial.jpg",
-      "it": {
-        "name": "Azienda Partner 7",
-        "role": "Partner Tecnologico",
-        "bio": "Siamo partner certificati Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "Fornitura Sistemi",
-            "value": 100
-          },
-          {
-            "name": "Innovazione",
-            "value": 95
-          },
-          {
-            "name": "Affidabilità",
-            "value": 98
-          }
-        ]
-      },
       "en": {
-        "name": "Azienda Partner 7",
-        "role": "Technology Partner",
-        "bio": "We are certified partners Daikin per l'installazione e la manutenzione ufficiale dei loro sistemi di climatizzazione avanzati.",
-        "skillsDesc": "Soluzioni all'avanguardia per il riscaldamento e raffrescamento globale.",
-        "skills": [
-          {
-            "name": "System Supply",
-            "value": 100
-          },
-          {
-            "name": "Innovation",
-            "value": 95
-          },
-          {
-            "name": "Reliability",
-            "value": 98
-          }
-        ]
+        "name": "Partner Firm 7",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
       },
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com",
-      "facebook": "https://facebook.com",
-      "phone": "+39 041 8944704",
-      "email": "info@pybim.com"
+      "it": {
+        "name": "Partner Firm 7",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 7",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c8",
+      "image": "https://images.unsplash.com/photo-1600000008000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 8",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 8",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 8",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c9",
+      "image": "https://images.unsplash.com/photo-1600000009000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 9",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 9",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 9",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    },
+    {
+      "id": "c10",
+      "image": "https://images.unsplash.com/photo-1600000010000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Partner Firm 10",
+        "role": "Enterprise Partner",
+        "bio": "Technology and R&D collaboration.",
+        "skills": []
+      },
+      "it": {
+        "name": "Partner Firm 10",
+        "role": "Enterprise Partner",
+        "bio": "Collaborazione R&D.",
+        "skills": []
+      },
+      "de": {
+        "name": "Partner Firm 10",
+        "role": "Enterprise Partner",
+        "bio": "F&E-Kooperation.",
+        "skills": []
+      }
+    }
+  ],
+  "clients": [
+    {
+      "id": "client1",
+      "image": "https://images.unsplash.com/photo-1550000001000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 1",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 1",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 1",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client2",
+      "image": "https://images.unsplash.com/photo-1550000002000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 2",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 2",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 2",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client3",
+      "image": "https://images.unsplash.com/photo-1550000003000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 3",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 3",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 3",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client4",
+      "image": "https://images.unsplash.com/photo-1550000004000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 4",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 4",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 4",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client5",
+      "image": "https://images.unsplash.com/photo-1550000005000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 5",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 5",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 5",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client6",
+      "image": "https://images.unsplash.com/photo-1550000006000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 6",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 6",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 6",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client7",
+      "image": "https://images.unsplash.com/photo-1550000007000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 7",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 7",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 7",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client8",
+      "image": "https://images.unsplash.com/photo-1550000008000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 8",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 8",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 8",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client9",
+      "image": "https://images.unsplash.com/photo-1550000009000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 9",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 9",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 9",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
+    },
+    {
+      "id": "client10",
+      "image": "https://images.unsplash.com/photo-1550000010000?q=80&w=600&auto=format&fit=crop",
+      "isCompany": true,
+      "en": {
+        "name": "Client Studio 10",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise client from the DACH region.",
+        "skills": []
+      },
+      "it": {
+        "name": "Client Studio 10",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Cliente enterprise della regione DACH.",
+        "skills": []
+      },
+      "de": {
+        "name": "Client Studio 10",
+        "role": "General Contractor / Architecture Firm",
+        "bio": "Enterprise-Kunde aus der DACH-Region.",
+        "skills": []
+      }
     }
   ]
 }

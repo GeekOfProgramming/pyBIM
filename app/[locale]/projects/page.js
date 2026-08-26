@@ -2,11 +2,18 @@ import ProjectsPageLayout from "@/components/pages/projects-page-layout";
 import projectsData from "@/lib/data/projects-data.json";
 import { db } from "@/lib/db";
 
-export const metadata = {
-  title: "Progetti",
-  description:
-    "Scopri progetti HVAC, ventilazione e climatizzazione realizzati da pyBIM per settori residenziali, commerciali e industriali."
-};
+export async function generateMetadata({ params }) {
+  const locale = params?.locale || "en";
+  const titles = {
+    en: "Projects",
+    it: "Progetti",
+    de: "Projekte"
+  };
+  
+  return {
+    title: titles[locale] || titles.en
+  };
+}
 
 export default async function ProjectsPage() {
   const dbProjects = await db.project.findMany({

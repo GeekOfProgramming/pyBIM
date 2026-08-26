@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
 const secretKey = new TextEncoder().encode(
-  process.env.JWT_SECRET || "default_super_secret_key_arvand_2026"
+  process.env.JWT_SECRET || "default_super_secret_key_pybim_2026"
 );
 
 const locales = ['en', 'it', 'de'];
