@@ -247,7 +247,7 @@ export default function AboutPageLayout({ teamData }) {
                 </div>
 
                 <div className="space-y-4 mb-6">
-                  {(t("about.tech.box1_items") || []).map((item, idx) => (
+                  {(Array.isArray(t("about.tech.box1_items")) ? t("about.tech.box1_items") : []).map((item, idx) => (
                     <div key={idx} className="bg-brand-surface/60 rounded-xl p-4 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 transition-colors">
                       <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
                       <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />
@@ -272,7 +272,7 @@ export default function AboutPageLayout({ teamData }) {
                 </div>
 
                 <div className="space-y-4 mb-6">
-                  {(t("about.tech.box2_items") || []).map((item, idx) => (
+                  {(Array.isArray(t("about.tech.box2_items")) ? t("about.tech.box2_items") : []).map((item, idx) => (
                     <div key={idx} className="bg-brand-primary/5 rounded-xl p-4 border border-brand-primary/15 hover:bg-white hover:border-brand-primary/40 transition-colors">
                       <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
                       <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />
@@ -296,7 +296,7 @@ export default function AboutPageLayout({ teamData }) {
                 </div>
 
                 <div className="space-y-4 mb-6">
-                  {(t("about.tech.box3_items") || []).map((item, idx) => (
+                  {(Array.isArray(t("about.tech.box3_items")) ? t("about.tech.box3_items") : []).map((item, idx) => (
                     <div key={idx} className="bg-brand-surface/60 rounded-xl p-4 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 transition-colors">
                       <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
                       <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />

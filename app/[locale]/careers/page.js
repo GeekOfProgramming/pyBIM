@@ -1,7 +1,5 @@
 import CareersPageLayout from "@/components/pages/careers-page-layout";
 import { db } from "@/lib/db";
-import { dummyJobs } from "@/lib/dummy-jobs";
-
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const titles = {
@@ -22,11 +20,6 @@ export default async function CareersPage() {
     where: { isActive: true },
     orderBy: { createdAt: "desc" }
   });
-
-  // Dummy jobs for testing display
-  if (jobs.length === 0) {
-    jobs = dummyJobs;
-  }
 
   return <CareersPageLayout jobs={jobs} />;
 }
