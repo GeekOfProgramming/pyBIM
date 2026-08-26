@@ -26,6 +26,7 @@ const pyBimRightMenu = {
     { label: "Our Journey", icon: Activity, href: "/about#journey" },
     { label: "Tech Stack & Standards", icon: Code2, href: "/about#tech-stack" },
     { label: "Our Impact", icon: Shield, href: "/about#impact" },
+    { label: "Our Team", icon: Users, href: "/about#team" },
   ],
   success_stories: [
     { label: "All Projects", icon: Briefcase, href: "/projects" },
@@ -33,14 +34,14 @@ const pyBimRightMenu = {
     { label: "Client Testimonials", icon: Users, href: "/projects#testimonials" },
   ],
   work_with_us: [
-    { label: "Open Positions", icon: Briefcase, href: "/careers#positions" },
     { label: "Culture & Benefits", icon: Users, href: "/careers#culture" },
+    { label: "Open Positions", icon: Briefcase, href: "/careers#positions" },
     { label: "Life at pyBIM", icon: Building, href: "/careers#life" },
   ],
   contact_us: [
+    { label: "Sales Inquiry", icon: Briefcase, href: "/contact#sales" },
     { label: "Headquarters", icon: Building, href: "/contact#headquarters" },
     { label: "Technical Support", icon: Cog, href: "/contact#support" },
-    { label: "Sales Inquiry", icon: Briefcase, href: "/contact#sales" },
   ],
 };
 
@@ -64,7 +65,7 @@ export default function Header() {
   if (pathname?.startsWith("/admin")) return null;
 
   return (
-    <header className={`sticky top-0 z-50 border-b border-brand-border bg-brand-base/90 backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-sm" : "py-4"}`}>
+    <header className={`sticky top-0 z-[1000] border-b border-brand-border bg-white/95 backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-sm" : "py-4"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-300">
         <Link href={`/${language}`} className="flex items-center gap-4 text-left" aria-label="pyBIM home">
           <div className="flex items-center">
@@ -104,8 +105,8 @@ export default function Header() {
 
             {/* Megamenu Dropdown */}
             {megaMenuOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px] z-50">
-                <div className="bg-brand-base border border-brand-border rounded-2xl shadow-xl overflow-hidden flex">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px] z-[1000]">
+                <div className="bg-white border border-brand-border rounded-2xl shadow-2xl overflow-hidden flex ring-1 ring-black/5">
                   
                   {/* Left Column */}
                   <div className="w-[45%] bg-brand-surface border-r border-brand-border p-4 flex flex-col gap-1">
@@ -117,7 +118,7 @@ export default function Header() {
                           href={getLocalizedUrl(item.href)}
                           onMouseEnter={() => setActiveMegaMenuItem(item.id)}
                           onClick={() => setMegaMenuOpen(false)}
-                          className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${activeMegaMenuItem === item.id ? 'bg-white shadow-sm text-brand-primary' : 'text-brand-textSecondary hover:bg-white hover:text-brand-primary'} ${isActiveLink && activeMegaMenuItem !== item.id ? 'text-brand-primary font-bold' : 'font-medium'}`}
+                          className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${activeMegaMenuItem === item.id ? 'bg-white shadow-sm text-brand-primary font-bold' : 'text-brand-textSecondary hover:bg-white hover:text-brand-primary font-medium'} ${isActiveLink && activeMegaMenuItem !== item.id ? 'text-brand-primary font-bold' : ''}`}
                         >
                           <span className="text-sm tracking-wide">{item.label}</span>
                           <ChevronRight className={`w-4 h-4 transition-transform ${activeMegaMenuItem === item.id ? 'translate-x-1 text-brand-primary' : 'text-transparent'}`} />
@@ -127,7 +128,7 @@ export default function Header() {
                   </div>
 
                   {/* Right Column */}
-                  <div className="w-[55%] bg-brand-base p-6">
+                  <div className="w-[55%] bg-white p-6">
                     <div className="flex flex-col gap-4 h-full justify-center">
                       {pyBimRightMenu[activeMegaMenuItem].map((subItem, idx) => {
                         const Icon = subItem.icon;

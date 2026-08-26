@@ -2,14 +2,17 @@
 
 import { useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { ArrowRight, Code2, Cpu, Cog, Briefcase, Terminal } from "lucide-react";
+import { ArrowRight, Code2, Cpu, Cog, Briefcase, Terminal, Activity, Shield, Users } from "lucide-react";
+import TeamPartnersSection from "@/components/sections/team-partners-section";
 
-export default function AboutPageLayout() {
+export default function AboutPageLayout({ teamData }) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handleScroll = () => {
-        if (window.location.hash === "#tech-stack") {
-          const el = document.getElementById("tech-stack");
+        const hash = window.location.hash;
+        if (hash) {
+          const id = hash.replace("#", "");
+          const el = document.getElementById(id);
           if (el) {
             setTimeout(() => {
               el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -91,6 +94,9 @@ export default function AboutPageLayout() {
       <section id="journey" className="bg-brand-surface w-full border-b border-brand-border py-24 lg:py-32">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center mb-24">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm">
+              <Activity className="w-4 h-4" /> OUR JOURNEY
+            </div>
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary mb-6">Our Journey</h2>
             <p className="text-brand-textSecondary text-lg font-medium">The evolution from manual coordination to automated engineering.</p>
           </div>
@@ -143,8 +149,8 @@ export default function AboutPageLayout() {
       <section id="tech-stack" className="bg-brand-base w-full border-b border-brand-border py-24 lg:py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-xs font-mono font-bold text-brand-primary uppercase tracking-widest mb-4">
-              <Cpu className="w-3.5 h-3.5" /> OUR TECHNICAL ARSENAL
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm">
+              <Code2 className="w-4 h-4" /> TECH STACK & STANDARDS
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
               The tools & standards we use to engineer the process.
@@ -288,6 +294,14 @@ export default function AboutPageLayout() {
       {/* SECTION 5: Our Impact (Stats/Counters) */}
       <section id="impact" className="bg-brand-surface w-full border-b border-brand-border py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
+              <Shield className="w-4 h-4" /> OUR IMPACT
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
+              Measurable Efficiency & Zero-Error Results
+            </h2>
+          </div>
           <div className="grid gap-16 md:grid-cols-3">
             <div className="text-center group">
               <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-6 group-hover:scale-105 transition-transform duration-500">
@@ -355,6 +369,9 @@ export default function AboutPageLayout() {
           </div>
         </div>
       </section>
+
+      {/* SECTION 7: Team & Leadership */}
+      <TeamPartnersSection teamData={teamData} />
 
     </div>
   );

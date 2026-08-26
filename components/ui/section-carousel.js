@@ -27,22 +27,22 @@ export default function SectionCarousel({ title, badge, badgeColor = "text-brand
       <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="text-left max-w-3xl">
           <h2 className={`text-sm font-bold uppercase tracking-[0.35em] mb-4 ${badgeColor}`}>{badge}</h2>
-          <h3 className="text-3xl md:text-5xl font-semibold text-white leading-tight">{title}</h3>
+          <h3 className="text-3xl md:text-5xl font-semibold text-brand-textPrimary leading-tight">{title}</h3>
         </div>
         <div className="flex items-center gap-4 shrink-0">
-          <span className="text-white/50 text-sm font-bold tracking-widest mr-2">
+          <span className="text-brand-textSecondary text-sm font-bold tracking-widest mr-2">
             {selectedIndex + 1} / {items.length}
           </span>
           <button 
             onClick={scrollPrev}
-            className="w-12 h-12 rounded-full border border-white/20 bg-brand-surface/80 flex items-center justify-center text-white hover:bg-brand-accent hover:border-brand-accent transition-all shadow-xl"
+            className="w-12 h-12 rounded-full border border-brand-border bg-white text-brand-textPrimary flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-105 active:scale-95 transition-all shadow-md"
             aria-label="Previous"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button 
             onClick={scrollNext}
-            className="w-12 h-12 rounded-full border border-white/20 bg-brand-surface/80 flex items-center justify-center text-white hover:bg-brand-accent hover:border-brand-accent transition-all shadow-xl"
+            className="w-12 h-12 rounded-full border border-brand-border bg-white text-brand-textPrimary flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-105 active:scale-95 transition-all shadow-md"
             aria-label="Next"
           >
             <ChevronRight className="w-6 h-6" />

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { useLanguage } from "@/lib/LanguageContext";
-import { Mail, Briefcase, ChevronRight, CheckCircle2 } from "lucide-react";
+import { Mail, Briefcase, ChevronRight, CheckCircle2, Users, Building, Terminal, Heart, Zap, Sparkles } from "lucide-react";
 
 export default function CareersPageLayout({ jobs }) {
   const { t, language } = useLanguage();
@@ -35,26 +35,25 @@ export default function CareersPageLayout({ jobs }) {
 
   return (
     <div className="bg-brand-base">
-      {/* Hero Section */}
+      {/* Hero Section - Culture & Benefits */}
       <section id="culture" className="relative overflow-hidden py-32 lg:py-40 border-b border-brand-border bg-brand-surface">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.05),transparent_60%)]"></div>
         <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
         
         <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent font-medium text-sm mb-8">
-            <Briefcase className="w-4 h-4" />
-            {language === "it" ? "Lavora con Noi" : "Join Our Team"}
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-8 shadow-sm">
+            <Users className="w-4 h-4" /> CULTURE & BENEFITS
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-brand-textPrimary tracking-tight mb-8">
             {language === "it" ? "Costruisci il futuro dell'Ingegneria con noi" : "Build the future of Engineering with us"}
           </h1>
           <p className="max-w-2xl mx-auto text-lg text-brand-textSecondary leading-relaxed mb-10 font-medium">
             {language === "it" 
-              ? "Benvenuti in pyBIM. Cerchiamo menti brillanti e appassionate pronte a portare innovazione ed eccellenza nei nostri 8 settori operativi: impiantistica elettrica, termoidraulica e climatizzazione, energie rinnovabili, sicurezza, finiture e ristrutturazioni edili complete. Se arrivi da LinkedIn, sei nel posto giusto per scoprire le nostre opportunità." 
-              : "Welcome to pyBIM. We are looking for bright, passionate minds ready to bring innovation and excellence to our 8 core sectors: electrical systems, plumbing, HVAC, renewable energy, security, finishing works, and comprehensive building renovations. If you found us on LinkedIn, you're in the right place to discover our opportunities."}
+              ? "Benvenuti in pyBIM. Cerchiamo menti brillanti e appassionate pronte a portare innovazione ed eccellenza nei nostri settori operativi: sviluppo software per l'edilizia, automazione BIM con Python e C#, e coordinamento ingegneristico avanzato." 
+              : "Welcome to pyBIM. We are looking for bright, passionate minds ready to bring innovation and software automation to the AEC industry with Python, Revit API C#, and advanced BIM coordination."}
           </p>
-          <div className="flex items-center justify-center gap-6 text-sm text-brand-textSecondary font-bold">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-brand-textSecondary font-bold">
             <span className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-brand-primary" /> {language === "it" ? "Crescita Professionale" : "Career Growth"}</span>
             <span className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-brand-primary" /> {language === "it" ? "Ambiente Dinamico" : "Dynamic Environment"}</span>
             <span className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-brand-primary" /> {language === "it" ? "Progetti Internazionali" : "Global Projects"}</span>
@@ -63,16 +62,19 @@ export default function CareersPageLayout({ jobs }) {
       </section>
 
       {/* Open Positions Section */}
-      <section id="positions" className="py-24 relative">
+      <section id="positions" className="py-24 relative border-b border-brand-border bg-brand-base">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-16 md:text-center">
-            <h2 className="text-3xl font-bold text-brand-textPrimary mb-4">
-              {language === "it" ? "Posizioni Aperte" : "Open Positions"}
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
+              <Briefcase className="w-4 h-4" /> OPEN POSITIONS
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
+              {language === "it" ? "Posizioni Aperte" : "Join our engineering & dev team"}
             </h2>
             <p className="text-brand-textSecondary max-w-xl mx-auto font-medium">
               {language === "it" 
                 ? "Scopri i ruoli attualmente disponibili e unisciti al nostro team." 
-                : "Discover our currently available roles and join our team."}
+                : "Discover our currently available roles and scale your career with us."}
             </p>
           </div>
 
@@ -122,9 +124,56 @@ export default function CareersPageLayout({ jobs }) {
             </>
           )}
         </div>
-        <div id="life"></div>
       </section>
 
+      {/* Life at pyBIM Section */}
+      <section id="life" className="py-24 bg-brand-surface">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
+              <Building className="w-4 h-4" /> LIFE AT PYBIM
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
+              Where Engineering Meets Code
+            </h2>
+            <p className="text-brand-textSecondary max-w-2xl mx-auto font-medium mt-4">
+              We empower engineers to think like software developers and build scalable tools for European construction projects.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-brand-primary mb-6">
+                <Terminal className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">Code-First Mindset</h3>
+              <p className="text-brand-textSecondary text-sm leading-relaxed font-medium">
+                We believe in continuous learning, open-source BIM tools, and automating repetitive tasks with Python and C#.
+              </p>
+            </div>
+
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 mb-6">
+                <Zap className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">High-Impact Work</h3>
+              <p className="text-brand-textSecondary text-sm leading-relaxed font-medium">
+                Work directly on hospital complexes, infrastructure, and commercial mega-structures across Europe.
+              </p>
+            </div>
+
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 mb-6">
+                <Heart className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">Flexibility & Trust</h3>
+              <p className="text-brand-textSecondary text-sm leading-relaxed font-medium">
+                Hybrid workflows, transparent culture, and performance-based career advancement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div>
   );
