@@ -298,7 +298,7 @@ export default function ServicesPageLayout() {
           <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary mb-12 tracking-tight leading-tight">
             Ready to automate your BIM workflows?
           </h2>
-          <Link href="/contact" className="inline-flex items-center justify-center bg-brand-accent hover:bg-brand-accentHover text-white px-10 py-5 rounded-full text-lg font-bold transition-all duration-300 shadow-[0_0_30px_rgba(249,115,22,0.4)] hover:shadow-[0_0_50px_rgba(249,115,22,0.6)] hover:-translate-y-1">
+          <Link href="/contact#calculator" className="inline-flex items-center justify-center bg-brand-accent hover:bg-brand-accentHover text-white px-10 py-5 rounded-full text-lg font-bold transition-all duration-300 shadow-[0_0_30px_rgba(249,115,22,0.4)] hover:shadow-[0_0_50px_rgba(249,115,22,0.6)] hover:-translate-y-1">
             Calculate Your ROI / Technical Audit
           </Link>
         </div>

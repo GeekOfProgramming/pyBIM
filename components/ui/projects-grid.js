@@ -25,7 +25,7 @@ export default function ProjectsGrid({ projects }) {
           <div key={project.slug} className="group relative rounded-[2rem] overflow-hidden border border-white/10 aspect-[4/5] hover:-translate-y-2 transition-transform duration-500 shadow-xl h-full cursor-not-allowed">
             
             {/* Full Card Coming Soon Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-brand-background/70 backdrop-blur-md z-50">
+            <div className="absolute inset-0 flex items-center justify-center bg-brand-background/70 backdrop-blur-md z-10">
               <span className="bg-white text-[#081730] px-6 py-2 rounded-full font-bold uppercase tracking-widest text-sm shadow-xl rotate-[-5deg] border-2 border-brand-accent">
                 {language === "en" ? "Coming Soon" : "Prossimamente"}
               </span>

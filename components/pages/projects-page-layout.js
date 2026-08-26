@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { ChevronRight, ArrowRight, Calendar, Quote } from "lucide-react";
+import { ChevronRight, ArrowRight, Calendar, Quote, Briefcase, FileText, Users } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function ProjectsPageLayout({ projects = [] }) {
@@ -37,11 +37,14 @@ export default function ProjectsPageLayout({ projects = [] }) {
   return (
     <div className="w-full">
       {/* HERO SECTION */}
-      <section className="relative flex min-h-[35vh] items-center justify-center overflow-hidden py-16 border-b border-brand-border bg-brand-surface">
+      <section className="relative flex min-h-[40vh] items-center justify-center overflow-hidden py-20 border-b border-brand-border bg-brand-surface">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.05),transparent_60%)]" />
         <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
         
-        <div className="text-center relative z-10 px-6 mt-10">
+        <div className="text-center relative z-10 px-6 mt-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm">
+            <Briefcase className="w-4 h-4" /> ALL PROJECTS
+          </div>
           <h1 className="text-4xl md:text-6xl font-bold text-brand-textPrimary mb-6 tracking-tight">
             {t("projects.hero.title")}
           </h1>
@@ -54,15 +57,23 @@ export default function ProjectsPageLayout({ projects = [] }) {
       </section>
 
       {/* GRID SECTION */}
-      <section id="featured" className="bg-brand-surface w-full border-t border-brand-border">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+      <section id="featured" className="bg-brand-surface w-full border-t border-brand-border py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
+              <FileText className="w-4 h-4" /> FEATURED CASE STUDIES
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
+              Real-World Automation & Engineering Deployments
+            </h2>
+          </div>
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {visibleProjects.map((project) => {
             return (
               <div key={project.slug} className="group relative rounded-3xl border border-brand-border bg-white overflow-hidden hover:-translate-y-2 transition-transform duration-500 shadow-md cursor-not-allowed">
                 
                 {/* Full Card Coming Soon Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-md z-50">
+                <div className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-md z-10">
                   <span className="bg-brand-surface text-brand-textPrimary px-6 py-2 rounded-full font-bold uppercase tracking-widest text-sm shadow-sm rotate-[-5deg] border-2 border-brand-border">
                     {language === "en" ? "Coming Soon" : "Prossimamente"}
                   </span>
@@ -127,10 +138,10 @@ export default function ProjectsPageLayout({ projects = [] }) {
       <section id="testimonials" className="py-24 bg-brand-base border-t border-brand-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-xs font-mono font-bold text-brand-primary uppercase tracking-widest px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20">
-              CLIENT FEEDBACK
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mt-4">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
+              <Users className="w-4 h-4" /> CLIENT TESTIMONIALS
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
               What European AEC Leaders Say
             </h2>
           </div>

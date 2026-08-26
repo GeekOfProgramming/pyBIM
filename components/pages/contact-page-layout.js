@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Linkedin, MessageCircle } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Linkedin, MessageCircle, Briefcase, Building, Cog } from "lucide-react";
 import { emailAddress, phoneDisplay, phoneHref } from "@/lib/site-copy";
 import FAQSection from "@/components/sections/faq-section";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -77,6 +77,9 @@ export default function ContactPageLayout() {
             
             {/* LEFT COLUMN (40% Width) */}
             <div className="lg:col-span-5 flex flex-col justify-center text-left">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm self-start">
+                <Briefcase className="w-4 h-4" /> SALES INQUIRY
+              </div>
               <h1 className="text-4xl font-bold uppercase tracking-tight md:text-5xl lg:text-6xl text-brand-textPrimary mb-6 leading-tight">
                 {t("contact.hero.title")}
               </h1>
@@ -175,6 +178,14 @@ export default function ContactPageLayout() {
       {/* COMBINED CONTACT INFO & SOCIALS SECTION */}
       <section id="headquarters" className="bg-brand-surface py-20 border-b border-brand-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
+              <Building className="w-4 h-4" /> HEADQUARTERS
+            </div>
+            <h3 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
+              Our Offices & Direct Channels
+            </h3>
+          </div>
           <div className="grid gap-16 lg:grid-cols-2 items-center">
             
             {/* LEFT 50%: CONTACT INFO */}
@@ -241,9 +252,17 @@ export default function ContactPageLayout() {
       {/* BIM ROI CALCULATOR CTA */}
       <BimCalculatorCta />
 
-      {/* FAQ SECTION */}
+      {/* FAQ SECTION - Technical Support */}
       <section id="support" className="bg-brand-base pt-20 pb-32 border-b border-brand-border">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
+              <Cog className="w-4 h-4" /> TECHNICAL SUPPORT
+            </div>
+            <h3 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
+              Frequently Asked Questions & Support
+            </h3>
+          </div>
           <FAQSection />
         </div>
       </section>

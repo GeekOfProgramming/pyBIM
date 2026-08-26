@@ -1,73 +1,113 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import TeamPartnerCard from "./team-partner-card";
-import TeamPartnerModal from "./team-partner-modal";
+import { useState } from "react";
+import TeamPartnerCard from "@/components/ui/team-partner-card";
+import TeamPartnerModal from "@/components/ui/team-partner-modal";
 import { useLanguage } from "@/lib/LanguageContext";
-import Carousel from "./carousel";
+import Carousel from "@/components/ui/carousel";
+import { Users, Handshake, Building2 } from "lucide-react";
+
 export default function TeamPartnersSection({ teamData }) {
   const [selectedPerson, setSelectedPerson] = useState(null);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const openModal = (person) => setSelectedPerson(person);
   const closeModal = () => setSelectedPerson(null);
 
+  const teamMembers = teamData?.teamMembers || [];
+  const individualPartners = teamData?.individualPartners || [];
+  const corporatePartners = teamData?.corporatePartners || [];
+
+  if (teamMembers.length === 0 && individualPartners.length === 0 && corporatePartners.length === 0) return null;
+
   return (
     <>
-      {/* TEAM SECTION (GRID, 4 PER ROW) */}
-      <section id="team" className="bg-brand-background w-full border-b border-brand-border overflow-hidden">
-        <div className="mx-auto max-w-[90rem] px-6 py-24 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-sm font-bold uppercase tracking-[0.35em] text-brand-accent mb-4">{t("about.team.sec1.badge")}</h2>
-            <h3 className="text-3xl md:text-5xl font-semibold text-white leading-tight">{t("about.team.sec1.title")}</h3>
-          </div>
-          <Carousel itemsPerViewDesktop={4}>
-            {teamData.teamMembers.map((person, idx) => (
-              <div key={`${person.id}-${idx}`} className="animate-in fade-in zoom-in duration-500 h-full">
-                <TeamPartnerCard person={person} onClick={openModal} />
+      {/* 1. CORE TEAM SECTION */}
+      {teamMembers.length > 0 && (
+        <section id="team" className="bg-brand-surface w-full border-t border-brand-border py-24 lg:py-32 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
+                <Users className="w-4 h-4" /> OUR TEAM
               </div>
-            ))}
-          </Carousel>
-        </div>
-      </section>
+              <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
+                {t("about.team.sec1.title")}
+              </h2>
+              <p className="text-brand-textSecondary text-base md:text-lg font-medium max-w-2xl mx-auto mt-4">
+                {language === "it"
+                  ? "Senior BIM Manager e sviluppatori software dedicati all'automazione e all'ingegneria di precisione."
+                  : "Senior BIM Managers and full-stack software engineers dedicated to high-precision AEC automation."}
+              </p>
+            </div>
 
-      {/* INDIVIDUAL PARTNERS SECTION (CAROUSEL, 4 PER ROW) (Hidden Temporarily) */}
-      {/* 
-      <section className="bg-gradient-to-b from-transparent to-blue-900/10 w-full border-t border-white/5 overflow-hidden">
-        <div className="mx-auto max-w-[90rem] px-6 py-24 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-sm font-bold uppercase tracking-[0.35em] text-brand-accentHover mb-4">{t("about.team.sec2.badge")}</h2>
-            <h3 className="text-3xl md:text-5xl font-semibold text-white leading-tight">{t("about.team.sec2.title")}</h3>
+            <Carousel itemsPerViewDesktop={4}>
+              {teamMembers.map((person, idx) => (
+                <div key={`${person.id}-${idx}`} className="animate-in fade-in zoom-in duration-500 h-full">
+                  <TeamPartnerCard person={person} onClick={openModal} />
+                </div>
+              ))}
+            </Carousel>
           </div>
-          <Carousel itemsPerViewDesktop={4}>
-            {teamData.individualPartners.map((person) => (
-              <div key={person.id} className="h-full">
-                <TeamPartnerCard person={person} onClick={openModal} />
-              </div>
-            ))}
-          </Carousel>
-        </div>
-      </section>
-      */}
+        </section>
+      )}
 
-      {/* CORPORATE PARTNERS SECTION (CAROUSEL, 4 PER ROW) (Hidden Temporarily) */}
-      {/* 
-      <section className="bg-gradient-to-b from-white/[0.02] to-transparent w-full border-t border-white/5 overflow-hidden">
-        <div className="mx-auto max-w-[90rem] px-6 py-24 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-sm font-bold uppercase tracking-[0.35em] text-emerald-400 mb-4">{t("about.team.sec3.badge")}</h2>
-            <h3 className="text-3xl md:text-5xl font-semibold text-white leading-tight">{t("about.team.sec3.title")}</h3>
-          </div>
-          <Carousel itemsPerViewDesktop={4}>
-            {teamData.corporatePartners.map((company) => (
-              <div key={company.id} className="h-full">
-                <TeamPartnerCard person={company} onClick={openModal} />
+      {/* 2. INDIVIDUAL COLLABORATORS SECTION */}
+      {individualPartners.length > 0 && (
+        <section className="bg-brand-base w-full border-t border-brand-border py-24 lg:py-32 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
+                <Handshake className="w-4 h-4" /> {t("about.team.sec2.badge")}
               </div>
-            ))}
-          </Carousel>
-        </div>
-      </section>
-      */}
+              <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
+                {t("about.team.sec2.title")}
+              </h2>
+              <p className="text-brand-textSecondary text-base md:text-lg font-medium max-w-2xl mx-auto mt-4">
+                {language === "it"
+                  ? "Professionisti, architetti e consulenti specializzati che collaborano nei nostri progetti complessi."
+                  : "Specialized architects, consultants, and technical experts collaborating across our engineering workflows."}
+              </p>
+            </div>
+
+            <Carousel itemsPerViewDesktop={4}>
+              {individualPartners.map((person, idx) => (
+                <div key={`${person.id}-${idx}`} className="animate-in fade-in zoom-in duration-500 h-full">
+                  <TeamPartnerCard person={person} onClick={openModal} />
+                </div>
+              ))}
+            </Carousel>
+          </div>
+        </section>
+      )}
+
+      {/* 3. CORPORATE PARTNERS SECTION */}
+      {corporatePartners.length > 0 && (
+        <section className="bg-brand-surface w-full border-t border-brand-border py-24 lg:py-32 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
+                <Building2 className="w-4 h-4" /> {t("about.team.sec3.badge")}
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
+                {t("about.team.sec3.title")}
+              </h2>
+              <p className="text-brand-textSecondary text-base md:text-lg font-medium max-w-2xl mx-auto mt-4">
+                {language === "it"
+                  ? "Partner tecnologici e aziende leader che affiancano pyBIM nelle forniture e nelle soluzioni ingegneristiche."
+                  : "Leading technology providers and enterprise partners collaborating with pyBIM on large-scale infrastructure."}
+              </p>
+            </div>
+
+            <Carousel itemsPerViewDesktop={4}>
+              {corporatePartners.map((company, idx) => (
+                <div key={`${company.id}-${idx}`} className="animate-in fade-in zoom-in duration-500 h-full">
+                  <TeamPartnerCard person={company} onClick={openModal} />
+                </div>
+              ))}
+            </Carousel>
+          </div>
+        </section>
+      )}
 
       {/* MODAL */}
       {selectedPerson && (
