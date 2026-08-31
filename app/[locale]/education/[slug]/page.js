@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { allEducationData } from "@/lib/data/education-data";
-import BlogDetailLayout from "@/components/pages/blog-detail-layout";
+import EducationDetailLayout from "@/components/pages/education-detail-layout";
 
 export function generateStaticParams() {
   const locales = ["en", "it", "de"];
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function BlogPostPage({ params }) {
+export default function EducationPostPage({ params }) {
   const currentIndex = allEducationData.findIndex((item) => item.slug === params.slug);
   if (currentIndex === -1) notFound();
 
@@ -33,5 +33,5 @@ export default function BlogPostPage({ params }) {
   // Next post in array (usually older if sorted newest-first)
   const nextPost = currentIndex < allEducationData.length - 1 ? allEducationData[currentIndex + 1] : null;
 
-  return <BlogDetailLayout post={post} prevPost={prevPost} nextPost={nextPost} />;
+  return <EducationDetailLayout post={post} prevPost={prevPost} nextPost={nextPost} />;
 }

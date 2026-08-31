@@ -39,7 +39,7 @@ c:\bim\
 ├── app/
 │   ├── [locale]/             # Multilingual localized page routes (en, it, de)
 │   │   ├── about/            # The Manifesto, Our Journey & Tech Stack
-│   │   ├── blog/             # Technical Insights & Case Studies
+│   │   ├── education/        # Technical Insights & Case Studies
 │   │   ├── careers/          # Career Opportunities & Open Positions
 │   │   ├── contact/          # Technical Support & Audit Requests
 │   │   ├── projects/         # Featured Project Showcase
