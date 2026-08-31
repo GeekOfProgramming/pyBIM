@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Linkedin, MessageCircle, Briefcase, Building, Cog } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, Linkedin, Briefcase, Building, Cog, User, Server, FileBox, ShieldCheck, MessageSquare, CheckCircle2, AlertCircle } from "lucide-react";
 import { emailAddress, phoneDisplay, phoneHref } from "@/lib/site-copy";
 import FAQSection from "@/components/sections/faq-section";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -9,9 +9,9 @@ import BimCalculatorCta from "@/components/sections/bim-calculator-cta";
 
 export default function ContactPageLayout() {
   const { t } = useLanguage();
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", companyName: "", email: "", phone: "", architecture: "", fileSize: "", message: "" });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("");
+  const [popup, setPopup] = useState(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -50,10 +50,10 @@ export default function ContactPageLayout() {
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.error || "Failed to send");
-      setStatus(t("contact.form.success"));
-      setForm({ name: "", email: "", phone: "", message: "" });
-    } catch {
-      setStatus(t("contact.form.error"));
+      setPopup({ type: "success", message: t("contact.form.success") });
+      setForm({ name: "", companyName: "", email: "", phone: "", architecture: "", fileSize: "", message: "" });
+    } catch (err) {
+      setPopup({ type: "error", message: err.message });
     } finally {
       setLoading(false);
     }
@@ -62,7 +62,7 @@ export default function ContactPageLayout() {
   return (
     <div className="w-full bg-brand-base">
       {/* COMBINED HERO & FORM SECTION */}
-      <section className="relative overflow-hidden py-24 lg:py-32 px-6 lg:px-8 border-b border-brand-border">
+      <section id="audit" className="scroll-mt-24 relative overflow-hidden py-24 lg:py-32 px-6 lg:px-8 border-b border-brand-border">
         <div className="absolute inset-0 -z-10">
           <img
             src="/Pictures/Contact/contact-002.jpg"
@@ -78,7 +78,7 @@ export default function ContactPageLayout() {
             {/* LEFT COLUMN (40% Width) */}
             <div className="lg:col-span-5 flex flex-col justify-center text-left">
               <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm self-start">
-                <Briefcase className="w-4 h-4" /> SALES INQUIRY
+                {t("contact.hero.tag") || "// TECHNICAL & AI AUDIT INQUIRY"}
               </div>
               <h1 className="text-4xl font-bold uppercase tracking-tight md:text-5xl lg:text-6xl text-brand-textPrimary mb-6 leading-tight">
                 {t("contact.hero.title")}
@@ -88,86 +88,217 @@ export default function ContactPageLayout() {
               </p>
 
               <div className="border-t border-brand-border pt-8">
-                <h2 className="text-2xl font-semibold text-brand-textPrimary mb-4">{t("contact.section.title")}</h2>
-                <div className="space-y-4 text-base leading-relaxed text-brand-textSecondary font-medium">
+                <div className="space-y-6 text-base leading-relaxed text-brand-textSecondary font-medium">
                   <p>{t("contact.section.desc1")}</p>
-                  <p>{t("contact.section.desc2")}</p>
+                  <p className="font-bold text-brand-textPrimary">{t("contact.section.next")}</p>
+                  <ul className="space-y-3 list-disc pl-5">
+                    <li><strong className="text-brand-textPrimary">{t("contact.section.list1_title")}</strong>{t("contact.section.list1_desc")}</li>
+                    <li><strong className="text-brand-textPrimary">{t("contact.section.list2_title")}</strong>{t("contact.section.list2_desc")}</li>
+                    <li><strong className="text-brand-textPrimary">{t("contact.section.list3_title")}</strong>{t("contact.section.list3_desc")}</li>
+                  </ul>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT COLUMN (60% Width) */}
             <div className="lg:col-span-7">
-              <div id="sales" className="rounded-[2rem] border border-brand-border bg-white p-6 shadow-xl md:p-10">
-                <h3 className="mb-8 text-2xl font-semibold text-brand-textPrimary">{t("contact.form.title")}</h3>
-                <form className="group grid gap-6" onSubmit={handleSubmit}>
-                  <div className="grid gap-6 md:grid-cols-2">
-                    <input
-                      value={form.name}
-                      onChange={(e) => updateField("name", e.target.value)}
-                      placeholder={t("contact.form.name")}
-                      required
-                      className="rounded-2xl border border-brand-border bg-brand-surface px-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary"
-                    />
-                    <input
-                      type="email"
-                      value={form.email}
-                      onChange={(e) => updateField("email", e.target.value)}
-                      placeholder={t("contact.form.email")}
-                      required
-                      className="rounded-2xl border border-brand-border bg-brand-surface px-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary"
-                    />
+              <div id="audit" className="relative rounded-[2.5rem] bg-white p-8 md:p-12 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-brand-border/60 overflow-hidden">
+                {/* Decorative background gradients */}
+                <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-brand-primary/5 blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-brand-accent/5 blur-3xl pointer-events-none" />
+                
+                <div className="relative z-10">
+                  <div className="mb-10">
+                    <h3 className="text-3xl font-bold text-brand-textPrimary mb-3">{t("contact.form.title")}</h3>
+                    <p className="text-brand-textSecondary font-medium">{t("contact.form.desc") || "Please fill in the details below to request your technical audit."}</p>
                   </div>
-                  <input
-                    type="tel"
-                    value={form.phone}
-                    onChange={(e) => updateField("phone", e.target.value)}
-                    placeholder={t("contact.form.phone")}
-                    className="rounded-2xl border border-brand-border bg-brand-surface px-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary"
-                  />
-                  <textarea
-                    rows={5}
-                    value={form.message}
-                    onChange={(e) => updateField("message", e.target.value)}
-                    placeholder={t("contact.form.message")}
-                    required
-                    className="rounded-2xl border border-brand-border bg-brand-surface px-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary resize-y"
-                  />
+                  
+                  <form className="group grid gap-6" onSubmit={handleSubmit}>
+                    <div className="grid gap-6 md:grid-cols-2">
+                      
+                      {/* Name */}
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                          <User className="h-5 w-5 text-brand-textSecondary/50" />
+                        </div>
+                        <input
+                          value={form.name}
+                          onChange={(e) => updateField("name", e.target.value)}
+                          placeholder={t("contact.form.name")}
+                          required
+                          className="w-full rounded-2xl border border-brand-border/80 bg-brand-surface/50 pl-11 pr-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition-all duration-300 focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 hover:border-brand-primary/30"
+                        />
+                      </div>
 
-                  <div className="flex items-start gap-3 mt-2">
-                    <input
-                      type="checkbox"
-                      id="privacy-contact"
-                      required
-                      className="mt-1 w-5 h-5 rounded border-brand-border bg-brand-surface text-brand-primary focus:ring-brand-primary focus:ring-offset-0 cursor-pointer"
-                    />
-                    <label htmlFor="privacy-contact" className="text-sm">
-                      <span className="text-sm text-brand-textSecondary font-medium">
-                        {t("forms.accept.part1")}
-                        <Link href="/privacy-policy" className="text-brand-primary font-bold hover:underline">
-                          {t("forms.accept.privacy")}
-                        </Link>
-                        {t("forms.accept.part2")}
-                        <Link href="/terms-and-conditions" className="text-brand-primary font-bold hover:underline">
-                          {t("forms.accept.terms")}
-                        </Link>
-                        {t("forms.accept.part3")}
-                      </span>
-                    </label>
-                  </div>
+                      {/* Company Name */}
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                          <Building className="h-5 w-5 text-brand-textSecondary/50" />
+                        </div>
+                        <input
+                          value={form.companyName}
+                          onChange={(e) => updateField("companyName", e.target.value)}
+                          placeholder={t("contact.form.companyName") || "Company Name"}
+                          required
+                          className="w-full rounded-2xl border border-brand-border/80 bg-brand-surface/50 pl-11 pr-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition-all duration-300 focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 hover:border-brand-primary/30"
+                        />
+                      </div>
 
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-brand-accent px-8 py-5 text-base font-bold text-white shadow-md transition hover:-translate-y-1 hover:bg-brand-accentHover disabled:opacity-60 group-invalid:opacity-50 md:w-auto md:self-end"
-                  >
-                    {loading ? t("contact.form.sending") : t("contact.form.button")}
-                    <ArrowRight className="h-5 w-5" />
-                  </button>
-                  {status && (
-                    <p className="text-right text-sm font-bold text-brand-primary">{status}</p>
-                  )}
-                </form>
+                      {/* Email */}
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                          <Mail className="h-5 w-5 text-brand-textSecondary/50" />
+                        </div>
+                        <input
+                          type="email"
+                          value={form.email}
+                          onChange={(e) => updateField("email", e.target.value)}
+                          placeholder={t("contact.form.email")}
+                          required
+                          className="w-full rounded-2xl border border-brand-border/80 bg-brand-surface/50 pl-11 pr-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition-all duration-300 focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 hover:border-brand-primary/30"
+                        />
+                      </div>
+
+                      {/* Phone */}
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                          <Phone className="h-5 w-5 text-brand-textSecondary/50" />
+                        </div>
+                        <input
+                          type="tel"
+                          value={form.phone}
+                          onChange={(e) => updateField("phone", e.target.value)}
+                          placeholder={t("contact.form.phone")}
+                          className="w-full rounded-2xl border border-brand-border/80 bg-brand-surface/50 pl-11 pr-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition-all duration-300 focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 hover:border-brand-primary/30"
+                        />
+                      </div>
+
+                      {/* Architecture */}
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                          <Server className="h-5 w-5 text-brand-textSecondary/50" />
+                        </div>
+                        <select
+                          value={form.architecture}
+                          onChange={(e) => updateField("architecture", e.target.value)}
+                          required
+                          className={`w-full appearance-none rounded-2xl border border-brand-border/80 bg-brand-surface/50 pl-11 pr-5 py-4 text-brand-textPrimary outline-none transition-all duration-300 focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 hover:border-brand-primary/30 ${form.architecture ? '' : 'text-brand-textSecondary/70'}`}
+                        >
+                          <option value="" disabled hidden>{t("contact.form.architecture") || "Requested Architecture"}</option>
+                          <option value="Edge" className="text-brand-textPrimary">{t("contact.form.arch_opt1") || "Edge Computing"}</option>
+                          <option value="VPS" className="text-brand-textPrimary">{t("contact.form.arch_opt2") || "VPS / Cloud Dedicated"}</option>
+                          <option value="Private Cloud" className="text-brand-textPrimary">{t("contact.form.arch_opt3") || "On-Premises / Private Cloud"}</option>
+                        </select>
+                      </div>
+
+                      {/* File Size */}
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                          <FileBox className="h-5 w-5 text-brand-textSecondary/50" />
+                        </div>
+                        <select
+                          value={form.fileSize}
+                          onChange={(e) => updateField("fileSize", e.target.value)}
+                          required
+                          className={`w-full appearance-none rounded-2xl border border-brand-border/80 bg-brand-surface/50 pl-11 pr-5 py-4 text-brand-textPrimary outline-none transition-all duration-300 focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 hover:border-brand-primary/30 ${form.fileSize ? '' : 'text-brand-textSecondary/70'}`}
+                        >
+                          <option value="" disabled hidden>{t("contact.form.fileSize") || "Revit File Size"}</option>
+                          <option value="<100MB" className="text-brand-textPrimary">{t("contact.form.size_opt1") || "Less than 100 MB"}</option>
+                          <option value="100MB-500MB" className="text-brand-textPrimary">{t("contact.form.size_opt2") || "100 MB - 500 MB"}</option>
+                          <option value="500MB+" className="text-brand-textPrimary">{t("contact.form.size_opt3") || "500+ MB"}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Message */}
+                    <div className="relative">
+                      <div className="absolute top-4 left-0 pl-4 flex items-start pointer-events-none">
+                        <MessageSquare className="h-5 w-5 text-brand-textSecondary/50" />
+                      </div>
+                      <textarea
+                        rows={5}
+                        value={form.message}
+                        onChange={(e) => updateField("message", e.target.value)}
+                        placeholder={t("contact.form.message")}
+                        required
+                        className="w-full rounded-2xl border border-brand-border/80 bg-brand-surface/50 pl-11 pr-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition-all duration-300 focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 hover:border-brand-primary/30 resize-y"
+                      />
+                    </div>
+
+                    {/* Privacy */}
+                    <div className="flex items-start gap-3 mt-2 bg-brand-surface/30 p-4 rounded-xl border border-brand-border/50">
+                      <ShieldCheck className="h-6 w-6 text-brand-primary shrink-0 mt-0.5" />
+                      <div className="flex-1">
+                        <label htmlFor="privacy-contact" className="text-sm cursor-pointer flex items-start gap-3 group/label">
+                          <div className="relative flex items-center justify-center shrink-0 mt-0.5">
+                            <input
+                              type="checkbox"
+                              id="privacy-contact"
+                              required
+                              className="peer appearance-none w-5 h-5 rounded border border-brand-border bg-white checked:bg-brand-primary checked:border-brand-primary transition-all shadow-sm cursor-pointer"
+                            />
+                            <svg className="absolute w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                          </div>
+                          <span className="text-sm text-brand-textSecondary font-medium leading-relaxed group-hover/label:text-brand-textPrimary transition-colors">
+                            {t("forms.accept.part1")}
+                            <Link href="/privacy-policy" className="text-brand-primary font-bold hover:underline mx-1">
+                              {t("forms.accept.privacy")}
+                            </Link>
+                            {t("forms.accept.part2")}
+                            <Link href="/terms-and-conditions" className="text-brand-primary font-bold hover:underline mx-1">
+                              {t("forms.accept.terms")}
+                            </Link>
+                            {t("forms.accept.part3")}
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+
+                    {/* Submit Area */}
+                    <div className="mt-4 flex flex-col items-end gap-4 border-t border-brand-border/50 pt-6">
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="group/btn relative inline-flex w-full items-center justify-center gap-3 rounded-2xl px-8 py-5 text-base font-bold transition-all duration-300 md:w-auto overflow-hidden bg-brand-accent text-white shadow-[0_10px_20px_-10px_rgba(249,115,22,0.4)] hover:-translate-y-1 hover:shadow-[0_15px_25px_-10px_rgba(249,115,22,0.5)] group-invalid:bg-orange-200 group-invalid:text-black group-invalid:shadow-none group-invalid:pointer-events-none group-invalid:transform-none disabled:opacity-60"
+                      >
+                        <div className="absolute inset-0 bg-white/20 translate-y-full transition-transform duration-300 group-hover/btn:translate-y-0 group-invalid:hidden" />
+                        <span className="relative z-10 flex items-center gap-2">
+                          {loading ? t("contact.form.sending") : t("contact.form.button")}
+                          <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover/btn:translate-x-1 group-invalid:opacity-50" />
+                        </span>
+                      </button>
+                      
+                      {t("contact.form.microcopy") && (
+                        <p className="text-sm text-brand-textSecondary/90 text-left w-full italic font-medium max-w-none">
+                          {t("contact.form.microcopy")}
+                        </p>
+                      )}
+                      {popup && (
+                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-base/80 backdrop-blur-sm animate-in fade-in duration-200">
+                          <div className="relative w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl border border-brand-border text-center transform animate-in zoom-in-95 duration-200">
+                            <div className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full ${popup.type === 'success' ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
+                              {popup.type === 'success' ? <CheckCircle2 className="h-8 w-8" /> : <AlertCircle className="h-8 w-8" />}
+                            </div>
+                            
+                            <h3 className="mb-2 text-2xl font-bold text-brand-textPrimary">
+                              {popup.type === 'success' ? "Success!" : "Action Required"}
+                            </h3>
+                            
+                            <p className="mb-8 text-base font-medium leading-relaxed text-brand-textSecondary" style={{ direction: 'rtl' }}>
+                              {popup.message}
+                            </p>
+                            
+                            <button
+                              onClick={() => setPopup(null)}
+                              className={`w-full rounded-2xl px-6 py-4 font-bold text-white shadow-md transition-all hover:-translate-y-0.5 ${popup.type === 'success' ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-brand-primary hover:bg-brand-primaryHover'}`}
+                            >
+                              {popup.type === 'success' ? "Close" : "Got it"}
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
             
@@ -176,75 +307,51 @@ export default function ContactPageLayout() {
       </section>
 
       {/* COMBINED CONTACT INFO & SOCIALS SECTION */}
-      <section id="headquarters" className="bg-brand-surface py-20 border-b border-brand-border">
+      <section id="direct-channels" className="scroll-mt-24 bg-brand-surface py-20 border-b border-brand-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
-              <Building className="w-4 h-4" /> HEADQUARTERS
+            <div className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm mx-auto">
+              {t("contact.channels.badge") || "// DIRECT CHANNELS"}
             </div>
             <h3 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
-              Our Offices & Direct Channels
+              {t("contact.channels.title") || "Our Offices & Direct Channels"}
             </h3>
           </div>
-          <div className="grid gap-16 lg:grid-cols-2 items-center">
+          <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto items-stretch">
             
-            {/* LEFT 50%: CONTACT INFO */}
-            <div className="flex justify-center">
-              <div className="grid gap-6 sm:grid-cols-2 max-w-lg w-full">
-                {/* CELLULARE */}
-                <div className="flex flex-col items-center justify-center rounded-3xl border border-brand-border bg-white p-6 text-center transition hover:shadow-md">
-                  <Phone className="mb-4 h-8 w-8 text-brand-primary" />
-                  <h4 className="mb-2 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.phone_mobile")}</h4>
-                  <a href={phoneHref} className="text-lg font-bold text-brand-textPrimary hover:text-brand-primary transition-colors">
-                    +39 {phoneDisplay}
-                  </a>
-                </div>
-
-                {/* E-MAIL GENERAL */}
-                <div className="flex flex-col items-center justify-center rounded-3xl border border-brand-border bg-white p-6 text-center transition hover:shadow-md">
-                  <Mail className="mb-4 h-8 w-8 text-brand-primary" />
-                  <h4 className="mb-2 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.email_general")}</h4>
-                  <a href={`mailto:${emailAddress}`} className="text-lg font-bold text-brand-textPrimary hover:text-brand-primary transition-colors">
-                    {emailAddress}
-                  </a>
-                </div>
+            {/* TELEFONO FISSO */}
+            <a href={phoneHref} className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border bg-white p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(37,99,235,0.15)] hover:-translate-y-1 hover:border-brand-primary/30">
+              <div className="w-14 h-14 rounded-2xl bg-brand-primary/5 text-brand-primary group-hover:bg-brand-primary/15 flex items-center justify-center mb-6 transition-colors">
+                <Phone className="h-7 w-7" />
               </div>
-            </div>
+              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.phone_fixed") || "Landline"}</h4>
+              <span className="text-lg font-bold text-brand-textPrimary group-hover:text-brand-primary transition-colors">
+                +39 {phoneDisplay}
+              </span>
+            </a>
 
-            {/* RIGHT 50%: SOCIALS */}
-            <div className="flex flex-col items-center">
-              <h4 className="mb-8 text-sm font-bold uppercase tracking-widest text-brand-textSecondary text-center">{t("contact.info.socials")}</h4>
-              <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-                <a href="https://web.whatsapp.com/send?phone=391234567890" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 transition">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white border border-brand-border text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-all duration-300 shadow-sm hover:shadow-md">
-                    <MessageCircle className="h-8 w-8" />
-                  </div>
-                  <span className="text-sm font-bold text-brand-textSecondary group-hover:text-[#25D366]">WhatsApp</span>
-                </a>
-
-                <a href="https://www.facebook.com/pybim" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 transition">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white border border-brand-border text-[#1877F2] group-hover:bg-[#1877F2] group-hover:text-white transition-all duration-300 shadow-sm hover:shadow-md">
-                    <Facebook className="h-8 w-8" />
-                  </div>
-                  <span className="text-sm font-bold text-brand-textSecondary group-hover:text-[#1877F2]">Facebook</span>
-                </a>
-
-                <a href="https://www.linkedin.com/company/pybim" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 transition">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white border border-brand-border text-[#0A66C2] group-hover:bg-[#0A66C2] group-hover:text-white transition-all duration-300 shadow-sm hover:shadow-md">
-                    <Linkedin className="h-8 w-8" />
-                  </div>
-                  <span className="text-sm font-bold text-brand-textSecondary group-hover:text-[#0A66C2]">LinkedIn</span>
-                </a>
-
-                <a href="https://www.instagram.com/pybim/" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 transition">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white border border-brand-border text-[#E1306C] group-hover:bg-[#E1306C] group-hover:text-white transition-all duration-300 shadow-sm hover:shadow-md">
-                    <Instagram className="h-8 w-8" />
-                  </div>
-                  <span className="text-sm font-bold text-brand-textSecondary group-hover:text-[#E1306C]">Instagram</span>
-                </a>
+            {/* E-MAIL GENERAL */}
+            <a href={`mailto:${emailAddress}`} className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border bg-white p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(37,99,235,0.15)] hover:-translate-y-1 hover:border-brand-primary/30">
+              <div className="w-14 h-14 rounded-2xl bg-brand-primary/5 text-brand-primary group-hover:bg-brand-primary/15 flex items-center justify-center mb-6 transition-colors">
+                <Mail className="h-7 w-7" />
               </div>
-            </div>
-            
+              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.email_general")}</h4>
+              <span className="text-lg font-bold text-brand-textPrimary group-hover:text-brand-primary transition-colors">
+                {emailAddress}
+              </span>
+            </a>
+
+            {/* LINKEDIN */}
+            <a href="https://www.linkedin.com/company/pybim" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border bg-white p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(10,102,194,0.15)] hover:-translate-y-1 hover:border-[#0A66C2]/30">
+              <div className="w-14 h-14 rounded-2xl bg-brand-primary/5 text-brand-primary group-hover:bg-[#0A66C2]/10 group-hover:text-[#0A66C2] flex items-center justify-center mb-6 transition-colors">
+                <Linkedin className="h-7 w-7" />
+              </div>
+              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.linkedin") || "LinkedIn"}</h4>
+              <span className="text-lg font-bold text-brand-textPrimary group-hover:text-[#0A66C2] transition-colors">
+                linkedin/company/pybim
+              </span>
+            </a>
+
           </div>
         </div>
       </section>
@@ -253,16 +360,8 @@ export default function ContactPageLayout() {
       <BimCalculatorCta />
 
       {/* FAQ SECTION - Technical Support */}
-      <section id="support" className="bg-brand-base pt-20 pb-32 border-b border-brand-border">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
-              <Cog className="w-4 h-4" /> TECHNICAL SUPPORT
-            </div>
-            <h3 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
-              Frequently Asked Questions & Support
-            </h3>
-          </div>
+      <section id="support" className="scroll-mt-24 bg-brand-surface pt-20 pb-32 border-b border-brand-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FAQSection />
         </div>
       </section>

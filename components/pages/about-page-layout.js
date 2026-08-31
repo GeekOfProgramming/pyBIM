@@ -46,14 +46,6 @@ export default function AboutPageLayout({ teamData }) {
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-brand-textPrimary tracking-tight mb-8 leading-tight max-w-5xl mx-auto" dangerouslySetInnerHTML={{ __html: t("about.manifesto.title") }} />
           <h2 className="text-lg md:text-xl text-brand-textSecondary leading-relaxed max-w-3xl mx-auto font-medium mb-12" dangerouslySetInnerHTML={{ __html: t("about.manifesto.subtitle") }} />
 
-          <div className="flex flex-col items-center justify-center gap-4">
-            <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-brand-primary hover:bg-brand-secondary rounded-full shadow-lg hover:shadow-brand-primary/30 transition-all duration-300 transform hover:-translate-y-1">
-              {t("about.manifesto.cta")}
-            </Link>
-            <p className="text-sm text-brand-textSecondary max-w-md mx-auto">
-              {t("about.manifesto.cta_sub")}
-            </p>
-          </div>
         </div>
       </section>
 

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Globe, ChevronDown, ChevronRight, Briefcase, FileText, Code2, Users, Building, Activity, Shield, Terminal, Cog } from "lucide-react";
+import { Globe, ChevronDown, ChevronRight, Briefcase, FileText, Code2, Users, Building, Activity, Shield, Terminal, Cog, Calculator } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const navItems = [
@@ -39,9 +39,10 @@ const pyBimRightMenu = {
     { label: "Life at pyBIM", icon: Building, href: "/careers#life" },
   ],
   contact_us: [
-    { label: "Sales Inquiry", icon: Briefcase, href: "/contact#sales" },
-    { label: "Headquarters", icon: Building, href: "/contact#headquarters" },
-    { label: "Technical Support", icon: Cog, href: "/contact#support" },
+    { label: "Technical & AI Audit", icon: Briefcase, href: "/contact#audit" },
+    { label: "Direct Channels", icon: Building, href: "/contact#direct-channels" },
+    { label: "Algorithmic ROI Matrix", icon: Calculator, href: "/contact#calculator" },
+    { label: "FAQ", icon: Cog, href: "/contact#support" },
   ],
 };
 

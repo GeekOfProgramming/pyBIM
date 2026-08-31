@@ -138,15 +138,6 @@ export default function TeamPartnersSection({ teamData }) {
                 </div>
               ))}
             </Carousel>
-            
-            <div className="mt-16 text-center max-w-3xl mx-auto">
-              <a href="/contact" className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-brand-primary hover:bg-brand-secondary rounded-full shadow-lg hover:shadow-brand-primary/30 transition-all duration-300 transform hover:-translate-y-1">
-                {t("about.team.sec3.cta_btn")}
-              </a>
-              <p className="text-sm text-brand-textSecondary mt-6 italic bg-brand-surface p-4 rounded-xl border border-brand-border/60">
-                {t("about.team.sec3.cta_sub")}
-              </p>
-            </div>
           </div>
         </section>
       )}

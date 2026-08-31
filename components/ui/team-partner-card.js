@@ -1,5 +1,5 @@
 "use client";
-import { Facebook, Globe, Instagram, Linkedin } from "lucide-react";
+import { Globe, Linkedin } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function TeamPartnerCard({ person, onClick }) {

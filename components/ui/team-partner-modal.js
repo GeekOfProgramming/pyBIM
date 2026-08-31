@@ -1,6 +1,6 @@
 "use client";
 import Link from "@/components/layout/LocalizedLink";
-import { X, Phone, Mail, CheckCircle2, Linkedin, Facebook, Instagram } from "lucide-react";
+import { X, Phone, Mail, CheckCircle2, Linkedin } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function TeamPartnerModal({ person, onClose }) {
@@ -45,8 +45,6 @@ export default function TeamPartnerModal({ person, onClose }) {
           {/* Contact Box */}
           {((person.phone && person.phone !== "#") || 
             (person.email && person.email !== "#") || 
-            (person.facebook && person.facebook !== "#") || 
-            (person.instagram && person.instagram !== "#") || 
             (person.linkedin && person.linkedin !== "#")) && (
             <div className="bg-white rounded-2xl p-6 text-center relative shadow-sm border border-brand-border mt-4">
               <div className="w-12 h-12 bg-brand-accent/10 border border-brand-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-3 text-brand-accent">
@@ -72,18 +70,8 @@ export default function TeamPartnerModal({ person, onClose }) {
                 )}
                 
                 {/* Social Icons */}
-                {((person.facebook && person.facebook !== "#") || (person.instagram && person.instagram !== "#") || (person.linkedin && person.linkedin !== "#")) && (
+                {(person.linkedin && person.linkedin !== "#") && (
                   <div className="flex justify-center gap-2.5 mt-3 pt-3 border-t border-brand-border">
-                    {person.facebook && person.facebook !== "#" && (
-                      <a href={person.facebook} target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-brand-surface border border-brand-border rounded-xl flex items-center justify-center text-brand-textPrimary hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-110 transition-all duration-300 shadow-sm" aria-label="Facebook">
-                        <Facebook className="w-4 h-4" />
-                      </a>
-                    )}
-                    {person.instagram && person.instagram !== "#" && (
-                      <a href={person.instagram} target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-brand-surface border border-brand-border rounded-xl flex items-center justify-center text-brand-textPrimary hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-110 transition-all duration-300 shadow-sm" aria-label="Instagram">
-                        <Instagram className="w-4 h-4" />
-                      </a>
-                    )}
                     {person.linkedin && person.linkedin !== "#" && (
                       <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-brand-surface border border-brand-border rounded-xl flex items-center justify-center text-brand-textPrimary hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-110 transition-all duration-300 shadow-sm" aria-label="LinkedIn">
                         <Linkedin className="w-4 h-4" />

@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { useLanguage } from "@/lib/LanguageContext";
-import { Mail, Briefcase, ChevronRight, CheckCircle2, Users, Building, Terminal, Heart, Zap, Sparkles } from "lucide-react";
+import { ChevronRight, CheckCircle2, Terminal, Server, Cpu, Building, Heart, Zap, Sparkles, Users, Briefcase } from "lucide-react";
 
 export default function CareersPageLayout({ jobs }) {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const [visibleCount, setVisibleCount] = useState(6);
 
   useEffect(() => {
@@ -69,22 +69,48 @@ export default function CareersPageLayout({ jobs }) {
               <Briefcase className="w-4 h-4" /> OPEN POSITIONS
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
-              {language === "it" ? "Posizioni Aperte" : "Join our engineering & dev team"}
+              Engineer the Standard. Join the R&D Lab.
             </h2>
-            <p className="text-brand-textSecondary max-w-xl mx-auto font-medium">
-              {language === "it" 
-                ? "Scopri i ruoli attualmente disponibili e unisciti al nostro team." 
-                : "Discover our currently available roles and scale your career with us."}
+            <p className="text-brand-textSecondary max-w-2xl mx-auto font-medium text-lg">
+              We do not hire manual modelers. We recruit algorithmic engineers and software developers to automate complex AEC workflows across the world.
             </p>
           </div>
 
           {jobs.length === 0 ? (
-            <div className="text-center py-20 bg-brand-surface rounded-3xl border border-brand-border">
-              <p className="text-brand-textSecondary font-medium text-lg">
-                {language === "it" 
-                  ? "Al momento non ci sono posizioni aperte. Controlla di nuovo in futuro!" 
-                  : "There are currently no open positions. Please check back later!"}
+            <div className="bg-white border border-brand-border rounded-[2.5rem] p-8 md:p-12 shadow-sm text-left max-w-4xl mx-auto">
+              
+              <div className="inline-block px-3 py-1 rounded-lg bg-brand-accent/10 text-brand-accent text-xs font-bold tracking-widest uppercase border border-brand-accent/20 mb-6">
+                Current Status: Core Unit at Full Capacity
+              </div>
+              
+              <p className="text-brand-textSecondary text-lg font-medium leading-relaxed mb-10">
+                We scale our operations through code, not arbitrary headcount. However, operating from the tech hub of <strong>Padua</strong>, we continuously audit spontaneous technical submissions from developers demonstrating exceptional <strong>algorithmic efficiency</strong>.
               </p>
+              
+              <h3 className="text-2xl md:text-3xl font-bold text-brand-textPrimary mb-4">Bypass the Standard Hiring Cycle.</h3>
+              
+              <p className="text-brand-textSecondary text-lg font-medium leading-relaxed mb-8">
+                If you have transitioned from traditional BIM management to native <strong>Python, C#, or Revit API</strong> development, initiate a spontaneous technical review.
+              </p>
+              
+              <ul className="space-y-4 mb-10">
+                <li className="flex gap-3 items-start">
+                  <CheckCircle2 className="w-6 h-6 text-brand-primary shrink-0 mt-0.5" />
+                  <span className="text-brand-textSecondary font-medium"><strong>Skip the Traditional CV:</strong> Provide a direct link to your <strong>GitHub</strong> repository or a demonstrable code environment.</span>
+                </li>
+                <li className="flex gap-3 items-start">
+                  <CheckCircle2 className="w-6 h-6 text-brand-primary shrink-0 mt-0.5" />
+                  <span className="text-brand-textSecondary font-medium"><strong>Prove the Output:</strong> Submit a custom automation script that mathematically eliminates manual data entry or visual clash detection bottlenecks.</span>
+                </li>
+                <li className="flex gap-3 items-start">
+                  <CheckCircle2 className="w-6 h-6 text-brand-primary shrink-0 mt-0.5" />
+                  <span className="text-brand-textSecondary font-medium"><strong>Initiate Contact:</strong> Route your technical portfolio directly to <a href="mailto:careers@pybim.com" className="text-brand-primary hover:underline"><strong>careers@pybim.com</strong></a>.</span>
+                </li>
+              </ul>
+              
+              <div className="bg-brand-surface border border-brand-border rounded-2xl p-4 text-sm text-brand-textSecondary font-medium italic">
+                (Note: Submissions lacking functional code repositories will be automatically rejected).
+              </div>
             </div>
           ) : (
             <>
@@ -126,49 +152,49 @@ export default function CareersPageLayout({ jobs }) {
         </div>
       </section>
 
-      {/* Life at pyBIM Section */}
-      <section id="life" className="py-24 bg-brand-surface">
+      {/* Engineering Culture Section */}
+      <section id="engineering-culture" className="py-24 bg-brand-surface">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
-              <Building className="w-4 h-4" /> LIFE AT PYBIM
+              // ENGINEERING CULTURE
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
-              Where Engineering Meets Code
+              Scale Your Code, Not Your Hours.
             </h2>
-            <p className="text-brand-textSecondary max-w-2xl mx-auto font-medium mt-4">
-              We empower engineers to think like software developers and build scalable tools for European construction projects.
+            <p className="text-brand-textSecondary max-w-2xl mx-auto font-medium mt-4 text-lg">
+              We operate a strict R&D tech lab from the engineering hub of <strong>Padua, Italy</strong>. We evaluate our technical team based on <strong>algorithmic efficiency</strong>, not manual drafting endurance.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-brand-primary mb-6">
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+              <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-100 mb-6">
                 <Terminal className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">Code-First Mindset</h3>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">Algorithmic Focus</h3>
               <p className="text-brand-textSecondary text-sm leading-relaxed font-medium">
-                We believe in continuous learning, open-source BIM tools, and automating repetitive tasks with Python and C#.
+                Zero manual modeling. Strict deployment of <strong>Python/C#</strong> pipelines and <strong>Revit API</strong> integrations.
               </p>
             </div>
 
-            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 mb-6">
-                <Zap className="w-6 h-6" />
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+              <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-100 mb-6">
+                <Server className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">High-Impact Work</h3>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">Enterprise AI Infrastructure</h3>
               <p className="text-brand-textSecondary text-sm leading-relaxed font-medium">
-                Work directly on hospital complexes, infrastructure, and commercial mega-structures across Europe.
+                Unrestricted access to <strong>Edge AI Appliances</strong> and dedicated <strong>GPU-VPS</strong> environments for algorithmic deployment.
               </p>
             </div>
 
-            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 mb-6">
-                <Heart className="w-6 h-6" />
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+              <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-100 mb-6">
+                <Cpu className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">Flexibility & Trust</h3>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">Output-Driven Autonomy</h3>
               <p className="text-brand-textSecondary text-sm leading-relaxed font-medium">
-                Hybrid workflows, transparent culture, and performance-based career advancement.
+                Success is measured by <strong>operational bottlenecks cleared</strong>, not physical desk presence.
               </p>
             </div>
           </div>

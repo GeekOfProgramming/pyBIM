@@ -3,18 +3,18 @@ import { useState } from "react";
 
 import Link from "@/components/layout/LocalizedLink";
 import { usePathname } from "next/navigation";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send, MessageCircle } from "lucide-react";
+import { Linkedin, Mail, MapPin, Phone, Send, CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function Footer() {
   const pathname = usePathname();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("");
+  const [popup, setPopup] = useState(null);
 
   async function handleNewsletter(e) {
     e.preventDefault();
     setLoading(true);
-    setStatus("");
+    setPopup(null);
     try {
       const res = await fetch("/api/newsletter", {
         method: "POST",
@@ -23,10 +23,10 @@ export default function Footer() {
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.error || "Failed");
-      setStatus("Subscription completed!");
+      setPopup({ type: "success", message: "Subscription completed successfully!" });
       setEmail("");
-    } catch {
-      setStatus("Error during subscription.");
+    } catch (err) {
+      setPopup({ type: "error", message: err.message });
     } finally {
       setLoading(false);
     }
@@ -58,15 +58,6 @@ export default function Footer() {
               <a href="https://www.linkedin.com/company/pybim" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:bg-white hover:text-[#0077b5] transition bg-white/10 p-2.5 rounded-full border border-white/20">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://web.whatsapp.com/send?phone=391234567890" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:bg-white hover:text-[#25D366] transition bg-white/10 p-2.5 rounded-full border border-white/20">
-                <MessageCircle className="w-5 h-5" />
-              </a>
-              <a href="https://www.instagram.com/pybim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:bg-white hover:text-[#E1306C] transition bg-white/10 p-2.5 rounded-full border border-white/20">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="https://www.facebook.com/pybim" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:bg-white hover:text-[#1877F2] transition bg-white/10 p-2.5 rounded-full border border-white/20">
-                <Facebook className="w-5 h-5" />
-              </a>
             </div>
 
             {/* Legal Box */}
@@ -97,11 +88,16 @@ export default function Footer() {
                     required
                     className="flex-1 rounded-2xl border border-brand-border bg-brand-surface px-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
                   />
-                  <button type="submit" disabled={loading} aria-label="Subscribe" className="inline-flex items-center justify-center rounded-2xl bg-brand-accent px-6 py-4 text-white shadow-md transition hover:-translate-y-1 hover:bg-brand-accentHover group-invalid:opacity-50 disabled:opacity-50">
-                    <Send className="w-5 h-5" />
+                  <button 
+                    type="submit" 
+                    disabled={loading} 
+                    aria-label="Subscribe" 
+                    className="group/btn relative inline-flex items-center justify-center rounded-2xl bg-brand-accent px-6 py-4 text-white shadow-[0_10px_20px_-10px_rgba(249,115,22,0.4)] transition-all duration-300 hover:-translate-y-1 hover:bg-brand-accentHover hover:shadow-[0_15px_25px_-10px_rgba(249,115,22,0.5)] group-invalid:bg-orange-200 group-invalid:text-black group-invalid:shadow-none group-invalid:pointer-events-none group-invalid:transform-none disabled:opacity-60 overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-white/20 translate-y-full transition-transform duration-300 group-hover/btn:translate-y-0 group-invalid:hidden" />
+                    <Send className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1 group-invalid:opacity-50" />
                   </button>
                 </div>
-                {status && <p className="text-sm font-medium text-brand-primary">{status}</p>}
                 <div className="flex items-start gap-3 mt-1">
                   <input
                     type="checkbox"
@@ -148,8 +144,8 @@ export default function Footer() {
                   <li className="flex gap-3">
                     <Phone className="w-5 h-5 text-brand-primary shrink-0" />
                     <div>
-                      <div className="text-xs text-brand-textSecondary/70 mb-1">Mobile</div>
-                      <a href="tel:+391234567890" className="hover:text-brand-primary transition text-sm font-semibold text-brand-textPrimary">+39 123 456 7890</a>
+                      <div className="text-xs text-brand-textSecondary/70 mb-1">Landline</div>
+                      <a href="tel:+390491234567" className="hover:text-brand-primary transition text-sm font-semibold text-brand-textPrimary">+39 049 123 4567</a>
                     </div>
                   </li>
                   <li className="flex gap-3">
@@ -184,6 +180,31 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {popup && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-base/80 backdrop-blur-sm animate-in fade-in duration-200 text-left">
+          <div className="relative w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl border border-brand-border text-center transform animate-in zoom-in-95 duration-200">
+            <div className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full ${popup.type === 'success' ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
+              {popup.type === 'success' ? <CheckCircle2 className="h-8 w-8" /> : <AlertCircle className="h-8 w-8" />}
+            </div>
+            
+            <h3 className="mb-2 text-2xl font-bold text-brand-textPrimary">
+              {popup.type === 'success' ? "Success!" : "Action Required"}
+            </h3>
+            
+            <p className="mb-8 text-base font-medium leading-relaxed text-brand-textSecondary" style={{ direction: 'rtl' }}>
+              {popup.message}
+            </p>
+            
+            <button
+              onClick={() => setPopup(null)}
+              className={`w-full rounded-2xl px-6 py-4 font-bold text-white shadow-md transition-all hover:-translate-y-0.5 ${popup.type === 'success' ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-brand-primary hover:bg-brand-primaryHover'}`}
+            >
+              {popup.type === 'success' ? "Close" : "Got it"}
+            </button>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }
