@@ -1,86 +1,294 @@
 {
-  "about.hero.badge": "Chi Siamo",
-  "about.hero.title1": "Soluzioni BIM professionali e ",
-  "about.hero.title_highlight": "su misura",
-  "about.hero.title2": " per il comfort e l'efficienza energetica",
-  "about.hero.desc": "pyBIM SRLS è un’azienda tecnico-ingegneristica con sede in Veneto, specializzata in servizi per impianti, sistemi edilizi, energia, manutenzioni e ristrutturazioni. Operiamo principalmente nella regione Veneto e, in caso di necessità, possiamo offrire i nostri servizi ed eseguire progetti in tutta Italia.",
-  "about.stats.exp.value": "12+",
-  "about.stats.exp.label": "Anni di Esperienza",
-  "about.stats.proj.value": "700+",
-  "about.stats.proj.label": "Progetti Completati",
-  "about.stats.sat.value": "100%",
-  "about.stats.sat.label": "Clienti Soddisfatti",
-  "about.stats.city.value": "12+",
-  "about.stats.city.label": "Città del Nord IT",
-  "about.vision.title": "La Nostra Visione",
-  "about.vision.desc": "Il nostro obiettivo in pyBIM non è semplicemente completare un’installazione o una riparazione, ma creare nuovi standard di qualità e ingegneria. La nostra visione è offrire soluzioni intelligenti, sostenibili e affidabili che massimizzino il comfort, la sicurezza e l'efficienza. Vogliamo affermarci come un partner ingegneristico di assoluta fiducia per tutti i vostri progetti",
-  "about.vision.link": "Contattaci",
-  "about.commitment.title": "Il Nostro Impegno",
-  "about.commitment.desc": "In pyBIM crediamo che la vera qualità nasca dall’unione tra competenza ingegneristica ed esecuzione professionale. Per questo motivo, prima di iniziare ogni lavoro, valutiamo attentamente gli aspetti tecnici... Diamo grande importanza alla precisione nell’esecuzione, alla trasparenza dei prezzi e alla rapidità di risposta.",
-  "about.commitment.link": "Preventivo",
-  "about.story.title": "Qualità e Ingegneria per Ogni Impianto BIM",
-  "about.story.desc": "Il nostro team è composto da ingegneri e professionisti specializzati. Non ci limitiamo alla semplice esecuzione tecnica: affrontiamo ogni intervento con un approccio ingegneristico, analizzando con attenzione le esigenze del cliente... Ci occupiamo di diversi ambiti, tra cui impianti elettrici civili, installazione e manutenzione di caldaie, climatizzatori, idraulica, impianti fotovoltaici e ristrutturazioni.",
-  "about.choose.title": "Siamo la scelta ideale per le tue esigenze AEC software",
-  "about.choose.pro.title": "Professionisti Certificati",
-  "about.choose.pro.desc": "Tecnici abilitati con anni di esperienza pratica sul campo, formati per risolvere le sfide più complesse e garantire installazioni a regola d'arte.",
-  "about.choose.quality.title": "Qualità di Lavorazione",
-  "about.choose.quality.desc": "Dalla saldatura al collaudo finale, adottiamo standard impeccabili, utilizzando i migliori materiali per la massima durata del tuo impianto.",
-  "about.choose.safe.title": "Sicurezza e Copertura",
-  "about.choose.safe.desc": "Tutti gli impianti sono certificati, sicuri e coperti da garanzie complete per assicurarti la massima tranquillità post-installazione.",
-  "about.testimonials.title": "\"Ci impegniamo a garantire il massimo impatto positivo\"",
-  "about.testimonials.subtitle": "Le parole dei clienti che hanno scelto la qualità pyBIM.",
-  "about.test1.desc": "\"Ottimo impianto di ventilazione nel nostro stabilimento. Installazione rapidissima, i tecnici sono stati ineccepibili e hanno lavorato senza interrompere la produzione.\"",
-  "about.test1.name": "Cliente Industriale",
-  "about.test1.loc": "Venezia",
-  "about.test2.desc": "\"Professionalità e pulizia nella posa delle pompe di calore. Il team ha curato ogni minimo dettaglio. Risultato eccellente sia dal punto di vista funzionale che estetico.\"",
-  "about.test2.name": "Cliente Residenziale",
-  "about.test2.loc": "Padova",
-  "about.cta.title1": "Richiedi un Sopralluogo ",
-  "about.cta.title_highlight": "Gratuito",
-  "about.cta.title2": " Oggi!",
-  "about.cta.desc": "Inizia subito il tuo progetto BIM con noi. Un nostro tecnico specializzato valuterà le tue esigenze senza alcun impegno.",
-  "about.cta.btn": "PREVENTIVO GRATUITO",
-  "about.team.badge": "Il Nostro Team & Partner",
-  "about.team.title": "Ingegneri, tecnici e aziende che rendono possibile ogni progetto",
-  "about.team.subtitle": "Dalla progettazione all'installazione, collaboriamo con i migliori professionisti del settore.",
-  "about.team.tab1": "Il Team Interno",
-  "about.team.tab2": "Partner (Persone)",
-  "about.team.tab3": "Partner (Aziende)",
-  "about.modal.about": "Chi Sono",
-  "about.modal.skills": "Competenze Tecniche",
-  "about.modal.contact": "Contatta Subito",
-  "about.modal.form.name": "Il tuo nome",
-  "about.modal.form.email": "Email",
-  "about.modal.form.message": "Il tuo messaggio...",
-  "about.modal.form.submit": "Invia Messaggio",
-  "about.modal.view_website": "Visita il Sito Web",
-  "about.modal.close": "Chiudi",
-  "about.team.sec1.badge": "Incontra il Team pyBIM",
-  "about.team.sec1.title": "Gli esperti dietro ogni nostro successo",
-  "about.team.sec2.badge": "I Nostri Collaboratori",
-  "about.team.sec2.title": "Professionisti con cui collaboriamo",
-  "about.team.sec3.badge": "Partner Aziendali",
-  "about.team.sec3.title": "Le aziende al nostro fianco",
-  "about.modal.support": "Supporto Esperto",
-  "about.modal.info_title": "Informazioni su ",
-  "about.modal.skills_title_company": "Punti di Forza",
-  "about.modal.skills_title_person": "Competenze ed Esperienza",
-  "about.modal.commitment_title": "Impegno Professionale",
-  "about.modal.contact_title": "Contatta ",
-  "about.modal.contact_title2": " per una consulenza",
-  "about.modal.form.fname": "Nome",
-  "about.modal.form.lname": "Cognome",
-  "about.modal.form.phone": "Telefono",
-  "about.modal.form.msg": "Il tuo messaggio...",
-  "about.modal.form.btn": "Invia Messaggio",
-  "about.manifesto.title": "Scriviamo codice per il settore AEC, <br className=\"hidden md:block\" /><span className=\"text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400\">non siamo una fabbrica di modellazione manuale.</span>",
-  "about.manifesto.subtitle": "Sostituiamo clic manuali ripetitivi, colli di bottiglia nel rilevamento visivo delle interferenze e l'inserimento ridondante di dati con pipeline di automazione personalizzate in Python e C#.",
-  "about.manifesto.cta": "Richiedi il tuo Audit gratuito sui dati BIM",
-  "about.manifesto.cta_sub": "(Nessuna carta di credito richiesta. Invia il tuo modello di esempio per una valutazione immediata dell'automazione in Python)",
-  "about.manifesto.trad_title": "Il collo di bottiglia tradizionale",
-  "about.manifesto.trad_desc": "Le tradizionali aziende AEC sprecano migliaia di ore di ingegneria nella correzione manuale degli errori e nel controllo visivo, esaurendo i margini del progetto e ritardando la consegna.",
-  "about.manifesto.approach_title": "L'approccio pyBIM",
-  "about.manifesto.approach_desc": "Crediamo che se un'operazione viene eseguita due volte in Revit, debba essere automatizzata con uno script. Combinando l'ingegneria BIM Senior con lo sviluppo software Full-Stack, rendiamo semplice l'interoperabilità di dati complessi.",
-  "about.manifesto.impact_title": "Impatto immediato",
-  "about.manifesto.impact_desc": "Elimina l'errore umano e accelera i cicli di consegna nelle infrastrutture complesse europee secondo gli standard ISO 19650 e UNI 11337."
+  "about.manifesto.title": "We engineer algorithms to protect your project margins.",
+  "about.manifesto.subtitle": "Operating from the R&D tech hub of <strong>Padua, Italy</strong>, pyBIM is not a traditional manual modeling farm. We are a specialized software development lab bridging university-level algorithmic research with real-world <strong>AEC</strong> execution.",
+  "about.manifesto.cta": "Claim Your Free BIM Data Audit",
+  "about.manifesto.cta_sub": "(100% Free & Secure Data Handling. Send us a sample model, and we will run it through our automation scripts to prove instant ROI. No credit card required.)",
+  "about.journey.badge": "Phase 1",
+  "about.journey.p1_title": "The Operational Bottleneck",
+  "about.journey.p2_badge": "Phase 2",
+  "about.journey.p2_title": "The Algorithmic Shift",
+  "about.journey.p3_badge": "Phase 3",
+  "about.journey.p3_title": "The Hybrid B2B Tech Partner",
+  "about.tech.badge": "THE PYBIM TECH STACK",
+  "about.tech.title": "Engineered for Output, Not Effort.",
+  "about.tech.desc": "Eliminating manual bottlenecks through programmatic execution, CDE hosting, and strict ISO compliance.",
+  "about.tech.box1_top": "01. SOFTWARE & COORDINATION",
+  "about.tech.box1_title": "01. SOFTWARE & COORDINATION",
+  "about.tech.box1_sub": "Enterprise-grade authoring, configured to eliminate geometric and data conflicts before they reach the construction site.",
+  "about.tech.box2_top": "02. CODE & AUTOMATION",
+  "about.tech.box2_title": "02. CODE & AUTOMATION",
+  "about.tech.box2_sub": "Algorithmic control over manual workflows. We replace redundant human effort with scalable code infrastructure.",
+  "about.tech.dev": [
+    {
+      "name": "Python",
+      "tag": "Automation",
+      "desc": "Automated Parameter Injection & Bulk Processing"
+    },
+    {
+      "name": "Dynamo & pyRevit",
+      "tag": "Scripting",
+      "desc": "Visual & Text Scripting for Modeling Automation"
+    },
+    {
+      "name": "C# & Revit API",
+      "tag": "Plugins",
+      "desc": "Native Add-ins & Deep Software Customization"
+    },
+    {
+      "name": "REST APIs",
+      "tag": "10D / IoT",
+      "desc": "Real-Time Sensor & Digital Twin Data Sync"
+    },
+    {
+      "name": "Autodesk APS (Forge)",
+      "tag": "Cloud API",
+      "desc": "Cloud App Development & Web BIM Processing"
+    },
+    {
+      "name": "Power BI",
+      "tag": "Analytics",
+      "desc": "Live Project Analytics & Model Dashboards"
+    },
+    {
+      "name": "Speckle",
+      "tag": "Open Data",
+      "desc": "Open-Source Real-Time Data Streaming"
+    },
+    {
+      "name": "FastAPI / Node.js",
+      "tag": "Backend",
+      "desc": "Custom Microservices for Network Automation"
+    },
+    {
+      "name": "React.js / Next.js",
+      "tag": "Web Portals",
+      "desc": "Client Web Dashboards for Real-Time Monitoring"
+    },
+    {
+      "name": "SQL / PostgreSQL",
+      "tag": "BIM DB",
+      "desc": "Relational DB for Thousands of BIM Parameters"
+    },
+    {
+      "name": "IFC.js",
+      "tag": "Browser 3D",
+      "desc": "In-Browser 3D BIM Rendering Without Desktop Software"
+    },
+    {
+      "name": "LangChain & ChromaDB",
+      "tag": "AI / RAG",
+      "desc": "RAG-Based Automated BEP/EIR Document Auditing"
+    }
+  ],
+  "about.tech.box3_top": "03. MANDATES & OPENBIM",
+  "about.tech.box3_title": "03. MANDATES & OPENBIM",
+  "about.tech.box3_sub": "Zero-risk data delivery. Absolute compliance with European and Italian legal mandates to secure your public tenders.",
+  "about.tech.stds": [
+    {
+      "name": "ISO 19650",
+      "tag": "Global Framework",
+      "desc": "International Information Management Framework"
+    },
+    {
+      "name": "UNI 11337",
+      "tag": "Italian Standard",
+      "desc": "Italian National BIM Mandates & Project Validation"
+    },
+    {
+      "name": "COBie",
+      "tag": "FM Handover",
+      "desc": "Standardized Facility Management Data Handover"
+    },
+    {
+      "name": "EIR / BEP",
+      "tag": "8D / 9D Protocols",
+      "desc": "Employer Requirements, BEP & Safety/Lean Plans"
+    },
+    {
+      "name": "IFC (ISO 16739)",
+      "tag": "OpenBIM",
+      "desc": "Universal Open Format for Vendor-Neutral Data"
+    },
+    {
+      "name": "BCF",
+      "tag": "OpenBIM BCF",
+      "desc": "Standardized Issue Reporting & Clash Communication"
+    },
+    {
+      "name": "Decreto BIM (D.M. 560/312)",
+      "tag": "Italian Mandate",
+      "desc": "Italian Legal Mandates for Public Tenders"
+    },
+    {
+      "name": "LOD / LOIN (EN 17412)",
+      "tag": "Level of Need",
+      "desc": "Level of Development & Information Need Standards"
+    },
+    {
+      "name": "OmniClass / MasterFormat",
+      "tag": "Classification",
+      "desc": "International Classification & Element Coding"
+    },
+    {
+      "name": "MIDP / TIDP",
+      "tag": "ISO 19650 Delivery",
+      "desc": "Master & Task Information Delivery Plans"
+    },
+    {
+      "name": "bsDD (buildingSMART)",
+      "tag": "Data Dict",
+      "desc": "Global Dictionary for OpenBIM Semantic Interoperability"
+    },
+    {
+      "name": "IDM (ISO 29481)",
+      "tag": "Workflow Standard",
+      "desc": "Information Delivery Manual Workflow Standard"
+    }
+  ],
+  "about.impact.badge": "OUR IMPACT",
+  "about.impact.title": "Measurable Efficiency. Zero-Error Execution.",
+  "about.impact.stat1.val": "+10,000",
+  "about.impact.stat1.desc": "Redirected from manual data entry and visual clash detection to high-margin, billable project execution.",
+  "about.impact.stat2.val": "100%",
+  "about.impact.stat2.desc": "Absolute elimination of human error in model auditing, ensuring flawless compliance for high-stakes European tenders.",
+  "about.impact.stat3.val": "+50",
+  "about.impact.stat3.desc": "Scalable Python and C# infrastructure actively protecting project margins across the DACH region and Italy.",
+  "about.cta.card1.title": "Are your company's BIM workflows slowing you down? Let's optimize them.",
+  "about.cta.card1.btn": "Contact Us",
+  "about.cta.card2.title": "Are you an engineer who fell in love with Python? You belong here.",
+  "about.cta.card2.btn": "Work With Us",
+  "about.tech.box1_top_right": "13 Tools",
+  "about.tech.box2_top_right": "12 Techs",
+  "about.tech.box3_top_right": "12 Standards",
+  "about.manifesto.box1_title": "The Traditional \"Modeling Farm\"",
+  "about.manifesto.box1_subtitle": "The Problem",
+  "about.manifesto.box1_desc1": "Relies heavily on brute-force human labor for data mapping, visual clash detection, and model updates.",
+  "about.manifesto.box1_desc2_title": "The Margin Drain",
+  "about.manifesto.box1_desc2": "This outdated approach wastes thousands of engineering hours, drains project budgets, and mathematically guarantees human error in complex deliverables.",
+  "about.manifesto.box2_title": "The Generic Software Vendor",
+  "about.manifesto.box2_subtitle": "The Problem",
+  "about.manifesto.box2_desc1": "Purchasing expensive, out-of-the-box software licenses (Revit/ACC) without custom API integration.",
+  "about.manifesto.box2_desc2_title": "The Limitation",
+  "about.manifesto.box2_desc2": "Forces your engineers to adapt to rigid software limitations, rather than adapting the software to your specific project needs. You pay for tools, not solutions.",
+  "about.manifesto.box3_title": "The pyBIM Automation Lab",
+  "about.manifesto.box3_subtitle": "Algorithmic Execution",
+  "about.manifesto.box3_desc1": "We believe if a task is executed twice in Revit, it belongs to an automated Python or C# script.",
+  "about.manifesto.box3_desc2_title": "Instant ROI",
+  "about.manifesto.box3_desc2": "We replace human error with code—reducing model auditing times from days to seconds while guaranteeing flawless output compliance for ISO 19650 and UNI 11337.",
+  "about.journey.p1_item1_title": "The Systemic Flaw",
+  "about.journey.p1_item1_desc": "Managing complex European infrastructure projects exposed a critical industry failure. Highly skilled engineers waste up to <strong>40% of their billable hours</strong> on repetitive data entry, parameter mapping, and manual quality control.",
+  "about.journey.p1_item2_title": "The Margin Drain",
+  "about.journey.p1_item2_desc": "Relying on brute-force human labor for redundant tasks drains project budgets and mathematically guarantees data errors during high-stakes B2B tenders.",
+  "about.journey.p2_item1_title": "The R&D Pivot",
+  "about.journey.p2_item1_desc": "Rooted in the academic and technological hub of <strong>Padua, Italy</strong>, we refused to scale our operations through traditional headcount. We transitioned our entire methodology to code.",
+  "about.journey.p2_item2_title": "Programmatic Execution",
+  "about.journey.p2_item2_desc": "By integrating custom <strong>Python, C#, and Revit APIs</strong> directly into the core workflow, we replaced manual drafting with algorithmic automation—crushing processing times from <strong>days to seconds</strong>.",
+  "about.journey.p3_item1_title": "Zero-Error Deliverables",
+  "about.journey.p3_item1_desc": "Today, pyBIM operates as the silent technical backbone for tier-one <strong>AEC firms</strong> across the DACH region and Italy.",
+  "about.journey.p3_item2_title": "Infinite Scalability",
+  "about.journey.p3_item2_desc": "We develop the custom software infrastructure required to multiply your project capacity without increasing overhead, guaranteeing absolute output compliance with <strong>ISO 19650</strong>, <strong>openBIM/IFC</strong>, and <strong>UNI 11337</strong>.",
+  "about.tech.p1_title": "The Limitation",
+  "about.tech.p1_desc": "Off-the-shelf AEC software forces your engineers into rigid workflows, creating data silos and requiring thousands of manual clicks.",
+  "about.tech.p2_title": "The Agitation",
+  "about.tech.p2_desc": "This operational bottleneck drains your project margins, delays delivery, and introduces fatal human errors during critical public tenders.",
+  "about.tech.p3_title": "The pyBIM Solution",
+  "about.tech.p3_desc": "We bypass default software limitations. Operating as your external R&D lab, we fuse enterprise-grade software with custom automation algorithms to guarantee <strong>100% compliant delivery</strong> at unprecedented speeds.",
+  "about.tech.box1_items": [
+    {
+      "name": "Autodesk Revit & ACC",
+      "desc": "Cloud-hosted, multidisciplinary 6D environments ensuring zero data loss during facility management handover."
+    },
+    {
+      "name": "Navisworks & Solibri",
+      "desc": "Rule-based automated model checking and clash detection to instantly clear visual bottlenecks."
+    },
+    {
+      "name": "PriMus-IFC & CostX",
+      "desc": "AI-driven, dynamic 5D quantity surveying to lock in financial accuracy."
+    },
+    {
+      "name": "Speckle & BIMcollab",
+      "desc": "Cloud-based BCF tracking and real-time open-source data streaming across fragmented teams."
+    }
+  ],
+  "about.tech.box1_footer": "(Includes: Synchro PRO, dRofus, Tekla, Civil 3D, Revizto, ReCap Pro)",
+  "about.tech.box2_items": [
+    {
+      "name": "Python, C# & Revit API",
+      "desc": "Deep software customization that automates parameter injection, cutting <strong>100+ hours</strong> of manual data entry per project."
+    },
+    {
+      "name": "Dynamo & pyRevit",
+      "desc": "Visual and text scripting to force modeling automation and standardize output across your entire workforce."
+    },
+    {
+      "name": "Speckle, FastAPI & React.js",
+      "desc": "Custom microservices and client web portals for real-time, C-level project monitoring."
+    },
+    {
+      "name": "LangChain & ChromaDB",
+      "desc": "RAG-based AI pipelines for automated, instantaneous BEP/EIR document auditing."
+    }
+  ],
+  "about.tech.box2_footer": "(Includes: REST APIs, Autodesk APS, Power BI, SQL/PostgreSQL, IFC.js)",
+  "about.tech.box3_items": [
+    {
+      "name": "ISO 19650 (DACH & Global)",
+      "desc": "Strict adherence to the international Information Management framework."
+    },
+    {
+      "name": "UNI 11337 & Decreto BIM (Italy)",
+      "desc": "Flawless compliance with Italian National BIM mandates and public tender legalities."
+    },
+    {
+      "name": "IFC (ISO 16739) & bSDD",
+      "desc": "Universal vendor-neutral data formatting and semantic interoperability to prevent software lock-in."
+    },
+    {
+      "name": "COBie & EIR/BEP",
+      "desc": "Standardized Facility Management handover and strict 8D/9D protocol execution."
+    }
+  ],
+  "about.tech.box3_footer": "(Includes: BCF, LOD/LOIN EN 17412, OmniClass, MIDP/TIDP, IDM ISO 29481)",
+  "about.tech.cta": "Claim Your Free Tech Stack Audit",
+  "about.tech.cta_sub": "(100% Free & Secure. Let us review your current software pipeline and show you exactly where a custom Python script can save you €10,000+ per project. No credit card required.)",
+  "about.impact.stat1.title": "Engineering Hours Reclaimed",
+  "about.impact.stat2.title": "Algorithmic Precision",
+  "about.impact.stat3.title": "Custom Automation Pipelines Deployed",
+  "about.cta.c1_title": "SCALE THROUGH CODE, NOT HEADCOUNT.",
+  "about.cta.c1_b_title": "The Bottleneck",
+  "about.cta.c1_b_desc": "Relying on manual engineering hours to clear software limitations drains project budgets and delays delivery.",
+  "about.cta.c1_p_title": "The Automation Pivot",
+  "about.cta.c1_p_desc": "Our R&D lab in Padua engineers custom algorithms that reduce clash resolution and data mapping from days to seconds.",
+  "about.cta.c1_btn": "Claim Your Free BIM Data Audit",
+  "about.cta.c1_sub": "(100% Secure Data Handling. We process your heaviest Revit model through our Python pipelines to prove instant ROI. No credit card required.)",
+  "about.cta.c2_title": "JOIN THE R&D LAB",
+  "about.cta.c2_desc1": "Architects and engineers who write code replace manual labor.",
+  "about.cta.c2_desc2": "If you have transitioned from traditional BIM management to programmatic execution using Python, C#, or the Revit API, your technical ceiling is here.",
+  "about.cta.c2_btn": "Submit Your Code",
+  "about.cta.c2_sub": "(No traditional modeling portfolios. Send us your GitHub repository, custom Revit add-in, or Dynamo scripts.)",
+  "about.team.sec1.badge": "01. THE CORE ARCHITECTS",
+  "about.team.sec1.title": "Engineering Algorithms, Not Just Models.",
+  "about.team.sec1.desc": "Our core technical unit operates from the R&D tech hub of <strong>Padua, Italy</strong>. We fuse <strong>Senior BIM Management</strong> with <strong>Full-Stack Software Engineering</strong> to build the custom code that automates your AEC workflows.",
+  "about.team.sec2.badge": "02. THE EXTENDED LAB",
+  "about.team.sec2.title": "Infinite Scalability. Zero Overhead.",
+  "about.team.sec2.b_title": "The Bottleneck",
+  "about.team.sec2.b_desc": "Traditional AEC firms struggle to scale their workforce for massive infrastructure tenders without bloating internal payroll and management overhead.",
+  "about.team.sec2.a_title": "The Agitation",
+  "about.team.sec2.a_desc": "Rushing to hire unvetted freelancers compromises your proprietary data security and introduces <strong>fatal geometric errors</strong> into the final <strong>IFC models</strong>, risking public tender disqualification.",
+  "about.team.sec2.s_title": "The pyBIM Solution",
+  "about.team.sec2.s_desc": "We maintain a highly vetted, private network of specialized computational designers across Europe. We scale execution capacity instantly to meet project demands, with all external work strictly audited by our <strong>internal Python QA/QC scripts</strong> to guarantee <strong>100% compliance</strong> with <strong>UNI 11337</strong> and <strong>ISO 19650</strong>.",
+  "about.team.sec3.badge": "03. STRATEGIC ECOSYSTEM",
+  "about.team.sec3.title": "Backed by Academic Rigor and Enterprise Tech.",
+  "about.team.sec3.desc": "We bridge the gap between high-level algorithmic research and industrial AEC execution. Our strategic ecosystem ensures your projects benefit from the absolute frontier of <strong>BIM technology</strong>.",
+  "about.team.sec3.l1_title": "Academic R&D",
+  "about.team.sec3.l1_desc": "Rooted in the engineering excellence of the <strong>University of Padua</strong> and <strong>Politecnico di Torino</strong>. We directly translate advanced university computational research into tangible, <strong>margin-saving workflows</strong> for your enterprise.",
+  "about.team.sec3.l2_title": "Enterprise Integration",
+  "about.team.sec3.l2_desc": "Partnered with leading AEC technology providers like <strong>Autodesk</strong> to guarantee seamless, native API integrations and absolute data security for your proprietary <strong>Revit</strong> and <strong>ACC</strong> environments.",
+  "about.team.sec2.network": "<strong>The Extended Network:</strong> On-Demand <strong>BIM Coordinators</strong> & <strong>Parametric Modelers</strong> deployed exclusively through our automated validation pipelines.",
+  "about.team.sec3.cta_btn": "Claim Your Free BIM Data Audit",
+  "about.team.sec3.cta_sub": "(100% Free & Secure Data Handling. Bypass the sales team and speak directly with our core engineers to audit your current software workflow. No credit card required.)",
+  "about.team.sec4.badge": "04. TRUSTED BY",
+  "about.team.sec4.title": "Executed for Industry Leaders.",
+  "about.team.sec4.desc": "Delivering algorithmic BIM solutions, automated QTO, and ISO-compliant databases for top-tier architecture studios and general contractors across the DACH region and Italy."
 }

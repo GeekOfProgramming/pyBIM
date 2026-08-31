@@ -1,6 +1,5 @@
 import servicePages from "@/lib/data/services-data.json";
 import projectPages from "@/lib/data/projects-data.json";
-import blogPosts from "@/lib/data/blog-data.json";
 
 export default function sitemap() {
   const baseUrl = "https://pybim.com";
@@ -12,7 +11,6 @@ export default function sitemap() {
     "/services",
     "/projects",
     "/careers",
-    "/blog",
     "/about",
     "/contact",
     "/privacy-policy",
@@ -44,15 +42,6 @@ export default function sitemap() {
     projectPages.forEach((project) => {
       entries.push({
         url: `${baseUrl}/${locale}/projects/${project.slug}`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.7
-      });
-    });
-
-    blogPosts.forEach((post) => {
-      entries.push({
-        url: `${baseUrl}/${locale}/blog/${post.slug}`,
         lastModified: now,
         changeFrequency: "monthly",
         priority: 0.7

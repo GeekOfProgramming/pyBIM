@@ -13,7 +13,6 @@ const mainNavItems = [
 ];
 
 const moreNavItems = [
-  { href: "/blog", tKey: "nav.blog", icon: FileText },
   { href: "/about", tKey: "nav.about", icon: Info },
   { href: "/contact", tKey: "nav.contact", icon: Phone }
 ];

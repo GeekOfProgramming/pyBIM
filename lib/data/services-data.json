@@ -1,51 +1,155 @@
 [
   {
     "slug": "algorithmic-engineering",
-    "title": { "en": "Algorithmic Engineering", "it": "Algorithmic Engineering" },
-    "subtitle": { "en": "High-Speed Coordination & Algorithmic Delivery", "it": "High-Speed Coordination & Algorithmic Delivery" },
-    "description": { "en": "Bypass manual modeling delays. Execution of algorithmic clash resolution, point cloud processing (Scan-to-BIM), and dynamic cost estimation. Coordination cycles are automated through proprietary scripts and rule-based auditing, delivering constructible, ISO-compliant models at accelerated speeds.", "it": "Supera i ritardi della modellazione manuale. Esecuzione della risoluzione algoritmica dei clash, elaborazione delle nuvole di punti (Scan-to-BIM) e stima dinamica dei costi. I cicli di coordinamento sono automatizzati tramite script proprietari e audit basati su regole." },
-    "longDescription": { "en": "", "it": "" },
+    "title": {
+      "en": "Algorithmic Engineering",
+      "it": "Algorithmic Engineering",
+      "de": "Algorithmic Engineering"
+    },
+    "subtitle": {
+      "en": "High-Speed Coordination & Algorithmic Delivery",
+      "it": "High-Speed Coordination & Algorithmic Delivery",
+      "de": "High-Speed Coordination & Algorithmic Delivery"
+    },
+    "description": {
+      "en": "Bypass manual modeling delays. Execution of algorithmic clash resolution, point cloud processing (Scan-to-BIM), and dynamic cost estimation. Coordination cycles are automated through proprietary scripts and rule-based auditing, delivering constructible, ISO-compliant models at accelerated speeds.",
+      "it": "Supera i ritardi della modellazione manuale. Esecuzione della risoluzione algoritmica dei clash, elaborazione delle nuvole di punti (Scan-to-BIM) e stima dinamica dei costi. I cicli di coordinamento sono automatizzati tramite script proprietari e audit basati su regole.",
+      "de": "Bypass manual modeling delays. Execution of algorithmic clash resolution, point cloud processing (Scan-to-BIM), and dynamic cost estimation. Coordination cycles are automated through proprietary scripts and rule-based auditing, delivering constructible, ISO-compliant models at accelerated speeds."
+    },
+    "longDescription": {
+      "en": "",
+      "it": "",
+      "de": ""
+    },
     "features": [
       {
-        "title": { "en": "Algorithmic Clash Resolution (3D)", "it": "Risoluzione Algoritmica dei Clash (3D)" },
-        "description": { "en": "Elimination of manual, error-prone clash detection. Utilizing Navisworks Manage and Solibri, custom scripts automatically identify, group, and route spatial conflicts via BCF. Critical structural and MEP conflicts are resolved systematically, ensuring a zero-error federated model prior to site execution.", "it": "Eliminazione della rilevazione manuale e soggetta ad errori. Utilizzando Navisworks Manage e Solibri, script personalizzati identificano, raggruppano e smistano automaticamente i conflitti spaziali via BCF." },
+        "title": {
+          "en": "Algorithmic Clash Resolution (3D)",
+          "it": "Risoluzione Algoritmica dei Clash (3D)",
+          "de": "Algorithmic Clash Resolution (3D)"
+        },
+        "description": {
+          "en": "Elimination of manual, error-prone clash detection. Utilizing Navisworks Manage and Solibri, custom scripts automatically identify, group, and route spatial conflicts via BCF. Critical structural and MEP conflicts are resolved systematically, ensuring a zero-error federated model prior to site execution.",
+          "it": "Eliminazione della rilevazione manuale e soggetta ad errori. Utilizzando Navisworks Manage e Solibri, script personalizzati identificano, raggruppano e smistano automaticamente i conflitti spaziali via BCF.",
+          "de": "Elimination of manual, error-prone clash detection. Utilizing Navisworks Manage and Solibri, custom scripts automatically identify, group, and route spatial conflicts via BCF. Critical structural and MEP conflicts are resolved systematically, ensuring a zero-error federated model prior to site execution."
+        },
         "image": "/Pictures/BIM/bim-0080.jpg"
       },
       {
-        "title": { "en": "Automated 5D Quantity Take-Off (QTO)", "it": "Quantity Take-Off 5D Automatizzato (QTO)" },
-        "description": { "en": "Eradication of human error in project budgeting. Precise cost parameters are embedded directly into LOD-compliant models. Automated extraction workflows generate instantaneous, dynamically updated Bill of Quantities (BOQ) that respond to geometric modifications in real-time.", "it": "Eliminazione dell'errore umano nel budget di progetto. Parametri di costo precisi sono incorporati direttamente nei modelli conformi ai LOD." },
+        "title": {
+          "en": "Automated 5D Quantity Take-Off (QTO)",
+          "it": "Quantity Take-Off 5D Automatizzato (QTO)",
+          "de": "Automated 5D Quantity Take-Off (QTO)"
+        },
+        "description": {
+          "en": "Eradication of human error in project budgeting. Precise cost parameters are embedded directly into LOD-compliant models. Automated extraction workflows generate instantaneous, dynamically updated Bill of Quantities (BOQ) that respond to geometric modifications in real-time.",
+          "it": "Eliminazione dell'errore umano nel budget di progetto. Parametri di costo precisi sono incorporati direttamente nei modelli conformi ai LOD.",
+          "de": "Eradication of human error in project budgeting. Precise cost parameters are embedded directly into LOD-compliant models. Automated extraction workflows generate instantaneous, dynamically updated Bill of Quantities (BOQ) that respond to geometric modifications in real-time."
+        },
         "image": "/Pictures/Uncategorized/uncategorized-004.jpg"
       },
       {
-        "title": { "en": "4D Construction Sequencing", "it": "Pianificazione e Sequenziamento 4D" },
-        "description": { "en": "Synchronization of geometry and time. Multi-disciplinary federated models are linked directly to project Gantt charts utilizing Synchro PRO. Comprehensive 4D simulations validate construction phases, isolate logistical bottlenecks, and guarantee schedule adherence.", "it": "Sincronizzazione di geometria e tempo. Modelli federati multidisciplinari collegati direttamente ai diagrammi di Gantt utilizzando Synchro PRO." },
+        "title": {
+          "en": "4D Construction Sequencing",
+          "it": "Pianificazione e Sequenziamento 4D",
+          "de": "4D Construction Sequencing"
+        },
+        "description": {
+          "en": "Synchronization of geometry and time. Multi-disciplinary federated models are linked directly to project Gantt charts utilizing Synchro PRO. Comprehensive 4D simulations validate construction phases, isolate logistical bottlenecks, and guarantee schedule adherence.",
+          "it": "Sincronizzazione di geometria e tempo. Modelli federati multidisciplinari collegati direttamente ai diagrammi di Gantt utilizzando Synchro PRO.",
+          "de": "Synchronization of geometry and time. Multi-disciplinary federated models are linked directly to project Gantt charts utilizing Synchro PRO. Comprehensive 4D simulations validate construction phases, isolate logistical bottlenecks, and guarantee schedule adherence."
+        },
         "image": "/Pictures/Uncategorized/uncategorized-017.jpg"
       }
     ],
     "grid": [
-      { "en": "Algorithmic Clash Detection & BCF Routing", "it": "Algorithmic Clash Detection & BCF Routing" },
-      { "en": "Automated 5D QTO & Dynamic Budgeting", "it": "Automated 5D QTO & Dynamic Budgeting" },
-      { "en": "4D Construction Sequencing & Simulation", "it": "4D Construction Sequencing & Simulation" },
-      { "en": "LOD 100 to LOD 500 Constructible Modeling", "it": "LOD 100 to LOD 500 Constructible Modeling" },
-      { "en": "Scan-to-BIM (Point Cloud Processing)", "it": "Scan-to-BIM (Point Cloud Processing)" },
-      { "en": "Federated Model Assembly", "it": "Federated Model Assembly" }
+      {
+        "en": "Algorithmic Clash Detection & BCF Routing",
+        "it": "Algorithmic Clash Detection & BCF Routing",
+        "de": "Algorithmic Clash Detection & BCF Routing"
+      },
+      {
+        "en": "Automated 5D QTO & Dynamic Budgeting",
+        "it": "Automated 5D QTO & Dynamic Budgeting",
+        "de": "Automated 5D QTO & Dynamic Budgeting"
+      },
+      {
+        "en": "4D Construction Sequencing & Simulation",
+        "it": "4D Construction Sequencing & Simulation",
+        "de": "4D Construction Sequencing & Simulation"
+      },
+      {
+        "en": "LOD 100 to LOD 500 Constructible Modeling",
+        "it": "LOD 100 to LOD 500 Constructible Modeling",
+        "de": "LOD 100 to LOD 500 Constructible Modeling"
+      },
+      {
+        "en": "Scan-to-BIM (Point Cloud Processing)",
+        "it": "Scan-to-BIM (Point Cloud Processing)",
+        "de": "Scan-to-BIM (Point Cloud Processing)"
+      },
+      {
+        "en": "Federated Model Assembly",
+        "it": "Federated Model Assembly",
+        "de": "Federated Model Assembly"
+      }
     ],
     "types": [
-      { "en": "REVIT", "it": "REVIT" },
-      { "en": "NAVISWORKS MANAGE", "it": "NAVISWORKS MANAGE" },
-      { "en": "SOLIBRI", "it": "SOLIBRI" },
-      { "en": "SYNCHRO PRO", "it": "SYNCHRO PRO" },
-      { "en": "COSTX / PRIMUS", "it": "COSTX / PRIMUS" },
-      { "en": "RECAP PRO", "it": "RECAP PRO" }
+      {
+        "en": "REVIT",
+        "it": "REVIT",
+        "de": "REVIT"
+      },
+      {
+        "en": "NAVISWORKS MANAGE",
+        "it": "NAVISWORKS MANAGE",
+        "de": "NAVISWORKS MANAGE"
+      },
+      {
+        "en": "SOLIBRI",
+        "it": "SOLIBRI",
+        "de": "SOLIBRI"
+      },
+      {
+        "en": "SYNCHRO PRO",
+        "it": "SYNCHRO PRO",
+        "de": "SYNCHRO PRO"
+      },
+      {
+        "en": "COSTX / PRIMUS",
+        "it": "COSTX / PRIMUS",
+        "de": "COSTX / PRIMUS"
+      },
+      {
+        "en": "RECAP PRO",
+        "it": "RECAP PRO",
+        "de": "RECAP PRO"
+      }
     ],
     "faq": [
       {
-        "q": { "en": "How does algorithmic clash resolution differ from standard practices?", "it": "In cosa differisce la risoluzione algoritmica dei clash rispetto alle pratiche standard?" },
-        "a": { "en": "Standard protocols require manual review of irrelevant spatial intersections. Algorithmic resolution deploys programmatic logic to automatically filter false positives, group conflicts by proximity, and assign actionable data directly to responsible disciplines via BCF. This methodology reduces coordination timelines and guarantees data accuracy.", "it": "I protocolli standard richiedono la revisione manuale di intersezioni irrilevanti. La risoluzione algoritmica applica logiche programmatiche per filtrare i falsi positivi ed assegnare dati direttamente ai responsabili via BCF." }
+        "q": {
+          "en": "How does algorithmic clash resolution differ from standard practices?",
+          "it": "In cosa differisce la risoluzione algoritmica dei clash rispetto alle pratiche standard?",
+          "de": "How does algorithmic clash resolution differ from standard practices?"
+        },
+        "a": {
+          "en": "Standard protocols require manual review of irrelevant spatial intersections. Algorithmic resolution deploys programmatic logic to automatically filter false positives, group conflicts by proximity, and assign actionable data directly to responsible disciplines via BCF. This methodology reduces coordination timelines and guarantees data accuracy.",
+          "it": "I protocolli standard richiedono la revisione manuale di intersezioni irrilevanti. La risoluzione algoritmica applica logiche programmatiche per filtrare i falsi positivi ed assegnare dati direttamente ai responsabili via BCF.",
+          "de": "Standard protocols require manual review of irrelevant spatial intersections. Algorithmic resolution deploys programmatic logic to automatically filter false positives, group conflicts by proximity, and assign actionable data directly to responsible disciplines via BCF. This methodology reduces coordination timelines and guarantees data accuracy."
+        }
       }
     ],
-    "offerTitle": { "en": "Zero-Error Execution", "it": "Esecuzione a Zero Errori" },
-    "offerDescription": { "en": "Mitigation of construction risk through script-driven QA/QC and automated model auditing.", "it": "Mitigazione del rischio di costruzione tramite QA/QC guidato da script ed audit automatizzato." },
+    "offerTitle": {
+      "en": "Zero-Error Execution",
+      "it": "Esecuzione a Zero Errori",
+      "de": "Zero-Error Execution"
+    },
+    "offerDescription": {
+      "en": "Mitigation of construction risk through script-driven QA/QC and automated model auditing.",
+      "it": "Mitigazione del rischio di costruzione tramite QA/QC guidato da script ed audit automatizzato.",
+      "de": "Mitigation of construction risk through script-driven QA/QC and automated model auditing."
+    },
     "color": "yellow",
     "images": [
       "/Pictures/BIM/bim-0080.jpg",
@@ -54,49 +158,145 @@
   },
   {
     "slug": "code-automation",
-    "title": { "en": "Code & Automation", "it": "Code & Automation" },
-    "subtitle": { "en": "Programmatic Execution & Custom Software Development", "it": "Programmatic Execution & Custom Software Development" },
-    "description": { "en": "Standard BIM authoring tools operate within rigid constraints. We engineer custom C# Add-ins, Python pipelines, and Dynamo algorithms to bypass manual workflows. By embedding programmatic logic directly into your production environment, we automate bulk data entry, enforce modeling standards, and reduce multi-hour engineering tasks to instantaneous algorithmic executions.", "it": "I tradizionali strumenti di authoring BIM operano entro vincoli rigidi. Progettiamo Add-in C# personalizzati, pipeline Python ed algoritmi Dynamo per superare i flussi di lavoro manuali." },
-    "longDescription": { "en": "", "it": "" },
+    "title": {
+      "en": "Code & Automation",
+      "it": "Code & Automation",
+      "de": "Code & Automation"
+    },
+    "subtitle": {
+      "en": "Programmatic Execution & Custom Software Development",
+      "it": "Programmatic Execution & Custom Software Development",
+      "de": "Programmatic Execution & Custom Software Development"
+    },
+    "description": {
+      "en": "Standard BIM authoring tools operate within rigid constraints. We engineer custom C# Add-ins, Python pipelines, and Dynamo algorithms to bypass manual workflows. By embedding programmatic logic directly into your production environment, we automate bulk data entry, enforce modeling standards, and reduce multi-hour engineering tasks to instantaneous algorithmic executions.",
+      "it": "I tradizionali strumenti di authoring BIM operano entro vincoli rigidi. Progettiamo Add-in C# personalizzati, pipeline Python ed algoritmi Dynamo per superare i flussi di lavoro manuali.",
+      "de": "Standard BIM authoring tools operate within rigid constraints. We engineer custom C# Add-ins, Python pipelines, and Dynamo algorithms to bypass manual workflows. By embedding programmatic logic directly into your production environment, we automate bulk data entry, enforce modeling standards, and reduce multi-hour engineering tasks to instantaneous algorithmic executions."
+    },
+    "longDescription": {
+      "en": "",
+      "it": "",
+      "de": ""
+    },
     "features": [
       {
-        "title": { "en": "Python & pyRevit Pipelines", "it": "Pipeline Python e pyRevit" },
-        "description": { "en": "Deployment of firm-specific toolbars and lightweight Python scripts. Automated execution of sheet generation, view management, and bulk parameter injection. This methodology eliminates manual data mapping and ensures strict adherence to project naming conventions without human intervention.", "it": "Implementazione di toolbar aziendali personalizzate e script Python leggeri per l'esecuzione automatica di viste e parametri." },
+        "title": {
+          "en": "Python & pyRevit Pipelines",
+          "it": "Pipeline Python e pyRevit",
+          "de": "Python & pyRevit Pipelines"
+        },
+        "description": {
+          "en": "Deployment of firm-specific toolbars and lightweight Python scripts. Automated execution of sheet generation, view management, and bulk parameter injection. This methodology eliminates manual data mapping and ensures strict adherence to project naming conventions without human intervention.",
+          "it": "Implementazione di toolbar aziendali personalizzate e script Python leggeri per l'esecuzione automatica di viste e parametri.",
+          "de": "Deployment of firm-specific toolbars and lightweight Python scripts. Automated execution of sheet generation, view management, and bulk parameter injection. This methodology eliminates manual data mapping and ensures strict adherence to project naming conventions without human intervention."
+        },
         "image": "/Pictures/Uncategorized/uncategorized-005.jpg"
       },
       {
-        "title": { "en": "C# Revit Add-ins & API Integration", "it": "Add-in C# Revit e Integrazione API" },
-        "description": { "en": "Development of proprietary .NET applications for heavy computational processes. Execution of complex geometric calculations, automated structural detailing, and cross-platform data synchronization. Tools are deployed with WPF-based graphical user interfaces for seamless internal adoption.", "it": "Sviluppo di applicazioni .NET proprietarie per processi computazionali complessi e calcoli geometrici avanzati." },
+        "title": {
+          "en": "C# Revit Add-ins & API Integration",
+          "it": "Add-in C# Revit e Integrazione API",
+          "de": "C# Revit Add-ins & API Integration"
+        },
+        "description": {
+          "en": "Development of proprietary .NET applications for heavy computational processes. Execution of complex geometric calculations, automated structural detailing, and cross-platform data synchronization. Tools are deployed with WPF-based graphical user interfaces for seamless internal adoption.",
+          "it": "Sviluppo di applicazioni .NET proprietarie per processi computazionali complessi e calcoli geometrici avanzati.",
+          "de": "Development of proprietary .NET applications for heavy computational processes. Execution of complex geometric calculations, automated structural detailing, and cross-platform data synchronization. Tools are deployed with WPF-based graphical user interfaces for seamless internal adoption."
+        },
         "image": "/Pictures/Uncategorized/uncategorized-009.jpg"
       },
       {
-        "title": { "en": "Dynamo Graph Standardization", "it": "Standardizzazione dei Grafi Dynamo" },
-        "description": { "en": "Consolidation of computational design workflows. Conversion of unstructured visual scripts into deployed, firm-wide automation tools. Applied to algorithmic facade panelization, automated rebar generation, and rule-based geometric modifications.", "it": "Consolidamento dei flussi di lavoro di progettazione computazionale ed automazione aziendale." },
+        "title": {
+          "en": "Dynamo Graph Standardization",
+          "it": "Standardizzazione dei Grafi Dynamo",
+          "de": "Dynamo Graph Standardization"
+        },
+        "description": {
+          "en": "Consolidation of computational design workflows. Conversion of unstructured visual scripts into deployed, firm-wide automation tools. Applied to algorithmic facade panelization, automated rebar generation, and rule-based geometric modifications.",
+          "it": "Consolidamento dei flussi di lavoro di progettazione computazionale ed automazione aziendale.",
+          "de": "Consolidation of computational design workflows. Conversion of unstructured visual scripts into deployed, firm-wide automation tools. Applied to algorithmic facade panelization, automated rebar generation, and rule-based geometric modifications."
+        },
         "image": "/Pictures/Uncategorized/uncategorized-004.jpg"
       }
     ],
     "grid": [
-      { "en": "Automated Parameter Injection", "it": "Automated Parameter Injection" },
-      { "en": "C# Add-in Development", "it": "C# Add-in Development" },
-      { "en": "pyRevit Toolbar Deployment", "it": "pyRevit Toolbar Deployment" },
-      { "en": "Dynamo Graph Standardization", "it": "Dynamo Graph Standardization" },
-      { "en": "Autodesk APS (Forge) Integration", "it": "Autodesk APS (Forge) Integration" }
+      {
+        "en": "Automated Parameter Injection",
+        "it": "Automated Parameter Injection",
+        "de": "Automated Parameter Injection"
+      },
+      {
+        "en": "C# Add-in Development",
+        "it": "C# Add-in Development",
+        "de": "C# Add-in Development"
+      },
+      {
+        "en": "pyRevit Toolbar Deployment",
+        "it": "pyRevit Toolbar Deployment",
+        "de": "pyRevit Toolbar Deployment"
+      },
+      {
+        "en": "Dynamo Graph Standardization",
+        "it": "Dynamo Graph Standardization",
+        "de": "Dynamo Graph Standardization"
+      },
+      {
+        "en": "Autodesk APS (Forge) Integration",
+        "it": "Autodesk APS (Forge) Integration",
+        "de": "Autodesk APS (Forge) Integration"
+      }
     ],
     "types": [
-      { "en": "PYTHON", "it": "PYTHON" },
-      { "en": "C# / .NET", "it": "C# / .NET" },
-      { "en": "REVIT API", "it": "REVIT API" },
-      { "en": "DYNAMO", "it": "DYNAMO" },
-      { "en": "WPF", "it": "WPF" }
+      {
+        "en": "PYTHON",
+        "it": "PYTHON",
+        "de": "PYTHON"
+      },
+      {
+        "en": "C# / .NET",
+        "it": "C# / .NET",
+        "de": "C# / .NET"
+      },
+      {
+        "en": "REVIT API",
+        "it": "REVIT API",
+        "de": "REVIT API"
+      },
+      {
+        "en": "DYNAMO",
+        "it": "DYNAMO",
+        "de": "DYNAMO"
+      },
+      {
+        "en": "WPF",
+        "it": "WPF",
+        "de": "WPF"
+      }
     ],
     "faq": [
       {
-        "q": { "en": "Is specialized coding expertise required to operate the deployed automation tools?", "it": "È richiesta esperienza di programmazione per utilizzare gli strumenti di automazione forniti?" },
-        "a": { "en": "No. All programmatic logic is encapsulated within intuitive Graphical User Interfaces (WPF) or custom ribbon toolbars. Execution requires zero syntax knowledge from the end-user, ensuring immediate adoption across architectural and engineering teams.", "it": "No. Tutta la logica programmatica è racchiusa in interfacce grafiche intuitive (WPF) o toolbar personalizzate." }
+        "q": {
+          "en": "Is specialized coding expertise required to operate the deployed automation tools?",
+          "it": "È richiesta esperienza di programmazione per utilizzare gli strumenti di automazione forniti?",
+          "de": "Is specialized coding expertise required to operate the deployed automation tools?"
+        },
+        "a": {
+          "en": "No. All programmatic logic is encapsulated within intuitive Graphical User Interfaces (WPF) or custom ribbon toolbars. Execution requires zero syntax knowledge from the end-user, ensuring immediate adoption across architectural and engineering teams.",
+          "it": "No. Tutta la logica programmatica è racchiusa in interfacce grafiche intuitive (WPF) o toolbar personalizzate.",
+          "de": "No. All programmatic logic is encapsulated within intuitive Graphical User Interfaces (WPF) or custom ribbon toolbars. Execution requires zero syntax knowledge from the end-user, ensuring immediate adoption across architectural and engineering teams."
+        }
       }
     ],
-    "offerTitle": { "en": "Eliminate Manual Bottlenecks", "it": "Elimina i Bottleneck Manuali" },
-    "offerDescription": { "en": "Reallocate billable engineering hours from repetitive data entry to high-value coordination and design.", "it": "Rialloca le ore ingegneristiche fatturabili dall'inserimento manuale dati al coordinamento e alla progettazione ad alto valore." },
+    "offerTitle": {
+      "en": "Eliminate Manual Bottlenecks",
+      "it": "Elimina i Bottleneck Manuali",
+      "de": "Eliminate Manual Bottlenecks"
+    },
+    "offerDescription": {
+      "en": "Reallocate billable engineering hours from repetitive data entry to high-value coordination and design.",
+      "it": "Rialloca le ore ingegneristiche fatturabili dall'inserimento manuale dati al coordinamento e alla progettazione ad alto valore.",
+      "de": "Reallocate billable engineering hours from repetitive data entry to high-value coordination and design."
+    },
     "color": "brand-primary",
     "images": [
       "/Pictures/Uncategorized/uncategorized-005.jpg",
@@ -105,49 +305,145 @@
   },
   {
     "slug": "cde-lifecycle-data",
-    "title": { "en": "CDE & Lifecycle Data", "it": "CDE & Lifecycle Data" },
-    "subtitle": { "en": "Single Source of Truth & Asset Data Structuring", "it": "Single Source of Truth & Asset Data Structuring" },
-    "description": { "en": "The true value of BIM resides in its underlying database. We structure, normalize, and expose geometric data for post-construction operations. By bridging 3D models with external relational databases and Facility Management (FM) platforms, we establish the strictly ISO-compliant data foundations required for lifecycle analysis and Digital Twin integration.", "it": "Il vero valore del BIM risiede nel suo database sottostante. Strutturiamo, normalizziamo ed esponiamo i dati geometrici per le operazioni post-costruzione." },
-    "longDescription": { "en": "", "it": "" },
+    "title": {
+      "en": "CDE & Lifecycle Data",
+      "it": "CDE & Lifecycle Data",
+      "de": "CDE & Lifecycle Data"
+    },
+    "subtitle": {
+      "en": "Single Source of Truth & Asset Data Structuring",
+      "it": "Single Source of Truth & Asset Data Structuring",
+      "de": "Single Source of Truth & Asset Data Structuring"
+    },
+    "description": {
+      "en": "The true value of BIM resides in its underlying database. We structure, normalize, and expose geometric data for post-construction operations. By bridging 3D models with external relational databases and Facility Management (FM) platforms, we establish the strictly ISO-compliant data foundations required for lifecycle analysis and Digital Twin integration.",
+      "it": "Il vero valore del BIM risiede nel suo database sottostante. Strutturiamo, normalizziamo ed esponiamo i dati geometrici per le operazioni post-costruzione.",
+      "de": "The true value of BIM resides in its underlying database. We structure, normalize, and expose geometric data for post-construction operations. By bridging 3D models with external relational databases and Facility Management (FM) platforms, we establish the strictly ISO-compliant data foundations required for lifecycle analysis and Digital Twin integration."
+    },
+    "longDescription": {
+      "en": "",
+      "it": "",
+      "de": ""
+    },
     "features": [
       {
-        "title": { "en": "COBie Extraction & FM Handover", "it": "Estrazione COBie e Handover FM" },
-        "description": { "en": "Transition seamlessly from construction to operations. We automate the extraction, mapping, and formatting of critical asset data (COBie), ensuring absolute compliance with client Employer's Information Requirements (EIR). This structured data is optimized for immediate ingestion into enterprise Facility Management and ERP systems.", "it": "Passaggio fluido dalla costruzione alla gestione operativa. Automatizziamo l'estrazione e formattazione dei dati COBie." },
+        "title": {
+          "en": "COBie Extraction & FM Handover",
+          "it": "Estrazione COBie e Handover FM",
+          "de": "COBie Extraction & FM Handover"
+        },
+        "description": {
+          "en": "Transition seamlessly from construction to operations. We automate the extraction, mapping, and formatting of critical asset data (COBie), ensuring absolute compliance with client Employer's Information Requirements (EIR). This structured data is optimized for immediate ingestion into enterprise Facility Management and ERP systems.",
+          "it": "Passaggio fluido dalla costruzione alla gestione operativa. Automatizziamo l'estrazione e formattazione dei dati COBie.",
+          "de": "Transition seamlessly from construction to operations. We automate the extraction, mapping, and formatting of critical asset data (COBie), ensuring absolute compliance with client Employer's Information Requirements (EIR). This structured data is optimized for immediate ingestion into enterprise Facility Management and ERP systems."
+        },
         "image": "/Pictures/Uncategorized/uncategorized-009.jpg"
       },
       {
-        "title": { "en": "Cloud CDE & Data Management", "it": "CDE Cloud e Gestione Dati" },
-        "description": { "en": "Maintain a secure, centralized Single Source of Truth (SSOT). We manage and configure project environments across Autodesk Construction Cloud (ACC) and bespoke servers. Our protocols enforce strict ISO 19650 naming conventions, granular access controls, and transparent version tracking throughout the project lifecycle.", "it": "Gestione e configurazione di ambienti CDE su Autodesk Construction Cloud ed infrastrutture dedicate con regole ISO 19650." },
+        "title": {
+          "en": "Cloud CDE & Data Management",
+          "it": "CDE Cloud e Gestione Dati",
+          "de": "Cloud CDE & Data Management"
+        },
+        "description": {
+          "en": "Maintain a secure, centralized Single Source of Truth (SSOT). We manage and configure project environments across Autodesk Construction Cloud (ACC) and bespoke servers. Our protocols enforce strict ISO 19650 naming conventions, granular access controls, and transparent version tracking throughout the project lifecycle.",
+          "it": "Gestione e configurazione di ambienti CDE su Autodesk Construction Cloud ed infrastrutture dedicate con regole ISO 19650.",
+          "de": "Maintain a secure, centralized Single Source of Truth (SSOT). We manage and configure project environments across Autodesk Construction Cloud (ACC) and bespoke servers. Our protocols enforce strict ISO 19650 naming conventions, granular access controls, and transparent version tracking throughout the project lifecycle."
+        },
         "image": "/Pictures/Uncategorized/uncategorized-004.jpg"
       },
       {
-        "title": { "en": "API Bridges & Digital Twin Baselines", "it": "Ponti API e Baseline Digital Twin" },
-        "description": { "en": "Transform static geometry into dynamic data environments. Utilizing REST APIs and Autodesk Platform Services (APS / Forge), we engineer bi-directional data workflows. This programmatic approach connects Revit metadata directly to external SQL databases, IoT telemetry networks, and custom web-based monitoring dashboards.", "it": "Sviluppo di flussi di dati bidirezionali tramite REST API ed Autodesk Platform Services (APS / Forge)." },
+        "title": {
+          "en": "API Bridges & Digital Twin Baselines",
+          "it": "Ponti API e Baseline Digital Twin",
+          "de": "API Bridges & Digital Twin Baselines"
+        },
+        "description": {
+          "en": "Transform static geometry into dynamic data environments. Utilizing REST APIs and Autodesk Platform Services (APS / Forge), we engineer bi-directional data workflows. This programmatic approach connects Revit metadata directly to external SQL databases, IoT telemetry networks, and custom web-based monitoring dashboards.",
+          "it": "Sviluppo di flussi di dati bidirezionali tramite REST API ed Autodesk Platform Services (APS / Forge).",
+          "de": "Transform static geometry into dynamic data environments. Utilizing REST APIs and Autodesk Platform Services (APS / Forge), we engineer bi-directional data workflows. This programmatic approach connects Revit metadata directly to external SQL databases, IoT telemetry networks, and custom web-based monitoring dashboards."
+        },
         "image": "/Pictures/Uncategorized/uncategorized-017.jpg"
       }
     ],
     "grid": [
-      { "en": "Automated COBie Handover & FM Formatting", "it": "Automated COBie Handover & FM Formatting" },
-      { "en": "ISO 19650 CDE Setup & Administration", "it": "ISO 19650 CDE Setup & Administration" },
-      { "en": "Bi-Directional API Development", "it": "Bi-Directional API Development" },
-      { "en": "Digital Twin Data Foundations", "it": "Digital Twin Data Foundations" },
-      { "en": "Autodesk APS (Forge) Web Integration", "it": "Autodesk APS (Forge) Web Integration" }
+      {
+        "en": "Automated COBie Handover & FM Formatting",
+        "it": "Automated COBie Handover & FM Formatting",
+        "de": "Automated COBie Handover & FM Formatting"
+      },
+      {
+        "en": "ISO 19650 CDE Setup & Administration",
+        "it": "ISO 19650 CDE Setup & Administration",
+        "de": "ISO 19650 CDE Setup & Administration"
+      },
+      {
+        "en": "Bi-Directional API Development",
+        "it": "Bi-Directional API Development",
+        "de": "Bi-Directional API Development"
+      },
+      {
+        "en": "Digital Twin Data Foundations",
+        "it": "Digital Twin Data Foundations",
+        "de": "Digital Twin Data Foundations"
+      },
+      {
+        "en": "Autodesk APS (Forge) Web Integration",
+        "it": "Autodesk APS (Forge) Web Integration",
+        "de": "Autodesk APS (Forge) Web Integration"
+      }
     ],
     "types": [
-      { "en": "AUTODESK APS", "it": "AUTODESK APS" },
-      { "en": "REST APIs", "it": "REST APIs" },
-      { "en": "SQL / POSTGRESQL", "it": "SQL / POSTGRESQL" },
-      { "en": "JSON / XML", "it": "JSON / XML" },
-      { "en": "REACT.JS", "it": "REACT.JS" }
+      {
+        "en": "AUTODESK APS",
+        "it": "AUTODESK APS",
+        "de": "AUTODESK APS"
+      },
+      {
+        "en": "REST APIs",
+        "it": "REST APIs",
+        "de": "REST APIs"
+      },
+      {
+        "en": "SQL / POSTGRESQL",
+        "it": "SQL / POSTGRESQL",
+        "de": "SQL / POSTGRESQL"
+      },
+      {
+        "en": "JSON / XML",
+        "it": "JSON / XML",
+        "de": "JSON / XML"
+      },
+      {
+        "en": "REACT.JS",
+        "it": "REACT.JS",
+        "de": "REACT.JS"
+      }
     ],
     "faq": [
       {
-        "q": { "en": "Can geometric model data be synchronized with our proprietary enterprise databases?", "it": "I dati del modello geometrico possono essere sincronizzati con i nostri database aziendali proprietari?" },
-        "a": { "en": "Yes. We bypass standard export limitations by developing custom API bridges and utilizing Autodesk APS (Forge). We extract raw metadata directly from the BIM database, parsing it into standardized formats (JSON/SQL) for seamless, real-time integration with your internal web infrastructure, IoT platforms, or ERP systems.", "it": "Sì. Sviluppiamo ponti API su misura ed utilizziamo Autodesk APS (Forge) per estrarre i metadati in formati standard (JSON/SQL)." }
+        "q": {
+          "en": "Can geometric model data be synchronized with our proprietary enterprise databases?",
+          "it": "I dati del modello geometrico possono essere sincronizzati con i nostri database aziendali proprietari?",
+          "de": "Can geometric model data be synchronized with our proprietary enterprise databases?"
+        },
+        "a": {
+          "en": "Yes. We bypass standard export limitations by developing custom API bridges and utilizing Autodesk APS (Forge). We extract raw metadata directly from the BIM database, parsing it into standardized formats (JSON/SQL) for seamless, real-time integration with your internal web infrastructure, IoT platforms, or ERP systems.",
+          "it": "Sì. Sviluppiamo ponti API su misura ed utilizziamo Autodesk APS (Forge) per estrarre i metadati in formati standard (JSON/SQL).",
+          "de": "Yes. We bypass standard export limitations by developing custom API bridges and utilizing Autodesk APS (Forge). We extract raw metadata directly from the BIM database, parsing it into standardized formats (JSON/SQL) for seamless, real-time integration with your internal web infrastructure, IoT platforms, or ERP systems."
+        }
       }
     ],
-    "offerTitle": { "en": "Future-Proof Asset Data", "it": "Dati Asset a Prova di Futuro" },
-    "offerDescription": { "en": "Guarantee the integrity of your handover deliverables through programmatic data validation and secure cloud synchronization.", "it": "Garantisci l'integrità dei deliverable di handover con la validazione programmatica dei dati e la sincronizzazione cloud sicura." },
+    "offerTitle": {
+      "en": "Future-Proof Asset Data",
+      "it": "Dati Asset a Prova di Futuro",
+      "de": "Future-Proof Asset Data"
+    },
+    "offerDescription": {
+      "en": "Guarantee the integrity of your handover deliverables through programmatic data validation and secure cloud synchronization.",
+      "it": "Garantisci l'integrità dei deliverable di handover con la validazione programmatica dei dati e la sincronizzazione cloud sicura.",
+      "de": "Guarantee the integrity of your handover deliverables through programmatic data validation and secure cloud synchronization."
+    },
     "color": "purple",
     "images": [
       "/Pictures/Uncategorized/uncategorized-009.jpg",

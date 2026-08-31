@@ -10,7 +10,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 const navItems = [
   { href: "/", tKey: "nav.home" },
   { href: "/services", tKey: "nav.services" },
-  { href: "/blog", tKey: "nav.blog" },
+  { href: "/education", tKey: "nav.education" },
 ];
 
 const pyBimLeftMenu = [
@@ -29,7 +29,7 @@ const pyBimRightMenu = {
     { label: "Our Team", icon: Users, href: "/about#team" },
   ],
   success_stories: [
-    { label: "All Projects", icon: Briefcase, href: "/projects" },
+    { label: "All Projects", icon: Briefcase, href: "/projects#all-projects" },
     { label: "Featured Case Studies", icon: FileText, href: "/projects#featured" },
     { label: "Client Testimonials", icon: Users, href: "/projects#testimonials" },
   ],
