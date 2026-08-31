@@ -36,27 +36,52 @@ export default function CareersPageLayout({ jobs }) {
   return (
     <div className="bg-brand-base">
       {/* Hero Section - Culture & Benefits */}
-      <section id="culture" className="relative overflow-hidden py-32 lg:py-40 border-b border-brand-border bg-brand-surface">
+      <section id="culture" className="relative overflow-hidden py-24 lg:py-32 border-b border-brand-border bg-brand-surface">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.05),transparent_60%)]"></div>
         <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
         
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-8 shadow-sm">
-            <Users className="w-4 h-4" /> CULTURE & BENEFITS
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-8 shadow-sm">
+              // CULTURE & BENEFITS
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-textPrimary tracking-tight mb-8">
+              Scale Your Code, Not Your Hours.
+            </h1>
+            <p className="text-lg text-brand-textSecondary leading-relaxed font-medium">
+              We operate a strict R&D tech lab from the engineering hub of <strong>Padua, Italy</strong>. We evaluate technical personnel based on <strong>algorithmic efficiency</strong>, not manual drafting endurance.
+            </p>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-brand-textPrimary tracking-tight mb-8">
-            {language === "it" ? "Costruisci il futuro dell'Ingegneria con noi" : "Build the future of Engineering with us"}
-          </h1>
-          <p className="max-w-2xl mx-auto text-lg text-brand-textSecondary leading-relaxed mb-10 font-medium">
-            {language === "it" 
-              ? "Benvenuti in pyBIM. Cerchiamo menti brillanti e appassionate pronte a portare innovazione ed eccellenza nei nostri settori operativi: sviluppo software per l'edilizia, automazione BIM con Python e C#, e coordinamento ingegneristico avanzato." 
-              : "Welcome to pyBIM. We are looking for bright, passionate minds ready to bring innovation and software automation to the AEC industry with Python, Revit API C#, and advanced BIM coordination."}
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-brand-textSecondary font-bold">
-            <span className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-brand-primary" /> {language === "it" ? "Crescita Professionale" : "Career Growth"}</span>
-            <span className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-brand-primary" /> {language === "it" ? "Ambiente Dinamico" : "Dynamic Environment"}</span>
-            <span className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-brand-primary" /> {language === "it" ? "Progetti Internazionali" : "Global Projects"}</span>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">01. Algorithmic Focus</h3>
+              <p className="text-brand-textSecondary leading-relaxed font-medium">
+                Zero manual modeling. Strict deployment of <strong>Python/C#</strong> pipelines and <strong>Revit API</strong> integrations.
+              </p>
+            </div>
+            
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">02. Enterprise Infrastructure</h3>
+              <p className="text-brand-textSecondary leading-relaxed font-medium">
+                Unrestricted access to <strong>Edge AI Appliances</strong> and dedicated <strong>GPU-VPS</strong> environments for local LLM execution.
+              </p>
+            </div>
+
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">03. Academic Proximity</h3>
+              <p className="text-brand-textSecondary leading-relaxed font-medium">
+                Continuous computational research leveraging our physical footprint near the <strong>University of Padua</strong>.
+              </p>
+            </div>
+
+            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">04. Output-Driven Autonomy</h3>
+              <p className="text-brand-textSecondary leading-relaxed font-medium">
+                Success is measured exclusively by <strong>operational bottlenecks cleared</strong>, not physical desk presence.
+              </p>
+            </div>
           </div>
         </div>
       </section>
