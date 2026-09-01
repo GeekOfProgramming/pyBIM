@@ -53,7 +53,7 @@ export default function EducationPageLayout() {
   return (
     <div className="w-full bg-brand-base">
       {/* HERO SECTION */}
-      <section className="relative flex min-h-[25vh] items-center justify-center overflow-hidden py-16 border-b border-brand-border">
+      <section className="relative flex flex-col items-center justify-center py-32 overflow-hidden border-b border-brand-border">
         <div className="absolute inset-0 -z-10">
           <img 
             src="/Pictures/Blogs/blog.jpg" 

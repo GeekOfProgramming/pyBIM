@@ -78,7 +78,7 @@ export default function ContactPageLayout() {
             {/* LEFT COLUMN (40% Width) */}
             <div className="lg:col-span-5 flex flex-col justify-center text-left">
               <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm self-start">
-                {t("contact.hero.tag") || "// TECHNICAL & AI AUDIT INQUIRY"}
+                {t("contact.hero.tag")}
               </div>
               <h1 className="text-4xl font-bold uppercase tracking-tight md:text-5xl lg:text-6xl text-brand-textPrimary mb-6 leading-tight">
                 {t("contact.hero.title")}
@@ -109,7 +109,7 @@ export default function ContactPageLayout() {
                 <div className="relative z-10">
                   <div className="mb-10">
                     <h3 className="text-3xl font-bold text-brand-textPrimary mb-3">{t("contact.form.title")}</h3>
-                    <p className="text-brand-textSecondary font-medium">{t("contact.form.desc") || "Please fill in the details below to request your technical audit."}</p>
+                    <p className="text-brand-textSecondary font-medium">{t("contact.form.desc")}</p>
                   </div>
                   
                   <form className="group grid gap-6" onSubmit={handleSubmit}>
@@ -137,7 +137,7 @@ export default function ContactPageLayout() {
                         <input
                           value={form.companyName}
                           onChange={(e) => updateField("companyName", e.target.value)}
-                          placeholder={t("contact.form.companyName") || "Company Name"}
+                          placeholder={t("contact.form.companyName")}
                           required
                           className="w-full rounded-2xl border border-brand-border/80 bg-brand-surface/50 pl-11 pr-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition-all duration-300 focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 hover:border-brand-primary/30"
                         />
@@ -183,10 +183,10 @@ export default function ContactPageLayout() {
                           required
                           className={`w-full appearance-none rounded-2xl border border-brand-border/80 bg-brand-surface/50 pl-11 pr-5 py-4 text-brand-textPrimary outline-none transition-all duration-300 focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 hover:border-brand-primary/30 ${form.architecture ? '' : 'text-brand-textSecondary/70'}`}
                         >
-                          <option value="" disabled hidden>{t("contact.form.architecture") || "Requested Architecture"}</option>
-                          <option value="Edge" className="text-brand-textPrimary">{t("contact.form.arch_opt1") || "Edge Computing"}</option>
-                          <option value="VPS" className="text-brand-textPrimary">{t("contact.form.arch_opt2") || "VPS / Cloud Dedicated"}</option>
-                          <option value="Private Cloud" className="text-brand-textPrimary">{t("contact.form.arch_opt3") || "On-Premises / Private Cloud"}</option>
+                          <option value="" disabled hidden>{t("contact.form.architecture")}</option>
+                          <option value="Edge" className="text-brand-textPrimary">{t("contact.form.arch_opt1")}</option>
+                          <option value="VPS" className="text-brand-textPrimary">{t("contact.form.arch_opt2")}</option>
+                          <option value="Private Cloud" className="text-brand-textPrimary">{t("contact.form.arch_opt3")}</option>
                         </select>
                       </div>
 
@@ -201,10 +201,10 @@ export default function ContactPageLayout() {
                           required
                           className={`w-full appearance-none rounded-2xl border border-brand-border/80 bg-brand-surface/50 pl-11 pr-5 py-4 text-brand-textPrimary outline-none transition-all duration-300 focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 hover:border-brand-primary/30 ${form.fileSize ? '' : 'text-brand-textSecondary/70'}`}
                         >
-                          <option value="" disabled hidden>{t("contact.form.fileSize") || "Revit File Size"}</option>
-                          <option value="<100MB" className="text-brand-textPrimary">{t("contact.form.size_opt1") || "Less than 100 MB"}</option>
-                          <option value="100MB-500MB" className="text-brand-textPrimary">{t("contact.form.size_opt2") || "100 MB - 500 MB"}</option>
-                          <option value="500MB+" className="text-brand-textPrimary">{t("contact.form.size_opt3") || "500+ MB"}</option>
+                          <option value="" disabled hidden>{t("contact.form.fileSize")}</option>
+                          <option value="<100MB" className="text-brand-textPrimary">{t("contact.form.size_opt1")}</option>
+                          <option value="100MB-500MB" className="text-brand-textPrimary">{t("contact.form.size_opt2")}</option>
+                          <option value="500MB+" className="text-brand-textPrimary">{t("contact.form.size_opt3")}</option>
                         </select>
                       </div>
                     </div>
@@ -280,7 +280,7 @@ export default function ContactPageLayout() {
                             </div>
                             
                             <h3 className="mb-2 text-2xl font-bold text-brand-textPrimary">
-                              {popup.type === 'success' ? "Success!" : "Action Required"}
+                              {popup.type === 'success' ? t("contact.form.success_title") : t("contact.form.error_title")}
                             </h3>
                             
                             <p className="mb-8 text-base font-medium leading-relaxed text-brand-textSecondary" style={{ direction: 'rtl' }}>
@@ -291,7 +291,7 @@ export default function ContactPageLayout() {
                               onClick={() => setPopup(null)}
                               className={`w-full rounded-2xl px-6 py-4 font-bold text-white shadow-md transition-all hover:-translate-y-0.5 ${popup.type === 'success' ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-brand-primary hover:bg-brand-primaryHover'}`}
                             >
-                              {popup.type === 'success' ? "Close" : "Got it"}
+                              {popup.type === 'success' ? t("contact.form.close_btn") : t("contact.form.got_it_btn")}
                             </button>
                           </div>
                         </div>
@@ -311,10 +311,10 @@ export default function ContactPageLayout() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm mx-auto">
-              {t("contact.channels.badge") || "// DIRECT CHANNELS"}
+              {t("contact.channels.badge")}
             </div>
             <h3 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
-              {t("contact.channels.title") || "Our Offices & Direct Channels"}
+              {t("contact.channels.title")}
             </h3>
           </div>
           <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto items-stretch">
@@ -324,7 +324,7 @@ export default function ContactPageLayout() {
               <div className="w-14 h-14 rounded-2xl bg-brand-primary/5 text-brand-primary group-hover:bg-brand-primary/15 flex items-center justify-center mb-6 transition-colors">
                 <Phone className="h-7 w-7" />
               </div>
-              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.phone_fixed") || "Landline"}</h4>
+              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.phone_fixed")}</h4>
               <span className="text-lg font-bold text-brand-textPrimary group-hover:text-brand-primary transition-colors">
                 +39 {phoneDisplay}
               </span>
@@ -346,7 +346,7 @@ export default function ContactPageLayout() {
               <div className="w-14 h-14 rounded-2xl bg-brand-primary/5 text-brand-primary group-hover:bg-[#0A66C2]/10 group-hover:text-[#0A66C2] flex items-center justify-center mb-6 transition-colors">
                 <Linkedin className="h-7 w-7" />
               </div>
-              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.linkedin") || "LinkedIn"}</h4>
+              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.linkedin")}</h4>
               <span className="text-lg font-bold text-brand-textPrimary group-hover:text-[#0A66C2] transition-colors">
                 linkedin/company/pybim
               </span>

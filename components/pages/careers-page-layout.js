@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 import { ChevronRight, CheckCircle2, Terminal, Server, Cpu, Building, Heart, Zap, Sparkles, Users, Briefcase } from "lucide-react";
 
 export default function CareersPageLayout({ jobs }) {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [visibleCount, setVisibleCount] = useState(6);
 
   useEffect(() => {
@@ -44,43 +44,33 @@ export default function CareersPageLayout({ jobs }) {
         <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-8 shadow-sm">
-              // CULTURE & BENEFITS
+              {t("careers.hero.tag")}
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-textPrimary tracking-tight mb-8">
-              Scale Your Code, Not Your Hours.
+              {t("careers.hero.title")}
             </h1>
-            <p className="text-lg text-brand-textSecondary leading-relaxed font-medium">
-              We operate a strict R&D tech lab from the engineering hub of <strong>Padua, Italy</strong>. We evaluate technical personnel based on <strong>algorithmic efficiency</strong>, not manual drafting endurance.
-            </p>
+            <p className="text-lg text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.hero.desc") }} />
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">01. Algorithmic Focus</h3>
-              <p className="text-brand-textSecondary leading-relaxed font-medium">
-                Zero manual modeling. Strict deployment of <strong>Python/C#</strong> pipelines and <strong>Revit API</strong> integrations.
-              </p>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box1_title")}</h3>
+              <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box1_desc") }} />
             </div>
             
             <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">02. Enterprise Infrastructure</h3>
-              <p className="text-brand-textSecondary leading-relaxed font-medium">
-                Unrestricted access to <strong>Edge AI Appliances</strong> and dedicated <strong>GPU-VPS</strong> environments for local LLM execution.
-              </p>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box2_title")}</h3>
+              <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box2_desc") }} />
             </div>
 
             <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">03. Academic Proximity</h3>
-              <p className="text-brand-textSecondary leading-relaxed font-medium">
-                Continuous computational research leveraging our physical footprint near the <strong>University of Padua</strong>.
-              </p>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box3_title")}</h3>
+              <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box3_desc") }} />
             </div>
 
             <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">04. Output-Driven Autonomy</h3>
-              <p className="text-brand-textSecondary leading-relaxed font-medium">
-                Success is measured exclusively by <strong>operational bottlenecks cleared</strong>, not physical desk presence.
-              </p>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box4_title")}</h3>
+              <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box4_desc") }} />
             </div>
           </div>
         </div>
@@ -91,13 +81,13 @@ export default function CareersPageLayout({ jobs }) {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-16 md:text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
-              <Briefcase className="w-4 h-4" /> OPEN POSITIONS
+              <Briefcase className="w-4 h-4" /> {t("careers.positions.tag")}
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
-              Engineer the Standard. Join the R&D Lab.
+              {t("careers.positions.title")}
             </h2>
             <p className="text-brand-textSecondary max-w-2xl mx-auto font-medium text-lg">
-              We do not hire manual modelers. We recruit algorithmic engineers and software developers to automate complex AEC workflows across the world.
+              {t("careers.positions.desc")}
             </p>
           </div>
 
@@ -105,36 +95,32 @@ export default function CareersPageLayout({ jobs }) {
             <div className="bg-white border border-brand-border rounded-[2.5rem] p-8 md:p-12 shadow-sm text-left max-w-4xl mx-auto">
               
               <div className="inline-block px-3 py-1 rounded-lg bg-brand-accent/10 text-brand-accent text-xs font-bold tracking-widest uppercase border border-brand-accent/20 mb-6">
-                Current Status: Core Unit at Full Capacity
+                {t("careers.empty.status")}
               </div>
               
-              <p className="text-brand-textSecondary text-lg font-medium leading-relaxed mb-10">
-                We scale our operations through code, not arbitrary headcount. However, operating from the tech hub of <strong>Padua</strong>, we continuously audit spontaneous technical submissions from developers demonstrating exceptional <strong>algorithmic efficiency</strong>.
-              </p>
+              <p className="text-brand-textSecondary text-lg font-medium leading-relaxed mb-10" dangerouslySetInnerHTML={{ __html: t("careers.empty.desc1") }} />
               
-              <h3 className="text-2xl md:text-3xl font-bold text-brand-textPrimary mb-4">Bypass the Standard Hiring Cycle.</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-brand-textPrimary mb-4">{t("careers.empty.title")}</h3>
               
-              <p className="text-brand-textSecondary text-lg font-medium leading-relaxed mb-8">
-                If you have transitioned from traditional BIM management to native <strong>Python, C#, or Revit API</strong> development, initiate a spontaneous technical review.
-              </p>
+              <p className="text-brand-textSecondary text-lg font-medium leading-relaxed mb-8" dangerouslySetInnerHTML={{ __html: t("careers.empty.desc2") }} />
               
               <ul className="space-y-4 mb-10">
                 <li className="flex gap-3 items-start">
                   <CheckCircle2 className="w-6 h-6 text-brand-primary shrink-0 mt-0.5" />
-                  <span className="text-brand-textSecondary font-medium"><strong>Skip the Traditional CV:</strong> Provide a direct link to your <strong>GitHub</strong> repository or a demonstrable code environment.</span>
+                  <span className="text-brand-textSecondary font-medium" dangerouslySetInnerHTML={{ __html: t("careers.empty.li1") }} />
                 </li>
                 <li className="flex gap-3 items-start">
                   <CheckCircle2 className="w-6 h-6 text-brand-primary shrink-0 mt-0.5" />
-                  <span className="text-brand-textSecondary font-medium"><strong>Prove the Output:</strong> Submit a custom automation script that mathematically eliminates manual data entry or visual clash detection bottlenecks.</span>
+                  <span className="text-brand-textSecondary font-medium" dangerouslySetInnerHTML={{ __html: t("careers.empty.li2") }} />
                 </li>
                 <li className="flex gap-3 items-start">
                   <CheckCircle2 className="w-6 h-6 text-brand-primary shrink-0 mt-0.5" />
-                  <span className="text-brand-textSecondary font-medium"><strong>Initiate Contact:</strong> Route your technical portfolio directly to <a href="mailto:careers@pybim.com" className="text-brand-primary hover:underline"><strong>careers@pybim.com</strong></a>.</span>
+                  <span className="text-brand-textSecondary font-medium" dangerouslySetInnerHTML={{ __html: t("careers.empty.li3") }} />
                 </li>
               </ul>
               
               <div className="bg-brand-surface border border-brand-border rounded-2xl p-4 text-sm text-brand-textSecondary font-medium italic">
-                (Note: Submissions lacking functional code repositories will be automatically rejected).
+                {t("careers.empty.note")}
               </div>
             </div>
           ) : (
@@ -155,7 +141,7 @@ export default function CareersPageLayout({ jobs }) {
                     </p>
                     
                     <Link href={`/careers/${job.id}`} className="mt-auto inline-flex items-center text-sm font-bold text-brand-accent uppercase tracking-widest">
-                      {language === "it" ? "Scopri di più" : "Learn More"} 
+                      {language === "it" ? "Scopri di più" : t("careers.card.btn")} 
                       <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -168,7 +154,7 @@ export default function CareersPageLayout({ jobs }) {
                     onClick={() => setVisibleCount((prev) => prev + 6)}
                     className="rounded-2xl border border-brand-border bg-brand-surface px-8 py-4 text-sm font-bold tracking-widest text-brand-textPrimary uppercase shadow-sm hover:bg-white hover:text-brand-primary transition-all duration-300 hover:shadow-md hover:border-brand-primary/30"
                   >
-                    {language === "it" ? "Vedi Altri" : "See More"}
+                    {language === "it" ? "Vedi Altri" : t("careers.list.more")}
                   </button>
                 </div>
               )}
@@ -182,14 +168,12 @@ export default function CareersPageLayout({ jobs }) {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
-              // ENGINEERING CULTURE
+              {t("careers.eng.tag")}
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
-              Scale Your Code, Not Your Hours.
+              {t("careers.eng.title")}
             </h2>
-            <p className="text-brand-textSecondary max-w-2xl mx-auto font-medium mt-4 text-lg">
-              We operate a strict R&D tech lab from the engineering hub of <strong>Padua, Italy</strong>. We evaluate our technical team based on <strong>algorithmic efficiency</strong>, not manual drafting endurance.
-            </p>
+            <p className="text-brand-textSecondary max-w-2xl mx-auto font-medium mt-4 text-lg" dangerouslySetInnerHTML={{ __html: t("careers.eng.desc") }} />
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -197,30 +181,24 @@ export default function CareersPageLayout({ jobs }) {
               <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-100 mb-6">
                 <Terminal className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">Algorithmic Focus</h3>
-              <p className="text-brand-textSecondary text-sm leading-relaxed font-medium">
-                Zero manual modeling. Strict deployment of <strong>Python/C#</strong> pipelines and <strong>Revit API</strong> integrations.
-              </p>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.eng.box1_title")}</h3>
+              <p className="text-brand-textSecondary text-sm leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.eng.box1_desc") }} />
             </div>
 
             <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
               <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-100 mb-6">
                 <Server className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">Enterprise AI Infrastructure</h3>
-              <p className="text-brand-textSecondary text-sm leading-relaxed font-medium">
-                Unrestricted access to <strong>Edge AI Appliances</strong> and dedicated <strong>GPU-VPS</strong> environments for algorithmic deployment.
-              </p>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.eng.box2_title")}</h3>
+              <p className="text-brand-textSecondary text-sm leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.eng.box2_desc") }} />
             </div>
 
             <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
               <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-100 mb-6">
                 <Cpu className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">Output-Driven Autonomy</h3>
-              <p className="text-brand-textSecondary text-sm leading-relaxed font-medium">
-                Success is measured by <strong>operational bottlenecks cleared</strong>, not physical desk presence.
-              </p>
+              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.eng.box3_title")}</h3>
+              <p className="text-brand-textSecondary text-sm leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.eng.box3_desc") }} />
             </div>
           </div>
         </div>

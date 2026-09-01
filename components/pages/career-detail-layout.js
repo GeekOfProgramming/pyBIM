@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, Briefcase, Mail } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function CareerDetailLayout({ job }) {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   if (!job) return null;
 
@@ -23,7 +23,7 @@ export default function CareerDetailLayout({ job }) {
         <div className="mx-auto max-w-4xl px-6 lg:px-8 relative z-10">
           <Link href="/careers" className="inline-flex items-center text-sm font-bold text-brand-accent uppercase tracking-widest hover:text-white transition-colors mb-6">
             <ChevronLeft className="w-4 h-4 mr-1" />
-            {language === "it" ? "Torna alle posizioni" : "Back to Careers"}
+            {t("career.detail.back")}
           </Link>
           <div className="flex items-center gap-3 mb-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-brand-accent font-medium text-xs">
@@ -43,14 +43,14 @@ export default function CareerDetailLayout({ job }) {
           <div className="bg-brand-surface/30 border border-white/10 rounded-3xl p-8 md:p-12">
             {/* Main Job Details */}
             <h2 className="text-2xl font-bold text-white mb-6">
-              {language === "it" ? "Descrizione del Ruolo" : "Role Description"}
+              {t("career.detail.role")}
             </h2>
             <div className="prose prose-invert max-w-none mb-12 text-white/70 leading-relaxed whitespace-pre-wrap">
               {language === "it" ? job.descriptionIt : job.descriptionEn}
             </div>
 
             <h2 className="text-2xl font-bold text-white mb-6">
-              {language === "it" ? "Requisiti" : "Requirements"}
+              {t("career.detail.reqs")}
             </h2>
             <div className="prose prose-invert max-w-none text-white/70 leading-relaxed whitespace-pre-wrap">
               {language === "it" ? job.requirementsIt : job.requirementsEn}
@@ -64,37 +64,22 @@ export default function CareerDetailLayout({ job }) {
               <Mail className="w-8 h-8" />
             </div>
             <h2 className="text-3xl font-bold text-white mb-6">
-              {language === "it" ? "Come Candidarsi" : "How to Apply"}
+              {t("career.detail.apply.title")}
             </h2>
             
             <div className="max-w-2xl mx-auto mb-10 text-left">
-              {language === "it" ? (
-                <>
-                  <p className="text-white/70 mb-6 text-center">
-                    Per candidarti a questa posizione, inviaci il tuo CV e una lettera di presentazione indicando il titolo della posizione nell'oggetto.
-                  </p>
-                  <div className="p-5 bg-sky-950/40 border border-brand-accent/20 rounded-2xl text-sm shadow-inner">
-                    <strong className="text-brand-accentHover block mb-2 font-bold uppercase tracking-wider text-xs">Informativa Privacy per i candidati (GDPR)</strong>
-                    Per permetterci di valutare legalmente il tuo profilo, <span className="text-white font-medium">inserisci obbligatoriamente in fondo al tuo CV</span> la seguente dicitura:
-                    <div className="mt-3 p-3 bg-brand-background rounded-lg border border-white/5 font-mono text-xs text-white/80 break-words">
-                      "Autorizzo il trattamento dei miei dati personali ai sensi del D.lgs. 196/2003 e del GDPR (Regolamento UE 2016/679)."
-                    </div>
+              <>
+                <p className="text-white/70 mb-6 text-center">
+                  {t("career.detail.apply.desc")}
+                </p>
+                <div className="p-5 bg-sky-950/40 border border-brand-accent/20 rounded-2xl text-sm shadow-inner">
+                  <strong className="text-brand-accentHover block mb-2 font-bold uppercase tracking-wider text-xs">{t("career.detail.apply.privacy.title")}</strong>
+                  <span dangerouslySetInnerHTML={{ __html: t("career.detail.apply.privacy.desc1") }} />
+                  <div className="mt-3 p-3 bg-brand-background rounded-lg border border-white/5 font-mono text-xs text-white/80 break-words">
+                    {t("career.detail.apply.privacy.desc2")}
                   </div>
-                </>
-              ) : (
-                <>
-                  <p className="text-white/70 mb-6 text-center">
-                    To apply for this position, please send us your CV and a cover letter indicating the job title in the subject line.
-                  </p>
-                  <div className="p-5 bg-sky-950/40 border border-brand-accent/20 rounded-2xl text-sm shadow-inner">
-                    <strong className="text-brand-accentHover block mb-2 font-bold uppercase tracking-wider text-xs">Privacy Information for Candidates (GDPR)</strong>
-                    To allow us to legally process your application, <span className="text-white font-medium">you must include</span> the following statement at the bottom of your CV:
-                    <div className="mt-3 p-3 bg-brand-background rounded-lg border border-white/5 font-mono text-xs text-white/80 break-words">
-                      "Autorizzo il trattamento dei miei dati personali ai sensi del D.lgs. 196/2003 e del GDPR (Regolamento UE 2016/679)."
-                    </div>
-                  </div>
-                </>
-              )}
+                </div>
+              </>
             </div>
 
             <a 
@@ -107,16 +92,12 @@ export default function CareerDetailLayout({ job }) {
 
             <div className="text-xs text-white/40 max-w-3xl mx-auto border-t border-white/10 pt-8 text-left grid md:grid-cols-2 gap-8">
               <div>
-                <strong className="text-white/60 block mb-1 uppercase tracking-wider">Pari Opportunità</strong>
-                {language === "it" 
-                  ? "La presente ricerca è rivolta a candidati di ambo i sessi (L. 903/77 e L. 125/91) e a persone di tutte le età e tutte le nazionalità, ai sensi dei decreti legislativi 215/03 e 216/03." 
-                  : "This search is open to candidates of both sexes (L. 903/77 and L. 125/91) and to people of all ages and all nationalities, pursuant to legislative decrees 215/03 and 216/03."}
+                <strong className="text-white/60 block mb-1 uppercase tracking-wider">{t("career.detail.equal.title")}</strong>
+                {t("career.detail.equal.desc")}
               </div>
               <div>
-                <strong className="text-white/60 block mb-1 uppercase tracking-wider">Trasparenza (Decreto Trasparenza)</strong>
-                {language === "it"
-                  ? "In fase di colloquio verranno discussi nel dettaglio la tipologia contrattuale (es. CCNL Confapi), l'impegno orario (full-time o part-time) e la sede operativa."
-                  : "During the interview, the contract type (e.g. CCNL Confapi), working hours (full-time or part-time), and work location will be discussed in detail."}
+                <strong className="text-white/60 block mb-1 uppercase tracking-wider">{t("career.detail.transparency.title")}</strong>
+                {t("career.detail.transparency.desc")}
               </div>
             </div>
 

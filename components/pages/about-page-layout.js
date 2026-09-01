@@ -33,7 +33,7 @@ export default function AboutPageLayout({ teamData }) {
   return (
     <div className="w-full bg-brand-base">
       {/* SECTION 1: Hero Section (The Manifesto) */}
-      <section id="manifesto" className="relative flex min-h-[90vh] items-center justify-center overflow-hidden border-b border-brand-border bg-brand-surface pt-24 pb-12">
+      <section id="manifesto" className="relative flex flex-col items-center justify-center py-32 overflow-hidden border-b border-brand-border bg-brand-surface">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.05),transparent_60%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(37,99,235,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(37,99,235,0.03)_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -41,7 +41,7 @@ export default function AboutPageLayout({ teamData }) {
 
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center relative z-10 mt-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-8 backdrop-blur-sm shadow-sm">
-            <Terminal className="w-4 h-4" /> THE MANIFESTO
+            <Terminal className="w-4 h-4" /> {t("about.manifesto.badge")}
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-brand-textPrimary tracking-tight mb-8 leading-tight max-w-5xl mx-auto" dangerouslySetInnerHTML={{ __html: t("about.manifesto.title") }} />
           <h2 className="text-lg md:text-xl text-brand-textSecondary leading-relaxed max-w-3xl mx-auto font-medium mb-12" dangerouslySetInnerHTML={{ __html: t("about.manifesto.subtitle") }} />
@@ -71,7 +71,7 @@ export default function AboutPageLayout({ teamData }) {
                   </div>
                   <div>
                     <h4 className="font-bold text-sm text-brand-textPrimary mb-1">{t("about.manifesto.box1_desc2_title")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box1_desc2")}</p>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box1_desc2") }} />
                   </div>
                 </div>
               </div>
@@ -90,11 +90,15 @@ export default function AboutPageLayout({ teamData }) {
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-bold text-sm text-brand-primary mb-1">{t("about.manifesto.box3_subtitle")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box3_desc1")}</p>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box3_desc1") }} />
                   </div>
                   <div>
                     <h4 className="font-bold text-sm text-brand-primary mb-1">{t("about.manifesto.box3_desc2_title")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box3_desc2")}</p>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box3_desc2") }} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-brand-primary mb-1">{t("about.manifesto.box3_desc3_title")}:</h4>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box3_desc3") }} />
                   </div>
                 </div>
               </div>
@@ -113,11 +117,11 @@ export default function AboutPageLayout({ teamData }) {
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-bold text-sm text-brand-textPrimary mb-1">{t("about.manifesto.box2_subtitle")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box2_desc1")}</p>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box2_desc1") }} />
                   </div>
                   <div>
                     <h4 className="font-bold text-sm text-brand-textPrimary mb-1">{t("about.manifesto.box2_desc2_title")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box2_desc2")}</p>
+                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box2_desc2") }} />
                   </div>
                 </div>
               </div>
@@ -132,10 +136,9 @@ export default function AboutPageLayout({ teamData }) {
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center mb-24">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm">
-              <Activity className="w-4 h-4" /> OUR JOURNEY
+              <Activity className="w-4 h-4" /> {t("about.journey.tag")}
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary mb-6">Our Journey</h2>
-            <p className="text-brand-textSecondary text-lg font-medium">The evolution from manual coordination to automated engineering.</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-textPrimary mb-6">{t("about.journey.title")}</h2>
           </div>
 
           <div className="relative space-y-24 md:space-y-32">
@@ -215,10 +218,10 @@ export default function AboutPageLayout({ teamData }) {
             </h2>
             <div className="text-left space-y-4">
               <p className="text-brand-textSecondary text-base md:text-lg font-medium">
-                <strong className="text-brand-textPrimary">{t("about.tech.p1_title")}:</strong> {t("about.tech.p1_desc")}
+                <strong className="text-brand-textPrimary">{t("about.tech.p1_title")}:</strong> <span dangerouslySetInnerHTML={{ __html: t("about.tech.p1_desc") }} />
               </p>
               <p className="text-brand-textSecondary text-base md:text-lg font-medium">
-                <strong className="text-brand-textPrimary">{t("about.tech.p2_title")}:</strong> {t("about.tech.p2_desc")}
+                <strong className="text-brand-textPrimary">{t("about.tech.p2_title")}:</strong> <span dangerouslySetInnerHTML={{ __html: t("about.tech.p2_desc") }} />
               </p>
               <p className="text-brand-textSecondary text-base md:text-lg font-medium">
                 <strong className="text-brand-textPrimary">{t("about.tech.p3_title")}:</strong> <span dangerouslySetInnerHTML={{ __html: t("about.tech.p3_desc") }} />
@@ -354,24 +357,44 @@ export default function AboutPageLayout({ teamData }) {
             <div className="rounded-[2.5rem] border border-brand-border bg-white shadow-lg p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/30 transition-colors">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand-surface blur-[80px] rounded-full pointer-events-none group-hover:bg-brand-primary/5 transition-colors" />
               <div className="relative z-10 w-full mb-10">
-                <Briefcase className="w-12 h-12 text-brand-primary/60 mb-6 group-hover:text-brand-primary transition-colors" />
-                <h3 className="text-3xl font-bold text-brand-textPrimary leading-snug mb-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <Briefcase className="w-10 h-10 text-brand-primary/60 group-hover:text-brand-primary transition-colors" />
+                  <div className="text-sm font-mono font-bold text-brand-primary tracking-wider">{t("about.cta.c1_tag")}</div>
+                </div>
+                <h3 className="text-3xl font-bold text-brand-textPrimary leading-snug mb-4">
                   {t("about.cta.c1_title")}
                 </h3>
-                <div className="space-y-4">
+                <p className="text-brand-textSecondary text-base font-medium leading-relaxed mb-8">
+                  {t("about.cta.c1_subtitle")}
+                </p>
+                <div className="bg-brand-surface/50 border border-brand-border rounded-2xl p-6 space-y-5">
+                  <div className="text-xs font-bold uppercase tracking-widest text-brand-textSecondary mb-2">{t("about.cta.c1_box_title")}</div>
+                  
                   <div>
-                    <h4 className="font-bold text-brand-textPrimary text-base">{t("about.cta.c1_b_title")}:</h4>
-                    <p className="text-brand-textSecondary text-base leading-relaxed">{t("about.cta.c1_b_desc")}</p>
+                    <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c1_item1_title")}</strong>
+                    <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item1_desc") }} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-brand-textPrimary text-base">{t("about.cta.c1_p_title")}:</h4>
-                    <p className="text-brand-textSecondary text-base leading-relaxed">{t("about.cta.c1_p_desc")}</p>
+                    <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c1_item2_title")}</strong>
+                    <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item2_desc") }} />
+                  </div>
+                  <div>
+                    <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c1_item3_title")}</strong>
+                    <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item3_desc") }} />
+                  </div>
+                  <div>
+                    <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c1_item4_title")}</strong>
+                    <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item4_desc") }} />
+                  </div>
+                  <div>
+                    <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c1_item5_title")}</strong>
+                    <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item5_desc") }} />
                   </div>
                 </div>
               </div>
               <div className="relative z-10 w-full">
-                <Link href="/contact" className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full border border-brand-border bg-brand-surface px-8 py-4 font-bold text-brand-textPrimary hover:bg-white hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all mb-6">
-                  {t("about.cta.c1_btn")} <ArrowRight className="w-5 h-5" />
+                <Link href="/contact" className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full border border-brand-border bg-brand-surface px-8 py-4 font-bold text-brand-textPrimary hover:bg-white hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all mb-6 uppercase text-sm tracking-wider">
+                  {t("about.cta.c1_btn")} <ArrowRight className="w-4 h-4" />
                 </Link>
                 <p className="text-xs text-brand-textSecondary italic leading-relaxed border-t border-brand-border/60 pt-4">
                   {t("about.cta.c1_sub")}
@@ -383,23 +406,45 @@ export default function AboutPageLayout({ teamData }) {
             <div className="rounded-[2.5rem] border border-brand-primary/20 bg-white shadow-xl p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/50 transition-colors">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 blur-[80px] rounded-full group-hover:bg-brand-primary/10 transition-colors pointer-events-none" />
               <div className="relative z-10 w-full mb-10">
-                <Code2 className="w-12 h-12 text-brand-primary mb-6" />
-                <h3 className="text-3xl font-bold text-brand-textPrimary leading-snug mb-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <Code2 className="w-10 h-10 text-brand-primary" />
+                  <div className="text-sm font-mono font-bold text-brand-primary tracking-wider">{t("about.cta.c2_tag")}</div>
+                </div>
+                <h3 className="text-3xl font-bold text-brand-textPrimary leading-snug mb-4">
                   {t("about.cta.c2_title")}
                 </h3>
-                <div className="space-y-4">
-                  <p className="text-brand-textPrimary font-bold text-lg leading-relaxed">
-                    {t("about.cta.c2_desc1")}
-                  </p>
-                  <p className="text-brand-textSecondary text-base leading-relaxed">
-                    {t("about.cta.c2_desc2")}
-                  </p>
+                <p className="text-brand-textSecondary text-base font-medium leading-relaxed mb-8">
+                  {t("about.cta.c2_subtitle")}
+                </p>
+                <div className="bg-brand-primary/5 border border-brand-primary/10 rounded-2xl p-6 space-y-5">
+                  <div className="text-xs font-bold uppercase tracking-widest text-brand-primary mb-2">{t("about.cta.c2_box_title")}</div>
+                  
+                  <div>
+                    <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c2_item1_title")}</strong>
+                    <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c2_item1_desc") }} />
+                  </div>
+                  <div>
+                    <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c2_item2_title")}</strong>
+                    <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c2_item2_desc") }} />
+                  </div>
+                  <div>
+                    <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c2_item3_title")}</strong>
+                    <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c2_item3_desc") }} />
+                  </div>
+                  <div>
+                    <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c2_item4_title")}</strong>
+                    <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c2_item4_desc") }} />
+                  </div>
+                  <div>
+                    <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c2_item5_title")}</strong>
+                    <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c2_item5_desc") }} />
+                  </div>
                 </div>
               </div>
               <div className="relative z-10 w-full">
-                <Link href="/contact" className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-bold text-white hover:bg-brand-accentHover transition-all shadow-md hover:shadow-lg hover:-translate-y-1 mb-6">
-                  {t("about.cta.c2_btn")} <ArrowRight className="w-5 h-5" />
-                </Link>
+                <a href="mailto:careers@pybim.com" className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-bold text-white hover:bg-brand-accentHover transition-all shadow-md hover:shadow-lg hover:-translate-y-1 mb-6 uppercase text-sm tracking-wider">
+                  {t("about.cta.c2_btn")} <ArrowRight className="w-4 h-4" />
+                </a>
                 <p className="text-xs text-brand-textSecondary/80 italic leading-relaxed border-t border-brand-primary/10 pt-4">
                   {t("about.cta.c2_sub")}
                 </p>

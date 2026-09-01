@@ -1,6 +1,6 @@
 "use client";
 import Link from "@/components/layout/LocalizedLink";
-import { X, Phone, Mail, CheckCircle2, Linkedin } from "lucide-react";
+import { X, Mail, Linkedin, Github } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function TeamPartnerModal({ person, onClose }) {
@@ -42,106 +42,67 @@ export default function TeamPartnerModal({ person, onClose }) {
             </div>
           </div>
           
-          {/* Contact Box */}
-          {((person.phone && person.phone !== "#") || 
-            (person.email && person.email !== "#") || 
-            (person.linkedin && person.linkedin !== "#")) && (
-            <div className="bg-white rounded-2xl p-6 text-center relative shadow-sm border border-brand-border mt-4">
-              <div className="w-12 h-12 bg-brand-accent/10 border border-brand-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-3 text-brand-accent">
-                <Mail className="w-5 h-5" />
-              </div>
-              
-              <h4 className="text-base font-bold text-brand-textPrimary mb-4">
-                {language === "en" ? "Direct Contact" : "Contatti Diretti"}
-              </h4>
-              
-              <div className="flex flex-col gap-2.5 text-sm">
-                {person.phone && person.phone !== "#" && person.phone !== "" && (
-                  <a href={`tel:${person.phone}`} className="flex items-center justify-center gap-2.5 text-brand-textPrimary hover:text-brand-primary transition-colors bg-brand-surface px-4 py-2.5 rounded-xl border border-brand-border hover:border-brand-primary/30 font-medium text-xs">
-                    <Phone className="w-4 h-4 text-brand-accent shrink-0" />
-                    <span>{person.phone}</span>
-                  </a>
-                )}
-                {person.email && person.email !== "#" && person.email !== "" && (
-                  <a href={`mailto:${person.email}`} className="flex items-center justify-center gap-2.5 text-brand-textPrimary hover:text-brand-primary transition-colors bg-brand-surface px-4 py-2.5 rounded-xl border border-brand-border hover:border-brand-primary/30 font-medium text-xs">
-                    <Mail className="w-4 h-4 text-brand-accent shrink-0" />
-                    <span className="truncate">{person.email}</span>
-                  </a>
-                )}
-                
-                {/* Social Icons */}
-                {(person.linkedin && person.linkedin !== "#") && (
-                  <div className="flex justify-center gap-2.5 mt-3 pt-3 border-t border-brand-border">
-                    {person.linkedin && person.linkedin !== "#" && (
-                      <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-brand-surface border border-brand-border rounded-xl flex items-center justify-center text-brand-textPrimary hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-110 transition-all duration-300 shadow-sm" aria-label="LinkedIn">
-                        <Linkedin className="w-4 h-4" />
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
+          {/* Validation Vectors */}
+          {/* Validation Vectors */}
+          <div className="bg-white rounded-2xl p-4 sm:p-5 text-center shadow-sm border border-brand-border mt-auto flex items-center justify-center gap-6">
+            <a href="#" className="text-brand-textSecondary hover:text-brand-primary transition-all hover:scale-110" aria-label="LinkedIn">
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a href="#" className="text-brand-textSecondary hover:text-brand-primary transition-all hover:scale-110" aria-label="GitHub">
+              <Github className="w-5 h-5" />
+            </a>
+            <a href="#" className="text-brand-textSecondary hover:text-brand-primary transition-all hover:scale-110" aria-label="Email">
+              <Mail className="w-5 h-5" />
+            </a>
+          </div>
         </div>
 
         {/* RIGHT COLUMN: Details */}
         <div className="w-full md:w-7/12 p-8 lg:p-12 md:overflow-y-auto md:max-h-[85vh] bg-white">
           
-          {/* Bio */}
-          <h2 className="text-2xl lg:text-3xl font-bold text-brand-textPrimary mb-4">
-            {t("about.modal.info_title")}{data.name}
-          </h2>
-          <p className="text-brand-textSecondary leading-relaxed mb-10 font-medium text-sm sm:text-base">
-            {data.bio || `${data.name} is a dedicated professional with deep expertise in BIM coordination, scripting automation, and computational workflows.`}
-          </p>
-
-          {/* Skills */}
+          {/* PROFILE SUMMARY */}
           <div className="mb-10">
-            <h3 className="text-xl font-bold text-brand-textPrimary mb-3">
-              {person.isCompany ? t("about.modal.skills_title_company") : t("about.modal.skills_title_person")}
+            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-brand-textSecondary">
+              // {t("about.modal.profile_summary_title")}
             </h3>
-            <p className="text-brand-textSecondary text-sm mb-6 font-medium">
-              {data.skillsDesc || "Optimization of workflows, algorithmic QA/QC verification, and agile technical execution."}
+            <p className="text-brand-textPrimary leading-relaxed font-medium text-base sm:text-lg">
+              {data.bio}
             </p>
-            
-            <div className="space-y-5">
-              {(data.skills || [
-                { name: "Revit API & pyRevit", value: 95 },
-                { name: "Clash Automation", value: 98 },
-                { name: "Algorithmic QA/QC", value: 92 }
-              ]).map((skill, idx) => (
-                <div key={idx}>
-                  <div className="flex justify-between text-xs font-bold text-brand-textPrimary mb-1.5">
-                    <span>{skill.name}</span>
-                    <span className="text-brand-primary">{skill.value}%</span>
-                  </div>
-                  <div className="h-2.5 w-full bg-brand-surface rounded-full overflow-hidden border border-brand-border">
-                    <div className="h-full bg-gradient-to-r from-brand-primary to-brand-accent rounded-full" style={{ width: `${skill.value}%` }} />
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* Professional Commitment */}
-          <div>
-            <h3 className="text-xl font-bold text-brand-textPrimary mb-5">
-              {t("about.modal.commitment_title")}
-            </h3>
-            <div className="grid sm:grid-cols-2 gap-3.5">
-              {(person.commitments || [
-                "Zero-error data execution",
-                "High-standard ISO 19650 compliance",
-                "Long-term algorithmic optimization",
-                "Agile delivery within tight schedules"
-              ]).map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 rounded-2xl bg-brand-surface border border-brand-border">
-                  <CheckCircle2 className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
-                  <span className="text-brand-textPrimary font-medium text-xs sm:text-sm">{item}</span>
-                </div>
-              ))}
+          {/* CORE STACK */}
+          {data.core_stack && data.core_stack.length > 0 && (
+            <div className="mb-10">
+              <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-brand-textSecondary">
+                // {t("about.modal.core_stack_title")}
+              </h3>
+              <ul className="space-y-4">
+                {data.core_stack.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-primary mt-2 shrink-0" />
+                    <span className="text-brand-textSecondary font-medium text-sm sm:text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: item }} />
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          )}
+
+          {/* OPERATIONAL FOCUS */}
+          {data.operational_focus && data.operational_focus.length > 0 && (
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-brand-textSecondary">
+                // {t("about.modal.operational_focus_title")}
+              </h3>
+              <ul className="space-y-4">
+                {data.operational_focus.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-primary mt-2 shrink-0" />
+                    <span className="text-brand-textSecondary font-medium text-sm sm:text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: item }} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
         </div>
       </div>

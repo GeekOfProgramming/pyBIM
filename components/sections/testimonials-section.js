@@ -1,12 +1,16 @@
 import testimonials from "@/lib/data/testimonials-data.json";
 import Carousel from "./carousel";
 import { Star } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+
 export default function TestimonialsSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
       <div className="mb-12 max-w-3xl">
-        <p className="text-sm uppercase tracking-[0.35em] text-brand-accentHover">Testimonianze</p>
-        <h2 className="mt-4 text-3xl font-semibold text-white md:text-5xl">Fiducia costruita con immagine, tecnica e performance</h2>
+        <p className="text-sm uppercase tracking-[0.35em] text-brand-accentHover">{t("home.testimonials.badge")}</p>
+        <h2 className="mt-4 text-3xl font-semibold text-white md:text-5xl">{t("home.testimonials.title")}</h2>
       </div>
       <Carousel itemsPerViewDesktop={3}>
         {[...testimonials].reverse().map((item, idx) => (
