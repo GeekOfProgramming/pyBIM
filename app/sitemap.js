@@ -1,5 +1,6 @@
 import servicePages from "@/lib/data/services-data.json";
 import projectPages from "@/lib/data/projects-data.json";
+import { tutorials, news, toolGuides } from "@/lib/data/education-data";
 
 export default function sitemap() {
   const baseUrl = "https://pybim.com";
@@ -15,7 +16,8 @@ export default function sitemap() {
     "/contact",
     "/privacy-policy",
     "/cookie-policy",
-    "/terms-and-conditions"
+    "/terms-and-conditions",
+    "/education"
   ];
 
   let entries = [];
@@ -42,6 +44,16 @@ export default function sitemap() {
     projectPages.forEach((project) => {
       entries.push({
         url: `${baseUrl}/${locale}/projects/${project.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.7
+      });
+    });
+
+    const educationItems = [...tutorials, ...news, ...toolGuides];
+    educationItems.forEach((item) => {
+      entries.push({
+        url: `${baseUrl}/${locale}/education/${item.slug}`,
         lastModified: now,
         changeFrequency: "monthly",
         priority: 0.7
