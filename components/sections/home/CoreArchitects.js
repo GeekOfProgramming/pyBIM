@@ -26,9 +26,11 @@ export default function CoreArchitects() {
             <div key={architect.id} className="bg-white border border-gray-200 rounded-2xl overflow-hidden flex flex-col hover:border-gray-300 transition-all shadow-sm hover:shadow-md">
               <div className="h-64 bg-gray-200 relative">
                 <img src={getRoleImage(architect.id)} className="w-full h-full object-cover opacity-80 grayscale hover:grayscale-0 transition-all duration-700" alt={architect.role} />
-                <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+                {/* Solid white mask to eliminate bottom edge bleed */}
+                <div className="absolute bottom-0 left-0 right-0 h-4 bg-white"></div>
               </div>
-              <div className="p-8 -mt-10 relative z-10">
+              <div className="p-8 relative z-10 bg-white">
                 <h3 className="text-2xl font-bold text-gray-900">{architect.role}</h3>
                 <div className="text-blue-600 text-sm font-mono mb-4">{architect.department}</div>
                 <div className="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-4">

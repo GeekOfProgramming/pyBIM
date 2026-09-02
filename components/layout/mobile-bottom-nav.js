@@ -3,19 +3,21 @@
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { usePathname } from "next/navigation";
-import { Home, Wrench, Briefcase, Menu, X, Info, FileText, Phone, Server } from "lucide-react";
+import { Home, Wrench, Briefcase, Menu, X, Info, FileText, Phone, Server, GraduationCap, Users } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const mainNavItems = [
   { href: "/", tKey: "nav.home", icon: Home },
   { href: "/services", tKey: "nav.services", icon: Wrench },
-  { href: "/projects", tKey: "nav.projects", icon: Briefcase },
+  { href: "/pricing", tKey: "nav.pricing", icon: Server },
 ];
 
 const moreNavItems = [
-  { href: "/pricing", tKey: "nav.pricing", icon: Server },
-  { href: "/about", tKey: "nav.about", icon: Info },
-  { href: "/contact", tKey: "nav.contact", icon: Phone }
+  { href: "/education", tKey: "nav.education", icon: GraduationCap },
+  { href: "/about", label: "Who we are", icon: Info },
+  { href: "/projects", label: "Success Stories", icon: Briefcase },
+  { href: "/careers", label: "Work with us", icon: Users },
+  { href: "/contact", label: "Contact us", icon: Phone }
 ];
 
 export default function MobileBottomNav() {
@@ -38,7 +40,7 @@ export default function MobileBottomNav() {
         onClick={() => setIsOpen(false)}
       />
       <div 
-        className={`fixed right-3 bottom-[60px] w-60 max-w-[calc(100vw-2rem)] z-50 rounded-3xl border border-white/10 bg-brand-background/95 p-4 shadow-2xl backdrop-blur-xl transition-all duration-300 origin-bottom-right lg:hidden flex flex-col ${isOpen ? "scale-100 opacity-100" : "scale-90 opacity-0 pointer-events-none"}`}
+        className={`fixed right-4 bottom-[85px] w-60 max-w-[calc(100vw-2rem)] z-50 rounded-3xl border border-white/10 bg-[#18181b]/95 p-4 shadow-2xl backdrop-blur-xl transition-all duration-300 origin-bottom-right lg:hidden flex flex-col ${isOpen ? "scale-100 opacity-100" : "scale-90 opacity-0 pointer-events-none"}`}
       >
 
         <div className="flex flex-col gap-3">
@@ -54,7 +56,7 @@ export default function MobileBottomNav() {
                 <div className={`flex h-10 w-10 items-center justify-center rounded-full ${isActive ? "bg-brand-accent/20 text-brand-accent" : "bg-white/10 text-white/60"}`}>
                   <Icon className="h-5 w-5" />
                 </div>
-                <span className="text-sm font-semibold">{t(item.tKey)}</span>
+                <span className="text-sm font-semibold">{item.label || t(item.tKey)}</span>
               </Link>
             );
           })}
@@ -62,7 +64,7 @@ export default function MobileBottomNav() {
       </div>
 
       {/* Main Bottom Tab Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around border-t border-brand-accent/10 bg-brand-background/90 px-1 py-1.5 backdrop-blur-xl lg:hidden shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+      <div className="fixed bottom-4 left-4 right-4 z-50 flex items-center justify-around rounded-3xl border border-white/10 bg-[#09090b]/90 px-2 py-2 backdrop-blur-xl lg:hidden shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
         {mainNavItems.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
