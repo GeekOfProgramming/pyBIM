@@ -56,9 +56,6 @@ export default function Header() {
   const { t, language, changeLanguage, getLocalizedUrl } = useLanguage();
   const pathname = usePathname();
 
-  const isPricingPage = pathname?.endsWith("/pricing");
-  const isDarkTheme = isPricingPage;
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -70,12 +67,12 @@ export default function Header() {
   if (pathname?.startsWith("/admin")) return null;
 
   return (
-    <header className={`sticky top-0 z-[1000] backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-sm" : "py-4"} ${isDarkTheme ? "bg-[#09090b]/95 border-b border-gray-800" : "bg-white/95 border-b border-brand-border"}`}>
+    <header className={`sticky top-0 z-[1000] border-b border-brand-border bg-white/95 backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-sm" : "py-4"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-300">
         <Link href={`/${language}`} className="flex items-center gap-4 text-left" aria-label="pyBIM home">
           <div className="flex items-center">
             <Image 
-              src={isDarkTheme ? "/logo_white_transparent.png" : "/logo_black_transparent.png"} 
+              src="/logo_black_transparent.png" 
               alt="pyBIM logo" 
               width={180} 
               height={80} 
@@ -91,7 +88,7 @@ export default function Header() {
               <Link 
                 key={item.href} 
                 href={localizedHref} 
-                className={`transition px-4 py-2 rounded-full font-medium ${isActive ? (isDarkTheme ? "text-purple-400 bg-purple-500/10" : "text-brand-primary bg-brand-primary/10") : (isDarkTheme ? "text-gray-300 hover:text-white hover:bg-white/5" : "text-brand-textSecondary hover:text-brand-primary hover:bg-brand-surface")}`}
+                className={`transition px-4 py-2 rounded-full font-medium ${isActive ? "text-brand-primary bg-brand-primary/10" : "text-brand-textSecondary hover:text-brand-primary hover:bg-brand-surface"}`}
               >
                 {t(item.tKey)}
               </Link>
@@ -104,7 +101,7 @@ export default function Header() {
             onMouseEnter={() => setMegaMenuOpen(true)}
             onMouseLeave={() => setMegaMenuOpen(false)}
           >
-            <button className={`flex items-center gap-1 transition px-4 py-2 rounded-full font-medium ${megaMenuOpen ? (isDarkTheme ? 'text-white bg-white/10' : 'text-brand-primary bg-brand-surface') : (isDarkTheme ? 'text-gray-300 hover:text-white hover:bg-white/5' : 'text-brand-textSecondary hover:text-brand-primary hover:bg-brand-surface')}`}>
+            <button className={`flex items-center gap-1 transition px-4 py-2 rounded-full font-medium ${megaMenuOpen ? 'text-brand-primary bg-brand-surface' : 'text-brand-textSecondary hover:text-brand-primary hover:bg-brand-surface'}`}>
               pyBIM <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${megaMenuOpen ? 'rotate-180' : ''}`} />
             </button>
 
@@ -165,10 +162,10 @@ export default function Header() {
           <div className="relative">
             <button 
               onClick={() => setLangOpen(!langOpen)}
-              className={`flex items-center gap-2 px-3 py-2 rounded-full transition ${isDarkTheme ? 'bg-[#18181b] border border-gray-800 hover:border-gray-600' : 'bg-brand-surface border border-brand-border hover:border-brand-primary/50 hover:bg-brand-surfaceHover'}`}
+              className="flex items-center gap-2 bg-brand-surface border border-brand-border px-3 py-2 rounded-full transition hover:border-brand-primary/50 hover:bg-brand-surfaceHover"
             >
-              <Globe className={`w-4 h-4 ${isDarkTheme ? 'text-gray-400' : 'text-brand-textSecondary'}`} />
-              <span className={`text-xs font-bold uppercase ${isDarkTheme ? 'text-gray-400' : 'text-brand-textSecondary'}`}>{language}</span>
+              <Globe className="w-4 h-4 text-brand-textSecondary" />
+              <span className="text-xs font-bold text-brand-textSecondary uppercase">{language}</span>
             </button>
             {langOpen && (
               <>

@@ -3,8 +3,16 @@
 import { useState } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { TerminalSquare, UploadCloud, Check, FileCode2, ShieldAlert } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+import enData from "@/lib/translations/en/pricing.json";
+import deData from "@/lib/translations/de/pricing.json";
+import itData from "@/lib/translations/it/pricing.json";
 
 export default function ProjectExecutionCalculator() {
+  const { language } = useLanguage();
+  const pricingData = language === 'it' ? itData : language === 'de' ? deData : enData;
+  const data = pricingData.execution;
+
   const [lod, setLod] = useState("300");
   const [modelSize, setModelSize] = useState(30); // 0 to 100
   
@@ -56,13 +64,13 @@ export default function ProjectExecutionCalculator() {
       <div className="mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#18181b] border border-gray-800 text-purple-400 font-mono text-xs font-semibold uppercase tracking-widest mb-4">
           <TerminalSquare className="w-3.5 h-3.5" />
-          <span>ALGORITHMIC PROJECT EXECUTION</span>
+          <span>{data.badge}</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
-          Execution Estimator
+          {data.title}
         </h2>
         <p className="text-gray-400 max-w-2xl text-sm leading-relaxed">
-          Outsourcing complex workflows to pyBIM algorithmic execution. Select project LOD, federated model size, and compliance mandates to generate an automated baseline.
+          {data.description}
         </p>
       </div>
 
@@ -72,7 +80,7 @@ export default function ProjectExecutionCalculator() {
         <div className="p-8 lg:p-10 lg:w-3/5 border-b lg:border-b-0 lg:border-r border-gray-800">
           
           <div className="mb-10">
-            <label className="block text-sm font-semibold text-gray-200 mb-4">Target Level of Development (LOD)</label>
+            <label className="block text-sm font-semibold text-gray-200 mb-4">{data.inputs.lod}</label>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {["200", "300", "400", "500"].map((lvl) => (
                 <button
@@ -94,7 +102,7 @@ export default function ProjectExecutionCalculator() {
             <div className="flex justify-between items-end mb-4">
               <label className="text-sm font-semibold text-gray-200 flex items-center gap-2">
                 <FileCode2 className="w-4 h-4 text-gray-400" />
-                Federated Model Size
+                {data.inputs.model_size}
               </label>
               <span className="text-gray-300 font-mono text-sm font-bold">{formatSize(modelSize)}</span>
             </div>
@@ -109,12 +117,12 @@ export default function ProjectExecutionCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-200 mb-4">Compliance Mandates</label>
+            <label className="block text-sm font-semibold text-gray-200 mb-4">{data.inputs.mandates}</label>
             <div className="flex flex-col gap-3">
               {[
-                { label: "ISO 19650 Compliance", state: isoActive, setter: setIsoActive },
-                { label: "COBie Data Extraction", state: cobieActive, setter: setCobieActive },
-                { label: "D.M. 560/312 (Italian Decree)", state: dmActive, setter: setDmActive }
+                { label: data.mandates_list[0], state: isoActive, setter: setIsoActive },
+                { label: data.mandates_list[1], state: cobieActive, setter: setCobieActive },
+                { label: data.mandates_list[2], state: dmActive, setter: setDmActive }
               ].map((mandate, idx) => (
                 <button 
                   key={idx}
@@ -144,7 +152,7 @@ export default function ProjectExecutionCalculator() {
           </div>
           
           <div className="text-gray-500 text-xs font-mono uppercase tracking-widest mb-4">
-            Estimated Execution Baseline
+            {data.output.baseline}
           </div>
           
           <div className="text-4xl md:text-5xl font-extrabold text-white mb-6 font-mono tracking-tighter">
@@ -154,7 +162,7 @@ export default function ProjectExecutionCalculator() {
           <div className="flex items-start gap-3 bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl mb-10 text-left">
             <ShieldAlert className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
             <p className="text-xs text-yellow-500/80 leading-relaxed">
-              This is a baseline algorithmic estimation. Final pricing requires structural document auditing (EIR/BEP).
+              {data.output.disclaimer}
             </p>
           </div>
 
@@ -163,7 +171,7 @@ export default function ProjectExecutionCalculator() {
             className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-purple-600 text-white font-bold text-sm uppercase tracking-wider hover:bg-purple-500 transition-all shadow-[0_0_20px_rgba(168,85,247,0.2)] hover:shadow-[0_0_30px_rgba(168,85,247,0.4)]"
           >
             <UploadCloud className="w-5 h-5" />
-            <span>UPLOAD EIR/BEP FOR PROPOSAL</span>
+            <span>{data.output.cta}</span>
           </Link>
         </div>
 

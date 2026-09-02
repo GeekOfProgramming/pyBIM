@@ -3,8 +3,16 @@
 import { useState } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { Server, TerminalSquare, ArrowRight, HardDrive, Cpu } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+import enData from "@/lib/translations/en/pricing.json";
+import deData from "@/lib/translations/de/pricing.json";
+import itData from "@/lib/translations/it/pricing.json";
 
 export default function InfrastructureCalculator() {
+  const { language } = useLanguage();
+  const pricingData = language === 'it' ? itData : language === 'de' ? deData : enData;
+  const data = pricingData.infrastructure;
+
   const [dataVolume, setDataVolume] = useState(50); // 0 to 100
   const [vram, setVram] = useState(50); // 0 to 100
 
@@ -41,13 +49,13 @@ export default function InfrastructureCalculator() {
       <div className="mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#18181b] border border-gray-800 text-emerald-400 font-mono text-xs font-semibold uppercase tracking-widest mb-4">
           <TerminalSquare className="w-3.5 h-3.5" />
-          <span>SOVEREIGN AI INFRASTRUCTURE</span>
+          <span>{data.badge}</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
-          Infrastructure Calculator
+          {data.title}
         </h2>
         <p className="text-gray-400 max-w-2xl text-sm leading-relaxed">
-          Hardware and server deployment estimation. Configure your required data thresholds and computational load to estimate Edge AI CapEx and Cloud VPS OpEx.
+          {data.description}
         </p>
       </div>
 
@@ -61,7 +69,7 @@ export default function InfrastructureCalculator() {
             <div className="flex justify-between items-end mb-4">
               <label className="text-sm font-semibold text-gray-200 flex items-center gap-2">
                 <HardDrive className="w-4 h-4 text-emerald-500" />
-                Local Data Processing Volume
+                {data.inputs.volume_label}
               </label>
               <span className="text-emerald-400 font-mono text-sm font-bold">{formatVolume(dataVolume)}</span>
             </div>
@@ -74,8 +82,8 @@ export default function InfrastructureCalculator() {
               className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-emerald-500 hover:accent-emerald-400 transition-all"
             />
             <div className="flex justify-between mt-2 text-[10px] text-gray-600 font-mono">
-              <span>10GB (RAG DB)</span>
-              <span>5TB+ (Enterprise BIM)</span>
+              <span>{data.inputs.volume_min}</span>
+              <span>{data.inputs.volume_max}</span>
             </div>
           </div>
 
@@ -84,7 +92,7 @@ export default function InfrastructureCalculator() {
             <div className="flex justify-between items-end mb-4">
               <label className="text-sm font-semibold text-gray-200 flex items-center gap-2">
                 <Cpu className="w-4 h-4 text-blue-500" />
-                Required LLM Compute / VRAM
+                {data.inputs.vram_label}
               </label>
               <span className="text-blue-400 font-mono text-sm font-bold">{formatVram(vram)}</span>
             </div>
@@ -97,8 +105,8 @@ export default function InfrastructureCalculator() {
               className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500 hover:accent-blue-400 transition-all"
             />
             <div className="flex justify-between mt-2 text-[10px] text-gray-600 font-mono">
-              <span>16GB (Base Model)</span>
-              <span>Multi-GPU Cluster (Agents)</span>
+              <span>{data.inputs.vram_min}</span>
+              <span>{data.inputs.vram_max}</span>
             </div>
           </div>
         </div>
@@ -113,17 +121,17 @@ export default function InfrastructureCalculator() {
             </div>
             <div>
               <div className="text-[10px] font-mono text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded inline-block mb-4 uppercase tracking-widest">
-                CapEx (Hardware)
+                {data.edge.badge}
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Edge AI Appliance</h3>
+              <h3 className="text-xl font-bold text-white mb-2">{data.edge.title}</h3>
               <p className="text-xs text-gray-500 mb-6 leading-relaxed">
-                Physical hardware + initial setup fee. Deployed directly into your local area network (LAN).
+                {data.edge.description}
               </p>
             </div>
             
             <div>
               <div className="text-3xl font-extrabold text-white mb-1">
-                €{(currentCapEx / 1000).toFixed(1)}k <span className="text-sm text-gray-600 font-normal">estimate</span>
+                €{(currentCapEx / 1000).toFixed(1)}k <span className="text-sm text-gray-600 font-normal">{data.edge.estimate}</span>
               </div>
             </div>
           </div>
@@ -135,17 +143,17 @@ export default function InfrastructureCalculator() {
             </div>
             <div>
               <div className="text-[10px] font-mono text-blue-500 bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded inline-block mb-4 uppercase tracking-widest">
-                OpEx (Cloud)
+                {data.cloud.badge}
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Dedicated GPU-VPS</h3>
+              <h3 className="text-xl font-bold text-white mb-2">{data.cloud.title}</h3>
               <p className="text-xs text-gray-500 mb-6 leading-relaxed">
-                Monthly rental of isolated, single-tenant cloud servers located in secure European datacenters.
+                {data.cloud.description}
               </p>
             </div>
             
             <div>
               <div className="text-3xl font-extrabold text-white mb-1">
-                €{Math.round(currentOpEx)} <span className="text-sm text-gray-600 font-normal">/ mo</span>
+                €{Math.round(currentOpEx)} <span className="text-sm text-gray-600 font-normal">{data.cloud.mo}</span>
               </div>
             </div>
           </div>
@@ -158,7 +166,7 @@ export default function InfrastructureCalculator() {
           href={`/contact?volume=${dataVolume}&vram=${vram}`}
           className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-white text-black font-bold text-sm uppercase tracking-wider hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
         >
-          <span>REQUEST TECHNICAL AUDIT</span>
+          <span>{data.cta}</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
