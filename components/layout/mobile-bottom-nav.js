@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { usePathname } from "next/navigation";
-import { Home, Wrench, Briefcase, Menu, X, Info, FileText, Phone } from "lucide-react";
+import { Home, Wrench, Briefcase, Menu, X, Info, FileText, Phone, Server } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const mainNavItems = [
@@ -13,6 +13,7 @@ const mainNavItems = [
 ];
 
 const moreNavItems = [
+  { href: "/pricing", tKey: "nav.pricing", icon: Server },
   { href: "/about", tKey: "nav.about", icon: Info },
   { href: "/contact", tKey: "nav.contact", icon: Phone }
 ];

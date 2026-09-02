@@ -1,8 +1,9 @@
 {
   "nav.home": "Home",
   "nav.services": "Services",
-  "nav.projects": "Projects",
-  "nav.education": "Education",
+  "nav.projects": "Projekte",
+  "nav.pricing": "Preise",
+  "nav.education": "Bildung",
   "nav.about": "About Us",
   "nav.careers": "Careers",
   "nav.contact": "Contact",
