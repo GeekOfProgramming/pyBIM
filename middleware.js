@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { jwtVerify } from "jose";
+import { jwtVerify } from "jose/jwt/verify";
 
 const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || 'pybim_enterprise_sovereign_secret_key_2026'
