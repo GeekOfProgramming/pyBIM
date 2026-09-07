@@ -1,0 +1,73 @@
+{
+  "title": "Sovereign AI Security Defense: CISO Whitepaper",
+  "subtitle": "This technical protocol proves zero data egress from the corporate firewall. Designed for structural integrity and absolute algorithmic containment.",
+  "block1": {
+    "title": "1. Network Isolation Architecture",
+    "diagram_caption": "Air-Gapped Execution Topology. Absolute containment of geometry and algorithmic metavariables within the corporate LAN perimeter."
+  },
+  "diagram_text": {
+    "lan": "CLIENT LAN PERIMETER",
+    "edge": "pyBIM Edge Hardware / Local Docker",
+    "local_llm": "Local LLM",
+    "rag": "RAG Pipeline",
+    "python": "Python Engine",
+    "revit": "Revit Database",
+    "cde": "Local CDE",
+    "public_apis": "Public APIs",
+    "cloud": "(OpenAI, Cloud)",
+    "zero_data": "ZERO OUTBOUND DATA"
+  },
+  "block2": {
+    "title": "2. Compliance Mapping Matrix",
+    "headers": ["Mandate / Standard", "Security Requirement", "pyBIM Technical Execution"],
+    "rows": [
+      {
+        "mandate": "ISO 19650-5 (Information Security)",
+        "requirement": "Metadata leakage prevention",
+        "execution": "Offline LLM deployment and localized processing exclusively on edge hardware."
+      },
+      {
+        "mandate": "UNI 11337",
+        "requirement": "Sovereign data management",
+        "execution": "C# function execution directly on the local Revit database with zero geometry extraction."
+      },
+      {
+        "mandate": "GDPR / DPA",
+        "requirement": "Data minimization & local custody",
+        "execution": "Absolute network severance for processing nodes. Data parsing occurs strictly offline."
+      }
+    ]
+  },
+  "block3": {
+    "title": "3. Zero-Telemetry & Data Retention",
+    "notice_title": "DEFINITIVE SECURITY NOTICE",
+    "notice_text": "\"The pyBIM infrastructure contains zero background telemetry daemons. Exactly 0 bytes of algorithmic logic, geometric coordinates, or structural parameters are transmitted to public API endpoints.\"",
+    "purge_title": "RAM DESTRUCTION PROTOCOL",
+    "purge_text": "RAG pipeline tensors and intermediate data vectors are instantaneously destroyed upon script execution. State persists solely in the client's air-gapped Common Data Environment (CDE)."
+  },
+  "block4": {
+    "title": "4. Encryption & Infrastructure Protocols",
+    "sector1_title": "GPU-VPS Sector",
+    "sector1_items": [
+      {
+        "title": "Drive Encryption Protocols",
+        "text": "AES-256-XTS At-Rest Encryption. Secure boot mandates locked firmware states."
+      },
+      {
+        "title": "Secure Networking Tunnels",
+        "text": "Network Ingress/Egress strictly limited to authenticated WireGuard/Tailscale tunnels. Unauthenticated packets dropped at kernel level."
+      }
+    ],
+    "sector2_title": "Edge Appliance Sector",
+    "sector2_items": [
+      {
+        "title": "Hardened OS Architecture",
+        "text": "Kernel-level isolation via hardened Linux OS (AppArmor mandatory enforcement)."
+      },
+      {
+        "title": "Hardware Isolation",
+        "text": "Hardware I/O disabled at BIOS level. Headless operation with physical tamper-evident chassis validation."
+      }
+    ]
+  }
+}

@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { TerminalSquare, LockOpen, Code2, PlayCircle, FolderGit2, CheckCircle2, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -12,8 +11,6 @@ export default function EducationPricingCards() {
   const { language } = useLanguage();
   const pricingData = language === 'it' ? itData : language === 'de' ? deData : enData;
   const data = pricingData.education;
-
-  const [billingCycle, setBillingCycle] = useState("annual"); // "monthly" or "annual"
 
   return (
     <section className="px-6 lg:px-8 max-w-7xl mx-auto w-full">
@@ -29,25 +26,7 @@ export default function EducationPricingCards() {
           {data.description}
         </p>
         
-        {/* Billing Toggle */}
-        <div className="inline-flex items-center p-1 bg-[#18181b] border border-gray-800 rounded-xl relative">
-          <button 
-            onClick={() => setBillingCycle("monthly")}
-            className={`relative z-10 px-6 py-2.5 text-sm font-semibold rounded-lg transition-colors ${billingCycle === "monthly" ? "text-white" : "text-gray-500 hover:text-gray-300"}`}
-          >
-            {data.billing.monthly}
-          </button>
-          <button 
-            onClick={() => setBillingCycle("annual")}
-            className={`relative z-10 px-6 py-2.5 text-sm font-semibold rounded-lg transition-colors ${billingCycle === "annual" ? "text-white" : "text-gray-500 hover:text-gray-300"}`}
-          >
-            {data.billing.annual}
-          </button>
-          <div 
-            className={`absolute top-1 bottom-1 w-1/2 bg-[#27272a] rounded-lg transition-transform duration-300 ease-in-out ${billingCycle === "annual" ? "translate-x-full left-[-4px]" : "translate-x-0 left-1"}`}
-            style={{ width: "calc(50% - 4px)" }}
-          />
-        </div>
+
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -62,9 +41,6 @@ export default function EducationPricingCards() {
             <h3 className="text-3xl font-bold text-white mb-2">{data.single.title}</h3>
             <p className="text-sm text-gray-500 mb-8">{data.single.subtitle}</p>
             
-            <div className="text-5xl font-extrabold text-white mb-8 tracking-tighter">
-              {data.single.price} <span className="text-lg text-gray-600 font-normal">{data.single.unit}</span>
-            </div>
 
             <ul className="space-y-4 mb-10 text-sm text-gray-300">
               <li className="flex items-start gap-3">
@@ -106,10 +82,6 @@ export default function EducationPricingCards() {
             <h3 className="text-3xl font-bold text-white mb-2">{data.all_access.title}</h3>
             <p className="text-sm text-blue-400/80 mb-8">{data.all_access.subtitle}</p>
             
-            <div className="text-5xl font-extrabold text-white mb-8 tracking-tighter">
-              {billingCycle === "monthly" ? data.all_access.price_monthly : data.all_access.price_annual} <span className="text-lg text-gray-600 font-normal">{data.all_access.unit}</span>
-              {billingCycle === "annual" && <div className="text-xs text-blue-400 font-mono mt-2 font-normal tracking-normal uppercase">{data.all_access.billed_yearly}</div>}
-            </div>
 
             <ul className="space-y-4 mb-10 text-sm text-gray-300">
               <li className="flex items-start gap-3">

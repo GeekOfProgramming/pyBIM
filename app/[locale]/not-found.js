@@ -61,9 +61,7 @@ export default function NotFound() {
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Quick Navigation</p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             {[
-              { label: "Algorithmic Engineering", href: "/services/algorithmic-engineering" },
-              { label: "Code & Automation", href: "/services/code-automation" },
-              { label: "CDE & Lifecycle Data", href: "/services/cde-lifecycle-data" },
+              { label: "Services", href: "/services" },
               { label: "About Us", href: "/about" },
               { label: "Projects", href: "/projects" },
               { label: "Contact", href: "/contact" },

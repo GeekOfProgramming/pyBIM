@@ -11,21 +11,27 @@ const FREE_EMAIL_PROVIDERS = [
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, companyName, email, phone, architecture, fileSize, message } = body;
+    const { name, companyName, email, phone, service, teamScale, architecture, fileSize, message } = body;
 
-    if (!name || !companyName || !email || !architecture || !fileSize || !message) {
+    const selectedService = service || architecture;
+    const selectedTeamScale = teamScale || fileSize;
+
+    if (!name || !companyName || !email || !selectedService || !selectedTeamScale || !message) {
       return Response.json({ ok: false, error: "Missing required fields" }, { status: 400 });
     }
 
     // Extract domain from email
-    const emailParts = email.toLowerCase().split("@");
+    const emailParts = email.toLowerCase().trim().split("@");
     if (emailParts.length !== 2) {
       return Response.json({ ok: false, error: "Invalid email format." }, { status: 400 });
     }
     const domain = emailParts[1];
 
+    const isDev = process.env.NODE_ENV !== "production";
+    const isPybimInternal = domain.includes("pybim");
+
     // Check if free email provider
-    if (FREE_EMAIL_PROVIDERS.includes(domain)) {
+    if (!isDev && !isPybimInternal && FREE_EMAIL_PROVIDERS.includes(domain)) {
       return Response.json(
         { ok: false, error: "ثبت درخواست انحصارا از طریق آدرس ایمیل شرکتی معتبر امکانپذیر است." },
         { status: 400 }
@@ -33,16 +39,18 @@ export async function POST(req) {
     }
 
     // MX Record Lookup
-    try {
-      const records = await dns.resolveMx(domain);
-      if (!records || records.length === 0) {
-        throw new Error("No MX records found");
+    if (!isDev && !isPybimInternal) {
+      try {
+        const records = await dns.resolveMx(domain);
+        if (!records || records.length === 0) {
+          throw new Error("No MX records found");
+        }
+      } catch (mxError) {
+        return Response.json(
+          { ok: false, error: "ثبت درخواست انحصارا از طریق آدرس ایمیل شرکتی معتبر امکانپذیر است." },
+          { status: 400 }
+        );
       }
-    } catch (mxError) {
-      return Response.json(
-        { ok: false, error: "ثبت درخواست انحصارا از طریق آدرس ایمیل شرکتی معتبر امکانپذیر است." },
-        { status: 400 }
-      );
     }
 
     // Send Email
@@ -69,8 +77,8 @@ export async function POST(req) {
             <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Company:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${companyName}</td></tr>
             <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Email:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${email}</td></tr>
             <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Phone:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${phone || "-"}</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Requested Architecture:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${architecture}</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Revit File Size:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${fileSize}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Service of Interest:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${selectedService}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Team / Practice Scale:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${selectedTeamScale}</td></tr>
           </table>
           <p><strong>Message / Project Description:</strong></p>
           <p style="white-space: pre-wrap; padding: 12px; background: #f5f5f5; border-radius: 4px;">${message}</p>

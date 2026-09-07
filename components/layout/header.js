@@ -4,46 +4,46 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Globe, ChevronDown, ChevronRight, Briefcase, FileText, Code2, Users, Building, Activity, Shield, Terminal, Cog, Calculator } from "lucide-react";
+import { Globe, ChevronDown, ChevronRight, Briefcase, FileText, Code2, Users, Building, Activity, Shield, Terminal, Cog, Calculator, UserCircle } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const navItems = [
-  { href: "/", tKey: "nav.home" },
-  { href: "/services", tKey: "nav.services" },
-  { href: "/pricing", tKey: "nav.pricing" },
-  { href: "/education", tKey: "nav.education" },
+  { href: "/", tKey: "header.nav.home" },
+  { href: "/services", tKey: "header.nav.services" },
+  { href: "/pricing", tKey: "header.nav.pricing" },
+  { href: "/education", tKey: "header.nav.education" },
 ];
 
 const pyBimLeftMenu = [
-  { id: "who_we_are", label: "Who we are", href: "/about" },
-  { id: "success_stories", label: "Success Stories", href: "/projects" },
-  { id: "work_with_us", label: "Work with us", href: "/careers" },
-  { id: "contact_us", label: "Contact us", href: "/contact" },
+  { id: "who_we_are", labelKey: "header.mega.who_we_are", href: "/about" },
+  { id: "success_stories", labelKey: "header.mega.success_stories", href: "/projects" },
+  { id: "work_with_us", labelKey: "header.mega.work_with_us", href: "/careers" },
+  { id: "contact_us", labelKey: "header.mega.contact_us", href: "/contact" },
 ];
 
 const pyBimRightMenu = {
   who_we_are: [
-    { label: "The Manifesto", icon: Terminal, href: "/about#manifesto" },
-    { label: "Our Journey", icon: Activity, href: "/about#journey" },
-    { label: "Tech Stack & Standards", icon: Code2, href: "/about#tech-stack" },
-    { label: "Our Impact", icon: Shield, href: "/about#impact" },
-    { label: "Our Team", icon: Users, href: "/about#team" },
+    { labelKey: "header.mega.manifesto", icon: Terminal, href: "/about#manifesto" },
+    { labelKey: "header.mega.journey", icon: Activity, href: "/about#journey" },
+    { labelKey: "header.mega.tech_stack", icon: Code2, href: "/about#tech-stack" },
+    { labelKey: "header.mega.impact", icon: Shield, href: "/about#impact" },
+    { labelKey: "header.mega.team", icon: Users, href: "/about#team" },
   ],
   success_stories: [
-    { label: "All Projects", icon: Briefcase, href: "/projects#all-projects" },
-    { label: "Featured Case Studies", icon: FileText, href: "/projects#featured" },
-    { label: "Client Testimonials", icon: Users, href: "/projects#testimonials" },
+    { labelKey: "header.mega.all_projects", icon: Briefcase, href: "/projects#all-projects" },
+    { labelKey: "header.mega.case_studies", icon: FileText, href: "/projects#featured" },
+    { labelKey: "header.mega.testimonials", icon: Users, href: "/projects#testimonials" },
   ],
   work_with_us: [
-    { label: "Culture & Benefits", icon: Users, href: "/careers#culture" },
-    { label: "Open Positions", icon: Briefcase, href: "/careers#positions" },
-    { label: "Life at pyBIM", icon: Building, href: "/careers#life" },
+    { labelKey: "header.mega.culture_benefits", icon: Users, href: "/careers#culture" },
+    { labelKey: "header.mega.open_positions", icon: Briefcase, href: "/careers#positions" },
+    { labelKey: "header.mega.life_at_pybim", icon: Building, href: "/careers#life" },
   ],
   contact_us: [
-    { label: "Technical & AI Audit", icon: Briefcase, href: "/contact#audit" },
-    { label: "Direct Channels", icon: Building, href: "/contact#direct-channels" },
-    { label: "Algorithmic ROI Matrix", icon: Calculator, href: "/contact#calculator" },
-    { label: "FAQ", icon: Cog, href: "/contact#support" },
+    { labelKey: "header.mega.audit", icon: Briefcase, href: "/contact#audit" },
+    { labelKey: "header.mega.direct_channels", icon: Building, href: "/contact#direct-channels" },
+    { labelKey: "header.mega.roi_matrix", icon: Calculator, href: "/contact#calculator" },
+    { labelKey: "header.mega.faq", icon: Cog, href: "/contact#support" },
   ],
 };
 
@@ -69,11 +69,11 @@ export default function Header() {
   return (
     <header className={`sticky top-0 z-[1000] border-b border-brand-border bg-white/95 backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-sm" : "py-4"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-300">
-        <Link href={`/${language}`} className="flex items-center gap-4 text-left" aria-label="pyBIM home">
+        <Link href={`/${language}`} className="flex items-center gap-4 text-left" aria-label={t("header.brand.aria_label") || "pyBIM home"}>
           <div className="flex items-center">
             <Image 
               src="/logo_black_transparent.png" 
-              alt="pyBIM logo" 
+              alt={t("header.brand.logo_alt") || "pyBIM logo"} 
               width={180} 
               height={80} 
               className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-10" : "h-14"}`} 
@@ -102,7 +102,7 @@ export default function Header() {
             onMouseLeave={() => setMegaMenuOpen(false)}
           >
             <button className={`flex items-center gap-1 transition px-4 py-2 rounded-full font-medium ${megaMenuOpen ? 'text-brand-primary bg-brand-surface' : 'text-brand-textSecondary hover:text-brand-primary hover:bg-brand-surface'}`}>
-              pyBIM <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${megaMenuOpen ? 'rotate-180' : ''}`} />
+              {t("header.nav.pybim") || "pyBIM"} <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${megaMenuOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {/* Megamenu Dropdown */}
@@ -122,7 +122,7 @@ export default function Header() {
                           onClick={() => setMegaMenuOpen(false)}
                           className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${activeMegaMenuItem === item.id ? 'bg-white shadow-sm text-brand-primary font-bold' : 'text-brand-textSecondary hover:bg-white hover:text-brand-primary font-medium'} ${isActiveLink && activeMegaMenuItem !== item.id ? 'text-brand-primary font-bold' : ''}`}
                         >
-                          <span className="text-sm tracking-wide">{item.label}</span>
+                          <span className="text-sm tracking-wide">{t(item.labelKey)}</span>
                           <ChevronRight className={`w-4 h-4 transition-transform ${activeMegaMenuItem === item.id ? 'translate-x-1 text-brand-primary' : 'text-transparent'}`} />
                         </Link>
                       );
@@ -144,7 +144,7 @@ export default function Header() {
                             <div className="shrink-0 w-10 h-10 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
                               <Icon className="w-5 h-5" />
                             </div>
-                            <span className="font-semibold text-sm text-brand-textPrimary group-hover:text-brand-primary transition-colors">{subItem.label}</span>
+                            <span className="font-semibold text-sm text-brand-textPrimary group-hover:text-brand-primary transition-colors">{t(subItem.labelKey)}</span>
                           </Link>
                         );
                       })}
@@ -185,8 +185,9 @@ export default function Header() {
             )}
           </div>
 
-          <Link href={`/${language}/contact`} className="hidden rounded-full bg-brand-accent px-6 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-brand-accentHover hover:-translate-y-0.5 md:block">
-            {t("nav.consultation")}
+          <Link href={`/${language}/portal/dashboard`} className="hidden rounded-full bg-brand-accent px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-brand-accentHover hover:-translate-y-0.5 md:flex items-center gap-2 font-mono">
+            <Shield className="w-3.5 h-3.5 text-white" />
+            {t("header.portal_btn") || "Client Portal"}
           </Link>
         </div>
       </div>

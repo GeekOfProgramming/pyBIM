@@ -4,9 +4,11 @@ import { useState } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { usePathname } from "next/navigation";
 import { Linkedin, Mail, MapPin, Phone, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Footer() {
   const pathname = usePathname();
+  const { t } = useLanguage();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [popup, setPopup] = useState(null);
@@ -23,7 +25,7 @@ export default function Footer() {
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.error || "Failed");
-      setPopup({ type: "success", message: "Subscription completed successfully!" });
+      setPopup({ type: "success", message: t("footer.newsletter.success_msg") });
       setEmail("");
     } catch (err) {
       setPopup({ type: "error", message: err.message });
@@ -32,7 +34,12 @@ export default function Footer() {
     }
   }
 
-  if (pathname?.startsWith("/admin")) return null;
+  const isExcluded = 
+    pathname?.startsWith("/admin") ||
+    pathname?.includes("/portal") ||
+    pathname?.includes("/login");
+
+  if (isExcluded) return null;
 
   return (
     <footer className="relative border-t border-brand-border bg-brand-primary pt-16 overflow-hidden">
@@ -41,21 +48,22 @@ export default function Footer() {
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.8fr] mb-16">
+        <div className="grid gap-8 lg:gap-10 lg:grid-cols-[280px_1fr] xl:grid-cols-[300px_1fr] mb-16 items-start">
           
-                    {/* LEFT SIDE: BRAND & SLOGAN */}
+          {/* LEFT SIDE: BRAND & SLOGAN */}
           <div className="flex flex-col">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              <p>Scale Through Code,<br />Not Headcount.</p>
+              <p>{t("footer.brand.slogan_line1")}<br />{t("footer.brand.slogan_line2")}</p>
             </h2>
-            <p className="text-white/80 mb-8 max-w-sm font-medium leading-relaxed">
-              Eliminating manual AEC bottlenecks with custom Python automation, zero-error BIM coordination, and strict <strong>ISO 19650</strong> and <strong>UNI 11337</strong> compliance.
-            </p>
+            <p 
+              className="text-white/80 mb-8 max-w-sm font-medium leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: t("footer.brand.description") }}
+            />
             
             {/* Social Icons */}
-            <p className="text-white/80 mb-3 font-semibold text-sm">Connect with our Core Engineers:</p>
+            <p className="text-white/80 mb-3 font-semibold text-sm">{t("footer.social.heading")}</p>
             <div className="flex gap-4 mb-10 text-white">
-              <a href="https://www.linkedin.com/company/pybim" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:bg-white hover:text-[#0077b5] transition bg-white/10 p-2.5 rounded-full border border-white/20">
+              <a href="https://www.linkedin.com/company/pybim" target="_blank" rel="noopener noreferrer" aria-label={t("footer.social.linkedin_label")} className="hover:bg-white hover:text-[#0077b5] transition bg-white/10 p-2.5 rounded-full border border-white/20">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
@@ -65,18 +73,18 @@ export default function Footer() {
               <div className="mb-3 inline-block">
                 <img src="/logo_white_transparent.png" alt="pyBIM logo" className="h-8 w-auto object-contain" />
               </div>
-              <div className="font-bold text-white">pyBIM Algorithmic R&D Lab</div>
-              <div className="mt-1 text-white/80 font-medium">Padua Tech Hub, Italy</div>
+              <div className="font-bold text-white">{t("footer.legal.lab_name")}</div>
+              <div className="mt-1 text-white/80 font-medium">{t("footer.legal.location")}</div>
             </div>
           </div>
 
           {/* RIGHT SIDE: LIGHT PANEL CARD */}
-          <div className="rounded-[2.5rem] border border-brand-border bg-white p-8 md:p-12 shadow-2xl">
-                        {/* Newsletter Block */}
+          <div className="rounded-[2.5rem] border border-brand-border bg-white p-6 sm:p-8 md:p-10 xl:p-12 shadow-2xl overflow-hidden">
+            {/* Newsletter Block */}
             <div className="mb-12 border-b border-brand-border pb-10">
-              <h3 className="text-2xl font-bold text-brand-textPrimary mb-3">The AEC Automation Brief</h3>
+              <h3 className="text-2xl font-bold text-brand-textPrimary mb-3">{t("footer.newsletter.title")}</h3>
               <p className="text-sm text-brand-textSecondary mb-6 font-medium leading-relaxed">
-                Join tier-one DACH and Italian engineering firms receiving our latest Python scripts, ROI breakdowns, and algorithmic bottleneck solutions directly.
+                {t("footer.newsletter.subtitle")}
               </p>
               <form className="group flex flex-col gap-4" onSubmit={handleNewsletter}>
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -84,14 +92,14 @@ export default function Footer() {
                     type="email" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Your email address"
+                    placeholder={t("footer.newsletter.placeholder")}
                     required
                     className="flex-1 rounded-2xl border border-brand-border bg-brand-surface px-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
                   />
                   <button 
                     type="submit" 
                     disabled={loading} 
-                    aria-label="Subscribe" 
+                    aria-label={t("footer.newsletter.button_label")} 
                     className="group/btn relative inline-flex items-center justify-center rounded-2xl bg-brand-accent px-6 py-4 text-white shadow-[0_10px_20px_-10px_rgba(249,115,22,0.4)] transition-all duration-300 hover:-translate-y-1 hover:bg-brand-accentHover hover:shadow-[0_15px_25px_-10px_rgba(249,115,22,0.5)] group-invalid:bg-orange-200 group-invalid:text-black group-invalid:shadow-none group-invalid:pointer-events-none group-invalid:transform-none disabled:opacity-60 overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-white/20 translate-y-full transition-transform duration-300 group-hover/btn:translate-y-0 group-invalid:hidden" />
@@ -106,60 +114,64 @@ export default function Footer() {
                     className="mt-1 w-4 h-4 rounded border-brand-border bg-brand-surface text-brand-primary focus:ring-brand-primary focus:ring-offset-0 cursor-pointer"
                   />
                   <label htmlFor="privacy-footer" className="text-xs text-brand-textSecondary leading-relaxed">
-                    I accept the <Link href="/privacy-policy" className="text-brand-primary font-semibold hover:underline">Privacy Policy</Link>.<br />
-                    <span className="italic opacity-80">(100% Free & Secure. Pure engineering data, no marketing fluff. Unsubscribe anytime.)</span>
+                    {t("footer.newsletter.privacy_prefix")}<Link href="/privacy-policy" className="text-brand-primary font-semibold hover:underline">{t("footer.newsletter.privacy_link")}</Link>{t("footer.newsletter.privacy_dot")}<br />
+                    <span className="italic opacity-80">{t("footer.newsletter.privacy_microcopy")}</span>
                   </label>
                 </div>
               </form>
             </div>
 
-                        {/* Three Columns */}
-            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Three Columns (Proportional Layout for Zero Wrapping on Laptop) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[130px_1fr_210px] xl:grid-cols-[140px_1fr_220px] gap-8 lg:gap-6 xl:gap-10 items-start">
               {/* Quick Links */}
-              <div>
-                <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
-                <ul className="space-y-4 text-brand-textSecondary font-medium">
-                  <li><Link href="/" className="hover:text-brand-primary transition">Home</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition">Services</Link></li>
-                  <li><Link href="/projects" className="hover:text-brand-primary transition">Projects</Link></li>
-                  <li><Link href="/about" className="hover:text-brand-primary transition">About Us</Link></li>
-                  <li><Link href="/contact" className="hover:text-brand-primary transition">Contact</Link></li>
+              <div className="shrink-0">
+                <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">{t("footer.quick_links.title")}</h4>
+                <ul className="space-y-4 text-brand-textSecondary font-medium text-sm">
+                  <li><Link href="/" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.home")}</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.services")}</Link></li>
+                  <li><Link href="/pricing" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.pricing")}</Link></li>
+                  <li><Link href="/about" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.who_we_are")}</Link></li>
+                  <li><Link href="/careers" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.work_with_us")}</Link></li>
+                  <li><Link href="/contact" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.contact_us")}</Link></li>
                 </ul>
               </div>
 
-              {/* Our Services */}
-              <div>
-                <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">Core Solutions</h4>
-                <ul className="space-y-4 text-brand-textSecondary font-medium">
-                  <li><Link href="/services/algorithmic-engineering" className="hover:text-brand-primary transition">Algorithmic Engineering</Link></li>
-                  <li><Link href="/services/code-automation" className="hover:text-brand-primary transition">Code & Automation</Link></li>
-                  <li><Link href="/services/cde-lifecycle-data" className="hover:text-brand-primary transition">CDE & Lifecycle Data</Link></li>
+              {/* Core Solutions */}
+              <div className="min-w-0">
+                <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">{t("footer.core_solutions.title")}</h4>
+                <ul className="space-y-4 text-brand-textSecondary font-medium text-sm">
+                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.bim_execution")}</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.revit_automation")}</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.clash_detection")}</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.5d_qto")}</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.iso_cobie")}</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.sovereign_ai")}</Link></li>
                 </ul>
               </div>
 
               {/* Contact Info */}
-              <div>
-                <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">Contact Us</h4>
-                <ul className="space-y-5 text-brand-textSecondary font-medium">
+              <div className="shrink-0">
+                <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">{t("footer.contact_info.title")}</h4>
+                <ul className="space-y-4 text-brand-textSecondary font-medium text-sm">
                   <li className="flex gap-3">
-                    <Phone className="w-5 h-5 text-brand-primary shrink-0" />
+                    <Phone className="w-5 h-5 text-brand-primary shrink-0 mt-0.5" />
                     <div>
-                      <div className="text-xs text-brand-textSecondary/70 mb-1">Landline</div>
-                      <a href="tel:+390491234567" className="hover:text-brand-primary transition text-sm font-semibold text-brand-textPrimary">+39 049 123 4567</a>
+                      <div className="text-[11px] text-brand-textSecondary/70 uppercase font-semibold">{t("footer.contact_info.landline_label")}</div>
+                      <a href="tel:+390491234567" className="hover:text-brand-primary transition font-semibold text-brand-textPrimary whitespace-nowrap">{t("footer.contact_info.landline_val")}</a>
                     </div>
                   </li>
                   <li className="flex gap-3">
-                    <Mail className="w-5 h-5 text-brand-primary shrink-0" />
+                    <Mail className="w-5 h-5 text-brand-primary shrink-0 mt-0.5" />
                     <div>
-                      <div className="text-xs text-brand-textSecondary/70 mb-1">E-mail</div>
-                      <a href="mailto:info@pybim.com" className="hover:text-brand-primary transition text-sm break-all font-semibold text-brand-textPrimary">info@pybim.com</a>
+                      <div className="text-[11px] text-brand-textSecondary/70 uppercase font-semibold">{t("footer.contact_info.email_label")}</div>
+                      <a href="mailto:info@pybim.com" className="hover:text-brand-primary transition font-semibold text-brand-textPrimary whitespace-nowrap">{t("footer.contact_info.email_val")}</a>
                     </div>
                   </li>
                   <li className="flex gap-3">
-                    <MapPin className="w-5 h-5 text-brand-primary shrink-0" />
+                    <MapPin className="w-5 h-5 text-brand-primary shrink-0 mt-0.5" />
                     <div>
-                      <div className="text-xs text-brand-textSecondary/70 mb-1">Location</div>
-                      <div className="text-sm font-semibold text-brand-textPrimary">Padua, Veneto, Italy</div>
+                      <div className="text-[11px] text-brand-textSecondary/70 uppercase font-semibold">{t("footer.contact_info.location_label")}</div>
+                      <div className="font-semibold text-brand-textPrimary whitespace-nowrap">{t("footer.contact_info.location_val")}</div>
                     </div>
                   </li>
                 </ul>
@@ -171,12 +183,13 @@ export default function Footer() {
         {/* BOTTOM BAR */}
         <div className="border-t border-white/20 pt-8 pb-28 lg:pb-8 mt-4 flex flex-col lg:flex-row items-center justify-between gap-4">
           <p className="text-sm text-white/80 font-medium text-center md:text-left">
-            Copyright © 2026 pyBIM. All rights reserved.
+            {t("footer.bottom.copyright")}
           </p>
           <div className="flex gap-6 text-sm text-white/80 font-medium justify-center flex-wrap">
-            <Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
-            <Link href="/cookie-policy" className="hover:text-white transition">Cookie Policy</Link>
-            <Link href="/terms-and-conditions" className="hover:text-white transition">Terms and Conditions</Link>
+            <Link href="/privacy-policy" className="hover:text-white transition">{t("footer.bottom.privacy_policy")}</Link>
+            <Link href="/security" className="hover:text-white transition">{t("footer.bottom.enterprise_security")}</Link>
+            <Link href="/cookie-policy" className="hover:text-white transition">{t("footer.bottom.cookie_policy")}</Link>
+            <Link href="/terms-and-conditions" className="hover:text-white transition">{t("footer.bottom.terms_and_conditions")}</Link>
           </div>
         </div>
       </div>
@@ -189,7 +202,7 @@ export default function Footer() {
             </div>
             
             <h3 className="mb-2 text-2xl font-bold text-brand-textPrimary">
-              {popup.type === 'success' ? "Success!" : "Action Required"}
+              {popup.type === 'success' ? t("footer.popup.success_title") : t("footer.popup.error_title")}
             </h3>
             
             <p className="mb-8 text-base font-medium leading-relaxed text-brand-textSecondary" style={{ direction: 'rtl' }}>
@@ -200,7 +213,7 @@ export default function Footer() {
               onClick={() => setPopup(null)}
               className={`w-full rounded-2xl px-6 py-4 font-bold text-white shadow-md transition-all hover:-translate-y-0.5 ${popup.type === 'success' ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-brand-primary hover:bg-brand-primaryHover'}`}
             >
-              {popup.type === 'success' ? "Close" : "Got it"}
+              {popup.type === 'success' ? t("footer.popup.close_btn") : t("footer.popup.got_it_btn")}
             </button>
           </div>
         </div>

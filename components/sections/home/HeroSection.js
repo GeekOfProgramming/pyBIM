@@ -43,7 +43,7 @@ export default function HeroSection() {
           
           <div className="flex flex-col items-center gap-2 w-full sm:w-1/2">
             <Link
-              href="/contact"
+              href="/contact#calculator"
               className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg bg-white hover:bg-gray-50 border border-gray-200 text-gray-900 font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-sm"
             >
               <Download className="w-4 h-4" />

@@ -166,11 +166,16 @@ export default function ServicesPageLayout() {
           <p className="text-lg text-brand-textSecondary font-medium mb-12 max-w-3xl">{t.poweredBy.subtitle}</p>
 
           <div className="relative">
-            <div className="absolute top-0 bottom-0 left-[23px] w-[2px] bg-brand-primary/20" />
             <div className="space-y-12">
               {(t.poweredBy.pipeline || []).map((step, idx) => (
                 <div key={idx} className="relative pl-16 group">
-                  <div className="absolute left-0 top-0 w-12 h-12 rounded-2xl bg-brand-surface border-2 border-brand-primary/20 group-hover:border-brand-primary group-hover:bg-brand-primary/10 flex items-center justify-center font-bold text-brand-primary transition-all duration-300">
+                  {/* Connecting Line between badges (strictly underneath and stops at final badge) */}
+                  {idx < (t.poweredBy.pipeline?.length || 0) - 1 && (
+                    <div className="absolute left-[23px] top-6 h-[calc(100%+48px)] w-[2px] bg-brand-primary/20 z-0 pointer-events-none" />
+                  )}
+
+                  {/* Step Number Badge (z-10 with opaque surface background preventing line bleed-through on hover) */}
+                  <div className="absolute left-0 top-0 z-10 w-12 h-12 rounded-2xl bg-brand-surface border-2 border-brand-primary/20 group-hover:border-brand-primary group-hover:bg-[#E9F0FD] flex items-center justify-center font-bold text-brand-primary transition-all duration-300 shadow-sm">
                     {idx + 1}
                   </div>
                   <h5 className="text-xl font-bold text-brand-textPrimary mb-2">{step.title}</h5>

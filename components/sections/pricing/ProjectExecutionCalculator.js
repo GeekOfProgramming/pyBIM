@@ -17,8 +17,13 @@ export default function ProjectExecutionCalculator() {
   const [modelSize, setModelSize] = useState(30); // 0 to 100
   
   const [isoActive, setIsoActive] = useState(false);
-  const [cobieActive, setCobieActive] = useState(false);
+  const [uniActive, setUniActive] = useState(false);
   const [dmActive, setDmActive] = useState(false);
+  const [cobieActive, setCobieActive] = useState(false);
+
+  const [clashActive, setClashActive] = useState(false);
+  const [metaActive, setMetaActive] = useState(false);
+  const [paramActive, setParamActive] = useState(false);
 
   // Base pricing based on LOD
   const getLodBase = () => {
@@ -36,12 +41,18 @@ export default function ProjectExecutionCalculator() {
 
   // Compliance flat fees
   const isoFee = isoActive ? 2000 : 0;
-  const cobieFee = cobieActive ? 1500 : 0;
+  const uniFee = uniActive ? 1500 : 0;
   const dmFee = dmActive ? 1200 : 0;
+  const cobieFee = cobieActive ? 1500 : 0;
+
+  // Algorithmic Complexity fees
+  const clashFee = clashActive ? 2500 : 0;
+  const metaFee = metaActive ? 1800 : 0;
+  const paramFee = paramActive ? 3500 : 0;
 
   const calculateEstimate = () => {
     const base = getLodBase() * sizeMultiplier;
-    const total = base + isoFee + cobieFee + dmFee;
+    const total = base + isoFee + uniFee + dmFee + cobieFee + clashFee + metaFee + paramFee;
     
     // Provide a range -10% to +15%
     const min = Math.round(total * 0.9 / 100) * 100;
@@ -116,13 +127,14 @@ export default function ProjectExecutionCalculator() {
             />
           </div>
 
-          <div>
+          <div className="mb-10">
             <label className="block text-sm font-semibold text-gray-200 mb-4">{data.inputs.mandates}</label>
             <div className="flex flex-col gap-3">
               {[
-                { label: data.mandates_list[0], state: isoActive, setter: setIsoActive },
-                { label: data.mandates_list[1], state: cobieActive, setter: setCobieActive },
-                { label: data.mandates_list[2], state: dmActive, setter: setDmActive }
+                { label: "ISO 19650 (Information Management)", state: isoActive, setter: setIsoActive },
+                { label: "UNI 11337 (Italian BIM Standard)", state: uniActive, setter: setUniActive },
+                { label: "D.M. 312/2021 (Public Procurement)", state: dmActive, setter: setDmActive },
+                { label: "COBie / IFC4 Data Handover", state: cobieActive, setter: setCobieActive }
               ].map((mandate, idx) => (
                 <button 
                   key={idx}
@@ -138,6 +150,34 @@ export default function ProjectExecutionCalculator() {
                   </span>
                   <div className={`w-10 h-6 rounded-full flex items-center p-1 transition-all ${mandate.state ? 'bg-purple-500' : 'bg-gray-800'}`}>
                     <div className={`w-4 h-4 bg-white rounded-full transition-transform ${mandate.state ? 'translate-x-4' : 'translate-x-0'}`} />
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-10">
+            <label className="block text-sm font-semibold text-gray-200 mb-4">Algorithmic Complexity Vectors</label>
+            <div className="flex flex-col gap-3">
+              {[
+                { label: "Automated Clash Resolution", state: clashActive, setter: setClashActive },
+                { label: "Custom Metadata Injection", state: metaActive, setter: setMetaActive },
+                { label: "Parametric Generative Execution", state: paramActive, setter: setParamActive }
+              ].map((vector, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => vector.setter(!vector.state)}
+                  className={`flex items-center justify-between p-4 rounded-xl border transition-all ${
+                    vector.state 
+                      ? "bg-purple-500/10 border-purple-500/50" 
+                      : "bg-[#09090b] border-gray-800 hover:border-gray-700"
+                  }`}
+                >
+                  <span className={`text-sm font-medium ${vector.state ? 'text-white' : 'text-gray-400'}`}>
+                    {vector.label}
+                  </span>
+                  <div className={`w-10 h-6 rounded-full flex items-center p-1 transition-all ${vector.state ? 'bg-purple-500' : 'bg-gray-800'}`}>
+                    <div className={`w-4 h-4 bg-white rounded-full transition-transform ${vector.state ? 'translate-x-4' : 'translate-x-0'}`} />
                   </div>
                 </button>
               ))}
@@ -161,8 +201,8 @@ export default function ProjectExecutionCalculator() {
           
           <div className="flex items-start gap-3 bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl mb-10 text-left">
             <ShieldAlert className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-            <p className="text-xs text-yellow-500/80 leading-relaxed">
-              {data.output.disclaimer}
+            <p className="text-xs text-yellow-500/80 leading-relaxed font-semibold">
+              Algorithmic baseline. Final execution cost dictates absolute auditing of structural Information Exchange Requirements (EIR) and BEP.
             </p>
           </div>
 

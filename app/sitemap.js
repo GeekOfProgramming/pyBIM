@@ -1,4 +1,3 @@
-import servicePages from "@/lib/data/services-data.json";
 import projectPages from "@/lib/data/projects-data.json";
 import { tutorials, news, toolGuides } from "@/lib/data/education-data";
 
@@ -29,15 +28,6 @@ export default function sitemap() {
         lastModified: now,
         changeFrequency: "weekly",
         priority: route === "" ? 1.0 : 0.8
-      });
-    });
-
-    servicePages.forEach((service) => {
-      entries.push({
-        url: `${baseUrl}/${locale}/services/${service.slug}`,
-        lastModified: now,
-        changeFrequency: "weekly",
-        priority: 0.9
       });
     });
 

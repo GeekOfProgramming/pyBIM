@@ -6,7 +6,13 @@ import { useLanguage } from "@/lib/LanguageContext";
 
 export default function BimCalculatorCta() {
   const { t, language } = useLanguage();
-  const [form, setForm] = useState({ name: "", companyName: "", email: "", fileSize: "", architecture: "" });
+  const [form, setForm] = useState({ 
+    name: "", 
+    companyName: "", 
+    email: "", 
+    modelerCount: "", 
+    hourlyRate: "" 
+  });
   const [loading, setLoading] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
   const [popup, setPopup] = useState(null);
@@ -16,31 +22,39 @@ export default function BimCalculatorCta() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/roi-matrix", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: form.name,
           companyName: form.companyName,
           email: form.email,
-          phone: "-",
-          architecture: form.architecture,
-          fileSize: form.fileSize,
-          message: `[ROI Matrix Download Request]`
+          modelerCount: form.modelerCount,
+          hourlyRate: form.hourlyRate,
+          language: language || "en",
         })
       });
-      const data = await res.json();
-      
-      if (!res.ok || !data.ok) {
-        throw new Error(data.error || "Failed to process request");
+
+      if (!res.ok) {
+        let errMessage = t("roi.error_failed");
+        try {
+          const errData = await res.json();
+          if (errData.error) errMessage = errData.error;
+        } catch (_) {}
+        throw new Error(errMessage);
       }
 
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
-      link.href = "/downloads/pyBIM-Automation-ROI-Calculator.xlsx";
-      link.download = "pyBIM-Automation-ROI-Calculator.xlsx";
+      link.href = url;
+      const safeCompany = (form.companyName || "Corporate").replace(/[^a-zA-Z0-9]/g, "_");
+      const filenamePrefix = language === 'it' ? 'pyBIM-Calcolo-ROI' : language === 'de' ? 'pyBIM-ROI-Rechner' : 'pyBIM-ROI-Matrix';
+      link.download = `${filenamePrefix}-${safeCompany}.xlsx`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
 
       setDownloaded(true);
     } catch (err) {
@@ -155,33 +169,34 @@ export default function BimCalculatorCta() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-brand-textPrimary tracking-wide">{t("roi.form.fileSize")}</label>
-                      <select
+                      <label className="text-xs font-bold text-brand-textPrimary tracking-wide">
+                        {t("roi.form.modelerCount")}
+                      </label>
+                      <input
+                        type="number"
+                        min="1"
+                        step="1"
                         required
-                        value={form.fileSize}
-                        onChange={(e) => setForm({ ...form, fileSize: e.target.value })}
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white cursor-pointer"
-                      >
-                        <option value="" disabled>{t("roi.form.fileSize_ph")}</option>
-                        <option value="< 100MB">&lt; 100MB</option>
-                        <option value="100MB - 500MB">100MB - 500MB</option>
-                        <option value="500MB - 1GB">500MB - 1GB</option>
-                        <option value="1GB+">1GB+</option>
-                      </select>
+                        placeholder={t("roi.form.modelerCount_ph")}
+                        value={form.modelerCount}
+                        onChange={(e) => setForm({ ...form, modelerCount: e.target.value })}
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                      />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-brand-textPrimary tracking-wide">{t("roi.form.architecture")}</label>
-                      <select
+                      <label className="text-xs font-bold text-brand-textPrimary tracking-wide">
+                        {t("roi.form.hourlyRate")}
+                      </label>
+                      <input
+                        type="number"
+                        min="1"
+                        step="any"
                         required
-                        value={form.architecture}
-                        onChange={(e) => setForm({ ...form, architecture: e.target.value })}
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white cursor-pointer"
-                      >
-                        <option value="" disabled>{t("roi.form.architecture_ph")}</option>
-                        <option value="Edge Appliance">Edge Appliance</option>
-                        <option value="Enterprise IT">Enterprise IT</option>
-                        <option value="GPU-VPS">GPU-VPS</option>
-                      </select>
+                        placeholder={t("roi.form.hourlyRate_ph")}
+                        value={form.hourlyRate}
+                        onChange={(e) => setForm({ ...form, hourlyRate: e.target.value })}
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                      />
                     </div>
                   </div>
 
@@ -231,10 +246,10 @@ export default function BimCalculatorCta() {
                     </div>
                     
                     <h3 className="mb-2 text-2xl font-bold text-brand-textPrimary">
-                      {popup.type === 'success' ? "Success!" : "Action Required"}
+                      {popup.type === 'success' ? t("contact.form.success_title") : t("contact.form.error_title")}
                     </h3>
                     
-                    <p className="mb-8 text-base font-medium leading-relaxed text-brand-textSecondary" style={{ direction: 'rtl' }}>
+                    <p className="mb-8 text-base font-medium leading-relaxed text-brand-textSecondary text-center" dir="auto">
                       {popup.message}
                     </p>
                     
@@ -242,7 +257,7 @@ export default function BimCalculatorCta() {
                       onClick={() => setPopup(null)}
                       className={`w-full rounded-2xl px-6 py-4 font-bold text-white shadow-md transition-all hover:-translate-y-0.5 ${popup.type === 'success' ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-brand-primary hover:bg-brand-primaryHover'}`}
                     >
-                      {popup.type === 'success' ? "Close" : "Got it"}
+                      {popup.type === 'success' ? t("contact.form.close_btn") : t("contact.form.got_it_btn")}
                     </button>
                   </div>
                 </div>

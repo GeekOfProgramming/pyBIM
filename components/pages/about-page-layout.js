@@ -442,9 +442,9 @@ export default function AboutPageLayout({ teamData }) {
                 </div>
               </div>
               <div className="relative z-10 w-full">
-                <a href="mailto:careers@pybim.com" className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-bold text-white hover:bg-brand-accentHover transition-all shadow-md hover:shadow-lg hover:-translate-y-1 mb-6 uppercase text-sm tracking-wider">
+                <Link href="/careers#positions" className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-bold text-white hover:bg-brand-accentHover transition-all shadow-md hover:shadow-lg hover:-translate-y-1 mb-6 uppercase text-sm tracking-wider">
                   {t("about.cta.c2_btn")} <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
                 <p className="text-xs text-brand-textSecondary/80 italic leading-relaxed border-t border-brand-primary/10 pt-4">
                   {t("about.cta.c2_sub")}
                 </p>

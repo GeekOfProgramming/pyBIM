@@ -30,7 +30,12 @@ export default function MobileBottomNav() {
     setIsOpen(false);
   }, [pathname]);
 
-  if (pathname?.startsWith("/admin")) return null;
+  const isExcluded = 
+    pathname?.startsWith("/admin") ||
+    pathname?.includes("/portal") ||
+    pathname?.includes("/login");
+
+  if (isExcluded) return null;
 
   return (
     <>
