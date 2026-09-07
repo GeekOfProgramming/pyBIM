@@ -7,6 +7,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 import useEmblaCarousel from "embla-carousel-react";
 
 import { allProjects, featuredAiCaseStudies } from "@/lib/data/projects-data";
+import testimonialsData from "@/lib/data/testimonials-data.json";
 
 export default function ProjectsPageLayout({ projects = [] }) {
   const { t, language } = useLanguage();
@@ -14,7 +15,7 @@ export default function ProjectsPageLayout({ projects = [] }) {
   const [allCount, setAllCount] = useState(3);
   const [featuredCount, setFeaturedCount] = useState(3);
   
-  const rawTestimonials = t("projects.testimonials.list");
+  const rawTestimonials = testimonialsData || t("projects.testimonials.list");
   const testimonials = Array.isArray(rawTestimonials) ? rawTestimonials : [];
   
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
@@ -75,7 +76,7 @@ export default function ProjectsPageLayout({ projects = [] }) {
       </section>
 
       {/* ALL PROJECTS SECTION */}
-      <section id="all-projects" className="bg-white w-full py-24">
+      <section id="all-projects" className="bg-brand-base w-full py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
@@ -92,7 +93,7 @@ export default function ProjectsPageLayout({ projects = [] }) {
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
             {allProjects.slice(0, allCount).map((project) => (
               <div key={project.slug} className="group flex flex-col rounded-3xl border border-brand-border bg-brand-surface overflow-hidden hover:-translate-y-2 transition-all duration-500 shadow-sm hover:shadow-md">
-                <Link href={`/projects/${project.slug}`} className="relative aspect-[4/3] w-full overflow-hidden block border-b border-brand-border bg-white">
+                <Link href={`/projects/${project.slug}`} className="relative aspect-[4/3] w-full overflow-hidden block border-b border-brand-border bg-brand-surface">
                   <img 
                     src={project.image} 
                     alt={project.title?.[language] || project.title?.en} 
@@ -124,7 +125,7 @@ export default function ProjectsPageLayout({ projects = [] }) {
           </div>
           {allCount < allProjects.length && (
             <div className="mt-16 flex justify-center">
-              <button onClick={() => setAllCount(p => p + 3)} className="rounded-full border border-brand-accent bg-white px-8 py-4 text-sm font-bold tracking-widest text-brand-accent uppercase hover:bg-brand-accent hover:text-white transition-all shadow-sm">
+              <button onClick={() => setAllCount(p => p + 3)} className="rounded-full border border-brand-accent bg-brand-card dark:bg-slate-900 px-8 py-4 text-sm font-bold tracking-widest text-brand-accent uppercase hover:bg-brand-accent hover:text-white transition-all shadow-sm">
                 {t("projects.all.more")}
               </button>
             </div>
@@ -150,7 +151,7 @@ export default function ProjectsPageLayout({ projects = [] }) {
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
             {featuredAiCaseStudies.slice(0, featuredCount).map((project) => {
               return (
-                <div key={project.slug} className="group relative rounded-3xl border border-brand-border bg-white overflow-hidden hover:-translate-y-2 transition-transform duration-500 shadow-md flex flex-col">
+                <div key={project.slug} className="group relative rounded-3xl border border-brand-border bg-brand-card overflow-hidden hover:-translate-y-2 transition-transform duration-500 shadow-md flex flex-col">
                   
                   {/* Image Container */}
                   <Link href={`/projects/${project.slug}`} className="relative aspect-[16/9] w-full overflow-hidden bg-brand-surface block">
@@ -168,7 +169,7 @@ export default function ProjectsPageLayout({ projects = [] }) {
                   </Link>
 
                   {/* Content Container */}
-                  <div className="p-8 flex flex-col flex-1 relative z-20 bg-white">
+                  <div className="p-8 flex flex-col flex-1 relative z-20 bg-brand-card">
                     {/* Meta */}
                     <div className="flex items-center gap-1.5 text-xs font-medium text-brand-textSecondary mb-4">
                       <Calendar className="w-4 h-4 text-brand-primary" />
@@ -196,7 +197,7 @@ export default function ProjectsPageLayout({ projects = [] }) {
           </div>
           {featuredCount < featuredAiCaseStudies.length && (
             <div className="mt-16 flex justify-center">
-              <button onClick={() => setFeaturedCount(p => p + 3)} className="rounded-full border border-brand-accent bg-white px-8 py-4 text-sm font-bold tracking-widest text-brand-accent uppercase hover:bg-brand-accent hover:text-white transition-all shadow-sm">
+              <button onClick={() => setFeaturedCount(p => p + 3)} className="rounded-full border border-brand-accent bg-brand-card dark:bg-slate-900 px-8 py-4 text-sm font-bold tracking-widest text-brand-accent uppercase hover:bg-brand-accent hover:text-white transition-all shadow-sm">
                 {t("projects.featured.more")}
               </button>
             </div>
@@ -205,7 +206,7 @@ export default function ProjectsPageLayout({ projects = [] }) {
       </section>
 
       {/* TESTIMONIALS SECTION */}
-      <section id="testimonials" className="py-24 bg-white border-b border-brand-border overflow-hidden">
+      <section id="testimonials" className="py-24 bg-brand-base border-b border-brand-border overflow-hidden">
         <div className="mx-auto px-6 lg:px-16">
           <div className="text-center mb-16 max-w-7xl mx-auto">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
@@ -219,7 +220,7 @@ export default function ProjectsPageLayout({ projects = [] }) {
           <div className="relative mx-auto max-w-[1400px]">
             <button 
               onClick={scrollPrev}
-              className="absolute left-[-24px] md:left-[-72px] top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-brand-border flex items-center justify-center bg-white hover:border-brand-accent hover:text-brand-accent transition-all shadow-md"
+              className="absolute left-[-24px] md:left-[-72px] top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-brand-border flex items-center justify-center bg-brand-card dark:bg-slate-800 text-brand-textPrimary hover:border-brand-accent hover:text-brand-accent transition-all shadow-md"
               aria-label="Previous testimonials"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -248,7 +249,7 @@ export default function ProjectsPageLayout({ projects = [] }) {
             
             <button 
               onClick={scrollNext}
-              className="absolute right-[-24px] md:right-[-72px] top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-brand-border flex items-center justify-center bg-white hover:border-brand-accent hover:text-brand-accent transition-all shadow-md"
+              className="absolute right-[-24px] md:right-[-72px] top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-brand-border flex items-center justify-center bg-brand-card dark:bg-slate-800 text-brand-textPrimary hover:border-brand-accent hover:text-brand-accent transition-all shadow-md"
               aria-label="Next testimonials"
             >
               <ChevronRight className="w-6 h-6" />
@@ -266,24 +267,24 @@ export default function ProjectsPageLayout({ projects = [] }) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="name" className="text-xs font-bold text-brand-textPrimary uppercase tracking-wider">{t("projects.review.form.name")}</label>
-                  <input type="text" id="name" placeholder={t("projects.review.form.name_ph")} className="w-full bg-white border border-brand-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all" />
+                  <input type="text" id="name" placeholder={t("projects.review.form.name_ph")} className="w-full bg-brand-card dark:bg-slate-900 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary/60 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all" />
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="jobTitle" className="text-xs font-bold text-brand-textPrimary uppercase tracking-wider">{t("projects.review.form.job")}</label>
-                  <input type="text" id="jobTitle" placeholder={t("projects.review.form.job_ph")} className="w-full bg-white border border-brand-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all" />
+                  <input type="text" id="jobTitle" placeholder={t("projects.review.form.job_ph")} className="w-full bg-brand-card dark:bg-slate-900 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary/60 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all" />
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="company" className="text-xs font-bold text-brand-textPrimary uppercase tracking-wider">{t("projects.review.form.company")}</label>
-                  <input type="text" id="company" placeholder={t("projects.review.form.company_ph")} className="w-full bg-white border border-brand-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all" />
+                  <input type="text" id="company" placeholder={t("projects.review.form.company_ph")} className="w-full bg-brand-card dark:bg-slate-900 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary/60 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all" />
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="location" className="text-xs font-bold text-brand-textPrimary uppercase tracking-wider">{t("projects.review.form.location")}</label>
-                  <input type="text" id="location" placeholder={t("projects.review.form.location_ph")} className="w-full bg-white border border-brand-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all" />
+                  <input type="text" id="location" placeholder={t("projects.review.form.location_ph")} className="w-full bg-brand-card dark:bg-slate-900 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary/60 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all" />
                 </div>
               </div>
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="quote" className="text-xs font-bold text-brand-textPrimary uppercase tracking-wider">{t("projects.review.form.feedback")}</label>
-                <textarea id="quote" rows={4} placeholder={t("projects.review.form.feedback_ph")} className="w-full bg-white border border-brand-border rounded-xl px-4 py-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"></textarea>
+                <textarea id="quote" rows={4} placeholder={t("projects.review.form.feedback_ph")} className="w-full bg-brand-card dark:bg-slate-900 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary/60 resize-none focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"></textarea>
               </div>
               <div className="flex items-start gap-3 mt-2">
                 <input 

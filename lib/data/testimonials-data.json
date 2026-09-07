@@ -1,98 +1,50 @@
 [
   {
     "id": "review-01",
-    "rating": 5,
-    "text": "Their manufacturing standards are outstanding. Every component delivered meets our exact specifications with consistent precision and durability. A truly dependable partner.",
-    "authorName": "Rohan Verma",
-    "authorRole": "Supply Chain Manager",
-    "avatar": ""
+    "quote": "pyBIM's automated clash resolution scripts cut our coordination cycles in half on the DACH hospital project. Their C# plugins operate flawlessly within our Revit environment.",
+    "author": "Senior BIM Manager",
+    "company": "Tier-1 European General Contractor (Germany)",
+    "location": "Germany",
+    "rating": 5
   },
   {
     "id": "review-02",
-    "rating": 5,
-    "text": "Avevamo urgenza di sostituire la vecchia caldaia prima dell'inverno. Il team di pyBIM è intervenuto a Mestre in tempi da record. Installazione pulita, personale educato e ci hanno anche aiutato con tutte le pratiche per la detrazione fiscale. Servizio a 5 stelle!",
-    "authorName": "Martina S.",
-    "authorRole": "Proprietaria di casa",
-    "avatar": ""
+    "quote": "Their ISO 19650 and COBie data structuring guaranteed zero-error tender submissions for our public infrastructure project in Milan.",
+    "author": "Lead Technical Director",
+    "company": "Engineering Studio (Italy)",
+    "location": "Italy",
+    "rating": 5
   },
   {
     "id": "review-03",
-    "rating": 5,
-    "text": "Il mio condizionatore ha smesso di funzionare in piena estate. I tecnici di pyBIM sono arrivati in poche ore e hanno risolto il problema ricaricando il gas e pulendo i filtri. Servizio eccellente e veloce!",
-    "authorName": "Luca B.",
-    "authorRole": "Proprietario di casa",
-    "avatar": ""
+    "quote": "Working with the AI integration has revolutionized our daily workflows, making us more efficient and prone to less errors.",
+    "author": "Innovation Lead",
+    "company": "Global Architecture Firm (UK)",
+    "location": "UK",
+    "rating": 5
   },
   {
     "id": "review-04",
-    "rating": 5,
-    "text": "Abbiamo affidato loro la ristrutturazione chiavi in mano del nostro appartamento a Mestre. Avere un unico referente ha eliminato tutto lo stress. Tempi rispettati rigorosamente e lavoro impeccabile.",
-    "authorName": "Giulia e Marco",
-    "authorRole": "Clienti Residenziali",
-    "avatar": ""
+    "quote": "The seamless implementation of their AI tools saved us hundreds of hours in repetitive tasks. Highly recommended.",
+    "author": "Project Coordinator",
+    "company": "Construction Innovators (Spain)",
+    "location": "Spain",
+    "rating": 5
   },
   {
     "id": "review-05",
-    "rating": 4,
-    "text": "Caldaia in blocco a dicembre. L'intervento è stato rapido e il tecnico mi ha anche spiegato come controllare la pressione dell'acqua per il futuro per evitare blocchi inutili. Molto professionali e prezzi onesti.",
-    "authorName": "Alessandro M.",
-    "authorRole": "Cliente Residenziale",
-    "avatar": ""
+    "quote": "Their AI-driven approach to BIM is exactly what the industry needs right now to move forward. Truly game-changing.",
+    "author": "Head of Digital Delivery",
+    "company": "Nordic Design Group (Sweden)",
+    "location": "Sweden",
+    "rating": 5
   },
   {
     "id": "review-06",
-    "rating": 5,
-    "text": "Lottavo con la muffa in camera da letto da anni. Hanno applicato un ciclo termoisolante e una pittura ecologica inodore. Finalmente il problema è sparito alla radice. Consigliatissimi!",
-    "authorName": "Chiara F.",
-    "authorRole": "Insegnante",
-    "avatar": ""
-  },
-  {
-    "id": "review-07",
-    "rating": 5,
-    "text": "Avevamo una perdita d'acqua occulta che ci stava facendo impazzire con la bolletta. Con la loro termocamera hanno trovato il guasto senza spaccare tutto il pavimento del bagno. Tecnologie davvero all'avanguardia.",
-    "authorName": "Roberto D.",
-    "authorRole": "Amministratore di Condominio",
-    "avatar": ""
-  },
-  {
-    "id": "review-08",
-    "rating": 4,
-    "text": "Hanno trasformato il mio vecchio impianto elettrico in una Smart Home installando dei moduli wireless. Ora controllo tapparelle e luci dallo smartphone senza aver dovuto fare opere murarie. Lavoro molto pulito.",
-    "authorName": "Stefano V.",
-    "authorRole": "Appassionato di tecnologia",
-    "avatar": ""
-  },
-  {
-    "id": "review-09",
-    "rating": 5,
-    "text": "Installazione di un impianto fotovoltaico con accumulo perfetta. Si sono occupati anche di tutte le pratiche ENEA per i bonus edilizi e le detrazioni fiscali. Un team di veri esperti che ti segue dall'inizio alla fine.",
-    "authorName": "Paolo R.",
-    "authorRole": "Proprietario di Villetta",
-    "avatar": ""
-  },
-  {
-    "id": "review-10",
-    "rating": 5,
-    "text": "The kitchen sink was completely clogged and my DIY methods failed. pyBIM sent a plumber who cleared it in 20 minutes using professional pressure tools. Great English-speaking service too!",
-    "authorName": "Sarah J.",
-    "authorRole": "Expat living in Venice",
-    "avatar": ""
-  },
-  {
-    "id": "review-11",
-    "rating": 5,
-    "text": "Volevamo installare delle telecamere di sicurezza nel nostro locale rispettando le norme sulla privacy (GDPR). Ci hanno fornito una consulenza perfetta e un'installazione a regola d'arte con la cartellonistica obbligatoria.",
-    "authorName": "Matteo L.",
-    "authorRole": "Proprietario di Negozio",
-    "avatar": ""
-  },
-  {
-    "id": "review-12",
-    "rating": 4,
-    "text": "La corrente continuava a saltare in casa per un sospetto cortocircuito. Il pronto intervento è arrivato in serata e ha messo in sicurezza l'impianto trovando subito l'elettrodomestico difettoso. Veramente affidabili.",
-    "authorName": "Elena G.",
-    "authorRole": "Cliente Residenziale",
-    "avatar": ""
+    "quote": "A flawless experience from start to finish. Their AI models predicted issues before they even happened on site.",
+    "author": "Operations Manager",
+    "company": "Swiss Build (Switzerland)",
+    "location": "Switzerland",
+    "rating": 5
   }
 ]

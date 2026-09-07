@@ -13,8 +13,8 @@ export default function EducationPageLayout() {
   const [toolCount, setToolCount] = useState(3);
 
   const renderCard = (post, idx, colorClass) => (
-    <div key={post.slug} className="group flex flex-col rounded-3xl border border-brand-border bg-white overflow-hidden hover:-translate-y-2 transition-all duration-500 shadow-md hover:shadow-xl">
-      <Link href={`/education/${post.slug}`} className="relative aspect-[4/3] w-full overflow-hidden block border-b border-brand-border">
+    <div key={post.slug} className="group flex flex-col rounded-3xl border border-brand-border bg-brand-card overflow-hidden hover:-translate-y-2 transition-all duration-500 shadow-md hover:shadow-xl">
+      <Link href={`/education/${post.slug}`} className="relative aspect-[4/3] w-full overflow-hidden block border-b border-brand-border bg-brand-surface">
         <img 
           src={post.image} 
           alt={post.title?.[language] || post.title?.en} 
@@ -75,7 +75,7 @@ export default function EducationPageLayout() {
       </section>
 
       {/* SECTION 1: TUTORIALS */}
-      <section className="bg-white w-full border-b border-brand-border py-24">
+      <section className="bg-brand-base w-full border-b border-brand-border py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
@@ -90,7 +90,7 @@ export default function EducationPageLayout() {
           </div>
           {tutCount < tutorials.length && (
             <div className="mt-16 flex justify-center">
-              <button onClick={() => setTutCount(p => p + 3)} className="rounded-full border border-brand-accent bg-white px-8 py-4 text-sm font-bold tracking-widest text-brand-accent uppercase hover:bg-brand-accent hover:text-white transition-all shadow-sm">
+              <button onClick={() => setTutCount(p => p + 3)} className="rounded-full border border-brand-accent bg-brand-card dark:bg-slate-900 px-8 py-4 text-sm font-bold tracking-widest text-brand-accent uppercase hover:bg-brand-accent hover:text-white transition-all shadow-sm">
                 {t("education.seeMore")}
               </button>
             </div>
@@ -114,7 +114,7 @@ export default function EducationPageLayout() {
           </div>
           {newsCount < news.length && (
             <div className="mt-16 flex justify-center">
-              <button onClick={() => setNewsCount(p => p + 3)} className="rounded-full border border-brand-accent bg-white px-8 py-4 text-sm font-bold tracking-widest text-brand-accent uppercase hover:bg-brand-accent hover:text-white transition-all shadow-sm">
+              <button onClick={() => setNewsCount(p => p + 3)} className="rounded-full border border-brand-accent bg-brand-card dark:bg-slate-900 px-8 py-4 text-sm font-bold tracking-widest text-brand-accent uppercase hover:bg-brand-accent hover:text-white transition-all shadow-sm">
                 {t("education.seeMore")}
               </button>
             </div>
@@ -123,7 +123,7 @@ export default function EducationPageLayout() {
       </section>
 
       {/* SECTION 3: HOW TO USE OUR TOOLS */}
-      <section className="bg-white w-full py-24">
+      <section className="bg-brand-base w-full py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
@@ -141,7 +141,7 @@ export default function EducationPageLayout() {
           </div>
           {toolCount < toolGuides.length && (
             <div className="mt-16 flex justify-center">
-              <button onClick={() => setToolCount(p => p + 3)} className="rounded-full border border-brand-accent bg-white px-8 py-4 text-sm font-bold tracking-widest text-brand-accent uppercase hover:bg-brand-accent hover:text-white transition-all shadow-sm">
+              <button onClick={() => setToolCount(p => p + 3)} className="rounded-full border border-brand-accent bg-brand-card dark:bg-slate-900 px-8 py-4 text-sm font-bold tracking-widest text-brand-accent uppercase hover:bg-brand-accent hover:text-white transition-all shadow-sm">
                 {t("education.seeMore")}
               </button>
             </div>

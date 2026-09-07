@@ -3,6 +3,7 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import GoToTop from "@/components/layout/go-to-top";
 import { LanguageProvider } from "@/lib/LanguageContext";
+import { ThemeProvider } from "@/lib/ThemeContext";
 import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
 import IsolatedAnalytics from "@/components/ui/IsolatedAnalytics";
 import CookieConsent from "@/components/ui/CookieConsent";
@@ -97,18 +98,20 @@ export function generateStaticParams() {
 
 export default function RootLayout({ children, params }) {
   return (
-    <html lang={params?.locale || "en"}>
+    <html lang={params?.locale || "en"} suppressHydrationWarning>
       <body className="min-h-screen bg-brand-base text-brand-textPrimary antialiased">
-        <LanguageProvider>
-          <div className="fixed inset-0 -z-10 bg-brand-base" />
-          <Header />
-          <main className="pb-20 lg:pb-0">{children}</main>
-          <GoToTop />
-          <Footer />
-          <MobileBottomNav />
-          <CookieConsent />
-          <IsolatedAnalytics />
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <div className="fixed inset-0 -z-10 bg-brand-base" />
+            <Header />
+            <main className="pb-20 lg:pb-0">{children}</main>
+            <GoToTop />
+            <Footer />
+            <MobileBottomNav />
+            <CookieConsent />
+            <IsolatedAnalytics />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -33,23 +33,23 @@ export default function FAQSection() {
         {/* Right Column: Accordion */}
         <div className="space-y-4">
           {faqs.map((item, idx) => (
-            <div key={idx} className={`rounded-2xl border transition-all duration-300 ${openFaq === idx ? 'border-brand-textPrimary bg-brand-textPrimary shadow-xl' : 'border-brand-border bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-brand-textPrimary/20'}`}>
+            <div key={idx} className={`rounded-2xl border transition-all duration-300 ${openFaq === idx ? 'border-brand-primary dark:border-blue-500 bg-brand-surface dark:bg-slate-800 shadow-lg' : 'border-brand-border dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-brand-primary/40'}`}>
               <button 
                 onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)} 
                 type="button" 
                 className="flex w-full items-start justify-between gap-4 px-6 py-5 text-left"
               >
-                <span className={`font-semibold text-lg transition-colors ${openFaq === idx ? 'text-white' : 'text-brand-textPrimary hover:text-brand-primary/80'}`}>
+                <span className={`font-semibold text-lg transition-colors ${openFaq === idx ? 'text-brand-primary dark:text-blue-400' : 'text-brand-textPrimary hover:text-brand-primary/80'}`}>
                   {item.q}
                 </span>
-                <ChevronDown className={`h-5 w-5 shrink-0 mt-1 transition-transform duration-300 ${openFaq === idx ? "rotate-180 text-white" : "text-brand-textPrimary/50"}`} />
+                <ChevronDown className={`h-5 w-5 shrink-0 mt-1 transition-transform duration-300 ${openFaq === idx ? "rotate-180 text-brand-primary dark:text-blue-400" : "text-brand-textPrimary/50"}`} />
               </button>
               
               <div 
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
               >
                 <div 
-                  className={`px-6 pb-6 pt-2 text-base leading-relaxed font-medium ${openFaq === idx ? 'text-slate-300 [&_strong]:text-white [&_strong]:font-bold' : 'text-brand-textSecondary'}`}
+                  className={`px-6 pb-6 pt-2 text-base leading-relaxed font-medium ${openFaq === idx ? 'text-brand-textSecondary dark:text-slate-300 [&_strong]:text-brand-textPrimary dark:[&_strong]:text-white [&_strong]:font-bold' : 'text-brand-textSecondary'}`}
                   dangerouslySetInnerHTML={{ __html: item.a }}
                 />
               </div>

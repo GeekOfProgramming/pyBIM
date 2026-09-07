@@ -55,11 +55,11 @@ export default function AboutPageLayout({ teamData }) {
           <div className="grid gap-8 lg:grid-cols-3 max-w-7xl mx-auto">
 
             {/* Box 1: The Traditional "Modeling Farm" */}
-            <div className="rounded-3xl border border-red-200 bg-white p-8 md:p-10 relative overflow-hidden group hover:border-red-300 transition-colors shadow-sm flex flex-col h-full">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-red-50 blur-[60px] rounded-full group-hover:bg-red-100 transition-colors" />
+            <div className="rounded-3xl border border-red-200 dark:border-red-900/40 bg-white dark:bg-slate-900/90 p-8 md:p-10 relative overflow-hidden group hover:border-red-300 dark:hover:border-red-800/60 transition-colors shadow-sm flex flex-col h-full">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-red-50 dark:bg-red-950/30 blur-[60px] rounded-full group-hover:bg-red-100 dark:group-hover:bg-red-900/40 transition-colors" />
               <div className="relative z-10 flex-grow">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-red-50 text-red-500 border border-red-100">
+                  <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-red-50 dark:bg-red-950/50 text-red-500 border border-red-100 dark:border-red-900/40">
                     <Users className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-brand-textPrimary">{t("about.manifesto.box1_title")}</h3>
@@ -78,7 +78,7 @@ export default function AboutPageLayout({ teamData }) {
             </div>
 
             {/* Box 2: The pyBIM Automation Lab */}
-            <div className="rounded-3xl border-2 border-brand-primary/40 bg-white p-8 md:p-10 relative overflow-hidden group shadow-[0_0_40px_-10px_rgba(37,99,235,0.25)] hover:shadow-[0_0_50px_-10px_rgba(37,99,235,0.4)] hover:border-brand-primary/60 transition-all flex flex-col h-full lg:-translate-y-4 z-10">
+            <div className="rounded-3xl border-2 border-brand-primary/40 bg-white dark:bg-slate-900 p-8 md:p-10 relative overflow-hidden group shadow-[0_0_40px_-10px_rgba(37,99,235,0.25)] hover:shadow-[0_0_50px_-10px_rgba(37,99,235,0.4)] hover:border-brand-primary/60 transition-all flex flex-col h-full lg:-translate-y-4 z-10">
               <div className="absolute top-0 right-0 w-48 h-48 bg-brand-primary/5 blur-[60px] rounded-full group-hover:bg-brand-primary/10 transition-colors" />
               <div className="relative z-10 flex-grow">
                 <div className="flex items-center gap-4 mb-6">
@@ -105,11 +105,11 @@ export default function AboutPageLayout({ teamData }) {
             </div>
 
             {/* Box 3: The Generic Software Vendor */}
-            <div className="rounded-3xl border border-orange-200 bg-white p-8 md:p-10 relative overflow-hidden group hover:border-orange-300 transition-colors shadow-sm flex flex-col h-full">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-orange-50 blur-[60px] rounded-full group-hover:bg-orange-100 transition-colors" />
+            <div className="rounded-3xl border border-orange-200 dark:border-orange-900/40 bg-white dark:bg-slate-900/90 p-8 md:p-10 relative overflow-hidden group hover:border-orange-300 dark:hover:border-orange-800/60 transition-colors shadow-sm flex flex-col h-full">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-orange-50 dark:bg-orange-950/30 blur-[60px] rounded-full group-hover:bg-orange-100 dark:group-hover:bg-orange-900/40 transition-colors" />
               <div className="relative z-10 flex-grow">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-orange-50 text-orange-500 border border-orange-100">
+                  <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-orange-50 dark:bg-orange-950/50 text-orange-500 border border-orange-100 dark:border-orange-900/40">
                     <Building className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-brand-textPrimary">{t("about.manifesto.box2_title")}</h3>
@@ -147,7 +147,7 @@ export default function AboutPageLayout({ teamData }) {
 
             {/* Phase 1 */}
             <div className="relative pl-16 md:pl-0 group">
-              <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-white border-2 border-brand-primary shadow-[0_0_0_4px_rgba(37,99,235,0.1)] group-hover:shadow-[0_0_0_6px_rgba(37,99,235,0.2)] transition-shadow" />
+              <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-brand-primary shadow-[0_0_0_4px_rgba(37,99,235,0.1)] group-hover:shadow-[0_0_0_6px_rgba(37,99,235,0.2)] transition-shadow" />
               <div className="md:w-[45%] md:ml-auto md:pl-16">
                 <div className="text-sm font-mono font-bold text-brand-primary mb-2">{t("about.journey.badge")}</div>
                 <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">{t("about.journey.p1_title")}</h3>
@@ -166,7 +166,7 @@ export default function AboutPageLayout({ teamData }) {
 
             {/* Phase 2 */}
             <div className="relative pl-16 md:pl-0 group">
-              <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-white border-2 border-brand-primary shadow-[0_0_0_4px_rgba(37,99,235,0.1)] group-hover:shadow-[0_0_0_6px_rgba(37,99,235,0.2)] transition-shadow" />
+              <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-brand-primary shadow-[0_0_0_4px_rgba(37,99,235,0.1)] group-hover:shadow-[0_0_0_6px_rgba(37,99,235,0.2)] transition-shadow" />
               <div className="md:w-[45%] md:pr-16 md:text-right">
                 <div className="text-sm font-mono font-bold text-brand-primary mb-2">{t("about.journey.p2_badge")}</div>
                 <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">{t("about.journey.p2_title")}</h3>
@@ -232,7 +232,7 @@ export default function AboutPageLayout({ teamData }) {
           <div className="grid gap-8 lg:grid-cols-3">
 
             {/* 1. ENGINEERING TOOLS */}
-            <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
+            <div className="rounded-3xl bg-white dark:bg-slate-900 border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
               <div>
                 <div className="border-b border-brand-border pb-6 mb-6">
                   <h3 className="text-xl font-bold text-brand-textPrimary mb-2 flex items-center gap-2">
@@ -243,7 +243,7 @@ export default function AboutPageLayout({ teamData }) {
 
                 <div className="space-y-4 mb-6">
                   {(Array.isArray(t("about.tech.box1_items")) ? t("about.tech.box1_items") : []).map((item, idx) => (
-                    <div key={idx} className="bg-brand-surface/60 rounded-xl p-4 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 transition-colors">
+                    <div key={idx} className="bg-brand-surface/60 rounded-xl p-4 border border-brand-border/60 hover:bg-white dark:hover:bg-slate-800 hover:border-brand-primary/30 transition-colors">
                       <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
                       <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />
                     </div>
@@ -256,7 +256,7 @@ export default function AboutPageLayout({ teamData }) {
             </div>
 
             {/* 2. DEVELOPMENT STACK */}
-            <div className="rounded-3xl bg-white border-2 border-brand-primary/40 shadow-[0_0_40px_-10px_rgba(37,99,235,0.15)] p-8 flex flex-col justify-between relative group hover:border-brand-primary/60 transition-all z-10 lg:-translate-y-4">
+            <div className="rounded-3xl bg-white dark:bg-slate-900 border-2 border-brand-primary/40 shadow-[0_0_40px_-10px_rgba(37,99,235,0.15)] p-8 flex flex-col justify-between relative group hover:border-brand-primary/60 transition-all z-10 lg:-translate-y-4">
               <div className="absolute inset-0 bg-brand-primary/[0.02] rounded-3xl pointer-events-none" />
               <div className="relative z-10">
                 <div className="border-b border-brand-primary/20 pb-6 mb-6">
@@ -268,7 +268,7 @@ export default function AboutPageLayout({ teamData }) {
 
                 <div className="space-y-4 mb-6">
                   {(Array.isArray(t("about.tech.box2_items")) ? t("about.tech.box2_items") : []).map((item, idx) => (
-                    <div key={idx} className="bg-brand-primary/5 rounded-xl p-4 border border-brand-primary/15 hover:bg-white hover:border-brand-primary/40 transition-colors">
+                    <div key={idx} className="bg-brand-primary/5 rounded-xl p-4 border border-brand-primary/15 hover:bg-white dark:hover:bg-slate-800 hover:border-brand-primary/40 transition-colors">
                       <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
                       <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />
                     </div>
@@ -281,7 +281,7 @@ export default function AboutPageLayout({ teamData }) {
             </div>
 
             {/* 3. STANDARDS & PROTOCOLS */}
-            <div className="rounded-3xl bg-white border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
+            <div className="rounded-3xl bg-white dark:bg-slate-900 border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
               <div>
                 <div className="border-b border-brand-border pb-6 mb-6">
                   <h3 className="text-xl font-bold text-brand-textPrimary mb-2 flex items-center gap-2">
@@ -292,7 +292,7 @@ export default function AboutPageLayout({ teamData }) {
 
                 <div className="space-y-4 mb-6">
                   {(Array.isArray(t("about.tech.box3_items")) ? t("about.tech.box3_items") : []).map((item, idx) => (
-                    <div key={idx} className="bg-brand-surface/60 rounded-xl p-4 border border-brand-border/60 hover:bg-white hover:border-brand-primary/30 transition-colors">
+                    <div key={idx} className="bg-brand-surface/60 rounded-xl p-4 border border-brand-border/60 hover:bg-white dark:hover:bg-slate-800 hover:border-brand-primary/30 transition-colors">
                       <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
                       <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />
                     </div>
@@ -354,7 +354,7 @@ export default function AboutPageLayout({ teamData }) {
           <div className="grid gap-8 md:grid-cols-2">
 
             {/* Card 1 For Clients */}
-            <div className="rounded-[2.5rem] border border-brand-border bg-white shadow-lg p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/30 transition-colors">
+            <div className="rounded-[2.5rem] border border-brand-border bg-white dark:bg-slate-900 shadow-lg p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/30 transition-colors">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand-surface blur-[80px] rounded-full pointer-events-none group-hover:bg-brand-primary/5 transition-colors" />
               <div className="relative z-10 w-full mb-10">
                 <div className="flex items-center gap-4 mb-6">
@@ -393,7 +393,7 @@ export default function AboutPageLayout({ teamData }) {
                 </div>
               </div>
               <div className="relative z-10 w-full">
-                <Link href="/contact" className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full border border-brand-border bg-brand-surface px-8 py-4 font-bold text-brand-textPrimary hover:bg-white hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all mb-6 uppercase text-sm tracking-wider">
+                <Link href="/contact" className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full border border-brand-border bg-brand-surface px-8 py-4 font-bold text-brand-textPrimary hover:bg-white dark:hover:bg-slate-800 hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all mb-6 uppercase text-sm tracking-wider">
                   {t("about.cta.c1_btn")} <ArrowRight className="w-4 h-4" />
                 </Link>
                 <p className="text-xs text-brand-textSecondary italic leading-relaxed border-t border-brand-border/60 pt-4">
@@ -403,7 +403,7 @@ export default function AboutPageLayout({ teamData }) {
             </div>
 
             {/* Card 2 For Talent */}
-            <div className="rounded-[2.5rem] border border-brand-primary/20 bg-white shadow-xl p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/50 transition-colors">
+            <div className="rounded-[2.5rem] border border-brand-primary/20 bg-white dark:bg-slate-900 shadow-xl p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/50 transition-colors">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 blur-[80px] rounded-full group-hover:bg-brand-primary/10 transition-colors pointer-events-none" />
               <div className="relative z-10 w-full mb-10">
                 <div className="flex items-center gap-4 mb-6">

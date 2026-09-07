@@ -1,10 +1,12 @@
 "use client";
 
 import { GraduationCap, Building, ShieldCheck } from "lucide-react";
-import homeData from "@/lib/data/home-page-data.json";
+import { useLanguage } from "@/lib/LanguageContext";
+import homeData from "@/lib/data/home.json";
 
 export default function StrategicEcosystem() {
-  const data = homeData.strategicEcosystem;
+  const { language } = useLanguage();
+  const data = (homeData[language] || homeData.en).strategicEcosystem;
 
   const getIcon = (id) => {
     switch (id) {
@@ -21,22 +23,22 @@ export default function StrategicEcosystem() {
   };
 
   return (
-    <section className="py-24 px-6 lg:px-8 bg-white border-b border-gray-200">
+    <section className="py-24 px-6 lg:px-8 bg-white dark:bg-brand-base border-b border-gray-200 dark:border-white/10 transition-colors">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-500 tracking-tight mb-4">
-          {data.title_part1} <span className="text-gray-900">{data.title_part2}</span>
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-500 dark:text-slate-400 tracking-tight mb-4">
+          {data.title_part1} <span className="text-gray-900 dark:text-white">{data.title_part2}</span>
         </h2>
-        <p className="text-gray-600 mb-16 max-w-2xl mx-auto text-sm">
+        <p className="text-gray-600 dark:text-slate-400 mb-16 max-w-2xl mx-auto text-sm">
           {data.description}
         </p>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-start justify-center">
           {data.partners.map((partner) => (
-            <div key={partner.id} className="flex flex-col items-center justify-start gap-3 opacity-60 hover:opacity-100 transition-opacity text-center">
+            <div key={partner.id} className="flex flex-col items-center justify-start gap-3 opacity-70 hover:opacity-100 transition-opacity text-center">
               {getIcon(partner.id)}
-              <span className="font-mono text-sm font-bold tracking-widest text-gray-800">{partner.name}</span>
+              <span className="font-mono text-sm font-bold tracking-widest text-gray-800 dark:text-slate-200">{partner.name}</span>
               {partner.subtitle && (
-                <span className="text-xs text-gray-500 max-w-[200px] leading-relaxed">
+                <span className="text-xs text-gray-500 dark:text-slate-400 max-w-[200px] leading-relaxed">
                   {partner.subtitle}
                 </span>
               )}

@@ -1,17 +1,18 @@
 [
   {
     "id": "p1",
+    "slug": "automated-clash-detection",
     "category": "automation",
     "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop",
     "link": "https://github.com",
     "title": {
-      "it": "Automazione Clash Detection",
       "en": "Automated Clash Detection",
+      "it": "Rilevamento Automatico delle Interferenze",
       "de": "Automatisierte Kollisionsprüfung"
     },
     "desc": {
-      "it": "Script Python per Navisworks.",
       "en": "Python script for Navisworks.",
+      "it": "Script Python per Navisworks.",
       "de": "Python-Skript für Navisworks."
     },
     "tags": [

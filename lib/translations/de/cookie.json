@@ -1,0 +1,14 @@
+{
+  "cookie_policy.title": "Cookie-Richtlinie",
+  "cookie_policy.placeholder": "Dieses Dokument wird derzeit an die DSGVO-Standards angepasst. Die offizielle Richtlinie von Iubenda wird hier in Kürze verfügbar sein.",
+  "cookie_policy.embed_link_text": "Cookie-Richtlinie",
+
+  "cookie.banner.title": "Ihre Privatsphäre ist unsere Priorität",
+  "cookie.banner.desc_prefix": "Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern, personalisierte Inhalte bereitzustellen und unseren Datenverkehr zu analysieren. Durch Klicken auf „Alle akzeptieren“ stimmen Sie der Verwendung von Cookies gemäß unserer",
+  "cookie.banner.privacy_policy": "Datenschutzerklärung",
+  "cookie.banner.and": "und",
+  "cookie.banner.cookie_policy": "Cookie-Richtlinie",
+  "cookie.banner.btn_customize": "Anpassen",
+  "cookie.banner.btn_accept_all": "Alle akzeptieren",
+  "cookie.banner.alert_customize": "Das Cookie-Einstellungsfeld wird hier geöffnet."
+}

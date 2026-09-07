@@ -2,8 +2,11 @@
 
 import Link from "@/components/layout/LocalizedLink";
 import { Home, Layers, Terminal } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function NotFound() {
+  const { t } = useLanguage();
+
   return (
     <main className="min-h-screen w-full bg-[#0A0A0A] text-white flex flex-col items-center justify-center relative overflow-hidden font-sans px-6 py-20">
       
@@ -19,7 +22,7 @@ export default function NotFound() {
         {/* Code Badge Header */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/25 text-[#3B82F6] font-mono text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-md">
           <Terminal className="w-3.5 h-3.5" />
-          <span>// ERROR 404: ELEMENT_NOT_FOUND</span>
+          <span>{t("notfound.badge") || "// ERROR 404: ELEMENT_NOT_FOUND"}</span>
         </div>
 
         {/* Glowing 404 Numbers */}
@@ -29,12 +32,12 @@ export default function NotFound() {
 
         {/* Sub-headline */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight -mt-4 sm:-mt-8 mb-4">
-          Spatial Coordinates Not Found.
+          {t("notfound.title") || "Spatial Coordinates Not Found."}
         </h2>
 
         {/* Description Body */}
         <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-xl font-medium leading-relaxed mb-10">
-          The parameter or page you are searching for does not exist in our BIM database. It may have been relocated, updated, or deleted.
+          {t("notfound.desc") || "The parameter or page you are searching for does not exist in our BIM database. It may have been relocated, updated, or deleted."}
         </p>
 
         {/* Action Buttons */}
@@ -44,7 +47,7 @@ export default function NotFound() {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#3B82F6] hover:bg-blue-600 text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:shadow-[0_0_45px_rgba(59,130,246,0.6)] hover:-translate-y-0.5"
           >
             <Home className="w-4 h-4" />
-            <span>Return to Homepage</span>
+            <span>{t("notfound.btn_home") || "Return to Homepage"}</span>
           </Link>
 
           <Link
@@ -52,19 +55,21 @@ export default function NotFound() {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#171717] hover:bg-[#262626] border border-[#262626] hover:border-[#3B82F6]/50 text-gray-200 hover:text-white font-bold text-sm uppercase tracking-wider transition-all duration-300"
           >
             <Layers className="w-4 h-4 text-[#3B82F6]" />
-            <span>Explore Services</span>
+            <span>{t("notfound.btn_services") || "Explore Services"}</span>
           </Link>
         </div>
 
         {/* Quick Navigation Footer Links */}
         <div className="border-t border-[#262626] pt-8 w-full max-w-xl">
-          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Quick Navigation</p>
+          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">
+            {t("notfound.quick_nav") || "Quick Navigation"}
+          </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             {[
-              { label: "Services", href: "/services" },
-              { label: "About Us", href: "/about" },
-              { label: "Projects", href: "/projects" },
-              { label: "Contact", href: "/contact" },
+              { label: t("notfound.link_services") || "Services", href: "/services" },
+              { label: t("notfound.link_about") || "About Us", href: "/about" },
+              { label: t("notfound.link_projects") || "Projects", href: "/projects" },
+              { label: t("notfound.link_contact") || "Contact", href: "/contact" },
             ].map((link, idx) => (
               <Link
                 key={idx}

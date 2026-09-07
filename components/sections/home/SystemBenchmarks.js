@@ -1,17 +1,19 @@
 "use client";
 
 import { Activity } from "lucide-react";
-import homeData from "@/lib/data/home-page-data.json";
+import { useLanguage } from "@/lib/LanguageContext";
+import homeData from "@/lib/data/home.json";
 
 export default function SystemBenchmarks() {
-  const data = homeData.systemBenchmarks;
+  const { language } = useLanguage();
+  const data = (homeData[language] || homeData.en).systemBenchmarks;
 
   return (
-    <section className="py-24 px-6 lg:px-8 bg-white border-b border-gray-200">
+    <section className="py-24 px-6 lg:px-8 bg-white dark:bg-brand-base border-b border-gray-200 dark:border-white/10 transition-colors">
       <div className="max-w-4xl mx-auto">
         <div className="mb-12 text-center md:text-left">
-          <h2 className="text-3xl font-bold text-gray-900 tracking-tight mb-2">{data.section_title}</h2>
-          <p className="text-gray-600">{data.section_subtitle}</p>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white tracking-tight mb-2">{data.section_title}</h2>
+          <p className="text-gray-600 dark:text-slate-400">{data.section_subtitle}</p>
         </div>
         
         {/* Terminal Window stays dark for the aesthetic */}

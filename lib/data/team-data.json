@@ -23,32 +23,32 @@
       },
       "it": {
         "name": "Marcus Weber",
-        "role": "Co-Founder & Lead AI Infrastructure",
-        "bio": "Progettazione di pipeline LLM locali, deployment containerizzato (Docker) e tunneling VPN inverso. Collega i framework IA con l'esecuzione nativa in Python/C#.",
+        "role": "Co-fondatore & Responsabile Infrastruttura IA",
+        "bio": "Progettazione di pipeline LLM locali, deployment containerizzato (Docker) e tunneling VPN inverso. Connette i framework di IA con l'esecuzione nativa in Python/C#.",
         "core_stack": [
-          "<strong>AI/Data:</strong> Python, LangChain, ChromaDB, Ollama (Local LLMs)",
+          "<strong>IA/Dati:</strong> Python, LangChain, ChromaDB, Ollama (LLM Locali)",
           "<strong>Esecuzione AEC:</strong> C# (.NET), Revit API, Navisworks API",
           "<strong>Infrastruttura:</strong> Docker, Linux (Ubuntu), Tailscale (Zero-Trust Networking)"
         ],
         "operational_focus": [
-          "Sviluppo di pipeline di esecuzione IA sicure e offline per appaltatori Tier-1.",
+          "Sviluppo di pipeline di esecuzione IA sicure e offline per appaltatori e general contractor Tier-1.",
           "Traduzione algoritmica dei protocolli ISO 19650 in codice eseguibile.",
           "Deployment containerizzato di flussi di lavoro OpenBIM headless."
         ]
       },
       "de": {
         "name": "Marcus Weber",
-        "role": "Co-Founder & Lead AI Infrastructure",
-        "bio": "Architekt für lokale LLM-Pipelines, containerisiertes Deployment (Docker) und Reverse VPN Tunneling. Verbindet KI-Frameworks mit nativer Python/C#-Ausführung.",
+        "role": "Mitgründer & Leiter KI-Infrastruktur",
+        "bio": "Architektur lokaler LLM-Pipelines, containerisiertes Deployment (Docker) und Reverse-VPN-Tunneling. Verbindet KI-Frameworks mit nativer Python/C#-Ausführung.",
         "core_stack": [
           "<strong>KI/Daten:</strong> Python, LangChain, ChromaDB, Ollama (Lokale LLMs)",
           "<strong>AEC-Ausführung:</strong> C# (.NET), Revit API, Navisworks API",
-          "<strong>Infrastruktur:</strong> Docker, Linux (Ubuntu), Tailscale (Zero-Trust Networking)"
+          "<strong>Infrastruktur:</strong> Docker, Linux (Ubuntu), Tailscale (Zero-Trust-Networking)"
         ],
         "operational_focus": [
-          "Entwicklung sicherer, Offline-KI-Ausführungspipelines für Tier-1-Auftragnehmer.",
+          "Entwicklung sicherer Offline-KI-Ausführungspipelines für Tier-1-Generalunternehmer.",
           "Algorithmische Übersetzung von ISO 19650-Protokollen in ausführbare Codebasen.",
-          "Containerisiertes Deployment von Headless OpenBIM-Workflows."
+          "Containerisiertes Deployment von Headless-OpenBIM-Workflows."
         ]
       }
     },
@@ -75,32 +75,32 @@
       },
       "it": {
         "name": "David Chen",
-        "role": "Co-Founder & Head of BIM Data Strategy",
-        "bio": "Dirige la logica di dominio AEC. Traduce i protocolli ISO 19650, le matrici di clash e i requisiti EIR in strutture dati computazionali per l'elaborazione algoritmica.",
+        "role": "Co-fondatore & Responsabile Strategia Dati BIM",
+        "bio": "Dirige la logica di dominio AEC. Traduce i protocolli ISO 19650, le matrici di interferenza (clash) e i requisiti EIR in strutture dati computazionali per l'elaborazione algoritmica.",
         "core_stack": [
           "<strong>Validazione AEC:</strong> Navisworks Manage, Solibri Office, Revit",
-          "<strong>Strutturazione Dati:</strong> JSON, Schemi CSV (Preparazione base di conoscenza per RAG)",
+          "<strong>Strutturazione Dati:</strong> Schemi JSON, CSV (Preparazione knowledge base per RAG)",
           "<strong>Conformità Protocolli:</strong> Architettura ISO 19650, UNI 11337, EIR/BEP"
         ],
         "operational_focus": [
-          "Traduzione di complessi mandati AEC in flussi logici discreti per l'esecuzione IA.",
-          "Definizione dei parametri della matrice di clash per eliminare i falsi positivi MEP/Strutturali.",
-          "Auditing degli output di esecuzione Python/C# rispetto agli standard ingegneristici europei."
+          "Traduzione di complessi requisiti AEC in flussi logici discreti per l'esecuzione tramite IA.",
+          "Definizione dei parametri della matrice di clash per automatizzare l'eliminazione dei falsi positivi tra impianti MEP e strutture.",
+          "Audit degli output di esecuzione Python/C# a fronte delle normative ingegneristiche europee."
         ]
       },
       "de": {
         "name": "David Chen",
-        "role": "Co-Founder & Head of BIM Data Strategy",
-        "bio": "Leitet die AEC-Domänenlogik. Übersetzt ISO 19650-Protokolle, Kollisionsmatrizen und EIR-Anforderungen in rechnergestützte Datenstrukturen für die algorithmische Verarbeitung.",
+        "role": "Mitgründer & Leiter BIM-Datenstrategie",
+        "bio": "Leitet die AEC-Fachlogik. Übersetzt ISO 19650-Protokolle, Kollisionsmatrizen und AIA-Vorgaben in rechnergestützte Datenstrukturen für die algorithmische Verarbeitung.",
         "core_stack": [
           "<strong>AEC-Validierung:</strong> Navisworks Manage, Solibri Office, Revit",
-          "<strong>Datenstrukturierung:</strong> JSON, CSV-Schemata (Wissensbasis-Vorbereitung für RAG)",
-          "<strong>Protokollkonformität:</strong> ISO 19650, UNI 11337, EIR/BEP-Architektur"
+          "<strong>Datenstrukturierung:</strong> JSON, CSV-Schemata (Vorbereitung der Wissensbasis für RAG)",
+          "<strong>Protokollkonformität:</strong> ISO 19650, UNI 11337, AIA/BAP-Architektur"
         ],
         "operational_focus": [
-          "Übersetzung komplexer AEC-Mandate in diskrete Logikflüsse für die KI-Ausführung.",
-          "Definition von Kollisionsmatrix-Parametern zur Eliminierung falsch-positiver MEP/Struktur-Konflikte.",
-          "Auditing von Python/C#-Ausführungsausgaben nach europäischen Ingenieurstandards."
+          "Übersetzung komplexer AEC-Vorgaben in diskrete Logikflüsse für die KI-Ausführung.",
+          "Definition von Kollisionsmatrix-Parametern zur automatisierten Beseitigung falsch-positiver TGA/Tragwerks-Konflikte.",
+          "Auditierung von Python/C#-Ausführungsergebnissen anhand europäischer Ingenieurstandards."
         ]
       }
     }
@@ -116,7 +116,7 @@
       "it": {
         "name": "General Contractor Tier-1",
         "role": "Milano, Italia",
-        "bio": "Conformità ISO 19650 automatizzata"
+        "bio": "Conformità ISO 19650 Automatizzata"
       },
       "de": {
         "name": "Generalunternehmer Tier-1",
@@ -169,7 +169,7 @@
       },
       "it": {
         "name": "Studio di Ingegneria",
-        "role": "Monaco, Germania",
+        "role": "Monaco di Baviera, Germania",
         "bio": "Estrazione Dati COBie"
       },
       "de": {

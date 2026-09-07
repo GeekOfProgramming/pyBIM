@@ -1,442 +1,486 @@
 {
-  "about.modal.validation_vectors_title": "Validation Vectors",
-  "about.modal.profile_summary_title": "Profile Summary",
-  "about.modal.core_stack_title": "Core Stack",
-  "about.modal.operational_focus_title": "Operational Focus",
-  "about.manifesto.title": "Automate AEC Workflows with Zero Data Exposure.",
-  "about.manifesto.subtitle": "Operating from the engineering R&D hub of <strong>Padua, Italy</strong>, pyBIM bypasses manual modeling farms and public cloud vendors. We deploy <strong>Edge AI appliances</strong> and <strong>Local LLMs</strong> to execute complex algorithmic automation. We guarantee <strong>100% data sovereignty</strong> for Tier-1 European contractors.",
-  "about.manifesto.cta": "Claim Your Free BIM Data Audit",
-  "about.manifesto.cta_sub": "(100% Free & Secure Data Handling. Send us a sample model, and we will run it through our automation scripts to prove instant ROI. No credit card required.)",
-  "about.manifesto.badge": "THE MANIFESTO",
-  "about.manifesto.box1_title": "The Traditional \"Modeling Farm\"",
-  "about.manifesto.box1_subtitle": "The Problem",
-  "about.manifesto.box1_desc1": "Relying on brute-force manual labor exposes proprietary geometry and sensitive metadata to external, unvetted networks.",
-  "about.manifesto.box1_desc2_title": "The Margin Drain",
-  "about.manifesto.box1_desc2": "This outdated approach mathematically guarantees human error, inflates operational overhead, and introduces <strong>fatal data leakage risks</strong> into your proprietary infrastructure projects.",
-  "about.manifesto.box2_title": "The Generic Software Vendor",
-  "about.manifesto.box2_subtitle": "The Trap",
-  "about.manifesto.box2_desc1": "Off-the-shelf SaaS platforms force your engineers to adapt to their rigid workflows, locking your intellectual property inside public clouds.",
-  "about.manifesto.box2_desc2_title": "The Lock-in",
-  "about.manifesto.box2_desc2": "You pay monthly for generic tools that cannot handle the specific data requirements of <strong>UNI 11337</strong> or complex Italian/DACH infrastructure mandates.",
-  "about.manifesto.box3_title": "The pyBIM Sovereign AI Infrastructure",
-  "about.manifesto.box3_subtitle": "The Solution",
-  "about.manifesto.box3_desc1": "We do not hire temporary modelers. We deploy pre-compiled <strong>Python scripts</strong> and <strong>C# add-ins</strong> to automate 100% of your parameter mapping and clash detection logic.",
-  "about.manifesto.box3_desc2_title": "Zero Data Exposure",
-  "about.manifesto.box3_desc2": "Your data never leaves your CDE. We run local LLM pipelines and algorithmic validation directly on your servers.",
-  "about.manifesto.box3_desc3_title": "ISO 19650 Compliance",
-  "about.manifesto.box3_desc3": "Guaranteed algorithmic precision for European public tenders.",
-  "about.journey.tag": "OUR JOURNEY",
-  "about.journey.title": "The Evolution from Manual Coordination to Sovereign AI Automation.",
+  "about.modal.validation_vectors_title": "Validierungsvektoren",
+  "about.modal.profile_summary_title": "Profilübersicht",
+  "about.modal.core_stack_title": "Technologie-Stack",
+  "about.modal.operational_focus_title": "Operativer Schwerpunkt",
+  "about.manifesto.title": "AEC-Workflows automatisieren – ohne Datenexposition.",
+  "about.manifesto.subtitle": "Von unserem F&E-Zentrum in <strong>Padua (Italien)</strong> aus überwindet pyBIM manuelle Modellier-Farms und öffentliche Cloud-Anbieter. Wir implementieren <strong>Edge-KI-Appliances</strong> und <strong>lokale LLMs</strong> zur Ausführung komplexer algorithmischer Automatisierungen. Wir garantieren <strong>100 % Datensouveränität</strong> für europäische Tier-1-Generalunternehmer.",
+  "about.manifesto.cta": "Fordern Sie Ihr kostenloses BIM-Daten-Audit an",
+  "about.manifesto.cta_sub": "(100 % kostenlose & sichere Datenverarbeitung. Senden Sie uns ein Testmodell, und wir führen es durch unsere Automatisierungsskripte, um den sofortigen ROI zu belegen. Keine Kreditkarte erforderlich.)",
+  "about.manifesto.badge": "DAS MANIFEST",
+  "about.manifesto.box1_title": "Die traditionelle „Modellier-Farm“",
+  "about.manifesto.box1_subtitle": "Das Problem",
+  "about.manifesto.box1_desc1": "Der Rückgriff auf manuelle Fleißarbeit setzt proprietäre Geometrien und vertrauliche Metadaten ungesicherten externen Netzwerken aus.",
+  "about.manifesto.box1_desc2_title": "Der Margenverlust",
+  "about.manifesto.box1_desc2": "Dieser veraltete Ansatz führt mathematisch unausweichlich zu menschlichen Fehlern, treibt die Betriebskosten in die Höhe und birgt <strong>fatale Risiken von Datenlecks</strong> für Ihre proprietären Infrastrukturprojekte.",
+  "about.manifesto.box2_title": "Der generische Software-Anbieter",
+  "about.manifesto.box2_subtitle": "Die Falle",
+  "about.manifesto.box2_desc1": "Standardmäßige SaaS-Plattformen zwingen Ihre Ingenieure, sich starren Workflows anzupassen, und sperren Ihr geistiges Eigentum in öffentlichen Clouds ein.",
+  "about.manifesto.box2_desc2_title": "Der Vendor-Lock-in",
+  "about.manifesto.box2_desc2": "Sie zahlen monatliche Gebühren für generische Tools, die den spezifischen Datenanforderungen der <strong>UNI 11337</strong> oder komplexen Infrastrukturvorgaben im DACH-Raum nicht gerecht werden können.",
+  "about.manifesto.box3_title": "Die pyBIM Souveräne KI-Infrastruktur",
+  "about.manifesto.box3_subtitle": "Die Lösung",
+  "about.manifesto.box3_desc1": "Wir stellen keine temporären Modellierer ein. Wir implementieren vorkompilierte <strong>Python-Skripte</strong> und <strong>C#-Add-ins</strong>, um 100 % Ihrer Parameterzuordnung und Kollisionsprüfungslogik zu automatisieren.",
+  "about.manifesto.box3_desc2_title": "Null Datenexposition",
+  "about.manifesto.box3_desc2": "Ihre Daten verlassen niemals Ihr CDE. Wir führen lokale LLM-Pipelines und algorithmische Validierungen direkt auf Ihren Servern aus.",
+  "about.manifesto.box3_desc3_title": "ISO 19650-Konformität",
+  "about.manifesto.box3_desc3": "Garantierte algorithmische Präzision für europäische öffentliche Ausschreibungen.",
+  "about.journey.tag": "UNSER WEG",
+  "about.journey.title": "Die Evolution von manueller Koordination zu souveräner KI-Automatisierung.",
   "about.journey.badge": "Phase 1",
-  "about.journey.p1_title": "The Operational Bottleneck",
-  "about.journey.p1_item1_title": "The Systemic Flaw",
-  "about.journey.p1_item1_desc": "Managing complex European infrastructure projects exposed a critical industry failure. Highly skilled engineers waste up to <strong>40% of their billable hours</strong> on repetitive data entry, parameter mapping, and manual quality control.",
-  "about.journey.p1_item2_title": "The Margin Drain",
-  "about.journey.p1_item2_desc": "Relying on brute-force human labor mathematically guarantees data errors during high-stakes B2B tenders, draining project budgets and jeopardizing <strong>ISO 19650</strong> compliance.",
+  "about.journey.p1_title": "Der operative Engpass",
+  "about.journey.p1_item1_title": "Der systemische Fehler",
+  "about.journey.p1_item1_desc": "Die Steuerung komplexer europäischer Infrastrukturprojekte offenbarte ein gravierendes Problem der Branche: Hochqualifizierte Ingenieure verschwenden bis zu <strong>40 % ihrer abrechenbaren Stunden</strong> für repetitive Dateneingaben, Parameterzuordnungen und manuelle Qualitätskontrollen.",
+  "about.journey.p1_item2_title": "Der Margenverlust",
+  "about.journey.p1_item2_desc": "Der Rückgriff auf manuelle Arbeit führt bei anspruchsvollen B2B-Ausschreibungen unweigerlich zu Datenfehlern, die Projektbudgets belasten und die <strong>ISO 19650</strong>-Konformität gefährden.",
   "about.journey.p2_badge": "Phase 2",
-  "about.journey.p2_title": "The Algorithmic Shift",
-  "about.journey.p2_item1_title": "The R&D Pivot",
-  "about.journey.p2_item1_desc": "Operating from the tech hub of <strong>Padua, Italy</strong>, we refused to scale operations through traditional headcount. We transitioned our entire methodology to execution code.",
-  "about.journey.p2_item2_title": "Programmatic Execution",
-  "about.journey.p2_item2_desc": "By integrating <strong>Python</strong> and <strong>C#</strong> directly into our workflows, we automated clash matrices and parameter audits, reducing QA/QC times from days to seconds.",
+  "about.journey.p2_title": "Der algorithmische Wandel",
+  "about.journey.p2_item1_title": "Der F&E-Schwerpunktwechsel",
+  "about.journey.p2_item1_desc": "Ausgehend vom Technologiezentrum <strong>Padua (Italien)</strong> weigerten wir uns, den Betrieb durch bloße Personalvermehrung zu skalieren. Wir stellten unsere gesamte Methodik auf ausführbaren Code um.",
+  "about.journey.p2_item2_title": "Programmatische Ausführung",
+  "about.journey.p2_item2_desc": "Durch die direkte Integration von <strong>Python</strong> und <strong>C#</strong> in unsere Workflows haben wir Kollisionsmatrizen und Parameter-Audits automatisiert und die QS/QK-Zeiten von Tagen auf Sekunden reduziert.",
   "about.journey.p3_badge": "Phase 3",
-  "about.journey.p3_title": "Sovereign AI Infrastructure",
-  "about.journey.p3_item1_title": "The Architecture",
-  "about.journey.p3_item1_desc": "We now deploy headless, <strong>containerized AI pipelines</strong> (Docker) and offline LLMs (Ollama, ChromaDB) to audit BIM data directly within client firewalls.",
-  "about.journey.p3_item2_title": "The Guarantee",
-  "about.journey.p3_item2_desc": "Zero public cloud exposure. 100% data sovereignty. We deliver algorithmic certainty for the most demanding enterprise engineering firms in Europe.",
-  "about.tech.badge": "THE PYBIM TECH STACK",
-  "about.tech.title": "Engineered for Output, Not Effort.",
-  "about.tech.desc": "Eliminating manual bottlenecks through programmatic execution, CDE hosting, and strict ISO compliance.",
-  "about.tech.box1_top": "01. SOFTWARE & COORDINATION",
-  "about.tech.box1_title": "01. SOFTWARE & COORDINATION",
-  "about.tech.box1_sub": "Enterprise-grade authoring, configured to eliminate geometric and data conflicts before they reach the construction site.",
-  "about.tech.box2_top": "02. CODE & AUTOMATION",
-  "about.tech.box2_title": "02. CODE & AUTOMATION",
-  "about.tech.box2_sub": "Algorithmic control over manual workflows. We replace redundant human effort with scalable code infrastructure.",
+  "about.journey.p3_title": "Souveräne KI-Infrastruktur",
+  "about.journey.p3_item1_title": "Die Architektur",
+  "about.journey.p3_item1_desc": "Wir implementieren heute headless, <strong>containerisierte KI-Pipelines</strong> (Docker) und Offline-LLMs (Ollama, ChromaDB), um BIM-Daten direkt hinter den Firewalls unserer Kunden zu prüfen.",
+  "about.journey.p3_item2_title": "Die Garantie",
+  "about.journey.p3_item2_desc": "Keine Exposition gegenüber öffentlichen Clouds. 100 % Datensouveränität. Wir liefern algorithmische Zuverlässigkeit für die anspruchsvollsten Engineering-Unternehmen Europas.",
+  "about.tech.badge": "DER PYBIM TECH-STACK",
+  "about.tech.title": "Entwickelt für messbaren Output, nicht für Mehraufwand.",
+  "about.tech.desc": "Beseitigung manueller Engpässe durch programmatische Ausführung, CDE-Hosting und strikte ISO-Konformität.",
+  "about.tech.box1_top": "01. SOFTWARE & KOORDINATION",
+  "about.tech.box1_title": "01. SOFTWARE & KOORDINATION",
+  "about.tech.box1_sub": "Enterprise-Authoring, konfiguriert, um geometrische und datenbezogene Konflikte zu eliminieren, bevor sie die Baustelle erreichen.",
+  "about.tech.box2_top": "02. CODE & AUTOMATISIERUNG",
+  "about.tech.box2_title": "02. CODE & AUTOMATISIERUNG",
+  "about.tech.box2_sub": "Algorithmische Steuerung manueller Workflows. Wir ersetzen redundanten menschlichen Aufwand durch skalierbare Code-Infrastruktur.",
   "about.tech.dev": [
     {
       "name": "Python",
-      "tag": "Automation",
-      "desc": "Automated Parameter Injection & Bulk Processing"
+      "tag": "Automatisierung",
+      "desc": "Automatisierte Parameterinjektion und Massendatenverarbeitung."
     },
     {
       "name": "Dynamo & pyRevit",
       "tag": "Scripting",
-      "desc": "Visual & Text Scripting for Modeling Automation"
+      "desc": "Visuelles und textbasiertes Scripting zur Modellierungsautomatisierung."
     },
     {
       "name": "C# & Revit API",
       "tag": "Plugins",
-      "desc": "Native Add-ins & Deep Software Customization"
+      "desc": "Native Add-ins und tiefgreifende Software-Anpassungen."
     },
     {
       "name": "REST APIs",
       "tag": "10D / IoT",
-      "desc": "Real-Time Sensor & Digital Twin Data Sync"
+      "desc": "Echtzeit-Sensordaten- und Digital-Twin-Datensynchronisation."
     },
     {
       "name": "Autodesk APS (Forge)",
       "tag": "Cloud API",
-      "desc": "Cloud App Development & Web BIM Processing"
+      "desc": "Cloud-App-Entwicklung und webbasierte BIM-Verarbeitung."
     },
     {
       "name": "Power BI",
       "tag": "Analytics",
-      "desc": "Live Project Analytics & Model Dashboards"
+      "desc": "Projektanalysen in Echtzeit und Modelldashboards."
     },
     {
       "name": "Speckle",
       "tag": "Open Data",
-      "desc": "Open-Source Real-Time Data Streaming"
+      "desc": "Open-Source Echtzeit-Datenstreaming zwischen Plattformen."
     },
     {
       "name": "FastAPI / Node.js",
       "tag": "Backend",
-      "desc": "Custom Microservices for Network Automation"
+      "desc": "Individuelle Microservices für Netzwerkautomatisierungen."
     },
     {
       "name": "React.js / Next.js",
-      "tag": "Web Portals",
-      "desc": "Client Web Dashboards for Real-Time Monitoring"
+      "tag": "Webportale",
+      "desc": "Kunden-Webdashboards für Projektüberwachung in Echtzeit."
     },
     {
       "name": "SQL / PostgreSQL",
       "tag": "BIM DB",
-      "desc": "Relational DB for Thousands of BIM Parameters"
+      "desc": "Relationale Datenbanken für Millionen von BIM-Parametern."
     },
     {
       "name": "IFC.js",
       "tag": "Browser 3D",
-      "desc": "In-Browser 3D BIM Rendering Without Desktop Software"
+      "desc": "3D-BIM-Rendering im Webbrowser ohne Desktop-Software."
     },
     {
       "name": "LangChain & ChromaDB",
-      "tag": "AI / RAG",
-      "desc": "RAG-Based Automated BEP/EIR Document Auditing"
+      "tag": "KI / RAG",
+      "desc": "RAG-gestützte automatisierte Prüfung von BAP/AIA-Dokumenten."
     }
   ],
-  "about.tech.box3_top": "03. MANDATES & OPENBIM",
-  "about.tech.box3_title": "03. MANDATES & OPENBIM",
-  "about.tech.box3_sub": "Zero-risk data delivery. Absolute compliance with European and Italian legal mandates to secure your public tenders.",
+  "about.tech.box3_top": "03. STANDARDS & OPENBIM",
+  "about.tech.box3_title": "03. STANDARDS & OPENBIM",
+  "about.tech.box3_sub": "Risikofreie Datenübergabe. Absolute Konformität mit europäischen und nationalen Vorgaben zur Sicherung Ihrer Ausschreibungen.",
   "about.tech.stds": [
     {
       "name": "ISO 19650",
-      "tag": "Global Framework",
-      "desc": "International Information Management Framework"
+      "tag": "Globales Rahmenwerk",
+      "desc": "Internationales Rahmenwerk für das Informationsmanagement im Gebäudelebenszyklus."
     },
     {
       "name": "UNI 11337",
-      "tag": "Italian Standard",
-      "desc": "Italian National BIM Mandates & Project Validation"
+      "tag": "Italienischer Standard",
+      "desc": "Nationale italienische Norm für das digitale Bauwerksdatenmanagement."
     },
     {
       "name": "COBie",
-      "tag": "FM Handover",
-      "desc": "Standardized Facility Management Data Handover"
+      "tag": "FM-Übergabe",
+      "desc": "Standardisierte Datenübergabe für das Facility Management."
     },
     {
       "name": "EIR / BEP",
-      "tag": "8D / 9D Protocols",
-      "desc": "Employer Requirements, BEP & Safety/Lean Plans"
+      "tag": "8D / 9D Protokolle",
+      "desc": "Auftraggeber-Informationsanforderungen (AIA) und BIM-Abwicklungspläne (BAP)."
     },
     {
       "name": "IFC (ISO 16739)",
       "tag": "OpenBIM",
-      "desc": "Universal Open Format for Vendor-Neutral Data"
+      "desc": "Universelles offenes Dateiformat für herstellerunabhängigen Datenaustausch."
     },
     {
       "name": "BCF",
       "tag": "OpenBIM BCF",
-      "desc": "Standardized Issue Reporting & Clash Communication"
+      "desc": "Standardisiertes Kooperationsformat für Kollisionsberichte und Aufgaben."
     },
     {
       "name": "Decreto BIM (D.M. 560/312)",
-      "tag": "Italian Mandate",
-      "desc": "Italian Legal Mandates for Public Tenders"
+      "tag": "Gesetzliche Vorgabe",
+      "desc": "Rechtliche Vorgaben für digitalisierte öffentliche Ausschreibungen."
     },
     {
       "name": "LOD / LOIN (EN 17412)",
-      "tag": "Level of Need",
-      "desc": "Level of Development & Information Need Standards"
+      "tag": "Detailgrad",
+      "desc": "Europäische Norm für Detaillierungsgrade und Informationsbedarfe."
     },
     {
       "name": "OmniClass / MasterFormat",
-      "tag": "Classification",
-      "desc": "International Classification & Element Coding"
+      "tag": "Klassifikation",
+      "desc": "Internationale Klassifikations- und Bauteilcodierungssysteme."
     },
     {
       "name": "MIDP / TIDP",
-      "tag": "ISO 19650 Delivery",
-      "desc": "Master & Task Information Delivery Plans"
+      "tag": "ISO 19650 Lieferung",
+      "desc": "Gesamt- und fachspezifische Informationslieferungspläne."
     },
     {
       "name": "bsDD (buildingSMART)",
-      "tag": "Data Dict",
-      "desc": "Global Dictionary for OpenBIM Semantic Interoperability"
+      "tag": "Datenwörterbuch",
+      "desc": "Globales Wörterbuch für semantische openBIM-Interoperabilität."
     },
     {
       "name": "IDM (ISO 29481)",
-      "tag": "Workflow Standard",
-      "desc": "Information Delivery Manual Workflow Standard"
+      "tag": "Prozessstandard",
+      "desc": "Information Delivery Manual zur Prozess- und Workflow-Standardisierung."
     }
   ],
-  "about.impact.badge": "OUR IMPACT",
-  "about.impact.title": "Measurable Efficiency. Sovereign AI Execution.",
-  "about.impact.stat1.val": "+1,000",
-  "about.impact.stat1.desc": "Redirected from manual data entry and visual clash detection to high-margin, billable project execution.",
-  "about.impact.stat2.val": "99.99%",
-  "about.impact.stat2.desc": "Absolute elimination of human error in model auditing, guaranteeing flawless <strong>ISO 19650</strong> and <strong>UNI 11337</strong> compliance for European tenders.",
+  "about.impact.badge": "UNSERE WIRKUNG",
+  "about.impact.title": "Messbare Effizienz. Souveräne KI-Ausführung.",
+  "about.impact.stat1.val": "+1.000",
+  "about.impact.stat1.desc": "Umgelenkt von manueller Dateneingabe und visueller Kollisionsprüfung auf margenstarke, abrechenbare Projektabwicklung.",
+  "about.impact.stat2.val": "99,99%",
+  "about.impact.stat2.desc": "Vollständige Eliminierung menschlicher Fehler bei der Modellprüfung, garantiert fehlerfreie <strong>ISO 19650</strong>- und <strong>UNI 11337</strong>-Konformität für europäische Ausschreibungen.",
   "about.impact.stat3.val": "+10",
-  "about.impact.stat3.desc": "Scalable <strong>Python</strong> and <strong>C#</strong> infrastructure actively protecting project margins for tier-one AEC firms across the UK and Europe under ISO 19650, anchored by our native UNI 11337 compliance in Italy.",
-  "about.cta.card1.title": "Are your company's BIM workflows slowing you down? Let's optimize them.",
-  "about.cta.card1.btn": "Contact Us",
-  "about.cta.card2.title": "Are you an engineer who fell in love with Python? You belong here.",
-  "about.cta.card2.btn": "Work With Us",
+  "about.impact.stat3.desc": "Skalierbare <strong>Python</strong>- und <strong>C#</strong>-Infrastruktur, die Projektmargen für Tier-1-AEC-Unternehmen in Großbritannien und Europa gemäß ISO 19650 schützt – verankert durch unsere native UNI 11337-Konformität in Italien.",
+  "about.cta.card1.title": "Verlangsamen die BIM-Workflows Ihres Unternehmens Ihre Prozesse? Lassen Sie sie uns optimieren.",
+  "about.cta.card1.btn": "Kontakt aufnehmen",
+  "about.cta.card2.title": "Sind Sie ein Ingenieur, der Python für sich entdeckt hat? Sie gehören zu uns.",
+  "about.cta.card2.btn": "Karriere bei uns",
   "about.tech.box1_top_right": "13 Tools",
-  "about.tech.box2_top_right": "12 Techs",
+  "about.tech.box2_top_right": "12 Technologien",
   "about.tech.box3_top_right": "12 Standards",
-  "about.impact.stat1.title": "Engineering Hours Reclaimed",
-  "about.impact.stat2.title": "Algorithmic Precision",
-  "about.impact.stat3.title": "Sovereign AI Pipelines Deployed",
-  "about.cta.c1_tag": "// B2B PARTNERSHIP",
-  "about.cta.c1_title": "Scale Through Code, Not Headcount.",
-  "about.cta.c1_subtitle": "Off-the-shelf AEC software forces highly paid engineers into redundant manual data mapping. We replace human error with secure Sovereign AI infrastructure across the UK, Europe, and Italy.",
-  "about.cta.c1_box_title": "TECHNICAL ROI AUDIT",
-  "about.cta.c1_item1_title": "Current Bottleneck: Margin Drain",
-  "about.cta.c1_item1_desc": "Relying on brute-force manual labor mathematically guarantees fatal data errors during complex infrastructure tenders and continuously drains billable hours.",
-  "about.cta.c1_item2_title": "Bypass Manual Engineering.",
-  "about.cta.c1_item2_desc": "If you are managing massive facility models, transition your workflow from expensive headcount to programmatic execution.",
-  "about.cta.c1_item3_title": "Identify the Leak:",
-  "about.cta.c1_item3_desc": "Calculate the exact €/hour financial loss caused by redundant Revit data entry.",
-  "about.cta.c1_item4_title": "Prove the Output:",
-  "about.cta.c1_item4_desc": "Project how custom Python/C# algorithms reduce strict ISO 19650 and UNI 11337 compliance auditing from days to seconds.",
-  "about.cta.c1_item5_title": "Initiate Contact:",
-  "about.cta.c1_item5_desc": "Download the pre-programmed matrix to justify scaling your infrastructure through code.",
-  "about.cta.c1_btn": "DOWNLOAD ROI MATRIX",
-  "about.cta.c1_sub": "(100% Free Excel Engine. Corporate domains only. No sales calls. Server-side validation active.)",
-  "about.cta.c2_tag": "// OPEN POSITIONS",
-  "about.cta.c2_title": "Engineer the Standard. Join the R&D Lab.",
-  "about.cta.c2_subtitle": "We do not hire manual modelers. We recruit algorithmic engineers and software developers to automate complex AEC workflows across the UK, Europe, and Italy.",
-  "about.cta.c2_box_title": "SPONTANEOUS APPLICATION",
-  "about.cta.c2_item1_title": "Current Status: Core Unit at Full Capacity",
-  "about.cta.c2_item1_desc": "We scale our operations through code, not arbitrary headcount. However, operating from the tech hub of Padua, we continuously audit spontaneous technical submissions from developers demonstrating exceptional algorithmic efficiency.",
-  "about.cta.c2_item2_title": "Bypass the Standard Hiring Cycle.",
-  "about.cta.c2_item2_desc": "If you are an AEC professional who has transitioned from traditional BIM workflows to native Python, C#, or Revit API development, initiate a spontaneous technical review.",
-  "about.cta.c2_item3_title": "Skip the Traditional CV:",
-  "about.cta.c2_item3_desc": "Provide a direct link to your GitHub repository or a demonstrable code environment.",
-  "about.cta.c2_item4_title": "Prove the Output:",
-  "about.cta.c2_item4_desc": "Submit a custom automation script that mathematically eliminates manual data entry or visual clash detection bottlenecks.",
-  "about.cta.c2_item5_title": "Initiate Contact:",
-  "about.cta.c2_item5_desc": "Route your technical portfolio directly to careers@pybim.com.",
-  "about.cta.c2_btn": "INITIATE CONTACT",
-  "about.cta.c2_sub": "(Note: Public email domains are permitted to protect your current employment confidentiality. Submissions lacking a functional code repository link will be automatically rejected.)",
-  "about.team.sec1.badge": ">_ THE CORE ARCHITECTS",
-  "about.team.sec1.title": "Deploying AI Infrastructure, Not Just Algorithms.",
-  "about.team.sec1.desc": "Operating from the R&D tech hub of Padua, Italy, our core technical unit operates as a high-density engineering lab. We bridge AEC domain logic directly with Linux system administration and local LLM orchestration, eliminating the need for traditional modeling teams.",
-  "about.team.sec1.footer": "<strong>Unit Status:</strong> We scale output through code, not arbitrary headcount. All applied AI integration, network security (SecOps), and computational logic are currently executed directly by the founding core. Spontaneous technical submissions for future engineering roles are continuously audited via our strict code-first hiring protocol.",
-  "about.team.sec2.badge": "02. THE EXTENDED LAB",
-  "about.team.sec2.title": "Infinite Scalability. Zero Overhead.",
-  "about.team.sec2.b_title": "The Bottleneck",
-  "about.team.sec2.b_desc": "Traditional AEC firms struggle to scale their workforce for massive infrastructure tenders without bloating internal payroll and management overhead.",
-  "about.team.sec2.a_title": "The Agitation",
-  "about.team.sec2.a_desc": "Rushing to hire unvetted freelancers compromises your proprietary data security and introduces <strong>fatal geometric errors</strong> into the final <strong>IFC models</strong>, risking public tender disqualification.",
-  "about.team.sec2.s_title": "The pyBIM Solution",
-  "about.team.sec2.s_desc": "We maintain a highly vetted, private network of specialized computational designers across Europe. We scale execution capacity instantly to meet project demands, with all external work strictly audited by our <strong>internal Python QA/QC scripts</strong> to guarantee <strong>100% compliance</strong> with <strong>UNI 11337</strong> and <strong>ISO 19650</strong>.",
-  "about.team.sec3.badge": ">_ STRATEGIC ECOSYSTEM & DEPLOYMENT",
-  "about.team.sec3.title": "Backed by Academic Rigor. Trusted by Tier-1 Enterprise.",
-  "about.team.sec3.desc": "Our architectural logic is rooted in continuous university-level research, while our execution infrastructure is authorized and deployed across major European AEC contractors.",
-  "about.team.sec3.l1_title": "Academic R&D (Padua & Torino)",
-  "about.team.sec3.l1_desc": "Rooted in the engineering excellence of the University of Padua (Information Engineering) and Politecnico di Torino (Civil & Structural Engineering). We directly translate advanced computational research into autonomous workflows.",
-  "about.team.sec3.l2_title": "Authorized Infrastructure (Autodesk & OpenBIM)",
-  "about.team.sec3.l2_desc": "Native API integrations and certified developer access to Autodesk ecosystems (Revit, Navisworks) and headless OpenBIM protocols, ensuring total compliance with enterprise IT security standards.",
-  "about.team.sec2.network": "<strong>The Extended Network:</strong> On-Demand <strong>BIM Coordinators</strong> & <strong>Parametric Modelers</strong> deployed exclusively through our automated validation pipelines.",
-  "about.team.sec3.cta_btn": "Claim Your Free BIM Data Audit",
-  "about.team.sec3.cta_sub": "(100% Free & Secure Data Handling. Bypass the sales team and speak directly with our core engineers to audit your current software workflow. No credit card required.)",
-  "about.team.sec4.badge": "DEPLOYMENT FOOTPRINT",
-  "about.team.sec4.title": "Executed for Industry Leaders.",
-  "about.team.sec4.desc": "Delivering algorithmic BIM solutions, automated QTO, and ISO-compliant databases for top-tier architecture studios and general contractors across the DACH region and Italy.",
-  "about.tech.p1_title": "Programmatic QA/QC",
-  "about.tech.p1_desc": "We replace manual clash detection with algorithmic rule-sets.",
-  "about.tech.p2_title": "Automated Data Delivery",
-  "about.tech.p2_desc": "Extracting COBie and IFC datasets instantly via C# and Python pipelines.",
-  "about.tech.p3_title": "Local LLM Auditing",
-  "about.tech.p3_desc": "Validating EIR and BEP requirements natively without exposing data to public clouds.",
-  "about.tech.box1_footer": "* Actively deployed across all active infrastructure projects.",
-  "about.tech.box2_footer": "* Maintained by our internal R&D division.",
-  "about.tech.box3_footer": "* ISO/UNI certified workflows.",
+  "about.impact.stat1.title": "Eingesparte Ingenieurstunden",
+  "about.impact.stat2.title": "Algorithmische Präzision",
+  "about.impact.stat3.title": "Eingesetzte souveräne KI-Pipelines",
+  "about.cta.c1_tag": "// B2B-PARTNERSCHAFT",
+  "about.cta.c1_title": "Skalieren durch Code, nicht durch Personalbestand.",
+  "about.cta.c1_subtitle": "Standard-AEC-Software zwingt hochbezahlte Ingenieure zu redundanten manuellen Datenzuordnungen. Wir ersetzen menschliche Fehler durch sichere, souveräne KI-Infrastrukturen im DACH-Raum, Großbritannien und Italien.",
+  "about.cta.c1_box_title": "TECHNISCHES ROI-AUDIT",
+  "about.cta.c1_item1_title": "Aktueller Engpass: Margenverlust",
+  "about.cta.c1_item1_desc": "Der Rückgriff auf manuelle Fleißarbeit führt bei komplexen Infrastrukturausschreibungen unweigerlich zu fatalen Datenfehlern und verschwendet kontinuierlich abrechenbare Stunden.",
+  "about.cta.c1_item2_title": "Manuelles Engineering umgehen.",
+  "about.cta.c1_item2_desc": "Wenn Sie anspruchsvolle Gebäudemodelle verwalten, stellen Sie Ihren Workflow von teurem Personalaufbau auf programmatische Ausführung um.",
+  "about.cta.c1_item3_title": "Leck identifizieren:",
+  "about.cta.c1_item3_desc": "Berechnen Sie den genauen finanziellen Verlust (€/Stunde), der durch redundante Revit-Dateneingaben entsteht.",
+  "about.cta.c1_item4_title": "Ergebnis nachweisen:",
+  "about.cta.c1_item4_desc": "Erfahren Sie, wie benutzerdefinierte Python/C#-Algorithmen die strikte ISO 19650- und UNI 11337-Prüfung von Tagen auf Sekunden reduzieren.",
+  "about.cta.c1_item5_title": "Kontakt aufnehmen:",
+  "about.cta.c1_item5_desc": "Laden Sie die vorbereitete Matrix herunter, um die Skalierung Ihrer Infrastruktur durch Code zu begründen.",
+  "about.cta.c1_btn": "ROI-MATRIX HERUNTERLADEN",
+  "about.cta.c1_sub": "(100 % kostenlose Excel-Engine. Nur geschäftliche E-Mail-Domains. Keine Werbeanrufe. Serverseitige Validierung aktiv.)",
+  "about.cta.c2_tag": "// OFFENE STELLEN",
+  "about.cta.c2_title": "Definieren Sie den Standard. Werden Sie Teil des F&E-Labors.",
+  "about.cta.c2_subtitle": "Wir stellen keine manuellen Modellierer ein. Wir rekrutieren Algorithmen-Ingenieure und Softwareentwickler zur Automatisierung komplexer AEC-Workflows in Europa und der DACH-Region.",
+  "about.cta.c2_box_title": "INITIATIVBEWERBUNG",
+  "about.cta.c2_item1_title": "Aktueller Status: Kernteam voll ausgelastet",
+  "about.cta.c2_item1_desc": "Wir skalieren unseren Betrieb über Code, nicht über willkürlichen Personalaufbau. Vom Technologiezentrum Padua aus prüfen wir jedoch fortlaufend Initiativbewerbungen von Entwicklern mit herausragender algorithmischer Effizienz.",
+  "about.cta.c2_item2_title": "Den Standard-Bewerbungsprozess umgehen.",
+  "about.cta.c2_item2_desc": "Wenn Sie als AEC-Experte von traditionellen BIM-Workflows zur nativen Entwicklung in Python, C# oder mit der Revit-API gewechselt sind, initiieren Sie eine technische Überprüfung.",
+  "about.cta.c2_item3_title": "Klassischen Lebenslauf überspringen:",
+  "about.cta.c2_item3_desc": "Geben Sie einen direkten Link zu Ihrem GitHub-Repository oder einer vorführbaren Code-Umgebung an.",
+  "about.cta.c2_item4_title": "Output belegen:",
+  "about.cta.c2_item4_desc": "Reichen Sie ein benutzerdefiniertes Automatisierungsskript ein, das manuelle Dateneingaben oder Engpässe bei der Kollisionsprüfung mathematisch eliminiert.",
+  "about.cta.c2_item5_title": "Kontakt aufnehmen:",
+  "about.cta.c2_item5_desc": "Senden Sie Ihr technisches Portfolio direkt an careers@pybim.com.",
+  "about.cta.c2_btn": "KONTAKT AUFNEHMEN",
+  "about.cta.c2_sub": "(Hinweis: Öffentliche E-Mail-Domains sind zum Schutz Ihres aktuellen Beschäftigungsverhältnisses zulässig. Einsendungen ohne funktionsfähigen Code-Repository-Link werden automatisch abgelehnt.)",
+  "about.team.sec1.badge": ">_ DIE KERNARCHITEKTEN",
+  "about.team.sec1.title": "Wir implementieren KI-Infrastruktur – nicht nur Algorithmen.",
+  "about.team.sec1.desc": "Von unserem Technologie-F&E-Zentrum in Padua (Italien) aus agiert unser Kernteam als hochspezialisiertes Engineering-Labor. Wir verbinden AEC-Fachlogik direkt mit Linux-Systemadministration und lokaler LLM-Orchestrierung und machen traditionelle Modellierteams überflüssig.",
+  "about.team.sec1.footer": "<strong>Teamstatus:</strong> Wir skalieren Output durch Code, nicht durch beliebiges Personalwachstum. Alle angewandten KI-Integrationen, Netzwerksicherheit (SecOps) und rechnergestützte Logik werden derzeit direkt von den Gründern ausgeführt. Technische Initiativbewerbungen werden fortlaufend nach unserem strengen Code-First-Verfahren geprüft.",
+  "about.team.sec2.badge": "02. DAS ERWEITERTE LABOR",
+  "about.team.sec2.title": "Unbegrenzte Skalierbarkeit. Kein Overhead.",
+  "about.team.sec2.b_title": "Der Engpass",
+  "about.team.sec2.b_desc": "Traditionelle AEC-Unternehmen stehen vor der Herausforderung, ihre Kapazitäten für große Infrastrukturprojekte zu skalieren, ohne interne Lohn- und Verwaltungskosten aufzublähen.",
+  "about.team.sec2.a_title": "Das Risiko",
+  "about.team.sec2.a_desc": "Die übereilte Verpflichtung externer Freiberufler gefährdet die Sicherheit proprietärer Daten und führt zu <strong>fatalen geometrischen Fehlern</strong> in den finalen <strong>IFC-Modellen</strong> – mit dem Risiko des Ausschlusses aus öffentlichen Ausschreibungen.",
+  "about.team.sec2.s_title": "Die pyBIM-Lösung",
+  "about.team.sec2.s_desc": "Wir verfügen über ein streng geprüftes privates Netzwerk spezialisierter Computational Designer in ganz Europa. Wir skalieren Kapazitäten bedarfsgerecht, wobei alle externen Arbeitsergebnisse durch unsere <strong>internen Python-QS/QK-Skripte</strong> geprüft werden, um <strong>100 % Konformität</strong> mit <strong>UNI 11337</strong> und <strong>ISO 19650</strong> zu garantieren.",
+  "about.team.sec3.badge": ">_ STRATEGISCHES ÖKOSYSTEM & DEPLOYMENT",
+  "about.team.sec3.title": "Fundiert durch akademische Exzellenz. Bewährt bei führenden Tier-1-Unternehmen.",
+  "about.team.sec3.desc": "Unsere Systemlogik basiert auf kontinuierlicher universitärer Spitzenforschung, während unsere Ausführungsinfrastruktur bei führenden europäischen Bauunternehmen autorisiert und im Einsatz ist.",
+  "about.team.sec3.l1_title": "Akademische F&E (Padua & Turin)",
+  "about.team.sec3.l1_desc": "Verankert in der ingenieurwissenschaftlichen Exzellenz der Universität Padua (Informationstechnik) und des Politecnico di Torino (Bau- und Statikingenieurwesen). Wir überführen fortgeschrittene Forschung direkt in autonome Workflows.",
+  "about.team.sec3.l2_title": "Autorisierte Infrastruktur (Autodesk & OpenBIM)",
+  "about.team.sec3.l2_desc": "Native API-Integrationen und zertifizierter Entwicklerzugang zu Autodesk-Ökosystemen (Revit, Navisworks) sowie Headless-OpenBIM-Protokollen – unter strikter Einhaltung von Enterprise-IT-Sicherheitsstandards.",
+  "about.team.sec2.network": "<strong>Das erweiterte Netzwerk:</strong> On-Demand <strong>BIM-Koordinatoren</strong> & <strong>parametrische Modellierer</strong>, die ausschließlich über unsere automatisierten Validierungs-Pipelines eingesetzt werden.",
+  "about.team.sec3.cta_btn": "Kostenloses BIM-Daten-Audit anfordern",
+  "about.team.sec3.cta_sub": "(100 % kostenlose & sichere Datenverarbeitung. Umgehen Sie Vertriebsabteilungen und sprechen Sie direkt mit unseren Entwicklern, um Ihren aktuellen Software-Workflow zu prüfen. Keine Kreditkarte erforderlich.)",
+  "about.team.sec4.badge": "EINSATZSCHWERPUNKTE",
+  "about.team.sec4.title": "Im Einsatz bei Branchenführern.",
+  "about.team.sec4.desc": "Bereitstellung algorithmischer BIM-Lösungen, automatisierter Mengenermittlung (QTO) und ISO-konformer Datenbanken für führende Architekturbüros und Generalunternehmer in der DACH-Region und Italien.",
+  "about.team.ecosystem.badge": "STRATEGISCHES ÖKOSYSTEM & DEPLOYMENT",
+  "about.team.ecosystem.title": "Strategisches Ökosystem & Deployment.",
+  "about.team.ecosystem.subtitle": "An der Schnittstelle von präziser algorithmischer Entwicklung und Air-Gap-geschützter Enterprise-BIM-Ausführung. Wir eliminieren manuelle Zeichenengpässe.",
+  "about.team.ecosystem.manifest_tag": "// STRUKTURMANIFEST_01",
+  "about.team.ecosystem.manifest_title": "Zentrale F&E- und Ausführungsinfrastruktur",
+  "about.team.ecosystem.manifest_desc": "Direkte Übertragung reiner Software-Engineering-Logik in deterministische AEC-Pipelines auf Enterprise-Niveau.",
+  "about.team.ecosystem.manifest_status_label": "STATUS // DETERMINISTISCH",
+  "about.team.ecosystem.manifest_status_val": "PIPELINE AKTIV",
+  "about.team.ecosystem.hub_tag": "// INGENIEURZENTRUM",
+  "about.team.ecosystem.hub_title": "Das Ingenieurzentrum Padua",
+  "about.team.ecosystem.hub_subtitle": "Fundament der Informationstechnik",
+  "about.team.ecosystem.hub_desc": "Ausgehend von Norditaliens führendem Technologiezentrum basiert unsere Infrastruktur auf strenger Datenarchitektur und Rechenlogik, wodurch traditionelle manuelle Zeichenabläufe vollständig umgangen werden.",
+  "about.team.ecosystem.hub_loc_label": "STANDORT // PADUA, IT",
+  "about.team.ecosystem.hub_base_val": "BASIS // F&E-LABOR",
+  "about.team.ecosystem.api_tag": "// API_INTEGRATION",
+  "about.team.ecosystem.api_title": "Headless OpenBIM & Autodesk API",
+  "about.team.ecosystem.api_subtitle": "Automatisierte Integrations-Pipelines",
+  "about.team.ecosystem.api_desc": "Direkte programmatische Ausführung innerhalb der <strong>Revit</strong>- und <strong>Navisworks</strong>-APIs. Wir implementieren isolierte Automatisierungskerne zur Verarbeitung umfangreicher <strong>IFC4</strong>-Schemata in Sekunden und eliminieren manuelle Schnittstellenreibung.",
+  "about.team.ecosystem.api_runtime_label": "LAUFZEIT // C# .NET + PYTHON",
+  "about.team.ecosystem.api_mode_val": "MODUS // HEADLESS",
+  "about.team.ecosystem.v1_tag": "// BEREITSTELLUNGSVEKTOR_01",
+  "about.team.ecosystem.v1_title": "Unternehmensknoten",
+  "about.team.ecosystem.v1_subtitle": "On-Premise-Edge-Bereitstellung",
+  "about.team.ecosystem.v1_desc": "Physisch isolierte (Air-Gap) Hardware-Bereitstellung für Tier-1-Generalunternehmer. Wir garantieren <strong>absolute Datensouveränität</strong> und eliminieren Netzwerklatenzen, indem komplexe geometrische Algorithmen direkt in Ihrem lokalen LAN ausgeführt werden.",
+  "about.team.ecosystem.v1_arch_label": "Architektur:",
+  "about.team.ecosystem.v1_arch_val": "Lokale Appliance",
+  "about.team.ecosystem.v1_sov_label": "Souveränität:",
+  "about.team.ecosystem.v1_sov_val": "Air-Gap / Null Datenverlust",
+  "about.team.ecosystem.v2_tag": "// BEREITSTELLUNGSVEKTOR_02",
+  "about.team.ecosystem.v2_title": "Cloud-Vektor",
+  "about.team.ecosystem.v2_subtitle": "Isolierte GPU-VPS-Infrastruktur",
+  "about.team.ecosystem.v2_desc": "Hochdurchsatz-Single-Tenant-Virtual-Server mit dedizierter GPU-Beschleunigung. Wir lösen umfangreiche Kollisionsprüfungen sofort auf, ohne Ihre interne IT-Hardware zu belasten.",
+  "about.team.ecosystem.v2_comp_label": "Rechenleistung:",
+  "about.team.ecosystem.v2_comp_val": "Dedizierter GPU-VRAM",
+  "about.team.ecosystem.v2_net_label": "Netzwerk:",
+  "about.team.ecosystem.v2_net_val": "Verschlüsseltes TLS 1.3",
+  "about.team.ecosystem.v3_tag": "// BEREITSTELLUNGSVEKTOR_03",
+  "about.team.ecosystem.v3_title": "Standard-Durchsetzung",
+  "about.team.ecosystem.v3_subtitle": "Algorithmische Konformitätsmodule",
+  "about.team.ecosystem.v3_desc": "Automatisierte Validierungskerne, die Vorgaben nach <strong>ISO 19650-5</strong> und <strong>UNI 11337</strong> strikt durchsetzen. Wir verifizieren Ihre Ausschreibungsleistungen mathematisch und eliminieren das Risiko menschlicher Fehler und Disqualifikationen.",
+  "about.team.ecosystem.v3_gov_label": "Governance:",
+  "about.team.ecosystem.v3_gov_val": "ISO 19650-5 / UNI 11337",
+  "about.team.ecosystem.v3_audit_label": "Audit:",
+  "about.team.ecosystem.v3_audit_val": "Algorithmischer Prüfpfad",
+  "about.tech.p1_title": "Programmatische QS/QK",
+  "about.tech.p1_desc": "Wir ersetzen manuelle Kollisionsprüfungen durch algorithmische Regelwerke.",
+  "about.tech.p2_title": "Automatisierte Datenlieferung",
+  "about.tech.p2_desc": "Sofortige Extraktion von COBie- und IFC-Datensätzen über C#- und Python-Pipelines.",
+  "about.tech.p3_title": "Auditierung mit lokalen LLMs",
+  "about.tech.p3_desc": "Native Validierung von AIA- und BAP-Vorgaben ohne Datenexposition in öffentlichen Clouds.",
+  "about.tech.box1_footer": "* Aktiv implementiert in allen laufenden Infrastrukturprojekten.",
+  "about.tech.box2_footer": "* Gepflegt durch unsere interne F&E-Abteilung.",
+  "about.tech.box3_footer": "* ISO/UNI-zertifizierte Arbeitsabläufe.",
   "about.tech.box1_items": [
     {
       "name": "Autodesk Revit",
-      "desc": "Core authoring and geometric assembly."
+      "desc": "Zentrale Modellerstellung und geometrische Zusammenführung."
     },
     {
       "name": "Navisworks Manage",
-      "desc": "Federated coordination and 4D/5D sequencing."
+      "desc": "Fachübergreifende Koordination und 4D/5D-Ablaufsimulation."
     },
     {
       "name": "Solibri Office",
-      "desc": "Rule-based algorithmic model auditing."
+      "desc": "Regelbasierte algorithmische Modellprüfung und QS."
     },
     {
       "name": "dRofus",
-      "desc": "Advanced spatial and asset data management."
+      "desc": "Erweiterte Raum- und Ausstattungsdatenverwaltung."
     },
     {
       "name": "Autodesk Civil 3D",
-      "desc": "Heavy civil and infrastructure algorithmic modeling."
+      "desc": "Algorithmische Modellierung anspruchsvoller Tiefbau- und Infrastrukturprojekte."
     },
     {
       "name": "Rhino & Grasshopper",
-      "desc": "Advanced computational geometry generation."
+      "desc": "Fortgeschrittene rechnergestützte und parametrische Geometriegenerierung."
     },
     {
       "name": "Tekla Structures",
-      "desc": "High-LOD structural steel and concrete detailing."
+      "desc": "Detaillierte Stahlbau- und Massivbauplanung mit hohem Detaillierungsgrad (LOD)."
     },
     {
       "name": "Autodesk Construction Cloud",
-      "desc": "Enterprise Common Data Environment (CDE) hosting."
+      "desc": "Enterprise Common Data Environment (CDE) Hosting."
     },
     {
       "name": "Dalux",
-      "desc": "On-site AR model viewing and defect management."
+      "desc": "AR-Modellbetrachtung vor Ort auf der Baustelle und Mängelmanagement."
     },
     {
       "name": "Revizto",
-      "desc": "Visual issue tracking and BCF clash aggregation."
+      "desc": "Visuelle Aufgabenverfolgung und BCF-Kollisionszusammenführung."
     },
     {
       "name": "Enscape",
-      "desc": "Real-time rendering and client spatial mock-ups."
+      "desc": "Echtzeit-Rendering und räumliche Visualisierungen für Bauherren."
     },
     {
       "name": "AutoCAD",
-      "desc": "Legacy 2D DWG integration and baseline drafting."
+      "desc": "Integration historischer 2D-DWG-Bestandsunterlagen und Grundlagenplanung."
     }
   ],
   "about.tech.box2_items": [
     {
       "name": "Python",
-      "tag": "Automation",
-      "desc": "Automated Parameter Injection & Bulk Processing"
+      "tag": "Automatisierung",
+      "desc": "Automatisierte Parameterinjektion und Massendatenverarbeitung."
     },
     {
       "name": "Dynamo & pyRevit",
       "tag": "Scripting",
-      "desc": "Visual & Text Scripting for Modeling Automation"
+      "desc": "Visuelles und textbasiertes Scripting zur Modellierungsautomatisierung."
     },
     {
       "name": "C# & Revit API",
       "tag": "Plugins",
-      "desc": "Native Add-ins & Deep Software Customization"
+      "desc": "Native Add-ins und tiefgreifende Software-Anpassungen."
     },
     {
       "name": "REST APIs",
       "tag": "10D / IoT",
-      "desc": "Real-Time Sensor & Digital Twin Data Sync"
+      "desc": "Echtzeit-Sensordaten- und Digital-Twin-Datensynchronisation."
     },
     {
       "name": "Autodesk APS (Forge)",
       "tag": "Cloud API",
-      "desc": "Cloud App Development & Web BIM Processing"
+      "desc": "Cloud-App-Entwicklung und webbasierte BIM-Verarbeitung."
     },
     {
       "name": "Power BI",
       "tag": "Analytics",
-      "desc": "Live Project Analytics & Model Dashboards"
+      "desc": "Projektanalysen in Echtzeit und Modelldashboards."
     },
     {
       "name": "Speckle",
       "tag": "Open Data",
-      "desc": "Open-Source Real-Time Data Streaming"
+      "desc": "Open-Source Echtzeit-Datenstreaming zwischen Plattformen."
     },
     {
       "name": "FastAPI / Node.js",
       "tag": "Backend",
-      "desc": "Custom Microservices for Network Automation"
+      "desc": "Individuelle Microservices für Netzwerkautomatisierungen."
     },
     {
       "name": "React.js / Next.js",
-      "tag": "Web Portals",
-      "desc": "Client Web Dashboards for Real-Time Monitoring"
+      "tag": "Webportale",
+      "desc": "Kunden-Webdashboards für Projektüberwachung in Echtzeit."
     },
     {
       "name": "SQL / PostgreSQL",
       "tag": "BIM DB",
-      "desc": "Relational DB for Thousands of BIM Parameters"
+      "desc": "Relationale Datenbanken für Millionen von BIM-Parametern."
     },
     {
       "name": "IFC.js",
       "tag": "Browser 3D",
-      "desc": "In-Browser 3D BIM Rendering Without Desktop Software"
+      "desc": "3D-BIM-Rendering im Webbrowser ohne Desktop-Software."
     },
     {
       "name": "LangChain & ChromaDB",
-      "tag": "AI / RAG",
-      "desc": "RAG-Based Automated BEP/EIR Document Auditing"
+      "tag": "KI / RAG",
+      "desc": "RAG-gestützte automatisierte Prüfung von BAP/AIA-Dokumenten."
     }
   ],
   "about.tech.box3_items": [
     {
       "name": "ISO 19650",
-      "tag": "Global Framework",
-      "desc": "International Information Management Framework"
+      "tag": "Globales Rahmenwerk",
+      "desc": "Internationales Rahmenwerk für das Informationsmanagement im Gebäudelebenszyklus."
     },
     {
       "name": "UNI 11337",
-      "tag": "Italian Standard",
-      "desc": "Italian National BIM Mandates & Project Validation"
+      "tag": "Italienischer Standard",
+      "desc": "Nationale italienische Norm für das digitale Bauwerksdatenmanagement."
     },
     {
       "name": "COBie",
-      "tag": "FM Handover",
-      "desc": "Standardized Facility Management Data Handover"
+      "tag": "FM-Übergabe",
+      "desc": "Standardisierte Datenübergabe für das Facility Management."
     },
     {
       "name": "EIR / BEP",
-      "tag": "8D / 9D Protocols",
-      "desc": "Employer Requirements, BEP & Safety/Lean Plans"
+      "tag": "8D / 9D Protokolle",
+      "desc": "Auftraggeber-Informationsanforderungen (AIA) und BIM-Abwicklungspläne (BAP)."
     },
     {
       "name": "IFC (ISO 16739)",
       "tag": "OpenBIM",
-      "desc": "Universal Open Format for Vendor-Neutral Data"
+      "desc": "Universelles offenes Dateiformat für herstellerunabhängigen Datenaustausch."
     },
     {
       "name": "BCF",
       "tag": "OpenBIM BCF",
-      "desc": "Standardized Issue Reporting & Clash Communication"
+      "desc": "Standardisiertes Kooperationsformat für Kollisionsberichte und Aufgaben."
     },
     {
       "name": "Decreto BIM (D.M. 560/312)",
-      "tag": "Italian Mandate",
-      "desc": "Italian Legal Mandates for Public Tenders"
+      "tag": "Gesetzliche Vorgabe",
+      "desc": "Rechtliche Vorgaben für digitalisierte öffentliche Ausschreibungen."
     },
     {
       "name": "LOD / LOIN (EN 17412)",
-      "tag": "Level of Need",
-      "desc": "Level of Development & Information Need Standards"
+      "tag": "Detailgrad",
+      "desc": "Europäische Norm für Detaillierungsgrade und Informationsbedarfe."
     },
     {
       "name": "OmniClass / MasterFormat",
-      "tag": "Classification",
-      "desc": "International Classification & Element Coding"
+      "tag": "Klassifikation",
+      "desc": "Internationale Klassifikations- und Bauteilcodierungssysteme."
     },
     {
       "name": "MIDP / TIDP",
-      "tag": "ISO 19650 Delivery",
-      "desc": "Master & Task Information Delivery Plans"
+      "tag": "ISO 19650 Lieferung",
+      "desc": "Gesamt- und fachspezifische Informationslieferungspläne."
     },
     {
       "name": "bsDD (buildingSMART)",
-      "tag": "Data Dict",
-      "desc": "Global Dictionary for OpenBIM Semantic Interoperability"
+      "tag": "Datenwörterbuch",
+      "desc": "Globales Wörterbuch für semantische openBIM-Interoperabilität."
     },
     {
       "name": "IDM (ISO 29481)",
-      "tag": "Workflow Standard",
-      "desc": "Information Delivery Manual Workflow Standard"
+      "tag": "Prozessstandard",
+      "desc": "Information Delivery Manual zur Prozess- und Workflow-Standardisierung."
     }
   ]
 }

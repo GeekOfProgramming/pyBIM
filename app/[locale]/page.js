@@ -1,5 +1,18 @@
 import HomePageLayout from "@/components/pages/home-page-layout";
 
+export async function generateMetadata({ params }) {
+  const locale = params?.locale || "en";
+  const titles = {
+    en: "Advanced BIM & Software Development Lab",
+    it: "Laboratorio Avanzato BIM & Sviluppo Software",
+    de: "Erweitertes BIM & Softwareentwicklungs-Labor"
+  };
+  
+  return {
+    title: titles[locale] || titles.en
+  };
+}
+
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",

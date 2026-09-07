@@ -14,21 +14,21 @@ export default function TeamPartnerModal({ person, onClose }) {
       {/* Click outside to close */}
       <div className="fixed inset-0" onClick={onClose} />
 
-      <div className="relative w-full max-w-5xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row m-auto border border-brand-border">
+      <div className="relative w-full max-w-5xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row m-auto border border-brand-border dark:border-slate-800 transition-colors">
         
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-5 right-5 z-20 w-10 h-10 bg-white/90 hover:bg-brand-surface rounded-full flex items-center justify-center text-brand-textPrimary border border-brand-border shadow-sm transition-all hover:scale-105"
+          className="absolute top-5 right-5 z-20 w-10 h-10 bg-white/90 dark:bg-slate-800/90 hover:bg-brand-surface dark:hover:bg-slate-700 rounded-full flex items-center justify-center text-brand-textPrimary border border-brand-border dark:border-slate-700 shadow-sm transition-all hover:scale-105"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* LEFT COLUMN: Image & Contact Info */}
-        <div className="w-full md:w-5/12 flex flex-col bg-brand-surface p-6 sm:p-8 border-b md:border-b-0 md:border-r border-brand-border justify-between">
+        <div className="w-full md:w-5/12 flex flex-col bg-brand-surface dark:bg-slate-950/60 p-6 sm:p-8 border-b md:border-b-0 md:border-r border-brand-border dark:border-slate-800 justify-between">
           <div>
-            <div className="relative rounded-2xl overflow-hidden shadow-md border border-brand-border aspect-[4/5] w-full mb-6">
+            <div className="relative rounded-2xl overflow-hidden shadow-md border border-brand-border dark:border-slate-800 aspect-[4/5] w-full mb-6">
               <img 
                 src={person.image || "/Pictures/General/hvac-industrial.jpg"} 
                 alt={data.name} 
@@ -43,8 +43,7 @@ export default function TeamPartnerModal({ person, onClose }) {
           </div>
           
           {/* Validation Vectors */}
-          {/* Validation Vectors */}
-          <div className="bg-white rounded-2xl p-4 sm:p-5 text-center shadow-sm border border-brand-border mt-auto flex items-center justify-center gap-6">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 sm:p-5 text-center shadow-sm border border-brand-border dark:border-slate-700 mt-auto flex items-center justify-center gap-6">
             <a href="#" className="text-brand-textSecondary hover:text-brand-primary transition-all hover:scale-110" aria-label="LinkedIn">
               <Linkedin className="w-5 h-5" />
             </a>
@@ -58,7 +57,7 @@ export default function TeamPartnerModal({ person, onClose }) {
         </div>
 
         {/* RIGHT COLUMN: Details */}
-        <div className="w-full md:w-7/12 p-8 lg:p-12 md:overflow-y-auto md:max-h-[85vh] bg-white">
+        <div className="w-full md:w-7/12 p-8 lg:p-12 md:overflow-y-auto md:max-h-[85vh] bg-white dark:bg-slate-900">
           
           {/* PROFILE SUMMARY */}
           <div className="mb-10">

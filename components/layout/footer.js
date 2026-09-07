@@ -78,10 +78,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* RIGHT SIDE: LIGHT PANEL CARD */}
-          <div className="rounded-[2.5rem] border border-brand-border bg-white p-6 sm:p-8 md:p-10 xl:p-12 shadow-2xl overflow-hidden">
+          {/* RIGHT SIDE: LIGHT/DARK PANEL CARD */}
+          <div className="rounded-[2.5rem] border border-brand-border dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 md:p-10 xl:p-12 shadow-2xl overflow-hidden transition-colors">
             {/* Newsletter Block */}
-            <div className="mb-12 border-b border-brand-border pb-10">
+            <div className="mb-12 border-b border-brand-border dark:border-slate-800 pb-10">
               <h3 className="text-2xl font-bold text-brand-textPrimary mb-3">{t("footer.newsletter.title")}</h3>
               <p className="text-sm text-brand-textSecondary mb-6 font-medium leading-relaxed">
                 {t("footer.newsletter.subtitle")}
@@ -94,7 +94,7 @@ export default function Footer() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={t("footer.newsletter.placeholder")}
                     required
-                    className="flex-1 rounded-2xl border border-brand-border bg-brand-surface px-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                    className="flex-1 rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-5 py-4 text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
                   />
                   <button 
                     type="submit" 
@@ -111,7 +111,7 @@ export default function Footer() {
                     type="checkbox"
                     id="privacy-footer"
                     required
-                    className="mt-1 w-4 h-4 rounded border-brand-border bg-brand-surface text-brand-primary focus:ring-brand-primary focus:ring-offset-0 cursor-pointer"
+                    className="mt-1 w-4 h-4 rounded border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800 text-brand-primary focus:ring-brand-primary focus:ring-offset-0 cursor-pointer"
                   />
                   <label htmlFor="privacy-footer" className="text-xs text-brand-textSecondary leading-relaxed">
                     {t("footer.newsletter.privacy_prefix")}<Link href="/privacy-policy" className="text-brand-primary font-semibold hover:underline">{t("footer.newsletter.privacy_link")}</Link>{t("footer.newsletter.privacy_dot")}<br />
@@ -195,9 +195,9 @@ export default function Footer() {
       </div>
 
       {popup && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-base/80 backdrop-blur-sm animate-in fade-in duration-200 text-left">
-          <div className="relative w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl border border-brand-border text-center transform animate-in zoom-in-95 duration-200">
-            <div className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full ${popup.type === 'success' ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200 text-left">
+          <div className="relative w-full max-w-md rounded-3xl bg-white dark:bg-slate-900 p-8 shadow-2xl border border-brand-border dark:border-slate-800 text-center transform animate-in zoom-in-95 duration-200">
+            <div className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full ${popup.type === 'success' ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400' : 'bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400'}`}>
               {popup.type === 'success' ? <CheckCircle2 className="h-8 w-8" /> : <AlertCircle className="h-8 w-8" />}
             </div>
             

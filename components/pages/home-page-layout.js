@@ -11,7 +11,7 @@ import ValidationProtocol from "@/components/sections/home/ValidationProtocol";
 
 export default function HomePageLayout() {
   return (
-    <div className="w-full bg-white text-gray-900 font-sans selection:bg-blue-500/30">
+    <div className="w-full bg-brand-base text-brand-textPrimary font-sans">
       <HeroSection />
       <ParadigmShift />
       <DeploymentModels />

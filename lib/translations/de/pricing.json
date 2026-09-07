@@ -1,90 +1,90 @@
 {
   "layout": {
-    "title": "Pricing & Deployment Models",
-    "subtitle": "Sovereign AI Infrastructure. No B2C marketing fluff. Purely algorithmic engineering and enterprise deployment baselines."
+    "title": "Preise & Bereitstellungsmodelle",
+    "subtitle": "Sovereign-KI-Infrastruktur. Kein oberflächliches B2C-Marketing. Reine algorithmische Ingenieurleistung und unternehmensweite Bereitstellungsstandards."
   },
   "infrastructure": {
-    "badge": "SOVEREIGN AI INFRASTRUCTURE",
-    "title": "Infrastructure Calculator",
-    "description": "Hardware and server deployment estimation. Configure your required data thresholds and computational load to estimate Edge AI CapEx and Cloud VPS OpEx.",
+    "badge": "SOVEREIGN-KI-INFRASTRUKTUR",
+    "title": "Infrastruktur-Kalkulator",
+    "description": "Kalkulation für Hardware- und Serverbereitstellung. Konfigurieren Sie Datenvolumen und Rechenlast zur Ermittlung von Edge-AI-CapEx und Cloud-VPS-OpEx.",
     "inputs": {
-      "volume_label": "Local Data Processing Volume",
+      "volume_label": "Lokales Datenverarbeitungsvolumen",
       "volume_min": "10GB (RAG DB)",
       "volume_max": "5TB+ (Enterprise BIM)",
-      "vram_label": "Required LLM Compute / VRAM",
-      "vram_min": "16GB (Base Model)",
-      "vram_max": "Multi-GPU Cluster (Agents)"
+      "vram_label": "Erforderliche LLM-Rechenleistung / VRAM",
+      "vram_min": "16GB (Basismodell)",
+      "vram_max": "Multi-GPU-Cluster (Agenten)"
     },
     "edge": {
       "badge": "CapEx (Hardware)",
-      "title": "Edge AI Appliance",
-      "description": "Physical hardware + initial setup fee. Deployed directly into your local area network (LAN).",
-      "estimate": "estimate"
+      "title": "Edge-AI-Appliance",
+      "description": "Physische Hardware + einmalige Einrichtungsgebühr. Bereitstellung direkt in Ihrem lokalen Netzwerk (LAN).",
+      "estimate": "geschätzt"
     },
     "cloud": {
       "badge": "OpEx (Cloud)",
-      "title": "Dedicated GPU-VPS",
-      "description": "Monthly rental of isolated, single-tenant cloud servers located in secure European datacenters.",
-      "mo": "/ mo"
+      "title": "Dedizierte(r) GPU-VPS",
+      "description": "Monatliche Miete isolierter Single-Tenant-Cloud-Server in sicheren europäischen Rechenzentren.",
+      "mo": "/ Monat"
     },
-    "cta": "REQUEST TECHNICAL AUDIT"
+    "cta": "TECHNISCHES AUDIT ANFORDERN"
   },
   "execution": {
-    "badge": "ALGORITHMIC PROJECT EXECUTION",
-    "title": "Execution Estimator",
-    "description": "Outsourcing complex workflows to pyBIM algorithmic execution. Select project LOD, federated model size, and compliance mandates to generate an automated baseline.",
+    "badge": "ALGORITHMISCHE PROJEKTABWICKLUNG",
+    "title": "Ausführungs-Kalkulator",
+    "description": "Auslagerung komplexer Workflows an die algorithmische pyBIM-Ausführung. Wählen Sie Projekt-LOD, koordinierte Modellgröße und Konformitätsvorgaben für einen automatisierten Richtwert.",
     "inputs": {
-      "lod": "Target Level of Development (LOD)",
-      "model_size": "Federated Model Size",
-      "mandates": "Compliance Mandates"
+      "lod": "Ziel-Fertigstellungsgrad (LOD)",
+      "model_size": "Größe des koordinierten Modells",
+      "mandates": "Konformitätsvorgaben"
     },
     "mandates_list": [
-      "ISO 19650 Compliance",
-      "COBie Data Extraction",
-      "D.M. 560/312 (Italian Decree)"
+      "ISO 19650-Konformität",
+      "COBie-Datenextraktion",
+      "D.M. 560/312 (Italienische BIM-Verordnung)"
     ],
     "output": {
-      "baseline": "Estimated Execution Baseline",
-      "disclaimer": "This is a baseline algorithmic estimation. Final pricing requires structural document auditing (EIR/BEP).",
-      "cta": "UPLOAD EIR/BEP FOR PROPOSAL"
+      "baseline": "Geschätzter Ausführungs-Richtwert",
+      "disclaimer": "Dies ist ein algorithmischer Richtwert. Die endgültige Preisgestaltung erfordert die Prüfung der Projektdokumente (AIA/BAP).",
+      "cta": "AIA / BAP FÜR ANGEBOT HOCHLADEN"
     }
   },
   "education": {
     "badge": "EDUCATION & DEVELOPER HUB",
-    "title": "Code License & Training",
-    "description": "Unlock the paywall. Access our proprietary C#/Python repositories, algorithmic workflows, and masterclass videos.",
+    "title": "Code-Lizenzen & Weiterbildung",
+    "description": "Vollzugriff freischalten. Erhalten Sie Zugang zu unseren proprietären C#/Python-Repositories, algorithmischen Workflows und Masterclass-Videos.",
     "billing": {
-      "monthly": "Billed Monthly",
-      "annual": "Billed Annually"
+      "monthly": "Monatlich abgerechnet",
+      "annual": "Jährlich abgerechnet"
     },
     "single": {
-      "type": "Single-Asset Access",
+      "type": "Einzel-Asset-Zugang",
       "title": "Pay-per-Item",
-      "subtitle": "Best for isolated problem solving.",
-      "unit": "/ asset",
+      "subtitle": "Optimal zur Lösung spezifischer Problemstellungen.",
+      "unit": "/ Asset",
       "features": [
-        "Lifetime access to one specific script or video.",
-        "Version updates for the purchased asset.",
-        "No access to main GitHub repositories."
+        "Lebenslanger Zugriff auf ein bestimmtes Skript oder Video.",
+        "Versions-Updates für das erworbene Asset.",
+        "Kein Zugriff auf die zentralen GitHub-Repositories."
       ],
-      "cta": "UNLOCK ASSET"
+      "cta": "ASSET FREISCHALTEN"
     },
     "all_access": {
-      "tag": "Enterprise / Developer",
-      "type": "All-Access Subscription",
+      "tag": "Enterprise / Entwickler",
+      "type": "All-Access-Abonnement",
       "title": "Developer Hub",
-      "subtitle": "Unrestricted algorithmic access.",
-      "unit": "/ mo",
-      "billed_yearly": "Billed €4,788 yearly",
+      "subtitle": "Uneingeschränkter algorithmischer Zugriff.",
+      "unit": "/ Monat",
+      "billed_yearly": "Jährlich €4.788 abgerechnet",
       "features": [
-        "Complete Paywall bypass",
-        " on the Education page.",
-        "Live access to public code repositories via ",
+        "Vollständiger Zugriff",
+        " auf alle Inhalte der Weiterbildungs-Seite.",
+        "Direkter Zugriff auf öffentliche Code-Repositories über ",
         "git clone",
         ".",
-        "Automatic algorithmic pipeline updates."
+        "Automatische Updates der algorithmischen Pipelines."
       ],
-      "cta": "INITIATE SUBSCRIPTION"
+      "cta": "ABONNEMENT STARTEN"
     }
   }
 }

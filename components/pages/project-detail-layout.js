@@ -60,7 +60,7 @@ export default function ProjectDetailLayout({ project }) {
           <div className="lg:sticky lg:top-28 space-y-8">
             
             {/* Project Information */}
-            <div className="rounded-3xl border border-brand-border bg-white p-6 shadow-sm">
+            <div className="rounded-3xl border border-brand-border bg-brand-card p-6 shadow-sm">
               <h3 className="text-lg font-bold text-brand-textPrimary mb-6 uppercase tracking-wider border-b border-brand-border pb-4">{t("project.detail.info")}</h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
@@ -103,11 +103,11 @@ export default function ProjectDetailLayout({ project }) {
               <p className="text-sm text-brand-textSecondary font-medium mb-6">{t("project.detail.support.desc")}</p>
               
               <div className="space-y-4">
-                <a href="tel:+390418944704" className="flex items-center justify-center gap-3 bg-white rounded-xl py-3 hover:border-brand-primary/50 transition border border-brand-border">
+                <a href="tel:+390418944704" className="flex items-center justify-center gap-3 bg-brand-card rounded-xl py-3 hover:border-brand-primary/50 transition border border-brand-border">
                   <Phone className="w-4 h-4 text-brand-primary" />
                   <span className="text-sm font-bold text-brand-textPrimary">041 894 4704</span>
                 </a>
-                <a href="mailto:info@pybim.com" className="flex items-center justify-center gap-3 bg-white rounded-xl py-3 hover:border-brand-primary/50 transition border border-brand-border">
+                <a href="mailto:info@pybim.com" className="flex items-center justify-center gap-3 bg-brand-card rounded-xl py-3 hover:border-brand-primary/50 transition border border-brand-border">
                   <Mail className="w-4 h-4 text-brand-primary" />
                   <span className="text-sm font-bold text-brand-textPrimary truncate px-2">info@pybim.com</span>
                 </a>
@@ -212,7 +212,7 @@ export default function ProjectDetailLayout({ project }) {
                 <h3 className="text-2xl font-bold text-brand-textPrimary mb-8">{t("project.detail.faq")}</h3>
                 <div className="space-y-4">
                   {data.faq.map((item, idx) => (
-                    <div key={idx} className={`rounded-2xl border transition-colors duration-300 ${openFaq === idx ? 'border-brand-primary bg-white shadow-md' : 'border-brand-border bg-brand-surface hover:border-brand-primary/50'}`}>
+                    <div key={idx} className={`rounded-2xl border transition-colors duration-300 ${openFaq === idx ? 'border-brand-primary bg-brand-card shadow-md' : 'border-brand-border bg-brand-surface hover:border-brand-primary/50'}`}>
                       <button 
                         onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)} 
                         type="button" 

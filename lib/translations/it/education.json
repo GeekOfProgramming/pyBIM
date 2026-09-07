@@ -1,14 +1,14 @@
 {
-  "education.heroTitle": "Education & Training",
+  "education.heroTitle": "Formazione & Training",
   "education.home": "Home",
-  "education.education": "Education",
-  "education.tutorialsGuides": "TUTORIALS & GUIDES",
-  "education.ourTutorials": "Our Tutorials",
-  "education.seeMore": "See More",
-  "education.readMore": "Read More",
-  "education.newsUpdates": "NEWS & UPDATES",
-  "education.latestNews": "Latest News & Updates",
-  "education.toolGuides": "TOOL GUIDES",
-  "education.howToUse": "How to Use Our Tools",
-  "education.toolGuidesDesc": "In-depth guides to get the most out of our proprietary software solutions."
+  "education.education": "Formazione",
+  "education.tutorialsGuides": "TUTORIAL & GUIDE",
+  "education.ourTutorials": "I Nostri Tutorial",
+  "education.seeMore": "Mostra Altro",
+  "education.readMore": "Leggi di Più",
+  "education.newsUpdates": "NOTIZIE & AGGIORNAMENTI",
+  "education.latestNews": "Ultime Notizie & Aggiornamenti",
+  "education.toolGuides": "GUIDE AGLI STRUMENTI",
+  "education.howToUse": "Come Utilizzare i Nostri Strumenti",
+  "education.toolGuidesDesc": "Guide approfondite per sfruttare al massimo le nostre soluzioni software proprietarie."
 }

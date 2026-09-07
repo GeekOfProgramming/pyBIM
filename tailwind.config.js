@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,17 +10,19 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          base: '#FFFFFF',          // Pure White
-          surface: '#F1F5F9',       // Sky Blue / Light Gray (slate-100)
-          surfaceHover: '#E2E8F0',  // Slightly darker gray for hover (slate-200)
-          primary: '#2563EB',       // Royal Blue (Main Brand/Titles)
-          accent: '#F97316',        // Vibrant Orange (Strictly CTAs)
-          accentHover: '#EA580C',   // Darker Orange
-          minor1: '#EAB308',        // Yellow (Tags)
-          minor2: '#A855F7',        // Purple (Tags)
-          textPrimary: '#0F172A',   // Deep Charcoal/Slate (slate-900)
-          textSecondary: '#475569', // Muted text (slate-600)
-          border: '#E2E8F0',        // Subtle borders (slate-200)
+          base: 'rgb(var(--brand-base) / <alpha-value>)',
+          surface: 'rgb(var(--brand-surface) / <alpha-value>)',
+          surfaceHover: 'rgb(var(--brand-surfaceHover) / <alpha-value>)',
+          card: 'rgb(var(--brand-card) / <alpha-value>)',
+          primary: 'rgb(var(--brand-primary) / <alpha-value>)',
+          primaryHover: 'rgb(var(--brand-primaryHover) / <alpha-value>)',
+          accent: 'rgb(var(--brand-accent) / <alpha-value>)',
+          accentHover: 'rgb(var(--brand-accentHover) / <alpha-value>)',
+          minor1: '#EAB308',
+          minor2: '#A855F7',
+          textPrimary: 'rgb(var(--brand-textPrimary) / <alpha-value>)',
+          textSecondary: 'rgb(var(--brand-textSecondary) / <alpha-value>)',
+          border: 'rgb(var(--brand-border) / <alpha-value>)',
         }
       }
     }

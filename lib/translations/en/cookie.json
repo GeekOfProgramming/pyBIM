@@ -1,0 +1,14 @@
+{
+  "cookie_policy.title": "Cookie Policy",
+  "cookie_policy.placeholder": "This document is currently being adapted to comply with GDPR standards. The official policy powered by Iubenda will be available here shortly.",
+  "cookie_policy.embed_link_text": "Cookie Policy",
+
+  "cookie.banner.title": "Your Privacy is Our Priority",
+  "cookie.banner.desc_prefix": "We use cookies to improve your browsing experience, serve personalized content, and analyze our traffic. By clicking \"Accept All\", you consent to our use of cookies in accordance with our",
+  "cookie.banner.privacy_policy": "Privacy Policy",
+  "cookie.banner.and": "and",
+  "cookie.banner.cookie_policy": "Cookie Policy",
+  "cookie.banner.btn_customize": "Customize",
+  "cookie.banner.btn_accept_all": "Accept All",
+  "cookie.banner.alert_customize": "Cookie preferences panel will open here."
+}

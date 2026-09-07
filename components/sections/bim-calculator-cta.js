@@ -105,10 +105,10 @@ export default function BimCalculatorCta() {
 
           {/* Right Side - Form */}
           <div className="lg:w-7/12 w-full relative z-10">
-            <div className="bg-white rounded-3xl p-8 lg:p-10 border border-brand-border shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)]">
+            <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 lg:p-10 border border-brand-border dark:border-slate-800 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] transition-colors">
               {downloaded ? (
                 <div className="text-center py-10">
-                  <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/40 flex items-center justify-center mx-auto mb-4">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-brand-textPrimary mb-2">
@@ -136,7 +136,7 @@ export default function BimCalculatorCta() {
                         placeholder={t("roi.form.name_ph")}
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                        className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
                       />
                     </div>
                     <div className="space-y-1.5">
@@ -147,7 +147,7 @@ export default function BimCalculatorCta() {
                         placeholder={t("roi.form.companyName_ph")}
                         value={form.companyName}
                         onChange={(e) => setForm({ ...form, companyName: e.target.value })}
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                        className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
                       />
                     </div>
                   </div>
@@ -160,7 +160,7 @@ export default function BimCalculatorCta() {
                       required
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
                     />
                     <p className="text-[10.5px] text-brand-textSecondary mt-1 font-medium pl-1">
                       {t("roi.form.email_help")}
@@ -180,7 +180,7 @@ export default function BimCalculatorCta() {
                         placeholder={t("roi.form.modelerCount_ph")}
                         value={form.modelerCount}
                         onChange={(e) => setForm({ ...form, modelerCount: e.target.value })}
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                        className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
                       />
                     </div>
                     <div className="space-y-1.5">
@@ -195,7 +195,7 @@ export default function BimCalculatorCta() {
                         placeholder={t("roi.form.hourlyRate_ph")}
                         value={form.hourlyRate}
                         onChange={(e) => setForm({ ...form, hourlyRate: e.target.value })}
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                        className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
                       />
                     </div>
                   </div>
@@ -205,7 +205,7 @@ export default function BimCalculatorCta() {
                       type="checkbox"
                       id="privacy-calculator"
                       required
-                      className="mt-1 w-4 h-4 rounded border-brand-border bg-brand-surface text-brand-primary focus:ring-brand-primary cursor-pointer"
+                      className="mt-1 w-4 h-4 rounded border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800 text-brand-primary focus:ring-brand-primary cursor-pointer"
                     />
                     <label htmlFor="privacy-calculator" className="text-xs text-brand-textSecondary font-medium leading-normal">
                       {t("forms.accept.part1")}{" "}
@@ -239,9 +239,9 @@ export default function BimCalculatorCta() {
               )}
 
               {popup && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-base/80 backdrop-blur-sm animate-in fade-in duration-200 text-left">
-                  <div className="relative w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl border border-brand-border text-center transform animate-in zoom-in-95 duration-200">
-                    <div className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full ${popup.type === 'success' ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200 text-left">
+                  <div className="relative w-full max-w-md rounded-3xl bg-white dark:bg-slate-900 p-8 shadow-2xl border border-brand-border dark:border-slate-800 text-center transform animate-in zoom-in-95 duration-200">
+                    <div className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full ${popup.type === 'success' ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400' : 'bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400'}`}>
                       {popup.type === 'success' ? <CheckCircle2 className="h-8 w-8" /> : <AlertCircle className="h-8 w-8" />}
                     </div>
                     

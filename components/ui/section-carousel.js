@@ -35,14 +35,14 @@ export default function SectionCarousel({ title, badge, badgeColor = "text-brand
           </span>
           <button 
             onClick={scrollPrev}
-            className="w-12 h-12 rounded-full border border-brand-border bg-white text-brand-textPrimary flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-105 active:scale-95 transition-all shadow-md"
+            className="w-12 h-12 rounded-full border border-brand-border dark:border-slate-700 bg-white dark:bg-slate-800 text-brand-textPrimary flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-105 active:scale-95 transition-all shadow-md"
             aria-label="Previous"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button 
             onClick={scrollNext}
-            className="w-12 h-12 rounded-full border border-brand-border bg-white text-brand-textPrimary flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-105 active:scale-95 transition-all shadow-md"
+            className="w-12 h-12 rounded-full border border-brand-border dark:border-slate-700 bg-white dark:bg-slate-800 text-brand-textPrimary flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-105 active:scale-95 transition-all shadow-md"
             aria-label="Next"
           >
             <ChevronRight className="w-6 h-6" />

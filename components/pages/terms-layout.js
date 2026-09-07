@@ -11,7 +11,7 @@ export default function TermsLayout() {
     <div className="w-full">
       {/* 1. HERO SECTION */}
       <section className="relative py-24 px-6 lg:px-8 bg-[#050D1A] overflow-hidden">
-        <div className="absolute inset-0 bg-brand-background" />
+        <div className="absolute inset-0 bg-[#050D1A]" />
         
         <div className="relative z-10 max-w-4xl mx-auto mt-16 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md">

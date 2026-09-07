@@ -41,7 +41,7 @@ export default function ServicesPageLayout() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* 01 Card */}
-            <div className="bg-white border border-brand-border rounded-[2rem] p-8 shadow-sm hover:shadow-md transition-all">
+            <div className="bg-brand-card border border-brand-border rounded-[2rem] p-8 shadow-sm hover:shadow-md transition-all">
               <h5 className="text-xl font-bold text-brand-textPrimary mb-1">{t.sovereignAi.cards[0].num}. {t.sovereignAi.cards[0].title}</h5>
               <p className="text-xs font-mono text-brand-primary mb-6 uppercase tracking-wider">{t.sovereignAi.cards[0].subtitle}</p>
               <ul className="space-y-4 text-sm text-brand-textSecondary font-medium">
@@ -58,7 +58,7 @@ export default function ServicesPageLayout() {
             </div>
             
             {/* 02 Card */}
-            <div className="bg-white border border-brand-border rounded-[2rem] p-8 shadow-sm hover:shadow-md transition-all">
+            <div className="bg-brand-card border border-brand-border rounded-[2rem] p-8 shadow-sm hover:shadow-md transition-all">
               <h5 className="text-xl font-bold text-brand-textPrimary mb-1">{t.sovereignAi.cards[1].num}. {t.sovereignAi.cards[1].title}</h5>
               <p className="text-xs font-mono text-brand-accent mb-6 uppercase tracking-wider">{t.sovereignAi.cards[1].subtitle}</p>
               <ul className="space-y-4 text-sm text-brand-textSecondary font-medium">
@@ -75,7 +75,7 @@ export default function ServicesPageLayout() {
             </div>
 
             {/* 03 Card */}
-            <div className="bg-white border border-brand-border rounded-[2rem] p-8 shadow-sm hover:shadow-md transition-all">
+            <div className="bg-brand-card border border-brand-border rounded-[2rem] p-8 shadow-sm hover:shadow-md transition-all">
               <h5 className="text-xl font-bold text-brand-textPrimary mb-1">{t.sovereignAi.cards[2].num}. {t.sovereignAi.cards[2].title}</h5>
               <p className="text-xs font-mono text-brand-primary mb-6 uppercase tracking-wider">{t.sovereignAi.cards[2].subtitle}</p>
               <ul className="space-y-4 text-sm text-brand-textSecondary font-medium">
@@ -95,7 +95,7 @@ export default function ServicesPageLayout() {
       </section>
 
       {/* Validation Phase */}
-      <section className="py-24 bg-white border-b border-brand-border">
+      <section className="py-24 bg-brand-base border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-8">
             <span className="h-px bg-emerald-500 w-12" />
@@ -103,7 +103,7 @@ export default function ServicesPageLayout() {
               {t.validationPhase.tag}
             </h3>
           </div>
-          <div className="bg-emerald-50 border border-emerald-200 rounded-[2rem] p-10 flex flex-col md:flex-row items-center gap-8 justify-between shadow-sm">
+          <div className="bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 rounded-[2rem] p-10 flex flex-col md:flex-row items-center gap-8 justify-between shadow-sm">
             <div className="max-w-2xl">
               <h4 className="text-2xl font-bold text-brand-textPrimary mb-4">{t.validationPhase.title}</h4>
               <p 
@@ -140,13 +140,13 @@ export default function ServicesPageLayout() {
           
           <div className="grid md:grid-cols-3 gap-8 mb-10">
             {t.coreAi.cards.map((card, idx) => (
-              <div key={idx} className="p-8 rounded-[2rem] bg-white border border-brand-border shadow-sm">
+              <div key={idx} className="p-8 rounded-[2rem] bg-brand-card border border-brand-border shadow-sm">
                 <h5 className="text-lg font-bold text-brand-textPrimary mb-3">{card.title}</h5>
                 <p className="text-sm text-brand-textSecondary font-medium leading-relaxed">{card.desc}</p>
               </div>
             ))}
           </div>
-          <Link href="/contact" className="inline-flex items-center justify-center bg-white border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-8 py-3 rounded-full text-sm font-bold tracking-widest uppercase transition-all duration-300 shadow-sm">
+          <Link href="/contact" className="inline-flex items-center justify-center bg-brand-card border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-8 py-3 rounded-full text-sm font-bold tracking-widest uppercase transition-all duration-300 shadow-sm">
             {t.coreAi.cta} <ArrowRight className="w-4 h-4 ml-2" />
           </Link>
           <p className="mt-3 text-xs font-medium text-brand-textSecondary">{t.coreAi.microcopy}</p>
@@ -154,7 +154,7 @@ export default function ServicesPageLayout() {
       </section>
 
       {/* Powered by Custom Code */}
-      <section className="py-24 bg-white border-b border-brand-border">
+      <section className="py-24 bg-brand-base border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-8">
             <span className="h-px bg-brand-primary w-12" />
@@ -169,13 +169,13 @@ export default function ServicesPageLayout() {
             <div className="space-y-12">
               {(t.poweredBy.pipeline || []).map((step, idx) => (
                 <div key={idx} className="relative pl-16 group">
-                  {/* Connecting Line between badges (strictly underneath and stops at final badge) */}
+                  {/* Connecting Line between badges (strictly between bottom of current badge and top of next badge) */}
                   {idx < (t.poweredBy.pipeline?.length || 0) - 1 && (
-                    <div className="absolute left-[23px] top-6 h-[calc(100%+48px)] w-[2px] bg-brand-primary/20 z-0 pointer-events-none" />
+                    <div className="absolute left-[23px] top-12 h-full w-[2px] bg-brand-primary/20 pointer-events-none" />
                   )}
 
-                  {/* Step Number Badge (z-10 with opaque surface background preventing line bleed-through on hover) */}
-                  <div className="absolute left-0 top-0 z-10 w-12 h-12 rounded-2xl bg-brand-surface border-2 border-brand-primary/20 group-hover:border-brand-primary group-hover:bg-[#E9F0FD] flex items-center justify-center font-bold text-brand-primary transition-all duration-300 shadow-sm">
+                  {/* Step Number Badge */}
+                  <div className="absolute left-0 top-0 z-10 w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border-2 border-brand-primary/20 group-hover:border-brand-primary group-hover:shadow-[0_0_15px_rgba(37,99,235,0.2)] flex items-center justify-center font-bold text-brand-primary transition-all duration-300 shadow-sm">
                     {idx + 1}
                   </div>
                   <h5 className="text-xl font-bold text-brand-textPrimary mb-2">{step.title}</h5>
@@ -188,7 +188,7 @@ export default function ServicesPageLayout() {
       </section>
 
       {/* SECTION 2: 3 PILLARS (GRID) */}
-      <section className="py-24 bg-[#0a0a0a] border-y border-white/10">
+      <section className="py-24 bg-brand-surface border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-8">
             <span className="h-px bg-brand-primary w-12" />
@@ -199,37 +199,37 @@ export default function ServicesPageLayout() {
           <div className="grid lg:grid-cols-3 gap-8">
             
             {/* Card 1 */}
-            <div className="group rounded-3xl bg-[#1a1a1a] border border-white/10 p-8 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:border-brand-primary transition-all duration-300 hover:-translate-y-2 flex flex-col">
-              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
-                <Box className="w-7 h-7 text-white/70" />
+            <div className="group rounded-3xl bg-brand-card border border-brand-border p-8 shadow-sm hover:shadow-md hover:border-brand-primary transition-all duration-300 hover:-translate-y-2 flex flex-col">
+              <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-8">
+                <Box className="w-7 h-7 text-brand-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">{t.pillars[0].title}</h3>
+              <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">{t.pillars[0].title}</h3>
               <p 
-                className="text-white/70 font-medium leading-relaxed flex-grow"
+                className="text-brand-textSecondary font-medium leading-relaxed flex-grow"
                 dangerouslySetInnerHTML={{ __html: t.pillars[0].desc }}
               />
             </div>
 
             {/* Card 2 */}
-            <div className="group rounded-3xl bg-[#1a1a1a] border border-white/10 p-8 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:border-brand-primary transition-all duration-300 hover:-translate-y-2 flex flex-col relative overflow-hidden border-b-4 border-b-brand-primary">
+            <div className="group rounded-3xl bg-brand-card border border-brand-border p-8 shadow-sm hover:shadow-md hover:border-brand-primary transition-all duration-300 hover:-translate-y-2 flex flex-col relative overflow-hidden border-b-4 border-b-brand-primary">
               <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-8">
                 <Code className="w-7 h-7 text-brand-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">{t.pillars[1].title}</h3>
+              <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">{t.pillars[1].title}</h3>
               <p 
-                className="text-white/70 font-medium leading-relaxed flex-grow"
+                className="text-brand-textSecondary font-medium leading-relaxed flex-grow"
                 dangerouslySetInnerHTML={{ __html: t.pillars[1].desc }}
               />
             </div>
 
             {/* Card 3 */}
-            <div className="group rounded-3xl bg-[#1a1a1a] border border-white/10 p-8 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:border-brand-primary transition-all duration-300 hover:-translate-y-2 flex flex-col">
-              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
-                <Database className="w-7 h-7 text-white/70" />
+            <div className="group rounded-3xl bg-brand-card border border-brand-border p-8 shadow-sm hover:shadow-md hover:border-brand-primary transition-all duration-300 hover:-translate-y-2 flex flex-col">
+              <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-8">
+                <Database className="w-7 h-7 text-brand-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">{t.pillars[2].title}</h3>
+              <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">{t.pillars[2].title}</h3>
               <p 
-                className="text-white/70 font-medium leading-relaxed flex-grow"
+                className="text-brand-textSecondary font-medium leading-relaxed flex-grow"
                 dangerouslySetInnerHTML={{ __html: t.pillars[2].desc }}
               />
             </div>
@@ -260,7 +260,7 @@ export default function ServicesPageLayout() {
             
             {/* Step 1 */}
             <div className="relative flex flex-col items-center group text-center">
-              <div className="w-20 h-20 rounded-full bg-white border-2 border-brand-border group-hover:border-brand-primary flex items-center justify-center shadow-md z-10 text-xl font-bold text-brand-textPrimary mb-8 transition-all duration-300">
+              <div className="w-20 h-20 rounded-full bg-brand-card border-2 border-brand-border group-hover:border-brand-primary flex items-center justify-center shadow-md z-10 text-xl font-bold text-brand-textPrimary mb-8 transition-all duration-300">
                 {t.automationWorkflow.steps[0].num}
               </div>
               <h4 className="text-xl font-bold text-brand-textPrimary mb-3">{t.automationWorkflow.steps[0].title}</h4>
@@ -271,7 +271,7 @@ export default function ServicesPageLayout() {
 
             {/* Step 2 */}
             <div className="relative flex flex-col items-center group text-center">
-              <div className="w-20 h-20 rounded-full bg-brand-primary border-4 border-white flex items-center justify-center shadow-xl shadow-brand-primary/30 z-10 text-xl font-bold text-white mb-8 transition-all duration-300 group-hover:scale-105">
+              <div className="w-20 h-20 rounded-full bg-brand-primary border-4 border-white dark:border-brand-surface flex items-center justify-center shadow-xl shadow-brand-primary/30 z-10 text-xl font-bold text-white mb-8 transition-all duration-300 group-hover:scale-105">
                 {t.automationWorkflow.steps[1].num}
               </div>
               <h4 className="text-xl font-bold text-brand-textPrimary mb-3">{t.automationWorkflow.steps[1].title}</h4>
@@ -282,7 +282,7 @@ export default function ServicesPageLayout() {
 
             {/* Step 3 */}
             <div className="relative flex flex-col items-center group text-center">
-              <div className="w-20 h-20 rounded-full bg-emerald-500 border-4 border-white flex items-center justify-center shadow-xl shadow-emerald-500/30 z-10 text-xl font-bold text-white mb-8 transition-all duration-300 group-hover:scale-105">
+              <div className="w-20 h-20 rounded-full bg-emerald-500 border-4 border-white dark:border-brand-surface flex items-center justify-center shadow-xl shadow-emerald-500/30 z-10 text-xl font-bold text-white mb-8 transition-all duration-300 group-hover:scale-105">
                 {t.automationWorkflow.steps[2].num}
               </div>
               <h4 className="text-xl font-bold text-brand-textPrimary mb-3">{t.automationWorkflow.steps[2].title}</h4>
@@ -309,7 +309,7 @@ export default function ServicesPageLayout() {
               
               <div className="grid md:grid-cols-3 gap-8">
                 {/* Card 1 */}
-                <div className="bg-white border border-brand-border p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all flex flex-col justify-between">
+                <div className="bg-brand-card border border-brand-border p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all flex flex-col justify-between">
                   <div>
                     <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6">
                       <HardHat className="w-7 h-7 text-brand-primary" />
@@ -322,7 +322,7 @@ export default function ServicesPageLayout() {
                 </div>
     
                 {/* Card 2 */}
-                <div className="bg-white border border-brand-border p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all flex flex-col justify-between">
+                <div className="bg-brand-card border border-brand-border p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all flex flex-col justify-between">
                   <div>
                     <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6">
                       <Building2 className="w-7 h-7 text-brand-primary" />
@@ -335,7 +335,7 @@ export default function ServicesPageLayout() {
                 </div>
     
                 {/* Card 3 */}
-                <div className="bg-white border border-brand-border p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all flex flex-col justify-between">
+                <div className="bg-brand-card border border-brand-border p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all flex flex-col justify-between">
                   <div>
                     <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6">
                       <Factory className="w-7 h-7 text-brand-primary" />
@@ -351,7 +351,7 @@ export default function ServicesPageLayout() {
           </section>
 
         {/* 6. ROI METRICS */}
-        <section className="relative py-24 bg-white border-b border-brand-border overflow-hidden">
+        <section className="relative py-24 bg-brand-base border-b border-brand-border overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div className="flex items-center gap-4 mb-4">
               <span className="h-px bg-brand-primary w-12" />

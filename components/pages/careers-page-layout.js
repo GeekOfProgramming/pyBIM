@@ -61,22 +61,22 @@ export default function CareersPageLayout({ jobs }) {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+            <div className="bg-brand-card border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
               <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box1_title")}</h3>
               <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box1_desc") }} />
             </div>
             
-            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+            <div className="bg-brand-card border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
               <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box2_title")}</h3>
               <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box2_desc") }} />
             </div>
 
-            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+            <div className="bg-brand-card border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
               <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box3_title")}</h3>
               <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box3_desc") }} />
             </div>
 
-            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+            <div className="bg-brand-card border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
               <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box4_title")}</h3>
               <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box4_desc") }} />
             </div>
@@ -100,7 +100,7 @@ export default function CareersPageLayout({ jobs }) {
           </div>
 
           {jobs.length === 0 ? (
-            <div className="bg-white border border-brand-border rounded-[2.5rem] p-8 md:p-12 shadow-sm text-left max-w-4xl mx-auto">
+            <div className="bg-brand-card border border-brand-border rounded-[2.5rem] p-8 md:p-12 shadow-sm text-left max-w-4xl mx-auto">
               
               <div className="inline-block px-3 py-1 rounded-lg bg-brand-accent/10 text-brand-accent text-xs font-bold tracking-widest uppercase border border-brand-accent/20 mb-6">
                 {t("careers.empty.status")}
@@ -194,7 +194,7 @@ BODY REQUIRED STRUCTURE:
             <>
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {visibleJobs.map((job) => (
-                  <div key={job.id} className="group flex flex-col overflow-hidden rounded-3xl border border-brand-border bg-white p-8 transition-all duration-300 hover:-translate-y-2 hover:border-brand-primary/30 hover:shadow-xl shadow-sm">
+                  <div key={job.id} className="group flex flex-col overflow-hidden rounded-3xl border border-brand-border bg-brand-card p-8 transition-all duration-300 hover:-translate-y-2 hover:border-brand-primary/30 hover:shadow-xl shadow-sm">
                     <div className="inline-block self-start px-3 py-1 rounded-lg bg-brand-primary/10 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4 border border-brand-primary/20">
                       {language === "it" ? job.departmentIt : job.departmentEn}
                     </div>
@@ -219,7 +219,7 @@ BODY REQUIRED STRUCTURE:
                 <div className="mt-16 flex justify-center">
                   <button
                     onClick={() => setVisibleCount((prev) => prev + 6)}
-                    className="rounded-2xl border border-brand-border bg-brand-surface px-8 py-4 text-sm font-bold tracking-widest text-brand-textPrimary uppercase shadow-sm hover:bg-white hover:text-brand-primary transition-all duration-300 hover:shadow-md hover:border-brand-primary/30"
+                    className="rounded-2xl border border-brand-border bg-brand-surface px-8 py-4 text-sm font-bold tracking-widest text-brand-textPrimary uppercase shadow-sm hover:bg-brand-card dark:hover:bg-slate-800 hover:text-brand-primary transition-all duration-300 hover:shadow-md hover:border-brand-primary/30"
                   >
                     {language === "it" ? "Vedi Altri" : t("careers.list.more")}
                   </button>
@@ -244,7 +244,7 @@ BODY REQUIRED STRUCTURE:
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+            <div className="bg-brand-card border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
               <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-100 mb-6">
                 <Terminal className="w-6 h-6" />
               </div>
@@ -252,7 +252,7 @@ BODY REQUIRED STRUCTURE:
               <p className="text-brand-textSecondary text-sm leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.eng.box1_desc") }} />
             </div>
 
-            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+            <div className="bg-brand-card border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
               <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-100 mb-6">
                 <Server className="w-6 h-6" />
               </div>
@@ -260,7 +260,7 @@ BODY REQUIRED STRUCTURE:
               <p className="text-brand-textSecondary text-sm leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.eng.box2_desc") }} />
             </div>
 
-            <div className="bg-white border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
+            <div className="bg-brand-card border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
               <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-100 mb-6">
                 <Cpu className="w-6 h-6" />
               </div>

@@ -21,7 +21,21 @@
   "forms.accept.part1": "I accept the ",
   "forms.accept.privacy": "Privacy Policy",
   "forms.accept.part2": " and ",
-  "forms.accept.terms": "Terms and Conditions",
+  "forms.accept.terms": "Terms & Conditions",
   "forms.accept.part3": " for personal data processing.",
-  "forms.accept.part3_short": "."
+  "forms.accept.part3_short": ".",
+  "notfound.badge": "// ERROR 404: ELEMENT_NOT_FOUND",
+  "notfound.title": "Spatial Coordinates Not Found.",
+  "notfound.desc": "The parameter or page you are searching for does not exist in our BIM database. It may have been relocated, updated, or deleted.",
+  "notfound.btn_home": "Return to Homepage",
+  "notfound.btn_services": "Explore Services",
+  "notfound.quick_nav": "Quick Navigation",
+  "notfound.link_services": "Services",
+  "notfound.link_about": "About Us",
+  "notfound.link_projects": "Projects",
+  "notfound.link_contact": "Contact",
+  "theme.switch_light": "Switch to Light Mode",
+  "theme.switch_dark": "Switch to Dark Mode",
+  "common.coming_soon": "Coming Soon",
+  "common.date_unavailable": "Date unavailable"
 }

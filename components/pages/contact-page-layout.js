@@ -100,7 +100,7 @@ export default function ContactPageLayout() {
             </div>
 
             <div className="lg:col-span-7">
-              <div id="audit" className="relative rounded-[2.5rem] bg-white p-8 md:p-12 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-brand-border/60 overflow-hidden">
+              <div id="audit" className="relative rounded-[2.5rem] bg-white dark:bg-slate-900 p-8 md:p-12 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-brand-border/60 dark:border-slate-800 overflow-hidden transition-colors">
                 {/* Decorative background gradients */}
                 <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-brand-primary/5 blur-3xl pointer-events-none" />
                 <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-brand-accent/5 blur-3xl pointer-events-none" />
@@ -123,7 +123,7 @@ export default function ContactPageLayout() {
                           onChange={(e) => updateField("name", e.target.value)}
                           placeholder={t("contact.form.name_ph")}
                           required
-                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                          className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
                         />
                       </div>
                       <div className="space-y-1.5">
@@ -134,7 +134,7 @@ export default function ContactPageLayout() {
                           onChange={(e) => updateField("companyName", e.target.value)}
                           placeholder={t("contact.form.companyName_ph")}
                           required
-                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                          className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
                         />
                       </div>
                     </div>
@@ -149,7 +149,7 @@ export default function ContactPageLayout() {
                           onChange={(e) => updateField("email", e.target.value)}
                           placeholder={t("contact.form.email_ph")}
                           required
-                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                          className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
                         />
                         <p className="text-[10.5px] text-brand-textSecondary mt-1 font-medium pl-1">
                           {t("contact.form.email_help")}
@@ -162,7 +162,7 @@ export default function ContactPageLayout() {
                           value={form.phone}
                           onChange={(e) => updateField("phone", e.target.value)}
                           placeholder={t("contact.form.phone_ph")}
-                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white"
+                          className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
                         />
                       </div>
                     </div>
@@ -175,11 +175,11 @@ export default function ContactPageLayout() {
                           value={form.service}
                           onChange={(e) => updateField("service", e.target.value)}
                           required
-                          className={`w-full appearance-none rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary outline-none transition focus:border-brand-primary focus:bg-white ${form.service ? '' : 'text-brand-textSecondary'}`}
+                          className={`w-full appearance-none rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800 ${form.service ? '' : 'text-brand-textSecondary'}`}
                         >
-                          <option value="" disabled hidden>{t("contact.form.service_ph")}</option>
+                          <option value="" disabled hidden className="dark:bg-slate-800">{t("contact.form.service_ph")}</option>
                           {["service_opt1", "service_opt2", "service_opt3", "service_opt4", "service_opt5", "service_opt6", "service_opt7", "service_opt8"].map((key) => (
-                            <option key={key} value={t(`contact.form.${key}`)} className="text-brand-textPrimary">
+                            <option key={key} value={t(`contact.form.${key}`)} className="text-brand-textPrimary dark:bg-slate-800">
                               {t(`contact.form.${key}`)}
                             </option>
                           ))}
@@ -192,11 +192,11 @@ export default function ContactPageLayout() {
                           value={form.teamScale}
                           onChange={(e) => updateField("teamScale", e.target.value)}
                           required
-                          className={`w-full appearance-none rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary outline-none transition focus:border-brand-primary focus:bg-white ${form.teamScale ? '' : 'text-brand-textSecondary'}`}
+                          className={`w-full appearance-none rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800 ${form.teamScale ? '' : 'text-brand-textSecondary'}`}
                         >
-                          <option value="" disabled hidden>{t("contact.form.teamScale_ph")}</option>
+                          <option value="" disabled hidden className="dark:bg-slate-800">{t("contact.form.teamScale_ph")}</option>
                           {["scale_opt1", "scale_opt2", "scale_opt3", "scale_opt4"].map((key) => (
-                            <option key={key} value={t(`contact.form.${key}`)} className="text-brand-textPrimary">
+                            <option key={key} value={t(`contact.form.${key}`)} className="text-brand-textPrimary dark:bg-slate-800">
                               {t(`contact.form.${key}`)}
                             </option>
                           ))}
@@ -213,7 +213,7 @@ export default function ContactPageLayout() {
                         onChange={(e) => updateField("message", e.target.value)}
                         placeholder={t("contact.form.message_ph")}
                         required
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white resize-y"
+                        className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800 resize-y"
                       />
                     </div>
 
@@ -223,7 +223,7 @@ export default function ContactPageLayout() {
                         type="checkbox"
                         id="privacy-contact"
                         required
-                        className="mt-1 w-4 h-4 rounded border-brand-border bg-brand-surface text-brand-primary focus:ring-brand-primary cursor-pointer"
+                        className="mt-1 w-4 h-4 rounded border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800 text-brand-primary focus:ring-brand-primary cursor-pointer"
                       />
                       <label htmlFor="privacy-contact" className="text-xs text-brand-textSecondary font-medium leading-normal">
                         {t("forms.accept.part1")}{" "}
@@ -259,9 +259,9 @@ export default function ContactPageLayout() {
                   </form>
 
                   {popup && (
-                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-base/80 backdrop-blur-sm animate-in fade-in duration-200">
-                      <div className="relative w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl border border-brand-border text-center transform animate-in zoom-in-95 duration-200">
-                        <div className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full ${popup.type === 'success' ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+                      <div className="relative w-full max-w-md rounded-3xl bg-white dark:bg-slate-900 p-8 shadow-2xl border border-brand-border dark:border-slate-800 text-center transform animate-in zoom-in-95 duration-200">
+                        <div className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full ${popup.type === 'success' ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400' : 'bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400'}`}>
                           {popup.type === 'success' ? <CheckCircle2 className="h-8 w-8" /> : <AlertCircle className="h-8 w-8" />}
                         </div>
                         
@@ -304,7 +304,7 @@ export default function ContactPageLayout() {
           <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto items-stretch">
             
             {/* TELEFONO FISSO */}
-            <a href={phoneHref} className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border bg-white p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(37,99,235,0.15)] hover:-translate-y-1 hover:border-brand-primary/30">
+            <a href={phoneHref} className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(37,99,235,0.15)] hover:-translate-y-1 hover:border-brand-primary/30">
               <div className="w-14 h-14 rounded-2xl bg-brand-primary/5 text-brand-primary group-hover:bg-brand-primary/15 flex items-center justify-center mb-6 transition-colors">
                 <Phone className="h-7 w-7" />
               </div>
@@ -315,7 +315,7 @@ export default function ContactPageLayout() {
             </a>
 
             {/* E-MAIL GENERAL */}
-            <a href={`mailto:${emailAddress}`} className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border bg-white p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(37,99,235,0.15)] hover:-translate-y-1 hover:border-brand-primary/30">
+            <a href={`mailto:${emailAddress}`} className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(37,99,235,0.15)] hover:-translate-y-1 hover:border-brand-primary/30">
               <div className="w-14 h-14 rounded-2xl bg-brand-primary/5 text-brand-primary group-hover:bg-brand-primary/15 flex items-center justify-center mb-6 transition-colors">
                 <Mail className="h-7 w-7" />
               </div>
@@ -326,7 +326,7 @@ export default function ContactPageLayout() {
             </a>
 
             {/* LINKEDIN */}
-            <a href="https://www.linkedin.com/company/pybim" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border bg-white p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(10,102,194,0.15)] hover:-translate-y-1 hover:border-[#0A66C2]/30">
+            <a href="https://www.linkedin.com/company/pybim" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(10,102,194,0.15)] hover:-translate-y-1 hover:border-[#0A66C2]/30">
               <div className="w-14 h-14 rounded-2xl bg-brand-primary/5 text-brand-primary group-hover:bg-[#0A66C2]/10 group-hover:text-[#0A66C2] flex items-center justify-center mb-6 transition-colors">
                 <Linkedin className="h-7 w-7" />
               </div>

@@ -73,25 +73,25 @@ export default function ProjectExecutionCalculator() {
   return (
     <section className="px-6 lg:px-8 max-w-7xl mx-auto w-full">
       <div className="mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#18181b] border border-gray-800 text-purple-400 font-mono text-xs font-semibold uppercase tracking-widest mb-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-[#18181b] border border-purple-200 dark:border-gray-800 text-purple-600 dark:text-purple-400 font-mono text-xs font-semibold uppercase tracking-widest mb-4">
           <TerminalSquare className="w-3.5 h-3.5" />
           <span>{data.badge}</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mb-4">
           {data.title}
         </h2>
-        <p className="text-gray-400 max-w-2xl text-sm leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-400 max-w-2xl text-sm leading-relaxed font-medium">
           {data.description}
         </p>
       </div>
 
-      <div className="bg-[#18181b] border border-gray-800 rounded-3xl overflow-hidden flex flex-col lg:flex-row">
+      <div className="bg-white dark:bg-[#18181b] border border-gray-200 dark:border-gray-800 rounded-3xl overflow-hidden flex flex-col lg:flex-row shadow-sm">
         
         {/* Input Matrix */}
-        <div className="p-8 lg:p-10 lg:w-3/5 border-b lg:border-b-0 lg:border-r border-gray-800">
+        <div className="p-8 lg:p-10 lg:w-3/5 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-800">
           
           <div className="mb-10">
-            <label className="block text-sm font-semibold text-gray-200 mb-4">{data.inputs.lod}</label>
+            <label className="block text-sm font-semibold text-gray-800 dark:text-gray-200 mb-4">{data.inputs.lod}</label>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {["200", "300", "400", "500"].map((lvl) => (
                 <button
@@ -99,8 +99,8 @@ export default function ProjectExecutionCalculator() {
                   onClick={() => setLod(lvl)}
                   className={`py-3 rounded-xl font-mono text-sm transition-all border ${
                     lod === lvl 
-                      ? "bg-purple-500/20 border-purple-500 text-purple-400 font-bold" 
-                      : "bg-[#09090b] border-gray-800 text-gray-500 hover:border-gray-600"
+                      ? "bg-purple-50 dark:bg-purple-500/20 border-purple-500 text-purple-700 dark:text-purple-400 font-bold shadow-sm" 
+                      : "bg-gray-50 dark:bg-[#09090b] border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-500 hover:border-gray-300 dark:hover:border-gray-600"
                   }`}
                 >
                   LOD {lvl}
@@ -111,11 +111,11 @@ export default function ProjectExecutionCalculator() {
 
           <div className="mb-10">
             <div className="flex justify-between items-end mb-4">
-              <label className="text-sm font-semibold text-gray-200 flex items-center gap-2">
-                <FileCode2 className="w-4 h-4 text-gray-400" />
+              <label className="text-sm font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+                <FileCode2 className="w-4 h-4 text-purple-600 dark:text-gray-400" />
                 {data.inputs.model_size}
               </label>
-              <span className="text-gray-300 font-mono text-sm font-bold">{formatSize(modelSize)}</span>
+              <span className="text-gray-700 dark:text-gray-300 font-mono text-sm font-bold">{formatSize(modelSize)}</span>
             </div>
             <input 
               type="range" 
@@ -123,12 +123,12 @@ export default function ProjectExecutionCalculator() {
               max="100" 
               value={modelSize} 
               onChange={(e) => setModelSize(Number(e.target.value))}
-              className="w-full h-2 bg-[#09090b] border border-gray-800 rounded-lg appearance-none cursor-pointer accent-purple-500 hover:accent-purple-400 transition-all"
+              className="w-full h-2 bg-gray-200 dark:bg-[#09090b] border border-gray-300 dark:border-gray-800 rounded-lg appearance-none cursor-pointer accent-purple-600 dark:accent-purple-500 transition-all"
             />
           </div>
 
           <div className="mb-10">
-            <label className="block text-sm font-semibold text-gray-200 mb-4">{data.inputs.mandates}</label>
+            <label className="block text-sm font-semibold text-gray-800 dark:text-gray-200 mb-4">{data.inputs.mandates}</label>
             <div className="flex flex-col gap-3">
               {[
                 { label: "ISO 19650 (Information Management)", state: isoActive, setter: setIsoActive },
@@ -141,14 +141,14 @@ export default function ProjectExecutionCalculator() {
                   onClick={() => mandate.setter(!mandate.state)}
                   className={`flex items-center justify-between p-4 rounded-xl border transition-all ${
                     mandate.state 
-                      ? "bg-purple-500/10 border-purple-500/50" 
-                      : "bg-[#09090b] border-gray-800 hover:border-gray-700"
+                      ? "bg-purple-50 dark:bg-purple-500/10 border-purple-500/50" 
+                      : "bg-gray-50 dark:bg-[#09090b] border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700"
                   }`}
                 >
-                  <span className={`text-sm font-medium ${mandate.state ? 'text-white' : 'text-gray-400'}`}>
+                  <span className={`text-sm font-medium ${mandate.state ? 'text-purple-950 dark:text-white font-semibold' : 'text-gray-700 dark:text-gray-400'}`}>
                     {mandate.label}
                   </span>
-                  <div className={`w-10 h-6 rounded-full flex items-center p-1 transition-all ${mandate.state ? 'bg-purple-500' : 'bg-gray-800'}`}>
+                  <div className={`w-10 h-6 rounded-full flex items-center p-1 transition-all ${mandate.state ? 'bg-purple-600' : 'bg-gray-300 dark:bg-gray-800'}`}>
                     <div className={`w-4 h-4 bg-white rounded-full transition-transform ${mandate.state ? 'translate-x-4' : 'translate-x-0'}`} />
                   </div>
                 </button>
@@ -157,7 +157,7 @@ export default function ProjectExecutionCalculator() {
           </div>
 
           <div className="mb-10">
-            <label className="block text-sm font-semibold text-gray-200 mb-4">Algorithmic Complexity Vectors</label>
+            <label className="block text-sm font-semibold text-gray-800 dark:text-gray-200 mb-4">Algorithmic Complexity Vectors</label>
             <div className="flex flex-col gap-3">
               {[
                 { label: "Automated Clash Resolution", state: clashActive, setter: setClashActive },
@@ -169,14 +169,14 @@ export default function ProjectExecutionCalculator() {
                   onClick={() => vector.setter(!vector.state)}
                   className={`flex items-center justify-between p-4 rounded-xl border transition-all ${
                     vector.state 
-                      ? "bg-purple-500/10 border-purple-500/50" 
-                      : "bg-[#09090b] border-gray-800 hover:border-gray-700"
+                      ? "bg-purple-50 dark:bg-purple-500/10 border-purple-500/50" 
+                      : "bg-gray-50 dark:bg-[#09090b] border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700"
                   }`}
                 >
-                  <span className={`text-sm font-medium ${vector.state ? 'text-white' : 'text-gray-400'}`}>
+                  <span className={`text-sm font-medium ${vector.state ? 'text-purple-950 dark:text-white font-semibold' : 'text-gray-700 dark:text-gray-400'}`}>
                     {vector.label}
                   </span>
-                  <div className={`w-10 h-6 rounded-full flex items-center p-1 transition-all ${vector.state ? 'bg-purple-500' : 'bg-gray-800'}`}>
+                  <div className={`w-10 h-6 rounded-full flex items-center p-1 transition-all ${vector.state ? 'bg-purple-600' : 'bg-gray-300 dark:bg-gray-800'}`}>
                     <div className={`w-4 h-4 bg-white rounded-full transition-transform ${vector.state ? 'translate-x-4' : 'translate-x-0'}`} />
                   </div>
                 </button>
@@ -186,29 +186,29 @@ export default function ProjectExecutionCalculator() {
         </div>
 
         {/* Live Output */}
-        <div className="p-8 lg:p-10 lg:w-2/5 bg-[#121215] flex flex-col justify-center items-center text-center">
-          <div className="w-16 h-16 rounded-2xl bg-[#09090b] border border-gray-800 flex items-center justify-center text-purple-500 mb-8 shadow-inner">
+        <div className="p-8 lg:p-10 lg:w-2/5 bg-gray-50 dark:bg-[#121215] flex flex-col justify-center items-center text-center">
+          <div className="w-16 h-16 rounded-2xl bg-white dark:bg-[#09090b] border border-gray-200 dark:border-gray-800 flex items-center justify-center text-purple-600 dark:text-purple-500 mb-8 shadow-sm">
             <TerminalSquare className="w-8 h-8" />
           </div>
           
-          <div className="text-gray-500 text-xs font-mono uppercase tracking-widest mb-4">
+          <div className="text-gray-500 text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
             {data.output.baseline}
           </div>
           
-          <div className="text-4xl md:text-5xl font-extrabold text-white mb-6 font-mono tracking-tighter">
-            €{min.toLocaleString()} <span className="text-2xl text-gray-600">-</span> €{max.toLocaleString()}
+          <div className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 font-mono tracking-tighter">
+            €{min.toLocaleString()} <span className="text-2xl text-gray-400 dark:text-gray-600">-</span> €{max.toLocaleString()}
           </div>
           
-          <div className="flex items-start gap-3 bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl mb-10 text-left">
-            <ShieldAlert className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-            <p className="text-xs text-yellow-500/80 leading-relaxed font-semibold">
+          <div className="flex items-start gap-3 bg-yellow-50 dark:bg-yellow-500/10 border border-yellow-200 dark:border-yellow-500/20 p-4 rounded-xl mb-10 text-left">
+            <ShieldAlert className="w-5 h-5 text-yellow-600 dark:text-yellow-500 shrink-0 mt-0.5" />
+            <p className="text-xs text-yellow-800 dark:text-yellow-500/80 leading-relaxed font-semibold">
               Algorithmic baseline. Final execution cost dictates absolute auditing of structural Information Exchange Requirements (EIR) and BEP.
             </p>
           </div>
 
           <Link
             href="/contact"
-            className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-purple-600 text-white font-bold text-sm uppercase tracking-wider hover:bg-purple-500 transition-all shadow-[0_0_20px_rgba(168,85,247,0.2)] hover:shadow-[0_0_30px_rgba(168,85,247,0.4)]"
+            className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-purple-600 text-white font-bold text-sm uppercase tracking-wider hover:bg-purple-700 dark:hover:bg-purple-500 transition-all shadow-md"
           >
             <UploadCloud className="w-5 h-5" />
             <span>{data.output.cta}</span>

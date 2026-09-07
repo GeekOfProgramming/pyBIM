@@ -59,7 +59,7 @@ export default function EducationDetailLayout({ post, prevPost, nextPost }) {
 
       {/* CONTENT SECTION */}
       <section className="mx-auto max-w-4xl px-6 py-16">
-        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-brand-border">
+        <div className="bg-brand-card rounded-3xl p-8 md:p-12 shadow-sm border border-brand-border">
           <div className="prose prose-lg prose-brand max-w-none text-brand-textSecondary prose-headings:text-brand-textPrimary prose-a:text-brand-primary hover:prose-a:text-brand-accent">
             <ReactMarkdown>{content}</ReactMarkdown>
           </div>
@@ -85,7 +85,7 @@ export default function EducationDetailLayout({ post, prevPost, nextPost }) {
           {prevPost ? (
             <Link 
               href={`/education/${prevPost.slug}`}
-              className="group flex flex-col p-6 bg-white rounded-3xl border border-brand-border hover:border-brand-primary/50 hover:shadow-md transition-all text-left"
+              className="group flex flex-col p-6 bg-brand-card rounded-3xl border border-brand-border hover:border-brand-primary/50 hover:shadow-md transition-all text-left"
             >
               <span className="text-xs font-bold text-brand-textSecondary uppercase tracking-widest mb-2 flex items-center gap-1">
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 
@@ -102,7 +102,7 @@ export default function EducationDetailLayout({ post, prevPost, nextPost }) {
           {nextPost ? (
              <Link 
              href={`/education/${nextPost.slug}`}
-             className="group flex flex-col p-6 bg-white rounded-3xl border border-brand-border hover:border-brand-primary/50 hover:shadow-md transition-all text-right items-end"
+             className="group flex flex-col p-6 bg-brand-card rounded-3xl border border-brand-border hover:border-brand-primary/50 hover:shadow-md transition-all text-right items-end"
            >
              <span className="text-xs font-bold text-brand-textSecondary uppercase tracking-widest mb-2 flex items-center gap-1">
                Next

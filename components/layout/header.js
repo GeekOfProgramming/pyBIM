@@ -6,6 +6,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Globe, ChevronDown, ChevronRight, Briefcase, FileText, Code2, Users, Building, Activity, Shield, Terminal, Cog, Calculator, UserCircle } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
+import { useTheme } from "@/lib/ThemeContext";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const navItems = [
   { href: "/", tKey: "header.nav.home" },
@@ -54,6 +56,7 @@ export default function Header() {
   const [activeMegaMenuItem, setActiveMegaMenuItem] = useState("who_we_are");
   
   const { t, language, changeLanguage, getLocalizedUrl } = useLanguage();
+  const { theme, mounted } = useTheme();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -66,17 +69,22 @@ export default function Header() {
 
   if (pathname?.startsWith("/admin")) return null;
 
+  const logoSrc = (mounted && theme === "dark")
+    ? "/logo_white_transparent.png"
+    : "/logo_black_transparent.png";
+
   return (
-    <header className={`sticky top-0 z-[1000] border-b border-brand-border bg-white/95 backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-sm" : "py-4"}`}>
+    <header className={`sticky top-0 z-[1000] border-b border-brand-border bg-white/95 dark:bg-brand-base/90 dark:border-white/10 backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-sm" : "py-4"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-300">
         <Link href={`/${language}`} className="flex items-center gap-4 text-left" aria-label={t("header.brand.aria_label") || "pyBIM home"}>
           <div className="flex items-center">
             <Image 
-              src="/logo_black_transparent.png" 
+              src={logoSrc} 
               alt={t("header.brand.logo_alt") || "pyBIM logo"} 
               width={180} 
               height={80} 
               className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-10" : "h-14"}`} 
+              priority
             />
           </div>
         </Link>
@@ -108,10 +116,10 @@ export default function Header() {
             {/* Megamenu Dropdown */}
             {megaMenuOpen && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px] z-[1000]">
-                <div className="bg-white border border-brand-border rounded-2xl shadow-2xl overflow-hidden flex ring-1 ring-black/5">
+                <div className="bg-white dark:bg-slate-900 border border-brand-border dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex ring-1 ring-black/5 dark:ring-white/5">
                   
                   {/* Left Column */}
-                  <div className="w-[45%] bg-brand-surface border-r border-brand-border p-4 flex flex-col gap-1">
+                  <div className="w-[45%] bg-brand-surface dark:bg-slate-950/60 border-r border-brand-border dark:border-slate-800 p-4 flex flex-col gap-1">
                     {pyBimLeftMenu.map(item => {
                       const isActiveLink = pathname === getLocalizedUrl(item.href);
                       return (
@@ -120,7 +128,7 @@ export default function Header() {
                           href={getLocalizedUrl(item.href)}
                           onMouseEnter={() => setActiveMegaMenuItem(item.id)}
                           onClick={() => setMegaMenuOpen(false)}
-                          className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${activeMegaMenuItem === item.id ? 'bg-white shadow-sm text-brand-primary font-bold' : 'text-brand-textSecondary hover:bg-white hover:text-brand-primary font-medium'} ${isActiveLink && activeMegaMenuItem !== item.id ? 'text-brand-primary font-bold' : ''}`}
+                          className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${activeMegaMenuItem === item.id ? 'bg-white dark:bg-slate-800 shadow-sm text-brand-primary font-bold' : 'text-brand-textSecondary hover:bg-white dark:hover:bg-slate-800/60 hover:text-brand-primary font-medium'} ${isActiveLink && activeMegaMenuItem !== item.id ? 'text-brand-primary font-bold' : ''}`}
                         >
                           <span className="text-sm tracking-wide">{t(item.labelKey)}</span>
                           <ChevronRight className={`w-4 h-4 transition-transform ${activeMegaMenuItem === item.id ? 'translate-x-1 text-brand-primary' : 'text-transparent'}`} />
@@ -130,7 +138,7 @@ export default function Header() {
                   </div>
 
                   {/* Right Column */}
-                  <div className="w-[55%] bg-white p-6">
+                  <div className="w-[55%] bg-white dark:bg-slate-900 p-6">
                     <div className="flex flex-col gap-4 h-full justify-center">
                       {pyBimRightMenu[activeMegaMenuItem].map((subItem, idx) => {
                         const Icon = subItem.icon;
@@ -139,9 +147,9 @@ export default function Header() {
                             key={idx} 
                             href={getLocalizedUrl(subItem.href)} 
                             onClick={() => setMegaMenuOpen(false)}
-                            className="group flex items-center gap-4 p-2 rounded-lg hover:bg-brand-surface transition"
+                            className="group flex items-center gap-4 p-2 rounded-lg hover:bg-brand-surface dark:hover:bg-slate-800/60 transition"
                           >
-                            <div className="shrink-0 w-10 h-10 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
+                            <div className="shrink-0 w-10 h-10 rounded-full bg-brand-surface dark:bg-slate-800 border border-brand-border dark:border-slate-700 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
                               <Icon className="w-5 h-5" />
                             </div>
                             <span className="font-semibold text-sm text-brand-textPrimary group-hover:text-brand-primary transition-colors">{t(subItem.labelKey)}</span>
@@ -158,6 +166,9 @@ export default function Header() {
         </nav>
         <div className="flex items-center gap-3">
           
+          {/* Theme Toggle Button */}
+          <ThemeToggle />
+
           {/* Language Dropdown */}
           <div className="relative">
             <button 

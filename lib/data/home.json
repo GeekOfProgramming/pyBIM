@@ -1,0 +1,483 @@
+{
+  "en": {
+    "hero": {
+      "badge": "ZERO DATA LEAKAGE • BEHIND CORPORATE FIREWALL",
+      "title_main": "Sovereign AI Infrastructure",
+      "title_highlight": "for BIM Automation.",
+      "description": "We deploy isolated Local LLMs and vector databases to execute complex AEC engineering logic entirely behind your corporate firewall. We guarantee zero data leakage and absolute metadata compliance with ISO 19650 and UNI 11337.",
+      "cta_primary": "REQUEST POC AUDIT",
+      "microcopy_primary": "(100% Secure Data Handling. Corporate email domains only. No credit card required.)",
+      "cta_secondary": "DOWNLOAD ROI MATRIX",
+      "microcopy_secondary": "(Calculate your exact financial loss to manual workflows. Server-side validation active.)"
+    },
+    "paradigmShift": {
+      "section_title": "Scale Through Code, Not Headcount.",
+      "section_subtitle": "Transition your infrastructure from brute-force manual labor to mathematically verified algorithmic execution.",
+      "traditional": {
+        "badge": "THE TRADITIONAL MODELING FARM",
+        "title": "Margin Erosion",
+        "points": [
+          "Scalability is strictly bottlenecked by expensive, continuous hiring cycles.",
+          "Brute-force manual parameter mapping mathematically guarantees fatal human errors.",
+          "Sluggish response times when processing major design alterations or visual clash resolutions."
+        ]
+      },
+      "autonomous": {
+        "badge": "pyBIM AUTONOMOUS EXECUTION",
+        "title": "Algorithmic Scalability",
+        "points": [
+          "Instantaneous execution of hundreds of workflows via custom Python and C# infrastructure.",
+          "100% Quality Assurance relying on binary machine logic, eliminating costly data entry errors.",
+          "Real-time algorithmic flexibility to process massive project alterations in seconds, not days."
+        ]
+      }
+    },
+    "deploymentModels": {
+      "section_title": "Sovereign Deployment Models.",
+      "section_subtitle": "Network topologies engineered to protect proprietary facility models from public API data leaks and guarantee absolute ISO 19650 compliance.",
+      "models": [
+        {
+          "id": "edge",
+          "title": "Edge AI Appliance",
+          "description": "We deploy custom physical GPU servers directly into your local area network (LAN). Your proprietary metadata remains strictly air-gapped from the internet, securing classified government and healthcare infrastructure.",
+          "badge": "ZERO-TRUST NETWORK"
+        },
+        {
+          "id": "enterprise",
+          "title": "Enterprise IT Integration",
+          "description": "Containerized AI pipelines deployed directly onto your existing enterprise servers. We empower hundreds of engineers simultaneously while adhering strictly to your internal IT security protocols with zero hardware CapEx.",
+          "badge": "NATIVE ACTIVE DIRECTORY"
+        },
+        {
+          "id": "cloud",
+          "title": "Dedicated GPU-VPS",
+          "description": "An isolated, single-tenant Virtual Private Server provisioned exclusively for your firm on secure European datacenters. Transition AI integration into a predictable OpEx model with zero internal maintenance requirements.",
+          "badge": "ISOLATED CLOUD INSTANCE"
+        }
+      ]
+    },
+    "executionPipeline": {
+      "section_title": "Transforming AI Directives into Hard Code.",
+      "section_subtitle": "We replace manual data entry with a deterministic, four-stage programmatic flow executed entirely behind your corporate firewall.",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Data Ingestion (RAG)",
+          "desc": "Proprietary EIR/BEP protocols and legacy project data are securely indexed into local vector databases (ChromaDB), establishing a strict, mathematical baseline for your specific tender."
+        },
+        {
+          "step": "02",
+          "title": "Logic Generation (Local LLM)",
+          "desc": "Our isolated AI engine interprets the indexed mandates to autonomously generate bespoke Python and C# logic, completely bypassing manual parameter interpretation."
+        },
+        {
+          "step": "03",
+          "title": "API Execution",
+          "desc": "Generated scripts fuse directly with the Revit API and openBIM platforms. The system executes automated clash grouping and dynamic metadata injection with zero human intervention."
+        },
+        {
+          "step": "04",
+          "title": "Validation Commit",
+          "desc": "Modified models are held in a secure staging environment. Final database commits are executed only after algorithmic verification against strict UNI 11337 and European mandates."
+        }
+      ]
+    },
+    "systemBenchmarks": {
+      "section_title": "System Benchmarks",
+      "section_subtitle": "Real-world execution metrics. We measure success in processing speed and mathematical precision, not marketing percentages.",
+      "terminal_header": "pybim@server:~/benchmarks",
+      "command": "./run_diagnostics --mode strict",
+      "tests": [
+        {
+          "name": "[TEST] Revit Parameter Injection (100k+ Elements)",
+          "result": "< 4.8s"
+        },
+        {
+          "name": "[TEST] False-Positive Clash Elimination (LOD 400)",
+          "result": "100% Resolved"
+        },
+        {
+          "name": "[TEST] ISO 19650 / UNI 11337 Metadata Auditing",
+          "result": "0 Errors"
+        },
+        {
+          "name": "[TEST] Local LLM Inference (Air-Gapped 70B Model)",
+          "result": "< 85ms / token"
+        }
+      ],
+      "status": "SYSTEM OPTIMAL. READY FOR DEPLOYMENT."
+    },
+    "coreArchitects": {
+      "section_title": "Core Engineering Unit",
+      "section_subtitle": "Operating from the academic and technological hub of Padua, Italy, our R&D unit translates complex AEC bottlenecks into executable C# and Python infrastructure.",
+      "architects": [
+        {
+          "id": "lead_sys_eng",
+          "role": "Lead Algorithmic Engineer",
+          "department": "BIM Automation & Revit API",
+          "note_id": "#890A",
+          "quote": "\"Scaling facility engineering is no longer a human resource problem. It is purely a computational challenge. We replace margins of error and manual drafting hours with mathematically verified lines of code.\""
+        },
+        {
+          "id": "head_ai_infra",
+          "role": "Head of Sovereign AI",
+          "department": "Local LLMs & OpenBIM",
+          "note_id": "#442B",
+          "quote": "\"Zero data leakage isn't a feature; it's the operational foundation. By containerizing LLMs directly behind your corporate firewall, we eliminate IP risks entirely while guaranteeing 100% ISO 19650 and UNI 11337 compliance.\""
+        }
+      ]
+    },
+    "strategicEcosystem": {
+      "title_part1": "Backed by Academic Rigor.",
+      "title_part2": "Trusted by Tier-1 Enterprise.",
+      "description": "Engineered from the computational and structural research cores of Padua and Torino. We deploy mathematically verified algorithmic infrastructure across the most complex AEC projects in the UK, Europe, and Italy.",
+      "partners": [
+        { "id": "unipd", "name": "UNIPD (Padua)", "subtitle": "Information & Algorithmic Engineering" },
+        { "id": "polito", "name": "POLITO (Torino)", "subtitle": "Advanced Civil & Structural Engineering" },
+        { "id": "tier1", "name": "TIER-1 AEC", "subtitle": "Enterprise Infrastructure Deployment" },
+        { "id": "iso", "name": "ISO COMPLIANT", "subtitle": "19650 & UNI 11337 Data Outputs" }
+      ]
+    },
+    "validationProtocol": {
+      "section_title": "The pyBIM Proof of Concept (PoC) Simulation",
+      "description": "We do not sell theoretical software. We deploy a strict, 48-hour algorithmic simulation to prove mathematical ROI directly on your operational bottlenecks.",
+      "points": [
+        {
+          "title": "Secure Ingestion",
+          "desc": "Submit a sample of your non-classified EIR documents or heaviest Revit models."
+        },
+        {
+          "title": "Algorithmic Execution",
+          "desc": "Experience the exact processing speed of our Local LLMs and Python pipelines extracting data and resolving clashes."
+        },
+        {
+          "title": "Zero Financial Risk",
+          "desc": "Validate our machine precision and strict ISO 19650 compliance before committing to full enterprise deployment."
+        }
+      ],
+      "cta": "REQUEST POC AUDIT",
+      "microcopy": "(100% Free & Secure Data Handling. Validate your heaviest Revit models through our local pipelines. Corporate email domains only. No credit card required.)"
+    }
+  },
+  "it": {
+    "hero": {
+      "badge": "ZERO PERDITA DI DATI • DIETRO IL FIREWALL AZIENDALE",
+      "title_main": "Infrastruttura IA Sovrana",
+      "title_highlight": "per l'Automazione BIM.",
+      "description": "Implementiamo LLM locali isolati e database vettoriali per eseguire logiche ingegneristiche AEC complesse interamente dietro il vostro firewall aziendale. Garantiamo zero perdita di dati e conformità assoluta dei metadati a ISO 19650 e UNI 11337.",
+      "cta_primary": "RICHIEDI AUDIT POC",
+      "microcopy_primary": "(Gestione dati sicura al 100%. Solo domini email aziendali. Nessuna carta di credito richiesta.)",
+      "cta_secondary": "SCARICA LA MATRICE ROI",
+      "microcopy_secondary": "(Calcola la tua perdita finanziaria esatta causata dai flussi di lavoro manuali. Convalida lato server attiva.)"
+    },
+    "paradigmShift": {
+      "section_title": "Scala Tramite il Codice, Non con il Personale.",
+      "section_subtitle": "Fai evolvere la tua infrastruttura dal lavoro manuale forzato a un'esecuzione algoritmica matematicamente verificata.",
+      "traditional": {
+        "badge": "IL MODELLISMO TRADIZIONALE A FORZA BRUTA",
+        "title": "Erosione dei Margini",
+        "points": [
+          "La scalabilità è rigidamente limitata da costosi e continui cicli di assunzione.",
+          "La mappatura manuale forzata dei parametri garantisce matematicamente errori umani fatali.",
+          "Tempi di risposta lenti nell'elaborazione di modifiche progettuali rilevanti o risoluzione delle interferenze visive."
+        ]
+      },
+      "autonomous": {
+        "badge": "ESECUZIONE AUTONOMA pyBIM",
+        "title": "Scalabilità Algoritmica",
+        "points": [
+          "Esecuzione istantanea di centinaia di flussi di lavoro tramite infrastruttura personalizzata in Python e C#.",
+          "Assicurazione Qualità al 100% basata su logica binaria automatizzata, eliminando costosi errori di immissione dati.",
+          "Flessibilità algoritmica in tempo reale per elaborare massicce modifiche al progetto in pochi secondi, non giorni."
+        ]
+      }
+    },
+    "deploymentModels": {
+      "section_title": "Modelli di Implementazione Sovrani.",
+      "section_subtitle": "Topologie di rete progettate per proteggere i modelli proprietari di edifici e infrastrutture da fughe di dati tramite API pubbliche e garantire la totale conformità ISO 19650.",
+      "models": [
+        {
+          "id": "edge",
+          "title": "Appliance IA Edge",
+          "description": "Installiamo server GPU fisici dedicati direttamente nella vostra rete locale (LAN). I vostri metadati proprietari restano rigorosamente isolati (air-gapped) da Internet, proteggendo infrastrutture governative e sanitarie classificate.",
+          "badge": "RETE ZERO-TRUST"
+        },
+        {
+          "id": "enterprise",
+          "title": "Integrazione IT Enterprise",
+          "description": "Pipeline IA containerizzate implementate direttamente sui vostri server aziendali esistenti. Potenziamo centinaia di ingegneri contemporaneamente, rispettando rigorosamente i protocolli di sicurezza IT interni con zero CapEx hardware.",
+          "badge": "ACTIVE DIRECTORY NATIVO"
+        },
+        {
+          "id": "cloud",
+          "title": "GPU-VPS Dedicato",
+          "description": "Un Virtual Private Server isolato e single-tenant, fornito esclusivamente per la vostra azienda in datacenter europei sicuri. Trasforma l'integrazione dell'IA in un modello OpEx prevedibile con zero esigenze di manutenzione interna.",
+          "badge": "ISTANZA CLOUD ISOLATA"
+        }
+      ]
+    },
+    "executionPipeline": {
+      "section_title": "Trasformare le Direttive IA in Codice Deterministico.",
+      "section_subtitle": "Sostituiamo l'inserimento manuale dei dati con un flusso programmatico deterministico a quattro fasi eseguito interamente dietro il vostro firewall aziendale.",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Ingestione Dati (RAG)",
+          "desc": "I capitolati informativi (EIR/BEP) proprietari e i dati dei progetti pregressi vengono indicizzati in modo sicuro in database vettoriali locali (ChromaDB), stabilendo un riferimento matematico rigoroso per il vostro specifico appalto."
+        },
+        {
+          "step": "02",
+          "title": "Generazione Logica (LLM Locale)",
+          "desc": "Il nostro motore IA isolato interpreta le prescrizioni indicizzate per generare autonomamente logiche personalizzate in Python e C#, bypassando del tutto l'interpretazione manuale dei parametri."
+        },
+        {
+          "step": "03",
+          "title": "Esecuzione API",
+          "desc": "Gli script generati interagiscono direttamente con le API di Revit e le piattaforme openBIM. Il sistema esegue il raggruppamento automatico delle interferenze e l'iniezione dinamica dei metadati con zero intervento umano."
+        },
+        {
+          "step": "04",
+          "title": "Commit di Convalida",
+          "desc": "I modelli modificati vengono trattenuti in un ambiente di staging sicuro. I commit finali nel database vengono eseguiti solo dopo verifica algoritmica a fronte delle severe normative UNI 11337 ed europee."
+        }
+      ]
+    },
+    "systemBenchmarks": {
+      "section_title": "Benchmark di Sistema",
+      "section_subtitle": "Metriche di esecuzione sul campo. Misuriamo il successo in velocità di elaborazione e precisione matematica, non in percentuali di marketing.",
+      "terminal_header": "pybim@server:~/benchmarks",
+      "command": "./run_diagnostics --mode strict",
+      "tests": [
+        {
+          "name": "[TEST] Iniezione Parametri Revit (Oltre 100k Elementi)",
+          "result": "< 4.8s"
+        },
+        {
+          "name": "[TEST] Eliminazione Falsi Positivi nei Clash (LOD 400)",
+          "result": "100% Risolto"
+        },
+        {
+          "name": "[TEST] Audit Metadati ISO 19650 / UNI 11337",
+          "result": "0 Errori"
+        },
+        {
+          "name": "[TEST] Inferenza LLM Locale (Modello 70B Air-Gapped)",
+          "result": "< 85ms / token"
+        }
+      ],
+      "status": "SISTEMA OTTIMALE. PRONTO PER L'ATTIVAZIONE."
+    },
+    "coreArchitects": {
+      "section_title": "Unità Ingegneristica Principale",
+      "section_subtitle": "Operando dal polo accademico e tecnologico di Padova, la nostra unità di R&S traduce i colli di bottiglia complessi dell'AEC in infrastrutture eseguibili in C# e Python.",
+      "architects": [
+        {
+          "id": "lead_sys_eng",
+          "role": "Lead Algorithmic Engineer",
+          "department": "Automazione BIM & Revit API",
+          "note_id": "#890A",
+          "quote": "\"Scalare l'ingegneria delle infrastrutture e degli edifici non è più una questione di risorse umane. È una sfida puramente computazionale. Sostituiamo i margini di errore e le ore di disegno manuale con righe di codice matematicamente verificate.\""
+        },
+        {
+          "id": "head_ai_infra",
+          "role": "Head of Sovereign AI",
+          "department": "LLM Locali & OpenBIM",
+          "note_id": "#442B",
+          "quote": "\"La totale assenza di perdite di dati non è una funzionalità accessoria; è il fondamento operativo. Containerizzando gli LLM direttamente dietro il vostro firewall aziendale, eliminiamo del tutto i rischi per la proprietà intellettuale garantendo al contempo il 100% di conformità a ISO 19650 e UNI 11337.\""
+        }
+      ]
+    },
+    "strategicEcosystem": {
+      "title_part1": "Supportato dal Rigore Accademico.",
+      "title_part2": "Scelto da Grandi Imprese Tier-1.",
+      "description": "Sviluppato dai centri di ricerca computazionale e strutturale di Padova e Torino. Implementiamo infrastrutture algoritmiche matematicamente verificate nei progetti AEC più complessi nel Regno Unito, in Europa e in Italia.",
+      "partners": [
+        { "id": "unipd", "name": "UNIPD (Padova)", "subtitle": "Ingegneria dell'Informazione e Algoritmica" },
+        { "id": "polito", "name": "POLITO (Torino)", "subtitle": "Ingegneria Civile e Strutturale Avanzata" },
+        { "id": "tier1", "name": "AEC TIER-1", "subtitle": "Implementazione Infrastrutture Enterprise" },
+        { "id": "iso", "name": "CONFORME ISO", "subtitle": "Output Dati 19650 e UNI 11337" }
+      ]
+    },
+    "validationProtocol": {
+      "section_title": "La Simulazione Proof of Concept (PoC) di pyBIM",
+      "description": "Non vendiamo software teorico. Eseguiamo una rigorosa simulazione algoritmica di 48 ore per dimostrare il ROI matematico direttamente sui vostri colli di bottiglia operativi.",
+      "points": [
+        {
+          "title": "Ingestione Sicura",
+          "desc": "Inviaci un estratto dei tuoi capitolati informativi (EIR) non classificati o i tuoi modelli Revit più pesanti."
+        },
+        {
+          "title": "Esecuzione Algoritmica",
+          "desc": "Sperimenta l'esatta velocità di elaborazione dei nostri LLM locali e delle pipeline Python nell'estrazione dati e risoluzione delle interferenze."
+        },
+        {
+          "title": "Zero Rischio Finanziario",
+          "desc": "Valida la nostra precisione automatizzata e la rigorosa conformità ISO 19650 prima di impegnarti nell'adozione aziendale completa."
+        }
+      ],
+      "cta": "RICHIEDI AUDIT POC",
+      "microcopy": "(Gestione dei dati 100% gratuita e sicura. Valida i tuoi modelli Revit più complessi tramite le nostre pipeline locali. Solo domini email aziendali. Nessuna carta di credito richiesta.)"
+    }
+  },
+  "de": {
+    "hero": {
+      "badge": "KEIN DATENVERLUST • HINTER DER UNTERNEHMENS-FIREWALL",
+      "title_main": "Souveräne KI-Infrastruktur",
+      "title_highlight": "für BIM-Automatisierung.",
+      "description": "Wir implementieren isolierte lokale LLMs und Vektordatenbanken, um komplexe AEC-Engineering-Logik vollständig hinter Ihrer Unternehmens-Firewall auszuführen. Wir garantieren null Datenverlust und absolute Metadaten-Konformität mit ISO 19650 und UNI 11337.",
+      "cta_primary": "POC-AUDIT ANFORDERN",
+      "microcopy_primary": "(100 % sichere Datenverarbeitung. Nur geschäftliche E-Mail-Domains. Keine Kreditkarte erforderlich.)",
+      "cta_secondary": "ROI-MATRIX HERUNTERLADEN",
+      "microcopy_secondary": "(Berechnen Sie Ihren genauen finanziellen Verlust durch manuelle Arbeitsabläufe. Serverseitige Validierung aktiv.)"
+    },
+    "paradigmShift": {
+      "section_title": "Skalieren durch Code, nicht durch Personalbestand.",
+      "section_subtitle": "Transformieren Sie Ihre Infrastruktur von manueller Fleißarbeit zu mathematisch verifizierter algorithmischer Ausführung.",
+      "traditional": {
+        "badge": "DIE TRADITIONELLE MODELLIER-FARM",
+        "title": "Margenerosion",
+        "points": [
+          "Skalierbarkeit wird durch teure, kontinuierliche Einstellungszyklen drastisch gebremst.",
+          "Manuelle Parameter-Zuordnungen führen mathematisch unausweichlich zu fatalen menschlichen Fehlern.",
+          "Träge Reaktionszeiten bei der Bearbeitung größerer Entwurfsänderungen oder visuellen Kollisionsprüfungen."
+        ]
+      },
+      "autonomous": {
+        "badge": "pyBIM AUTONOME AUSFÜHRUNG",
+        "title": "Algorithmische Skalierbarkeit",
+        "points": [
+          "Verzögerungsfreie Ausführung von Hunderten Workflows über maßgeschneiderte Python- und C#-Infrastruktur.",
+          "100 % Qualitätssicherung basierend auf binärer Maschinenlogik, wodurch kostspielige Dateneingabefehler entfallen.",
+          "Echtzeit-Flexibilität auf algorithmischer Basis zur Abwicklung massiver Projektänderungen in Sekunden statt Tagen."
+        ]
+      }
+    },
+    "deploymentModels": {
+      "section_title": "Souveräne Bereitstellungsmodelle.",
+      "section_subtitle": "Netzwerktopologien, die darauf ausgelegt sind, proprietäre Gebäudemodelle vor Datenlecks öffentlicher APIs zu schützen und absolute ISO 19650-Konformität zu garantieren.",
+      "models": [
+        {
+          "id": "edge",
+          "title": "Edge-KI-Appliance",
+          "description": "Wir implementieren physische GPU-Server direkt in Ihrem lokalen Netzwerk (LAN). Ihre proprietären Metadaten bleiben strikt vom Internet isoliert (Air-Gapped) – ideal für vertrauliche Regierungs- und Gesundheitsinfrastrukturen.",
+          "badge": "ZERO-TRUST-NETZWERK"
+        },
+        {
+          "id": "enterprise",
+          "title": "Enterprise-IT-Integration",
+          "description": "Containerisierte KI-Pipelines, die direkt auf Ihren bestehenden Unternehmensservern bereitgestellt werden. Hunderte von Ingenieuren arbeiten parallel unter strikter Einhaltung Ihrer internen IT-Sicherheitsprotokolle – ganz ohne Hardware-CapEx.",
+          "badge": "NATIVES ACTIVE DIRECTORY"
+        },
+        {
+          "id": "cloud",
+          "title": "Dedizierter GPU-VPS",
+          "description": "Ein isolierter Single-Tenant Virtual Private Server, exklusiv für Ihr Unternehmen in sicheren europäischen Rechenzentren bereitgestellt. Wandeln Sie KI-Integration in ein planbares OpEx-Modell um – ohne internen Wartungsaufwand.",
+          "badge": "ISOLIERTE CLOUD-INSTANZ"
+        }
+      ]
+    },
+    "executionPipeline": {
+      "section_title": "Umwandlung von KI-Direktiven in harten Code.",
+      "section_subtitle": "Wir ersetzen manuelle Dateneingaben durch einen deterministischen, vierstufigen programmatischen Ablauf, der vollständig hinter Ihrer Unternehmens-Firewall ausgeführt wird.",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Datenerfassung (RAG)",
+          "desc": "Proprietäre AIA/BAP-Protokolle und Altdaten aus früheren Projekten werden sicher in lokalen Vektordatenbanken (ChromaDB) indexiert und bilden die mathematische Basis für Ihre spezifische Ausschreibung."
+        },
+        {
+          "step": "02",
+          "title": "Logikgenerierung (Lokales LLM)",
+          "desc": "Unsere isolierte KI-Engine interpretiert die indexierten Vorgaben und generiert autonom maßgeschneiderte Python- und C#-Logik – manuelle Parameterinterpretationen entfallen vollständig."
+        },
+        {
+          "step": "03",
+          "title": "API-Ausführung",
+          "desc": "Generierte Skripte binden sich direkt an die Revit-API und openBIM-Plattformen an. Das System führt automatisierte Kollisionsgruppierungen und dynamische Metadaten-Injektionen ohne menschliches Eingreifen aus."
+        },
+        {
+          "step": "04",
+          "title": "Validierungs-Commit",
+          "desc": "Modifizierte Modelle werden in einer sicheren Staging-Umgebung vorgehalten. Finale Datenbank-Commits erfolgen erst nach algorithmischer Verifizierung gemäß strengen Vorgaben der UNI 11337 und europäischen Richtlinien."
+        }
+      ]
+    },
+    "systemBenchmarks": {
+      "section_title": "System-Benchmarks",
+      "section_subtitle": "Reale Ausführungsmetriken. Wir messen Erfolg in Verarbeitungsgeschwindigkeit und mathematischer Präzision, nicht in Marketing-Prozentsätzen.",
+      "terminal_header": "pybim@server:~/benchmarks",
+      "command": "./run_diagnostics --mode strict",
+      "tests": [
+        {
+          "name": "[TEST] Revit-Parameter-Injektion (100k+ Elemente)",
+          "result": "< 4.8s"
+        },
+        {
+          "name": "[TEST] Falsch-Positive Kollisionsbereinigung (LOD 400)",
+          "result": "100 % Behoben"
+        },
+        {
+          "name": "[TEST] ISO 19650 / UNI 11337 Metadaten-Audit",
+          "result": "0 Fehler"
+        },
+        {
+          "name": "[TEST] Lokale LLM-Inferenz (Air-Gapped 70B Modell)",
+          "result": "< 85ms / Token"
+        }
+      ],
+      "status": "SYSTEM OPTIMAL. BEREIT FÜR DEN EINSATZ."
+    },
+    "coreArchitects": {
+      "section_title": "Kern-Engineering-Einheit",
+      "section_subtitle": "Ausgehend vom akademischen und technologischen Zentrum Padua (Italien) übersetzt unsere F&E-Einheit komplexe AEC-Engpässe in ausführbare C#- und Python-Infrastrukturen.",
+      "architects": [
+        {
+          "id": "lead_sys_eng",
+          "role": "Leitender Algorithmen-Ingenieur",
+          "department": "BIM-Automatisierung & Revit-API",
+          "note_id": "#890A",
+          "quote": "\"Die Skalierung des Bauingenieurwesens ist kein Personalproblem mehr. Es ist eine rein rechnerische Herausforderung. Wir ersetzen Fehleranfälligkeit und manuelle Konstruktionsstunden durch mathematisch verifizierte Codezeilen.\""
+        },
+        {
+          "id": "head_ai_infra",
+          "role": "Leiter Souveräne KI",
+          "department": "Lokale LLMs & OpenBIM",
+          "note_id": "#442B",
+          "quote": "\"Vollständiger Schutz vor Datenlecks ist kein Feature, sondern das betriebliche Fundament. Durch die Containerisierung von LLMs direkt hinter Ihrer Unternehmens-Firewall eliminieren wir IP-Risiken vollständig und garantieren 100 % Konformität mit ISO 19650 und UNI 11337.\""
+        }
+      ]
+    },
+    "strategicEcosystem": {
+      "title_part1": "Fundiert durch akademische Exzellenz.",
+      "title_part2": "Bewährt bei führenden Tier-1-Unternehmen.",
+      "description": "Entwickelt in den computativen und strukturellen Forschungszentren von Padua und Turin. Wir implementieren mathematisch geprüfte algorithmische Infrastruktur in den komplexesten AEC-Projekten im Vereinigten Königreich, in Europa und in Italien.",
+      "partners": [
+        { "id": "unipd", "name": "UNIPD (Padua)", "subtitle": "Informations- & Algorithmen-Engineering" },
+        { "id": "polito", "name": "POLITO (Turin)", "subtitle": "Fortgeschrittenes Bau- & Struktur-Engineering" },
+        { "id": "tier1", "name": "TIER-1 AEC", "subtitle": "Enterprise-Infrastruktur-Bereitstellung" },
+        { "id": "iso", "name": "ISO-KONFORM", "subtitle": "19650 & UNI 11337 Datenausgaben" }
+      ]
+    },
+    "validationProtocol": {
+      "section_title": "Die pyBIM Proof-of-Concept (PoC) Simulation",
+      "description": "Wir verkaufen keine theoretische Software. Wir führen eine rigorose 48-Stunden-Algorithmen-Simulation durch, um den mathematischen ROI direkt an Ihren operativen Engpässen nachzuweisen.",
+      "points": [
+        {
+          "title": "Sichere Datenerfassung",
+          "desc": "Reichen Sie eine Stichprobe Ihrer nicht klassifizierten AIA-Dokumente oder anspruchsvollsten Revit-Modelle ein."
+        },
+        {
+          "title": "Algorithmische Ausführung",
+          "desc": "Erleben Sie die exakte Verarbeitungsgeschwindigkeit unserer lokalen LLMs und Python-Pipelines bei der Datenextraktion und Kollisionsauflösung."
+        },
+        {
+          "title": "Kein finanzielles Risiko",
+          "desc": "Validieren Sie unsere Maschinenpräzision und strikte ISO 19650-Konformität vor der unternehmensweiten Einführung."
+        }
+      ],
+      "cta": "POC-AUDIT ANFORDERN",
+      "microcopy": "(100 % kostenlose & sichere Datenverarbeitung. Testen Sie Ihre komplexesten Revit-Modelle über unsere lokalen Pipelines. Nur geschäftliche E-Mail-Domains. Keine Kreditkarte erforderlich.)"
+    }
+  }
+}
+

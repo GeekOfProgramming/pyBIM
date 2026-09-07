@@ -1,72 +1,72 @@
 {
-  "title": "Sovereign AI Security Defense: CISO Whitepaper",
-  "subtitle": "This technical protocol proves zero data egress from the corporate firewall. Designed for structural integrity and absolute algorithmic containment.",
+  "title": "Difesa e Sicurezza Sovereign AI: Whitepaper CISO",
+  "subtitle": "Questo protocollo tecnico dimostra l'assoluta assenza di esfiltrazione dati (zero egress) dal firewall aziendale. Progettato per l'integrità strutturale e il confinamento algoritmico totale.",
   "block1": {
-    "title": "1. Network Isolation Architecture",
-    "diagram_caption": "Air-Gapped Execution Topology. Absolute containment of geometry and algorithmic metavariables within the corporate LAN perimeter."
+    "title": "1. Architettura di Isolamento di Rete",
+    "diagram_caption": "Topologia di Esecuzione Air-Gapped. Confinamento assoluto di geometrie e metavariabili algoritmiche all'interno del perimetro LAN aziendale."
   },
   "diagram_text": {
-    "lan": "CLIENT LAN PERIMETER",
-    "edge": "pyBIM Edge Hardware / Local Docker",
-    "local_llm": "Local LLM",
-    "rag": "RAG Pipeline",
-    "python": "Python Engine",
-    "revit": "Revit Database",
-    "cde": "Local CDE",
-    "public_apis": "Public APIs",
+    "lan": "PERIMETRO LAN CLIENTE",
+    "edge": "Hardware Edge pyBIM / Docker Locale",
+    "local_llm": "LLM Locale",
+    "rag": "Pipeline RAG",
+    "python": "Motore Python",
+    "revit": "Database Revit",
+    "cde": "CDE Locale",
+    "public_apis": "API Pubbliche",
     "cloud": "(OpenAI, Cloud)",
-    "zero_data": "ZERO OUTBOUND DATA"
+    "zero_data": "ZERO DATI IN USCITA"
   },
   "block2": {
-    "title": "2. Compliance Mapping Matrix",
-    "headers": ["Mandate / Standard", "Security Requirement", "pyBIM Technical Execution"],
+    "title": "2. Matrice di Conformità Normativa",
+    "headers": ["Mandato / Standard", "Requisito di Sicurezza", "Esecuzione Tecnica pyBIM"],
     "rows": [
       {
-        "mandate": "ISO 19650-5 (Information Security)",
-        "requirement": "Metadata leakage prevention",
-        "execution": "Offline LLM deployment and localized processing exclusively on edge hardware."
+        "mandate": "ISO 19650-5 (Sicurezza delle Informazioni)",
+        "requirement": "Prevenzione della dispersione dei metadati",
+        "execution": "Deployment di LLM offline ed elaborazione localizzata esclusivamente su hardware edge."
       },
       {
         "mandate": "UNI 11337",
-        "requirement": "Sovereign data management",
-        "execution": "C# function execution directly on the local Revit database with zero geometry extraction."
+        "requirement": "Gestione sovrana dei dati",
+        "execution": "Esecuzione di funzioni C# direttamente sul database locale di Revit con zero estrazione geometrica."
       },
       {
         "mandate": "GDPR / DPA",
-        "requirement": "Data minimization & local custody",
-        "execution": "Absolute network severance for processing nodes. Data parsing occurs strictly offline."
+        "requirement": "Minimizzazione dei dati & custodia locale",
+        "execution": "Disconnessione totale dalla rete per i nodi di elaborazione. Il parsing dei dati avviene rigorosamente offline."
       }
     ]
   },
   "block3": {
-    "title": "3. Zero-Telemetry & Data Retention",
-    "notice_title": "DEFINITIVE SECURITY NOTICE",
-    "notice_text": "\"The pyBIM infrastructure contains zero background telemetry daemons. Exactly 0 bytes of algorithmic logic, geometric coordinates, or structural parameters are transmitted to public API endpoints.\"",
-    "purge_title": "RAM DESTRUCTION PROTOCOL",
-    "purge_text": "RAG pipeline tensors and intermediate data vectors are instantaneously destroyed upon script execution. State persists solely in the client's air-gapped Common Data Environment (CDE)."
+    "title": "3. Zero-Telemetria & Conservazione dei Dati",
+    "notice_title": "AVVISO DI SICUREZZA DEFINITIVO",
+    "notice_text": "\"L'infrastruttura pyBIM non contiene daemon di telemetria in background. Esattamente 0 byte di logica algoritmica, coordinate geometriche o parametri strutturali vengono trasmessi verso endpoint API pubblici.\"",
+    "purge_title": "PROTOCOLLO DI DISTRUZIONE IN RAM",
+    "purge_text": "I tensori della pipeline RAG e i vettori di dati intermedi vengono distrutti istantaneamente al termine dell'esecuzione dello script. Lo stato persiste esclusivamente nell'Ambiente di Condivisione Dati (CDE) air-gapped del cliente."
   },
   "block4": {
-    "title": "4. Encryption & Infrastructure Protocols",
-    "sector1_title": "GPU-VPS Sector",
+    "title": "4. Protocolli di Crittografia & Infrastruttura",
+    "sector1_title": "Settore GPU-VPS",
     "sector1_items": [
       {
-        "title": "Drive Encryption Protocols",
-        "text": "AES-256-XTS At-Rest Encryption. Secure boot mandates locked firmware states."
+        "title": "Protocolli di Crittografia dei Dischi",
+        "text": "Crittografia at-rest AES-256-XTS. Il secure boot impone stati di firmware bloccati."
       },
       {
-        "title": "Secure Networking Tunnels",
-        "text": "Network Ingress/Egress strictly limited to authenticated WireGuard/Tailscale tunnels. Unauthenticated packets dropped at kernel level."
+        "title": "Tunnel di Rete Sicuri",
+        "text": "Ingresso/Uscita di rete strettamente limitati a tunnel WireGuard/Tailscale autenticati. I pacchetti non autenticati vengono scartati a livello di kernel."
       }
     ],
-    "sector2_title": "Edge Appliance Sector",
+    "sector2_title": "Settore Edge Appliance",
     "sector2_items": [
       {
-        "title": "Hardened OS Architecture",
-        "text": "Kernel-level isolation via hardened Linux OS (AppArmor mandatory enforcement)."
+        "title": "Architettura OS Hardened",
+        "text": "Isolamento a livello di kernel tramite sistema operativo Linux hardened (applicazione obbligatoria di AppArmor)."
       },
       {
-        "title": "Hardware Isolation",
-        "text": "Hardware I/O disabled at BIOS level. Headless operation with physical tamper-evident chassis validation."
+        "title": "Isolamento Hardware",
+        "text": "I/O hardware disabilitato a livello di BIOS. Funzionamento headless con validazione fisica antimanomissione (tamper-evident) dello chassis."
       }
     ]
   }
