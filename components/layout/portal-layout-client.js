@@ -44,27 +44,27 @@ export default function PortalLayoutClient({ children }) {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-[calc(100vh-80px)] bg-[#09090b] text-slate-300 font-sans selection:bg-purple-500/30">
+    <div className="flex flex-col lg:flex-row min-h-[calc(100vh-80px)] bg-slate-50 dark:bg-[#09090b] text-slate-700 dark:text-slate-300 font-sans selection:bg-purple-500/30 transition-colors">
       
       {/* SIDEBAR (20% WIDTH, FIXED / STICKY ON DESKTOP) */}
-      <aside className="w-full lg:w-[20%] lg:min-w-[250px] flex flex-col bg-[#0f1115] border-r border-neutral-800 shrink-0 relative z-20 sticky top-[80px] h-auto lg:h-[calc(100vh-80px)]">
+      <aside className="w-full lg:w-[20%] lg:min-w-[250px] flex flex-col bg-white dark:bg-[#0f1115] border-r border-slate-200 dark:border-neutral-800 shrink-0 relative z-20 sticky top-[80px] h-auto lg:h-[calc(100vh-80px)] transition-colors">
         
         {/* Enterprise Brand Header */}
-        <div className="p-6 border-b border-neutral-800 flex items-center justify-between">
+        <div className="p-6 border-b border-slate-200 dark:border-neutral-800 flex items-center justify-between">
           <Link href="/" className="inline-flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:bg-purple-500/20 transition-all">
+            <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400 group-hover:bg-purple-500/20 transition-all">
               <Shield className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-sm font-bold text-white tracking-wider">{t("portal.sidebar.brand")}</div>
-              <div className="text-[10px] font-mono text-purple-400 uppercase tracking-widest">{t("portal.sidebar.core")}</div>
+              <div className="text-sm font-bold text-slate-900 dark:text-white tracking-wider">{t("portal.sidebar.brand")}</div>
+              <div className="text-[10px] font-mono text-purple-600 dark:text-purple-400 uppercase tracking-widest">{t("portal.sidebar.core")}</div>
             </div>
           </Link>
         </div>
 
         {/* Primary Navigation */}
         <nav className="flex-1 overflow-y-auto p-4 space-y-1.5">
-          <div className="text-[10px] font-mono font-semibold text-neutral-500 uppercase tracking-widest mb-3 px-3">
+          <div className="text-[10px] font-mono font-semibold text-slate-400 dark:text-neutral-500 uppercase tracking-widest mb-3 px-3">
             {t("portal.sidebar.routes")}
           </div>
           {navigation.map((item) => {
@@ -75,11 +75,11 @@ export default function PortalLayoutClient({ children }) {
                 href={item.href}
                 className={`flex items-center gap-3 px-3.5 py-3 rounded-lg transition-all font-medium text-sm ${
                   isActive 
-                    ? "bg-purple-500/10 text-purple-400 border border-purple-500/30 shadow-sm" 
-                    : "text-neutral-400 hover:bg-[#16181f] hover:text-white border border-transparent"
+                    ? "bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-400 border border-purple-200 dark:border-purple-500/30 shadow-sm" 
+                    : "text-slate-600 dark:text-neutral-400 hover:bg-slate-100 dark:hover:bg-[#16181f] hover:text-slate-900 dark:hover:text-white border border-transparent"
                 }`}
               >
-                <item.icon className={`w-4 h-4 ${isActive ? "text-purple-400" : "text-neutral-500"}`} />
+                <item.icon className={`w-4 h-4 ${isActive ? "text-purple-600 dark:text-purple-400" : "text-slate-400 dark:text-neutral-500"}`} />
                 <span>{item.name}</span>
               </Link>
             );
@@ -87,20 +87,20 @@ export default function PortalLayoutClient({ children }) {
         </nav>
 
         {/* Active User Identifier & Secure Log Out Action */}
-        <div className="p-4 border-t border-neutral-800 bg-[#0c0d11]">
+        <div className="p-4 border-t border-slate-200 dark:border-neutral-800 bg-slate-100/70 dark:bg-[#0c0d11] transition-colors">
           <div className="flex items-center gap-3 px-2 mb-3">
-            <div className="w-9 h-9 rounded-lg bg-neutral-800 border border-neutral-700 flex items-center justify-center shrink-0">
-              <UserCircle className="w-5 h-5 text-neutral-400" />
+            <div className="w-9 h-9 rounded-lg bg-slate-200 dark:bg-neutral-800 border border-slate-300 dark:border-neutral-700 flex items-center justify-center shrink-0">
+              <UserCircle className="w-5 h-5 text-slate-500 dark:text-neutral-400" />
             </div>
             <div className="overflow-hidden">
-              <div className="text-xs font-bold text-white truncate">{t("portal.sidebar.role")}</div>
-              <div className="text-[11px] font-mono text-purple-400/90 truncate">demo@pybim.it</div>
+              <div className="text-xs font-bold text-slate-900 dark:text-white truncate">{t("portal.sidebar.role")}</div>
+              <div className="text-[11px] font-mono text-purple-600 dark:text-purple-400/90 truncate">demo@pybim.it</div>
             </div>
           </div>
           <button 
             onClick={handleLogout}
             disabled={loggingOut}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg text-xs font-mono font-semibold transition-all border border-red-500/20 disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-red-50 dark:bg-red-500/10 hover:bg-red-100 dark:hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg text-xs font-mono font-semibold transition-all border border-red-200 dark:border-red-500/20 disabled:opacity-50"
           >
             <LogOut className="w-3.5 h-3.5" />
             {loggingOut ? t("portal.sidebar.terminating") : t("portal.sidebar.logout")}
@@ -109,7 +109,7 @@ export default function PortalLayoutClient({ children }) {
       </aside>
 
       {/* MAIN VIEW (80% WIDTH, DYNAMIC) */}
-      <main className="w-full lg:w-[80%] flex-1 overflow-y-auto bg-[#09090b] relative z-10">
+      <main className="w-full lg:w-[80%] flex-1 overflow-y-auto bg-slate-50 dark:bg-[#09090b] relative z-10 transition-colors">
         <div className="p-6 md:p-8 lg:p-10 max-w-6xl mx-auto">
           {children}
         </div>

@@ -150,72 +150,72 @@ export default function ExecutionsClient() {
     <div className="space-y-6">
       
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-neutral-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-neutral-800 transition-colors">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-purple-400 uppercase tracking-widest mb-1.5">
+          <div className="flex items-center gap-2 text-xs font-mono text-purple-600 dark:text-purple-400 uppercase tracking-widest mb-1.5">
             <TerminalSquare className="w-3.5 h-3.5" />
             <span>{t("portal.executions.tag")}</span>
           </div>
-          <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
             {t("portal.executions.title")}
           </h1>
-          <p className="text-sm text-neutral-400 mt-1">
+          <p className="text-sm text-slate-500 dark:text-neutral-400 mt-1">
             {t("portal.executions.subtitle")}
           </p>
         </div>
 
         {/* Global Pipeline Health Status Badge */}
-        <div className="flex items-center gap-3 self-start md:self-auto px-4 py-2.5 rounded-xl bg-[#0f1115] border border-neutral-800">
+        <div className="flex items-center gap-3 self-start md:self-auto px-4 py-2.5 rounded-xl bg-white dark:bg-[#0f1115] border border-slate-200 dark:border-neutral-800 shadow-sm transition-colors">
           <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
           <div className="text-xs font-mono">
-            <span className="text-neutral-400">{t("portal.executions.kernel_label")}</span>
-            <span className="text-emerald-400 font-semibold">{t("portal.executions.kernel_status")}</span>
+            <span className="text-slate-500 dark:text-neutral-400">{t("portal.executions.kernel_label")}</span>{" "}
+            <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t("portal.executions.kernel_status")}</span>
           </div>
         </div>
       </div>
 
       {/* Metrics Bar */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="p-4 rounded-xl bg-[#0f1115] border border-neutral-800">
-          <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">
+        <div className="p-4 rounded-xl bg-white dark:bg-[#0f1115] border border-slate-200 dark:border-neutral-800 shadow-sm transition-colors">
+          <div className="text-[11px] font-mono text-slate-400 dark:text-neutral-500 uppercase tracking-wider">
             {t("portal.executions.metric_total_runs")}
           </div>
-          <div className="text-xl font-bold text-white mt-1 font-mono">1,420</div>
-          <div className="text-[11px] text-emerald-400 font-mono mt-1">
+          <div className="text-xl font-bold text-slate-900 dark:text-white mt-1 font-mono">1,420</div>
+          <div className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono mt-1">
             {t("portal.executions.metric_total_runs_sub")}
           </div>
         </div>
-        <div className="p-4 rounded-xl bg-[#0f1115] border border-neutral-800">
-          <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">
+        <div className="p-4 rounded-xl bg-white dark:bg-[#0f1115] border border-slate-200 dark:border-neutral-800 shadow-sm transition-colors">
+          <div className="text-[11px] font-mono text-slate-400 dark:text-neutral-500 uppercase tracking-wider">
             {t("portal.executions.metric_success_rate")}
           </div>
-          <div className="text-xl font-bold text-emerald-400 mt-1 font-mono">99.43%</div>
-          <div className="text-[11px] text-neutral-500 font-mono mt-1">
+          <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-1 font-mono">99.43%</div>
+          <div className="text-[11px] text-slate-400 dark:text-neutral-500 font-mono mt-1">
             {t("portal.executions.metric_success_rate_sub")}
           </div>
         </div>
-        <div className="p-4 rounded-xl bg-[#0f1115] border border-neutral-800">
-          <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">
+        <div className="p-4 rounded-xl bg-white dark:bg-[#0f1115] border border-slate-200 dark:border-neutral-800 shadow-sm transition-colors">
+          <div className="text-[11px] font-mono text-slate-400 dark:text-neutral-500 uppercase tracking-wider">
             {t("portal.executions.metric_active_jobs")}
           </div>
-          <div className="text-xl font-bold text-purple-400 mt-1 font-mono">02</div>
-          <div className="text-[11px] text-neutral-400 font-mono mt-1">
+          <div className="text-xl font-bold text-purple-600 dark:text-purple-400 mt-1 font-mono">02</div>
+          <div className="text-[11px] text-slate-500 dark:text-neutral-400 font-mono mt-1">
             {t("portal.executions.metric_active_jobs_sub")}
           </div>
         </div>
-        <div className="p-4 rounded-xl bg-[#0f1115] border border-neutral-800">
-          <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">
+        <div className="p-4 rounded-xl bg-white dark:bg-[#0f1115] border border-slate-200 dark:border-neutral-800 shadow-sm transition-colors">
+          <div className="text-[11px] font-mono text-slate-400 dark:text-neutral-500 uppercase tracking-wider">
             {t("portal.executions.metric_elements")}
           </div>
-          <div className="text-xl font-bold text-white mt-1 font-mono">31.2M</div>
-          <div className="text-[11px] text-neutral-500 font-mono mt-1">
+          <div className="text-xl font-bold text-slate-900 dark:text-white mt-1 font-mono">31.2M</div>
+          <div className="text-[11px] text-slate-400 dark:text-neutral-500 font-mono mt-1">
             {t("portal.executions.metric_elements_sub")}
           </div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3 rounded-xl bg-[#0f1115] border border-neutral-800">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3 rounded-xl bg-white dark:bg-[#0f1115] border border-slate-200 dark:border-neutral-800 shadow-sm transition-colors">
         <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto">
           {tabs.map((tab) => (
             <button
@@ -223,8 +223,8 @@ export default function ExecutionsClient() {
               onClick={() => setFilter(tab.id)}
               className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all ${
                 filter === tab.id
-                  ? "bg-purple-500/20 text-purple-300 border border-purple-500/40"
-                  : "text-neutral-400 hover:text-white hover:bg-neutral-800/50 border border-transparent"
+                  ? "bg-purple-50 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/40"
+                  : "text-slate-600 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-neutral-800/50 border border-transparent"
               }`}
             >
               {tab.label}
@@ -233,22 +233,22 @@ export default function ExecutionsClient() {
         </div>
 
         <div className="relative w-full sm:w-72">
-          <Search className="w-3.5 h-3.5 text-neutral-500 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-3.5 h-3.5 text-slate-400 dark:text-neutral-500 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={t("portal.executions.search_ph")}
-            className="w-full bg-[#09090b] border border-neutral-800 rounded-lg pl-9 pr-3 py-1.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-purple-500/50 font-mono"
+            className="w-full bg-slate-50 dark:bg-[#09090b] border border-slate-200 dark:border-neutral-800 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:border-purple-500/50 font-mono"
           />
         </div>
       </div>
 
       {/* Main Execution Audit Table */}
-      <div className="rounded-xl bg-[#0f1115] border border-neutral-800 overflow-hidden">
+      <div className="rounded-xl bg-white dark:bg-[#0f1115] border border-slate-200 dark:border-neutral-800 overflow-hidden shadow-sm transition-colors">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#0c0d11] text-neutral-400 font-mono border-b border-neutral-800 uppercase tracking-wider text-[11px]">
+            <thead className="bg-slate-50 dark:bg-[#0c0d11] text-slate-600 dark:text-neutral-400 font-mono border-b border-slate-200 dark:border-neutral-800 uppercase tracking-wider text-[11px]">
               <tr>
                 <th className="py-3.5 px-4 font-semibold">{t("portal.executions.th_id")}</th>
                 <th className="py-3.5 px-4 font-semibold">{t("portal.executions.th_pipeline")}</th>
@@ -258,10 +258,10 @@ export default function ExecutionsClient() {
                 <th className="py-3.5 px-4 font-semibold text-right">{t("portal.executions.th_stdout")}</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-neutral-800/60 font-mono">
+            <tbody className="divide-y divide-slate-200 dark:divide-neutral-800/60 font-mono">
               {filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="py-12 text-center text-neutral-500 font-mono text-sm">
+                  <td colSpan={6} className="py-12 text-center text-slate-400 dark:text-neutral-500 font-mono text-sm">
                     {t("portal.executions.empty")}
                   </td>
                 </tr>
@@ -273,31 +273,31 @@ export default function ExecutionsClient() {
                       key={item.id}
                       onClick={() => setSelectedRun(isSelected ? null : item)}
                       className={`cursor-pointer transition-colors ${
-                        isSelected ? "bg-purple-950/20" : "hover:bg-[#14161d]"
+                        isSelected ? "bg-purple-50/80 dark:bg-purple-950/20" : "hover:bg-slate-50 dark:hover:bg-[#14161d]"
                       }`}
                     >
-                      <td className="py-3.5 px-4 font-bold text-purple-400">
+                      <td className="py-3.5 px-4 font-bold text-purple-600 dark:text-purple-400">
                         {item.id}
                       </td>
-                      <td className="py-3.5 px-4 text-white font-sans font-medium">
+                      <td className="py-3.5 px-4 text-slate-900 dark:text-white font-sans font-medium">
                         <div>{item.pipeline}</div>
-                        <div className="text-[11px] text-neutral-500 font-mono mt-0.5">
+                        <div className="text-[11px] text-slate-500 dark:text-neutral-500 font-mono mt-0.5">
                           {item.elementsProcessed.toLocaleString()} {t("portal.executions.primitives")} • {item.memory}
                         </div>
                       </td>
-                      <td className="py-3.5 px-4 text-neutral-400">
+                      <td className="py-3.5 px-4 text-slate-600 dark:text-neutral-400">
                         {item.node}
                       </td>
-                      <td className="py-3.5 px-4 text-neutral-300">
+                      <td className="py-3.5 px-4 text-slate-700 dark:text-neutral-300">
                         {item.duration}
                       </td>
                       <td className="py-3.5 px-4">
                         <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wider ${
                           item.status === "COMPLETED"
-                            ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
+                            ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30"
                             : item.status === "RUNNING"
-                            ? "bg-purple-500/10 text-purple-400 border border-purple-500/30 animate-pulse"
-                            : "bg-red-500/10 text-red-400 border border-red-500/30"
+                            ? "bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-400 border border-purple-200 dark:border-purple-500/30 animate-pulse"
+                            : "bg-red-50 dark:bg-red-500/10 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-500/30"
                         }`}>
                           {item.status === "COMPLETED" && <CheckCircle2 className="w-3 h-3" />}
                           {item.status === "RUNNING" && <RefreshCw className="w-3 h-3 animate-spin" />}
@@ -307,7 +307,7 @@ export default function ExecutionsClient() {
                       </td>
                       <td className="py-3.5 px-4 text-right">
                         <button 
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1b1e27] hover:bg-purple-500/20 text-neutral-300 hover:text-purple-300 border border-neutral-700/50 text-[11px] transition-all"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-100 dark:bg-[#1b1e27] hover:bg-purple-50 dark:hover:bg-purple-500/20 text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-purple-300 border border-slate-200 dark:border-neutral-700/50 text-[11px] transition-all"
                         >
                           <span>{isSelected ? t("portal.executions.btn_hide_logs") : t("portal.executions.btn_view_logs")}</span>
                           <ChevronRight className={`w-3 h-3 transition-transform ${isSelected ? "rotate-90" : ""}`} />
@@ -324,21 +324,21 @@ export default function ExecutionsClient() {
 
       {/* Selected Execution STDOUT Log Drawer (Read-Only Terminal) */}
       {selectedRun && (
-        <div className="rounded-xl bg-[#0a0b0e] border border-purple-500/30 p-5 space-y-3 font-mono shadow-2xl animate-in fade-in duration-200">
-          <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
+        <div className="rounded-xl bg-slate-900 dark:bg-[#0a0b0e] border border-purple-400/40 dark:border-purple-500/30 p-5 space-y-3 font-mono shadow-2xl animate-in fade-in duration-200 text-white">
+          <div className="flex items-center justify-between border-b border-slate-800 dark:border-neutral-800 pb-3">
             <div className="flex items-center gap-2.5">
               <div className="w-2.5 h-2.5 rounded-full bg-purple-400 animate-pulse" />
               <span className="text-xs font-bold text-white">
                 {t("portal.executions.drawer_log_stream")} {selectedRun.id}
               </span>
-              <span className="text-[11px] text-neutral-400">({selectedRun.pipeline})</span>
+              <span className="text-[11px] text-slate-400 dark:text-neutral-400">({selectedRun.pipeline})</span>
             </div>
-            <div className="text-[11px] text-neutral-500">
+            <div className="text-[11px] text-slate-400 dark:text-neutral-500">
               {t("portal.executions.drawer_allocated")} {selectedRun.node} • {t("portal.executions.drawer_started")} {selectedRun.timestamp}
             </div>
           </div>
 
-          <div className="bg-[#050608] rounded-lg p-4 text-xs space-y-1.5 font-mono text-neutral-300 border border-neutral-900 overflow-x-auto max-h-60">
+          <div className="bg-slate-950 dark:bg-[#050608] rounded-lg p-4 text-xs space-y-1.5 font-mono text-neutral-300 border border-slate-800 dark:border-neutral-900 overflow-x-auto max-h-60">
             {selectedRun.logs.map((line, idx) => (
               <div key={idx} className="flex items-start gap-2">
                 <span className="text-neutral-600 select-none text-[10px] w-5 text-right">{idx + 1}</span>
@@ -349,20 +349,20 @@ export default function ExecutionsClient() {
             ))}
           </div>
 
-          <div className="flex items-center justify-between text-[11px] text-neutral-500 pt-1">
+          <div className="flex items-center justify-between text-[11px] text-slate-400 dark:text-neutral-500 pt-1">
             <span>{t("portal.executions.drawer_sha")}</span>
-            <span className="text-neutral-400">{t("portal.executions.drawer_ipc_notice")}</span>
+            <span className="text-slate-400 dark:text-neutral-400">{t("portal.executions.drawer_ipc_notice")}</span>
           </div>
         </div>
       )}
 
       {/* Architectural Notice: Strict Read-Only Policy */}
-      <div className="p-4 rounded-xl bg-[#0c0d11] border border-neutral-800/80 text-xs text-neutral-400 flex items-start gap-3">
-        <div className="p-1.5 rounded bg-neutral-800 text-neutral-400 shrink-0 mt-0.5">
+      <div className="p-4 rounded-xl bg-slate-100 dark:bg-[#0c0d11] border border-slate-200 dark:border-neutral-800/80 text-xs text-slate-600 dark:text-neutral-400 flex items-start gap-3 transition-colors">
+        <div className="p-1.5 rounded bg-slate-200 dark:bg-neutral-800 text-slate-600 dark:text-neutral-400 shrink-0 mt-0.5">
           <Cpu className="w-4 h-4" />
         </div>
         <div>
-          <span className="text-white font-semibold font-mono">
+          <span className="text-slate-900 dark:text-white font-semibold font-mono">
             {t("portal.executions.notice_title")}
           </span>{" "}
           {t("portal.executions.notice_desc")}
