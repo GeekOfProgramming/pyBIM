@@ -1,6 +1,6 @@
 {
-  "title": "Difesa e Sicurezza Sovereign AI: Whitepaper CISO",
-  "subtitle": "Questo protocollo tecnico dimostra l'assoluta assenza di esfiltrazione dati (zero egress) dal firewall aziendale. Progettato per l'integrità strutturale e il confinamento algoritmico totale.",
+  "title": "Sicurezza Enterprise & Sovereign Edge AI: Whitepaper CISO",
+  "subtitle": "Questo protocollo tecnico dimostra il confinamento algoritmico totale, l'assenza di esfiltrazione dati dal firewall aziendale e la rigorosa conformità a ISO 19650-5 per l'esecuzione BIM in outsourcing.",
   "block1": {
     "title": "1. Architettura di Isolamento di Rete",
     "diagram_caption": "Topologia di Esecuzione Air-Gapped. Confinamento assoluto di geometrie e metavariabili algoritmiche all'interno del perimetro LAN aziendale."
@@ -35,6 +35,11 @@
         "mandate": "GDPR / DPA",
         "requirement": "Minimizzazione dei dati & custodia locale",
         "execution": "Disconnessione totale dalla rete per i nodi di elaborazione. Il parsing dei dati avviene rigorosamente offline."
+      },
+      {
+        "mandate": "NDA & Riservatezza (BIM in Outsourcing)",
+        "requirement": "Privacy rigorosa dei dati di esecuzione e integrità del CDE",
+        "execution": "Tutti i file Revit del cliente e le geometrie trasferite tramite CDE crittografati. Cancellazione garantita post-esecuzione."
       }
     ]
   },
@@ -47,7 +52,7 @@
   },
   "block4": {
     "title": "4. Protocolli di Crittografia & Infrastruttura",
-    "sector1_title": "Settore GPU-VPS",
+    "sector1_title": "Settore GPU-VPS (Plugin Personalizzati)",
     "sector1_items": [
       {
         "title": "Protocolli di Crittografia dei Dischi",
@@ -58,7 +63,7 @@
         "text": "Ingresso/Uscita di rete strettamente limitati a tunnel WireGuard/Tailscale autenticati. I pacchetti non autenticati vengono scartati a livello di kernel."
       }
     ],
-    "sector2_title": "Settore Edge Appliance",
+    "sector2_title": "Settore Edge Appliance (Sovereign AI)",
     "sector2_items": [
       {
         "title": "Architettura OS Hardened",
@@ -67,6 +72,17 @@
       {
         "title": "Isolamento Hardware",
         "text": "I/O hardware disabilitato a livello di BIOS. Funzionamento headless con validazione fisica antimanomissione (tamper-evident) dello chassis."
+      }
+    ],
+    "sector3_title": "Settore Esecuzione (BIM in Outsourcing)",
+    "sector3_items": [
+      {
+        "title": "Applicazione Rigorosa degli NDA",
+        "text": "Ogni progetto BIM esternalizzato è vincolato da accordi di non divulgazione (NDA) di livello enterprise. Nessuna condivisione con terzi."
+      },
+      {
+        "title": "Trasferimenti File ISO 19650-5",
+        "text": "Tutti i modelli Revit e i file IFC federati vengono trasmessi in ambienti CDE crittografati e cancellati alla consegna del progetto."
       }
     ]
   }

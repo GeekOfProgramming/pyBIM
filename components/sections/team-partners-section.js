@@ -75,12 +75,19 @@ export default function TeamPartnersSection({ teamData }) {
             <div className="bg-gray-50/90 dark:bg-[#111318] border border-gray-200 dark:border-neutral-800 rounded-xl p-7 md:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-gray-300 dark:hover:border-neutral-700 transition-all shadow-sm">
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-500/80 via-blue-500/80 to-transparent" />
               <div>
-                <div className="inline-flex items-center gap-2 rounded border border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/90 px-2.5 py-1 text-[11px] font-mono font-bold text-gray-600 dark:text-neutral-400 uppercase tracking-widest mb-4">
-                  {t("about.team.ecosystem.manifest_tag")}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 text-xs font-mono font-semibold uppercase tracking-wider">
+                    <Terminal className="w-4 h-4" />
+                    <span>{t("about.team.ecosystem.manifest_tag")}</span>
+                  </div>
+                  <Server className="w-4 h-4 text-gray-400 dark:text-neutral-600 group-hover:text-gray-600 dark:group-hover:text-neutral-400 transition-colors" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 leading-snug">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
                   {t("about.team.ecosystem.manifest_title")}
                 </h3>
+                <div className="text-xs font-mono text-orange-600 dark:text-orange-400 font-semibold mb-3">
+                  System Architecture
+                </div>
                 <p className="text-gray-600 dark:text-neutral-400 text-sm leading-relaxed mb-6">
                   {t("about.team.ecosystem.manifest_desc")}
                 </p>
@@ -153,10 +160,11 @@ export default function TeamPartnersSection({ teamData }) {
             <div className="bg-gray-50/90 dark:bg-[#111318] border border-gray-200 dark:border-neutral-800 rounded-xl p-7 md:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-gray-300 dark:hover:border-neutral-700 transition-all shadow-sm">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center gap-1.5 rounded border border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/90 px-2.5 py-1 text-[11px] font-mono font-bold text-gray-600 dark:text-neutral-400">
-                    {t("about.team.ecosystem.v1_tag")}
-                  </span>
-                  <HardDrive className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <div className="inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-semibold uppercase tracking-wider">
+                    <HardDrive className="w-4 h-4" />
+                    <span>{t("about.team.ecosystem.v1_tag")}</span>
+                  </div>
+                  <Layers className="w-4 h-4 text-gray-400 dark:text-neutral-600 group-hover:text-gray-600 dark:group-hover:text-neutral-400 transition-colors" />
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{t("about.team.ecosystem.v1_title")}</h4>
                 <div className="text-xs font-mono text-emerald-700 dark:text-emerald-400 font-semibold mb-3">
@@ -183,10 +191,11 @@ export default function TeamPartnersSection({ teamData }) {
             <div className="bg-gray-50/90 dark:bg-[#111318] border border-gray-200 dark:border-neutral-800 rounded-xl p-7 md:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-gray-300 dark:hover:border-neutral-700 transition-all shadow-sm">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center gap-1.5 rounded border border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/90 px-2.5 py-1 text-[11px] font-mono font-bold text-gray-600 dark:text-neutral-400">
-                    {t("about.team.ecosystem.v2_tag")}
-                  </span>
-                  <Server className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                  <div className="inline-flex items-center gap-2 text-cyan-600 dark:text-cyan-400 text-xs font-mono font-semibold uppercase tracking-wider">
+                    <Server className="w-4 h-4" />
+                    <span>{t("about.team.ecosystem.v2_tag")}</span>
+                  </div>
+                  <Layers className="w-4 h-4 text-gray-400 dark:text-neutral-600 group-hover:text-gray-600 dark:group-hover:text-neutral-400 transition-colors" />
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{t("about.team.ecosystem.v2_title")}</h4>
                 <div className="text-xs font-mono text-cyan-700 dark:text-cyan-400 font-semibold mb-3">
@@ -212,13 +221,14 @@ export default function TeamPartnersSection({ teamData }) {
             <div className="bg-gray-50/90 dark:bg-[#111318] border border-gray-200 dark:border-neutral-800 rounded-xl p-7 md:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-gray-300 dark:hover:border-neutral-700 transition-all shadow-sm">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center gap-1.5 rounded border border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/90 px-2.5 py-1 text-[11px] font-mono font-bold text-gray-600 dark:text-neutral-400">
-                    {t("about.team.ecosystem.v3_tag")}
-                  </span>
-                  <ShieldCheck className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                  <div className="inline-flex items-center gap-2 text-fuchsia-600 dark:text-fuchsia-400 text-xs font-mono font-semibold uppercase tracking-wider">
+                    <ShieldCheck className="w-4 h-4" />
+                    <span>{t("about.team.ecosystem.v3_tag")}</span>
+                  </div>
+                  <Layers className="w-4 h-4 text-gray-400 dark:text-neutral-600 group-hover:text-gray-600 dark:group-hover:text-neutral-400 transition-colors" />
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{t("about.team.ecosystem.v3_title")}</h4>
-                <div className="text-xs font-mono text-purple-700 dark:text-purple-400 font-semibold mb-3">
+                <div className="text-xs font-mono text-fuchsia-700 dark:text-fuchsia-400 font-semibold mb-3">
                   {t("about.team.ecosystem.v3_subtitle")}
                 </div>
                 <p 

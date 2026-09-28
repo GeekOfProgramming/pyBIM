@@ -3,11 +3,11 @@
     {
       "id": "t1",
       "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop",
-      "email": "marcus.weber@pybim.com",
+      "email": "matteo.rossi@pybim.com",
       "linkedin": "#",
       "github": "#",
       "en": {
-        "name": "Marcus Weber",
+        "name": "Matteo Rossi",
         "role": "Co-Founder & Lead AI Infrastructure",
         "bio": "Architecting local LLM pipelines, containerized deployment (Docker), and reverse VPN tunneling. Bridges AI frameworks with native Python/C# execution.",
         "core_stack": [
@@ -22,7 +22,7 @@
         ]
       },
       "it": {
-        "name": "Marcus Weber",
+        "name": "Matteo Rossi",
         "role": "Co-fondatore & Responsabile Infrastruttura IA",
         "bio": "Progettazione di pipeline LLM locali, deployment containerizzato (Docker) e tunneling VPN inverso. Connette i framework di IA con l'esecuzione nativa in Python/C#.",
         "core_stack": [
@@ -37,7 +37,7 @@
         ]
       },
       "de": {
-        "name": "Marcus Weber",
+        "name": "Matteo Rossi",
         "role": "Mitgründer & Leiter KI-Infrastruktur",
         "bio": "Architektur lokaler LLM-Pipelines, containerisiertes Deployment (Docker) und Reverse-VPN-Tunneling. Verbindet KI-Frameworks mit nativer Python/C#-Ausführung.",
         "core_stack": [
@@ -55,11 +55,11 @@
     {
       "id": "t2",
       "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
-      "email": "david.chen@pybim.com",
+      "email": "leonardo.romano@pybim.com",
       "linkedin": "#",
       "github": "#",
       "en": {
-        "name": "David Chen",
+        "name": "Leonardo Romano",
         "role": "Co-Founder & Head of BIM Data Strategy",
         "bio": "Directs AEC domain logic. Translates ISO 19650 protocols, clash matrices, and EIR requirements into computational data structures for algorithmic processing.",
         "core_stack": [
@@ -74,7 +74,7 @@
         ]
       },
       "it": {
-        "name": "David Chen",
+        "name": "Leonardo Romano",
         "role": "Co-fondatore & Responsabile Strategia Dati BIM",
         "bio": "Dirige la logica di dominio AEC. Traduce i protocolli ISO 19650, le matrici di interferenza (clash) e i requisiti EIR in strutture dati computazionali per l'elaborazione algoritmica.",
         "core_stack": [
@@ -89,7 +89,7 @@
         ]
       },
       "de": {
-        "name": "David Chen",
+        "name": "Leonardo Romano",
         "role": "Mitgründer & Leiter BIM-Datenstrategie",
         "bio": "Leitet die AEC-Fachlogik. Übersetzt ISO 19650-Protokolle, Kollisionsmatrizen und AIA-Vorgaben in rechnergestützte Datenstrukturen für die algorithmische Verarbeitung.",
         "core_stack": [

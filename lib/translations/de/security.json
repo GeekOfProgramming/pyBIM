@@ -1,6 +1,6 @@
 {
-  "title": "Sovereign-KI-Sicherheitsarchitektur: CISO-Whitepaper",
-  "subtitle": "Dieses technische Protokoll belegt null Datenabfluss (Zero Egress) über die Unternehmens-Firewall hinaus. Entwickelt für strukturelle Integrität und absolute algorithmische Kapselung.",
+  "title": "Enterprise-Sicherheit & Sovereign Edge AI: CISO-Whitepaper",
+  "subtitle": "Dieses technische Protokoll belegt die absolute algorithmische Kapselung, null Datenabfluss über die Unternehmens-Firewall hinaus und die strikte ISO 19650-5-Konformität bei ausgelagerten BIM-Ausführungen.",
   "block1": {
     "title": "1. Netzwerk-Isolationsarchitektur",
     "diagram_caption": "Air-Gapped Ausführungs-Topologie. Vollständige Kapselung von Geometrien und algorithmischen Metavariablen innerhalb des Unternehmens-LAN-Perimeters."
@@ -35,6 +35,11 @@
         "mandate": "DSGVO / AVV",
         "requirement": "Datenminimierung & lokale Datenspeicherung",
         "execution": "Vollständige Netzwerktrennung der Rechenknoten. Das Daten-Parsing erfolgt strikt offline."
+      },
+      {
+        "mandate": "NDA & Vertraulichkeit (Outsourcing-BIM)",
+        "requirement": "Strikter Datenschutz der Ausführungsdaten & CDE-Integrität",
+        "execution": "Alle Kunden-Revit-Dateien und Geometrien werden über verschlüsselte CDEs übertragen. Garantierte Löschung nach der Ausführung."
       }
     ]
   },
@@ -47,7 +52,7 @@
   },
   "block4": {
     "title": "4. Verschlüsselungs- & Infrastrukturprotokolle",
-    "sector1_title": "GPU-VPS-Bereich",
+    "sector1_title": "GPU-VPS-Bereich (Individuelle Plugins)",
     "sector1_items": [
       {
         "title": "Laufwerks-Verschlüsselungsprotokolle",
@@ -58,7 +63,7 @@
         "text": "Netzwerk-Ingress/Egress strikt auf authentifizierte WireGuard/Tailscale-Tunnel beschränkt. Nicht authentifizierte Pakete werden auf Kernel-Ebene verworfen."
       }
     ],
-    "sector2_title": "Edge-Appliance-Bereich",
+    "sector2_title": "Edge-Appliance-Bereich (Sovereign AI)",
     "sector2_items": [
       {
         "title": "Gehärtete OS-Architektur",
@@ -67,6 +72,17 @@
       {
         "title": "Hardware-Isolation",
         "text": "Hardware-I/O auf BIOS-Ebene deaktiviert. Headless-Betrieb mit physischer Manipulationserkennung (Tamper-Evident) am Gehäuse."
+      }
+    ],
+    "sector3_title": "Ausführungs-Bereich (Outsourcing-BIM)",
+    "sector3_items": [
+      {
+        "title": "Strikte NDA-Durchsetzung",
+        "text": "Jedes ausgelagerte BIM-Projekt ist an Non-Disclosure Agreements auf Enterprise-Niveau gebunden. Keinerlei Weitergabe an Dritte."
+      },
+      {
+        "title": "ISO 19650-5 Dateiübertragungen",
+        "text": "Alle Revit-Modelle und föderierten IFCs werden über verschlüsselte CDE-Umgebungen übertragen und bei Projektübergabe bereinigt."
       }
     ]
   }

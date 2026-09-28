@@ -1,6 +1,6 @@
 {
-  "title": "Sovereign AI Security Defense: CISO Whitepaper",
-  "subtitle": "This technical protocol proves zero data egress from the corporate firewall. Designed for structural integrity and absolute algorithmic containment.",
+  "title": "Enterprise Security & Sovereign Edge AI: CISO Whitepaper",
+  "subtitle": "This technical protocol proves absolute algorithmic containment, zero data egress from the corporate firewall, and strict ISO 19650-5 compliance for outsourced BIM execution.",
   "block1": {
     "title": "1. Network Isolation Architecture",
     "diagram_caption": "Air-Gapped Execution Topology. Absolute containment of geometry and algorithmic metavariables within the corporate LAN perimeter."
@@ -35,6 +35,11 @@
         "mandate": "GDPR / DPA",
         "requirement": "Data minimization & local custody",
         "execution": "Absolute network severance for processing nodes. Data parsing occurs strictly offline."
+      },
+      {
+        "mandate": "NDA & Confidentiality (Outsourced BIM)",
+        "requirement": "Strict execution data privacy & CDE integrity",
+        "execution": "All client Revit files and geometry transferred via encrypted CDE. Guaranteed deletion post-execution."
       }
     ]
   },
@@ -47,7 +52,7 @@
   },
   "block4": {
     "title": "4. Encryption & Infrastructure Protocols",
-    "sector1_title": "GPU-VPS Sector",
+    "sector1_title": "GPU-VPS Sector (Custom Plugins)",
     "sector1_items": [
       {
         "title": "Drive Encryption Protocols",
@@ -58,7 +63,7 @@
         "text": "Network Ingress/Egress strictly limited to authenticated WireGuard/Tailscale tunnels. Unauthenticated packets dropped at kernel level."
       }
     ],
-    "sector2_title": "Edge Appliance Sector",
+    "sector2_title": "Edge Appliance Sector (Sovereign AI)",
     "sector2_items": [
       {
         "title": "Hardened OS Architecture",
@@ -67,6 +72,17 @@
       {
         "title": "Hardware Isolation",
         "text": "Hardware I/O disabled at BIOS level. Headless operation with physical tamper-evident chassis validation."
+      }
+    ],
+    "sector3_title": "Execution Sector (Outsourced BIM)",
+    "sector3_items": [
+      {
+        "title": "Strict NDA Enforcement",
+        "text": "Every outsourced BIM project is bound by enterprise-grade Non-Disclosure Agreements. Zero third-party sharing."
+      },
+      {
+        "title": "ISO 19650-5 File Transfers",
+        "text": "All Revit models and federated IFCs are transmitted via encrypted CDE environments and purged upon project handover."
       }
     ]
   }

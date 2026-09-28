@@ -1,6 +1,6 @@
 "use client";
 
-import { Shield, ShieldAlert, Lock, Server, Network, Database, Cpu } from "lucide-react";
+import { Shield, ShieldAlert, Lock, Server, Network, Database, Cpu, FileCheck } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import enData from "@/lib/translations/en/security.json";
 import deData from "@/lib/translations/de/security.json";
@@ -154,7 +154,7 @@ export default function SecurityPageLayout() {
               {data.block4.title}
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             
             {/* GPU-VPS Sector */}
             <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:border-gray-300 dark:hover:border-slate-700 transition-colors shadow-sm">
@@ -183,6 +183,25 @@ export default function SecurityPageLayout() {
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{data.block4.sector2_title}</h3>
               <ul className="space-y-4">
                 {data.block4.sector2_items.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-gray-700 dark:text-slate-300">
+                    <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-primary shrink-0"></div>
+                    <div>
+                      <strong className="text-gray-900 dark:text-slate-200 block mb-1">{item.title}</strong>
+                      <span className="text-sm text-gray-600 dark:text-slate-400">{item.text}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Execution Sector */}
+            <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:border-gray-300 dark:hover:border-slate-700 transition-colors shadow-sm">
+              <div className="w-12 h-12 bg-blue-50 dark:bg-slate-800 rounded-xl flex items-center justify-center mb-6 text-brand-primary">
+                <FileCheck className="w-6 h-6 text-brand-primary" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{data.block4.sector3_title}</h3>
+              <ul className="space-y-4">
+                {data.block4.sector3_items.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-gray-700 dark:text-slate-300">
                     <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-primary shrink-0"></div>
                     <div>

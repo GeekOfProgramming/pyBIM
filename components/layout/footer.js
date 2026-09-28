@@ -139,12 +139,9 @@ export default function Footer() {
               <div className="min-w-0">
                 <h4 className="font-bold text-brand-textPrimary mb-6 uppercase tracking-wider text-sm">{t("footer.core_solutions.title")}</h4>
                 <ul className="space-y-4 text-brand-textSecondary font-medium text-sm">
-                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.bim_execution")}</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.revit_automation")}</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.clash_detection")}</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.5d_qto")}</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.iso_cobie")}</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.sovereign_ai")}</Link></li>
+                  <li><Link href="/services#execution" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.bim_execution")}</Link></li>
+                  <li><Link href="/services#code" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.revit_automation")}</Link></li>
+                  <li><Link href="/services#ai" className="hover:text-brand-primary transition whitespace-nowrap block">{t("footer.core_solutions.sovereign_ai")}</Link></li>
                 </ul>
               </div>
 
