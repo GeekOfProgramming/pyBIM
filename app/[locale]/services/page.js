@@ -13,6 +13,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "it" }, { locale: "de" }];
+}
+
 export default function ServicesPage() {
   return <ServicesPageLayout />;
 }
