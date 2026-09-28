@@ -60,7 +60,6 @@ c:\bim\
 │   │   │   ├── infrastructure/       # Dedicated GPU & local node management
 │   │   │   ├── settings/             # Security keys & corporate preferences
 │   │   │   └── support/              # Direct engineer ticketing (/new ticket)
-│   │   ├── pricing/                  # Dual Calculators (Infrastructure & Project ROI)
 │   │   ├── privacy-policy/           # GDPR & Data Governance Policy
 │   │   ├── projects/                 # Featured Case Studies & Project Showcase
 │   │   ├── security/                 # Air-Gapped Infrastructure & Security Protocols
@@ -91,7 +90,6 @@ c:\bim\
 │   │   │   ├── CoreArchitects.js     # Practicing Engineers & AI Architects
 │   │   │   ├── StrategicEcosystem.js # Autodesk API & OpenBIM Integration
 │   │   │   └── ValidationProtocol.js # Proof of Concept (PoC) Audit CTA
-│   │   ├── pricing/                  # Infrastructure & Execution Calculators
 │   │   ├── bim-calculator-cta.js     # Standalone ROI modal & CTA
 │   │   ├── faq-section.js            # Technical FAQ Accordion
 │   │   └── team-partners-section.js  # Core Team & Ecosystem Showcase

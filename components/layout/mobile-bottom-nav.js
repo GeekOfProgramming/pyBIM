@@ -3,17 +3,16 @@
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { usePathname } from "next/navigation";
-import { Home, Wrench, Briefcase, Menu, X, Info, FileText, Phone, Server, GraduationCap, Users } from "lucide-react";
+import { Home, Wrench, Briefcase, Menu, X, Info, FileText, Phone, GraduationCap, Users } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const mainNavItems = [
   { href: "/", tKey: "nav.home", icon: Home },
   { href: "/services", tKey: "nav.services", icon: Wrench },
-  { href: "/pricing", tKey: "nav.pricing", icon: Server },
+  { href: "/education", tKey: "nav.education", icon: GraduationCap },
 ];
 
 const moreNavItems = [
-  { href: "/education", tKey: "nav.education", icon: GraduationCap },
   { href: "/about", label: "Who we are", icon: Info },
   { href: "/projects", label: "Success Stories", icon: Briefcase },
   { href: "/careers", label: "Work with us", icon: Users },

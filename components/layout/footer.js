@@ -129,7 +129,6 @@ export default function Footer() {
                 <ul className="space-y-4 text-brand-textSecondary font-medium text-sm">
                   <li><Link href="/" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.home")}</Link></li>
                   <li><Link href="/services" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.services")}</Link></li>
-                  <li><Link href="/pricing" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.pricing")}</Link></li>
                   <li><Link href="/about" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.who_we_are")}</Link></li>
                   <li><Link href="/careers" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.work_with_us")}</Link></li>
                   <li><Link href="/contact" className="hover:text-brand-primary transition whitespace-nowrap">{t("footer.quick_links.contact_us")}</Link></li>

@@ -12,7 +12,6 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 const navItems = [
   { href: "/", tKey: "header.nav.home" },
   { href: "/services", tKey: "header.nav.services" },
-  { href: "/pricing", tKey: "header.nav.pricing" },
   { href: "/education", tKey: "header.nav.education" },
 ];
 
