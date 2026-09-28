@@ -179,7 +179,7 @@ export default function ContactPageLayout() {
                           className={`w-full appearance-none rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800 ${form.service ? '' : 'text-brand-textSecondary'}`}
                         >
                           <option value="" disabled hidden className="dark:bg-slate-800">{t("contact.form.service_ph")}</option>
-                          {["service_opt1", "service_opt2", "service_opt3", "service_opt4", "service_opt5", "service_opt6", "service_opt7", "service_opt8"].map((key) => (
+                          {["service_opt1", "service_opt2", "service_opt3", "service_opt4", "service_opt5", "service_opt6"].map((key) => (
                             <option key={key} value={t(`contact.form.${key}`)} className="text-brand-textPrimary dark:bg-slate-800">
                               {t(`contact.form.${key}`)}
                             </option>
