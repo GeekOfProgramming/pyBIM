@@ -6,6 +6,7 @@ import { emailAddress, phoneDisplay, phoneHref } from "@/lib/site-copy";
 import FAQSection from "@/components/sections/faq-section";
 import { useLanguage } from "@/lib/LanguageContext";
 import BimCalculatorCta from "@/components/sections/bim-calculator-cta";
+import PriorityQueueSection from "@/components/sections/priority-queue-section";
 
 export default function ContactPageLayout() {
   const { t } = useLanguage();
@@ -342,6 +343,9 @@ export default function ContactPageLayout() {
 
       {/* BIM ROI CALCULATOR CTA */}
       <BimCalculatorCta />
+
+      {/* SOVEREIGN AI PRIORITY QUEUE / EARLY ACCESS FORM */}
+      <PriorityQueueSection />
 
       {/* FAQ SECTION - Technical Support */}
       <section id="support" className="scroll-mt-24 bg-brand-surface pt-20 pb-32 border-b border-brand-border">

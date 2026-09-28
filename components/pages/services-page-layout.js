@@ -135,14 +135,14 @@ export default function ServicesPageLayout() {
                   <div className="mt-8 pt-6">
                     {isHighlight ? (
                       <Link
-                        href="/contact"
+                        href="/contact#audit"
                         className="w-full inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md"
                       >
                         Deploy Workload Now <ArrowRight className="w-3.5 h-3.5 ml-2" />
                       </Link>
                     ) : (
                       <Link
-                        href="/contact"
+                        href="/contact#priority-queue"
                         className="w-full inline-flex items-center justify-center border border-brand-border bg-brand-surface hover:bg-brand-card text-brand-textSecondary hover:text-brand-primary px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300"
                       >
                         Join Priority Queue <ArrowRight className="w-3.5 h-3.5 ml-2" />
