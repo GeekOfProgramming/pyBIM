@@ -42,24 +42,9 @@ export default function ServicesPageLayout() {
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-brand-textSecondary max-w-4xl mx-auto font-medium leading-relaxed mb-10">
+          <p className="text-lg md:text-xl text-brand-textSecondary max-w-4xl mx-auto font-medium leading-relaxed">
             {t.hero.subheadline}
           </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-8 py-4 rounded-full text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-lg shadow-brand-primary/25 hover:-translate-y-0.5"
-            >
-              Get Started <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
-            <a
-              href="#roadmap"
-              className="inline-flex items-center justify-center border border-brand-border bg-brand-surface hover:bg-brand-card text-brand-textPrimary px-8 py-4 rounded-full text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-sm"
-            >
-              Explore Architecture
-            </a>
-          </div>
         </div>
       </section>
 
