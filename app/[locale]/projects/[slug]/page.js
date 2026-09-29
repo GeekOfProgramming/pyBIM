@@ -5,8 +5,9 @@ import { db } from "@/lib/db";
 
 export async function generateStaticParams() {
   const locales = ["en", "it", "de"];
+  const projects = allProjectsData || [];
   return locales.flatMap((locale) =>
-    allProjectsData.map((project) => ({
+    projects.map((project) => ({
       locale,
       slug: project.slug
     }))

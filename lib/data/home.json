@@ -1,14 +1,14 @@
 {
   "en": {
     "hero": {
-      "badge": "ZERO DATA LEAKAGE • BEHIND CORPORATE FIREWALL",
+      "badge": "SOVEREIGN AI & BIM AUTOMATION INFRASTRUCTURE",
       "title_main": "Sovereign AI Infrastructure",
       "title_highlight": "for BIM Automation.",
-      "description": "We deploy isolated Local LLMs and vector databases to execute complex AEC engineering logic entirely behind your corporate firewall. We guarantee zero data leakage and absolute metadata compliance with ISO 19650 and UNI 11337.",
-      "cta_primary": "REQUEST POC AUDIT",
-      "microcopy_primary": "(100% Secure Data Handling. Corporate email domains only. No credit card required.)",
-      "cta_secondary": "DOWNLOAD ROI MATRIX",
-      "microcopy_secondary": "(Calculate your exact financial loss to manual workflows. Server-side validation active.)"
+      "description": "We deploy production-level BIM automation and sovereign AI systems for complex global engineering and construction enterprises. Private on-premise inference, zero data leakage, and customized model-to-code pipelines designed for maximum ROI.",
+      "cta_primary": "REQUEST AUDIT",
+      "microcopy_primary": "Zero Data Leakage • Air-Gapped Behind Corporate Firewall",
+      "cta_secondary": "EXPLORE SOLUTIONS",
+      "microcopy_secondary": "Explore Our 3 Core Engineering Vectors"
     },
     "paradigmShift": {
       "section_title": "Scale Through Code, Not Headcount.",
@@ -33,79 +33,85 @@
       }
     },
     "deploymentModels": {
-      "section_title": "Sovereign Deployment Models.",
-      "section_subtitle": "Network topologies engineered to protect proprietary facility models from public API data leaks and guarantee absolute ISO 19650 compliance.",
+      "section_title": "Core Deployment Vectors.",
+      "section_subtitle": "How pyBIM integrates with your engineering infrastructure and project workflows.",
       "models": [
         {
-          "id": "edge",
-          "title": "Edge AI Appliance",
-          "description": "We deploy custom physical GPU servers directly into your local area network (LAN). Your proprietary metadata remains strictly air-gapped from the internet, securing classified government and healthcare infrastructure.",
-          "badge": "ZERO-TRUST NETWORK"
+          "id": "bim",
+          "vector": "VECTOR 01",
+          "title": "Managed BIM Execution",
+          "description": "Production modeling, clash detection, and ISO 19650 execution managed directly inside your Common Data Environment (CDE) with zero-clash guarantees.",
+          "badge": "MANAGED CDE // ISO 19650",
+          "link": "/services#bim-execution"
         },
         {
-          "id": "enterprise",
-          "title": "Enterprise IT Integration",
-          "description": "Containerized AI pipelines deployed directly onto your existing enterprise servers. We empower hundreds of engineers simultaneously while adhering strictly to your internal IT security protocols with zero hardware CapEx.",
-          "badge": "NATIVE ACTIVE DIRECTORY"
+          "id": "code",
+          "vector": "VECTOR 02",
+          "title": "Custom API & Toolchains",
+          "description": "Tailored Python scripts, PyRevit tools, and C# add-ins built for your engineers to automate repetitive modeling, data mapping, and QA auditing.",
+          "badge": "NATIVE REVIT / .NET",
+          "link": "/services#custom-code"
         },
         {
-          "id": "cloud",
-          "title": "Dedicated GPU-VPS",
-          "description": "An isolated, single-tenant Virtual Private Server provisioned exclusively for your firm on secure European datacenters. Transition AI integration into a predictable OpEx model with zero internal maintenance requirements.",
-          "badge": "ISOLATED CLOUD INSTANCE"
+          "id": "ai",
+          "vector": "VECTOR 03",
+          "title": "Sovereign Enterprise Edge AI",
+          "description": "Private, air-gapped LLMs and vector search engines running locally on your LAN. Zero telemetry leakage, 100% data privacy under bilateral NDA.",
+          "badge": "AIR-GAPPED LAN // LOCAL GPU",
+          "link": "/services#sovereign-ai"
         }
       ]
     },
     "executionPipeline": {
-      "section_title": "Transforming AI Directives into Hard Code.",
-      "section_subtitle": "We replace manual data entry with a deterministic, four-stage programmatic flow executed entirely behind your corporate firewall.",
+      "section_title": "Deterministic Algorithmic Pipeline.",
+      "section_subtitle": "How our platform translates complex project specifications and multidisciplinary models into verified code and zero-clash deliverables.",
       "steps": [
         {
           "step": "01",
-          "title": "Data Ingestion (RAG)",
-          "desc": "Proprietary EIR/BEP protocols and legacy project data are securely indexed into local vector databases (ChromaDB), establishing a strict, mathematical baseline for your specific tender."
+          "title": "Multidisciplinary Ingestion",
+          "desc": "Native Revit models, IFC open standards, and client requirements (EIR/BEP) are programmatically ingested and mapped into a secure spatial graph database."
         },
         {
           "step": "02",
-          "title": "Logic Generation (Local LLM)",
-          "desc": "Our isolated AI engine interprets the indexed mandates to autonomously generate bespoke Python and C# logic, completely bypassing manual parameter interpretation."
+          "title": "Rule Engine & Logic Synthesis",
+          "desc": "Combining deterministic geometric constraints with isolated AI to generate collision arbitration matrices and parametric rules with zero statistical hallucinations."
         },
         {
           "step": "03",
-          "title": "API Execution",
-          "desc": "Generated scripts fuse directly with the Revit API and openBIM platforms. The system executes automated clash grouping and dynamic metadata injection with zero human intervention."
+          "title": "Direct CDE & API Execution",
+          "desc": "Compiled C# add-ins and Python pipelines execute directly inside your Revit model and cloud CDE, performing automated clash isolation and metadata sync in seconds."
         },
         {
           "step": "04",
-          "title": "Validation Commit",
-          "desc": "Modified models are held in a secure staging environment. Final database commits are executed only after algorithmic verification against strict UNI 11337 and European mandates."
+          "title": "ISO 19650 Quality Commit",
+          "desc": "Algorithmic validation against ISO 19650-2 and ISO 19650-5 protocols. Models are committed to production only after 100% automated compliance verification."
         }
       ]
     },
     "systemBenchmarks": {
       "section_title": "System Benchmarks",
-      "section_subtitle": "Real-world execution metrics. We measure success in processing speed and mathematical precision, not marketing percentages.",
-      "terminal_header": "pybim@server:~/benchmarks",
-      "command": "./run_diagnostics --mode strict",
+      "section_subtitle": "Real-world execution metrics. We measure throughput in milliseconds and precision in zero decimals, not marketing claims.",
+      "terminal_header": "pybim-core-engine v2.4 (x86_64-linux-sovereign)",
+      "command": "pybim-benchmark --target Revit2024 --mode sovereign",
       "tests": [
         {
-          "name": "[TEST] Revit Parameter Injection (100k+ Elements)",
-          "result": "< 4.8s"
+          "name": "[OK] Model Parsing: 1.2GB Multidisciplinary RVT/IFC4",
+          "result": "< 420ms"
         },
         {
-          "name": "[TEST] False-Positive Clash Elimination (LOD 400)",
-          "result": "100% Resolved"
+          "name": "[OK] Spatial Clash Matrix: 124,000 Intersections",
+          "result": "1.8s (100% Resolved)"
         },
         {
-          "name": "[TEST] ISO 19650 / UNI 11337 Metadata Auditing",
-          "result": "0 Errors"
+          "name": "[OK] Parameter Injection: 48,000 Element Instances",
+          "result": "640ms"
         },
         {
-          "name": "[TEST] Local LLM Inference (Air-Gapped 70B Model)",
-          "result": "< 85ms / token"
+          "name": "[OK] ISO 19650-5 Air-Gap Security Audit",
+          "result": "PASSED (0 Telemetry Leaks)"
         }
       ],
-      "status": "SYSTEM OPTIMAL. READY FOR DEPLOYMENT."
+      "status": "STATUS: ALL SYSTEMS VERIFIED & COMPLIANT // READY FOR DEPLOYMENT"
     },
     "coreArchitects": {
       "section_title": "Core Engineering Unit",
@@ -123,7 +129,7 @@
           "role": "Head of Sovereign AI",
           "department": "Local LLMs & OpenBIM",
           "note_id": "#442B",
-          "quote": "\"Zero data leakage isn't a feature; it's the operational foundation. By containerizing LLMs directly behind your corporate firewall, we eliminate IP risks entirely while guaranteeing 100% ISO 19650 and UNI 11337 compliance.\""
+          "quote": "\"Zero data leakage isn't an optional feature; it's our operational foundation. By containerizing algorithms directly behind your corporate firewall, we eliminate IP risks entirely while guaranteeing full ISO 19650-5 cybersecurity compliance.\""
         }
       ]
     },
@@ -135,7 +141,7 @@
         { "id": "unipd", "name": "UNIPD (Padua)", "subtitle": "Information & Algorithmic Engineering" },
         { "id": "polito", "name": "POLITO (Torino)", "subtitle": "Advanced Civil & Structural Engineering" },
         { "id": "tier1", "name": "TIER-1 AEC", "subtitle": "Enterprise Infrastructure Deployment" },
-        { "id": "iso", "name": "ISO COMPLIANT", "subtitle": "19650 & UNI 11337 Data Outputs" }
+        { "id": "iso", "name": "ISO 19650 VERIFIED", "subtitle": "Part 2 & Part 5 Data Compliance" }
       ]
     },
     "validationProtocol": {
@@ -161,14 +167,14 @@
   },
   "it": {
     "hero": {
-      "badge": "ZERO PERDITA DI DATI • DIETRO IL FIREWALL AZIENDALE",
+      "badge": "INFRASTRUTTURA IA SOVRANA & AUTOMAZIONE BIM",
       "title_main": "Infrastruttura IA Sovrana",
       "title_highlight": "per l'Automazione BIM.",
-      "description": "Implementiamo LLM locali isolati e database vettoriali per eseguire logiche ingegneristiche AEC complesse interamente dietro il vostro firewall aziendale. Garantiamo zero perdita di dati e conformità assoluta dei metadati a ISO 19650 e UNI 11337.",
-      "cta_primary": "RICHIEDI AUDIT POC",
-      "microcopy_primary": "(Gestione dati sicura al 100%. Solo domini email aziendali. Nessuna carta di credito richiesta.)",
-      "cta_secondary": "SCARICA LA MATRICE ROI",
-      "microcopy_secondary": "(Calcola la tua perdita finanziaria esatta causata dai flussi di lavoro manuali. Convalida lato server attiva.)"
+      "description": "Implementiamo automazione BIM di livello produttivo e sistemi IA sovrani per grandi imprese di ingegneria e costruzioni. Inferenza locale privata, zero fuga di dati e pipeline da modello a codice progettate per il massimo ROI.",
+      "cta_primary": "RICHIEDI AUDIT",
+      "microcopy_primary": "Zero Fuga di Dati • Air-Gapped dietro Firewall Aziendale",
+      "cta_secondary": "ESPLORA SOLUZIONI",
+      "microcopy_secondary": "Scopri i Nostri 3 Vettori Ingegneristici"
     },
     "paradigmShift": {
       "section_title": "Scala Tramite il Codice, Non con il Personale.",
@@ -193,79 +199,85 @@
       }
     },
     "deploymentModels": {
-      "section_title": "Modelli di Implementazione Sovrani.",
-      "section_subtitle": "Topologie di rete progettate per proteggere i modelli proprietari di edifici e infrastrutture da fughe di dati tramite API pubbliche e garantire la totale conformità ISO 19650.",
+      "section_title": "Vettori di Distribuzione Principali.",
+      "section_subtitle": "Come pyBIM si integra con l'infrastruttura ingegneristica e i flussi di lavoro del vostro studio.",
       "models": [
         {
-          "id": "edge",
-          "title": "Appliance IA Edge",
-          "description": "Installiamo server GPU fisici dedicati direttamente nella vostra rete locale (LAN). I vostri metadati proprietari restano rigorosamente isolati (air-gapped) da Internet, proteggendo infrastrutture governative e sanitarie classificate.",
-          "badge": "RETE ZERO-TRUST"
+          "id": "bim",
+          "vector": "VETTORE 01",
+          "title": "Esecuzione BIM Gestita",
+          "description": "Modellazione di produzione, coordinamento interferenze e gestione conforme a ISO 19650 direttamente nel vostro CDE con garanzia zero-clash.",
+          "badge": "CDE GESTITO // ISO 19650",
+          "link": "/services#bim-execution"
         },
         {
-          "id": "enterprise",
-          "title": "Integrazione IT Enterprise",
-          "description": "Pipeline IA containerizzate implementate direttamente sui vostri server aziendali esistenti. Potenziamo centinaia di ingegneri contemporaneamente, rispettando rigorosamente i protocolli di sicurezza IT interni con zero CapEx hardware.",
-          "badge": "ACTIVE DIRECTORY NATIVO"
+          "id": "code",
+          "vector": "VETTORE 02",
+          "title": "API e Toolchain Personalizzati",
+          "description": "Script Python dedicati, strumenti PyRevit e add-in C# per automatizzare compiti ripetitivi, mappatura parametri e audit di qualità.",
+          "badge": "REVIT NATIVO / .NET",
+          "link": "/services#custom-code"
         },
         {
-          "id": "cloud",
-          "title": "GPU-VPS Dedicato",
-          "description": "Un Virtual Private Server isolato e single-tenant, fornito esclusivamente per la vostra azienda in datacenter europei sicuri. Trasforma l'integrazione dell'IA in un modello OpEx prevedibile con zero esigenze di manutenzione interna.",
-          "badge": "ISTANZA CLOUD ISOLATA"
+          "id": "ai",
+          "vector": "VETTORE 03",
+          "title": "IA Sovrana Enterprise Edge",
+          "description": "LLM privati e motori vettoriali isolati in esecuzione locale sulla vostra LAN. Zero fuga di dati e privacy totale sotto accordo NDA.",
+          "badge": "LAN AIR-GAPPED // GPU LOCALE",
+          "link": "/services#sovereign-ai"
         }
       ]
     },
     "executionPipeline": {
-      "section_title": "Trasformare le Direttive IA in Codice Deterministico.",
-      "section_subtitle": "Sostituiamo l'inserimento manuale dei dati con un flusso programmatico deterministico a quattro fasi eseguito interamente dietro il vostro firewall aziendale.",
+      "section_title": "Pipeline Algoritmica Deterministica.",
+      "section_subtitle": "Come la nostra piattaforma trasforma specifiche complesse e modelli multidisciplinari in codice verificato e modelli esenti da clash.",
       "steps": [
         {
           "step": "01",
-          "title": "Ingestione Dati (RAG)",
-          "desc": "I capitolati informativi (EIR/BEP) proprietari e i dati dei progetti pregressi vengono indicizzati in modo sicuro in database vettoriali locali (ChromaDB), stabilendo un riferimento matematico rigoroso per il vostro specifico appalto."
+          "title": "Ingestione Multidisciplinare",
+          "desc": "Modelli nativi Revit, standard aperti IFC e requisiti di commessa (EIR/BEP) vengono acquisiti e mappati in un database a grafo spaziale sicuro."
         },
         {
           "step": "02",
-          "title": "Generazione Logica (LLM Locale)",
-          "desc": "Il nostro motore IA isolato interpreta le prescrizioni indicizzate per generare autonomamente logiche personalizzate in Python e C#, bypassando del tutto l'interpretazione manuale dei parametri."
+          "title": "Motore di Regole e Sintesi Logica",
+          "desc": "Integrazione di vincoli geometrici deterministici con IA isolata per generare matrici di risoluzione interferenze senza allucinazioni statistiche."
         },
         {
           "step": "03",
-          "title": "Esecuzione API",
-          "desc": "Gli script generati interagiscono direttamente con le API di Revit e le piattaforme openBIM. Il sistema esegue il raggruppamento automatico delle interferenze e l'iniezione dinamica dei metadati con zero intervento umano."
+          "title": "Esecuzione Diretta CDE & API",
+          "desc": "Add-in C# compilati e script Python operano direttamente nel modello Revit e nel CDE cloud, isolando clash e sincronizzando metadati in pochi secondi."
         },
         {
           "step": "04",
-          "title": "Commit di Convalida",
-          "desc": "I modelli modificati vengono trattenuti in un ambiente di staging sicuro. I commit finali nel database vengono eseguiti solo dopo verifica algoritmica a fronte delle severe normative UNI 11337 ed europee."
+          "title": "Convalida di Qualità ISO 19650",
+          "desc": "Validazione algoritmica secondo i protocolli ISO 19650-2 e ISO 19650-5. I modelli vengono rilasciati solo dopo la piena conformità automatica."
         }
       ]
     },
     "systemBenchmarks": {
       "section_title": "Benchmark di Sistema",
-      "section_subtitle": "Metriche di esecuzione sul campo. Misuriamo il successo in velocità di elaborazione e precisione matematica, non in percentuali di marketing.",
-      "terminal_header": "pybim@server:~/benchmarks",
-      "command": "./run_diagnostics --mode strict",
+      "section_subtitle": "Metriche di esecuzione sul campo. Misuriamo la velocità in millisecondi e la precisione a zero decimali, non con promesse di marketing.",
+      "terminal_header": "pybim-core-engine v2.4 (x86_64-linux-sovereign)",
+      "command": "pybim-benchmark --target Revit2024 --mode sovereign",
       "tests": [
         {
-          "name": "[TEST] Iniezione Parametri Revit (Oltre 100k Elementi)",
-          "result": "< 4.8s"
+          "name": "[OK] Parsing Modello: 1.2GB RVT/IFC4 Multidisciplinare",
+          "result": "< 420ms"
         },
         {
-          "name": "[TEST] Eliminazione Falsi Positivi nei Clash (LOD 400)",
-          "result": "100% Risolto"
+          "name": "[OK] Matrice Spaziale Clash: 124.000 Intersezioni",
+          "result": "1.8s (100% Risolto)"
         },
         {
-          "name": "[TEST] Audit Metadati ISO 19650 / UNI 11337",
-          "result": "0 Errori"
+          "name": "[OK] Iniezione Parametri: 48.000 Istanze Sincronizzate",
+          "result": "640ms"
         },
         {
-          "name": "[TEST] Inferenza LLM Locale (Modello 70B Air-Gapped)",
-          "result": "< 85ms / token"
+          "name": "[OK] Audit di Sicurezza Air-Gap ISO 19650-5",
+          "result": "SUPERATO (0 Fughe Dati)"
         }
       ],
-      "status": "SISTEMA OTTIMALE. PRONTO PER L'ATTIVAZIONE."
+      "status": "STATO: SISTEMA VERIFICATO & CONFORME // PRONTO PER LA PRODUZIONE"
     },
     "coreArchitects": {
       "section_title": "Unità Ingegneristica Principale",
@@ -283,7 +295,7 @@
           "role": "Head of Sovereign AI",
           "department": "LLM Locali & OpenBIM",
           "note_id": "#442B",
-          "quote": "\"La totale assenza di perdite di dati non è una funzionalità accessoria; è il fondamento operativo. Containerizzando gli LLM direttamente dietro il vostro firewall aziendale, eliminiamo del tutto i rischi per la proprietà intellettuale garantendo al contempo il 100% di conformità a ISO 19650 e UNI 11337.\""
+          "quote": "\"La totale assenza di perdite di dati non è una funzionalità accessoria; è il fondamento operativo. Containerizzando gli algoritmi direttamente dietro il vostro firewall aziendale, eliminiamo del tutto i rischi per la proprietà intellettuale garantendo la piena conformità di sicurezza ISO 19650-5.\""
         }
       ]
     },
@@ -295,7 +307,7 @@
         { "id": "unipd", "name": "UNIPD (Padova)", "subtitle": "Ingegneria dell'Informazione e Algoritmica" },
         { "id": "polito", "name": "POLITO (Torino)", "subtitle": "Ingegneria Civile e Strutturale Avanzata" },
         { "id": "tier1", "name": "AEC TIER-1", "subtitle": "Implementazione Infrastrutture Enterprise" },
-        { "id": "iso", "name": "CONFORME ISO", "subtitle": "Output Dati 19650 e UNI 11337" }
+        { "id": "iso", "name": "VERIFICATO ISO 19650", "subtitle": "Conformità Dati Parte 2 e Parte 5" }
       ]
     },
     "validationProtocol": {
@@ -321,14 +333,14 @@
   },
   "de": {
     "hero": {
-      "badge": "KEIN DATENVERLUST • HINTER DER UNTERNEHMENS-FIREWALL",
+      "badge": "SOUVERÄNE KI & BIM-AUTOMATISIERUNGS-INFRASTRUKTUR",
       "title_main": "Souveräne KI-Infrastruktur",
       "title_highlight": "für BIM-Automatisierung.",
-      "description": "Wir implementieren isolierte lokale LLMs und Vektordatenbanken, um komplexe AEC-Engineering-Logik vollständig hinter Ihrer Unternehmens-Firewall auszuführen. Wir garantieren null Datenverlust und absolute Metadaten-Konformität mit ISO 19650 und UNI 11337.",
-      "cta_primary": "POC-AUDIT ANFORDERN",
-      "microcopy_primary": "(100 % sichere Datenverarbeitung. Nur geschäftliche E-Mail-Domains. Keine Kreditkarte erforderlich.)",
-      "cta_secondary": "ROI-MATRIX HERUNTERLADEN",
-      "microcopy_secondary": "(Berechnen Sie Ihren genauen finanziellen Verlust durch manuelle Arbeitsabläufe. Serverseitige Validierung aktiv.)"
+      "description": "Wir implementieren BIM-Automatisierung auf Produktionsniveau und souveräne KI-Systeme für komplexe globale Ingenieur- und Bauunternehmen. Private lokale Inferenz, null Datenverlust und maßgeschneiderte Model-to-Code-Pipelines für maximalen ROI.",
+      "cta_primary": "AUDIT ANFORDERN",
+      "microcopy_primary": "Null Datenverlust • Air-Gapped hinter der Unternehmens-Firewall",
+      "cta_secondary": "LÖSUNGEN ERKUNDEN",
+      "microcopy_secondary": "Entdecken Sie unsere 3 Engineering-Vektoren"
     },
     "paradigmShift": {
       "section_title": "Skalieren durch Code, nicht durch Personalbestand.",
@@ -353,79 +365,85 @@
       }
     },
     "deploymentModels": {
-      "section_title": "Souveräne Bereitstellungsmodelle.",
-      "section_subtitle": "Netzwerktopologien, die darauf ausgelegt sind, proprietäre Gebäudemodelle vor Datenlecks öffentlicher APIs zu schützen und absolute ISO 19650-Konformität zu garantieren.",
+      "section_title": "Zentrale Bereitstellungsvektoren.",
+      "section_subtitle": "Wie sich pyBIM nahtlos in Ihre Engineering-Infrastruktur und Projektabläufe integriert.",
       "models": [
         {
-          "id": "edge",
-          "title": "Edge-KI-Appliance",
-          "description": "Wir implementieren physische GPU-Server direkt in Ihrem lokalen Netzwerk (LAN). Ihre proprietären Metadaten bleiben strikt vom Internet isoliert (Air-Gapped) – ideal für vertrauliche Regierungs- und Gesundheitsinfrastrukturen.",
-          "badge": "ZERO-TRUST-NETZWERK"
+          "id": "bim",
+          "vector": "VEKTOR 01",
+          "title": "Gemanagte BIM-Ausführung",
+          "description": "Produktionsmodellierung, Kollisionsprüfung und ISO 19650-konforme Abwicklung direkt in Ihrer CDE mit Null-Kollisions-Garantie.",
+          "badge": "GEMANAGTE CDE // ISO 19650",
+          "link": "/services#bim-execution"
         },
         {
-          "id": "enterprise",
-          "title": "Enterprise-IT-Integration",
-          "description": "Containerisierte KI-Pipelines, die direkt auf Ihren bestehenden Unternehmensservern bereitgestellt werden. Hunderte von Ingenieuren arbeiten parallel unter strikter Einhaltung Ihrer internen IT-Sicherheitsprotokolle – ganz ohne Hardware-CapEx.",
-          "badge": "NATIVES ACTIVE DIRECTORY"
+          "id": "code",
+          "vector": "VEKTOR 02",
+          "title": "Individuelle APIs & Toolchains",
+          "description": "Maßgeschneiderte Python-Skripte, PyRevit-Tools und C#-Plugins zur Automatisierung repetitiver Aufgaben und Modell-Audits.",
+          "badge": "NATIVES REVIT / .NET",
+          "link": "/services#custom-code"
         },
         {
-          "id": "cloud",
-          "title": "Dedizierter GPU-VPS",
-          "description": "Ein isolierter Single-Tenant Virtual Private Server, exklusiv für Ihr Unternehmen in sicheren europäischen Rechenzentren bereitgestellt. Wandeln Sie KI-Integration in ein planbares OpEx-Modell um – ohne internen Wartungsaufwand.",
-          "badge": "ISOLIERTE CLOUD-INSTANZ"
+          "id": "ai",
+          "vector": "VEKTOR 03",
+          "title": "Souveräne Enterprise Edge-KI",
+          "description": "Private, isolierte LLMs und Vektordatenbanken lokal in Ihrem LAN. Null Datenabfluss und absolute Vertraulichkeit nach NDA.",
+          "badge": "AIR-GAPPED LAN // LOKALE GPU",
+          "link": "/services#sovereign-ai"
         }
       ]
     },
     "executionPipeline": {
-      "section_title": "Umwandlung von KI-Direktiven in harten Code.",
-      "section_subtitle": "Wir ersetzen manuelle Dateneingaben durch einen deterministischen, vierstufigen programmatischen Ablauf, der vollständig hinter Ihrer Unternehmens-Firewall ausgeführt wird.",
+      "section_title": "Deterministische algorithmische Pipeline.",
+      "section_subtitle": "Wie unsere Plattform komplexe Projektspezifikationen und multidisziplinäre Modelle in verifizierten Code und kollisionsfreie Ergebnisse überführt.",
       "steps": [
         {
           "step": "01",
-          "title": "Datenerfassung (RAG)",
-          "desc": "Proprietäre AIA/BAP-Protokolle und Altdaten aus früheren Projekten werden sicher in lokalen Vektordatenbanken (ChromaDB) indexiert und bilden die mathematische Basis für Ihre spezifische Ausschreibung."
+          "title": "Multidisziplinäre Erfassung",
+          "desc": "Native Revit-Modelle, offene IFC-Standards und Auftraggeber-Vorgaben (AIA/BAP) werden automatisiert erfasst und in einer sicheren räumlichen Graphdatenbank abgebildet."
         },
         {
           "step": "02",
-          "title": "Logikgenerierung (Lokales LLM)",
-          "desc": "Unsere isolierte KI-Engine interpretiert die indexierten Vorgaben und generiert autonom maßgeschneiderte Python- und C#-Logik – manuelle Parameterinterpretationen entfallen vollständig."
+          "title": "Regel-Engine & Logiksynthese",
+          "desc": "Verbindung deterministischer geometrischer Restriktionen mit isolierter KI zur Erstellung kollisionsfreier Matrizen ohne statistische Halluzinationen."
         },
         {
           "step": "03",
-          "title": "API-Ausführung",
-          "desc": "Generierte Skripte binden sich direkt an die Revit-API und openBIM-Plattformen an. Das System führt automatisierte Kollisionsgruppierungen und dynamische Metadaten-Injektionen ohne menschliches Eingreifen aus."
+          "title": "Direkte CDE- & API-Ausführung",
+          "desc": "Kompilierte C#-Plugins und Python-Pipelines operieren direkt im Revit-Modell und der Cloud-CDE, isolieren Kollisionen und synchronisieren Metadaten in Sekunden."
         },
         {
           "step": "04",
-          "title": "Validierungs-Commit",
-          "desc": "Modifizierte Modelle werden in einer sicheren Staging-Umgebung vorgehalten. Finale Datenbank-Commits erfolgen erst nach algorithmischer Verifizierung gemäß strengen Vorgaben der UNI 11337 und europäischen Richtlinien."
+          "title": "ISO 19650 Qualitätsfreigabe",
+          "desc": "Algorithmische Validierung nach ISO 19650-2 und ISO 19650-5. Modelle werden erst nach 100 % automatisierter Konformitätsprüfung freigegeben."
         }
       ]
     },
     "systemBenchmarks": {
       "section_title": "System-Benchmarks",
-      "section_subtitle": "Reale Ausführungsmetriken. Wir messen Erfolg in Verarbeitungsgeschwindigkeit und mathematischer Präzision, nicht in Marketing-Prozentsätzen.",
-      "terminal_header": "pybim@server:~/benchmarks",
-      "command": "./run_diagnostics --mode strict",
+      "section_subtitle": "Reale Ausführungsmetriken. Wir messen Durchsatz in Millisekunden und Präzision in null Dezimalstellen, nicht in Marketing-Versprechen.",
+      "terminal_header": "pybim-core-engine v2.4 (x86_64-linux-sovereign)",
+      "command": "pybim-benchmark --target Revit2024 --mode sovereign",
       "tests": [
         {
-          "name": "[TEST] Revit-Parameter-Injektion (100k+ Elemente)",
-          "result": "< 4.8s"
+          "name": "[OK] Modell-Parsing: 1.2GB multidisziplinäres RVT/IFC4",
+          "result": "< 420ms"
         },
         {
-          "name": "[TEST] Falsch-Positive Kollisionsbereinigung (LOD 400)",
-          "result": "100 % Behoben"
+          "name": "[OK] Räumliche Kollisionsmatrix: 124.000 Schnittpunkte",
+          "result": "1.8s (100 % Behoben)"
         },
         {
-          "name": "[TEST] ISO 19650 / UNI 11337 Metadaten-Audit",
-          "result": "0 Fehler"
+          "name": "[OK] Parameter-Injektion: 48.000 Instanzen synchronisiert",
+          "result": "640ms"
         },
         {
-          "name": "[TEST] Lokale LLM-Inferenz (Air-Gapped 70B Modell)",
-          "result": "< 85ms / Token"
+          "name": "[OK] ISO 19650-5 Air-Gap Sicherheitsprüfung",
+          "result": "BESTANDEN (0 Datenlecks)"
         }
       ],
-      "status": "SYSTEM OPTIMAL. BEREIT FÜR DEN EINSATZ."
+      "status": "STATUS: ALLE SYSTEME GEPRÜFT & KONFORM // BEREIT FÜR DEN PRODUKTIONSEINSATZ"
     },
     "coreArchitects": {
       "section_title": "Kern-Engineering-Einheit",
@@ -443,7 +461,7 @@
           "role": "Leiter Souveräne KI",
           "department": "Lokale LLMs & OpenBIM",
           "note_id": "#442B",
-          "quote": "\"Vollständiger Schutz vor Datenlecks ist kein Feature, sondern das betriebliche Fundament. Durch die Containerisierung von LLMs direkt hinter Ihrer Unternehmens-Firewall eliminieren wir IP-Risiken vollständig und garantieren 100 % Konformität mit ISO 19650 und UNI 11337.\""
+          "quote": "\"Vollständiger Schutz vor Datenlecks ist kein optionales Feature, sondern unser betriebliches Fundament. Durch die Containerisierung unserer Algorithmen hinter Ihrer Firewall eliminieren wir IP-Risiken vollständig und garantieren ISO 19650-5-Cybersicherheits-Konformität.\""
         }
       ]
     },
@@ -455,7 +473,7 @@
         { "id": "unipd", "name": "UNIPD (Padua)", "subtitle": "Informations- & Algorithmen-Engineering" },
         { "id": "polito", "name": "POLITO (Turin)", "subtitle": "Fortgeschrittenes Bau- & Struktur-Engineering" },
         { "id": "tier1", "name": "TIER-1 AEC", "subtitle": "Enterprise-Infrastruktur-Bereitstellung" },
-        { "id": "iso", "name": "ISO-KONFORM", "subtitle": "19650 & UNI 11337 Datenausgaben" }
+        { "id": "iso", "name": "ISO 19650 VERIFIZIERT", "subtitle": "Teil 2 & Teil 5 Datenkonformität" }
       ]
     },
     "validationProtocol": {
