@@ -7,7 +7,6 @@ import ExecutionPipeline from "@/components/sections/home/ExecutionPipeline";
 import SystemBenchmarks from "@/components/sections/home/SystemBenchmarks";
 import CoreArchitects from "@/components/sections/home/CoreArchitects";
 import StrategicEcosystem from "@/components/sections/home/StrategicEcosystem";
-import ValidationProtocol from "@/components/sections/home/ValidationProtocol";
 import FinalProjectCtaBanner from "@/components/sections/home/FinalProjectCtaBanner";
 
 export default function HomePageLayout() {
@@ -20,7 +19,6 @@ export default function HomePageLayout() {
       <SystemBenchmarks />
       <CoreArchitects />
       <StrategicEcosystem />
-      <ValidationProtocol />
       <FinalProjectCtaBanner />
     </div>
   );
