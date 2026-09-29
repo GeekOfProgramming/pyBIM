@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import Link from "@/components/layout/LocalizedLink";
 import { usePathname } from "next/navigation";
-import { Linkedin, Github, Mail, MapPin, Phone, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { Linkedin, Github, Mail, MapPin, Phone, Send, CheckCircle2, AlertCircle, ShieldCheck, Building } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Footer() {
@@ -42,33 +42,33 @@ export default function Footer() {
   if (isExcluded) return null;
 
   return (
-    <footer className="relative border-t border-slate-800 bg-[#080C14] text-white pt-16 overflow-hidden">
-      {/* Background Texture / Gradient */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.08),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.06),transparent_40%)]" />
+    <footer className="relative border-t border-blue-700 bg-blue-600 text-white pt-16 overflow-hidden">
+      {/* Background Lighting Gradients */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.14),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.1),transparent_40%)]" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
-        <div className="grid gap-8 lg:gap-10 lg:grid-cols-[280px_1fr] xl:grid-cols-[300px_1fr] mb-16 items-start">
+        <div className="grid gap-8 lg:gap-12 lg:grid-cols-[340px_1fr] xl:grid-cols-[380px_1fr] mb-16 items-start">
           
-          {/* LEFT SIDE: BRAND & SLOGAN */}
+          {/* LEFT SIDE: BRAND & SLOGAN & EXPANDED R&D BOX */}
           <div className="flex flex-col">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4 tracking-tight">
-              <p>{t("footer.brand.slogan_line1")}<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-400">{t("footer.brand.slogan_line2")}</span></p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight leading-tight">
+              <p>{t("footer.brand.slogan_line1")}<br /><span>{t("footer.brand.slogan_line2")}</span></p>
             </h2>
             <p 
-              className="text-slate-400 mb-8 max-w-sm font-normal text-sm leading-relaxed"
+              className="text-white/85 mb-8 max-w-sm font-medium text-sm leading-relaxed"
               dangerouslySetInnerHTML={{ __html: t("footer.brand.description") }}
             />
             
             {/* Social Icons */}
-            <p className="text-slate-400 mb-3 font-semibold text-xs uppercase tracking-wider font-mono">{t("footer.social.heading")}</p>
+            <p className="text-white/80 mb-3 font-semibold text-xs uppercase tracking-wider font-mono">{t("footer.social.heading")}</p>
             <div className="flex gap-3 mb-8 text-white">
               <a 
                 href="https://www.linkedin.com/company/pybim" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label={t("footer.social.linkedin_label")} 
-                className="hover:bg-blue-600 hover:text-white transition bg-slate-900 border border-slate-800 p-2.5 rounded-xl text-slate-300 hover:border-blue-500 shadow-sm"
+                className="hover:bg-white hover:text-blue-600 transition bg-white/10 border border-white/20 p-2.5 rounded-xl text-white shadow-sm"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -77,30 +77,52 @@ export default function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label="GitHub" 
-                className="hover:bg-slate-800 hover:text-white transition bg-slate-900 border border-slate-800 p-2.5 rounded-xl text-slate-300 hover:border-slate-700 shadow-sm"
+                className="hover:bg-white hover:text-blue-600 transition bg-white/10 border border-white/20 p-2.5 rounded-xl text-white shadow-sm"
               >
                 <Github className="w-4 h-4" />
               </a>
             </div>
 
-            {/* Legal / Engineering Hub Box */}
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 text-sm backdrop-blur-sm">
-              <div className="mb-3 inline-block">
-                <img src="/logo_white_transparent.png" alt="pyBIM logo" className="h-7 w-auto object-contain" />
-              </div>
-              <div className="font-bold text-white tracking-tight">{t("footer.legal.lab_name")}</div>
-              <div className="mt-1 text-slate-400 text-xs font-mono">{t("footer.legal.location")}</div>
-              {t("footer.legal.compliance") && (
-                <div className="mt-3 pt-3 border-t border-slate-800/80 flex items-center gap-1.5 text-emerald-400 text-xs font-mono">
-                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-                  <span>{t("footer.legal.compliance")}</span>
+            {/* EXPANDED PROMINENT R&D CREDENTIAL BOX */}
+            <div className="rounded-2xl border border-white/25 bg-white/10 backdrop-blur-md p-6 sm:p-7 shadow-xl text-white">
+              {/* Header Badge */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/15 border border-white/25 text-white font-mono text-xs font-bold tracking-wider">
+                  <span className="text-cyan-300 font-mono font-extrabold">&lt;/&gt;</span>
+                  <span>R&amp;D LAB</span>
                 </div>
-              )}
+                <span className="text-[11px] font-mono text-white/70 tracking-widest uppercase font-semibold">UNIT // #01</span>
+              </div>
+
+              {/* Lab Name and Hub Location */}
+              <div className="font-extrabold text-white text-lg tracking-tight mb-1">
+                {t("footer.legal.lab_name")}
+              </div>
+              <div className="text-white/80 text-xs font-mono mb-5 flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-cyan-300 shrink-0" />
+                <span>{t("footer.legal.location")}</span>
+              </div>
+
+              {/* Multi-point Verification & Security Credentials */}
+              <div className="border-t border-white/20 pt-4 space-y-2.5 text-xs font-mono">
+                <div className="flex items-start gap-2.5 text-white/95">
+                  <ShieldCheck className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" />
+                  <span className="font-medium leading-relaxed">{t("footer.legal.compliance_1")}</span>
+                </div>
+                <div className="flex items-start gap-2.5 text-white/90">
+                  <CheckCircle2 className="w-4 h-4 text-cyan-300 shrink-0 mt-0.5" />
+                  <span className="font-medium leading-relaxed">{t("footer.legal.compliance_2")}</span>
+                </div>
+                <div className="flex items-start gap-2.5 text-white/85">
+                  <Building className="w-4 h-4 text-white/70 shrink-0 mt-0.5" />
+                  <span className="font-medium leading-relaxed">{t("footer.legal.compliance_3")}</span>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* RIGHT SIDE: NEWSLETTER & MULTI-COLUMN CARD */}
-          <div className="rounded-[2.5rem] border border-slate-800 bg-slate-900/80 p-6 sm:p-8 md:p-10 xl:p-12 shadow-2xl backdrop-blur-md overflow-hidden transition-colors">
+          <div className="rounded-[2.5rem] border border-slate-800 bg-slate-950/95 p-6 sm:p-8 md:p-10 xl:p-12 shadow-2xl backdrop-blur-md overflow-hidden text-left">
             {/* Newsletter Block */}
             <div className="mb-12 border-b border-slate-800 pb-10">
               <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t("footer.newsletter.title")}</h3>
@@ -115,7 +137,7 @@ export default function Footer() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={t("footer.newsletter.placeholder")}
                     required
-                    className="flex-1 rounded-2xl border border-slate-700/80 bg-slate-950/80 px-5 py-4 text-white placeholder:text-slate-500 outline-none transition focus:border-blue-500 focus:bg-slate-900 font-sans"
+                    className="flex-1 rounded-2xl border border-slate-700/80 bg-slate-900/90 px-5 py-4 text-white placeholder:text-slate-500 outline-none transition focus:border-blue-500 focus:bg-slate-900 font-sans"
                   />
                   <button 
                     type="submit" 
@@ -131,7 +153,7 @@ export default function Footer() {
                     type="checkbox"
                     id="privacy-footer"
                     required
-                    className="mt-1 w-4 h-4 rounded border-slate-700 bg-slate-950 text-blue-600 focus:ring-blue-500 focus:ring-offset-0 cursor-pointer"
+                    className="mt-1 w-4 h-4 rounded border-slate-700 bg-slate-900 text-blue-600 focus:ring-blue-500 focus:ring-offset-0 cursor-pointer"
                   />
                   <label htmlFor="privacy-footer" className="text-xs text-slate-400 leading-relaxed cursor-pointer">
                     {t("footer.newsletter.privacy_prefix")}<Link href="/privacy-policy" className="text-blue-400 font-semibold hover:underline">{t("footer.newsletter.privacy_link")}</Link>{t("footer.newsletter.privacy_dot")}<br />
@@ -198,11 +220,11 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="border-t border-slate-800/80 pt-8 pb-28 lg:pb-8 mt-4 flex flex-col lg:flex-row items-center justify-between gap-4">
-          <p className="text-xs font-mono text-slate-500 text-center md:text-left">
+        <div className="border-t border-white/20 pt-8 pb-28 lg:pb-8 mt-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+          <p className="text-xs font-mono text-white/80 text-center md:text-left">
             {t("footer.bottom.copyright")}
           </p>
-          <div className="flex gap-6 text-xs font-mono text-slate-400 justify-center flex-wrap">
+          <div className="flex gap-6 text-xs font-mono text-white/80 justify-center flex-wrap">
             <Link href="/privacy-policy" className="hover:text-white transition">{t("footer.bottom.privacy_policy")}</Link>
             <Link href="/security" className="hover:text-white transition">{t("footer.bottom.enterprise_security")}</Link>
             <Link href="/cookie-policy" className="hover:text-white transition">{t("footer.bottom.cookie_policy")}</Link>
