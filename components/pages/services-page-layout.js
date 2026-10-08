@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "@/components/layout/LocalizedLink";
-import { ArrowRight, Zap, Target, Layers, CheckCircle2, Clock, Shield, Terminal } from "lucide-react";
+import { Zap, Target, Layers } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { servicesPageData } from "@/lib/data/servicesPageData";
 import ServicesHero from "@/components/sections/services-hero";
 import ServicesExecutionRoadmap from "@/components/sections/services-execution-roadmap";
 import ServicesEarlyAccessBanner from "@/components/sections/services-early-access-banner";
 import ServicesEngineeringCapabilities from "@/components/sections/services-engineering-capabilities";
+import ServicesExecutionPipeline from "@/components/sections/services-execution-pipeline";
 
 export default function ServicesPageLayout() {
   const { language } = useLanguage();
@@ -40,50 +41,8 @@ export default function ServicesPageLayout() {
       {/* 4. ENGINEERING CAPABILITIES */}
       <ServicesEngineeringCapabilities data={t.coreCapabilities} />
 
-      {/* 5. 4-STEP LIST (THE ALGORITHMIC PIPELINE) */}
-      <section className="py-24 bg-brand-base border-b border-brand-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="h-px bg-brand-primary w-12" />
-            <h3 className="text-sm font-mono font-bold text-brand-primary tracking-widest uppercase">
-              {t.executionPipeline.tag}
-            </h3>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
-            {t.executionPipeline.headline}
-          </h2>
-          <p className="text-lg text-brand-textSecondary mb-14 max-w-3xl font-medium leading-relaxed">
-            {t.executionPipeline.subtitle}
-          </p>
-
-          <div className="relative">
-            <div className="space-y-10">
-              {t.executionPipeline.steps.map((step, idx) => (
-                <div key={idx} className="relative pl-16 md:pl-20 group">
-                  {/* Connecting Line */}
-                  {idx < t.executionPipeline.steps.length - 1 && (
-                    <div className="absolute left-[23px] md:left-[27px] top-12 h-full w-[2px] bg-brand-primary/20 pointer-events-none" />
-                  )}
-
-                  {/* Step Number Badge */}
-                  <div className="absolute left-0 top-0 z-10 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white dark:bg-slate-900 border-2 border-brand-primary/30 group-hover:border-brand-primary group-hover:shadow-[0_0_15px_rgba(37,99,235,0.25)] flex items-center justify-center font-bold text-sm md:text-base text-brand-primary transition-all duration-300 shadow-sm">
-                    {step.num}
-                  </div>
-
-                  <div className="bg-brand-card border border-brand-border rounded-2xl p-6 shadow-sm group-hover:border-brand-primary/40 transition-all duration-300">
-                    <h3 className="text-xl font-bold text-brand-textPrimary mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-brand-textSecondary font-medium text-sm leading-relaxed max-w-4xl">
-                      {step.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 5. ENGINEERING DELIVERY PROCESS */}
+      <ServicesExecutionPipeline data={t.executionPipeline} />
 
       {/* 6. THREE ICON COLUMNS (CORE ENGINEERING OUTCOMES) */}
       <section className="py-24 bg-brand-surface border-b border-brand-border">
