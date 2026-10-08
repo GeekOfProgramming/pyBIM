@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "@/components/layout/LocalizedLink";
-import { ArrowRight, Zap, Target, Layers, CheckCircle2, Clock, Shield, Terminal, Sparkles } from "lucide-react";
+import { ArrowRight, Zap, Target, Layers, CheckCircle2, Clock, Shield, Terminal } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { servicesPageData } from "@/lib/data/servicesPageData";
 import ServicesHero from "@/components/sections/services-hero";
 import ServicesExecutionRoadmap from "@/components/sections/services-execution-roadmap";
 import ServicesEarlyAccessBanner from "@/components/sections/services-early-access-banner";
+import ServicesEngineeringCapabilities from "@/components/sections/services-engineering-capabilities";
 
 export default function ServicesPageLayout() {
   const { language } = useLanguage();
@@ -36,54 +37,8 @@ export default function ServicesPageLayout() {
       {/* 3. SOVEREIGN AI EARLY ACCESS BANNER */}
       <ServicesEarlyAccessBanner data={t.ctaBanner} />
 
-      {/* 4. THREE TEXT BLOCKS (CORE AI CAPABILITIES) */}
-      <section className="py-24 bg-brand-surface border-b border-brand-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="h-px bg-brand-primary w-12" />
-            <h3 className="text-sm font-mono font-bold text-brand-primary tracking-widest uppercase">
-              {t.coreCapabilities.tag}
-            </h3>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
-            {t.coreCapabilities.headline}
-          </h2>
-          <p className="text-lg text-brand-textSecondary mb-12 max-w-3xl font-medium leading-relaxed">
-            {t.coreCapabilities.subtitle}
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {t.coreCapabilities.cards.map((card, idx) => (
-              <div
-                key={idx}
-                className="bg-brand-card border border-brand-border p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-brand-primary/40 transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6">
-                  <Sparkles className="w-6 h-6 text-brand-primary" />
-                </div>
-                <h3 className="text-xl font-bold text-brand-textPrimary mb-3">
-                  {card.title}
-                </h3>
-                <p className="text-sm text-brand-textSecondary font-medium leading-relaxed">
-                  {card.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <Link
-              href={t.coreCapabilities.buttonHref || "/contact"}
-              className="inline-flex items-center justify-center bg-brand-card border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-8 py-3.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-300 shadow-sm"
-            >
-              {t.coreCapabilities.buttonText}
-            </Link>
-            <span className="text-xs font-medium text-brand-textSecondary">
-              {t.coreCapabilities.microcopy}
-            </span>
-          </div>
-        </div>
-      </section>
+      {/* 4. ENGINEERING CAPABILITIES */}
+      <ServicesEngineeringCapabilities data={t.coreCapabilities} />
 
       {/* 5. 4-STEP LIST (THE ALGORITHMIC PIPELINE) */}
       <section className="py-24 bg-brand-base border-b border-brand-border">
