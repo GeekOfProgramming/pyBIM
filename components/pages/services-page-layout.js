@@ -6,6 +6,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 import { servicesPageData } from "@/lib/data/servicesPageData";
 import ServicesHero from "@/components/sections/services-hero";
 import ServicesExecutionRoadmap from "@/components/sections/services-execution-roadmap";
+import ServicesEarlyAccessBanner from "@/components/sections/services-early-access-banner";
 
 export default function ServicesPageLayout() {
   const { language } = useLanguage();
@@ -32,46 +33,8 @@ export default function ServicesPageLayout() {
       {/* 2. THREE CARDS (THE pyBIM EXECUTION ROADMAP) */}
       <ServicesExecutionRoadmap data={t.roadmap} />
 
-      {/* 3. CTA BANNER (GREEN BANNER // DEPLOYMENT QUEUE) */}
-      <section className="py-20 bg-brand-base border-b border-brand-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-teal-500/10 dark:from-emerald-950/40 dark:via-emerald-950/20 dark:to-teal-950/30 border-2 border-emerald-500/30 rounded-3xl p-8 md:p-12 shadow-xl shadow-emerald-500/5 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative z-10">
-              <div className="max-w-3xl">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                  <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 tracking-widest uppercase">
-                    {t.ctaBanner.tag}
-                  </span>
-                </div>
-
-                <h3 className="text-2xl md:text-4xl font-extrabold text-brand-textPrimary tracking-tight mb-4">
-                  {t.ctaBanner.headline}
-                </h3>
-
-                <p className="text-base md:text-lg text-brand-textSecondary font-medium leading-relaxed mb-4">
-                  {t.ctaBanner.subtitle}
-                </p>
-
-                <p className="text-xs text-emerald-700 dark:text-emerald-400 font-semibold tracking-wide">
-                  {t.ctaBanner.microcopy}
-                </p>
-              </div>
-
-              <div className="flex-shrink-0">
-                <Link
-                  href={t.ctaBanner.buttonHref || "/contact"}
-                  className="inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-full text-sm font-bold tracking-widest uppercase transition-all duration-300 shadow-lg shadow-emerald-600/30 hover:-translate-y-1 hover:shadow-emerald-600/40"
-                >
-                  {t.ctaBanner.buttonText}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 3. SOVEREIGN AI EARLY ACCESS BANNER */}
+      <ServicesEarlyAccessBanner data={t.ctaBanner} />
 
       {/* 4. THREE TEXT BLOCKS (CORE AI CAPABILITIES) */}
       <section className="py-24 bg-brand-surface border-b border-brand-border">
