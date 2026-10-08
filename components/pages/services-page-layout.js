@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "@/components/layout/LocalizedLink";
-import { Zap, Target, Layers } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { servicesPageData } from "@/lib/data/servicesPageData";
 import ServicesHero from "@/components/sections/services-hero";
@@ -9,22 +8,11 @@ import ServicesExecutionRoadmap from "@/components/sections/services-execution-r
 import ServicesEarlyAccessBanner from "@/components/sections/services-early-access-banner";
 import ServicesEngineeringCapabilities from "@/components/sections/services-engineering-capabilities";
 import ServicesExecutionPipeline from "@/components/sections/services-execution-pipeline";
+import ServicesEngineeringOutcomes from "@/components/sections/services-engineering-outcomes";
 
 export default function ServicesPageLayout() {
   const { language } = useLanguage();
   const t = servicesPageData[language] || servicesPageData.en;
-
-  const getOutcomeIcon = (iconName) => {
-    switch (iconName) {
-      case "Zap":
-        return <Zap className="w-7 h-7 text-brand-primary" />;
-      case "Target":
-        return <Target className="w-7 h-7 text-brand-primary" />;
-      case "Layers":
-      default:
-        return <Layers className="w-7 h-7 text-brand-primary" />;
-    }
-  };
 
   return (
     <div className="w-full bg-brand-base">
@@ -44,38 +32,8 @@ export default function ServicesPageLayout() {
       {/* 5. ENGINEERING DELIVERY PROCESS */}
       <ServicesExecutionPipeline data={t.executionPipeline} />
 
-      {/* 6. THREE ICON COLUMNS (CORE ENGINEERING OUTCOMES) */}
-      <section className="py-24 bg-brand-surface border-b border-brand-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="h-px bg-brand-primary w-12" />
-            <h3 className="text-sm font-mono font-bold text-brand-primary tracking-widest uppercase">
-              {t.engineeringOutcomes.tag}
-            </h3>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8 mt-12">
-            {t.engineeringOutcomes.columns.map((col, idx) => (
-              <div
-                key={idx}
-                className="group rounded-3xl bg-brand-card border border-brand-border p-8 shadow-sm hover:shadow-md hover:border-brand-primary transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
-                    {getOutcomeIcon(col.icon)}
-                  </div>
-                  <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">
-                    {col.title}
-                  </h3>
-                  <p className="text-brand-textSecondary font-medium leading-relaxed text-sm">
-                    {col.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 6. CORE ENGINEERING OUTCOMES */}
+      <ServicesEngineeringOutcomes data={t.engineeringOutcomes} />
 
       {/* 7. ARCHITECTURE FLOW (SYSTEMATIC EXECUTION ARCHITECTURE) */}
       <section className="py-24 md:py-32 bg-brand-base border-b border-brand-border">
