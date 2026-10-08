@@ -4,6 +4,7 @@ import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, Zap, Target, Layers, CheckCircle2, Clock, Shield, Terminal, Sparkles } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { servicesPageData } from "@/lib/data/servicesPageData";
+import ServicesHero from "@/components/sections/services-hero";
 
 export default function ServicesPageLayout() {
   const { language } = useLanguage();
@@ -25,28 +26,7 @@ export default function ServicesPageLayout() {
     <div className="w-full bg-brand-base">
       
       {/* 1. HERO SECTION */}
-      <section className="relative flex flex-col items-center justify-center py-28 md:py-36 px-6 overflow-hidden bg-brand-base">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.08),transparent_70%)]" />
-        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-xs font-mono font-bold text-brand-primary uppercase tracking-widest mb-8">
-            <span className="w-2 h-2 rounded-full bg-brand-primary animate-pulse" />
-            ISO 19650 & UNI 11337 ALGORITHMIC BIM
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-brand-textPrimary tracking-tight mb-8 leading-[1.1]">
-            {t.hero.headline1} <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-blue-500 to-cyan-400">
-              {t.hero.headline2}
-            </span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-brand-textSecondary max-w-4xl mx-auto font-medium leading-relaxed">
-            {t.hero.subheadline}
-          </p>
-        </div>
-      </section>
+      <ServicesHero data={t.hero} />
 
       {/* 2. THREE CARDS (THE pyBIM EXECUTION ROADMAP) */}
       <section id="roadmap" className="py-24 bg-brand-surface border-y border-brand-border">
