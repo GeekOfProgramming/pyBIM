@@ -230,8 +230,9 @@ BODY REQUIRED STRUCTURE:
         </div>
       </section>
 
-      {/* Engineering Culture Section */}
-      <section id="engineering-culture" className="py-24 bg-brand-surface">
+      {/* Engineering Culture / Life at pyBIM Section */}
+      <span id="engineering-culture" className="scroll-mt-28" />
+      <section id="life" className="scroll-mt-28 py-24 bg-brand-surface">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">

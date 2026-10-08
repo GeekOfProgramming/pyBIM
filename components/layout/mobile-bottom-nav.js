@@ -14,7 +14,7 @@ const mainNavItems = [
 
 const moreNavItems = [
   { href: "/about", tKey: "header.mega.who_we_are", icon: Info },
-  { href: "/projects", tKey: "header.mega.success_stories", icon: Briefcase },
+  { href: "/success-stories", tKey: "header.mega.success_stories", icon: Briefcase },
   { href: "/careers", tKey: "header.mega.work_with_us", icon: Users },
   { href: "/contact", tKey: "header.mega.contact_us", icon: Phone }
 ];
@@ -94,7 +94,7 @@ export default function MobileBottomNav() {
               <div className={`flex h-7 w-7 items-center justify-center rounded-full transition-all ${isActive ? "bg-brand-accent/20" : "bg-transparent"}`}>
                 <Icon className={`h-4 w-4 ${isActive ? "scale-110" : ""}`} />
               </div>
-              <span className="text-[9px] font-medium tracking-wide">{t(item.tKey)}</span>
+              <span className="text-[11px] font-medium tracking-normal">{t(item.tKey)}</span>
             </Link>
           );
         })}
@@ -119,7 +119,7 @@ export default function MobileBottomNav() {
                 : ""
             }`} />
           </div>
-          <span className="text-[9px] font-medium tracking-wide">{moreButtonText}</span>
+          <span className="text-[11px] font-medium tracking-normal">{moreButtonText}</span>
         </button>
       </div>
     </>

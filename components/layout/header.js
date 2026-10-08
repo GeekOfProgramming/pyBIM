@@ -17,7 +17,7 @@ const navItems = [
 
 const pyBimLeftMenu = [
   { id: "who_we_are", labelKey: "header.mega.who_we_are", href: "/about" },
-  { id: "success_stories", labelKey: "header.mega.success_stories", href: "/projects" },
+  { id: "success_stories", labelKey: "header.mega.success_stories", href: "/success-stories" },
   { id: "work_with_us", labelKey: "header.mega.work_with_us", href: "/careers" },
   { id: "contact_us", labelKey: "header.mega.contact_us", href: "/contact" },
 ];
@@ -31,9 +31,9 @@ const pyBimRightMenu = {
     { labelKey: "header.mega.team", icon: Users, href: "/about#team" },
   ],
   success_stories: [
-    { labelKey: "header.mega.all_projects", icon: Briefcase, href: "/projects#all-projects" },
-    { labelKey: "header.mega.case_studies", icon: FileText, href: "/projects#featured" },
-    { labelKey: "header.mega.testimonials", icon: Users, href: "/projects#testimonials" },
+    { labelKey: "header.mega.all_projects", icon: Briefcase, href: "/success-stories#all-projects" },
+    { labelKey: "header.mega.case_studies", icon: FileText, href: "/success-stories#featured" },
+    { labelKey: "header.mega.testimonials", icon: Users, href: "/success-stories#testimonials" },
   ],
   work_with_us: [
     { labelKey: "header.mega.culture_benefits", icon: Users, href: "/careers#culture" },
@@ -66,10 +66,10 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Synchronize active mega-menu group with current route (e.g. Success Stories when on /projects)
+  // Synchronize active mega-menu group with current route (e.g. Success Stories when on /success-stories)
   useEffect(() => {
     if (!pathname) return;
-    if (pathname.includes("/projects")) {
+    if (pathname.includes("/success-stories") || pathname.includes("/projects")) {
       setActiveMegaMenuItem("success_stories");
     } else if (pathname.includes("/about")) {
       setActiveMegaMenuItem("who_we_are");
@@ -137,6 +137,8 @@ export default function Header() {
               id="pybim-megamenu-trigger"
               aria-haspopup="true"
               aria-expanded={megaMenuOpen}
+              aria-controls="pybim-megamenu-dropdown"
+              onClick={() => setMegaMenuOpen(!megaMenuOpen)}
               className={`flex items-center gap-1 transition px-4 py-2 rounded-full font-medium ${megaMenuOpen ? 'text-brand-primary bg-brand-surface' : 'text-brand-textSecondary hover:text-brand-primary hover:bg-brand-surface'}`}
             >
               {t("header.nav.pybim") || "pyBIM"} <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${megaMenuOpen ? 'rotate-180' : ''}`} />

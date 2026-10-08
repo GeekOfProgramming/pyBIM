@@ -29,7 +29,7 @@ export default function CtaLink({
   ...props
 }) {
   const baseClasses =
-    "group inline-flex items-center justify-center text-center font-bold uppercase tracking-wider text-caption transition-all duration-200 rounded-full select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-brand-base disabled:opacity-50 disabled:pointer-events-none";
+    "group inline-flex items-center justify-center text-center font-semibold normal-case text-body-sm tracking-normal transition-all duration-200 rounded-full select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-brand-base disabled:opacity-50 disabled:pointer-events-none";
 
   const sizeClasses = "min-h-[48px] sm:min-h-[52px] px-6 sm:px-7 py-3 sm:py-3.5";
 

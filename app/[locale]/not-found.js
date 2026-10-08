@@ -68,7 +68,7 @@ export default function NotFound() {
             {[
               { label: t("notfound.link_services") || "Services", href: "/services" },
               { label: t("notfound.link_about") || "About Us", href: "/about" },
-              { label: t("notfound.link_projects") || "Projects", href: "/projects" },
+              { label: t("header.mega.success_stories") || t("notfound.link_projects") || "Success Stories", href: "/success-stories" },
               { label: t("notfound.link_contact") || "Contact", href: "/contact" },
             ].map((link, idx) => (
               <Link

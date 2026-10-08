@@ -61,7 +61,7 @@ export default function ProjectsGrid({ projects }) {
       </Carousel>
 
       <div className="mt-16 text-center">
-        <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-brand-accent transition-colors uppercase tracking-wider border-b border-brand-accent pb-1">
+        <Link href="/success-stories" className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-brand-accent transition-colors uppercase tracking-wider border-b border-brand-accent pb-1">
           {t("home.projects.all")} <ArrowRight className="w-4 h-4" />
         </Link>
       </div>

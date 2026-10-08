@@ -56,7 +56,8 @@ export default function ServicesEarlyAccessBanner({ data }) {
 
   return (
     <section 
-      className="py-20 md:py-24 bg-brand-base border-b border-brand-border overflow-hidden"
+      id="early-access"
+      className="scroll-mt-28 py-20 md:py-24 bg-brand-base border-b border-brand-border overflow-hidden"
       aria-labelledby={`${baseId}-title`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

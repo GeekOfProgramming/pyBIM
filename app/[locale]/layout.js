@@ -36,9 +36,9 @@ export async function generateMetadata({ params }) {
   };
 
   const descriptions = {
-    en: "pyBIM is a software development lab for the AEC industry. We engineer custom Revit API C# plugins, Python data pipelines, and ISO 19650 compliant BIM workflows.",
-    it: "pyBIM è un laboratorio di sviluppo software per il settore AEC. Sviluppiamo plugin personalizzati Revit API in C#, pipeline di dati in Python e flussi di lavoro BIM conformi allo standard ISO 19650.",
-    de: "pyBIM ist ein Softwareentwicklungs-Labor für die AEC-Branche. Wir entwickeln maßgeschneiderte Revit API C#-Plugins, Python-Daten-Pipelines und ISO 19650-konforme BIM-Workflows."
+    en: "pyBIM is a software development lab for the AEC industry. We engineer custom Revit API C# plugins, Python data pipelines, and structured OpenBIM workflows.",
+    it: "pyBIM è un laboratorio di sviluppo software per il settore AEC. Sviluppiamo plugin personalizzati Revit API in C#, pipeline di dati in Python e flussi di lavoro OpenBIM strutturati.",
+    de: "pyBIM ist ein Softwareentwicklungs-Labor für die AEC-Branche. Wir entwickeln maßgeschneiderte Revit API C#-Plugins, Python-Daten-Pipelines und strukturierte OpenBIM-Workflows."
   };
 
   const ogDescriptions = {

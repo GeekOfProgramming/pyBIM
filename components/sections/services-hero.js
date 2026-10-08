@@ -162,8 +162,9 @@ export default function ServicesHero({ data }) {
 
   return (
     <section 
+      id="services-hero"
       aria-label="Services Hero"
-      className="relative w-full overflow-hidden bg-brand-base pt-20 pb-20 md:pt-28 md:pb-28 lg:pt-32 lg:pb-36 border-b border-brand-border/60 transition-colors"
+      className="scroll-mt-28 relative w-full overflow-hidden bg-brand-base pt-20 pb-20 md:pt-28 md:pb-28 lg:pt-32 lg:pb-36 border-b border-brand-border/60 transition-colors"
     >
       {/* Background Architectural Subtle Grid & Ambient Lighting */}
       <div 
