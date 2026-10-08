@@ -24,7 +24,7 @@ export default function Loading() {
         {/* Minimal Monospace High-Tech Status Badge */}
         <div className="flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-slate-700 dark:text-neutral-300 font-semibold px-4 py-1.5 rounded-full bg-purple-50 dark:bg-white/5 border border-purple-200/60 dark:border-white/10 shadow-sm backdrop-blur-md">
           <span className="inline-block h-2 w-2 rounded-full bg-purple-600 dark:bg-purple-400 animate-pulse" />
-          <span>// PYBIM_KERNEL_SYNC</span>
+          <span>// <span className="normal-case">pyBIM</span>_KERNEL_SYNC</span>
         </div>
       </div>
     </div>

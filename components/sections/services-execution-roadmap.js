@@ -2,6 +2,7 @@
 
 import { useState, useId } from "react";
 import Link from "@/components/layout/LocalizedLink";
+import CtaLink from "@/components/ui/cta-link";
 import { 
   ArrowRight, 
   Boxes, 
@@ -350,23 +351,13 @@ export default function ServicesExecutionRoadmap({ data }) {
 
                 {/* 8. Bottom CTA Button Row */}
                 <div className="pt-5 lg:pt-6 border-t border-brand-border/60 flex flex-col justify-end w-full self-end mt-4 md:mt-0">
-                  {isHighlight ? (
-                    <Link
-                      href={card.ctaHref || "/contact#audit"}
-                      className="w-full min-h-[48px] sm:min-h-[52px] inline-flex items-center justify-center text-center bg-brand-primary hover:bg-brand-primary/90 text-white px-4 sm:px-5 py-3 sm:py-3.5 rounded-full text-caption font-bold uppercase tracking-wider sm:tracking-widest transition-all duration-300 shadow-md shadow-brand-primary/25 hover:shadow-lg hover:shadow-brand-primary/35 group/cta"
-                    >
-                      <span>{card.ctaText || "Discuss Your Project"}</span>
-                      <ArrowRight className="w-3.5 h-3.5 ml-2 transition-transform duration-200 group-hover/cta:translate-x-1 shrink-0" aria-hidden="true" />
-                    </Link>
-                  ) : (
-                    <Link
-                      href={card.ctaHref || "/contact#priority-queue"}
-                      className="w-full min-h-[48px] sm:min-h-[52px] inline-flex items-center justify-center text-center border border-brand-border bg-brand-surface hover:bg-brand-card hover:border-brand-primary/40 text-brand-textSecondary hover:text-brand-primary px-4 sm:px-5 py-3 sm:py-3.5 rounded-full text-caption font-bold uppercase tracking-wider sm:tracking-widest transition-all duration-300 group/cta"
-                    >
-                      <span>{card.ctaText || "Join Priority Queue"}</span>
-                      <ArrowRight className="w-3.5 h-3.5 ml-2 transition-transform duration-200 group-hover/cta:translate-x-1 shrink-0" aria-hidden="true" />
-                    </Link>
-                  )}
+                  <CtaLink
+                    href={card.ctaHref || (isHighlight ? "/contact#audit" : "/contact#priority-queue")}
+                    variant={isHighlight ? "primary" : "secondary"}
+                    fullWidth={true}
+                  >
+                    {card.ctaText || (isHighlight ? "Discuss Your Project" : "Join Priority Queue")}
+                  </CtaLink>
                 </div>
               </motion.article>
             );

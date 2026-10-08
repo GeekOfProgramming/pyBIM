@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
+import CtaLink from "@/components/ui/cta-link";
 import { 
   ArrowRight, 
   ChevronDown, 
@@ -38,7 +39,7 @@ export default function ServicesHero({ data }) {
     pipeline: {
       badge: "ILLUSTRATIVE WORKFLOW",
       monitorLabel: "WORKFLOW_ARCHITECTURE // 4 INTEGRATED PHASES",
-      windowTitle: "PYBIM_ARCHITECTURE // WORKFLOW_SPEC",
+      windowTitle: "pyBIM_ARCHITECTURE // WORKFLOW_SPEC",
       nodes: [
         {
           id: "revit",
@@ -232,23 +233,24 @@ export default function ServicesHero({ data }) {
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-10"
             >
               {/* Primary CTA */}
-              <Link
+              <CtaLink
                 href={hero.primaryCtaHref || "/contact#audit"}
-                className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-body-sm text-white bg-blue-600 hover:bg-blue-500 active:bg-blue-700 shadow-lg shadow-blue-600/25 dark:shadow-blue-500/20 hover:shadow-blue-600/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900"
+                variant="primary"
               >
-                <span>{hero.primaryCta}</span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-              </Link>
+                {hero.primaryCta}
+              </CtaLink>
 
               {/* Secondary CTA */}
-              <a
+              <CtaLink
                 href={hero.secondaryCtaHref || "#roadmap"}
+                variant="secondary"
                 onClick={scrollToRoadmap}
-                className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-body-sm text-brand-textPrimary bg-brand-surface/80 hover:bg-brand-surface border border-brand-border hover:border-blue-500/40 dark:hover:border-blue-400/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                icon={
+                  <ChevronDown className="w-4 h-4 ml-2 text-brand-textSecondary group-hover:text-brand-primary transition-transform duration-200 group-hover:translate-y-0.5 shrink-0" aria-hidden="true" />
+                }
               >
-                <span>{hero.secondaryCta}</span>
-                <ChevronDown className="w-4 h-4 text-brand-textSecondary group-hover:text-brand-textPrimary transition-transform duration-200 group-hover:translate-y-0.5" />
-              </a>
+                {hero.secondaryCta}
+              </CtaLink>
             </motion.div>
 
             {/* Engineering Standards Badges */}
@@ -286,7 +288,7 @@ export default function ServicesHero({ data }) {
                   <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70 inline-block" />
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70 inline-block" />
                   <span className="ml-2 font-semibold text-slate-700 dark:text-slate-300 tracking-wide">
-                    {hero.pipeline?.windowTitle || "PYBIM_ARCHITECTURE // WORKFLOW_SPEC"}
+                    {hero.pipeline?.windowTitle || "pyBIM_ARCHITECTURE // WORKFLOW_SPEC"}
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-semibold">
@@ -405,11 +407,11 @@ export default function ServicesHero({ data }) {
                   </div>
                   <span className="text-blue-400 font-medium">PIPELINE: DETERMINISTIC</span>
                 </div>
-                <div className="text-slate-300 truncate">
+                <div className="text-slate-300 leading-relaxed break-words text-xs sm:text-technical">
                   {logs[activeNodeIndex] || logs[0]}
                 </div>
-                <div className="flex items-center gap-1.5 text-blue-400/80 text-technical mt-1">
-                  <span>pybim-spec &gt;</span>
+                <div className="flex items-center gap-1.5 text-blue-400/80 text-technical mt-1.5">
+                  <span>pyBIM-spec &gt;</span>
                   <span className={`w-1.5 h-3 bg-blue-400 inline-block ${shouldReduceMotion ? "" : "animate-pulse"}`} />
                 </div>
               </div>

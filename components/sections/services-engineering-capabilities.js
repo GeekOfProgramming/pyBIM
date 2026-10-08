@@ -2,6 +2,7 @@
 
 import { useId } from "react";
 import Link from "@/components/layout/LocalizedLink";
+import CtaLink from "@/components/ui/cta-link";
 import { 
   ArrowRight, 
   ShieldCheck, 
@@ -123,7 +124,7 @@ export default function ServicesEngineeringCapabilities({ data }) {
                             { label: "OmniClass.Classification", tag: "SCHEMA" }
                           ]).map((item, itemIdx) => (
                             <div key={itemIdx} className="flex items-center justify-between bg-brand-card px-2 py-1 rounded border border-brand-border/60">
-                              <span className="text-brand-textSecondary truncate">{item.label}</span>
+                              <span className="text-brand-textSecondary break-words">{item.label}</span>
                               <span className="inline-flex items-center text-emerald-600 dark:text-emerald-400 text-technical font-bold">
                                 <Check className="w-2.5 h-2.5 mr-0.5" /> {item.tag}
                               </span>
@@ -241,14 +242,13 @@ export default function ServicesEngineeringCapabilities({ data }) {
 
         {/* Bottom Consultation CTA */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 p-6 sm:p-8 rounded-3xl bg-brand-card border border-brand-border shadow-sm">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <Link
+          <div className="shrink-0">
+            <CtaLink
               href={capabilities.buttonHref || "/contact"}
-              className="inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-7 py-3.5 rounded-full text-caption font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-brand-primary/20 hover:shadow-lg hover:shadow-brand-primary/30 group shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+              variant="primary"
             >
-              <span>{capabilities.buttonText}</span>
-              <ArrowRight className="w-3.5 h-3.5 ml-2 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
-            </Link>
+              {capabilities.buttonText}
+            </CtaLink>
           </div>
 
           <p className="text-body-sm font-medium text-brand-textSecondary max-w-xl leading-relaxed">

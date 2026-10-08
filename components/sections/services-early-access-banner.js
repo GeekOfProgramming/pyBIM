@@ -2,6 +2,7 @@
 
 import { useId } from "react";
 import Link from "@/components/layout/LocalizedLink";
+import CtaLink from "@/components/ui/cta-link";
 import { 
   ArrowRight, 
   Cpu, 
@@ -110,16 +111,12 @@ export default function ServicesEarlyAccessBanner({ data }) {
               {/* Action Area */}
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                  <Link
+                  <CtaLink
                     href={banner.buttonHref || "/contact#priority-queue"}
-                    className="inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-7 py-4 rounded-full text-caption font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-brand-primary/25 hover:shadow-lg hover:shadow-brand-primary/35 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
+                    variant="primary"
                   >
-                    <span>{banner.buttonText}</span>
-                    <ArrowRight 
-                      className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" 
-                      aria-hidden="true" 
-                    />
-                  </Link>
+                    {banner.buttonText}
+                  </CtaLink>
                 </div>
 
                 {/* Supporting Microcopy */}
