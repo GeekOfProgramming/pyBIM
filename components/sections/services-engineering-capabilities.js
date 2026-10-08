@@ -61,17 +61,17 @@ export default function ServicesEngineeringCapabilities({ data }) {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px bg-brand-primary w-10 md:w-14" aria-hidden="true" />
-            <span className="text-xs md:text-sm font-mono font-bold text-brand-primary tracking-widest uppercase">
+            <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
               {capabilities.tag}
             </span>
           </div>
           <h2 
             id={`${baseId}-title`}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
+            className="text-section-sm lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
           >
             {capabilities.headline}
           </h2>
-          <p className="text-base sm:text-lg text-brand-textSecondary font-medium leading-relaxed">
+          <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed">
             {capabilities.subtitle}
           </p>
         </motion.div>
@@ -98,7 +98,7 @@ export default function ServicesEngineeringCapabilities({ data }) {
                     <div className="w-11 h-11 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
                       {getCardIcon(idx)}
                     </div>
-                    <span className="text-[11px] font-mono font-bold text-brand-textSecondary/80 px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border">
+                    <span className="text-technical font-mono font-bold text-brand-textSecondary/80 px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border">
                       {card.num || `0${idx + 1}`}
                     </span>
                   </div>
@@ -112,11 +112,11 @@ export default function ServicesEngineeringCapabilities({ data }) {
                     {/* CARD 01 DIAGRAM: Model Information Validation */}
                     {idx === 0 && (
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between text-[10px] font-mono font-semibold text-brand-textSecondary pb-2 border-b border-brand-border/60">
+                        <div className="flex items-center justify-between text-technical font-mono font-semibold text-brand-textSecondary pb-2 border-b border-brand-border/60">
                           <span className="uppercase">{diagram.title || "VALIDATION_SCHEMA"}</span>
                           <span className="text-emerald-600 dark:text-emerald-400 font-bold">{diagram.badge || "QA/QC"}</span>
                         </div>
-                        <div className="space-y-1.5 text-[10px] font-mono">
+                        <div className="space-y-1.5 text-technical font-mono">
                           {(diagram.items || [
                             { label: "EIR.Naming_Convention", tag: "CHECK" },
                             { label: "ISO_19650.PropertySets", tag: "RULE" },
@@ -124,7 +124,7 @@ export default function ServicesEngineeringCapabilities({ data }) {
                           ]).map((item, itemIdx) => (
                             <div key={itemIdx} className="flex items-center justify-between bg-brand-card px-2 py-1 rounded border border-brand-border/60">
                               <span className="text-brand-textSecondary truncate">{item.label}</span>
-                              <span className="inline-flex items-center text-emerald-600 dark:text-emerald-400 text-[9px] font-bold">
+                              <span className="inline-flex items-center text-emerald-600 dark:text-emerald-400 text-technical font-bold">
                                 <Check className="w-2.5 h-2.5 mr-0.5" /> {item.tag}
                               </span>
                             </div>
@@ -144,18 +144,18 @@ export default function ServicesEngineeringCapabilities({ data }) {
                     {/* CARD 02 DIAGRAM: Revit Automation & Parameter Engineering */}
                     {idx === 1 && (
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between text-[10px] font-mono font-semibold text-brand-textSecondary pb-2 border-b border-brand-border/60">
+                        <div className="flex items-center justify-between text-technical font-mono font-semibold text-brand-textSecondary pb-2 border-b border-brand-border/60">
                           <span className="uppercase">{diagram.title || "AUTOMATION_PIPELINE"}</span>
                           <span className="text-sky-600 dark:text-sky-400 font-bold">{diagram.badge || "API CORE"}</span>
                         </div>
-                        <div className="grid grid-cols-3 gap-1.5 text-center text-[10px] font-mono">
+                        <div className="grid grid-cols-3 gap-1.5 text-center text-technical font-mono">
                           <div className="bg-brand-card p-1.5 rounded border border-brand-border/60 flex flex-col items-center justify-center">
                             <Boxes className="w-3.5 h-3.5 text-brand-primary mb-1" />
-                            <span className="text-[9px] text-brand-textSecondary">{diagram.modelLabel || ".RVT Model"}</span>
+                            <span className="text-technical text-brand-textSecondary">{diagram.modelLabel || ".RVT Model"}</span>
                           </div>
                           <div className="bg-sky-500/10 border border-sky-500/30 p-1.5 rounded flex flex-col items-center justify-center relative">
                             <Cpu className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 mb-1" />
-                            <span className="text-[9px] font-bold text-sky-600 dark:text-sky-400">{diagram.codeLabel || "py / C#"}</span>
+                            <span className="text-technical font-bold text-sky-600 dark:text-sky-400">{diagram.codeLabel || "py / C#"}</span>
                             {!shouldReduceMotion && (
                               <motion.span 
                                 className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-sky-500"
@@ -166,10 +166,10 @@ export default function ServicesEngineeringCapabilities({ data }) {
                           </div>
                           <div className="bg-brand-card p-1.5 rounded border border-brand-border/60 flex flex-col items-center justify-center">
                             <Terminal className="w-3.5 h-3.5 text-emerald-500 mb-1" />
-                            <span className="text-[9px] text-brand-textSecondary">{diagram.outputLabel || "Params Out"}</span>
+                            <span className="text-technical text-brand-textSecondary">{diagram.outputLabel || "Params Out"}</span>
                           </div>
                         </div>
-                        <div className="text-[9px] font-mono text-center text-brand-textSecondary/70 pt-0.5">
+                        <div className="text-technical font-mono text-center text-brand-textSecondary/70 pt-0.5">
                           {diagram.caption || "Deterministic parameter updates & API execution"}
                         </div>
                       </div>
@@ -178,11 +178,11 @@ export default function ServicesEngineeringCapabilities({ data }) {
                     {/* CARD 03 DIAGRAM: Coordinated BIM Data Workflows */}
                     {idx === 2 && (
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between text-[10px] font-mono font-semibold text-brand-textSecondary pb-2 border-b border-brand-border/60">
+                        <div className="flex items-center justify-between text-technical font-mono font-semibold text-brand-textSecondary pb-2 border-b border-brand-border/60">
                           <span className="uppercase">{diagram.title || "MULTIDISCIPLINARY_FLOW"}</span>
                           <span className="text-teal-600 dark:text-teal-400 font-bold">{diagram.badge || "OpenBIM"}</span>
                         </div>
-                        <div className="flex items-center justify-between gap-1 text-[10px] font-mono">
+                        <div className="flex items-center justify-between gap-1 text-technical font-mono">
                           {(diagram.disciplines || [
                             { code: "ARC", name: "Arch" },
                             { code: "STR", name: "Struct" },
@@ -190,16 +190,16 @@ export default function ServicesEngineeringCapabilities({ data }) {
                           ]).map((disc, discIdx, arr) => (
                             <div key={discIdx} className="contents">
                               <div className="flex-1 bg-brand-card p-1 rounded border border-brand-border/60 text-center">
-                                <span className="block text-[8px] text-brand-textSecondary">{disc.code}</span>
-                                <span className="text-[9px] font-bold text-brand-textPrimary">{disc.name}</span>
+                                <span className="block text-technical text-brand-textSecondary">{disc.code}</span>
+                                <span className="text-technical font-bold text-brand-textPrimary">{disc.name}</span>
                               </div>
                               {discIdx < arr.length - 1 && (
-                                <span className="text-brand-textSecondary/40 text-xs">+</span>
+                                <span className="text-brand-textSecondary/40 text-caption font-bold">+</span>
                               )}
                             </div>
                           ))}
                         </div>
-                        <div className="bg-teal-500/10 border border-teal-500/30 rounded px-2 py-1 text-center text-[9px] font-mono font-bold text-teal-700 dark:text-teal-300">
+                        <div className="bg-teal-500/10 border border-teal-500/30 rounded px-2 py-1 text-center text-technical font-mono font-bold text-teal-700 dark:text-teal-300">
                           {diagram.output || "→ IFC4 / BCF COORDINATED DELIVERABLE"}
                         </div>
                       </div>
@@ -208,12 +208,12 @@ export default function ServicesEngineeringCapabilities({ data }) {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl lg:text-2xl font-bold text-brand-textPrimary mb-3 tracking-tight">
+                  <h3 className="text-card-title font-bold text-brand-textPrimary mb-3 tracking-tight">
                     {card.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-brand-textSecondary font-medium leading-relaxed mb-6">
+                  <p className="text-body-sm text-brand-textSecondary font-medium leading-relaxed mb-6">
                     {card.desc}
                   </p>
                 </div>
@@ -225,7 +225,7 @@ export default function ServicesEngineeringCapabilities({ data }) {
                       {card.topics.map((topic, tIdx) => (
                         <span 
                           key={tIdx}
-                          className="inline-flex items-center text-[10px] sm:text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-textSecondary group-hover:border-brand-primary/30 transition-colors"
+                          className="inline-flex items-center text-technical font-mono font-medium px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-textSecondary group-hover:border-brand-primary/30 transition-colors"
                         >
                           {topic}
                         </span>
@@ -244,14 +244,14 @@ export default function ServicesEngineeringCapabilities({ data }) {
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
             <Link
               href={capabilities.buttonHref || "/contact"}
-              className="inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-brand-primary/20 hover:shadow-lg hover:shadow-brand-primary/30 group shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+              className="inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-7 py-3.5 rounded-full text-caption font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-brand-primary/20 hover:shadow-lg hover:shadow-brand-primary/30 group shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
             >
               <span>{capabilities.buttonText}</span>
               <ArrowRight className="w-3.5 h-3.5 ml-2 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           </div>
 
-          <p className="text-xs sm:text-sm font-medium text-brand-textSecondary max-w-xl leading-relaxed">
+          <p className="text-body-sm font-medium text-brand-textSecondary max-w-xl leading-relaxed">
             {capabilities.microcopy}
           </p>
         </div>
