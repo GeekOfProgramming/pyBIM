@@ -56,7 +56,9 @@ export default function ServicesExecutionArchitecture({ data }) {
       flowIndicator: "CONNECTED INFORMATION FLOW",
       inputsLayer: "INPUTS",
       logicLayer: "ENGINEERING CONTROLS",
-      outputsLayer: "REVIEWED OUTPUTS"
+      outputsLayer: "REVIEWED OUTPUTS",
+      coreBadge: "CORE",
+      flowBadge: "FLOW"
     },
     nodes: []
   };
@@ -110,7 +112,7 @@ export default function ServicesExecutionArchitecture({ data }) {
           {/* Top Rail: Reference Badge & Architecture Flow Indicator */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-8 border-b border-brand-border/70">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/25 bg-brand-primary/5 px-3.5 py-1.5 text-technical font-mono font-bold text-brand-primary uppercase tracking-widest">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse" aria-hidden="true" />
+              <span className={`w-1.5 h-1.5 rounded-full bg-brand-primary ${shouldReduceMotion ? "" : "animate-pulse"}`} aria-hidden="true" />
               <span>{labels.referenceArchitecture || "REFERENCE ARCHITECTURE"}</span>
             </div>
 
@@ -160,7 +162,7 @@ export default function ServicesExecutionArchitecture({ data }) {
 
                         {isCenterLogic && (
                           <span className="text-technical font-mono text-brand-primary font-semibold px-2 py-0.5 rounded bg-brand-primary/10 border border-brand-primary/20">
-                            CORE
+                            {labels.coreBadge || "CORE"}
                           </span>
                         )}
                       </div>
@@ -231,7 +233,7 @@ export default function ServicesExecutionArchitecture({ data }) {
                         aria-hidden="true"
                       >
                         <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-brand-base border border-brand-border text-technical font-mono text-brand-textSecondary">
-                          <span>FLOW</span>
+                          <span>{labels.flowBadge || "FLOW"}</span>
                           <ArrowDown className="w-3.5 h-3.5 text-brand-primary" />
                         </div>
                       </div>
@@ -241,7 +243,7 @@ export default function ServicesExecutionArchitecture({ data }) {
                         className="hidden xl:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 text-brand-primary/70 pointer-events-none"
                         aria-hidden="true"
                       >
-                        <div className="w-7 h-7 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center shadow-xs">
+                        <div className="w-7 h-7 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center shadow-sm">
                           <ArrowRight className="w-3.5 h-3.5 text-brand-primary" />
                         </div>
                       </div>
