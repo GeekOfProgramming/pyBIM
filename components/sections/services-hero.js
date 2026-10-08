@@ -9,10 +9,9 @@ import {
   ShieldCheck, 
   Cpu, 
   Database, 
-  Activity, 
+  Workflow, 
   CheckCircle2, 
-  Terminal,
-  ExternalLink
+  Terminal
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -32,56 +31,57 @@ export default function ServicesHero({ data }) {
     primaryCtaHref: "/contact#audit",
     secondaryCtaHref: "#roadmap",
     trustBadges: [
-      "ISO 19650-2 Compliant",
+      "ISO 19650-Aligned Workflows",
       "Autodesk Revit API & IFC4",
       "Deterministic QA / QC"
     ],
     pipeline: {
-      monitorLabel: "PIPELINE_STATUS: ACTIVE // 100% SYNCHRONIZED",
-      windowTitle: "PYBIM_RUNTIME // PIPELINE_MONITOR",
+      badge: "ILLUSTRATIVE WORKFLOW",
+      monitorLabel: "WORKFLOW_ARCHITECTURE // 4 INTEGRATED PHASES",
+      windowTitle: "PYBIM_ARCHITECTURE // WORKFLOW_SPEC",
       nodes: [
         {
           id: "revit",
           step: "01",
-          title: "Revit Model",
-          sub: "Source Geometry & Data",
+          title: "Revit Model Ingestion",
+          sub: "Source Geometry & Parameter Sets",
           badge: "INPUT // .RVT / IFC",
-          meta: "142,850 Elements · LOD 350",
+          meta: "Geometry & Property Sets",
           icon: "box"
         },
         {
           id: "validation",
           step: "02",
           title: "Data Validation",
-          sub: "Algorithmic Verification",
-          badge: "ISO 19650 AUDIT",
-          meta: "Zero Missing Params · Pass",
+          sub: "Algorithmic QA/QC & Schema Auditing",
+          badge: "SCHEMA AUDIT",
+          meta: "EIR & ISO 19650 Rules",
           icon: "shield"
         },
         {
           id: "engine",
           step: "03",
           title: "Automation Engine",
-          sub: "Python & C# Core",
+          sub: "Python & C# Algorithmic Core",
           badge: "EXECUTION CORE",
-          meta: "Agentic Routing · Clashes: 0",
+          meta: "Scripted Parameter Pipelines",
           icon: "cpu"
         },
         {
           id: "deliverables",
           step: "04",
           title: "Structured Deliverables",
-          sub: "Production Outputs",
+          sub: "Standardized OpenBIM & Documentation",
           badge: "DELIVERABLES",
-          meta: "IFC4 · COBie · Validated",
+          meta: "IFC4 · COBie · Reports",
           icon: "database"
         }
       ],
       logs: [
-        "[0.012s] Parsing Revit model geometry & parameter schemas...",
-        "[0.038s] Validating ISO 19650 compliance & naming standards... PASS",
-        "[0.071s] Executing algorithmic coordination & parameter injection...",
-        "[0.104s] Exporting validated IFC4 container & client deliverables... READY"
+        "[PHASE 01] Standardized ingestion of Revit elements, properties, and IFC classifications.",
+        "[PHASE 02] Rule-based schema validation aligned with project EIR and ISO 19650 guidelines.",
+        "[PHASE 03] Execution of algorithmic parameter injection and coordinate auditing via Revit API.",
+        "[PHASE 04] Deterministic generation of verified IFC4 models, COBie sheets, and audit dossiers."
       ]
     }
   };
@@ -89,12 +89,12 @@ export default function ServicesHero({ data }) {
   const nodes = hero.pipeline?.nodes || [];
   const logs = hero.pipeline?.logs || [];
 
-  // Cycle through nodes automatically unless user is hovering or reduced motion is preferred
+  // Cycle through nodes automatically unless user is hovering, focusing, or reduced motion is preferred
   useEffect(() => {
     if (shouldReduceMotion || isHovered || nodes.length === 0) return;
     const interval = setInterval(() => {
       setActiveNodeIndex((prev) => (prev + 1) % nodes.length);
-    }, 3200);
+    }, 3600);
     return () => clearInterval(interval);
   }, [shouldReduceMotion, isHovered, nodes.length]);
 
@@ -116,9 +116,25 @@ export default function ServicesHero({ data }) {
     e.preventDefault();
     const roadmapEl = document.getElementById("roadmap");
     if (roadmapEl) {
-      roadmapEl.scrollIntoView({ behavior: "smooth" });
+      roadmapEl.scrollIntoView({ behavior: shouldReduceMotion ? "auto" : "smooth" });
     } else {
       window.location.hash = "roadmap";
+    }
+  };
+
+  const handleKeyDown = (e, index) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+      e.preventDefault();
+      const next = (index + 1) % nodes.length;
+      setActiveNodeIndex(next);
+      const nextBtn = document.getElementById(`pipeline-tab-${nodes[next]?.id}`);
+      if (nextBtn) nextBtn.focus();
+    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      const prev = (index - 1 + nodes.length) % nodes.length;
+      setActiveNodeIndex(prev);
+      const prevBtn = document.getElementById(`pipeline-tab-${nodes[prev]?.id}`);
+      if (prevBtn) prevBtn.focus();
     }
   };
 
@@ -128,7 +144,7 @@ export default function ServicesHero({ data }) {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.09,
+        staggerChildren: shouldReduceMotion ? 0 : 0.08,
         delayChildren: shouldReduceMotion ? 0 : 0.1,
       },
     },
@@ -235,7 +251,7 @@ export default function ServicesHero({ data }) {
               </a>
             </motion.div>
 
-            {/* Engineering Trust & Standards Badges */}
+            {/* Engineering Standards Badges */}
             <motion.div 
               variants={itemVariants}
               className="w-full pt-6 border-t border-brand-border/60"
@@ -270,31 +286,48 @@ export default function ServicesHero({ data }) {
                   <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70 inline-block" />
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70 inline-block" />
                   <span className="ml-2 font-semibold text-slate-700 dark:text-slate-300 tracking-wide">
-                    {hero.pipeline?.windowTitle || "PYBIM_RUNTIME // PIPELINE_MONITOR"}
+                    {hero.pipeline?.windowTitle || "PYBIM_ARCHITECTURE // WORKFLOW_SPEC"}
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-semibold">
-                  <Activity className="w-3.5 h-3.5 animate-pulse" />
-                  <span className="hidden sm:inline">LIVE TELEMETRY</span>
+                  <Workflow className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline text-[10px] tracking-wider uppercase font-bold">
+                    {hero.pipeline?.badge || "ILLUSTRATIVE WORKFLOW"}
+                  </span>
                 </div>
               </div>
 
               {/* Status Sub-bar */}
               <div className="px-4 py-2 bg-blue-50/50 dark:bg-blue-950/20 border-b border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between text-[10px] font-mono text-slate-500 dark:text-slate-400">
-                <span className="truncate">{hero.pipeline?.monitorLabel || "PIPELINE_STATUS: ACTIVE // 100% SYNCHRONIZED"}</span>
-                <span className="shrink-0 text-emerald-600 dark:text-emerald-400 font-semibold">LATENCY: 14ms</span>
+                <span className="truncate">{hero.pipeline?.monitorLabel || "WORKFLOW_ARCHITECTURE // 4 INTEGRATED PHASES"}</span>
+                <span className="shrink-0 text-blue-600 dark:text-blue-400 font-semibold tracking-wide">
+                  FRAMEWORK: OPENBIM & API
+                </span>
               </div>
 
-              {/* Main Workflow Visualization Canvas */}
-              <div className="p-4 sm:p-5 space-y-3">
+              {/* Main Workflow Visualization Canvas with Accessible Tab List */}
+              <div 
+                role="tablist" 
+                aria-label="BIM engineering workflow phases"
+                className="p-4 sm:p-5 space-y-3"
+              >
                 {nodes.map((node, index) => {
                   const isActive = activeNodeIndex === index;
                   return (
-                    <div
+                    <button
                       key={node.id}
+                      type="button"
+                      role="tab"
+                      id={`pipeline-tab-${node.id}`}
+                      aria-selected={isActive}
+                      aria-controls="pipeline-spec-console"
+                      aria-label={`Inspect ${node.step}: ${node.title}`}
+                      tabIndex={0}
                       onClick={() => setActiveNodeIndex(index)}
+                      onFocus={() => setActiveNodeIndex(index)}
                       onMouseEnter={() => setActiveNodeIndex(index)}
-                      className={`group relative rounded-xl p-3 sm:p-3.5 transition-all duration-200 cursor-pointer border ${
+                      onKeyDown={(e) => handleKeyDown(e, index)}
+                      className={`group relative w-full text-left rounded-xl p-3 sm:p-3.5 transition-all duration-200 cursor-pointer border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 ${
                         isActive
                           ? "bg-blue-50/90 dark:bg-blue-950/35 border-blue-500/60 dark:border-blue-400/50 shadow-md shadow-blue-500/10"
                           : "bg-slate-50/70 dark:bg-slate-950/40 border-slate-200/70 dark:border-slate-800/60 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900/60"
@@ -318,9 +351,9 @@ export default function ServicesHero({ data }) {
                               <span className="font-mono text-[10px] font-bold text-blue-600 dark:text-blue-400">
                                 {node.step}
                               </span>
-                              <h2 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-tight">
+                              <span className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-tight block">
                                 {node.title}
-                              </h2>
+                              </span>
                             </div>
                             <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">
                               {node.sub}
@@ -346,29 +379,38 @@ export default function ServicesHero({ data }) {
                       </div>
 
                       {/* Active Node Bottom Progress Rail */}
-                      {isActive && !shouldReduceMotion && (
-                        <div className="absolute -bottom-[1px] left-3 right-3 h-[2px] bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 rounded-full animate-pulse" />
+                      {isActive && (
+                        <div 
+                          className={`absolute -bottom-[1px] left-3 right-3 h-[2px] bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 rounded-full ${
+                            shouldReduceMotion ? "" : "animate-pulse"
+                          }`} 
+                        />
                       )}
-                    </div>
+                    </button>
                   );
                 })}
               </div>
 
-              {/* Bottom Telemetry Log Console */}
-              <div className="px-4 py-3 bg-slate-950 text-slate-300 border-t border-slate-200 dark:border-slate-800 font-mono text-[11px] leading-relaxed">
+              {/* Bottom Specification Log Console */}
+              <div 
+                id="pipeline-spec-console"
+                role="tabpanel"
+                aria-label="Workflow Phase Specification"
+                className="px-4 py-3 bg-slate-950 text-slate-300 border-t border-slate-200 dark:border-slate-800 font-mono text-[11px] leading-relaxed"
+              >
                 <div className="flex items-center justify-between text-slate-500 text-[10px] mb-1.5 pb-1 border-b border-slate-800">
                   <div className="flex items-center gap-1.5">
                     <Terminal className="w-3 h-3 text-blue-400" />
-                    <span>EXECUTION_LOG // STREAM</span>
+                    <span>SPECIFICATION // PHASE OVERVIEW</span>
                   </div>
-                  <span className="text-emerald-400">STATUS: DETERMINISTIC</span>
+                  <span className="text-blue-400 font-medium">PIPELINE: DETERMINISTIC</span>
                 </div>
-                <div className="text-slate-400 truncate">
+                <div className="text-slate-300 truncate">
                   {logs[activeNodeIndex] || logs[0]}
                 </div>
                 <div className="flex items-center gap-1.5 text-blue-400/80 text-[10px] mt-1">
-                  <span>pybim-core-daemon &gt;</span>
-                  <span className="w-1.5 h-3 bg-blue-400 animate-pulse inline-block" />
+                  <span>pybim-spec &gt;</span>
+                  <span className={`w-1.5 h-3 bg-blue-400 inline-block ${shouldReduceMotion ? "" : "animate-pulse"}`} />
                 </div>
               </div>
 
