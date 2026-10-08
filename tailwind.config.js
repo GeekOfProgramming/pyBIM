@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 module.exports = {
   darkMode: 'class',
   content: [
@@ -8,6 +10,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', ...fontFamily.sans],
+        mono: ['var(--font-jetbrains-mono)', ...fontFamily.mono],
+      },
+      fontSize: {
+        display: ['3.5rem', { lineHeight: '4rem', letterSpacing: '-0.025em' }],       // 56px / 64px
+        section: ['2.5rem', { lineHeight: '3rem', letterSpacing: '-0.02em' }],        // 40px / 48px
+        'section-sm': ['2rem', { lineHeight: '2.5rem', letterSpacing: '-0.015em' }], // 32px / 40px
+        'card-title': ['1.5rem', { lineHeight: '2rem', letterSpacing: '-0.01em' }],   // 24px / 32px
+        lead: ['1.125rem', { lineHeight: '1.75rem', letterSpacing: '-0.005em' }],     // 18px / 28px
+        body: ['1rem', { lineHeight: '1.625rem' }],                                   // 16px / 26px
+        'body-sm': ['0.875rem', { lineHeight: '1.375rem' }],                          // 14px / 22px
+        caption: ['0.75rem', { lineHeight: '1.125rem', letterSpacing: '0.04em' }],    // 12px / 18px
+        technical: ['0.6875rem', { lineHeight: '1rem', letterSpacing: '0.025em' }],   // 11px / 16px
+      },
       colors: {
         brand: {
           base: 'rgb(var(--brand-base) / <alpha-value>)',
