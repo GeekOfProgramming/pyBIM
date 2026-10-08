@@ -1,5 +1,5 @@
 {
-  "education.eyebrow": "BIM-Wissen und Weiterbildung",
+  "education.eyebrow": "pyBIM · BIM-Wissen und Weiterbildung",
   "education.statusBadge": "IN VORBEREITUNG",
   "education.headline": "BIM-Wissen. Demnächst verfügbar.",
   "education.headlinePart1": "BIM-Wissen.",
@@ -11,6 +11,7 @@
   "education.previewEyebrow": "THEMENBEREICHE",
   "education.previewHeading": "Geplante Themenbereiche",
   "education.moduleCount": "3 THEMENBEREICHE",
+  "education.previewFooter": "pyBIM · Wissensübersicht",
   "education.area1.title": "BIM-Tutorials und Leitfäden",
   "education.area1.desc": "Praxisnahe Lerninhalte für BIM-Workflows und Engineering-Software.",
   "education.area2.title": "Technische Einblicke und Notizen",

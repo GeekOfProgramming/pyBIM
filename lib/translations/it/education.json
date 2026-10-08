@@ -1,5 +1,5 @@
 {
-  "education.eyebrow": "Formazione e Risorse BIM",
+  "education.eyebrow": "pyBIM · Formazione e Risorse BIM",
   "education.statusBadge": "IN PREPARAZIONE",
   "education.headline": "Conoscenze per il BIM. Prossimamente.",
   "education.headlinePart1": "Conoscenze per il BIM.",
@@ -11,6 +11,7 @@
   "education.previewEyebrow": "AREE TEMATICHE",
   "education.previewHeading": "Aree Tematiche Previste",
   "education.moduleCount": "3 AREE TEMATICHE",
+  "education.previewFooter": "pyBIM · Anteprima Contenuti",
   "education.area1.title": "Tutorial e Guide BIM",
   "education.area1.desc": "Materiale pratico di apprendimento per i flussi di lavoro BIM e il software di ingegneria.",
   "education.area2.title": "Approfondimenti e Note Tecniche",
