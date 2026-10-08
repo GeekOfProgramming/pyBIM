@@ -66,6 +66,31 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Synchronize active mega-menu group with current route (e.g. Success Stories when on /projects)
+  useEffect(() => {
+    if (!pathname) return;
+    if (pathname.includes("/projects")) {
+      setActiveMegaMenuItem("success_stories");
+    } else if (pathname.includes("/about")) {
+      setActiveMegaMenuItem("who_we_are");
+    } else if (pathname.includes("/careers")) {
+      setActiveMegaMenuItem("work_with_us");
+    } else if (pathname.includes("/contact")) {
+      setActiveMegaMenuItem("contact_us");
+    }
+  }, [pathname]);
+
+  // Close mega menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && megaMenuOpen) {
+        setMegaMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [megaMenuOpen]);
+
   if (pathname?.startsWith("/admin")) return null;
 
   const logoSrc = (mounted && theme === "dark")
@@ -108,29 +133,47 @@ export default function Header() {
             onMouseEnter={() => setMegaMenuOpen(true)}
             onMouseLeave={() => setMegaMenuOpen(false)}
           >
-            <button className={`flex items-center gap-1 transition px-4 py-2 rounded-full font-medium ${megaMenuOpen ? 'text-brand-primary bg-brand-surface' : 'text-brand-textSecondary hover:text-brand-primary hover:bg-brand-surface'}`}>
+            <button 
+              id="pybim-megamenu-trigger"
+              aria-haspopup="true"
+              aria-expanded={megaMenuOpen}
+              className={`flex items-center gap-1 transition px-4 py-2 rounded-full font-medium ${megaMenuOpen ? 'text-brand-primary bg-brand-surface' : 'text-brand-textSecondary hover:text-brand-primary hover:bg-brand-surface'}`}
+            >
               {t("header.nav.pybim") || "pyBIM"} <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${megaMenuOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {/* Megamenu Dropdown */}
             {megaMenuOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px] z-[1000]">
+              <div 
+                id="pybim-megamenu-dropdown"
+                role="region"
+                aria-label="pyBIM Menu"
+                className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px] z-[1000]"
+              >
                 <div className="bg-white dark:bg-slate-900 border border-brand-border dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex ring-1 ring-black/5 dark:ring-white/5">
                   
                   {/* Left Column */}
                   <div className="w-[45%] bg-brand-surface dark:bg-slate-950/60 border-r border-brand-border dark:border-slate-800 p-4 flex flex-col gap-1">
                     {pyBimLeftMenu.map(item => {
-                      const isActiveLink = pathname === getLocalizedUrl(item.href);
+                      const localizedHref = getLocalizedUrl(item.href);
+                      const isCurrentPath = pathname === localizedHref || pathname.startsWith(localizedHref + "/") || pathname.startsWith(localizedHref + "#");
+                      const isSelectedGroup = activeMegaMenuItem === item.id;
                       return (
                         <Link
                           key={item.id}
-                          href={getLocalizedUrl(item.href)}
+                          href={localizedHref}
                           onMouseEnter={() => setActiveMegaMenuItem(item.id)}
                           onClick={() => setMegaMenuOpen(false)}
-                          className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${activeMegaMenuItem === item.id ? 'bg-white dark:bg-slate-800 shadow-sm text-brand-primary font-bold' : 'text-brand-textSecondary hover:bg-white dark:hover:bg-slate-800/60 hover:text-brand-primary font-medium'} ${isActiveLink && activeMegaMenuItem !== item.id ? 'text-brand-primary font-bold' : ''}`}
+                          className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${
+                            isSelectedGroup 
+                              ? 'bg-white dark:bg-slate-800 shadow-sm text-brand-primary font-bold' 
+                              : isCurrentPath
+                              ? 'text-brand-primary font-semibold bg-white/50 dark:bg-slate-800/40'
+                              : 'text-brand-textSecondary hover:bg-white dark:hover:bg-slate-800/60 hover:text-brand-primary font-medium'
+                          }`}
                         >
                           <span className="text-sm tracking-wide">{t(item.labelKey)}</span>
-                          <ChevronRight className={`w-4 h-4 transition-transform ${activeMegaMenuItem === item.id ? 'translate-x-1 text-brand-primary' : 'text-transparent'}`} />
+                          <ChevronRight className={`w-4 h-4 transition-transform ${isSelectedGroup ? 'translate-x-1 text-brand-primary' : 'text-transparent'}`} />
                         </Link>
                       );
                     })}

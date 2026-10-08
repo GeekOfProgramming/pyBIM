@@ -1,59 +1,42 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { allProjectsData } from "@/lib/data/projects-data";
-import ProjectDetailLayout from "@/components/pages/project-detail-layout";
-import { db } from "@/lib/db";
+import projectsDataJson from "@/lib/data/projects-data.json";
+
+// Set of known legacy placeholder slugs from bundled mock datasets
+const legacyPlaceholderSlugs = new Set([
+  ...(Array.isArray(allProjectsData) ? allProjectsData.map((p) => p.slug) : []),
+  ...(Array.isArray(projectsDataJson) ? projectsDataJson.map((p) => p.slug) : []),
+  "automated-clash-detection",
+  "commercial-tower-clash-detection",
+  "hospital-mep-coordination"
+]);
 
 export async function generateStaticParams() {
-  const locales = ["en", "it", "de"];
-  const projects = allProjectsData || [];
-  return locales.flatMap((locale) =>
-    projects.map((project) => ({
-      locale,
-      slug: project.slug
-    }))
-  );
-}
-
-async function getProject(slug) {
-  // First try DB
-  try {
-    const p = await db.project.findUnique({ where: { slug } });
-    if (p) {
-      return {
-        slug: p.slug,
-        title: { it: p.titleIt, en: p.titleEn },
-        category: { it: p.categoryIt, en: p.categoryEn },
-        date: { it: p.dateIt, en: p.dateEn },
-        location: { it: p.locationIt, en: p.locationEn },
-        client: { it: p.clientIt, en: p.clientEn },
-        image: p.image,
-        description: { it: p.descriptionIt, en: p.descriptionEn },
-        process: p.process ? JSON.parse(p.process) : [],
-        results: p.results ? JSON.parse(p.results) : [],
-        stats: p.stats ? JSON.parse(p.stats) : {},
-        challenges: p.challenges ? JSON.parse(p.challenges) : [],
-        faq: p.faq ? JSON.parse(p.faq) : []
-      };
-    }
-  } catch (err) {
-    // Ignore DB errors if we don't have a live DB yet
-  }
-  // Fallback to JS data
-  return allProjectsData.find((item) => item.slug === slug) || null;
+  // During the holding period, do not pre-render unverified project detail pages
+  return [];
 }
 
 export async function generateMetadata({ params }) {
-  const project = await getProject(params.slug);
-  if (!project) return {};
-  return {
-    title: project.title?.it || project.title?.en || project.slug,
-    description: project.description?.it || project.description?.en || ""
-  };
+  const slug = params?.slug || "";
+
+  if (legacyPlaceholderSlugs.has(slug)) {
+    return {
+      title: "Success Stories — In Preparation | pyBIM",
+      robots: { index: false, follow: true }
+    };
+  }
+  return {};
 }
 
 export default async function ProjectDetailPage({ params }) {
-  const project = await getProject(params.slug);
-  if (!project) notFound();
+  const locale = params?.locale || "en";
+  const slug = params?.slug || "";
 
-  return <ProjectDetailLayout project={project} />;
+  // Known legacy placeholder slugs temporarily redirect to localized Success Stories landing page
+  if (legacyPlaceholderSlugs.has(slug)) {
+    redirect(`/${locale}/projects#all-projects`);
+  }
+
+  // Unknown slugs return standard 404
+  notFound();
 }

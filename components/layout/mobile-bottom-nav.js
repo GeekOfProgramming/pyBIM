@@ -13,15 +13,15 @@ const mainNavItems = [
 ];
 
 const moreNavItems = [
-  { href: "/about", label: "Who we are", icon: Info },
-  { href: "/projects", label: "Success Stories", icon: Briefcase },
-  { href: "/careers", label: "Work with us", icon: Users },
-  { href: "/contact", label: "Contact us", icon: Phone }
+  { href: "/about", tKey: "header.mega.who_we_are", icon: Info },
+  { href: "/projects", tKey: "header.mega.success_stories", icon: Briefcase },
+  { href: "/careers", tKey: "header.mega.work_with_us", icon: Users },
+  { href: "/contact", tKey: "header.mega.contact_us", icon: Phone }
 ];
 
 export default function MobileBottomNav() {
   const [isOpen, setIsOpen] = useState(false);
-  const { t, language } = useLanguage();
+  const { t, language, getLocalizedUrl } = useLanguage();
   const pathname = usePathname();
 
   // Close the more menu when navigating
@@ -36,6 +36,18 @@ export default function MobileBottomNav() {
 
   if (isExcluded) return null;
 
+  const isItemActive = (href) => {
+    if (!pathname) return false;
+    const localized = getLocalizedUrl ? getLocalizedUrl(href) : href;
+    if (href === "/") {
+      return pathname === localized || pathname === "/";
+    }
+    return pathname === localized || pathname.startsWith(localized + "/");
+  };
+
+  const isMoreActive = isOpen || moreNavItems.some((item) => isItemActive(item.href));
+  const moreButtonText = language === "it" ? "Altro" : language === "de" ? "Mehr" : "More";
+
   return (
     <>
       {/* Slide-up "More" Menu Overlay */}
@@ -49,8 +61,9 @@ export default function MobileBottomNav() {
 
         <div className="flex flex-col gap-3">
           {moreNavItems.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive = isItemActive(item.href);
             const Icon = item.icon;
+            const label = item.tKey ? t(item.tKey) : item.label;
             return (
               <Link 
                 key={item.href} 
@@ -60,7 +73,7 @@ export default function MobileBottomNav() {
                 <div className={`flex h-10 w-10 items-center justify-center rounded-full ${isActive ? "bg-brand-accent/20 text-brand-accent" : "bg-white/10 text-white/60"}`}>
                   <Icon className="h-5 w-5" />
                 </div>
-                <span className="text-sm font-semibold">{item.label || t(item.tKey)}</span>
+                <span className="text-sm font-semibold">{label}</span>
               </Link>
             );
           })}
@@ -70,7 +83,7 @@ export default function MobileBottomNav() {
       {/* Main Bottom Tab Bar */}
       <div className="fixed bottom-4 left-4 right-4 z-50 flex items-center justify-around rounded-3xl border border-white/10 bg-[#09090b]/90 px-2 py-2 backdrop-blur-xl lg:hidden shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
         {mainNavItems.map((item) => {
-          const isActive = pathname === item.href;
+          const isActive = isItemActive(item.href);
           const Icon = item.icon;
           return (
             <Link 
@@ -90,23 +103,23 @@ export default function MobileBottomNav() {
         <button 
           onClick={() => setIsOpen(!isOpen)}
           className={`flex flex-col items-center justify-center w-14 gap-0.5 transition-colors ${
-            isOpen || moreNavItems.some((item) => pathname.startsWith(item.href)) 
+            isMoreActive 
               ? "text-brand-accent" 
               : "text-white/50 hover:text-white"
           }`}
         >
           <div className={`flex h-7 w-7 items-center justify-center rounded-full transition-all ${
-            isOpen || moreNavItems.some((item) => pathname.startsWith(item.href)) 
+            isMoreActive 
               ? "bg-brand-accent/20" 
               : "bg-transparent"
           }`}>
             <Menu className={`h-4 w-4 ${
-              isOpen || moreNavItems.some((item) => pathname.startsWith(item.href)) 
+              isMoreActive 
                 ? "scale-110" 
                 : ""
             }`} />
           </div>
-          <span className="text-[9px] font-medium tracking-wide">{language === "it" ? "Altro" : "More"}</span>
+          <span className="text-[9px] font-medium tracking-wide">{moreButtonText}</span>
         </button>
       </div>
     </>

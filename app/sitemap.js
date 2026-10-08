@@ -1,14 +1,12 @@
-import projectPages from "@/lib/data/projects-data.json";
-
 export default function sitemap() {
   const baseUrl = "https://pybim.com";
   const now = new Date();
   const locales = ["en", "it", "de"];
 
+  // Core indexable public routes (temporarily excluding noindex holding pages like /projects and /education)
   const coreRoutes = [
     "",
     "/services",
-    "/projects",
     "/careers",
     "/about",
     "/contact",
@@ -26,15 +24,6 @@ export default function sitemap() {
         lastModified: now,
         changeFrequency: "weekly",
         priority: route === "" ? 1.0 : 0.8
-      });
-    });
-
-    projectPages.forEach((project) => {
-      entries.push({
-        url: `${baseUrl}/${locale}/projects/${project.slug}`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.7
       });
     });
   });
