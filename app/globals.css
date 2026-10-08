@@ -39,7 +39,7 @@ html.dark {
 }
 
 body {
-  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
   background-color: rgb(var(--brand-base));
   color: rgb(var(--brand-textPrimary));
   transition: background-color 0.2s ease, color 0.2s ease;

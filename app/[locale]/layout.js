@@ -1,4 +1,5 @@
 import "../globals.css";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import GoToTop from "@/components/layout/go-to-top";
@@ -7,6 +8,21 @@ import { ThemeProvider } from "@/lib/ThemeContext";
 import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
 import IsolatedAnalytics from "@/components/ui/IsolatedAnalytics";
 import CookieConsent from "@/components/ui/CookieConsent";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+  weight: ["400", "500", "600"],
+});
+
 const siteUrl = "https://pybim.com";
 
 export async function generateMetadata({ params }) {
@@ -98,8 +114,8 @@ export function generateStaticParams() {
 
 export default function RootLayout({ children, params }) {
   return (
-    <html lang={params?.locale || "en"} suppressHydrationWarning>
-      <body className="min-h-screen bg-brand-base text-brand-textPrimary antialiased">
+    <html lang={params?.locale || "en"} className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+      <body className="font-sans min-h-screen bg-brand-base text-brand-textPrimary antialiased">
         <ThemeProvider>
           <LanguageProvider>
             <div className="fixed inset-0 -z-10 bg-brand-base" />

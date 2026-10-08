@@ -85,7 +85,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
             <div className="lg:col-span-7 flex flex-col justify-between">
               <div>
                 {/* Status Eyebrow Badge */}
-                <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-500/10 px-3.5 py-1 text-xs font-mono font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-5">
+                <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-500/10 px-3.5 py-1 text-caption font-mono font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-5">
                   <span 
                     className={`w-2 h-2 rounded-full bg-sky-500 ${!shouldReduceMotion ? "animate-pulse" : ""}`} 
                     aria-hidden="true" 
@@ -96,13 +96,13 @@ export default function ServicesEarlyAccessBanner({ data }) {
                 {/* Primary Headline (h2 for correct document heading hierarchy) */}
                 <h2 
                   id={`${baseId}-title`}
-                  className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
+                  className="text-section-sm lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
                 >
                   {banner.headline}
                 </h2>
 
                 {/* Descriptive Copy */}
-                <p className="text-sm sm:text-base text-brand-textSecondary font-medium leading-relaxed mb-8 max-w-2xl">
+                <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed mb-8 max-w-2xl">
                   {banner.description || banner.subtitle}
                 </p>
               </div>
@@ -112,7 +112,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                   <Link
                     href={banner.buttonHref || "/contact#priority-queue"}
-                    className="inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-7 py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-brand-primary/25 hover:shadow-lg hover:shadow-brand-primary/35 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
+                    className="inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-7 py-4 rounded-full text-caption font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-brand-primary/25 hover:shadow-lg hover:shadow-brand-primary/35 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
                   >
                     <span>{banner.buttonText}</span>
                     <ArrowRight 
@@ -124,7 +124,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
 
                 {/* Supporting Microcopy */}
                 {banner.microcopy && (
-                  <p className="text-[11px] sm:text-xs text-brand-textSecondary/80 font-medium leading-relaxed tracking-wide mt-3 max-w-xl">
+                  <p className="text-caption text-brand-textSecondary/80 font-medium leading-relaxed tracking-wide mt-3 max-w-xl">
                     {banner.microcopy}
                   </p>
                 )}
@@ -143,11 +143,11 @@ export default function ServicesEarlyAccessBanner({ data }) {
                 <div className="flex items-center justify-between gap-2 pb-4 mb-4 border-b border-brand-border/70">
                   <div className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" aria-hidden="true" />
-                    <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-brand-primary">
+                    <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-primary">
                       {diagram.conceptualArchitecture}
                     </span>
                   </div>
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-brand-textSecondary/70 px-2 py-0.5 rounded bg-brand-surface border border-brand-border/60">
+                  <span className="text-technical font-mono uppercase tracking-widest text-brand-textSecondary/70 px-2 py-0.5 rounded bg-brand-surface border border-brand-border/60">
                     {diagram.plannedInfrastructure}
                   </span>
                 </div>
@@ -162,15 +162,15 @@ export default function ServicesEarlyAccessBanner({ data }) {
                         <Database className="w-4 h-4 text-brand-primary" aria-hidden="true" />
                       </div>
                       <div>
-                        <span className="block text-xs font-mono font-bold tracking-tight text-brand-textPrimary">
+                        <span className="block text-caption font-mono font-bold tracking-tight text-brand-textPrimary">
                           {diagram.engineeringData}
                         </span>
-                        <span className="block text-[10px] text-brand-textSecondary font-medium">
+                        <span className="block text-technical font-mono text-brand-textSecondary font-medium">
                           {diagram.engineeringDataSub}
                         </span>
                       </div>
                     </div>
-                    <span className="text-[9px] font-mono text-brand-textSecondary/60 uppercase">
+                    <span className="text-technical font-mono text-brand-textSecondary/60 uppercase">
                       {diagram.inBadge || "INPUT // 01"}
                     </span>
                   </div>
@@ -199,17 +199,17 @@ export default function ServicesEarlyAccessBanner({ data }) {
                           <Cpu className="w-5 h-5" aria-hidden="true" />
                         </div>
                         <div>
-                          <span className="block text-xs font-mono font-extrabold tracking-tight text-brand-textPrimary">
+                          <span className="block text-caption font-mono font-extrabold tracking-tight text-brand-textPrimary">
                             {diagram.privateAiCore}
                           </span>
-                          <span className="block text-[10px] text-brand-textSecondary font-medium">
+                          <span className="block text-technical font-mono text-brand-textSecondary font-medium">
                             {diagram.privateAiCoreSub}
                           </span>
                         </div>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <ShieldCheck className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
-                        <span className="text-[9px] font-mono font-bold text-brand-primary uppercase">
+                        <span className="text-technical font-mono font-bold text-brand-primary uppercase">
                           {diagram.coreBadge || "LOCAL CONTROL · CONCEPT"}
                         </span>
                       </div>
@@ -239,15 +239,15 @@ export default function ServicesEarlyAccessBanner({ data }) {
                         <Workflow className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
                       </div>
                       <div>
-                        <span className="block text-xs font-mono font-bold tracking-tight text-brand-textPrimary">
+                        <span className="block text-caption font-mono font-bold tracking-tight text-brand-textPrimary">
                           {diagram.bimWorkflows}
                         </span>
-                        <span className="block text-[10px] text-brand-textSecondary font-medium">
+                        <span className="block text-technical font-mono text-brand-textSecondary font-medium">
                           {diagram.bimWorkflowsSub}
                         </span>
                       </div>
                     </div>
-                    <span className="text-[9px] font-mono text-brand-textSecondary/60 uppercase">
+                    <span className="text-technical font-mono text-brand-textSecondary/60 uppercase">
                       {diagram.outBadge || "OUTPUT // 02"}
                     </span>
                   </div>

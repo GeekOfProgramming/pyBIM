@@ -70,178 +70,167 @@ export default function ServicesExecutionPipeline({ data }) {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
-        {/* Desktop Split Layout (Option A): Left Anchor + Right 2x2 Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-start">
-          
-          {/* Left Area (~35-40% on Desktop): Section Intro & Compact Process Timeline */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <motion.div
-              initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <span className="h-px bg-brand-primary w-8 md:w-12" aria-hidden="true" />
-                <span className="text-xs font-mono font-bold text-brand-primary tracking-widest uppercase">
-                  {pipeline.tag}
+        {/* Full-Width Section Header */}
+        <motion.div
+          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="max-w-4xl mb-10 lg:mb-12"
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <span className="h-px bg-brand-primary w-10 md:w-14" aria-hidden="true" />
+            <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
+              {pipeline.tag}
+            </span>
+          </div>
+
+          <h2 
+            id={`${baseId}-title`}
+            className="text-section-sm lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
+          >
+            {pipeline.headline}
+          </h2>
+
+          <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed max-w-3xl">
+            {pipeline.subtitle}
+          </p>
+        </motion.div>
+
+        {/* Compact Horizontal 4-Stage Process Overview (Desktop / Tablet Only) */}
+        <div className="hidden md:block mb-10 lg:mb-12">
+          <div className="rounded-2xl bg-brand-card border border-brand-border p-4 lg:p-5 shadow-sm relative overflow-hidden">
+            <div className="flex items-center justify-between pb-3 mb-3.5 border-b border-brand-border/60">
+              <div className="flex items-center gap-2">
+                <Workflow className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
+                <span className="text-technical font-mono font-bold text-brand-textPrimary uppercase tracking-wider">
+                  {labels.mapTitle}
                 </span>
               </div>
+              <span className="text-technical font-mono font-medium px-2 py-0.5 rounded bg-brand-surface border border-brand-border text-brand-textSecondary">
+                {labels.illustrativeLabel}
+              </span>
+            </div>
 
-              <h2 
-                id={`${baseId}-title`}
-                className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold text-brand-textPrimary tracking-tight mb-4 leading-tight"
-              >
-                {pipeline.headline}
-              </h2>
+            <div className="grid grid-cols-4 gap-4 relative">
+              {steps.map((step, idx) => (
+                <div key={idx} className="relative flex items-center gap-3 group">
+                  {/* Step Connector */}
+                  {idx < steps.length - 1 && (
+                    <div 
+                      className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-[2px] bg-brand-border pointer-events-none z-0" 
+                      aria-hidden="true" 
+                    />
+                  )}
 
-              <p className="text-sm sm:text-base text-brand-textSecondary font-medium leading-relaxed mb-6 lg:mb-8">
-                {pipeline.subtitle}
-              </p>
-
-              {/* Compact Technical Process Map - Desktop Only to prevent mobile duplication */}
-              <div className="hidden lg:block rounded-2xl bg-brand-card border border-brand-border p-5 shadow-sm relative overflow-hidden">
-                <div className="flex items-center justify-between pb-3 mb-3.5 border-b border-brand-border/60">
-                  <div className="flex items-center gap-2">
-                    <Workflow className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
-                    <span className="text-[11px] font-mono font-bold text-brand-textPrimary uppercase tracking-wider">
-                      {labels.mapTitle}
+                  {/* Step Marker */}
+                  <div className="w-8 h-8 rounded-lg bg-brand-surface border border-brand-border group-hover:border-brand-primary/50 flex items-center justify-center shrink-0 z-10 transition-colors">
+                    <span className="text-technical font-mono font-bold text-brand-textPrimary">
+                      {step.num}
                     </span>
                   </div>
-                  <span className="text-[9px] font-mono font-medium px-2 py-0.5 rounded bg-brand-surface border border-brand-border text-brand-textSecondary">
-                    {labels.illustrativeLabel}
-                  </span>
+
+                  {/* Step Label */}
+                  <div className="min-w-0 flex-1">
+                    <span className="text-technical font-mono font-semibold text-brand-textSecondary block uppercase tracking-wider truncate">
+                      {step.mapLabel || step.title}
+                    </span>
+                  </div>
                 </div>
-
-                {/* Vertical Process Steps Tracker */}
-                <div className="space-y-3 relative">
-                  {steps.map((step, idx) => (
-                    <div key={idx} className="relative flex items-center gap-3 group">
-                      {/* Connecting Line between steps */}
-                      {idx < steps.length - 1 && (
-                        <div 
-                          className="absolute left-3.5 top-7 bottom-[-12px] w-[2px] bg-brand-border pointer-events-none" 
-                          aria-hidden="true"
-                        />
-                      )}
-
-                      {/* Step Marker */}
-                      <div className="w-7 h-7 rounded-lg bg-brand-surface border border-brand-border group-hover:border-brand-primary/50 flex items-center justify-center shrink-0 z-10 transition-colors">
-                        <span className="text-[11px] font-mono font-bold text-brand-textPrimary">
-                          {step.num}
-                        </span>
-                      </div>
-
-                      {/* Step Label */}
-                      <div className="min-w-0 flex-1">
-                        <span className="text-[11px] font-mono font-semibold text-brand-textSecondary block uppercase tracking-wider truncate">
-                          {step.mapLabel || step.title}
-                        </span>
-                      </div>
-
-                      <div className="text-[9px] font-mono text-brand-textSecondary/60">
-                        0{idx + 1}/04
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right Area (~60-65% on Desktop): Four Stage Panels in a 2x2 Grid */}
-          <div className="lg:col-span-7">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-4.5 items-stretch">
-              {steps.map((step, idx) => {
-                const artifact = step.artifact || {};
-                const actionLabel = artifact.actionLabel || "INSPECT";
-
-                return (
-                  <motion.article
-                    key={idx}
-                    initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-40px" }}
-                    transition={{ duration: 0.45, delay: idx * 0.08, ease: "easeOut" }}
-                    whileHover={shouldReduceMotion ? {} : { y: -3 }}
-                    className="rounded-2xl bg-brand-card border border-brand-border p-5 sm:p-5.5 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all duration-300 relative group"
-                  >
-                    <div>
-                      {/* Top Bar: Icon + Stage Indicator + Stage Index Badge */}
-                      <div className="flex items-center justify-between mb-3.5">
-                        <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                            {getStageIcon(idx)}
-                          </div>
-                          <span className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-wider truncate max-w-[120px] sm:max-w-none">
-                            {step.mapLabel || `STAGE 0${idx + 1}`}
-                          </span>
-                        </div>
-
-                        <span className="text-[11px] font-mono font-bold text-brand-textSecondary px-2 py-0.5 rounded-md bg-brand-surface border border-brand-border shrink-0">
-                          {step.num}
-                        </span>
-                      </div>
-
-                      {/* Stage Heading */}
-                      <h3 className="text-base sm:text-lg font-bold text-brand-textPrimary mb-2 tracking-tight leading-snug">
-                        {step.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-xs text-brand-textSecondary font-medium leading-relaxed mb-4">
-                        {step.desc}
-                      </p>
-                    </div>
-
-                    <div>
-                      {/* Typical Output Box */}
-                      {step.output && (
-                        <div className="mb-3 p-2.5 rounded-xl bg-brand-surface border border-brand-border flex items-start gap-2">
-                          <div className="w-4 h-4 rounded bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                            <Check className="w-2.5 h-2.5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
-                          </div>
-                          <div className="min-w-0">
-                            <span className="text-[9px] font-mono font-bold text-brand-textSecondary block uppercase tracking-wider">
-                              {labels.outputLabel}
-                            </span>
-                            <span className="text-[11px] font-semibold text-brand-textPrimary block truncate">
-                              {step.output}
-                            </span>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Compact Illustrative Artifact Block */}
-                      <div 
-                        className="rounded-xl border border-brand-border/70 bg-brand-surface/70 p-2.5 overflow-hidden"
-                        aria-hidden="true"
-                      >
-                        <div className="flex items-center justify-between text-[9px] font-mono font-semibold text-brand-textSecondary pb-1.5 mb-1.5 border-b border-brand-border/60">
-                          <span className="uppercase truncate max-w-[130px]">{artifact.heading || "STAGE ARTIFACT"}</span>
-                          <span className="text-brand-primary font-bold shrink-0">{artifact.badge || `PHASE // 0${idx + 1}`}</span>
-                        </div>
-
-                        {/* Artifact Tags with Localized Action Label */}
-                        <div className="space-y-1 text-[9px] font-mono">
-                          {(artifact.tags || []).slice(0, 3).map((tag, tIdx) => (
-                            <div key={tIdx} className="flex items-center justify-between bg-brand-card px-2 py-1 rounded border border-brand-border/50">
-                              <span className="text-brand-textSecondary truncate max-w-[130px] sm:max-w-[140px]">{tag}</span>
-                              <span className={`text-[8px] font-bold uppercase shrink-0 ${getActionColor(idx)}`}>
-                                {actionLabel}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                  </motion.article>
-                );
-              })}
+              ))}
             </div>
           </div>
+        </div>
 
+        {/* Full-Width 2x2 Grid for the Four Stage Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+          {steps.map((step, idx) => {
+            const artifact = step.artifact || {};
+            const actionLabel = artifact.actionLabel || "INSPECT";
+
+            return (
+              <motion.article
+                key={idx}
+                initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: idx * 0.08, ease: "easeOut" }}
+                whileHover={shouldReduceMotion ? {} : { y: -3 }}
+                className="rounded-3xl bg-brand-card border border-brand-border p-6 lg:p-7 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all duration-300 relative group"
+              >
+                <div>
+                  {/* Top Bar: Icon + Stage Indicator + Stage Index Badge */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-9 h-9 rounded-xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                        {getStageIcon(idx)}
+                      </div>
+                      <span className="text-technical font-mono font-bold text-brand-primary uppercase tracking-wider">
+                        {step.mapLabel || `STAGE 0${idx + 1}`}
+                      </span>
+                    </div>
+
+                    <span className="text-technical font-mono font-bold text-brand-textSecondary px-2 py-0.5 rounded-md bg-brand-surface border border-brand-border shrink-0">
+                      {step.num}
+                    </span>
+                  </div>
+
+                  {/* Stage Heading */}
+                  <h3 className="text-lg sm:text-xl lg:text-card-title font-bold text-brand-textPrimary mb-2.5 tracking-tight leading-snug">
+                    {step.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-body-sm text-brand-textSecondary font-medium leading-relaxed mb-6">
+                    {step.desc}
+                  </p>
+                </div>
+
+                <div>
+                  {/* Typical Output Box (No truncate: allows full multi-line wrapping) */}
+                  {step.output && (
+                    <div className="mb-4 p-3 rounded-xl bg-brand-surface border border-brand-border flex items-start gap-2.5">
+                      <div className="w-4 h-4 rounded bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                        <Check className="w-2.5 h-2.5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <span className="text-technical font-mono font-bold text-brand-textSecondary block uppercase tracking-wider mb-0.5">
+                          {labels.outputLabel}
+                        </span>
+                        <span className="text-body-sm font-semibold text-brand-textPrimary block break-words leading-snug">
+                          {step.output}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Compact Illustrative Artifact Block */}
+                  <div 
+                    className="rounded-xl border border-brand-border/70 bg-brand-surface/70 p-3 overflow-hidden"
+                    aria-hidden="true"
+                  >
+                    <div className="flex items-center justify-between text-technical font-mono font-semibold text-brand-textSecondary pb-2 mb-2 border-b border-brand-border/60">
+                      <span className="uppercase tracking-wider">{artifact.heading || "STAGE ARTIFACT"}</span>
+                      <span className="text-brand-primary font-bold shrink-0">{artifact.badge || `PHASE // 0${idx + 1}`}</span>
+                    </div>
+
+                    {/* Artifact Tags with Localized Action Label */}
+                    <div className="space-y-1.5 text-technical font-mono">
+                      {(artifact.tags || []).slice(0, 3).map((tag, tIdx) => (
+                        <div key={tIdx} className="flex items-center justify-between bg-brand-card px-2.5 py-1.5 rounded border border-brand-border/50 gap-2">
+                          <span className="text-brand-textSecondary truncate">{tag}</span>
+                          <span className={`font-bold uppercase shrink-0 ${getActionColor(idx)}`}>
+                            {actionLabel}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+              </motion.article>
+            );
+          })}
         </div>
 
       </div>

@@ -100,17 +100,17 @@ export default function ServicesExecutionRoadmap({ data }) {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px bg-brand-primary w-10 md:w-14" aria-hidden="true" />
-            <span className="text-xs md:text-sm font-mono font-bold text-brand-primary tracking-widest uppercase">
+            <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
               {roadmap.tag}
             </span>
           </div>
           <h2 
             id={`${baseId}-headline`}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
+            className="text-section-sm lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
           >
             {roadmap.headline}
           </h2>
-          <p className="text-base sm:text-lg text-brand-textSecondary font-medium leading-relaxed">
+          <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed">
             {roadmap.subtitle}
           </p>
         </motion.div>
@@ -165,7 +165,7 @@ export default function ServicesExecutionRoadmap({ data }) {
                   >
                     {/* Node Circle */}
                     <div
-                      className={`w-12 h-12 rounded-2xl flex items-center justify-center font-mono text-xs font-bold transition-all duration-300 relative z-10 ${
+                      className={`w-12 h-12 rounded-2xl flex items-center justify-center font-mono text-caption font-bold transition-all duration-300 relative z-10 ${
                         isSelected
                           ? "bg-brand-primary text-white shadow-lg shadow-brand-primary/30 ring-4 ring-brand-primary/20 scale-110"
                           : isAvailable
@@ -188,14 +188,14 @@ export default function ServicesExecutionRoadmap({ data }) {
 
                     {/* Node Meta Label */}
                     <div className="mt-3">
-                      <span className={`block text-[11px] font-mono uppercase tracking-widest transition-colors ${
+                      <span className={`block text-technical font-mono uppercase tracking-widest transition-colors ${
                         isSelected 
                           ? "text-brand-primary font-bold" 
                           : "text-brand-textSecondary group-hover:text-brand-textPrimary font-semibold"
                       }`}>
                         {card.phase || `PHASE 0${idx + 1}`}
                       </span>
-                      <span className={`block text-xs font-bold tracking-tight transition-colors line-clamp-1 ${
+                      <span className={`block text-caption font-bold tracking-tight transition-colors line-clamp-1 ${
                         isSelected ? "text-brand-textPrimary" : "text-brand-textSecondary"
                       }`}>
                         {card.title}
@@ -238,7 +238,7 @@ export default function ServicesExecutionRoadmap({ data }) {
               >
                 {/* Featured Badge for Phase 01 */}
                 {isHighlight && (
-                  <div className="absolute -top-3.5 right-5 sm:right-6 bg-gradient-to-r from-brand-primary to-blue-600 text-white text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md shadow-brand-primary/20 flex items-center gap-1.5">
+                  <div className="absolute -top-3.5 right-5 sm:right-6 bg-gradient-to-r from-brand-primary to-blue-600 text-white text-technical font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md shadow-brand-primary/20 flex items-center gap-1.5">
                     <Sparkles className="w-3 h-3 text-white" aria-hidden="true" />
                     <span>{labels.featuredOffering || "FEATURED OFFERING"}</span>
                   </div>
@@ -261,10 +261,10 @@ export default function ServicesExecutionRoadmap({ data }) {
                         {getPhaseIcon(idx)}
                       </div>
                       <div>
-                        <span className="block text-[11px] font-mono font-bold uppercase tracking-widest text-brand-primary">
+                        <span className="block text-technical font-mono font-bold uppercase tracking-widest text-brand-primary">
                           {card.phase || `PHASE 0${idx + 1}`}
                         </span>
-                        <span className="text-[10px] font-mono text-brand-textSecondary uppercase">
+                        <span className="text-technical font-mono text-brand-textSecondary uppercase">
                           {idx === 0 
                             ? (labels.currentOffering || "CURRENT OFFERING") 
                             : idx === 1 
@@ -276,7 +276,7 @@ export default function ServicesExecutionRoadmap({ data }) {
 
                     {/* Status Badge */}
                     <span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider shrink-0 ${
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-technical font-mono font-bold uppercase tracking-wider shrink-0 ${
                         isAvailable
                           ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30"
                           : idx === 1
@@ -297,26 +297,26 @@ export default function ServicesExecutionRoadmap({ data }) {
                   {/* Title & Concise Description */}
                   <h3 
                     id={`${baseId}-card-title-${idx}`}
-                    className="text-xl sm:text-2xl font-bold text-brand-textPrimary tracking-tight mb-3"
+                    className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-3"
                   >
                     {card.title}
                   </h3>
                   
-                  <p className="text-xs sm:text-sm text-brand-textSecondary font-medium leading-relaxed mb-6">
+                  <p className="text-body-sm text-brand-textSecondary font-medium leading-relaxed mb-6">
                     {card.description}
                   </p>
 
                   {/* 3 Structured Information Blocks: Outcome, Execution, Impact */}
-                  <div className="space-y-4 pt-6 border-t border-brand-border text-sm">
+                  <div className="space-y-4 pt-6 border-t border-brand-border text-body-sm">
                     {/* The Outcome */}
                     <div className="group/item">
                       <div className="flex items-center gap-1.5 mb-1">
                         <Target className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
-                        <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
+                        <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
                           {labels.outcome}:
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-brand-textSecondary font-medium leading-relaxed pl-5">
+                      <p className="text-body-sm text-brand-textSecondary font-medium leading-relaxed pl-5">
                         {card.outcome}
                       </p>
                     </div>
@@ -325,11 +325,11 @@ export default function ServicesExecutionRoadmap({ data }) {
                     <div className="group/item">
                       <div className="flex items-center gap-1.5 mb-1">
                         <Terminal className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
-                        <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
+                        <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
                           {labels.execution}:
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-brand-textSecondary font-medium leading-relaxed pl-5">
+                      <p className="text-body-sm text-brand-textSecondary font-medium leading-relaxed pl-5">
                         {card.execution}
                       </p>
                     </div>
@@ -338,11 +338,11 @@ export default function ServicesExecutionRoadmap({ data }) {
                     <div className="group/item">
                       <div className="flex items-center gap-1.5 mb-1">
                         <Zap className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
-                        <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
+                        <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
                           {labels.impact}:
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-brand-textSecondary font-medium leading-relaxed pl-5">
+                      <p className="text-body-sm text-brand-textSecondary font-medium leading-relaxed pl-5">
                         {card.impact}
                       </p>
                     </div>
@@ -354,7 +354,7 @@ export default function ServicesExecutionRoadmap({ data }) {
                   {isHighlight ? (
                     <Link
                       href={card.ctaHref || "/contact#audit"}
-                      className="w-full inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-5 sm:px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-brand-primary/25 hover:shadow-lg hover:shadow-brand-primary/35 group/cta"
+                      className="w-full inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-5 sm:px-6 py-3.5 rounded-full text-caption font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-brand-primary/25 hover:shadow-lg hover:shadow-brand-primary/35 group/cta"
                     >
                       <span>{card.ctaText || "Discuss Your Project"}</span>
                       <ArrowRight className="w-3.5 h-3.5 ml-2 transition-transform duration-200 group-hover/cta:translate-x-1" aria-hidden="true" />
@@ -362,7 +362,7 @@ export default function ServicesExecutionRoadmap({ data }) {
                   ) : (
                     <Link
                       href={card.ctaHref || "/contact#priority-queue"}
-                      className="w-full inline-flex items-center justify-center border border-brand-border bg-brand-surface hover:bg-brand-card hover:border-brand-primary/40 text-brand-textSecondary hover:text-brand-primary px-5 sm:px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 group/cta"
+                      className="w-full inline-flex items-center justify-center border border-brand-border bg-brand-surface hover:bg-brand-card hover:border-brand-primary/40 text-brand-textSecondary hover:text-brand-primary px-5 sm:px-6 py-3.5 rounded-full text-caption font-bold uppercase tracking-widest transition-all duration-300 group/cta"
                     >
                       <span>{card.ctaText || "Join Priority Queue"}</span>
                       <ArrowRight className="w-3.5 h-3.5 ml-2 transition-transform duration-200 group-hover/cta:translate-x-1" aria-hidden="true" />
