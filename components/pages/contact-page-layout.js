@@ -101,7 +101,7 @@ export default function ContactPageLayout() {
             </div>
 
             <div className="lg:col-span-7">
-              <div id="audit" className="relative rounded-[2.5rem] bg-white dark:bg-slate-900 p-8 md:p-12 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-brand-border/60 dark:border-slate-800 overflow-hidden transition-colors">
+              <div className="relative rounded-[2.5rem] bg-white dark:bg-slate-900 p-8 md:p-12 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-brand-border/60 dark:border-slate-800 overflow-hidden transition-colors">
                 {/* Decorative background gradients */}
                 <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-brand-primary/5 blur-3xl pointer-events-none" />
                 <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-brand-accent/5 blur-3xl pointer-events-none" />

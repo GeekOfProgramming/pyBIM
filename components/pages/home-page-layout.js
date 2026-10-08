@@ -12,14 +12,30 @@ import FinalProjectCtaBanner from "@/components/sections/home/FinalProjectCtaBan
 export default function HomePageLayout() {
   return (
     <div className="w-full bg-white dark:bg-brand-base text-gray-900 dark:text-white font-sans">
-      <HeroSection />
-      <ParadigmShift />
-      <DeploymentModels />
-      <ExecutionPipeline />
-      <SystemBenchmarks />
-      <CoreArchitects />
-      <StrategicEcosystem />
-      <FinalProjectCtaBanner />
+      <div id="hero" className="scroll-mt-28">
+        <HeroSection />
+      </div>
+      <div id="paradigm-shift" className="scroll-mt-28">
+        <ParadigmShift />
+      </div>
+      <div id="deployment-models" className="scroll-mt-28">
+        <DeploymentModels />
+      </div>
+      <div id="execution-pipeline" className="scroll-mt-28">
+        <ExecutionPipeline />
+      </div>
+      <div id="system-benchmarks" className="scroll-mt-28">
+        <SystemBenchmarks />
+      </div>
+      <div id="core-architects" className="scroll-mt-28">
+        <CoreArchitects />
+      </div>
+      <div id="strategic-ecosystem" className="scroll-mt-28">
+        <StrategicEcosystem />
+      </div>
+      <div id="project-consultation" className="scroll-mt-28">
+        <FinalProjectCtaBanner />
+      </div>
     </div>
   );
 }

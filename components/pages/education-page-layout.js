@@ -70,7 +70,7 @@ export default function EducationPageLayout() {
   };
 
   return (
-    <div className="relative w-full min-h-[calc(100vh-5rem)] bg-brand-base flex flex-col justify-center overflow-hidden">
+    <div id="education-intro" className="scroll-mt-28 relative w-full min-h-[calc(100vh-5rem)] bg-brand-base flex flex-col justify-center overflow-hidden">
       
       {/* ================= LAYER A & B: TECHNICAL ARCHITECTURAL DRAFTING CANVAS ================= */}
       {/* Precision Drafting Grid with Dual Minor/Major Lines & Coordinate Crosshairs */}
@@ -361,10 +361,11 @@ export default function EducationPageLayout() {
 
           {/* ================= RIGHT COLUMN: Architectural Knowledge Blueprint Sheet ================= */}
           <motion.div 
+            id="knowledge-areas"
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 w-full"
+            className="scroll-mt-28 lg:col-span-5 w-full"
             role="region"
             aria-labelledby={`${baseId}-preview-heading`}
           >
