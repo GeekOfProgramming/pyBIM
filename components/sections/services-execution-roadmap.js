@@ -10,8 +10,7 @@ import {
   Target, 
   Terminal, 
   Zap, 
-  Sparkles,
-  Layers
+  Sparkles 
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -28,7 +27,12 @@ export default function ServicesExecutionRoadmap({ data }) {
     labels: {
       outcome: "The Outcome",
       execution: "The Execution",
-      impact: "The Impact"
+      impact: "The Impact",
+      featuredOffering: "FEATURED OFFERING",
+      currentOffering: "CURRENT OFFERING",
+      softwareRoadmap: "SOFTWARE ROADMAP",
+      enterpriseRoadmap: "ENTERPRISE ROADMAP",
+      timelineAriaLabel: "Roadmap progression phases"
     },
     cards: []
   };
@@ -36,7 +40,12 @@ export default function ServicesExecutionRoadmap({ data }) {
   const labels = roadmap.labels || {
     outcome: "The Outcome",
     execution: "The Execution",
-    impact: "The Impact"
+    impact: "The Impact",
+    featuredOffering: "FEATURED OFFERING",
+    currentOffering: "CURRENT OFFERING",
+    softwareRoadmap: "SOFTWARE ROADMAP",
+    enterpriseRoadmap: "ENTERPRISE ROADMAP",
+    timelineAriaLabel: "Roadmap progression phases"
   };
 
   const cards = roadmap.cards || [];
@@ -44,12 +53,12 @@ export default function ServicesExecutionRoadmap({ data }) {
   const getPhaseIcon = (index) => {
     switch (index) {
       case 0:
-        return <Boxes className="w-6 h-6 text-brand-primary" />;
+        return <Boxes className="w-5 h-5 lg:w-6 lg:h-6 text-brand-primary" />;
       case 1:
-        return <CloudCog className="w-6 h-6 text-sky-500 dark:text-sky-400" />;
+        return <CloudCog className="w-5 h-5 lg:w-6 lg:h-6 text-sky-500 dark:text-sky-400" />;
       case 2:
       default:
-        return <Server className="w-6 h-6 text-teal-500 dark:text-teal-400" />;
+        return <Server className="w-5 h-5 lg:w-6 lg:h-6 text-teal-500 dark:text-teal-400" />;
     }
   };
 
@@ -106,12 +115,12 @@ export default function ServicesExecutionRoadmap({ data }) {
           </p>
         </motion.div>
 
-        {/* Desktop / Tablet Interactive Roadmap Progression Timeline */}
+        {/* Desktop & Tablet Interactive Roadmap Progression Timeline */}
         <div className="hidden md:block mb-12">
           <div 
             className="relative"
             role="tablist"
-            aria-label="Roadmap progression phases"
+            aria-label={labels.timelineAriaLabel || "Roadmap progression phases"}
           >
             {/* Horizontal Track Line */}
             <div 
@@ -135,7 +144,7 @@ export default function ServicesExecutionRoadmap({ data }) {
             </div>
 
             {/* Three Technical Milestone Nodes */}
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-3 gap-5 lg:gap-8">
               {cards.map((card, idx) => {
                 const isSelected = activePhaseIndex === idx;
                 const isAvailable = card.isPrimary || card.statusTag === "AVAILABLE NOW" || card.statusTag === "DISPONIBILE ORA" || card.statusTag === "JETZT VERFÜGBAR";
@@ -148,6 +157,7 @@ export default function ServicesExecutionRoadmap({ data }) {
                     role="tab"
                     aria-selected={isSelected}
                     aria-controls={`${baseId}-card-${idx}`}
+                    aria-label={`${card.phase || `Phase 0${idx + 1}`}: ${card.title}`}
                     tabIndex={isSelected ? 0 : -1}
                     onClick={() => setActivePhaseIndex(idx)}
                     onKeyDown={(e) => handleKeyDown(e, idx)}
@@ -168,7 +178,9 @@ export default function ServicesExecutionRoadmap({ data }) {
                       {/* Active indicator dot */}
                       {isAvailable && (
                         <span 
-                          className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-brand-surface ring-1 ring-emerald-500/40"
+                          className={`absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-brand-surface ring-1 ring-emerald-500/40 ${
+                            !shouldReduceMotion ? "animate-pulse" : ""
+                          }`}
                           aria-hidden="true"
                         />
                       )}
@@ -183,7 +195,7 @@ export default function ServicesExecutionRoadmap({ data }) {
                       }`}>
                         {card.phase || `PHASE 0${idx + 1}`}
                       </span>
-                      <span className={`block text-xs font-bold tracking-tight transition-colors ${
+                      <span className={`block text-xs font-bold tracking-tight transition-colors line-clamp-1 ${
                         isSelected ? "text-brand-textPrimary" : "text-brand-textSecondary"
                       }`}>
                         {card.title}
@@ -196,8 +208,8 @@ export default function ServicesExecutionRoadmap({ data }) {
           </div>
         </div>
 
-        {/* Three Phase Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        {/* Three Phase Cards Grid (Aligned with Tablet md:grid-cols-3 and Desktop) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8 items-stretch">
           {cards.map((card, idx) => {
             const isHighlight = card.isPrimary;
             const isSelected = activePhaseIndex === idx;
@@ -207,8 +219,7 @@ export default function ServicesExecutionRoadmap({ data }) {
               <motion.article
                 key={idx}
                 id={`${baseId}-card-${idx}`}
-                role="tabpanel"
-                aria-label={`${card.phase || `Phase 0${idx + 1}`}: ${card.title}`}
+                aria-labelledby={`${baseId}-card-title-${idx}`}
                 tabIndex={0}
                 onMouseEnter={() => setActivePhaseIndex(idx)}
                 onFocus={() => setActivePhaseIndex(idx)}
@@ -217,7 +228,7 @@ export default function ServicesExecutionRoadmap({ data }) {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: idx * 0.12, ease: "easeOut" }}
                 whileHover={shouldReduceMotion ? {} : { y: -6 }}
-                className={`group rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 relative focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${
+                className={`group rounded-3xl p-5 sm:p-6 lg:p-8 flex flex-col justify-between transition-all duration-300 relative focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${
                   isHighlight
                     ? "bg-brand-card border-2 border-brand-primary shadow-xl shadow-brand-primary/10 ring-1 ring-brand-primary/30"
                     : isSelected
@@ -227,18 +238,18 @@ export default function ServicesExecutionRoadmap({ data }) {
               >
                 {/* Featured Badge for Phase 01 */}
                 {isHighlight && (
-                  <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-brand-primary to-blue-600 text-white text-[10px] font-mono font-bold uppercase tracking-widest px-3.5 py-1 rounded-full shadow-md shadow-brand-primary/20 flex items-center gap-1.5">
+                  <div className="absolute -top-3.5 right-5 sm:right-6 bg-gradient-to-r from-brand-primary to-blue-600 text-white text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md shadow-brand-primary/20 flex items-center gap-1.5">
                     <Sparkles className="w-3 h-3 text-white" aria-hidden="true" />
-                    <span>FEATURED OFFERING</span>
+                    <span>{labels.featuredOffering || "FEATURED OFFERING"}</span>
                   </div>
                 )}
 
                 <div>
                   {/* Top Bar: Phase Identifier, Icon & Status Badge */}
-                  <div className="flex items-center justify-between gap-3 mb-6">
-                    <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-between gap-2 sm:gap-3 mb-6">
+                    <div className="flex items-center gap-2.5 sm:gap-3">
                       <div 
-                        className={`w-11 h-11 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105 ${
+                        className={`w-10 h-10 lg:w-11 lg:h-11 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105 ${
                           isHighlight 
                             ? "bg-brand-primary/10 border border-brand-primary/20" 
                             : idx === 1
@@ -254,14 +265,18 @@ export default function ServicesExecutionRoadmap({ data }) {
                           {card.phase || `PHASE 0${idx + 1}`}
                         </span>
                         <span className="text-[10px] font-mono text-brand-textSecondary uppercase">
-                          {idx === 0 ? "CURRENT OFFERING" : idx === 1 ? "SOFTWARE ROADMAP" : "ENTERPRISE ROADMAP"}
+                          {idx === 0 
+                            ? (labels.currentOffering || "CURRENT OFFERING") 
+                            : idx === 1 
+                            ? (labels.softwareRoadmap || "SOFTWARE ROADMAP") 
+                            : (labels.enterpriseRoadmap || "ENTERPRISE ROADMAP")}
                         </span>
                       </div>
                     </div>
 
                     {/* Status Badge */}
                     <span
-                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider ${
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider shrink-0 ${
                         isAvailable
                           ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30"
                           : idx === 1
@@ -270,18 +285,24 @@ export default function ServicesExecutionRoadmap({ data }) {
                       }`}
                     >
                       {isAvailable && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
+                        <span 
+                          className={`w-1.5 h-1.5 rounded-full bg-emerald-500 ${!shouldReduceMotion ? "animate-pulse" : ""}`} 
+                          aria-hidden="true" 
+                        />
                       )}
                       {card.statusTag}
                     </span>
                   </div>
 
                   {/* Title & Concise Description */}
-                  <h3 className="text-2xl font-bold text-brand-textPrimary tracking-tight mb-3">
+                  <h3 
+                    id={`${baseId}-card-title-${idx}`}
+                    className="text-xl sm:text-2xl font-bold text-brand-textPrimary tracking-tight mb-3"
+                  >
                     {card.title}
                   </h3>
                   
-                  <p className="text-sm text-brand-textSecondary font-medium leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-brand-textSecondary font-medium leading-relaxed mb-6">
                     {card.description}
                   </p>
 
@@ -333,7 +354,7 @@ export default function ServicesExecutionRoadmap({ data }) {
                   {isHighlight ? (
                     <Link
                       href={card.ctaHref || "/contact#audit"}
-                      className="w-full inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-brand-primary/25 hover:shadow-lg hover:shadow-brand-primary/35 group/cta"
+                      className="w-full inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-5 sm:px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-brand-primary/25 hover:shadow-lg hover:shadow-brand-primary/35 group/cta"
                     >
                       <span>{card.ctaText || "Discuss Your Project"}</span>
                       <ArrowRight className="w-3.5 h-3.5 ml-2 transition-transform duration-200 group-hover/cta:translate-x-1" aria-hidden="true" />
@@ -341,7 +362,7 @@ export default function ServicesExecutionRoadmap({ data }) {
                   ) : (
                     <Link
                       href={card.ctaHref || "/contact#priority-queue"}
-                      className="w-full inline-flex items-center justify-center border border-brand-border bg-brand-surface hover:bg-brand-card hover:border-brand-primary/40 text-brand-textSecondary hover:text-brand-primary px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 group/cta"
+                      className="w-full inline-flex items-center justify-center border border-brand-border bg-brand-surface hover:bg-brand-card hover:border-brand-primary/40 text-brand-textSecondary hover:text-brand-primary px-5 sm:px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 group/cta"
                     >
                       <span>{card.ctaText || "Join Priority Queue"}</span>
                       <ArrowRight className="w-3.5 h-3.5 ml-2 transition-transform duration-200 group-hover/cta:translate-x-1" aria-hidden="true" />
