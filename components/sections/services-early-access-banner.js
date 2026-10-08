@@ -8,8 +8,6 @@ import {
   Database, 
   Workflow, 
   ShieldCheck, 
-  Sparkles,
-  Layers,
   ArrowDown
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -34,7 +32,10 @@ export default function ServicesEarlyAccessBanner({ data }) {
       privateAiCoreSub: "Controlled Local Inference",
       bimWorkflows: "BIM WORKFLOWS",
       bimWorkflowsSub: "Assisted Automation",
-      plannedInfrastructure: "PLANNED INFRASTRUCTURE"
+      plannedInfrastructure: "PLANNED INFRASTRUCTURE",
+      coreBadge: "LOCAL CONTROL · CONCEPT",
+      inBadge: "INPUT // 01",
+      outBadge: "OUTPUT // 02"
     }
   };
 
@@ -46,7 +47,10 @@ export default function ServicesEarlyAccessBanner({ data }) {
     privateAiCoreSub: "Controlled Local Inference",
     bimWorkflows: "BIM WORKFLOWS",
     bimWorkflowsSub: "Assisted Automation",
-    plannedInfrastructure: "PLANNED INFRASTRUCTURE"
+    plannedInfrastructure: "PLANNED INFRASTRUCTURE",
+    coreBadge: "LOCAL CONTROL · CONCEPT",
+    inBadge: "INPUT // 01",
+    outBadge: "OUTPUT // 02"
   };
 
   return (
@@ -89,13 +93,13 @@ export default function ServicesEarlyAccessBanner({ data }) {
                   <span>{banner.tag}</span>
                 </div>
 
-                {/* Primary Headline */}
-                <h3 
+                {/* Primary Headline (h2 for correct document heading hierarchy) */}
+                <h2 
                   id={`${baseId}-title`}
                   className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
                 >
                   {banner.headline}
-                </h3>
+                </h2>
 
                 {/* Descriptive Copy */}
                 <p className="text-sm sm:text-base text-brand-textSecondary font-medium leading-relaxed mb-8 max-w-2xl">
@@ -167,7 +171,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
                       </div>
                     </div>
                     <span className="text-[9px] font-mono text-brand-textSecondary/60 uppercase">
-                      IN // 01
+                      {diagram.inBadge || "INPUT // 01"}
                     </span>
                   </div>
 
@@ -206,7 +210,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
                       <div className="flex items-center gap-1.5">
                         <ShieldCheck className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
                         <span className="text-[9px] font-mono font-bold text-brand-primary uppercase">
-                          ISOLATED
+                          {diagram.coreBadge || "LOCAL CONTROL · CONCEPT"}
                         </span>
                       </div>
                     </div>
@@ -244,7 +248,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
                       </div>
                     </div>
                     <span className="text-[9px] font-mono text-brand-textSecondary/60 uppercase">
-                      OUT // 02
+                      {diagram.outBadge || "OUTPUT // 02"}
                     </span>
                   </div>
 
