@@ -1,6 +1,5 @@
-import { notFound } from "next/navigation";
+import { redirect, notFound } from "next/navigation";
 import { allEducationData } from "@/lib/data/education-data";
-import EducationDetailLayout from "@/components/pages/education-detail-layout";
 
 export function generateStaticParams() {
   const locales = ["en", "it", "de"];
@@ -13,25 +12,22 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const post = allEducationData.find((item) => item.slug === params.slug);
-  if (!post) return {};
-  const titleStr = post.title?.it || post.title?.en || post.slug;
-  const descStr = post.excerpt?.it || post.excerpt?.en || "";
   return {
-    title: titleStr,
-    description: descStr
+    robots: {
+      index: false,
+      follow: false
+    }
   };
 }
 
 export default function EducationPostPage({ params }) {
-  const currentIndex = allEducationData.findIndex((item) => item.slug === params.slug);
-  if (currentIndex === -1) notFound();
+  const locale = params?.locale || "en";
+  const slug = params?.slug;
+  const isKnownPlaceholder = allEducationData.some((item) => item.slug === slug);
 
-  const post = allEducationData[currentIndex];
-  // Previous post in array (usually newer if sorted newest-first)
-  const prevPost = currentIndex > 0 ? allEducationData[currentIndex - 1] : null;
-  // Next post in array (usually older if sorted newest-first)
-  const nextPost = currentIndex < allEducationData.length - 1 ? allEducationData[currentIndex + 1] : null;
+  if (isKnownPlaceholder) {
+    redirect(`/${locale}/education`);
+  }
 
-  return <EducationDetailLayout post={post} prevPost={prevPost} nextPost={nextPost} />;
+  notFound();
 }
