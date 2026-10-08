@@ -7,12 +7,10 @@ import {
   ShieldCheck, 
   Code2, 
   Layers, 
-  CheckCircle2, 
   Terminal, 
   Boxes, 
   Check, 
-  Cpu, 
-  Network 
+  Cpu 
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -79,8 +77,10 @@ export default function ServicesEngineeringCapabilities({ data }) {
         </motion.div>
 
         {/* Three Engineering Capability Modules Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch mb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch mb-14">
           {cards.map((card, idx) => {
+            const diagram = card.diagram || {};
+
             return (
               <motion.article
                 key={idx}
@@ -113,28 +113,22 @@ export default function ServicesEngineeringCapabilities({ data }) {
                     {idx === 0 && (
                       <div className="space-y-2">
                         <div className="flex items-center justify-between text-[10px] font-mono font-semibold text-brand-textSecondary pb-2 border-b border-brand-border/60">
-                          <span className="uppercase">VALIDATION_SCHEMA</span>
-                          <span className="text-emerald-600 dark:text-emerald-400 font-bold">QA/QC</span>
+                          <span className="uppercase">{diagram.title || "VALIDATION_SCHEMA"}</span>
+                          <span className="text-emerald-600 dark:text-emerald-400 font-bold">{diagram.badge || "QA/QC"}</span>
                         </div>
                         <div className="space-y-1.5 text-[10px] font-mono">
-                          <div className="flex items-center justify-between bg-brand-card px-2 py-1 rounded border border-brand-border/60">
-                            <span className="text-brand-textSecondary truncate">EIR.Naming_Convention</span>
-                            <span className="inline-flex items-center text-emerald-600 dark:text-emerald-400 text-[9px] font-bold">
-                              <Check className="w-2.5 h-2.5 mr-0.5" /> VERIFIED
-                            </span>
-                          </div>
-                          <div className="flex items-center justify-between bg-brand-card px-2 py-1 rounded border border-brand-border/60">
-                            <span className="text-brand-textSecondary truncate">ISO_19650.PropertySets</span>
-                            <span className="inline-flex items-center text-emerald-600 dark:text-emerald-400 text-[9px] font-bold">
-                              <Check className="w-2.5 h-2.5 mr-0.5" /> ALIGNED
-                            </span>
-                          </div>
-                          <div className="flex items-center justify-between bg-brand-card px-2 py-1 rounded border border-brand-border/60">
-                            <span className="text-brand-textSecondary truncate">OmniClass.Classification</span>
-                            <span className="inline-flex items-center text-emerald-600 dark:text-emerald-400 text-[9px] font-bold">
-                              <Check className="w-2.5 h-2.5 mr-0.5" /> AUDITED
-                            </span>
-                          </div>
+                          {(diagram.items || [
+                            { label: "EIR.Naming_Convention", tag: "CHECK" },
+                            { label: "ISO_19650.PropertySets", tag: "RULE" },
+                            { label: "OmniClass.Classification", tag: "SCHEMA" }
+                          ]).map((item, itemIdx) => (
+                            <div key={itemIdx} className="flex items-center justify-between bg-brand-card px-2 py-1 rounded border border-brand-border/60">
+                              <span className="text-brand-textSecondary truncate">{item.label}</span>
+                              <span className="inline-flex items-center text-emerald-600 dark:text-emerald-400 text-[9px] font-bold">
+                                <Check className="w-2.5 h-2.5 mr-0.5" /> {item.tag}
+                              </span>
+                            </div>
+                          ))}
                         </div>
                         {/* Subtle scan bar */}
                         {!shouldReduceMotion && (
@@ -151,17 +145,17 @@ export default function ServicesEngineeringCapabilities({ data }) {
                     {idx === 1 && (
                       <div className="space-y-2">
                         <div className="flex items-center justify-between text-[10px] font-mono font-semibold text-brand-textSecondary pb-2 border-b border-brand-border/60">
-                          <span className="uppercase">AUTOMATION_PIPELINE</span>
-                          <span className="text-sky-600 dark:text-sky-400 font-bold">API CORE</span>
+                          <span className="uppercase">{diagram.title || "AUTOMATION_PIPELINE"}</span>
+                          <span className="text-sky-600 dark:text-sky-400 font-bold">{diagram.badge || "API CORE"}</span>
                         </div>
                         <div className="grid grid-cols-3 gap-1.5 text-center text-[10px] font-mono">
                           <div className="bg-brand-card p-1.5 rounded border border-brand-border/60 flex flex-col items-center justify-center">
                             <Boxes className="w-3.5 h-3.5 text-brand-primary mb-1" />
-                            <span className="text-[9px] text-brand-textSecondary">.RVT Model</span>
+                            <span className="text-[9px] text-brand-textSecondary">{diagram.modelLabel || ".RVT Model"}</span>
                           </div>
                           <div className="bg-sky-500/10 border border-sky-500/30 p-1.5 rounded flex flex-col items-center justify-center relative">
                             <Cpu className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 mb-1" />
-                            <span className="text-[9px] font-bold text-sky-600 dark:text-sky-400">py / C#</span>
+                            <span className="text-[9px] font-bold text-sky-600 dark:text-sky-400">{diagram.codeLabel || "py / C#"}</span>
                             {!shouldReduceMotion && (
                               <motion.span 
                                 className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-sky-500"
@@ -172,11 +166,11 @@ export default function ServicesEngineeringCapabilities({ data }) {
                           </div>
                           <div className="bg-brand-card p-1.5 rounded border border-brand-border/60 flex flex-col items-center justify-center">
                             <Terminal className="w-3.5 h-3.5 text-emerald-500 mb-1" />
-                            <span className="text-[9px] text-brand-textSecondary">Params Out</span>
+                            <span className="text-[9px] text-brand-textSecondary">{diagram.outputLabel || "Params Out"}</span>
                           </div>
                         </div>
                         <div className="text-[9px] font-mono text-center text-brand-textSecondary/70 pt-0.5">
-                          Deterministic parameter updates & API execution
+                          {diagram.caption || "Deterministic parameter updates & API execution"}
                         </div>
                       </div>
                     )}
@@ -185,27 +179,28 @@ export default function ServicesEngineeringCapabilities({ data }) {
                     {idx === 2 && (
                       <div className="space-y-2">
                         <div className="flex items-center justify-between text-[10px] font-mono font-semibold text-brand-textSecondary pb-2 border-b border-brand-border/60">
-                          <span className="uppercase">MULTIDISCIPLINARY_FLOW</span>
-                          <span className="text-teal-600 dark:text-teal-400 font-bold">OpenBIM</span>
+                          <span className="uppercase">{diagram.title || "MULTIDISCIPLINARY_FLOW"}</span>
+                          <span className="text-teal-600 dark:text-teal-400 font-bold">{diagram.badge || "OpenBIM"}</span>
                         </div>
                         <div className="flex items-center justify-between gap-1 text-[10px] font-mono">
-                          <div className="flex-1 bg-brand-card p-1 rounded border border-brand-border/60 text-center">
-                            <span className="block text-[8px] text-brand-textSecondary">ARC</span>
-                            <span className="text-[9px] font-bold text-brand-textPrimary">Arch</span>
-                          </div>
-                          <span className="text-brand-textSecondary/40 text-xs">+</span>
-                          <div className="flex-1 bg-brand-card p-1 rounded border border-brand-border/60 text-center">
-                            <span className="block text-[8px] text-brand-textSecondary">STR</span>
-                            <span className="text-[9px] font-bold text-brand-textPrimary">Struct</span>
-                          </div>
-                          <span className="text-brand-textSecondary/40 text-xs">+</span>
-                          <div className="flex-1 bg-brand-card p-1 rounded border border-brand-border/60 text-center">
-                            <span className="block text-[8px] text-brand-textSecondary">MEP</span>
-                            <span className="text-[9px] font-bold text-brand-textPrimary">Services</span>
-                          </div>
+                          {(diagram.disciplines || [
+                            { code: "ARC", name: "Arch" },
+                            { code: "STR", name: "Struct" },
+                            { code: "MEP", name: "Services" }
+                          ]).map((disc, discIdx, arr) => (
+                            <div key={discIdx} className="contents">
+                              <div className="flex-1 bg-brand-card p-1 rounded border border-brand-border/60 text-center">
+                                <span className="block text-[8px] text-brand-textSecondary">{disc.code}</span>
+                                <span className="text-[9px] font-bold text-brand-textPrimary">{disc.name}</span>
+                              </div>
+                              {discIdx < arr.length - 1 && (
+                                <span className="text-brand-textSecondary/40 text-xs">+</span>
+                              )}
+                            </div>
+                          ))}
                         </div>
                         <div className="bg-teal-500/10 border border-teal-500/30 rounded px-2 py-1 text-center text-[9px] font-mono font-bold text-teal-700 dark:text-teal-300">
-                          → IFC4 / BCF COORDINATED DELIVERABLE
+                          {diagram.output || "→ IFC4 / BCF COORDINATED DELIVERABLE"}
                         </div>
                       </div>
                     )}
