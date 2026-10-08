@@ -41,7 +41,7 @@ export default function EducationPageLayout() {
   ];
 
   return (
-    <main className="w-full bg-brand-base flex flex-col justify-center">
+    <div className="w-full bg-brand-base flex flex-col justify-center">
       {/* Hero / Main Holding Message Section */}
       <section 
         id="education-hero"
@@ -146,8 +146,8 @@ export default function EducationPageLayout() {
                 {t("education.previewEyebrow")}
               </h2>
             </div>
-            <span className="text-technical font-mono text-brand-textSecondary">
-              3 MODULES
+            <span className="text-technical font-mono text-brand-textSecondary uppercase">
+              {t("education.moduleCount")}
             </span>
           </div>
 
@@ -190,6 +190,6 @@ export default function EducationPageLayout() {
 
         </div>
       </section>
-    </main>
+    </div>
   );
 }
