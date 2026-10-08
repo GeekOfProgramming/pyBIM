@@ -1,44 +1,51 @@
 import ProjectsPageLayout from "@/components/pages/projects-page-layout";
-import projectsData from "@/lib/data/projects-data.json";
-import { db } from "@/lib/db";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const titles = {
-    en: "Projects",
-    it: "Progetti",
-    de: "Projekte"
+    en: "Success Stories — In Preparation",
+    it: "Casi di Successo — In Preparazione",
+    de: "Erfolgsgeschichten — In Vorbereitung"
   };
-  
+
+  const descriptions = {
+    en: "We're preparing a carefully reviewed collection of engineering project examples, case studies, and client perspectives. Coming soon.",
+    it: "Stiamo preparando una raccolta accuratamente verificata di progetti ingegneristici, case study e testimonianze dei clienti. Prossimamente.",
+    de: "Wir bereiten eine sorgfältig geprüfte Sammlung von Engineering-Projekten, Fallstudien und Kundenperspektiven vor. Demnächst verfügbar."
+  };
+
+  const siteUrl = "https://pybim.com";
+  const currentUrl = `${siteUrl}/${locale}/projects`;
+
   return {
-    title: titles[locale] || titles.en
+    title: titles[locale] || titles.en,
+    description: descriptions[locale] || descriptions.en,
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        en: `${siteUrl}/en/projects`,
+        it: `${siteUrl}/it/projects`,
+        de: `${siteUrl}/de/projects`,
+      },
+    },
+    robots: {
+      index: false,
+      follow: true,
+    },
+    openGraph: {
+      title: `${titles[locale] || titles.en} | pyBIM`,
+      description: descriptions[locale] || descriptions.en,
+      url: currentUrl,
+      siteName: "pyBIM",
+      type: "website",
+    },
   };
 }
 
-export default async function ProjectsPage() {
-  const dbProjects = await db.project.findMany({
-    orderBy: { createdAt: "desc" }
-  });
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "it" }, { locale: "de" }];
+}
 
-  let displayProjects = projectsData.slice(0, 3);
-
-  if (false && dbProjects.length > 0) { // Disabled temporarily
-    displayProjects = dbProjects.map(p => ({
-      slug: p.slug,
-      title: { it: p.titleIt, en: p.titleEn },
-      category: { it: p.categoryIt, en: p.categoryEn },
-      date: { it: p.dateIt, en: p.dateEn },
-      location: { it: p.locationIt, en: p.locationEn },
-      client: { it: p.clientIt, en: p.clientEn },
-      image: p.image,
-      description: { it: p.descriptionIt, en: p.descriptionEn },
-      process: p.process ? JSON.parse(p.process) : [],
-      results: p.results ? JSON.parse(p.results) : [],
-      stats: p.stats ? JSON.parse(p.stats) : {},
-      challenges: p.challenges ? JSON.parse(p.challenges) : [],
-      faq: p.faq ? JSON.parse(p.faq) : []
-    }));
-  }
-
-  return <ProjectsPageLayout projects={displayProjects} />;
+export default function ProjectsPage() {
+  return <ProjectsPageLayout />;
 }
