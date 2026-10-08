@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import Link from "@/components/layout/LocalizedLink";
 import { usePathname } from "next/navigation";
-import { Linkedin, Github, Mail, MapPin, Phone, Send, CheckCircle2, AlertCircle, ShieldCheck, Building } from "lucide-react";
+import { Linkedin, Github, Mail, MapPin, Send, CheckCircle2, AlertCircle, ShieldCheck, Building } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Footer() {
@@ -170,7 +170,7 @@ export default function Footer() {
                 <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-xs font-mono">{t("footer.quick_links.title")}</h4>
                 <ul className="space-y-3.5 text-slate-400 text-sm">
                   <li><Link href="/" className="hover:text-blue-400 transition whitespace-nowrap">{t("footer.quick_links.home")}</Link></li>
-                  <li><Link href="/projects" className="hover:text-blue-400 transition whitespace-nowrap font-medium text-slate-300">{t("footer.quick_links.projects") || "Projects"}</Link></li>
+                  <li><Link href="/success-stories" className="hover:text-blue-400 transition whitespace-nowrap font-medium text-slate-300">{t("footer.quick_links.projects") || "Success Stories"}</Link></li>
                   <li><Link href="/services" className="hover:text-blue-400 transition whitespace-nowrap">{t("footer.quick_links.services")}</Link></li>
                   <li><Link href="/about" className="hover:text-blue-400 transition whitespace-nowrap">{t("footer.quick_links.who_we_are")}</Link></li>
                   <li><Link href="/careers" className="hover:text-blue-400 transition whitespace-nowrap">{t("footer.quick_links.work_with_us")}</Link></li>
@@ -182,9 +182,9 @@ export default function Footer() {
               <div className="min-w-0">
                 <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-xs font-mono">{t("footer.core_solutions.title")}</h4>
                 <ul className="space-y-3.5 text-slate-400 text-sm">
-                  <li><Link href="/services#bim-execution" className="hover:text-blue-400 transition whitespace-nowrap block">{t("footer.core_solutions.bim_execution")}</Link></li>
-                  <li><Link href="/services#custom-code" className="hover:text-blue-400 transition whitespace-nowrap block">{t("footer.core_solutions.revit_automation")}</Link></li>
-                  <li><Link href="/services#sovereign-ai" className="hover:text-blue-400 transition whitespace-nowrap block">{t("footer.core_solutions.sovereign_ai")}</Link></li>
+                  <li><Link href="/services#capabilities" className="hover:text-blue-400 transition whitespace-nowrap block">{t("footer.core_solutions.bim_execution")}</Link></li>
+                  <li><Link href="/services#execution-architecture" className="hover:text-blue-400 transition whitespace-nowrap block">{t("footer.core_solutions.revit_automation")}</Link></li>
+                  <li><Link href="/services#roadmap" className="hover:text-blue-400 transition whitespace-nowrap block">{t("footer.core_solutions.sovereign_ai")}</Link></li>
                 </ul>
               </div>
 
@@ -192,13 +192,6 @@ export default function Footer() {
               <div className="shrink-0">
                 <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-xs font-mono">{t("footer.contact_info.title")}</h4>
                 <ul className="space-y-4 text-slate-400 text-sm">
-                  <li className="flex gap-3">
-                    <Phone className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-[10px] text-slate-500 uppercase font-mono font-semibold">{t("footer.contact_info.landline_label")}</div>
-                      <a href="tel:+390491234567" className="hover:text-blue-400 transition font-medium text-slate-300 whitespace-nowrap font-mono">{t("footer.contact_info.landline_val")}</a>
-                    </div>
-                  </li>
                   <li className="flex gap-3">
                     <Mail className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
                     <div>

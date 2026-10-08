@@ -34,7 +34,7 @@ export default async function ProjectDetailPage({ params }) {
 
   // Known legacy placeholder slugs temporarily redirect to localized Success Stories landing page
   if (legacyPlaceholderSlugs.has(slug)) {
-    redirect(`/${locale}/projects#all-projects`);
+    redirect(`/${locale}/success-stories#all-projects`);
   }
 
   // Unknown slugs return standard 404
