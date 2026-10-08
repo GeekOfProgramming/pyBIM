@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "@/components/layout/LocalizedLink";
 import { useLanguage } from "@/lib/LanguageContext";
 import { servicesPageData } from "@/lib/data/servicesPageData";
 import ServicesHero from "@/components/sections/services-hero";
@@ -10,6 +9,7 @@ import ServicesEngineeringCapabilities from "@/components/sections/services-engi
 import ServicesExecutionPipeline from "@/components/sections/services-execution-pipeline";
 import ServicesEngineeringOutcomes from "@/components/sections/services-engineering-outcomes";
 import ServicesExecutionArchitecture from "@/components/sections/services-execution-architecture";
+import ServicesIntegrationPathways from "@/components/sections/services-integration-pathways";
 
 export default function ServicesPageLayout() {
   const { language } = useLanguage();
@@ -40,44 +40,9 @@ export default function ServicesPageLayout() {
       <ServicesExecutionArchitecture data={t.executionArchitecture} />
 
 
-      {/* 8. THREE COLUMNS (SCALABLE INTEGRATION PATHWAYS) */}
-      <section className="py-24 bg-brand-surface border-b border-brand-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="h-px bg-brand-primary w-12" />
-            <h3 className="text-sm font-mono font-bold text-brand-primary tracking-widest uppercase">
-              {t.integrationPathways.tag}
-            </h3>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
-            {t.integrationPathways.headline}
-          </h2>
-          <p className="text-lg text-brand-textSecondary max-w-3xl font-medium mb-16 leading-relaxed">
-            {t.integrationPathways.subtitle}
-          </p>
+      {/* 8. ENGAGEMENT PATHWAYS */}
+      <ServicesIntegrationPathways data={t.integrationPathways} />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {t.integrationPathways.columns.map((col, idx) => (
-              <div
-                key={idx}
-                className="bg-brand-card border border-brand-border p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-brand-primary/50 transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <h3 className="text-xl font-bold text-brand-textPrimary mb-1">
-                    {col.title}
-                  </h3>
-                  <p className="text-xs font-mono text-brand-primary uppercase tracking-wider mb-6 font-semibold">
-                    {col.subtitle}
-                  </p>
-                  <p className="text-brand-textSecondary text-sm leading-relaxed font-medium mb-6">
-                    {col.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* 9. METRICS CARDS (SYSTEM BENCHMARKS) */}
       <section className="relative py-24 bg-brand-base overflow-hidden">
