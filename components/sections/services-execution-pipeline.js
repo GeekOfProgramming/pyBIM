@@ -132,7 +132,7 @@ export default function ServicesExecutionPipeline({ data }) {
 
                   {/* Step Label */}
                   <div className="min-w-0 flex-1">
-                    <span className="text-technical font-mono font-semibold text-brand-textSecondary block uppercase tracking-wider truncate">
+                    <span className="text-technical font-mono font-semibold text-brand-textSecondary block uppercase tracking-wider break-words sm:break-normal line-clamp-2">
                       {step.mapLabel || step.title}
                     </span>
                   </div>
@@ -218,7 +218,7 @@ export default function ServicesExecutionPipeline({ data }) {
                     <div className="space-y-1.5 text-technical font-mono">
                       {(artifact.tags || []).slice(0, 3).map((tag, tIdx) => (
                         <div key={tIdx} className="flex items-center justify-between bg-brand-card px-2.5 py-1.5 rounded border border-brand-border/50 gap-2">
-                          <span className="text-brand-textSecondary truncate">{tag}</span>
+                          <span className="text-brand-textSecondary break-words">{tag}</span>
                           <span className={`font-bold uppercase shrink-0 ${getActionColor(idx)}`}>
                             {actionLabel}
                           </span>

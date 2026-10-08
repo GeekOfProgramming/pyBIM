@@ -134,7 +134,7 @@ export default function ServicesEngineeringEvaluation({ data }) {
                     </p>
 
                     {/* Structured Evaluation Specification: Criteria + Evidence */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-5 border-t border-brand-border/60">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4 pt-5 border-t border-brand-border/60">
                       
                       {/* Evaluation Criteria */}
                       <div>

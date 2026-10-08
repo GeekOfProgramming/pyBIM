@@ -90,7 +90,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
                   key={col.id || idx}
                   id={`${baseId}-outcome-${col.id || idx}`}
                   aria-labelledby={`${baseId}-outcome-title-${col.id || idx}`}
-                  className="p-6 sm:p-8 lg:p-9 flex flex-col justify-between group transition-colors duration-200 hover:bg-brand-surface/30 relative"
+                  className="p-6 sm:p-7 xl:p-8 flex flex-col group transition-colors duration-200 hover:bg-brand-surface/30 relative"
                 >
                   <div>
                     {/* Top Bar: Icon + Category Tag + Numerical Index */}
@@ -132,7 +132,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
                     </p>
                   </div>
 
-                  <div>
+                  <div className="mt-auto">
                     {/* Technical Schematic Illustration Motif */}
                     {diagram.title && (
                       <div 

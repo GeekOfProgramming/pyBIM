@@ -2,6 +2,7 @@
 
 import { useId } from "react";
 import Link from "@/components/layout/LocalizedLink";
+import CtaLink from "@/components/ui/cta-link";
 import { 
   ArrowRight, 
   Check, 
@@ -166,13 +167,12 @@ export default function ServicesIntegrationPathways({ data }) {
 
               {/* Primary CTA */}
               <div className="pt-6 border-t border-brand-border/70">
-                <Link
+                <CtaLink
                   href={primaryPathway.ctaHref || "/contact#audit"}
-                  className="w-full sm:w-auto inline-flex items-center justify-center text-center bg-brand-primary hover:bg-brand-primary/90 text-white min-h-[48px] sm:min-h-[52px] px-7 py-3.5 rounded-full text-caption font-bold uppercase tracking-wider transition-all duration-300 shadow-md shadow-brand-primary/25 hover:shadow-lg hover:shadow-brand-primary/35 group/cta"
+                  variant="primary"
                 >
-                  <span>{primaryPathway.ctaText || "Discuss Your Project"}</span>
-                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-200 group-hover/cta:translate-x-1 shrink-0" aria-hidden="true" />
-                </Link>
+                  {primaryPathway.ctaText || "Discuss Your Project"}
+                </CtaLink>
               </div>
             </motion.article>
           )}
@@ -252,13 +252,13 @@ export default function ServicesIntegrationPathways({ data }) {
 
                   {/* Secondary Outline CTA */}
                   <div className="mt-auto pt-5 border-t border-brand-border/60">
-                    <Link
+                    <CtaLink
                       href={pathway.ctaHref || "/contact#priority-queue"}
-                      className="w-full inline-flex items-center justify-center text-center border border-brand-border bg-brand-surface hover:bg-brand-card hover:border-brand-primary/40 text-brand-textSecondary hover:text-brand-primary min-h-[48px] sm:min-h-[52px] px-6 py-3.5 rounded-full text-caption font-bold uppercase tracking-wider transition-all duration-300 group/cta"
+                      variant="secondary"
+                      fullWidth={true}
                     >
-                      <span>{pathway.ctaText}</span>
-                      <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-200 group-hover/cta:translate-x-1 shrink-0" aria-hidden="true" />
-                    </Link>
+                      {pathway.ctaText}
+                    </CtaLink>
                   </div>
                 </motion.article>
               );
