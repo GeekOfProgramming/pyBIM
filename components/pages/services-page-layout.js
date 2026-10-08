@@ -5,6 +5,7 @@ import { ArrowRight, Zap, Target, Layers, CheckCircle2, Clock, Shield, Terminal,
 import { useLanguage } from "@/lib/LanguageContext";
 import { servicesPageData } from "@/lib/data/servicesPageData";
 import ServicesHero from "@/components/sections/services-hero";
+import ServicesExecutionRoadmap from "@/components/sections/services-execution-roadmap";
 
 export default function ServicesPageLayout() {
   const { language } = useLanguage();
@@ -29,112 +30,7 @@ export default function ServicesPageLayout() {
       <ServicesHero data={t.hero} />
 
       {/* 2. THREE CARDS (THE pyBIM EXECUTION ROADMAP) */}
-      <section id="roadmap" className="py-24 bg-brand-surface border-y border-brand-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="h-px bg-brand-primary w-12" />
-            <h3 className="text-sm font-mono font-bold text-brand-primary tracking-widest uppercase">
-              {t.roadmap.tag}
-            </h3>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
-            {t.roadmap.headline}
-          </h2>
-          <p className="text-lg text-brand-textSecondary mb-14 max-w-3xl font-medium leading-relaxed">
-            {t.roadmap.subtitle}
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
-            {t.roadmap.cards.map((card, idx) => {
-              const isHighlight = card.isPrimary;
-              return (
-                <div
-                  key={idx}
-                  className={`rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 relative ${
-                    isHighlight
-                      ? "bg-brand-card border-2 border-brand-primary shadow-xl shadow-brand-primary/10 ring-1 ring-brand-primary/30 md:-translate-y-2"
-                      : "bg-brand-card border border-brand-border shadow-sm hover:shadow-md hover:border-brand-primary/40"
-                  }`}
-                >
-                  {isHighlight && (
-                    <div className="absolute -top-3 right-6 bg-gradient-to-r from-brand-primary to-blue-600 text-white text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md">
-                      FEATURED OFFERING
-                    </div>
-                  )}
-
-                  <div>
-                    {/* Status Tag */}
-                    <div className="mb-5">
-                      <span
-                        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider ${
-                          isHighlight
-                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30"
-                            : "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30"
-                        }`}
-                      >
-                        {card.statusTag}
-                      </span>
-                    </div>
-
-                    <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">
-                      {card.title}
-                    </h3>
-                    
-                    <p className="text-sm text-brand-textSecondary font-medium leading-relaxed mb-6">
-                      {card.description}
-                    </p>
-
-                    <div className="space-y-4 pt-6 border-t border-brand-border text-sm">
-                      <div>
-                        <span className="font-bold text-brand-textPrimary block mb-1">
-                          The Outcome:
-                        </span>
-                        <span className="text-brand-textSecondary font-medium leading-relaxed">
-                          {card.outcome}
-                        </span>
-                      </div>
-                      <div>
-                        <span className="font-bold text-brand-textPrimary block mb-1">
-                          The Execution:
-                        </span>
-                        <span className="text-brand-textSecondary font-medium leading-relaxed">
-                          {card.execution}
-                        </span>
-                      </div>
-                      <div>
-                        <span className="font-bold text-brand-textPrimary block mb-1">
-                          The Impact:
-                        </span>
-                        <span className="text-brand-textSecondary font-medium leading-relaxed">
-                          {card.impact}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 pt-6">
-                    {isHighlight ? (
-                      <Link
-                        href="/contact#audit"
-                        className="w-full inline-flex items-center justify-center bg-brand-primary hover:bg-brand-primary/90 text-white px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md"
-                      >
-                        Deploy Workload Now <ArrowRight className="w-3.5 h-3.5 ml-2" />
-                      </Link>
-                    ) : (
-                      <Link
-                        href="/contact#priority-queue"
-                        className="w-full inline-flex items-center justify-center border border-brand-border bg-brand-surface hover:bg-brand-card text-brand-textSecondary hover:text-brand-primary px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300"
-                      >
-                        Join Priority Queue <ArrowRight className="w-3.5 h-3.5 ml-2" />
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <ServicesExecutionRoadmap data={t.roadmap} />
 
       {/* 3. CTA BANNER (GREEN BANNER // DEPLOYMENT QUEUE) */}
       <section className="py-20 bg-brand-base border-b border-brand-border">
