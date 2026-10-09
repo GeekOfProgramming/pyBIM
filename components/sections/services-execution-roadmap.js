@@ -14,6 +14,7 @@ import {
   Clock
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import ServicesSectionBackdrop from "@/components/sections/services-section-backdrop";
 
 export default function ServicesExecutionRoadmap({ data }) {
   const shouldReduceMotion = useReducedMotion();
@@ -94,34 +95,8 @@ export default function ServicesExecutionRoadmap({ data }) {
       className="scroll-mt-28 relative py-20 md:py-28 lg:py-32 bg-brand-surface border-y border-brand-border overflow-hidden"
       aria-labelledby={`${baseId}-headline`}
     >
-      {/* ========================================================================= */}
-      {/* ARCHITECTURAL BACKGROUND: Technical Coordinate Grid & Directional Glow   */}
-      {/* ========================================================================= */}
-      <div 
-        className="pointer-events-none absolute inset-0 z-0 text-slate-800 dark:text-blue-200"
-        style={{
-          maskImage: "radial-gradient(ellipse 80% 65% at 50% 30%, black 20%, transparent 80%)",
-          WebkitMaskImage: "radial-gradient(ellipse 80% 65% at 50% 30%, black 20%, transparent 80%)",
-        }}
-        aria-hidden="true"
-      >
-        <svg className="w-full h-full opacity-[0.035] dark:opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="roadmap-tech-grid" width="64" height="64" patternUnits="userSpaceOnUse">
-              <path d="M 64 0 L 0 0 0 64" fill="none" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.5" />
-              <circle cx="0" cy="0" r="1.5" fill="currentColor" opacity="0.6" />
-              <circle cx="64" cy="64" r="1.5" fill="currentColor" opacity="0.6" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#roadmap-tech-grid)" />
-        </svg>
-      </div>
-
-      {/* Atmospheric Multi-Point Lighting */}
-      <div 
-        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[380px] bg-gradient-to-b from-blue-500/[0.08] via-cyan-500/[0.04] to-transparent dark:from-blue-500/[0.14] dark:via-cyan-500/[0.06] dark:to-transparent rounded-full blur-[110px] z-0" 
-        aria-hidden="true" 
-      />
+      {/* Family B (Surface) Architectural Background */}
+      <ServicesSectionBackdrop variant="surface" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         
