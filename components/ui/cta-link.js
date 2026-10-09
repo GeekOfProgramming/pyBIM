@@ -42,7 +42,7 @@ export default function CtaLink({
       "bg-brand-surface hover:bg-brand-cardElevated text-brand-textPrimary hover:text-brand-primary border border-brand-border/80 hover:border-brand-primary/40 active:scale-[0.99]";
   } else if (variant === "tertiary") {
     variantClasses =
-      "text-brand-actionPrimary hover:text-brand-actionPrimaryHover !p-0 !min-h-0 !rounded-none font-semibold normal-case hover:underline";
+      "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 !p-0 !min-h-0 !rounded-none font-semibold normal-case hover:underline";
   }
 
   const widthClass = fullWidth ? "w-full" : "w-full sm:w-auto";

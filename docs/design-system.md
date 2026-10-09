@@ -98,7 +98,7 @@ All colors use space-separated RGB CSS variables defined in `app/globals.css`:
 | `actionPrimaryHover` | `hover:bg-brand-actionPrimaryHover` | `#1D4ED8` (`29 78 216`) | `#1D4ED8` (`29 78 216`) | Action button hover fill. |
 | `actionOnPrimary` | `text-brand-actionOnPrimary` | `#FFFFFF` (`255 255 255`) | `#FFFFFF` (`255 255 255`) | Action button foreground label. |
 | `accentAction`| `bg-brand-accentAction` | `#F97316` (`249 115 22`) | `#F97316` (`249 115 22`) | Client Portal Action Orange. |
-| `accentOnAction` | `text-brand-accentOnAction` | `#0F172A` (`15 23 42`) | `#0F172A` (`15 23 42`) | **Accessible Dark Navy Label on Orange** (WCAG AA > 7.5:1 contrast). |
+| `accentOnAction` | `text-brand-accentOnAction` | `#0F172A` (`15 23 42`) | `#0F172A` (`15 23 42`) | **Accessible Dark Navy Label on Orange** (WCAG AA ~6.37:1 contrast). |
 | `textPrimary` | `text-brand-textPrimary` | `#0F172A` (`15 23 42`) | `#F8FAFC` (`248 250 252`) | Primary headings, high-emphasis copy. |
 | `textSecondary`| `text-brand-textSecondary` | `#475569` (`71 85 105`) | `#94A3B8` (`148 163 184`) | Descriptive paragraphs, subtitles, metadata. |
 | `border` | `border-brand-border` | `#E2E8F0` (`226 232 240`) | `#1E293B` (`30 41 59`) | Subtle hairline borders (`border-brand-border/80`). |
@@ -115,7 +115,9 @@ Ordinary text requires minimum **4.5:1** contrast ratio; large text requires **3
 | White on `#2563EB` (Primary Blue) | **5.17:1** | Pass | **Approved** for `CtaLink` primary in both Light and Dark modes. |
 | White on `#3B82F6` (Electric Blue) | **3.68:1** | Fail | Disallowed for white text. Used only for icons and linework. |
 | White on `#F97316` (Laser Orange) | **2.80:1** | Fail | Disallowed for white button text. |
-| Dark Navy (`#0F172A`) on `#F97316` | **7.54:1** | Pass (AAA) | **Approved** for Client Portal button label and badge. |
+| Dark Navy (`#0F172A`) on `#F97316` | **6.37:1** | Pass (AA) | **Approved** for Client Portal button label and badge (WCAG AA for normal text; not AAA). |
+| `#2563EB` on `#FFFFFF` (Light Tertiary) | **5.17:1** | Pass (AA) | **Approved** for `CtaLink` tertiary in Light Mode (hover `#1D4ED8` has 7.09:1). |
+| `#60A5FA` on `#080C14` (Dark Tertiary) | **8.11:1** | Pass (AA) | **Approved** for `CtaLink` tertiary in Dark Mode (hover `#93C5FD` has 11.88:1). |
 
 ---
 
