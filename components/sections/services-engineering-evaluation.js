@@ -8,8 +8,6 @@ import {
   FileText,
   SlidersHorizontal,
   ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
   GitBranch
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -29,11 +27,7 @@ export default function ServicesEngineeringEvaluation({ data }) {
 
   const evaluation = data;
   const assessments = evaluation.assessments || [];
-  const colLabels = evaluation.columnLabels || {
-    domain: "Review Domain",
-    criteria: "Evaluation Criteria",
-    evidence: "Possible Review Evidence"
-  };
+  const colLabels = evaluation.columnLabels || {};
 
   return (
     <section 
@@ -104,10 +98,10 @@ export default function ServicesEngineeringEvaluation({ data }) {
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="rounded-3xl bg-brand-cardElevated border border-brand-border shadow-lg shadow-black/5 overflow-hidden"
           role="region"
-          aria-label="Engineering Verification Matrix"
+          aria-label={evaluation.matrixAriaLabel || evaluation.tag}
         >
-          {/* Matrix Header Row (Visible on Desktop 1024px+) */}
-          <div className="hidden lg:grid grid-cols-12 gap-6 px-8 py-4 bg-brand-surface/90 border-b border-brand-border/80 text-technical font-mono font-bold uppercase tracking-wider text-brand-textSecondary">
+          {/* Matrix Header Row (Visible on Desktop 1024px+: Strictly 5 / 4 / 3 = 12 columns) */}
+          <div className="hidden lg:grid grid-cols-12 gap-8 px-8 py-4 bg-brand-surface/90 border-b border-brand-border/80 text-technical font-mono font-bold uppercase tracking-wider text-brand-textSecondary">
             <div className="col-span-5 flex items-center gap-2">
               <GitBranch className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
               <span>{colLabels.domain}</span>
@@ -138,10 +132,11 @@ export default function ServicesEngineeringEvaluation({ data }) {
                   transition={{ duration: 0.5, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
                   className="p-6 sm:p-8 lg:px-8 lg:py-7 hover:bg-brand-surface/30 transition-colors"
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-6 items-center">
+                  {/* Exactly 3 direct children in 12 cols: 5 cols + 4 cols + 3 cols = 12 */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
                     
-                    {/* 1. Review Domain (Number + Icon + Category + Title + Description) */}
-                    <div className="lg:col-span-5 flex flex-col">
+                    {/* 1. Review Domain (5 cols on Desktop) */}
+                    <div className="lg:col-span-5 relative flex flex-col justify-center">
                       <div className="flex items-center gap-3 mb-2.5">
                         <span className="w-7 h-7 rounded-lg bg-brand-surface border border-brand-border text-brand-primary flex items-center justify-center font-mono font-bold text-caption shrink-0">
                           {item.num}
@@ -164,22 +159,25 @@ export default function ServicesEngineeringEvaluation({ data }) {
                       <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed">
                         {item.desc}
                       </p>
-                    </div>
 
-                    {/* Desktop Directional Traceability Indicator between Domain & Criteria */}
-                    <div className="hidden lg:flex items-center justify-center -mr-3 text-brand-primary/40 shrink-0 pointer-events-none" aria-hidden="true">
-                      <motion.div
-                        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: 0.2 + idx * 0.1 }}
+                      {/* Directional Traceability Indicator between Domain & Criteria (Non-participating in grid tracks) */}
+                      <div 
+                        className="hidden lg:flex items-center absolute -right-6 top-1/2 -translate-y-1/2 pointer-events-none z-10" 
+                        aria-hidden="true"
                       >
-                        <ArrowRight className="w-4 h-4 text-brand-primary/50" />
-                      </motion.div>
+                        <motion.div
+                          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: 0.2 + idx * 0.1 }}
+                        >
+                          <ArrowRight className="w-4 h-4 text-brand-primary/50" />
+                        </motion.div>
+                      </div>
                     </div>
 
-                    {/* 2. Evaluation Criteria (Structured Tags with Numbered Traceability) */}
-                    <div className="lg:col-span-4 flex flex-col justify-center">
+                    {/* 2. Evaluation Criteria (4 cols on Desktop) */}
+                    <div className="lg:col-span-4 relative flex flex-col justify-center">
                       <span className="lg:hidden block text-technical font-mono font-bold uppercase tracking-wider text-brand-textSecondary mb-2">
                         {evaluation.criteriaLabel || colLabels.criteria}
                       </span>
@@ -194,21 +192,24 @@ export default function ServicesEngineeringEvaluation({ data }) {
                           </div>
                         ))}
                       </div>
-                    </div>
 
-                    {/* Desktop Directional Traceability Indicator between Criteria & Evidence */}
-                    <div className="hidden lg:flex items-center justify-center -mr-3 text-brand-primary/40 shrink-0 pointer-events-none" aria-hidden="true">
-                      <motion.div
-                        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: 0.35 + idx * 0.1 }}
+                      {/* Directional Traceability Indicator between Criteria & Evidence (Non-participating in grid tracks) */}
+                      <div 
+                        className="hidden lg:flex items-center absolute -right-6 top-1/2 -translate-y-1/2 pointer-events-none z-10" 
+                        aria-hidden="true"
                       >
-                        <ArrowRight className="w-4 h-4 text-brand-primary/50" />
-                      </motion.div>
+                        <motion.div
+                          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: 0.35 + idx * 0.1 }}
+                        >
+                          <ArrowRight className="w-4 h-4 text-brand-primary/50" />
+                        </motion.div>
+                      </div>
                     </div>
 
-                    {/* 3. Possible Review Evidence (Clean Ledger Specification) */}
+                    {/* 3. Possible Review Evidence (3 cols on Desktop) */}
                     <div className="lg:col-span-3 flex flex-col justify-center">
                       <span className="lg:hidden block text-technical font-mono font-bold uppercase tracking-wider text-brand-primary mb-2">
                         {item.evidenceLabel || colLabels.evidence}
