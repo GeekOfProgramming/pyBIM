@@ -41,10 +41,10 @@ export default function EngineeringImpact() {
       descKey: "about.impact.v2.outcome2.desc",
       icon: FileCheck2,
       accentColor: "cyan",
-      badgeStyle: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20",
+      badgeStyle: "bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border-cyan-500/20",
       activeBorder: "border-cyan-500 ring-1 ring-cyan-500/30 bg-brand-base dark:bg-slate-900 shadow-md",
       inactiveBorder: "border-brand-border bg-brand-base/60 dark:bg-slate-900/50 hover:border-cyan-500/40",
-      iconBoxStyle: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20",
+      iconBoxStyle: "bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border-cyan-500/20",
     },
     {
       id: "outcome3",
@@ -53,10 +53,10 @@ export default function EngineeringImpact() {
       descKey: "about.impact.v2.outcome3.desc",
       icon: Boxes,
       accentColor: "indigo",
-      badgeStyle: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+      badgeStyle: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border-indigo-500/20",
       activeBorder: "border-indigo-500 ring-1 ring-indigo-500/30 bg-brand-base dark:bg-slate-900 shadow-md",
       inactiveBorder: "border-brand-border bg-brand-base/60 dark:bg-slate-900/50 hover:border-indigo-500/40",
-      iconBoxStyle: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+      iconBoxStyle: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border-indigo-500/20",
     },
   ];
 
@@ -218,7 +218,13 @@ export default function EngineeringImpact() {
                   aria-label={t("about.impact.v2.inspector.diagram_label")}
                 >
                   <div className="flex items-center text-xs font-mono text-brand-textSecondary/80 mb-4 px-1">
-                    <span className="uppercase tracking-wider font-semibold text-brand-primary">
+                    <span className={`uppercase tracking-wider font-semibold ${
+                      currentOutcome.id === "outcome1" 
+                        ? "text-brand-primary" 
+                        : currentOutcome.id === "outcome2" 
+                        ? "text-cyan-700 dark:text-cyan-400" 
+                        : "text-indigo-700 dark:text-indigo-400"
+                    }`}>
                       {currentOutcome.id === "outcome1" 
                         ? t("about.impact.v2.diag.process_sequence")
                         : currentOutcome.id === "outcome2"
@@ -366,7 +372,7 @@ export default function EngineeringImpact() {
                           <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
                             {t("about.impact.v2.outcome2.diag_step3_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 shrink-0 border border-amber-500/20 font-medium">
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-700 dark:text-amber-300 shrink-0 border border-amber-500/20 font-medium">
                             {t("about.impact.v2.diag.flagged_action")}
                           </span>
                         </div>
@@ -413,7 +419,7 @@ export default function EngineeringImpact() {
                           <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
                             {t("about.impact.v2.outcome3.diag_step2_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 shrink-0 border border-indigo-500/20 font-medium">
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 shrink-0 border border-indigo-500/20 font-medium">
                             {t("about.impact.v2.diag.ifc_bcf")}
                           </span>
                         </div>
