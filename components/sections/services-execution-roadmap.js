@@ -130,9 +130,9 @@ export default function ServicesExecutionRoadmap({ data }) {
         </motion.div>
 
         {/* ========================================================================= */}
-        {/* THREE ALIGNED ROADMAP INFORMATION LANES (Clean, Non-Duplicated Cards)     */}
+        {/* THREE ALIGNED ROADMAP INFORMATION LANES (Shared-Row Subgrid Comparison)   */}
         {/* ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-[repeat(9,auto)] gap-8 lg:gap-x-8 lg:gap-y-5 items-stretch">
           {cards.map((card, idx) => {
             const isHighlight = Boolean(card.isPrimary);
             const isAvailable = isHighlight;
@@ -148,10 +148,10 @@ export default function ServicesExecutionRoadmap({ data }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className={`group rounded-3xl p-6 sm:p-7 lg:p-8 flex flex-col justify-between transition-all duration-200 relative ${
+                className={`group rounded-3xl p-6 sm:p-7 lg:p-8 flex flex-col lg:grid lg:grid-rows-subgrid lg:row-span-9 gap-5 lg:gap-0 transition-all duration-200 relative ${
                   isHighlight
-                    ? "bg-brand-card border-2 border-brand-primary shadow-lg shadow-brand-primary/10 ring-1 ring-brand-primary/20"
-                    : "bg-brand-card/90 border border-brand-border/90 shadow-sm hover:border-brand-primary/40 hover:shadow-md"
+                    ? "bg-brand-cardElevated border-2 border-brand-primary shadow-lg shadow-brand-primary/10 ring-1 ring-brand-primary/20"
+                    : "bg-brand-cardElevated border border-brand-border/90 shadow-sm hover:border-brand-primary/40 hover:shadow-md"
                 }`}
               >
                 {/* Featured Badge for Phase 01 */}
@@ -162,161 +162,151 @@ export default function ServicesExecutionRoadmap({ data }) {
                   </div>
                 )}
 
-                {/* Top Section */}
-                <div className="flex flex-col flex-grow">
-                  
-                  {/* Row 1: Header / Category & Status Badge */}
-                  <div className="flex items-center justify-between gap-3 mb-5">
-                    <div className="flex items-center gap-3">
-                      <div 
-                        className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 ${
-                          isHighlight 
-                            ? "bg-brand-primary/10 border border-brand-primary/25" 
-                            : idx === 1
-                            ? "bg-sky-500/10 border border-sky-500/25"
-                            : "bg-cyan-500/10 border border-cyan-500/25"
-                        }`}
-                        aria-hidden="true"
-                      >
-                        {getPhaseIcon(idx)}
-                      </div>
-
-                      <div>
-                        <span className="block text-technical font-mono font-bold uppercase tracking-widest text-brand-primary">
-                          {card.phase || `PHASE 0${idx + 1}`}
-                        </span>
-                        <span className="text-technical font-mono text-brand-textSecondary uppercase block">
-                          {idx === 0 
-                            ? (labels.currentOffering || "CURRENT OFFERING") 
-                            : idx === 1 
-                            ? (labels.softwareRoadmap || "SOFTWARE ROADMAP") 
-                            : (labels.enterpriseRoadmap || "ENTERPRISE ROADMAP")}
-                        </span>
-                      </div>
+                {/* Row 1: Header / Category & Status Badge */}
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div 
+                      className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 ${
+                        isHighlight 
+                          ? "bg-brand-primary/10 border border-brand-primary/25" 
+                          : idx === 1
+                          ? "bg-sky-500/10 border border-sky-500/25"
+                          : "bg-cyan-500/10 border border-cyan-500/25"
+                      }`}
+                      aria-hidden="true"
+                    >
+                      {getPhaseIcon(idx)}
                     </div>
 
-                    {/* Status Badge */}
-                    <span
-                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-technical font-mono font-bold uppercase tracking-wider shrink-0 ${
-                        isAvailable
-                          ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30"
-                          : idx === 1
-                          ? "bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/25"
-                          : "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/25"
-                      }`}
-                    >
-                      {isAvailable ? (
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
-                      ) : (
-                        <Clock className="w-3.5 h-3.5" aria-hidden="true" />
-                      )}
-                      <span>{card.statusTag}</span>
+                    <div>
+                      <span className="block text-technical font-mono font-bold uppercase tracking-widest text-brand-primary">
+                        {card.phase || `PHASE 0${idx + 1}`}
+                      </span>
+                      <span className="text-technical font-mono text-brand-textSecondary uppercase block">
+                        {idx === 0 
+                          ? (labels.currentOffering || "CURRENT OFFERING") 
+                          : idx === 1 
+                          ? (labels.softwareRoadmap || "SOFTWARE ROADMAP") 
+                          : (labels.enterpriseRoadmap || "ENTERPRISE ROADMAP")}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Status Badge */}
+                  <span
+                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-technical font-mono font-bold uppercase tracking-wider shrink-0 ${
+                      isAvailable
+                        ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30"
+                        : idx === 1
+                        ? "bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/25"
+                        : "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/25"
+                    }`}
+                  >
+                    {isAvailable ? (
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+                    ) : (
+                      <Clock className="w-3.5 h-3.5" aria-hidden="true" />
+                    )}
+                    <span>{card.statusTag}</span>
+                  </span>
+                </div>
+
+                {/* Row 2: Single Phase Title (H3) */}
+                <h3 
+                  id={`${baseId}-card-title-${idx}`}
+                  className="text-card-title font-bold text-brand-textPrimary tracking-tight"
+                >
+                  {card.title}
+                </h3>
+                
+                {/* Row 3: Description */}
+                <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed">
+                  {card.description}
+                </p>
+
+                {/* Row 4: Owner-Defined Indicative Progress Bar */}
+                <div className="p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60">
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="text-technical font-mono font-semibold uppercase tracking-wider text-brand-textSecondary">
+                      {labels.progressHeading || "Indicative Development Progress"}
+                    </span>
+                    <span className={`text-technical font-mono font-bold ${progressStyle.text}`}>
+                      {progress}%
                     </span>
                   </div>
 
-                  {/* Row 2: Single Phase Title (H3) */}
-                  <h3 
-                    id={`${baseId}-card-title-${idx}`}
-                    className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-3 min-h-[1.75rem]"
+                  {/* Accessible Progress Bar */}
+                  <div 
+                    role="progressbar"
+                    aria-valuenow={progress}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label={`${card.title} - ${labels.progressHeading || "Development progress"}: ${progress}%`}
+                    className={`w-full h-2 rounded-full overflow-hidden ${progressStyle.track}`}
                   >
-                    {card.title}
-                  </h3>
-                  
-                  {/* Row 3: Description */}
-                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed mb-6">
-                    {card.description}
-                  </p>
-
-                  {/* Row 4: Owner-Defined Indicative Progress Bar */}
-                  <div className="mb-6 p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60">
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="text-technical font-mono font-semibold uppercase tracking-wider text-brand-textSecondary">
-                        {labels.progressHeading || "Indicative Development Progress"}
-                      </span>
-                      <span className={`text-technical font-mono font-bold ${progressStyle.text}`}>
-                        {progress}%
-                      </span>
-                    </div>
-
-                    {/* Accessible Progress Bar */}
-                    <div 
-                      role="progressbar"
-                      aria-valuenow={progress}
-                      aria-valuemin={0}
-                      aria-valuemax={100}
-                      aria-label={`${card.title} - ${labels.progressHeading || "Development progress"}: ${progress}%`}
-                      className={`w-full h-2 rounded-full overflow-hidden ${progressStyle.track}`}
-                    >
-                      <motion.div
-                        className={`h-full rounded-full ${progressStyle.bar}`}
-                        initial={{ width: shouldReduceMotion ? `${progress}%` : "0%" }}
-                        whileInView={{ width: `${progress}%` }}
-                        viewport={{ once: true, margin: "-40px" }}
-                        transition={{ 
-                          duration: shouldReduceMotion ? 0 : 0.85, 
-                          delay: shouldReduceMotion ? 0 : 0.2 + idx * 0.1,
-                          ease: [0.16, 1, 0.3, 1] 
-                        }}
-                      />
-                    </div>
-
-                    {labels.progressNote && (
-                      <p className="text-technical text-brand-textSecondary/80 mt-2 font-mono">
-                        * {labels.progressNote}
-                      </p>
-                    )}
+                    <motion.div
+                      className={`h-full rounded-full ${progressStyle.bar}`}
+                      initial={{ width: shouldReduceMotion ? `${progress}%` : "0%" }}
+                      whileInView={{ width: `${progress}%` }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{ 
+                        duration: shouldReduceMotion ? 0 : 0.85, 
+                        delay: shouldReduceMotion ? 0 : 0.2 + idx * 0.1,
+                        ease: [0.16, 1, 0.3, 1] 
+                      }}
+                    />
                   </div>
 
-                  {/* Row 5: Horizontal Divider */}
-                  <div className="border-t border-brand-border/70 w-full mb-6" aria-hidden="true" />
-
-                  {/* Rows 6, 7, 8: Outcome, Execution, Impact Detailed Ledger */}
-                  <div className="space-y-4 mb-8">
-                    
-                    {/* Outcome Block */}
-                    <div className="text-body-sm">
-                      <div className="flex items-center gap-2 mb-1">
-                        <Target className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
-                        <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
-                          {labels.outcome}:
-                        </span>
-                      </div>
-                      <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5">
-                        {card.outcome}
-                      </p>
-                    </div>
-
-                    {/* Execution Block */}
-                    <div className="text-body-sm">
-                      <div className="flex items-center gap-2 mb-1">
-                        <Terminal className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
-                        <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
-                          {labels.execution}:
-                        </span>
-                      </div>
-                      <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5">
-                        {card.execution}
-                      </p>
-                    </div>
-
-                    {/* Impact Block */}
-                    <div className="text-body-sm">
-                      <div className="flex items-center gap-2 mb-1">
-                        <Zap className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
-                        <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
-                          {labels.impact}:
-                        </span>
-                      </div>
-                      <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5">
-                        {card.impact}
-                      </p>
-                    </div>
-
-                  </div>
-
+                  {labels.progressNote && (
+                    <p className="text-technical text-brand-textSecondary/80 mt-2 font-mono">
+                      * {labels.progressNote}
+                    </p>
+                  )}
                 </div>
 
-                {/* Bottom Baseline CTA Button */}
+                {/* Row 5: Horizontal Divider */}
+                <div className="border-t border-brand-border/70 w-full my-auto" aria-hidden="true" />
+
+                {/* Row 6: Outcome Block */}
+                <div className="text-body-sm">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Target className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
+                    <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
+                      {labels.outcome}:
+                    </span>
+                  </div>
+                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5">
+                    {card.outcome}
+                  </p>
+                </div>
+
+                {/* Row 7: Execution Block */}
+                <div className="text-body-sm">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Terminal className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
+                    <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
+                      {labels.execution}:
+                    </span>
+                  </div>
+                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5">
+                    {card.execution}
+                  </p>
+                </div>
+
+                {/* Row 8: Impact Block */}
+                <div className="text-body-sm">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Zap className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
+                    <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
+                      {labels.impact}:
+                    </span>
+                  </div>
+                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5">
+                    {card.impact}
+                  </p>
+                </div>
+
+                {/* Row 9: Bottom Baseline CTA Button */}
                 <div className="pt-5 border-t border-brand-border/60 w-full mt-auto">
                   <CtaLink
                     href={card.ctaHref || (isHighlight ? "/contact#audit" : "/contact#priority-queue")}
