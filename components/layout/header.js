@@ -31,11 +31,10 @@ const pyBimRightMenu = {
     { labelKey: "header.mega.team", icon: Users, href: "/about#team" },
   ],
   success_stories: [
-    { labelKey: "header.mega.stories_overview", icon: Building, href: "/success-stories#success-stories" },
-    { labelKey: "header.mega.completed_projects", icon: Briefcase, href: "/success-stories#completed-projects" },
-    { labelKey: "header.mega.ai_llm_development", icon: Cpu, href: "/success-stories#in-development" },
-    { labelKey: "header.mega.research_workstreams", icon: GitBranch, href: "/success-stories#research-workstreams" },
-    { labelKey: "header.mega.client_testimonials", icon: Users, href: "/success-stories#testimonials" },
+    { labelKey: "header.mega.completed_projects", icon: Briefcase, href: "/success-stories#completed-projects", descKey: "header.mega.stories_section_completed_desc" },
+    { labelKey: "header.mega.ai_llm_development", icon: Cpu, href: "/success-stories#in-development", descKey: "header.mega.stories_section_ai_desc" },
+    { labelKey: "header.mega.research_workstreams", icon: GitBranch, href: "/success-stories#research-workstreams", descKey: "header.mega.stories_section_workstreams_desc" },
+    { labelKey: "header.mega.client_testimonials", icon: Users, href: "/success-stories#testimonials", descKey: "header.mega.stories_section_testimonials_desc" },
   ],
   work_with_us: [
     { labelKey: "header.mega.culture_benefits", icon: Users, href: "/careers#culture" },
@@ -55,6 +54,7 @@ export default function Header() {
   const [langOpen, setLangOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [activeMegaMenuItem, setActiveMegaMenuItem] = useState("who_we_are");
+  const [activeSubItemIdx, setActiveSubItemIdx] = useState(null);
   
   const { t, language, changeLanguage, getLocalizedUrl } = useLanguage();
   const { theme, mounted } = useTheme();
@@ -152,12 +152,14 @@ export default function Header() {
                 id="pybim-megamenu-dropdown"
                 role="region"
                 aria-label="pyBIM Menu"
-                className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px] z-[1000]"
+                className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 z-[1000] transition-all duration-200 ${
+                  activeMegaMenuItem === "success_stories" ? "w-[720px]" : "w-[600px]"
+                }`}
               >
                 <div className="bg-white dark:bg-slate-900 border border-brand-border dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex ring-1 ring-black/5 dark:ring-white/5">
                   
-                  {/* Left Column */}
-                  <div className="w-[45%] bg-brand-surface dark:bg-slate-950/60 border-r border-brand-border dark:border-slate-800 p-4 flex flex-col gap-1">
+                  {/* Primary Groups Column (Leftmost) */}
+                  <div className="w-[38%] bg-brand-surface dark:bg-slate-950/60 border-r border-brand-border dark:border-slate-800 p-4 flex flex-col gap-1 shrink-0">
                     {pyBimLeftMenu.map(item => {
                       const localizedHref = getLocalizedUrl(item.href);
                       const isCurrentPath = pathname === localizedHref || pathname.startsWith(localizedHref + "/") || pathname.startsWith(localizedHref + "#");
@@ -166,7 +168,14 @@ export default function Header() {
                         <Link
                           key={item.id}
                           href={localizedHref}
-                          onMouseEnter={() => setActiveMegaMenuItem(item.id)}
+                          onMouseEnter={() => {
+                            setActiveMegaMenuItem(item.id);
+                            setActiveSubItemIdx(null);
+                          }}
+                          onFocus={() => {
+                            setActiveMegaMenuItem(item.id);
+                            setActiveSubItemIdx(null);
+                          }}
                           onClick={() => setMegaMenuOpen(false)}
                           className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${
                             isSelectedGroup 
@@ -183,27 +192,97 @@ export default function Header() {
                     })}
                   </div>
 
-                  {/* Right Column */}
-                  <div className="w-[55%] bg-white dark:bg-slate-900 p-6">
-                    <div className="flex flex-col gap-4 h-full justify-center">
-                      {pyBimRightMenu[activeMegaMenuItem].map((subItem, idx) => {
-                        const Icon = subItem.icon;
-                        return (
-                          <Link 
-                            key={idx} 
-                            href={getLocalizedUrl(subItem.href)} 
-                            onClick={() => setMegaMenuOpen(false)}
-                            className="group flex items-center gap-4 p-2 rounded-lg hover:bg-brand-surface dark:hover:bg-slate-800/60 transition"
-                          >
-                            <div className="shrink-0 w-10 h-10 rounded-full bg-brand-surface dark:bg-slate-800 border border-brand-border dark:border-slate-700 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
-                              <Icon className="w-5 h-5" />
-                            </div>
-                            <span className="font-semibold text-sm text-brand-textPrimary group-hover:text-brand-primary transition-colors">{t(subItem.labelKey)}</span>
-                          </Link>
-                        );
-                      })}
+                  {/* Content Area (Success Stories: 2 Sub-columns; Other Groups: Single Submenu Column) */}
+                  {activeMegaMenuItem === "success_stories" ? (
+                    <div className="w-[62%] bg-white dark:bg-slate-900 grid grid-cols-12 divide-x divide-brand-border/60 dark:divide-slate-800">
+                      
+                      {/* Left: Section Navigation ("On this page") */}
+                      <div className="col-span-7 p-5 flex flex-col justify-between">
+                        <div>
+                          <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textSecondary block mb-3 px-2">
+                            {t("header.mega.on_this_page") || "On this page"}
+                          </span>
+                          <div className="flex flex-col gap-1.5">
+                            {pyBimRightMenu.success_stories.map((subItem, idx) => {
+                              const Icon = subItem.icon;
+                              const isHoveredOrFocused = activeSubItemIdx === idx;
+                              return (
+                                <Link
+                                  key={idx}
+                                  href={getLocalizedUrl(subItem.href)}
+                                  onMouseEnter={() => setActiveSubItemIdx(idx)}
+                                  onFocus={() => setActiveSubItemIdx(idx)}
+                                  onClick={() => setMegaMenuOpen(false)}
+                                  className={`group flex items-center gap-3 p-2.5 rounded-xl transition-all duration-150 min-h-[44px] ${
+                                    isHoveredOrFocused
+                                      ? "bg-brand-surface dark:bg-slate-800/80 text-brand-primary ring-1 ring-brand-border dark:ring-slate-700"
+                                      : "hover:bg-brand-surface dark:hover:bg-slate-800/60 text-brand-textPrimary"
+                                  }`}
+                                >
+                                  <div className={`shrink-0 w-8 h-8 rounded-lg border flex items-center justify-center transition-all ${
+                                    isHoveredOrFocused
+                                      ? "bg-brand-primary text-white border-brand-primary"
+                                      : "bg-brand-surface dark:bg-slate-800 border-brand-border dark:border-slate-700 text-brand-primary group-hover:bg-brand-primary group-hover:text-white"
+                                  }`}>
+                                    <Icon className="w-4 h-4" />
+                                  </div>
+                                  <span className="font-semibold text-body-sm leading-snug group-hover:text-brand-primary transition-colors">
+                                    {t(subItem.labelKey)}
+                                  </span>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Right: Contextual Overview & Synced Section Explanations */}
+                      <div className="col-span-5 p-5 bg-brand-surface/40 dark:bg-slate-950/30 flex flex-col justify-between">
+                        <div>
+                          <div className="inline-flex items-center gap-2 text-technical font-mono font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 mb-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
+                            <span>{t("header.mega.stories_context_title") || "Portfolio & Applied R&D"}</span>
+                          </div>
+                          
+                          <p className="text-body-sm text-brand-textSecondary leading-relaxed mb-4">
+                            {activeSubItemIdx !== null && pyBimRightMenu.success_stories[activeSubItemIdx]?.descKey
+                              ? t(pyBimRightMenu.success_stories[activeSubItemIdx].descKey)
+                              : (t("header.mega.stories_context_description") || 
+                                 "Explore delivered BIM engineering work alongside our active R&D workstreams in AI-assisted workflows and semantic model auditing.")}
+                          </p>
+                        </div>
+
+                        <div className="pt-3 border-t border-brand-border/60 dark:border-slate-800/80">
+                          <span className="text-technical font-mono text-brand-textSecondary/70 block">
+                            4 verified page sections
+                          </span>
+                        </div>
+                      </div>
+
                     </div>
-                  </div>
+                  ) : (
+                    /* Default Submenu Column for other groups */
+                    <div className="w-[62%] bg-white dark:bg-slate-900 p-6 flex flex-col justify-center">
+                      <div className="flex flex-col gap-3">
+                        {pyBimRightMenu[activeMegaMenuItem]?.map((subItem, idx) => {
+                          const Icon = subItem.icon;
+                          return (
+                            <Link 
+                              key={idx} 
+                              href={getLocalizedUrl(subItem.href)} 
+                              onClick={() => setMegaMenuOpen(false)}
+                              className="group flex items-center gap-4 p-2 rounded-lg hover:bg-brand-surface dark:hover:bg-slate-800/60 transition min-h-[44px]"
+                            >
+                              <div className="shrink-0 w-10 h-10 rounded-full bg-brand-surface dark:bg-slate-800 border border-brand-border dark:border-slate-700 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
+                                <Icon className="w-5 h-5" />
+                              </div>
+                              <span className="font-semibold text-sm text-brand-textPrimary group-hover:text-brand-primary transition-colors">{t(subItem.labelKey)}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
 
                 </div>
               </div>
