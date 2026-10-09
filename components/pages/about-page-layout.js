@@ -6,6 +6,7 @@ import { ArrowRight, Code2, Cpu, Cog, Briefcase, Terminal, Activity, Shield, Use
 import { useLanguage } from "@/lib/LanguageContext";
 import TeamPartnersSection from "@/components/sections/team-partners-section";
 import ManifestoHero from "@/components/about/manifesto-hero";
+import CorePhilosophy from "@/components/about/core-philosophy";
 
 export default function AboutPageLayout({ teamData }) {
   const { t } = useLanguage();
@@ -37,86 +38,7 @@ export default function AboutPageLayout({ teamData }) {
       <ManifestoHero />
 
       {/* SECTION 2: Core Philosophy (3 Column Grid) */}
-      <section className="bg-brand-base w-full border-b border-brand-border py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-3 max-w-7xl mx-auto">
-
-            {/* Box 1: The Traditional "Modeling Farm" */}
-            <div className="rounded-3xl border border-red-200 dark:border-red-900/40 bg-white dark:bg-slate-900/90 p-8 md:p-10 relative overflow-hidden group hover:border-red-300 dark:hover:border-red-800/60 transition-colors shadow-sm flex flex-col h-full">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-red-50 dark:bg-red-950/30 blur-[60px] rounded-full group-hover:bg-red-100 dark:group-hover:bg-red-900/40 transition-colors" />
-              <div className="relative z-10 flex-grow">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-red-50 dark:bg-red-950/50 text-red-500 border border-red-100 dark:border-red-900/40">
-                    <Users className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-brand-textPrimary">{t("about.manifesto.box1_title")}</h3>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-bold text-sm text-brand-textPrimary mb-1">{t("about.manifesto.box1_subtitle")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed">{t("about.manifesto.box1_desc1")}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-brand-textPrimary mb-1">{t("about.manifesto.box1_desc2_title")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box1_desc2") }} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Box 2: The pyBIM Automation Lab */}
-            <div className="rounded-3xl border-2 border-brand-primary/40 bg-white dark:bg-slate-900 p-8 md:p-10 relative overflow-hidden group shadow-[0_0_40px_-10px_rgba(37,99,235,0.25)] hover:shadow-[0_0_50px_-10px_rgba(37,99,235,0.4)] hover:border-brand-primary/60 transition-all flex flex-col h-full lg:-translate-y-4 z-10">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-brand-primary/5 blur-[60px] rounded-full group-hover:bg-brand-primary/10 transition-colors" />
-              <div className="relative z-10 flex-grow">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary border border-brand-primary/20">
-                    <Terminal className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-brand-textPrimary">{t("about.manifesto.box3_title")}</h3>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-bold text-sm text-brand-primary mb-1">{t("about.manifesto.box3_subtitle")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box3_desc1") }} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-brand-primary mb-1">{t("about.manifesto.box3_desc2_title")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box3_desc2") }} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-brand-primary mb-1">{t("about.manifesto.box3_desc3_title")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box3_desc3") }} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Box 3: The Generic Software Vendor */}
-            <div className="rounded-3xl border border-orange-200 dark:border-orange-900/40 bg-white dark:bg-slate-900/90 p-8 md:p-10 relative overflow-hidden group hover:border-orange-300 dark:hover:border-orange-800/60 transition-colors shadow-sm flex flex-col h-full">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-orange-50 dark:bg-orange-950/30 blur-[60px] rounded-full group-hover:bg-orange-100 dark:group-hover:bg-orange-900/40 transition-colors" />
-              <div className="relative z-10 flex-grow">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-orange-50 dark:bg-orange-950/50 text-orange-500 border border-orange-100 dark:border-orange-900/40">
-                    <Building className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-brand-textPrimary">{t("about.manifesto.box2_title")}</h3>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-bold text-sm text-brand-textPrimary mb-1">{t("about.manifesto.box2_subtitle")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box2_desc1") }} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-brand-textPrimary mb-1">{t("about.manifesto.box2_desc2_title")}:</h4>
-                    <p className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.manifesto.box2_desc2") }} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      <CorePhilosophy />
 
       {/* SECTION 3: Our Journey (Vertical Timeline Component) */}
       <section id="journey" className="bg-brand-surface w-full border-b border-brand-border py-24 lg:py-32">
