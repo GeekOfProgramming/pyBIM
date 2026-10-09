@@ -3,12 +3,24 @@
   "cookie_policy.placeholder": "This document is currently being adapted to comply with GDPR standards. The official policy powered by Iubenda will be available here shortly.",
   "cookie_policy.embed_link_text": "Cookie Policy",
 
-  "cookie.banner.title": "Your Privacy is Our Priority",
-  "cookie.banner.desc_prefix": "We use cookies to improve your browsing experience, serve personalized content, and analyze our traffic. By clicking \"Accept All\", you consent to our use of cookies in accordance with our",
+  "cookie.banner.title": "Cookie & Privacy Choices",
+  "cookie.banner.desc_prefix": "We use strictly necessary storage for site operations and optional anonymous analytics to measure performance. You can manage your preferences or read our",
   "cookie.banner.privacy_policy": "Privacy Policy",
   "cookie.banner.and": "and",
   "cookie.banner.cookie_policy": "Cookie Policy",
+  "cookie.banner.btn_reject_optional": "Reject Optional",
   "cookie.banner.btn_customize": "Customize",
   "cookie.banner.btn_accept_all": "Accept All",
-  "cookie.banner.alert_customize": "Cookie preferences panel will open here."
+
+  "cookie.modal.title": "Cookie Preferences",
+  "cookie.modal.desc": "Manage which storage technologies you allow. Strictly necessary technologies cannot be disabled as they are required for basic site security and navigation.",
+  "cookie.category.necessary.title": "Strictly Necessary",
+  "cookie.category.necessary.badge": "Always Active",
+  "cookie.category.necessary.desc": "Essential for core navigation, security tokens, language preferences, and interface state.",
+  "cookie.category.analytics.title": "Analytics & Performance",
+  "cookie.category.analytics.desc": "Enables anonymous aggregated traffic measurement through Vercel Analytics to improve site performance. No cross-site tracking or advertising profiling.",
+  "cookie.modal.btn_save": "Save Preferences",
+  "cookie.modal.btn_accept_all": "Accept All",
+  "cookie.modal.btn_cancel": "Cancel",
+  "cookie.footer.manage_preferences": "Cookie Preferences"
 }
