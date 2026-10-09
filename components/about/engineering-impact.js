@@ -164,15 +164,10 @@ export default function EngineeringImpact() {
                     isSelected ? item.activeBorder : item.inactiveBorder
                   }`}
                 >
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <span className={`inline-flex items-center justify-center font-mono text-xs font-bold px-2.5 py-1 rounded-md border shrink-0 ${item.badgeStyle}`}>
-                        {t(item.numKey)}
-                      </span>
-                      <h3 className="text-base sm:text-lg font-bold text-brand-textPrimary tracking-tight break-words">
-                        {t(item.titleKey)}
-                      </h3>
-                    </div>
+                  <div className="flex items-center justify-between gap-4 mb-3">
+                    <h3 className="text-base sm:text-lg font-bold text-brand-textPrimary tracking-tight break-words min-w-0">
+                      {t(item.titleKey)}
+                    </h3>
                     <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 ${item.iconBoxStyle}`}>
                       <IconComponent className="w-4 h-4" aria-hidden="true" />
                     </div>
