@@ -216,26 +216,6 @@ export default function EngineeringImpact() {
                 transition={{ duration: shouldReduceMotion ? 0.05 : 0.25, ease: "easeOut" }}
                 className="relative z-10 flex flex-col justify-between"
               >
-                {/* Inspector Header */}
-                <div className="mb-6 pb-5 border-b border-brand-border/70">
-                  <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand-primary">
-                      {t("about.impact.v2.inspector.badge")} // {t(currentOutcome.numKey)}
-                    </span>
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-brand-surface text-brand-textSecondary border border-brand-border/60">
-                      {t("about.impact.v2.inspector.flow_direction")}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl sm:text-2xl font-bold text-brand-textPrimary tracking-tight mb-2 break-words">
-                    {t(currentOutcome.titleKey)}
-                  </h3>
-
-                  <p className="text-sm sm:text-base text-brand-textSecondary leading-relaxed break-words">
-                    {t(currentOutcome.descKey)}
-                  </p>
-                </div>
-
                 {/* Dedicated Engineering Process Diagram Area */}
                 <div 
                   className="rounded-xl border border-brand-border bg-brand-surface/90 dark:bg-slate-950/70 p-5 sm:p-6"
