@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Globe, ChevronDown, ChevronRight, Briefcase, FileText, Code2, Users, Building, Activity, Shield, Terminal, Cog, Calculator, UserCircle } from "lucide-react";
+import { Globe, ChevronDown, ChevronRight, Briefcase, FileText, Code2, Users, Building, Activity, Shield, Terminal, Cog, Calculator, UserCircle, Cpu, GitBranch } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { useTheme } from "@/lib/ThemeContext";
 import ThemeToggle from "@/components/ui/ThemeToggle";
@@ -31,9 +31,11 @@ const pyBimRightMenu = {
     { labelKey: "header.mega.team", icon: Users, href: "/about#team" },
   ],
   success_stories: [
+    { labelKey: "header.mega.stories_overview", icon: Building, href: "/success-stories#success-stories" },
     { labelKey: "header.mega.completed_projects", icon: Briefcase, href: "/success-stories#completed-projects" },
-    { labelKey: "header.mega.in_development", icon: FileText, href: "/success-stories#in-development" },
-    { labelKey: "header.mega.testimonials", icon: Users, href: "/success-stories#testimonials" },
+    { labelKey: "header.mega.ai_llm_development", icon: Cpu, href: "/success-stories#in-development" },
+    { labelKey: "header.mega.research_workstreams", icon: GitBranch, href: "/success-stories#research-workstreams" },
+    { labelKey: "header.mega.client_testimonials", icon: Users, href: "/success-stories#testimonials" },
   ],
   work_with_us: [
     { labelKey: "header.mega.culture_benefits", icon: Users, href: "/careers#culture" },

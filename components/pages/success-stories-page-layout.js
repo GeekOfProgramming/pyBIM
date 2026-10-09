@@ -306,12 +306,21 @@ export default function SuccessStoriesPageLayout() {
             </a>
 
             <a
+              href="#research-workstreams"
+              className="group inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-brand-surface dark:bg-slate-900 border border-brand-border/80 hover:border-cyan-500/50 text-body-sm font-semibold text-brand-textPrimary hover:text-cyan-600 dark:hover:text-cyan-400 transition-all duration-200 shadow-sm"
+            >
+              <GitBranch className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform" aria-hidden="true" />
+              <span>{t("projects.nav.workstreams") || "Active Research Workstreams"}</span>
+              <span className="text-caption font-mono text-brand-textSecondary/60 group-hover:text-cyan-500">#03</span>
+            </a>
+
+            <a
               href="#testimonials"
               className="group inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-brand-surface dark:bg-slate-900 border border-brand-border/80 hover:border-brand-primary/50 text-body-sm font-semibold text-brand-textPrimary hover:text-brand-primary transition-all duration-200 shadow-sm"
             >
               <MessageSquareQuote className="w-4 h-4 text-brand-primary group-hover:scale-110 transition-transform" aria-hidden="true" />
               <span>{t("projects.nav.testimonials") || "Client Testimonials"}</span>
-              <span className="text-caption font-mono text-brand-textSecondary/60 group-hover:text-brand-primary">#03</span>
+              <span className="text-caption font-mono text-brand-textSecondary/60 group-hover:text-brand-primary">#04</span>
             </a>
           </nav>
 
@@ -657,9 +666,16 @@ export default function SuccessStoriesPageLayout() {
           {/* ========================================================================= */}
           {/* ACTIVE RESEARCH WORKSTREAMS LEDGER                                        */}
           {/* ========================================================================= */}
-          <div>
+          <section 
+            id="research-workstreams"
+            aria-labelledby={`${baseId}-workstreams-heading`}
+            className="scroll-mt-28"
+          >
             <div className="flex items-center justify-between gap-4 mb-6">
-              <h3 className="text-card-title font-bold text-brand-textPrimary tracking-tight flex items-center gap-2">
+              <h3 
+                id={`${baseId}-workstreams-heading`}
+                className="text-card-title font-bold text-brand-textPrimary tracking-tight flex items-center gap-2"
+              >
                 <GitBranch className="w-5 h-5 text-cyan-600 dark:text-cyan-400" aria-hidden="true" />
                 <span>{t("projects.dev.workstreams_heading") || "Active Research Workstreams"}</span>
               </h3>
@@ -716,7 +732,7 @@ export default function SuccessStoriesPageLayout() {
                 {t("projects.dev.disclaimer")}
               </p>
             </div>
-          </div>
+          </section>
 
         </div>
       </section>
