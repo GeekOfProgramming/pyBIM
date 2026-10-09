@@ -1,10 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "@/components/layout/LocalizedLink";
+import { useState, useRef } from "react";
 import CtaLink from "@/components/ui/cta-link";
 import { 
-  ArrowRight, 
   ChevronDown, 
   Layers, 
   ShieldCheck, 
@@ -12,14 +10,18 @@ import {
   Database, 
   Workflow, 
   CheckCircle2, 
-  Terminal
+  Info,
+  Sliders,
+  FileCode2,
+  FileCheck2,
+  Compass
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
 export default function ServicesHero({ data }) {
   const shouldReduceMotion = useReducedMotion();
   const [activeNodeIndex, setActiveNodeIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+  const tabRefs = useRef([]);
 
   // Fallback defaults if data is loading or missing
   const hero = data || {
@@ -40,6 +42,14 @@ export default function ServicesHero({ data }) {
       badge: "ILLUSTRATIVE WORKFLOW",
       monitorLabel: "WORKFLOW_ARCHITECTURE // 4 INTEGRATED PHASES",
       windowTitle: "pyBIM_ARCHITECTURE // WORKFLOW_SPEC",
+      labels: {
+        framework: "FRAMEWORK // OPENBIM & API",
+        tablistAria: "BIM engineering workflow phases",
+        inspectAria: "Inspect phase",
+        specOverview: "PHASE SPECIFICATION // ARCHITECTURE",
+        pipelineMode: "PROCESS: STRUCTURED DELIVERY",
+        activePhase: "ACTIVE PHASE"
+      },
       nodes: [
         {
           id: "revit",
@@ -89,57 +99,70 @@ export default function ServicesHero({ data }) {
 
   const nodes = hero.pipeline?.nodes || [];
   const logs = hero.pipeline?.logs || [];
-
-  // Cycle through nodes automatically unless user is hovering, focusing, or reduced motion is preferred
-  useEffect(() => {
-    if (shouldReduceMotion || isHovered || nodes.length === 0) return;
-    const interval = setInterval(() => {
-      setActiveNodeIndex((prev) => (prev + 1) % nodes.length);
-    }, 3600);
-    return () => clearInterval(interval);
-  }, [shouldReduceMotion, isHovered, nodes.length]);
+  const activeNode = nodes[activeNodeIndex] || nodes[0] || {};
+  const labels = hero.pipeline?.labels || {
+    framework: "FRAMEWORK // OPENBIM & API",
+    tablistAria: "BIM engineering workflow phases",
+    inspectAria: "Inspect phase",
+    specOverview: "PHASE SPECIFICATION // ARCHITECTURE",
+    pipelineMode: "PROCESS: STRUCTURED DELIVERY",
+    activePhase: "ACTIVE PHASE"
+  };
 
   const getNodeIcon = (iconName, className) => {
     switch (iconName) {
       case "box":
-        return <Layers className={className} />;
+        return <Layers className={className} aria-hidden="true" />;
       case "shield":
-        return <ShieldCheck className={className} />;
+        return <ShieldCheck className={className} aria-hidden="true" />;
       case "cpu":
-        return <Cpu className={className} />;
+        return <Cpu className={className} aria-hidden="true" />;
       case "database":
       default:
-        return <Database className={className} />;
+        return <Database className={className} aria-hidden="true" />;
     }
   };
 
-  const scrollToRoadmap = (e) => {
+  // Secondary CTA: smoothly scroll to #roadmap while updating browser URL hash naturally
+  const handleRoadmapClick = (e) => {
     e.preventDefault();
     const roadmapEl = document.getElementById("roadmap");
     if (roadmapEl) {
       roadmapEl.scrollIntoView({ behavior: shouldReduceMotion ? "auto" : "smooth" });
+      if (typeof window !== "undefined" && window.history?.pushState) {
+        window.history.pushState(null, "", "#roadmap");
+      } else {
+        window.location.hash = "roadmap";
+      }
     } else {
       window.location.hash = "roadmap";
     }
   };
 
-  const handleKeyDown = (e, index) => {
+  // Keyboard navigation strictly following WAI-ARIA tabs specification
+  const handleKeyDown = (e, currentIndex) => {
+    let targetIndex = null;
     if (e.key === "ArrowDown" || e.key === "ArrowRight") {
       e.preventDefault();
-      const next = (index + 1) % nodes.length;
-      setActiveNodeIndex(next);
-      const nextBtn = document.getElementById(`pipeline-tab-${nodes[next]?.id}`);
-      if (nextBtn) nextBtn.focus();
+      targetIndex = (currentIndex + 1) % nodes.length;
     } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
       e.preventDefault();
-      const prev = (index - 1 + nodes.length) % nodes.length;
-      setActiveNodeIndex(prev);
-      const prevBtn = document.getElementById(`pipeline-tab-${nodes[prev]?.id}`);
-      if (prevBtn) prevBtn.focus();
+      targetIndex = (currentIndex - 1 + nodes.length) % nodes.length;
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      targetIndex = 0;
+    } else if (e.key === "End") {
+      e.preventDefault();
+      targetIndex = nodes.length - 1;
+    }
+
+    if (targetIndex !== null) {
+      setActiveNodeIndex(targetIndex);
+      tabRefs.current[targetIndex]?.focus();
     }
   };
 
-  // Animation variants
+  // Animation variants respecting user reduced-motion preference
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -152,7 +175,7 @@ export default function ServicesHero({ data }) {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 14 },
     visible: {
       opacity: 1,
       y: 0,
@@ -160,58 +183,89 @@ export default function ServicesHero({ data }) {
     },
   };
 
+  // Casing safety for brand: pyBIM is always formatted with lowercase 'py' and uppercase 'BIM'
+  const rawEyebrow = hero.eyebrow || "BIM ENGINEERING · WORKFLOW AUTOMATION";
+
   return (
     <section 
       id="services-hero"
       aria-label="Services Hero"
-      className="scroll-mt-28 relative w-full overflow-hidden bg-brand-base pt-20 pb-20 md:pt-28 md:pb-28 lg:pt-32 lg:pb-36 border-b border-brand-border/60 transition-colors"
+      className="scroll-mt-28 relative w-full overflow-hidden bg-brand-base pt-16 pb-16 md:pt-24 md:pb-24 lg:pt-28 lg:pb-32 border-b border-brand-border/60 transition-colors"
     >
-      {/* Background Architectural Subtle Grid & Ambient Lighting */}
+      {/* ========================================================================= */}
+      {/* ARCHITECTURAL BACKGROUND: Fine Coordinate Blueprint Linework & Ambient Glow */}
+      {/* ========================================================================= */}
       <div 
-        className="pointer-events-none absolute inset-0 opacity-[0.035] dark:opacity-[0.06]"
+        className="pointer-events-none absolute inset-0 z-0 text-slate-900 dark:text-cyan-200"
         style={{
-          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-          backgroundSize: "48px 48px",
-          maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 80%)",
-          WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 80%)",
+          maskImage: "radial-gradient(ellipse 85% 70% at 65% 35%, black 25%, transparent 85%)",
+          WebkitMaskImage: "radial-gradient(ellipse 85% 70% at 65% 35%, black 25%, transparent 85%)",
         }}
+        aria-hidden="true"
+      >
+        <svg className="w-full h-full opacity-[0.045] dark:opacity-[0.085]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="services-blueprint-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.5" />
+            </pattern>
+            <pattern id="services-major-grid" width="160" height="160" patternUnits="userSpaceOnUse">
+              <rect width="160" height="160" fill="url(#services-blueprint-grid)" />
+              <path d="M 160 0 L 0 0 0 160" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.8" />
+              {/* Coordinate axis crosshairs */}
+              <path d="M -6 0 L 6 0 M 0 -6 L 0 6" stroke="currentColor" strokeWidth="1.2" strokeOpacity="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#services-major-grid)" />
+        </svg>
+      </div>
+
+      {/* Atmospheric Multi-Point Lighting Focused on Right Engineering Schematic */}
+      <div 
+        aria-hidden="true" 
+        className="pointer-events-none absolute -top-32 right-1/4 w-[580px] h-[480px] bg-gradient-to-br from-blue-500/[0.09] via-cyan-500/[0.05] to-transparent dark:from-blue-500/[0.16] dark:via-cyan-500/[0.08] dark:to-transparent rounded-full blur-[110px] z-0" 
       />
       <div 
         aria-hidden="true" 
-        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-b from-blue-500/15 via-cyan-500/10 to-transparent blur-3xl opacity-70 dark:opacity-60" 
-      />
-      <div 
-        aria-hidden="true" 
-        className="pointer-events-none absolute top-1/3 -right-20 w-96 h-96 bg-cyan-500/10 dark:bg-cyan-500/15 rounded-full blur-3xl" 
+        className="pointer-events-none absolute top-1/2 left-0 w-[420px] h-[360px] bg-blue-600/[0.035] dark:bg-blue-600/[0.07] rounded-full blur-[120px] z-0" 
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 xl:gap-14 items-center">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 xl:gap-16 items-center">
           
-          {/* ================= LEFT COLUMN: Typography & CTAs ================= */}
+          {/* ========================================================================= */}
+          {/* LEFT COLUMN: Editorial Typography, CTAs & Verified Engineering Standards  */}
+          {/* ========================================================================= */}
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 flex flex-col items-start text-left z-10"
+            className="lg:col-span-7 flex flex-col items-start text-left"
           >
-            {/* Technical Eyebrow Badge */}
+            {/* Technical Eyebrow Badge with Brand Casing Guard */}
             <motion.div variants={itemVariants} className="mb-6">
-              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-blue-500/30 dark:border-blue-400/30 bg-blue-500/10 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-mono text-caption font-bold tracking-widest uppercase shadow-sm">
-                <span className="relative flex h-2 w-2">
-                  {!shouldReduceMotion && (
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-blue-500/30 dark:border-blue-400/30 bg-blue-500/10 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-mono text-caption font-bold tracking-wider shadow-sm">
+                <Compass className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" aria-hidden="true" />
+                <span>
+                  {rawEyebrow.includes("pyBIM") ? (
+                    <>
+                      <span className="normal-case font-bold">pyBIM</span>
+                      {rawEyebrow.replace("pyBIM", "")}
+                    </>
+                  ) : (
+                    <>
+                      <span className="normal-case font-bold">pyBIM</span>
+                      {" · "}
+                      <span className="uppercase">{rawEyebrow}</span>
+                    </>
                   )}
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600 dark:bg-blue-400" />
                 </span>
-                <span>{hero.eyebrow}</span>
               </div>
             </motion.div>
 
-            {/* Headline */}
+            {/* Dominant H1 Title */}
             <motion.h1 
               variants={itemVariants} 
-              className="text-section-sm sm:text-section lg:text-display font-extrabold tracking-tight text-brand-textPrimary leading-[1.08] mb-6"
+              className="text-section-sm sm:text-section lg:text-display font-extrabold tracking-tight text-brand-textPrimary leading-[1.08] mb-5"
             >
               <span>{hero.headline1}</span>{" "}
               <br className="hidden sm:inline" />
@@ -220,18 +274,18 @@ export default function ServicesHero({ data }) {
               </span>
             </motion.h1>
 
-            {/* Supporting Description */}
+            {/* Supporting Editorial Description */}
             <motion.p 
               variants={itemVariants}
-              className="text-body sm:text-lead text-brand-textSecondary max-w-2xl font-normal leading-relaxed mb-9"
+              className="text-body sm:text-lead text-brand-textSecondary max-w-2xl font-normal leading-relaxed mb-8"
             >
               {hero.subheadline}
             </motion.p>
 
-            {/* CTA Group */}
+            {/* Action CTAs Group */}
             <motion.div 
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-10"
+              variants={itemVariants} 
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-9"
             >
               {/* Primary CTA */}
               <CtaLink
@@ -241,28 +295,28 @@ export default function ServicesHero({ data }) {
                 {hero.primaryCta}
               </CtaLink>
 
-              {/* Secondary CTA */}
+              {/* Secondary CTA: Natural navigation to #roadmap */}
               <CtaLink
                 href={hero.secondaryCtaHref || "#roadmap"}
                 variant="secondary"
-                onClick={scrollToRoadmap}
+                onClick={handleRoadmapClick}
                 icon={
-                  <ChevronDown className="w-4 h-4 ml-2 text-brand-textSecondary group-hover:text-brand-primary transition-transform duration-200 group-hover:translate-y-0.5 shrink-0" aria-hidden="true" />
+                  <ChevronDown className="w-4 h-4 ml-1.5 text-brand-textSecondary group-hover:text-brand-primary transition-transform duration-200 group-hover:translate-y-0.5 shrink-0" aria-hidden="true" />
                 }
               >
                 {hero.secondaryCta}
               </CtaLink>
             </motion.div>
 
-            {/* Engineering Standards Badges */}
+            {/* Verified Engineering Capability Badges */}
             <motion.div 
               variants={itemVariants}
               className="w-full pt-6 border-t border-brand-border/60"
             >
-              <div className="flex flex-wrap items-center gap-y-2 gap-x-4 sm:gap-x-6 text-caption font-mono text-brand-textSecondary">
+              <div className="flex flex-wrap items-center gap-y-2.5 gap-x-5 sm:gap-x-7 text-caption font-mono text-brand-textSecondary">
                 {(hero.trustBadges || []).map((badge, idx) => (
                   <div key={idx} className="inline-flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 shrink-0" aria-hidden="true" />
                     <span className="tracking-tight">{badge}</span>
                   </div>
                 ))}
@@ -270,80 +324,191 @@ export default function ServicesHero({ data }) {
             </motion.div>
           </motion.div>
 
-          {/* ================= RIGHT COLUMN: Technical BIM Workflow Visualization ================= */}
+          {/* ========================================================================= */}
+          {/* RIGHT COLUMN: Integrated Engineering Blueprint Panel (No Fake OS HUD)      */}
+          {/* ========================================================================= */}
           <motion.div 
-            initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.98, y: shouldReduceMotion ? 0 : 20 }}
+            initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.98, y: shouldReduceMotion ? 0 : 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 w-full z-10"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 w-full"
           >
-            {/* Technical HUD Frame */}
-            <div className="relative rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800 shadow-2xl shadow-blue-950/10 dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden ring-1 ring-slate-900/5 dark:ring-white/10">
+            {/* Engineering Blueprint Card Container */}
+            <div className="relative rounded-3xl bg-brand-card/95 dark:bg-slate-900/95 border border-brand-border/80 dark:border-cyan-500/20 shadow-xl shadow-blue-950/5 dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl overflow-hidden ring-1 ring-slate-900/5 dark:ring-white/5">
               
-              {/* HUD Header Bar */}
-              <div className="flex items-center justify-between px-4 py-3 bg-slate-100/80 dark:bg-slate-950/70 border-b border-slate-200 dark:border-slate-800 text-technical font-mono">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500/70 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70 inline-block" />
-                  <span className="ml-2 font-semibold text-slate-700 dark:text-slate-300 tracking-wide">
+              {/* Blueprint Drawing Reference Header (NO fake OS window controls) */}
+              <div className="flex items-center justify-between px-5 py-3.5 bg-brand-surface dark:bg-slate-950/80 border-b border-brand-border/70 text-technical font-mono">
+                <div className="flex items-center gap-2 text-brand-textPrimary font-semibold tracking-wide">
+                  <Workflow className="w-4 h-4 text-brand-primary shrink-0" aria-hidden="true" />
+                  <span className="truncate">
                     {hero.pipeline?.windowTitle || "pyBIM_ARCHITECTURE // WORKFLOW_SPEC"}
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-semibold">
-                  <Workflow className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline text-technical tracking-wider uppercase font-bold">
-                    {hero.pipeline?.badge || "ILLUSTRATIVE WORKFLOW"}
-                  </span>
-                </div>
-              </div>
-
-              {/* Status Sub-bar */}
-              <div className="px-4 py-2 bg-blue-50/50 dark:bg-blue-950/20 border-b border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between text-technical font-mono text-slate-500 dark:text-slate-400">
-                <span className="truncate">{hero.pipeline?.monitorLabel || "WORKFLOW_ARCHITECTURE // 4 INTEGRATED PHASES"}</span>
-                <span className="shrink-0 text-blue-600 dark:text-blue-400 font-semibold tracking-wide">
-                  FRAMEWORK: OPENBIM & API
+                
+                <span className="shrink-0 text-technical font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-blue-500/10 text-blue-700 dark:text-cyan-300 border border-blue-500/20">
+                  {hero.pipeline?.badge || "ILLUSTRATIVE WORKFLOW"}
                 </span>
               </div>
 
-              {/* Main Workflow Visualization Canvas with Accessible Tab List */}
+              {/* Sub-bar: Framework and Monitor Reference */}
+              <div className="px-5 py-2 bg-slate-500/[0.04] dark:bg-cyan-950/15 border-b border-brand-border/60 flex items-center justify-between text-technical font-mono text-brand-textSecondary">
+                <span className="truncate">
+                  {hero.pipeline?.monitorLabel || "WORKFLOW_ARCHITECTURE // 4 INTEGRATED PHASES"}
+                </span>
+                <span className="shrink-0 text-brand-primary font-semibold hidden sm:inline">
+                  {labels.framework}
+                </span>
+              </div>
+
+              {/* ===================================================================== */}
+              {/* Original Vector BIM Isometric Process Schematic                       */}
+              {/* ===================================================================== */}
+              <div className="px-5 pt-5 pb-3 border-b border-brand-border/60 bg-slate-500/[0.02] dark:bg-slate-950/40">
+                <div className="flex items-center justify-between mb-2 text-technical font-mono text-brand-textSecondary">
+                  <span>VECTOR FLOW // SCHEMATIC</span>
+                  <span className="text-brand-primary font-medium">STEP: 0{activeNodeIndex + 1} / 04</span>
+                </div>
+
+                <div className="w-full h-auto py-1" aria-hidden="true">
+                  <svg 
+                    viewBox="0 0 460 84" 
+                    fill="none" 
+                    className="w-full h-auto overflow-visible text-slate-700 dark:text-cyan-300" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <linearGradient id="vectorLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#2563eb" stopOpacity="0.4" />
+                        <stop offset="50%" stopColor="#06b6d4" stopOpacity="0.8" />
+                        <stop offset="100%" stopColor="#2563eb" stopOpacity="0.4" />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Connecting Data Rail */}
+                    <line 
+                      x1="55" 
+                      y1="42" 
+                      x2="405" 
+                      y2="42" 
+                      stroke="currentColor" 
+                      strokeWidth="1.5" 
+                      strokeDasharray="4 4"
+                      strokeOpacity="0.25"
+                    />
+
+                    {/* Dynamic Active Segment */}
+                    <line 
+                      x1="55" 
+                      y1="42" 
+                      x2={55 + activeNodeIndex * 116.6} 
+                      y2="42" 
+                      stroke="url(#vectorLineGrad)" 
+                      strokeWidth="2.5" 
+                    />
+
+                    {/* 4 Process Nodes along the rail */}
+                    {[
+                      { x: 55, label: "01 INGEST" },
+                      { x: 171.6, label: "02 AUDIT" },
+                      { x: 288.3, label: "03 AUTOMATE" },
+                      { x: 405, label: "04 DELIVER" }
+                    ].map((pt, i) => {
+                      const isCurrent = activeNodeIndex === i;
+                      const isPassed = activeNodeIndex >= i;
+                      return (
+                        <g key={i}>
+                          {/* Node Halo */}
+                          {isCurrent && (
+                            <circle 
+                              cx={pt.x} 
+                              cy="42" 
+                              r="18" 
+                              fill="none" 
+                              stroke="#06b6d4" 
+                              strokeWidth="1" 
+                              strokeOpacity="0.4" 
+                              strokeDasharray="2 2"
+                            />
+                          )}
+
+                          {/* Outer Circle */}
+                          <circle 
+                            cx={pt.x} 
+                            cy="42" 
+                            r="12" 
+                            fill={isCurrent ? "currentColor" : isPassed ? "#2563eb" : "var(--brand-card, #ffffff)"} 
+                            fillOpacity={isCurrent ? "0.15" : isPassed ? "0.2" : "1"}
+                            stroke={isCurrent ? "#06b6d4" : isPassed ? "#2563eb" : "currentColor"} 
+                            strokeWidth={isCurrent ? "2" : "1.2"}
+                            strokeOpacity={isCurrent ? "1" : "0.4"}
+                          />
+
+                          {/* Center Marker */}
+                          <circle 
+                            cx={pt.x} 
+                            cy="42" 
+                            r={isCurrent ? "4.5" : "2.5"} 
+                            fill={isCurrent ? "#06b6d4" : isPassed ? "#2563eb" : "currentColor"} 
+                            fillOpacity={isPassed ? "1" : "0.3"}
+                          />
+
+                          {/* Technical Label Below */}
+                          <text 
+                            x={pt.x} 
+                            y="70" 
+                            textAnchor="middle" 
+                            fill="currentColor" 
+                            fontSize="9" 
+                            fontFamily="monospace"
+                            fontWeight={isCurrent ? "700" : "500"}
+                            opacity={isCurrent ? "1" : "0.6"}
+                          >
+                            {pt.label}
+                          </text>
+                        </g>
+                      );
+                    })}
+                  </svg>
+                </div>
+              </div>
+
+              {/* ===================================================================== */}
+              {/* Interactive 4-Phase Workflow Ledger (WAI-ARIA Compliant Tabs)          */}
+              {/* ===================================================================== */}
               <div 
                 role="tablist" 
-                aria-label="BIM engineering workflow phases"
-                className="p-4 sm:p-5 space-y-3"
+                aria-label={labels.tablistAria || "BIM engineering workflow phases"}
+                className="p-4 sm:p-5 space-y-2.5"
               >
                 {nodes.map((node, index) => {
                   const isActive = activeNodeIndex === index;
                   return (
                     <button
                       key={node.id}
+                      ref={(el) => (tabRefs.current[index] = el)}
                       type="button"
                       role="tab"
-                      id={`pipeline-tab-${node.id}`}
+                      id={`pipeline-phase-tab-${node.id}`}
                       aria-selected={isActive}
-                      aria-controls="pipeline-spec-console"
-                      aria-label={`Inspect ${node.step}: ${node.title}`}
-                      tabIndex={0}
+                      aria-controls="pipeline-phase-spec-panel"
+                      aria-label={`${labels.inspectAria || "Inspect phase"} ${node.step}: ${node.title}`}
+                      tabIndex={isActive ? 0 : -1}
                       onClick={() => setActiveNodeIndex(index)}
-                      onFocus={() => setActiveNodeIndex(index)}
-                      onMouseEnter={() => setActiveNodeIndex(index)}
                       onKeyDown={(e) => handleKeyDown(e, index)}
-                      className={`group relative w-full text-left rounded-xl p-3 sm:p-3.5 transition-all duration-200 cursor-pointer border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 ${
+                      className={`group relative w-full text-left rounded-2xl p-3 sm:p-3.5 transition-all duration-200 cursor-pointer border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 ${
                         isActive
-                          ? "bg-blue-50/90 dark:bg-blue-950/35 border-blue-500/60 dark:border-blue-400/50 shadow-md shadow-blue-500/10"
-                          : "bg-slate-50/70 dark:bg-slate-950/40 border-slate-200/70 dark:border-slate-800/60 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900/60"
+                          ? "bg-blue-50/90 dark:bg-blue-950/40 border-blue-500/60 dark:border-cyan-400/50 shadow-sm ring-1 ring-blue-500/20"
+                          : "bg-brand-surface/70 dark:bg-slate-950/40 border-brand-border/70 hover:border-brand-border hover:bg-brand-surface dark:hover:bg-slate-900/60"
                       }`}
                     >
                       <div className="flex items-start justify-between gap-3">
-                        {/* Left: Node Step & Icon */}
+                        {/* Left: Step Identifier & Icon */}
                         <div className="flex items-center gap-3">
                           <div 
-                            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                               isActive
-                                ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
-                                : "bg-slate-200/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400"
+                                ? "bg-brand-primary text-white shadow-sm"
+                                : "bg-slate-200/70 dark:bg-slate-800 text-brand-textSecondary group-hover:text-brand-primary"
                             }`}
                           >
                             {getNodeIcon(node.icon, "w-4 h-4 sm:w-5 sm:h-5")}
@@ -351,42 +516,40 @@ export default function ServicesHero({ data }) {
 
                           <div>
                             <div className="flex items-center gap-2">
-                              <span className="font-mono text-technical font-bold text-blue-600 dark:text-blue-400">
+                              <span className="font-mono text-technical font-bold text-brand-primary">
                                 {node.step}
                               </span>
-                              <span className="text-body-sm sm:text-body font-bold text-slate-900 dark:text-white leading-tight block">
+                              <span className="text-body-sm sm:text-body font-bold text-brand-textPrimary leading-tight block">
                                 {node.title}
                               </span>
                             </div>
-                            <p className="text-caption text-slate-600 dark:text-slate-400 font-medium">
+                            <p className="text-caption text-brand-textSecondary font-normal mt-0.5">
                               {node.sub}
                             </p>
                           </div>
                         </div>
 
-                        {/* Right: Technical Tag & Indicator */}
+                        {/* Right: Technical Tag & Parameter Identifier */}
                         <div className="flex flex-col items-end shrink-0">
                           <span 
                             className={`font-mono text-technical font-bold px-2 py-0.5 rounded uppercase tracking-wider ${
                               isActive
-                                ? "bg-blue-600 text-white dark:bg-blue-500 dark:text-slate-950"
-                                : "bg-slate-200/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
+                                ? "bg-blue-600 text-white dark:bg-cyan-400 dark:text-slate-950"
+                                : "bg-brand-surface dark:bg-slate-800 text-brand-textSecondary border border-brand-border/60"
                             }`}
                           >
                             {node.badge}
                           </span>
-                          <span className="mt-1 font-mono text-technical text-slate-500 dark:text-slate-400 hidden sm:inline">
+                          <span className="mt-1 font-mono text-technical text-brand-textSecondary/80 hidden sm:inline">
                             {node.meta}
                           </span>
                         </div>
                       </div>
 
-                      {/* Active Node Bottom Progress Rail */}
+                      {/* Active Indicator Accent Line */}
                       {isActive && (
                         <div 
-                          className={`absolute -bottom-[1px] left-3 right-3 h-[2px] bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 rounded-full ${
-                            shouldReduceMotion ? "" : "animate-pulse"
-                          }`} 
+                          className="absolute -bottom-[1px] left-4 right-4 h-[2px] bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 rounded-full" 
                         />
                       )}
                     </button>
@@ -394,26 +557,39 @@ export default function ServicesHero({ data }) {
                 })}
               </div>
 
-              {/* Bottom Specification Log Console */}
+              {/* ===================================================================== */}
+              {/* Integrated Engineering Specification Panel (NO fake hacker console)   */}
+              {/* ===================================================================== */}
               <div 
-                id="pipeline-spec-console"
+                id="pipeline-phase-spec-panel"
                 role="tabpanel"
-                aria-label="Workflow Phase Specification"
-                className="px-4 py-3 bg-slate-950 text-slate-300 border-t border-slate-200 dark:border-slate-800 font-mono text-technical leading-relaxed"
+                aria-labelledby={`pipeline-phase-tab-${activeNode.id || "revit"}`}
+                className="px-5 py-4 bg-slate-950 text-slate-300 border-t border-brand-border/80 font-mono text-technical leading-relaxed"
               >
-                <div className="flex items-center justify-between text-slate-500 text-technical mb-1.5 pb-1 border-b border-slate-800">
-                  <div className="flex items-center gap-1.5">
-                    <Terminal className="w-3 h-3 text-blue-400" />
-                    <span>SPECIFICATION // PHASE OVERVIEW</span>
+                <div className="flex items-center justify-between text-slate-400 text-technical mb-2 pb-1.5 border-b border-slate-800">
+                  <div className="flex items-center gap-1.5 font-semibold text-cyan-400">
+                    <Info className="w-3.5 h-3.5" aria-hidden="true" />
+                    <span>{labels.specOverview}</span>
                   </div>
-                  <span className="text-blue-400 font-medium">PIPELINE: DETERMINISTIC</span>
+                  <span className="text-slate-400 font-medium">
+                    {labels.pipelineMode}
+                  </span>
                 </div>
-                <div className="text-slate-300 leading-relaxed break-words text-xs sm:text-technical">
+
+                {/* Factual Phase Engineering Overview */}
+                <div className="text-slate-200 text-xs sm:text-technical leading-relaxed">
                   {logs[activeNodeIndex] || logs[0]}
                 </div>
-                <div className="flex items-center gap-1.5 text-blue-400/80 text-technical mt-1.5">
-                  <span>pyBIM-spec &gt;</span>
-                  <span className={`w-1.5 h-3 bg-blue-400 inline-block ${shouldReduceMotion ? "" : "animate-pulse"}`} />
+
+                {/* Technical Verification Discipline Metadata */}
+                <div className="flex items-center justify-between pt-2.5 mt-2.5 border-t border-slate-800/80 text-technical text-slate-400">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                    <span>{activeNode.meta}</span>
+                  </span>
+                  <span className="text-cyan-400 font-semibold">
+                    [{labels.activePhase}: {activeNode.step}]
+                  </span>
                 </div>
               </div>
 
