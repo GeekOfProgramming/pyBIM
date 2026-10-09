@@ -301,28 +301,42 @@ export default function ServicesHero({ data }) {
             className="lg:col-span-5 w-full"
           >
             {/* Engineering Blueprint Card Container */}
-            <div className="relative rounded-3xl bg-brand-card/95 dark:bg-slate-900/95 border border-brand-border/80 dark:border-cyan-500/20 shadow-xl shadow-blue-950/5 dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl overflow-hidden ring-1 ring-slate-900/5 dark:ring-white/5">
+            <div className="relative rounded-3xl bg-brand-cardElevated border border-brand-border/80 dark:border-cyan-500/25 shadow-xl shadow-blue-950/5 dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl overflow-hidden ring-1 ring-slate-900/5 dark:ring-white/5">
               
               {/* Blueprint Drawing Reference Header (NO fake OS window controls) */}
-              <div className="flex items-center justify-between px-5 py-3.5 bg-brand-surface dark:bg-slate-950/80 border-b border-brand-border/70 text-technical font-mono">
-                <div className="flex items-center gap-2 text-brand-textPrimary font-semibold tracking-wide">
+              <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 sm:px-5 py-3.5 bg-brand-surface dark:bg-slate-950/80 border-b border-brand-border/70 text-caption font-mono">
+                <div className="flex items-center gap-2 text-brand-textPrimary font-semibold tracking-wide min-w-0">
                   <Workflow className="w-4 h-4 text-brand-primary shrink-0" aria-hidden="true" />
-                  <span className="truncate">
-                    {hero.pipeline?.windowTitle || "pyBIM_ARCHITECTURE // WORKFLOW_SPEC"}
+                  <span className="leading-snug break-words">
+                    {hero.pipeline?.windowTitle ? (
+                      hero.pipeline.windowTitle.includes("pyBIM") ? (
+                        <>
+                          <span className="normal-case font-bold">pyBIM</span>
+                          {hero.pipeline.windowTitle.replace(/pyBIM/i, "")}
+                        </>
+                      ) : (
+                        hero.pipeline.windowTitle
+                      )
+                    ) : (
+                      <>
+                        <span className="normal-case font-bold">pyBIM</span>
+                        {" ARCHITECTURE // WORKFLOW SPEC"}
+                      </>
+                    )}
                   </span>
                 </div>
                 
-                <span className="shrink-0 text-technical font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-blue-500/10 text-blue-700 dark:text-cyan-300 border border-blue-500/20">
+                <span className="shrink-0 text-technical font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-blue-500/10 text-blue-700 dark:text-cyan-300 border border-blue-500/20">
                   {hero.pipeline?.badge || "ILLUSTRATIVE WORKFLOW"}
                 </span>
               </div>
 
               {/* Sub-bar: Framework and Monitor Reference */}
-              <div className="px-5 py-2 bg-slate-500/[0.04] dark:bg-cyan-950/15 border-b border-brand-border/60 flex items-center justify-between text-technical font-mono text-brand-textSecondary">
-                <span className="truncate">
-                  {hero.pipeline?.monitorLabel || "WORKFLOW_ARCHITECTURE // 4 INTEGRATED PHASES"}
+              <div className="px-4 sm:px-5 py-2.5 bg-slate-500/[0.04] dark:bg-cyan-950/15 border-b border-brand-border/60 flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 text-caption font-mono text-brand-textSecondary">
+                <span className="leading-tight font-medium">
+                  {hero.pipeline?.monitorLabel || "WORKFLOW ARCHITECTURE // 4 INTEGRATED PHASES"}
                 </span>
-                <span className="shrink-0 text-brand-primary font-semibold hidden sm:inline">
+                <span className="shrink-0 text-brand-primary font-semibold">
                   {labels.framework}
                 </span>
               </div>
@@ -330,15 +344,15 @@ export default function ServicesHero({ data }) {
               {/* ===================================================================== */}
               {/* Original Vector BIM Isometric Process Schematic                       */}
               {/* ===================================================================== */}
-              <div className="px-5 pt-5 pb-3 border-b border-brand-border/60 bg-slate-500/[0.02] dark:bg-slate-950/40">
-                <div className="flex items-center justify-between mb-2 text-technical font-mono text-brand-textSecondary">
+              <div className="px-4 sm:px-5 pt-5 pb-3.5 border-b border-brand-border/60 bg-slate-500/[0.02] dark:bg-slate-950/40">
+                <div className="flex items-center justify-between mb-2 text-caption font-mono text-brand-textSecondary">
                   <span>VECTOR FLOW // SCHEMATIC</span>
-                  <span className="text-brand-primary font-medium">STEP: 0{activeNodeIndex + 1} / 04</span>
+                  <span className="text-brand-primary font-bold">STEP: 0{activeNodeIndex + 1} / 04</span>
                 </div>
 
                 <div className="w-full h-auto py-1" aria-hidden="true">
                   <svg 
-                    viewBox="0 0 460 84" 
+                    viewBox="0 0 460 92" 
                     fill="none" 
                     className="w-full h-auto overflow-visible text-slate-700 dark:text-cyan-300" 
                     xmlns="http://www.w3.org/2000/svg"
@@ -354,9 +368,9 @@ export default function ServicesHero({ data }) {
                     {/* Connecting Data Rail */}
                     <line 
                       x1="55" 
-                      y1="42" 
+                      y1="38" 
                       x2="405" 
-                      y2="42" 
+                      y2="38" 
                       stroke="currentColor" 
                       strokeWidth="1.5" 
                       strokeDasharray="4 4"
@@ -366,9 +380,9 @@ export default function ServicesHero({ data }) {
                     {/* Dynamic Active Segment */}
                     <line 
                       x1="55" 
-                      y1="42" 
+                      y1="38" 
                       x2={55 + activeNodeIndex * 116.6} 
-                      y2="42" 
+                      y2="38" 
                       stroke="url(#vectorLineGrad)" 
                       strokeWidth="2.5" 
                     />
@@ -388,12 +402,12 @@ export default function ServicesHero({ data }) {
                           {isCurrent && (
                             <circle 
                               cx={pt.x} 
-                              cy="42" 
+                              cy="38" 
                               r="18" 
                               fill="none" 
                               stroke="#06b6d4" 
-                              strokeWidth="1" 
-                              strokeOpacity="0.4" 
+                              strokeWidth="1.2" 
+                              strokeOpacity="0.5" 
                               strokeDasharray="2 2"
                             />
                           )}
@@ -401,7 +415,7 @@ export default function ServicesHero({ data }) {
                           {/* Outer Circle */}
                           <circle 
                             cx={pt.x} 
-                            cy="42" 
+                            cy="38" 
                             r="12" 
                             fill={isCurrent ? "currentColor" : isPassed ? "#2563eb" : "var(--brand-card, #ffffff)"} 
                             fillOpacity={isCurrent ? "0.15" : isPassed ? "0.2" : "1"}
@@ -413,22 +427,23 @@ export default function ServicesHero({ data }) {
                           {/* Center Marker */}
                           <circle 
                             cx={pt.x} 
-                            cy="42" 
+                            cy="38" 
                             r={isCurrent ? "4.5" : "2.5"} 
                             fill={isCurrent ? "#06b6d4" : isPassed ? "#2563eb" : "currentColor"} 
                             fillOpacity={isPassed ? "1" : "0.3"}
                           />
 
-                          {/* Technical Label Below */}
+                          {/* Technical Label Below — Highly Readable Size */}
                           <text 
                             x={pt.x} 
-                            y="70" 
+                            y="72" 
                             textAnchor="middle" 
                             fill="currentColor" 
-                            fontSize="9" 
+                            fontSize="11.5" 
                             fontFamily="monospace"
-                            fontWeight={isCurrent ? "700" : "500"}
-                            opacity={isCurrent ? "1" : "0.6"}
+                            fontWeight={isCurrent ? "700" : "600"}
+                            letterSpacing="0.04em"
+                            opacity={isCurrent ? "1" : "0.75"}
                           >
                             {pt.label}
                           </text>
@@ -445,7 +460,7 @@ export default function ServicesHero({ data }) {
               <div 
                 role="tablist" 
                 aria-label={labels.tablistAria || "BIM engineering workflow phases"}
-                className="p-4 sm:p-5 space-y-2.5"
+                className="p-3.5 sm:p-5 space-y-2.5"
               >
                 {nodes.map((node, index) => {
                   const isActive = activeNodeIndex === index;
@@ -468,48 +483,53 @@ export default function ServicesHero({ data }) {
                           : "bg-brand-surface/70 dark:bg-slate-950/40 border-brand-border/70 hover:border-brand-border hover:bg-brand-surface dark:hover:bg-slate-900/60"
                       }`}
                     >
-                      <div className="flex items-start justify-between gap-3">
-                        {/* Left: Step Identifier & Icon */}
-                        <div className="flex items-center gap-3">
-                          <div 
-                            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                              isActive
-                                ? "bg-brand-primary text-white shadow-sm"
-                                : "bg-slate-200/70 dark:bg-slate-800 text-brand-textSecondary group-hover:text-brand-primary"
-                            }`}
-                          >
-                            {getNodeIcon(node.icon, "w-4 h-4 sm:w-5 sm:h-5")}
-                          </div>
+                      <div className="flex items-start gap-3 w-full">
+                        {/* Step Identifier & Icon */}
+                        <div 
+                          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors mt-0.5 ${
+                            isActive
+                              ? "bg-brand-primary text-white shadow-sm"
+                              : "bg-slate-200/70 dark:bg-slate-800 text-brand-textSecondary group-hover:text-brand-primary"
+                          }`}
+                        >
+                          {getNodeIcon(node.icon, "w-4 h-4 sm:w-5 sm:h-5")}
+                        </div>
 
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="font-mono text-technical font-bold text-brand-primary">
+                        {/* Title, Badge, Description & Parameter Set */}
+                        <div className="min-w-0 flex-1">
+                          {/* Row 1: Step + Title and Badge */}
+                          <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1">
+                            <div className="flex items-baseline gap-2 min-w-0">
+                              <span className="font-mono text-caption font-bold text-brand-primary shrink-0">
                                 {node.step}
                               </span>
-                              <span className="text-body-sm sm:text-body font-bold text-brand-textPrimary leading-tight block">
+                              <span className="text-body-sm font-bold text-brand-textPrimary leading-snug break-words">
                                 {node.title}
                               </span>
                             </div>
-                            <p className="text-caption text-brand-textSecondary font-normal mt-0.5">
+
+                            <span 
+                              className={`font-mono text-technical font-bold px-2 py-0.5 rounded uppercase tracking-wider shrink-0 ${
+                                isActive
+                                  ? "bg-blue-600 text-white dark:bg-cyan-400 dark:text-slate-950"
+                                  : "bg-brand-surface dark:bg-slate-800 text-brand-textSecondary border border-brand-border/60"
+                              }`}
+                            >
+                              {node.badge}
+                            </span>
+                          </div>
+
+                          {/* Row 2: Subtitle & Meta */}
+                          <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-0.5 mt-1">
+                            <p className="text-caption text-brand-textSecondary font-normal leading-normal">
                               {node.sub}
                             </p>
+                            {node.meta && (
+                              <span className="font-mono text-caption text-brand-textSecondary/80 shrink-0">
+                                {node.meta}
+                              </span>
+                            )}
                           </div>
-                        </div>
-
-                        {/* Right: Technical Tag & Parameter Identifier */}
-                        <div className="flex flex-col items-end shrink-0">
-                          <span 
-                            className={`font-mono text-technical font-bold px-2 py-0.5 rounded uppercase tracking-wider ${
-                              isActive
-                                ? "bg-blue-600 text-white dark:bg-cyan-400 dark:text-slate-950"
-                                : "bg-brand-surface dark:bg-slate-800 text-brand-textSecondary border border-brand-border/60"
-                            }`}
-                          >
-                            {node.badge}
-                          </span>
-                          <span className="mt-1 font-mono text-technical text-brand-textSecondary/80 hidden sm:inline">
-                            {node.meta}
-                          </span>
                         </div>
                       </div>
 
@@ -531,30 +551,30 @@ export default function ServicesHero({ data }) {
                 id="pipeline-phase-spec-panel"
                 role="tabpanel"
                 aria-labelledby={`pipeline-phase-tab-${activeNode.id || "revit"}`}
-                className="px-5 py-4 bg-slate-950 text-slate-300 border-t border-brand-border/80 font-mono text-technical leading-relaxed"
+                className="px-4 sm:px-5 py-4 bg-slate-950 text-slate-300 border-t border-brand-border/80 font-mono text-caption leading-relaxed"
               >
-                <div className="flex items-center justify-between text-slate-400 text-technical mb-2 pb-1.5 border-b border-slate-800">
+                <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 text-slate-400 text-caption mb-2.5 pb-2 border-b border-slate-800">
                   <div className="flex items-center gap-1.5 font-semibold text-cyan-400">
-                    <Info className="w-3.5 h-3.5" aria-hidden="true" />
+                    <Info className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                     <span>{labels.specOverview}</span>
                   </div>
-                  <span className="text-slate-400 font-medium">
+                  <span className="text-slate-400 font-medium shrink-0">
                     {labels.pipelineMode}
                   </span>
                 </div>
 
                 {/* Factual Phase Engineering Overview */}
-                <div className="text-slate-200 text-xs sm:text-technical leading-relaxed">
+                <div className="text-slate-200 text-caption leading-relaxed">
                   {logs[activeNodeIndex] || logs[0]}
                 </div>
 
                 {/* Technical Verification Discipline Metadata */}
-                <div className="flex items-center justify-between pt-2.5 mt-2.5 border-t border-slate-800/80 text-technical text-slate-400">
+                <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 pt-2.5 mt-2.5 border-t border-slate-800/80 text-caption text-slate-400">
                   <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
                     <span>{activeNode.meta}</span>
                   </span>
-                  <span className="text-cyan-400 font-semibold">
+                  <span className="text-cyan-400 font-semibold shrink-0">
                     [{labels.activePhase}: {activeNode.step}]
                   </span>
                 </div>
