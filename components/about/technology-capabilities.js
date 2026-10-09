@@ -245,24 +245,9 @@ export default function TechnologyCapabilities() {
         {/* ========================================================= */}
         {/* 2. SHARED HORIZONTAL FAMILY SELECTOR                       */}
         {/* ========================================================= */}
-        <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-md shadow-sm">
-          <div className="flex items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-200/60 dark:border-slate-800/60">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold tracking-wider text-brand-primary uppercase">
-                {t("about.tech.detail_eyebrow")}
-              </span>
-              <span className="text-slate-300 dark:text-slate-700">/</span>
-              <span className="text-xs font-mono font-bold text-brand-textSecondary uppercase">
-                {t(activePillar.tagKey)}
-              </span>
-            </div>
-            <span className="text-xs font-mono text-brand-textSecondary">
-              {activePillar.families.length} {t("about.tech.headings_count")}
-            </span>
-          </div>
-
+        <div className="mb-7 sm:mb-8 p-3 sm:p-4 rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-md shadow-sm">
           {/* Responsive Grid / Horizontal Family Options */}
-          <div className={`grid grid-cols-2 sm:grid-cols-3 ${activePillar.families.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-6"} gap-2.5`}>
+          <div className={`grid grid-cols-2 sm:grid-cols-3 ${activePillar.families.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-6"} gap-2 sm:gap-2.5`}>
             {activePillar.families.map((family) => {
               const isFamilyActive = selectedFamilyId === family.id;
 
