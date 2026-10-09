@@ -8,6 +8,7 @@ import TeamPartnersSection from "@/components/sections/team-partners-section";
 import ManifestoHero from "@/components/about/manifesto-hero";
 import CorePhilosophy from "@/components/about/core-philosophy";
 import EngineeringJourney from "@/components/about/engineering-journey";
+import TechnologyCapabilities from "@/components/about/technology-capabilities";
 
 export default function AboutPageLayout({ teamData }) {
   const { t } = useLanguage();
@@ -44,107 +45,9 @@ export default function AboutPageLayout({ teamData }) {
       {/* SECTION 3: Our Journey (Connected Engineering Timeline) */}
       <EngineeringJourney />
 
-      {/* SECTION 4: Tech Stack & Standards (Logo & Engineering Arsenal Grid) */}
-      <section id="tech-stack" className="bg-brand-base w-full border-b border-brand-border py-24 lg:py-32 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm">
-              <Code2 className="w-4 h-4" /> {t("about.tech.badge")}
-            </div>
-                        <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight mb-4">
-              {t("about.tech.title")}
-            </h2>
-            <div className="text-left space-y-4">
-              <p className="text-brand-textSecondary text-base md:text-lg font-medium">
-                <strong className="text-brand-textPrimary">{t("about.tech.p1_title")}:</strong> <span dangerouslySetInnerHTML={{ __html: t("about.tech.p1_desc") }} />
-              </p>
-              <p className="text-brand-textSecondary text-base md:text-lg font-medium">
-                <strong className="text-brand-textPrimary">{t("about.tech.p2_title")}:</strong> <span dangerouslySetInnerHTML={{ __html: t("about.tech.p2_desc") }} />
-              </p>
-              <p className="text-brand-textSecondary text-base md:text-lg font-medium">
-                <strong className="text-brand-textPrimary">{t("about.tech.p3_title")}:</strong> <span dangerouslySetInnerHTML={{ __html: t("about.tech.p3_desc") }} />
-              </p>
-            </div>
-          </div>
+      {/* SECTION 4: Tech Stack & Standards (Three-Pillar Technical Catalogue) */}
+      <TechnologyCapabilities />
 
-          <div className="grid gap-8 lg:grid-cols-3">
-
-            {/* 1. ENGINEERING TOOLS */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
-              <div>
-                <div className="border-b border-brand-border pb-6 mb-6">
-                  <h3 className="text-xl font-bold text-brand-textPrimary mb-2 flex items-center gap-2">
-                    <Cog className="w-5 h-5 text-brand-primary" /> {t("about.tech.box1_title")}
-                  </h3>
-                  <p className="text-sm text-brand-textSecondary font-medium">{t("about.tech.box1_sub")}</p>
-                </div>
-
-                <div className="space-y-4 mb-6">
-                  {(Array.isArray(t("about.tech.box1_items")) ? t("about.tech.box1_items") : []).map((item, idx) => (
-                    <div key={idx} className="bg-brand-surface/60 rounded-xl p-4 border border-brand-border/60 hover:bg-white dark:hover:bg-slate-800 hover:border-brand-primary/30 transition-colors">
-                      <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
-                      <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="text-xs text-brand-textSecondary/70 italic mt-4 pt-4 border-t border-brand-border/50">
-                {t("about.tech.box1_footer")}
-              </div>
-            </div>
-
-            {/* 2. DEVELOPMENT STACK */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 border-2 border-brand-primary/40 shadow-[0_0_40px_-10px_rgba(37,99,235,0.15)] p-8 flex flex-col justify-between relative group hover:border-brand-primary/60 transition-all z-10 lg:-translate-y-4">
-              <div className="absolute inset-0 bg-brand-primary/[0.02] rounded-3xl pointer-events-none" />
-              <div className="relative z-10">
-                <div className="border-b border-brand-primary/20 pb-6 mb-6">
-                  <h3 className="text-xl font-bold text-brand-primary mb-2 flex items-center gap-2">
-                    <Terminal className="w-5 h-5 text-brand-primary" /> {t("about.tech.box2_title")}
-                  </h3>
-                  <p className="text-sm text-brand-textSecondary font-medium">{t("about.tech.box2_sub")}</p>
-                </div>
-
-                <div className="space-y-4 mb-6">
-                  {(Array.isArray(t("about.tech.box2_items")) ? t("about.tech.box2_items") : []).map((item, idx) => (
-                    <div key={idx} className="bg-brand-primary/5 rounded-xl p-4 border border-brand-primary/15 hover:bg-white dark:hover:bg-slate-800 hover:border-brand-primary/40 transition-colors">
-                      <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
-                      <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="relative z-10 text-xs text-brand-textSecondary/70 italic mt-4 pt-4 border-t border-brand-primary/20">
-                {t("about.tech.box2_footer")}
-              </div>
-            </div>
-
-            {/* 3. STANDARDS & PROTOCOLS */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 border border-brand-border shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition-all">
-              <div>
-                <div className="border-b border-brand-border pb-6 mb-6">
-                  <h3 className="text-xl font-bold text-brand-textPrimary mb-2 flex items-center gap-2">
-                    <Code2 className="w-5 h-5 text-brand-primary" /> {t("about.tech.box3_title")}
-                  </h3>
-                  <p className="text-sm text-brand-textSecondary font-medium">{t("about.tech.box3_sub")}</p>
-                </div>
-
-                <div className="space-y-4 mb-6">
-                  {(Array.isArray(t("about.tech.box3_items")) ? t("about.tech.box3_items") : []).map((item, idx) => (
-                    <div key={idx} className="bg-brand-surface/60 rounded-xl p-4 border border-brand-border/60 hover:bg-white dark:hover:bg-slate-800 hover:border-brand-primary/30 transition-colors">
-                      <strong className="text-sm text-brand-textPrimary block mb-1">{item.name}</strong>
-                      <span className="text-xs text-brand-textSecondary leading-relaxed block" dangerouslySetInnerHTML={{ __html: item.desc }} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="text-xs text-brand-textSecondary/70 italic mt-4 pt-4 border-t border-brand-border/50">
-                {t("about.tech.box3_footer")}
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
 
       {/* SECTION 5: Our Impact (Stats/Counters) */}

@@ -543,5 +543,195 @@
       "tag": "Processi Standard",
       "desc": "Manuale di consegna delle informazioni per la standardizzazione dei flussi."
     }
-  ]
+  ],
+  "about.tech.section_eyebrow": "ARSENALE & CAPACITÀ INGEGNERISTICHE",
+  "about.tech.section_title": "Capacità Ingegneristiche. Tecnologie Connesse. Standard Affidabili.",
+  "about.tech.section_subtitle": "Esplora i servizi ingegneristici, le tecnologie di sviluppo e i quadri di gestione informativa che guidano il lavoro attuale e la ricerca futura di pyBIM.",
+  "about.tech.pillar1_tag": "01 / CONSEGNA BIM",
+  "about.tech.pillar1_title": "01. ESECUZIONE & CONSEGNA BIM",
+  "about.tech.pillar1_sub": "Servizi ingegneristici pratici, authoring di modelli, coordinamento multidisciplinare e gestione strutturata della commessa.",
+  "about.tech.pillar1_status": "SERVIZI ATTIVI",
+  "about.tech.f1_1_title": "Consulenza BIM",
+  "about.tech.f1_1_desc": "Consulenza per stazioni appaltanti, studi di progettazione e imprese su adozione processi BIM, capitolati informativi e standard aziendali.",
+  "about.tech.f1_1_items": [
+    "Implementazione BIM",
+    "Capitolato Informativo (CI)",
+    "Offerta di Gestione Informativa (oGI)",
+    "Piano di Gestione Informativa (pGI)",
+    "Consulenza Gare BIM",
+    "Standard BIM Aziendali",
+    "Ottimizzazione Flussi di Lavoro",
+    "Digitalizzazione Processi Aziendali",
+    "Consulenza Tecnica Ciclo di Vita Opera"
+  ],
+  "about.tech.f1_2_title": "Modellazione BIM",
+  "about.tech.f1_2_desc": "Authoring multidisciplinare, processi da rilievo a modello, conversione CAD, modellazione parametrica e manutenzione modelli.",
+  "about.tech.f1_2_items": [
+    "Modellazione BIM Architettonica",
+    "Modellazione BIM Strutturale",
+    "Modellazione BIM MEP (Impianti)",
+    "Modellazione BIM Infrastrutture",
+    "Modellazione BIM As-Built",
+    "Conversione CAD to BIM",
+    "Scan to BIM / Nuvole di Punti",
+    "Famiglie Parametriche Revit",
+    "Modellazione LOD / LOI",
+    "Estrazione Computi, Abachi & Tavole",
+    "Consegna Modelli IFC / OpenBIM",
+    "Aggiornamento & Manutenzione Modelli BIM",
+    "Integrazione Modelli Multidisciplinari",
+    "Rendering 3D & Visualizzazione Tecnica"
+  ],
+  "about.tech.f1_3_title": "Coordinamento BIM",
+  "about.tech.f1_3_desc": "Analisi interferenze multidisciplinari, model checking, verifica normativa, audit parametri e gestione non conformità.",
+  "about.tech.f1_3_items": [
+    "Coordinamento BIM Multidisciplinare",
+    "Model Checking",
+    "Code Checking",
+    "Clash Detection & Analisi Interferenze",
+    "Verifica Modelli Formale e Sostanziale",
+    "Controllo Classificazioni & Parametri",
+    "Verifica Requisiti CI / pGI",
+    "Controllo Qualità Dati BIM",
+    "Coerenza Geometrica & Informativa",
+    "Report di Qualità & Non Conformità",
+    "Supporto Risoluzione Problematiche",
+    "Verifica Interoperabilità IFC"
+  ],
+  "about.tech.f1_4_title": "Servizi CAD",
+  "about.tech.f1_4_desc": "Disegno tecnico, conversione formati, tavole costruttive di dettaglio, revisioni, ferraioli e carpenterie metalliche.",
+  "about.tech.f1_4_items": [
+    "Disegno Tecnico 2D",
+    "Conversione Formati CAD",
+    "Conversione PDF / Cartaceo in CAD",
+    "Modellazione CAD da 2D a 3D",
+    "Piante, Sezioni, Prospetti & Dettagli",
+    "Revisione Tavole CAD",
+    "Dettagli Armature (Disegni Ferraioli)",
+    "Disegni d'Officina per Strutture in Acciaio"
+  ],
+  "about.tech.f1_5_title": "Gestione ACDat / CDE",
+  "about.tech.f1_5_desc": "Configurazione Ambiente di Condivisione Dati, flussi documentali, ruoli e permessi, scambio formati aperti e supporto operativo.",
+  "about.tech.f1_5_items": [
+    "Setup & Gestione ACDat / CDE",
+    "Strutturazione Cartelle & Flussi Informativi",
+    "Gestione Ruoli & Permessi di Accesso",
+    "Gestione Versioni & Revisioni",
+    "Flussi di Approvazione & Revisione Documenti",
+    "Classificazione & Archiviazione Documentale",
+    "Gestione Documentale Conforme UNI 11337",
+    "Collaborazione Multidisciplinare su CDE",
+    "Monitoraggio Consegne & Avanzamento Documenti",
+    "Piattaforme ACC / BIM Collaborate Pro / Autodesk Docs",
+    "Gestione Interscambio IFC & OpenBIM",
+    "Supporto & Formazione Utenti ACDat"
+  ],
+  "about.tech.pillar2_tag": "02 / SVILUPPO",
+  "about.tech.pillar2_title": "02. CODICE PERSONALIZZATO & PLUGIN",
+  "about.tech.pillar2_sub": "Linguaggi di programmazione, API BIM, servizi backend e integrazioni software alla base dell'architettura di automazione interna pyBIM.",
+  "about.tech.pillar2_status": "R&S INTERNA",
+  "about.tech.f2_1_title": "Linguaggi",
+  "about.tech.f2_1_desc": "Linguaggi ingegneristici primari ed ambienti di interrogazione database impiegati nell'automazione e gestione dati.",
+  "about.tech.f2_1_items": [
+    "Python",
+    "C#",
+    "JavaScript",
+    "TypeScript",
+    "SQL (Linguaggio di Interrogazione Database)"
+  ],
+  "about.tech.f2_2_title": "API BIM",
+  "about.tech.f2_2_desc": "Interfacce di programmazione desktop e cloud, scripting visuale e strumenti di progettazione computazionale.",
+  "about.tech.f2_2_items": [
+    "Autodesk Revit API",
+    "Dynamo",
+    "pyRevit",
+    "Autodesk Platform Services (APS)",
+    "Rhino / Grasshopper"
+  ],
+  "about.tech.f2_3_title": "Backend",
+  "about.tech.f2_3_desc": "Microservizi applicativi, interfacce RESTful e pipeline di integrazione per l'orchestrazione dei flussi di lavoro.",
+  "about.tech.f2_3_items": [
+    "FastAPI",
+    "Node.js",
+    "API REST",
+    "Integrazione dei Servizi"
+  ],
+  "about.tech.f2_4_title": "Frontend",
+  "about.tech.f2_4_desc": "Interfacce client web e visualizzazione interattiva su browser di modelli 3D BIM su standard aperti.",
+  "about.tech.f2_4_items": [
+    "React",
+    "Next.js",
+    "IFC.js / That Open (Visualizzazione Web 3D)"
+  ],
+  "about.tech.f2_5_title": "Dati & IA",
+  "about.tech.f2_5_desc": "Parametri relazionali, database vettoriali ed elaborazione documentale RAG guidata dai dati ingegneristici.",
+  "about.tech.f2_5_items": [
+    "PostgreSQL",
+    "ChromaDB",
+    "LangChain",
+    "Retrieval-Augmented Generation (RAG)"
+  ],
+  "about.tech.f2_6_title": "Integrazione",
+  "about.tech.f2_6_desc": "Dashboard analitiche di business intelligence, streaming dati open-source e tracciamento non conformità multipiattaforma.",
+  "about.tech.f2_6_items": [
+    "Power BI",
+    "Speckle",
+    "IFC",
+    "BCF"
+  ],
+  "about.tech.pillar3_tag": "03 / STANDARD",
+  "about.tech.pillar3_title": "03. SOVRANITÀ IA & CONFORMITÀ",
+  "about.tech.pillar3_sub": "Quadri di gestione informativa, normative nazionali, specifiche aperte e ricerca esplorativa su IA locale.",
+  "about.tech.pillar3_status": "STANDARD & RICERCA",
+  "about.tech.f3_1_title": "ISO / UNI",
+  "about.tech.f3_1_desc": "Standard internazionali e nazionali di gestione delle informazioni digitali lungo l'intero ciclo di vita.",
+  "about.tech.f3_1_items": [
+    "ISO 19650",
+    "UNI 11337",
+    "EIR / BEP",
+    "CI / oGI / pGI"
+  ],
+  "about.tech.f3_2_title": "Normativa BIM Italia",
+  "about.tech.f3_2_desc": "Decreti ministeriali e disposizioni normative che regolano la digitalizzazione degli appalti pubblici italiani.",
+  "about.tech.f3_2_items": [
+    "Decreto BIM",
+    "D.M. 560/2017",
+    "D.M. 312/2021",
+    "Requisiti Appalti Pubblici BIM Italiani"
+  ],
+  "about.tech.f3_3_title": "OpenBIM",
+  "about.tech.f3_3_desc": "Formati di interscambio indipendenti dai software proprietari e specifiche semantiche buildingSMART.",
+  "about.tech.f3_3_items": [
+    "IFC / ISO 16739",
+    "BCF",
+    "buildingSMART Data Dictionary (bsDD)"
+  ],
+  "about.tech.f3_4_title": "Requisiti Informativi",
+  "about.tech.f3_4_desc": "Definizione del fabbisogno informativo, pianificazione delle consegne e schemi strutturati di passaggio dati.",
+  "about.tech.f3_4_items": [
+    "LOD / LOIN",
+    "MIDP / TIDP",
+    "COBie",
+    "IDM / ISO 29481"
+  ],
+  "about.tech.f3_5_title": "Classificazione",
+  "about.tech.f3_5_desc": "Sistemi internazionali di classificazione degli elementi costruttivi e strutture coerenti dei parametri.",
+  "about.tech.f3_5_items": [
+    "OmniClass",
+    "MasterFormat",
+    "Classificazione degli Elementi",
+    "Parametri Informativi BIM"
+  ],
+  "about.tech.f3_6_title": "Ricerca IA Locale",
+  "about.tech.f3_6_desc": "Ricerca applicata su modelli LLM in ambiente locale per il confronto dei requisiti e il supporto alla revisione umana.",
+  "about.tech.f3_6_items": [
+    "Ricerca & Recupero Documentale",
+    "Confronto Requisiti di Progetto",
+    "Individuazione Potenziali Non Conformità",
+    "Revisione Ingegneristica con Riferimento alle Fonti"
+  ],
+  "about.tech.detail_eyebrow": "SPECIFICHE DI GRUPPO",
+  "about.tech.detail_notice_p1": "Tutti i servizi rimangono subordinati ai requisiti di progetto e all'ambito operativo concordato.",
+  "about.tech.detail_notice_p2": "I moduli di automazione della Fase 02 sono sottoposti a convalida tecnica interna prima del rilascio commerciale.",
+  "about.tech.detail_notice_p3": "I flussi assistiti da intelligenza artificiale sono oggetto di ricerca tecnica e non costituiscono certificazione legale né sostituiscono la revisione ingegneristica professionale."
 }
