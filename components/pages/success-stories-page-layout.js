@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { motion, useReducedMotion } from "framer-motion";
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 import { 
   curatedCompletedProjects, 
   researchWorkstreams, 
@@ -70,32 +71,8 @@ export default function SuccessStoriesPageLayout() {
         id="success-stories"
         aria-label="Success Stories Hero"
         className="relative w-full border-b border-brand-border/60 pt-16 pb-16 md:pt-24 md:pb-20 lg:pt-28 lg:pb-24 overflow-hidden scroll-mt-28"
-      >
-        {/* Architectural Diagonal Drafting Background Pattern */}
-        <div 
-          className="pointer-events-none absolute inset-0 z-0 text-slate-900 dark:text-blue-200"
-          style={{
-            maskImage: "radial-gradient(ellipse 85% 65% at 55% 35%, black 25%, transparent 85%)",
-            WebkitMaskImage: "radial-gradient(ellipse 85% 65% at 55% 35%, black 25%, transparent 85%)",
-          }}
-          aria-hidden="true"
-        >
-          <svg className="w-full h-full opacity-[0.04] dark:opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="hero-drafting-grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.5" />
-                <path d="M 0 60 L 60 0" fill="none" stroke="currentColor" strokeWidth="0.25" strokeOpacity="0.25" strokeDasharray="2 4" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#hero-drafting-grid)" />
-          </svg>
-        </div>
-
-        {/* Ambient Radial Illumination */}
-        <div 
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-28 right-1/4 w-[560px] h-[500px] bg-gradient-to-br from-blue-500/[0.10] via-indigo-500/[0.05] to-transparent dark:from-blue-500/[0.18] dark:via-cyan-500/[0.08] dark:to-transparent rounded-full blur-[110px] z-0"
-        />
+      >        {/* Family A (Base) Unified Architectural Backdrop */}
+        <EngineeringBackdrop variant="base" />
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
           
@@ -335,31 +312,10 @@ export default function SuccessStoriesPageLayout() {
       <section 
         id="completed-projects"
         aria-labelledby={`${baseId}-completed-heading`}
-        className="scroll-mt-28 relative w-full border-b border-brand-border/60 py-20 md:py-24 lg:py-28 bg-brand-base overflow-hidden"
+        className="scroll-mt-28 relative w-full border-b border-brand-border/60 py-20 md:py-24 lg:py-28 bg-brand-surface overflow-hidden"
       >
-        {/* Layered Architectural Blueprint Linework Background */}
-        <div 
-          className="pointer-events-none absolute inset-0 z-0 text-slate-800 dark:text-blue-300"
-          style={{
-            maskImage: "radial-gradient(ellipse 90% 70% at 70% 40%, black 20%, transparent 85%)",
-            WebkitMaskImage: "radial-gradient(ellipse 90% 70% at 70% 40%, black 20%, transparent 85%)",
-          }}
-          aria-hidden="true"
-        >
-          <svg className="w-full h-full opacity-[0.035] dark:opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="completed-blueprint" width="80" height="80" patternUnits="userSpaceOnUse">
-                <rect width="80" height="80" fill="none" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.4" />
-                <circle cx="0" cy="0" r="1.5" fill="currentColor" />
-                <circle cx="80" cy="0" r="1.5" fill="currentColor" />
-                <circle cx="0" cy="80" r="1.5" fill="currentColor" />
-                <circle cx="80" cy="80" r="1.5" fill="currentColor" />
-                <path d="M 0 0 L 80 80" stroke="currentColor" strokeWidth="0.25" strokeOpacity="0.2" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#completed-blueprint)" />
-          </svg>
-        </div>
+        {/* Family B (Surface) Unified Architectural Backdrop */}
+        <EngineeringBackdrop variant="surface" />
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
           
@@ -414,7 +370,7 @@ export default function SuccessStoriesPageLayout() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-3xl bg-brand-card/90 dark:bg-slate-900/90 border border-brand-border/80 p-8 sm:p-10 lg:p-12 shadow-sm relative overflow-hidden"
+              className="rounded-3xl bg-brand-cardElevated border border-brand-border/80 p-8 sm:p-10 lg:p-12 shadow-sm relative overflow-hidden"
             >
               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
@@ -470,17 +426,10 @@ export default function SuccessStoriesPageLayout() {
       <section 
         id="in-development"
         aria-labelledby={`${baseId}-dev-heading`}
-        className="scroll-mt-28 relative w-full border-b border-brand-border/60 py-20 md:py-24 lg:py-28 bg-slate-900/[0.035] dark:bg-slate-950/50 overflow-hidden"
+        className="scroll-mt-28 relative w-full border-b border-brand-border/60 py-20 md:py-24 lg:py-28 bg-brand-base overflow-hidden"
       >
-        {/* Network & Flow Path Ambient Glow */}
-        <div 
-          aria-hidden="true"
-          className="pointer-events-none absolute top-10 right-10 w-[520px] h-[520px] bg-cyan-500/[0.05] dark:bg-cyan-500/[0.09] rounded-full blur-[130px] z-0"
-        />
-        <div 
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-10 left-10 w-[460px] h-[460px] bg-blue-600/[0.04] dark:bg-blue-600/[0.08] rounded-full blur-[120px] z-0"
-        />
+        {/* Family A (Base) Unified Architectural Backdrop */}
+        <EngineeringBackdrop variant="base" />
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
           
@@ -745,20 +694,8 @@ export default function SuccessStoriesPageLayout() {
         aria-labelledby={`${baseId}-testimonials-heading`}
         className="scroll-mt-28 relative w-full bg-brand-surface border-b border-brand-border py-16 md:py-20 lg:py-24 overflow-hidden"
       >
-        {/* Editorial Curved Typographic Linework Background (No Repetitive Grid) */}
-        <div 
-          className="pointer-events-none absolute inset-0 z-0 text-slate-800 dark:text-blue-300"
-          style={{
-            maskImage: "radial-gradient(ellipse 80% 60% at 75% 50%, black 20%, transparent 80%)",
-            WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 75% 50%, black 20%, transparent 80%)",
-          }}
-          aria-hidden="true"
-        >
-          <svg className="w-full h-full opacity-[0.04] dark:opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
-            <path d="M -100 300 C 200 100, 600 400, 1200 150 C 1400 80, 1600 200, 1800 100" fill="none" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M -100 360 C 200 160, 600 460, 1200 210 C 1400 140, 1600 260, 1800 160" fill="none" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 6" />
-          </svg>
-        </div>
+        {/* Family B (Surface) Unified Architectural Backdrop */}
+        <EngineeringBackdrop variant="surface" />
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
           
