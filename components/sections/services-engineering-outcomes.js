@@ -202,22 +202,18 @@ export default function ServicesEngineeringOutcomes({ data }) {
                 <article
                   key={col.id || idx}
                   aria-labelledby={`${baseId}-outcome-heading-${idx}`}
-                  className={`group p-6 xl:p-7 rounded-2xl transition-all duration-200 relative cursor-pointer focus-within:ring-2 focus-within:${accent.ring} ${
+                  className={`group p-6 xl:p-7 rounded-2xl transition-all duration-200 relative cursor-pointer ${
                     isSelected
                       ? `bg-brand-cardElevated border-2 ${accent.border} shadow-md ring-2 ${accent.ring}`
                       : "bg-brand-cardElevated/90 border border-brand-border/70 hover:border-brand-border hover:bg-brand-cardElevated"
                   }`}
-                  onClick={() => setSelectedIdx(idx)}
                 >
                   {/* Native Accessible Button Hit Target Spanning Full Card Surface */}
                   <button
                     type="button"
                     aria-pressed={isSelected}
                     aria-labelledby={`${baseId}-outcome-heading-${idx}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedIdx(idx);
-                    }}
+                    onClick={() => setSelectedIdx(idx)}
                     className="absolute inset-0 w-full h-full rounded-2xl cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 z-10"
                     aria-label={`${col.title} — ${isSelected ? (labels.selectedStatus || "Active") : (labels.inspectButton || "Select Outcome")}`}
                   />
