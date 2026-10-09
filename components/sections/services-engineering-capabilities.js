@@ -172,8 +172,12 @@ export default function ServicesEngineeringCapabilities({ data }) {
                   <div className="lg:col-span-7 flex flex-col justify-center">
                     <figure 
                       className="rounded-xl border border-brand-border/80 bg-brand-surface/70 dark:bg-slate-950/60 p-4 sm:p-6 relative overflow-hidden flex flex-col justify-between h-full m-0"
-                      aria-label={`${card.title} technical process specification`}
+                      aria-label={card.title}
                     >
+                      <figcaption className="sr-only">
+                        {diagram.srDescription || card.desc}
+                      </figcaption>
+
                       {/* Diagram Top Bar */}
                       <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-brand-border/60 text-technical font-mono">
                         <div className="flex items-center gap-2">
@@ -195,9 +199,6 @@ export default function ServicesEngineeringCapabilities({ data }) {
                       {/* --- MODULE 01 DIAGRAM: Validation Matrix --- */}
                       {idx === 0 && (
                         <div className="space-y-3 my-auto relative">
-                          <div className="sr-only">
-                            Illustrative model validation matrix with structured inspection rules: EIR Naming Convention (syntax rule, format type), ISO 19650 PropertySets (schema reference, structure type), and OmniClass Classification (table code, taxonomy type).
-                          </div>
 
                           {/* Neutral structured verification schema rows */}
                           <div className="space-y-2 relative">
@@ -273,9 +274,6 @@ export default function ServicesEngineeringCapabilities({ data }) {
                       {/* --- MODULE 02 DIAGRAM: Revit Automation Pipeline --- */}
                       {idx === 1 && (
                         <div className="space-y-4 my-auto">
-                          <div className="sr-only">
-                            Illustrative Revit automation pipeline connecting Revit Model Host elements to Python and C# execution core, generating controlled parameter injection updates.
-                          </div>
 
                           {/* 3-Stage Connected Pipeline Flow with Responsive Vector Rails */}
                           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-0">
@@ -370,7 +368,7 @@ export default function ServicesEngineeringCapabilities({ data }) {
                               </span>
                               {/* Station execution core tag */}
                               {diagram.runtimeBadge && (
-                                <span className="absolute -top-2.5 px-2 py-0.5 rounded bg-sky-600 text-white font-mono text-technical font-bold uppercase tracking-wider shadow-xs">
+                                <span className="absolute -top-2.5 px-2 py-0.5 rounded bg-sky-600 text-white font-mono text-technical font-bold uppercase tracking-wider shadow-sm">
                                   {diagram.runtimeBadge}
                                 </span>
                               )}
@@ -461,9 +459,6 @@ export default function ServicesEngineeringCapabilities({ data }) {
                       {/* --- MODULE 03 DIAGRAM: Multidisciplinary BIM Coordination --- */}
                       {idx === 2 && (
                         <div className="space-y-4 my-auto">
-                          <div className="sr-only">
-                            Illustrative multidisciplinary BIM data flow connecting Architecture, Structure, and Services models into a shared coordination exchange layer producing IFC4 and BCF deliverables.
-                          </div>
 
                           {/* Desktop & Tablet Coordination Geometry */}
                           <div className="hidden sm:grid sm:grid-cols-12 gap-2 items-center">
