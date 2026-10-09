@@ -37,6 +37,33 @@
   "projects.dev.step4_title": "Revisione Ingegneristica Umana",
   "projects.dev.step4_desc": "Validazione obbligatoria da parte del BIM Manager, controllo di conformità, nessun output non verificato",
   "projects.dev.step5_title": "Deliverable Verificato",
+  "projects.nav.index_label": "INDICE:",
+  "projects.nav.aria_label": "Indice delle sezioni dei Casi di Successo",
+  "projects.hero.aria_label": "Hero dei Casi di Successo",
+
+  "projects.dev.pipeline.badge_input": "INPUT",
+  "projects.dev.pipeline.badge_context": "CONTESTO",
+  "projects.dev.pipeline.badge_synthesis": "SINTESI",
+  "projects.dev.pipeline.badge_output": "OUTPUT",
+
+  "projects.dev.ws_status.research": "RICERCA",
+  "projects.dev.ws_status.prototype": "PROTOTIPO",
+  "projects.dev.ws_status.in_development": "IN SVILUPPO",
+
+  "projects.dev.ws1_focus": "Schema IFC e RVT",
+  "projects.dev.ws2_focus": "Revit API e pyRevit",
+  "projects.dev.ws3_focus": "Audit Capitolato e Modello",
+
+  "projects.dev.tags.semantic_indexing": "Indicizzazione Semantica",
+  "projects.dev.tags.openbim_ifc": "OpenBIM / IFC",
+  "projects.dev.tags.natural_language_parsing": "Parsing Linguaggio Naturale",
+  "projects.dev.tags.ast_validation": "Validazione AST",
+  "projects.dev.tags.python_synthesis": "Sintesi Python",
+  "projects.dev.tags.syntax_guardrails": "Guardrail Sintattici",
+  "projects.dev.tags.tender_spec_parsing": "Parsing Specifiche di Gara",
+  "projects.dev.tags.cross_parameter_audit": "Audit Cross-Parametrico",
+  "projects.dev.tags.verification_reports": "Report di Verifica",
+
   "projects.dev.step5_desc": "Tabelle dati verificate, script pyRevit, report di conformità dei parametri",
   "projects.dev.human_review_notice": "Supervisione Ingegneristica Umana: Tutti gli esperimenti LLM operano sotto rigorosa validazione umana ingegneristica. Gli output non sono mai autonomi.",
   "projects.dev.workstreams_heading": "Linee di Ricerca Attive",

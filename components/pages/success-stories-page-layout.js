@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useId } from "react";
+import { useState, useId, useRef } from "react";
 import CtaLink from "@/components/ui/cta-link";
 import { 
   Briefcase, 
@@ -32,6 +32,14 @@ export default function SuccessStoriesPageLayout() {
   const shouldReduceMotion = useReducedMotion();
   const baseId = useId();
   const [selectedPipelineStep, setSelectedPipelineStep] = useState(0);
+  const tabRefs = useRef([]);
+
+  const selectAndFocusTab = (nextIdx) => {
+    setSelectedPipelineStep(nextIdx);
+    if (tabRefs.current[nextIdx]) {
+      tabRefs.current[nextIdx].focus();
+    }
+  };
 
   // Filter approved projects (currently 0 pending owner case study sign-off)
   const approvedCompletedProjects = curatedCompletedProjects.filter(
@@ -69,7 +77,7 @@ export default function SuccessStoriesPageLayout() {
       {/* ========================================================================= */}
       <section 
         id="success-stories"
-        aria-label="Success Stories Hero"
+        aria-label={t("projects.hero.aria_label") || "Success Stories Hero"}
         className="relative w-full border-b border-brand-border/60 pt-16 pb-16 md:pt-24 md:pb-20 lg:pt-28 lg:pb-24 overflow-hidden scroll-mt-28"
       >        {/* Family A (Base) Unified Architectural Backdrop */}
         <EngineeringBackdrop variant="base" />
@@ -257,11 +265,11 @@ export default function SuccessStoriesPageLayout() {
 
           {/* On-Page Section Index Navigator */}
           <nav 
-            aria-label="Success Stories section index"
+            aria-label={t("projects.nav.aria_label") || "Success Stories section index"}
             className="pt-6 border-t border-brand-border/60 flex flex-wrap items-center justify-start gap-3 sm:gap-4"
           >
             <span className="text-technical font-mono uppercase tracking-wider text-brand-textSecondary mr-2 hidden sm:inline-block">
-              INDEX:
+              {t("projects.nav.index_label") || "INDEX:"}
             </span>
 
             <a
@@ -455,7 +463,7 @@ export default function SuccessStoriesPageLayout() {
             </div>
 
             <div className="shrink-0 flex items-center gap-2 text-technical font-mono uppercase text-cyan-700 dark:text-cyan-300 px-3.5 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/25">
-              <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-cyan-500" aria-hidden="true" />
               <span>{t("projects.dev.workstreams_count") || "3 Areas Under Evaluation"}</span>
             </div>
           </div>
@@ -487,7 +495,7 @@ export default function SuccessStoriesPageLayout() {
               </div>
             </div>
 
-            {/* 5-Stage Interactive Selector Buttons (Accessible WAI-ARIA tablist) */}
+            {/* 5-Stage Interactive Selector Buttons (Accessible WAI-ARIA tablist with roving tabindex) */}
             <div 
               role="tablist"
               aria-label={t("projects.dev.diagram_title") || "Applied AI Research Flow stages"}
@@ -495,23 +503,34 @@ export default function SuccessStoriesPageLayout() {
             >
               {aiPipelineSteps.map((stepItem, idx) => {
                 const isSelected = selectedPipelineStep === idx;
+                const stageBadge = stepItem.isGate 
+                  ? (t("projects.dev.gate_badge") || "MANDATORY GATE") 
+                  : (stepItem.badgeKey ? t(stepItem.badgeKey) : stepItem.badge);
+
                 return (
                   <button
                     key={stepItem.step}
+                    ref={(el) => { tabRefs.current[idx] = el; }}
                     type="button"
                     role="tab"
                     id={`pipeline-stage-tab-${stepItem.step}`}
                     aria-selected={isSelected}
                     aria-controls="pipeline-stage-detail-panel"
                     tabIndex={isSelected ? 0 : -1}
-                    onClick={() => setSelectedPipelineStep(idx)}
+                    onClick={() => selectAndFocusTab(idx)}
                     onKeyDown={(e) => {
                       if (e.key === "ArrowRight" || e.key === "ArrowDown") {
                         e.preventDefault();
-                        setSelectedPipelineStep((idx + 1) % aiPipelineSteps.length);
+                        selectAndFocusTab((idx + 1) % aiPipelineSteps.length);
                       } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
                         e.preventDefault();
-                        setSelectedPipelineStep((idx - 1 + aiPipelineSteps.length) % aiPipelineSteps.length);
+                        selectAndFocusTab((idx - 1 + aiPipelineSteps.length) % aiPipelineSteps.length);
+                      } else if (e.key === "Home") {
+                        e.preventDefault();
+                        selectAndFocusTab(0);
+                      } else if (e.key === "End") {
+                        e.preventDefault();
+                        selectAndFocusTab(aiPipelineSteps.length - 1);
                       }
                     }}
                     className={`relative text-left rounded-2xl p-4 border transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 ${
@@ -534,16 +553,16 @@ export default function SuccessStoriesPageLayout() {
                       }`}>
                         0{stepItem.step}
                       </span>
-                      <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
+                      <span className={`text-technical font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
                         stepItem.isGate
                           ? "bg-amber-500/20 text-amber-800 dark:text-amber-300 font-semibold"
                           : "bg-slate-500/10 text-brand-textSecondary"
                       }`}>
-                        {stepItem.isGate ? (t("projects.dev.gate_badge") || "MANDATORY GATE") : stepItem.badge}
+                        {stageBadge}
                       </span>
                     </div>
 
-                    <h4 className={`text-body-sm font-bold tracking-tight line-clamp-1 ${
+                    <h4 className={`text-body-sm font-bold tracking-tight leading-snug ${
                       stepItem.isGate ? "text-amber-900 dark:text-amber-200" : "text-brand-textPrimary"
                     }`}>
                       {t(stepItem.titleKey)}
@@ -565,7 +584,8 @@ export default function SuccessStoriesPageLayout() {
               id="pipeline-stage-detail-panel"
               role="tabpanel"
               aria-labelledby={`pipeline-stage-tab-${activeStepData.step}`}
-              className={`rounded-2xl p-6 sm:p-7 border transition-all duration-300 ${
+              tabIndex={0}
+              className={`rounded-2xl p-6 sm:p-7 border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 ${
                 activeStepData.isGate
                   ? "bg-amber-500/[0.08] dark:bg-amber-950/30 border-amber-500/40"
                   : "bg-brand-surface dark:bg-slate-800/80 border-cyan-500/30"
@@ -578,7 +598,7 @@ export default function SuccessStoriesPageLayout() {
                       ? "bg-amber-500 text-slate-950"
                       : "bg-cyan-500/20 text-cyan-700 dark:text-cyan-300"
                   }`}>
-                    {t("projects.dev.step_label") || "Stage"} 0{activeStepData.step} // {activeStepData.badge}
+                    {t("projects.dev.step_label") || "Stage"} 0{activeStepData.step} // {activeStepData.badgeKey ? t(activeStepData.badgeKey) : activeStepData.badge}
                   </span>
                   <h4 className="text-card-title font-bold text-brand-textPrimary tracking-tight">
                     {t(activeStepData.titleKey)}
@@ -643,14 +663,14 @@ export default function SuccessStoriesPageLayout() {
                   <div>
                     <div className="flex items-center justify-between gap-3 mb-4">
                       <span className="text-technical font-mono text-cyan-600 dark:text-cyan-400 font-semibold">
-                        {ws.focus}
+                        {ws.focusKey ? (t(ws.focusKey) || ws.focus) : ws.focus}
                       </span>
                       <span className="text-technical font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/25">
-                        {t(ws.statusKey) || ws.statusBadge}
+                        {ws.statusBadgeKey ? (t(ws.statusBadgeKey) || ws.statusBadge) : (t(ws.statusKey) || ws.statusBadge)}
                       </span>
                     </div>
 
-                    <h4 className="text-card-title text-base sm:text-lg font-bold text-brand-textPrimary tracking-tight mb-2.5">
+                    <h4 className="text-card-title text-base sm:text-lg font-bold text-brand-textPrimary tracking-tight mb-2.5 leading-snug">
                       {t(ws.titleKey)}
                     </h4>
 
@@ -661,14 +681,17 @@ export default function SuccessStoriesPageLayout() {
 
                   <div className="pt-4 border-t border-brand-border/60">
                     <div className="flex flex-wrap gap-1.5">
-                      {ws.techTags.map((tag) => (
-                        <span 
-                          key={tag}
-                          className="text-technical font-mono px-2 py-0.5 rounded bg-brand-surface dark:bg-slate-800 border border-brand-border text-brand-textSecondary"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                      {ws.techTags.map((tagItem, tIdx) => {
+                        const tagLabel = typeof tagItem === "object" ? (t(tagItem.key) || tagItem.fallback) : tagItem;
+                        return (
+                          <span 
+                            key={tIdx}
+                            className="text-technical font-mono px-2 py-0.5 rounded bg-brand-surface dark:bg-slate-800 border border-brand-border text-brand-textSecondary"
+                          >
+                            {tagLabel}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>

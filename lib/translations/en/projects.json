@@ -37,6 +37,33 @@
   "projects.dev.step4_title": "Human Engineering Review",
   "projects.dev.step4_desc": "Mandatory BIM Manager validation, compliance gating, zero unchecked output",
   "projects.dev.step5_title": "Verified Deliverable",
+  "projects.nav.index_label": "INDEX:",
+  "projects.nav.aria_label": "Success Stories section index",
+  "projects.hero.aria_label": "Success Stories Hero",
+
+  "projects.dev.pipeline.badge_input": "INPUT",
+  "projects.dev.pipeline.badge_context": "CONTEXT",
+  "projects.dev.pipeline.badge_synthesis": "SYNTHESIS",
+  "projects.dev.pipeline.badge_output": "OUTPUT",
+
+  "projects.dev.ws_status.research": "RESEARCH",
+  "projects.dev.ws_status.prototype": "PROTOTYPE",
+  "projects.dev.ws_status.in_development": "IN DEVELOPMENT",
+
+  "projects.dev.ws1_focus": "IFC & RVT Schema",
+  "projects.dev.ws2_focus": "Revit API & pyRevit",
+  "projects.dev.ws3_focus": "Tender & Model Audit",
+
+  "projects.dev.tags.semantic_indexing": "Semantic Indexing",
+  "projects.dev.tags.openbim_ifc": "OpenBIM / IFC",
+  "projects.dev.tags.natural_language_parsing": "Natural Language Parsing",
+  "projects.dev.tags.ast_validation": "AST Validation",
+  "projects.dev.tags.python_synthesis": "Python Synthesis",
+  "projects.dev.tags.syntax_guardrails": "Syntax Guardrails",
+  "projects.dev.tags.tender_spec_parsing": "Tender Spec Parsing",
+  "projects.dev.tags.cross_parameter_audit": "Cross-Parameter Audit",
+  "projects.dev.tags.verification_reports": "Verification Reports",
+
   "projects.dev.step5_desc": "Audited data tables, pyRevit scripts, parameter verification reports",
   "projects.dev.human_review_notice": "Human Engineering Oversight: All LLM experiments operate under strict engineer-in-the-loop validation. Outputs are never autonomous.",
   "projects.dev.workstreams_heading": "Active Research Workstreams",
