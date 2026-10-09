@@ -13,6 +13,7 @@ import {
 import { useLanguage } from "@/lib/LanguageContext";
 import { motion, useReducedMotion } from "framer-motion";
 import ArchitecturalCanvas from "@/components/education/architectural-canvas";
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
 export default function EducationPageLayout() {
   const { t } = useLanguage();
@@ -70,61 +71,8 @@ export default function EducationPageLayout() {
   return (
     <div id="education-intro" className="scroll-mt-28 relative w-full bg-brand-base overflow-hidden">
       
-      {/* ================= LAYER A: TECHNICAL ARCHITECTURAL DRAFTING CANVAS ================= */}
-      {/* Precision Drafting Grid masked primarily to background negative space */}
-      <div 
-        className="pointer-events-none absolute inset-0 z-0 text-slate-900 dark:text-blue-200"
-        style={{
-          maskImage: "radial-gradient(ellipse 85% 75% at 70% 45%, black 30%, transparent 85%)",
-          WebkitMaskImage: "radial-gradient(ellipse 85% 75% at 70% 45%, black 30%, transparent 85%)",
-        }}
-        aria-hidden="true"
-      >
-        <svg 
-          className="w-full h-full opacity-[0.04] sm:opacity-[0.06] dark:opacity-[0.10]" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            {/* Minor 15px Sub-grid */}
-            <pattern id="edu-minor-grid" width="15" height="15" patternUnits="userSpaceOnUse">
-              <path d="M 15 0 L 0 0 0 15" fill="none" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.4" />
-            </pattern>
-            {/* Major 60px Structural Grid */}
-            <pattern id="edu-major-grid" width="60" height="60" patternUnits="userSpaceOnUse">
-              <rect width="60" height="60" fill="url(#edu-minor-grid)" />
-              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.9" />
-              {/* Intersection Coordinate Crosshair (+) */}
-              <path d="M -4 0 L 4 0 M 0 -4 L 0 4" stroke="currentColor" strokeWidth="1.2" strokeOpacity="1" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#edu-major-grid)" />
-        </svg>
-      </div>
-
-      {/* ================= LAYER B: TARGETED ATMOSPHERIC LIGHTING ================= */}
-      {/* 1. Primary Ambient Core framing the Right Composition */}
-      <div 
-        aria-hidden="true" 
-        className="pointer-events-none absolute -top-16 right-[-80px] lg:right-12 w-[340px] sm:w-[460px] lg:w-[520px] h-[340px] sm:h-[420px] lg:h-[460px] bg-gradient-to-br from-blue-500/[0.08] via-indigo-500/[0.05] to-transparent dark:from-blue-500/[0.16] dark:via-indigo-500/[0.08] dark:to-transparent rounded-full blur-[80px] sm:blur-[100px] z-0" 
-      />
-
-      {/* 2. Secondary Cyan Highlight anchoring Lower Section */}
-      <div 
-        aria-hidden="true" 
-        className="pointer-events-none absolute bottom-4 right-10 lg:right-32 w-[280px] sm:w-[340px] lg:w-[380px] h-[240px] sm:h-[280px] lg:h-[320px] bg-gradient-to-tr from-cyan-500/[0.04] to-transparent dark:from-cyan-400/[0.08] dark:to-transparent rounded-full blur-[70px] sm:blur-[90px] z-0" 
-      />
-
-      {/* 3. Subtle Warm Ambient Fill balancing the Left Hero */}
-      <div 
-        aria-hidden="true" 
-        className="pointer-events-none absolute top-16 left-[-60px] lg:left-10 w-[300px] sm:w-[420px] h-[280px] sm:h-[360px] bg-blue-600/[0.02] dark:bg-blue-600/[0.05] rounded-full blur-[100px] sm:blur-[120px] z-0" 
-      />
-
-      {/* Edge Falloff Shadow in Dark Mode */}
-      <div 
-        aria-hidden="true" 
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-brand-base to-transparent opacity-0 dark:opacity-80 z-0" 
-      />
+      {/* Family A (Base) Unified Architectural Backdrop */}
+      <EngineeringBackdrop variant="base" />
 
       {/* ================= MAIN CONTENT LAYER ================= */}
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-12 pb-20 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 w-full z-10">
@@ -203,7 +151,7 @@ export default function EducationPageLayout() {
               <CtaLink
                 href="/contact"
                 variant="secondary"
-                className="!text-sm !tracking-wide normal-case justify-center min-h-[44px]"
+                className="!text-sm !tracking-wide normal-case justify-center"
               >
                 {t("education.secondaryCta") || "Contact pyBIM"}
               </CtaLink>
@@ -236,7 +184,7 @@ export default function EducationPageLayout() {
             </div>
 
             {/* LOWER AREA: Technical Knowledge Areas Specification Sheet */}
-            <div className="rounded-3xl bg-brand-card/95 dark:bg-slate-900/90 border border-brand-border/80 dark:border-slate-800 shadow-xl shadow-brand-base/10 dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-md p-5 sm:p-7 relative overflow-hidden transition-all duration-300">
+            <div className="rounded-3xl bg-brand-cardElevated border border-brand-border/80 dark:border-slate-800 shadow-xl shadow-brand-base/10 dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-md p-5 sm:p-7 relative overflow-hidden transition-all duration-300">
               
               {/* Subtle Hairline Top Gradient Accent */}
               <div 
