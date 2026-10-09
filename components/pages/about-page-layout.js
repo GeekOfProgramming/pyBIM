@@ -7,6 +7,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 import TeamPartnersSection from "@/components/sections/team-partners-section";
 import ManifestoHero from "@/components/about/manifesto-hero";
 import CorePhilosophy from "@/components/about/core-philosophy";
+import EngineeringJourney from "@/components/about/engineering-journey";
 
 export default function AboutPageLayout({ teamData }) {
   const { t } = useLanguage();
@@ -40,80 +41,8 @@ export default function AboutPageLayout({ teamData }) {
       {/* SECTION 2: Core Philosophy (3 Column Grid) */}
       <CorePhilosophy />
 
-      {/* SECTION 3: Our Journey (Vertical Timeline Component) */}
-      <section id="journey" className="bg-brand-surface w-full border-b border-brand-border py-24 lg:py-32">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <div className="text-center mb-24">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm">
-              <Activity className="w-4 h-4" /> {t("about.journey.tag")}
-            </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-textPrimary mb-6">{t("about.journey.title")}</h2>
-          </div>
-
-          <div className="relative space-y-24 md:space-y-32">
-            {/* Vertical Line */}
-            <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-[2px] bg-brand-border md:-translate-x-1/2" />
-
-            {/* Phase 1 */}
-            <div className="relative pl-16 md:pl-0 group">
-              <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-brand-primary shadow-[0_0_0_4px_rgba(37,99,235,0.1)] group-hover:shadow-[0_0_0_6px_rgba(37,99,235,0.2)] transition-shadow" />
-              <div className="md:w-[45%] md:ml-auto md:pl-16">
-                <div className="text-sm font-mono font-bold text-brand-primary mb-2">{t("about.journey.badge")}</div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">{t("about.journey.p1_title")}</h3>
-                <ul className="space-y-4">
-                  <li className="text-brand-textSecondary text-base leading-relaxed">
-                    <strong className="text-brand-textPrimary">{t("about.journey.p1_item1_title")}: </strong> 
-                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p1_item1_desc") }} />
-                  </li>
-                  <li className="text-brand-textSecondary text-base leading-relaxed">
-                    <strong className="text-brand-textPrimary">{t("about.journey.p1_item2_title")}: </strong> 
-                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p1_item2_desc") }} />
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Phase 2 */}
-            <div className="relative pl-16 md:pl-0 group">
-              <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-brand-primary shadow-[0_0_0_4px_rgba(37,99,235,0.1)] group-hover:shadow-[0_0_0_6px_rgba(37,99,235,0.2)] transition-shadow" />
-              <div className="md:w-[45%] md:pr-16 md:text-right">
-                <div className="text-sm font-mono font-bold text-brand-primary mb-2">{t("about.journey.p2_badge")}</div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">{t("about.journey.p2_title")}</h3>
-                <ul className="space-y-4">
-                  <li className="text-brand-textSecondary text-base leading-relaxed">
-                    <strong className="text-brand-textPrimary">{t("about.journey.p2_item1_title")}: </strong> 
-                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p2_item1_desc") }} />
-                  </li>
-                  <li className="text-brand-textSecondary text-base leading-relaxed">
-                    <strong className="text-brand-textPrimary">{t("about.journey.p2_item2_title")}: </strong> 
-                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p2_item2_desc") }} />
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Phase 3 */}
-            <div className="relative pl-16 md:pl-0 group">
-              <div className="absolute left-[17px] md:left-1/2 md:-translate-x-1/2 top-1 w-4 h-4 rounded-full bg-brand-primary border-2 border-brand-primary shadow-[0_0_0_6px_rgba(37,99,235,0.2)] group-hover:shadow-[0_0_0_8px_rgba(37,99,235,0.3)] transition-shadow" />
-              <div className="md:w-[45%] md:ml-auto md:pl-16">
-                <div className="text-sm font-mono font-bold text-brand-primary mb-2">{t("about.journey.p3_badge")}</div>
-                <h3 className="text-2xl font-bold text-brand-textPrimary mb-4">{t("about.journey.p3_title")}</h3>
-                <ul className="space-y-4">
-                  <li className="text-brand-textSecondary text-base leading-relaxed">
-                    <strong className="text-brand-textPrimary">{t("about.journey.p3_item1_title")}: </strong> 
-                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p3_item1_desc") }} />
-                  </li>
-                  <li className="text-brand-textSecondary text-base leading-relaxed">
-                    <strong className="text-brand-textPrimary">{t("about.journey.p3_item2_title")}: </strong> 
-                    <span dangerouslySetInnerHTML={{ __html: t("about.journey.p3_item2_desc") }} />
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* SECTION 3: Our Journey (Connected Engineering Timeline) */}
+      <EngineeringJourney />
 
       {/* SECTION 4: Tech Stack & Standards (Logo & Engineering Arsenal Grid) */}
       <section id="tech-stack" className="bg-brand-base w-full border-b border-brand-border py-24 lg:py-32 overflow-hidden">
