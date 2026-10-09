@@ -189,7 +189,7 @@ export default function EngineeringImpact() {
               id={`outcome-panel-${currentOutcome.id}`}
               role="tabpanel"
               aria-labelledby={`outcome-tab-${currentOutcome.id}`}
-              className="rounded-2xl sm:rounded-3xl border border-brand-border bg-brand-base/90 dark:bg-slate-900/90 backdrop-blur-md p-6 sm:p-8 lg:p-9 shadow-md relative overflow-hidden"
+              className="rounded-2xl sm:rounded-3xl border border-brand-border bg-brand-base/90 dark:bg-slate-900/90 backdrop-blur-md p-5 sm:p-6 lg:p-6 shadow-md relative overflow-hidden"
             >
               {/* Subtle Ambient Radial Highlight */}
               <div 
@@ -209,7 +209,7 @@ export default function EngineeringImpact() {
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: shouldReduceMotion ? 0.05 : 0.25, ease: "easeOut" }}
-                className="relative z-10 flex flex-col justify-between"
+                className="relative z-10"
               >
                 {/* Dedicated Engineering Process Diagram Area */}
                 <div 
