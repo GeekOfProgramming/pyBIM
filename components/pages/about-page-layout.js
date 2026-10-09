@@ -9,6 +9,7 @@ import ManifestoHero from "@/components/about/manifesto-hero";
 import CorePhilosophy from "@/components/about/core-philosophy";
 import EngineeringJourney from "@/components/about/engineering-journey";
 import TechnologyCapabilities from "@/components/about/technology-capabilities";
+import EngineeringImpact from "@/components/about/engineering-impact";
 
 export default function AboutPageLayout({ teamData }) {
   const { t } = useLanguage();
@@ -50,44 +51,8 @@ export default function AboutPageLayout({ teamData }) {
 
 
 
-      {/* SECTION 5: Our Impact (Stats/Counters) */}
-      <section id="impact" className="bg-brand-surface w-full border-b border-brand-border py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
-              <Shield className="w-4 h-4" /> {t("about.impact.badge")}
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
-              {t("about.impact.title")}
-            </h2>
-          </div>
-          <div className="grid gap-16 md:grid-cols-3">
-            <div className="text-center group">
-              <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-4 group-hover:scale-105 transition-transform duration-500">
-                {t("about.impact.stat1.val")}
-              </div>
-              <h4 className="text-brand-textPrimary font-bold text-lg mb-2">{t("about.impact.stat1.title")}</h4>
-              <p className="text-brand-textSecondary text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat1.desc") }} />
-            </div>
-
-            <div className="text-center group">
-              <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-4 group-hover:scale-105 transition-transform duration-500">
-                {t("about.impact.stat2.val")}
-              </div>
-              <h4 className="text-brand-textPrimary font-bold text-lg mb-2">{t("about.impact.stat2.title")}</h4>
-              <p className="text-brand-textSecondary text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat2.desc") }} />
-            </div>
-
-            <div className="text-center group">
-              <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-blue-400 mb-4 group-hover:scale-105 transition-transform duration-500">
-                {t("about.impact.stat3.val")}
-              </div>
-              <h4 className="text-brand-textPrimary font-bold text-lg mb-2">{t("about.impact.stat3.title")}</h4>
-              <p className="text-brand-textSecondary text-sm leading-relaxed max-w-xs mx-auto" dangerouslySetInnerHTML={{ __html: t("about.impact.stat3.desc") }} />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* SECTION 5: Engineering Value & Outcomes */}
+      <EngineeringImpact />
 
       {/* SECTION 6: Call to Action (Two side-by-side cards) */}
       <section className="bg-brand-base w-full py-24 lg:py-32">
