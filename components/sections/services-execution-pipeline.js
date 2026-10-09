@@ -180,9 +180,8 @@ export default function ServicesExecutionPipeline({ data }) {
                       />
                     </div>
                   ) : (
-                    /* Final stage deliberate terminal connector: short vertical segment with terminal endpoint node */
-                    <div className="flex flex-col items-center mt-2 pb-2">
-                      <div className="w-0.5 h-10 relative bg-brand-border/60 dark:bg-slate-800 overflow-hidden">
+                    <div className="flex flex-col items-center my-2 flex-1 max-h-56 min-h-[140px]">
+                      <div className="w-0.5 flex-1 relative bg-brand-border/60 dark:bg-slate-800">
                         <motion.div
                           className="w-full absolute inset-0 origin-top"
                           style={{ backgroundColor: theme.spineColor }}
@@ -192,12 +191,13 @@ export default function ServicesExecutionPipeline({ data }) {
                           transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] }}
                         />
                       </div>
-                      <motion.div
-                        className="w-3.5 h-3.5 rounded-full border-2 border-emerald-500/80 bg-brand-surface dark:bg-slate-900 flex items-center justify-center -mt-0.5 z-10 shadow-sm"
-                        initial={{ scale: shouldReduceMotion ? 1 : 0, opacity: shouldReduceMotion ? 1 : 0 }}
+                      {/* Terminal Endpoint Node communicating finished delivery pipeline */}
+                      <motion.div 
+                        initial={shouldReduceMotion ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: shouldReduceMotion ? 0 : 0.4, delay: shouldReduceMotion ? 0 : 0.3, ease: "easeOut" }}
+                        transition={{ duration: shouldReduceMotion ? 0 : 0.3, delay: shouldReduceMotion ? 0 : 0.45 }}
+                        className="w-4 h-4 rounded-full border-2 border-emerald-500 bg-brand-surface shadow-sm shadow-emerald-500/25 flex items-center justify-center shrink-0 mt-1 ring-4 ring-emerald-500/10"
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
                       </motion.div>
