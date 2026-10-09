@@ -256,23 +256,14 @@ export default function TechnologyCapabilities() {
                   key={family.id}
                   type="button"
                   onClick={() => handleSelectFamily(activePillar.id, family.id)}
-                  className={`group text-left p-3 rounded-xl border font-mono transition-all duration-200 flex flex-col justify-between min-h-[56px] focus:outline-hidden focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 ${
+                  className={`group text-center px-3 py-3.5 sm:py-4 rounded-xl border transition-all duration-200 flex items-center justify-center min-h-[56px] focus:outline-hidden focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 ${
                     isFamilyActive
                       ? `${activeColorClasses.selectedBg} font-bold shadow-sm ${activeColorClasses.activeBorder}`
                       : "border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900/90 text-brand-textSecondary hover:border-slate-300 dark:hover:border-slate-700 hover:text-brand-textPrimary shadow-2xs"
                   }`}
                   aria-pressed={isFamilyActive}
                 >
-                  <div className="flex items-center justify-between gap-1 w-full mb-1">
-                    <span className={`text-[11px] font-mono font-semibold ${isFamilyActive ? activeColorClasses.accentText : "text-brand-textSecondary/70"}`}>
-                      {family.num}
-                    </span>
-                    <span className="text-[11px] font-mono text-brand-textSecondary/80 tabular-nums">
-                      {family.itemCount}
-                    </span>
-                  </div>
-
-                  <span className="text-xs font-sans font-semibold text-brand-textPrimary leading-tight break-words">
+                  <span className="text-sm sm:text-base font-sans font-semibold text-brand-textPrimary leading-snug break-words">
                     {t(family.titleKey)}
                   </span>
                 </button>
@@ -299,20 +290,11 @@ export default function TechnologyCapabilities() {
             aria-live="polite"
             aria-label={`${t(activePillar.titleKey)} — ${t(activeFamily.titleKey)}`}
           >
-            {/* Header: Family Title & Item Count */}
-            <div className="flex items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-200/70 dark:border-slate-800/70">
-              <div className="flex items-center gap-3">
-                <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded-md border ${activeColorClasses.badge}`}>
-                  {activeFamily.num}
-                </span>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-brand-textPrimary tracking-tight">
-                  {t(activeFamily.titleKey)}
-                </h3>
-              </div>
-
-              <span className="text-xs font-mono text-brand-textSecondary shrink-0">
-                {activeItemsList.length} {t("about.tech.headings_count")}
-              </span>
+            {/* Header: Family Title */}
+            <div className="pb-3.5 mb-4 border-b border-slate-200/70 dark:border-slate-800/70">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-brand-textPrimary tracking-tight">
+                {t(activeFamily.titleKey)}
+              </h3>
             </div>
 
             {/* Context Narrative */}
