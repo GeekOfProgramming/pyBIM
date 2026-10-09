@@ -31,8 +31,8 @@ const pyBimRightMenu = {
     { labelKey: "header.mega.team", icon: Users, href: "/about#team" },
   ],
   success_stories: [
-    { labelKey: "header.mega.all_projects", icon: Briefcase, href: "/success-stories#all-projects" },
-    { labelKey: "header.mega.case_studies", icon: FileText, href: "/success-stories#featured" },
+    { labelKey: "header.mega.completed_projects", icon: Briefcase, href: "/success-stories#completed-projects" },
+    { labelKey: "header.mega.in_development", icon: FileText, href: "/success-stories#in-development" },
     { labelKey: "header.mega.testimonials", icon: Users, href: "/success-stories#testimonials" },
   ],
   work_with_us: [
