@@ -144,7 +144,7 @@ export default function EngineeringImpact() {
           {/* ------------------------------------------------------- */}
           <div 
             className="lg:col-span-5 flex flex-col gap-4"
-            role="tablist"
+            role="group"
             aria-label={t("about.impact.v2.eyebrow")}
           >
             {outcomes.map((item) => {
@@ -156,9 +156,8 @@ export default function EngineeringImpact() {
                   key={item.id}
                   id={`outcome-tab-${item.id}`}
                   type="button"
-                  role="tab"
-                  aria-selected={isSelected}
-                  aria-controls={`outcome-panel-${item.id}`}
+                  aria-pressed={isSelected}
+                  aria-controls="outcome-inspector"
                   onClick={() => setActiveOutcomeId(item.id)}
                   className={`text-left w-full rounded-2xl border p-5 sm:p-6 transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 relative ${
                     isSelected ? item.activeBorder : item.inactiveBorder
@@ -186,8 +185,8 @@ export default function EngineeringImpact() {
           {/* ------------------------------------------------------- */}
           <div className="lg:col-span-7">
             <div 
-              id={`outcome-panel-${currentOutcome.id}`}
-              role="tabpanel"
+              id="outcome-inspector"
+              role="region"
               aria-labelledby={`outcome-tab-${currentOutcome.id}`}
               className="rounded-2xl sm:rounded-3xl border border-brand-border bg-brand-base/90 dark:bg-slate-900/90 backdrop-blur-md p-5 sm:p-6 lg:p-6 shadow-md relative overflow-hidden"
             >
