@@ -549,7 +549,7 @@
   "about.tech.section_title": "Engineering Capabilities. Connected Technologies. Trusted Standards.",
   "about.tech.section_subtitle": "Explore the engineering services, development technologies, and information-management frameworks shaping pyBIM's current work and future research.",
   "about.tech.pillar1_tag": "01 / BIM DELIVERY",
-  "about.tech.pillar1_title": "01. BIM EXECUTION & DELIVERY",
+  "about.tech.pillar1_title": "BIM EXECUTION & DELIVERY",
   "about.tech.pillar1_sub": "Practical engineering services, model authoring, multidisciplinary coordination, and structured project delivery.",
   "about.tech.pillar1_status": "CURRENT SERVICES",
   "about.tech.f1_1_title": "BIM Consulting",
@@ -628,7 +628,7 @@
     "CDE User Training & Support"
   ],
   "about.tech.pillar2_tag": "02 / DEVELOPMENT",
-  "about.tech.pillar2_title": "02. CUSTOM CODE & PLUGINS",
+  "about.tech.pillar2_title": "CUSTOM CODE & PLUGINS",
   "about.tech.pillar2_sub": "Programming languages, BIM APIs, services, and software integrations informing pyBIM's internal automation architecture.",
   "about.tech.pillar2_status": "INTERNAL R&D",
   "about.tech.f2_1_title": "Languages",
@@ -681,7 +681,7 @@
     "BCF"
   ],
   "about.tech.pillar3_tag": "03 / STANDARDS",
-  "about.tech.pillar3_title": "03. SOVEREIGN AI & COMPLIANCE",
+  "about.tech.pillar3_title": "SOVEREIGN AI & COMPLIANCE",
   "about.tech.pillar3_sub": "Information-management frameworks, national guidelines, open specifications, and exploratory local AI research.",
   "about.tech.pillar3_status": "STANDARDS & RESEARCH",
   "about.tech.f3_1_title": "ISO / UNI",

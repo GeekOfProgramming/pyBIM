@@ -548,7 +548,7 @@
   "about.tech.section_title": "Capacità Ingegneristiche. Tecnologie Connesse. Standard Affidabili.",
   "about.tech.section_subtitle": "Esplora i servizi ingegneristici, le tecnologie di sviluppo e i quadri di gestione informativa che guidano il lavoro attuale e la ricerca futura di pyBIM.",
   "about.tech.pillar1_tag": "01 / CONSEGNA BIM",
-  "about.tech.pillar1_title": "01. ESECUZIONE & CONSEGNA BIM",
+  "about.tech.pillar1_title": "ESECUZIONE & CONSEGNA BIM",
   "about.tech.pillar1_sub": "Servizi ingegneristici pratici, authoring di modelli, coordinamento multidisciplinare e gestione strutturata della commessa.",
   "about.tech.pillar1_status": "SERVIZI ATTIVI",
   "about.tech.f1_1_title": "Consulenza BIM",
@@ -627,7 +627,7 @@
     "Supporto & Formazione Utenti ACDat"
   ],
   "about.tech.pillar2_tag": "02 / SVILUPPO",
-  "about.tech.pillar2_title": "02. CODICE PERSONALIZZATO & PLUGIN",
+  "about.tech.pillar2_title": "CODICE PERSONALIZZATO & PLUGIN",
   "about.tech.pillar2_sub": "Linguaggi di programmazione, API BIM, servizi backend e integrazioni software alla base dell'architettura di automazione interna pyBIM.",
   "about.tech.pillar2_status": "R&S INTERNA",
   "about.tech.f2_1_title": "Linguaggi",
@@ -680,7 +680,7 @@
     "BCF"
   ],
   "about.tech.pillar3_tag": "03 / STANDARD",
-  "about.tech.pillar3_title": "03. SOVRANITÀ IA & CONFORMITÀ",
+  "about.tech.pillar3_title": "SOVRANITÀ IA & CONFORMITÀ",
   "about.tech.pillar3_sub": "Quadri di gestione informativa, normative nazionali, specifiche aperte e ricerca esplorativa su IA locale.",
   "about.tech.pillar3_status": "STANDARD & RICERCA",
   "about.tech.f3_1_title": "ISO / UNI",

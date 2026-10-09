@@ -548,7 +548,7 @@
   "about.tech.section_title": "Ingenieurfähigkeiten. Vernetzte Technologien. Verlässliche Standards.",
   "about.tech.section_subtitle": "Entdecken Sie die Ingenieurdienstleistungen, Entwicklungstechnologien und Informationsmanagement-Frameworks, die die aktuelle Arbeit und zukünftige Forschung von pyBIM prägen.",
   "about.tech.pillar1_tag": "01 / BIM-LIEFERUNG",
-  "about.tech.pillar1_title": "01. BIM-AUSFÜHRUNG & LIEFERUNG",
+  "about.tech.pillar1_title": "BIM-AUSFÜHRUNG & LIEFERUNG",
   "about.tech.pillar1_sub": "Praxisnahe Ingenieurdienstleistungen, Modell-Authoring, multidisziplinäre Koordination und strukturierte Projektabwicklung.",
   "about.tech.pillar1_status": "LAUFENDE SERVICES",
   "about.tech.f1_1_title": "BIM-Beratung",
@@ -627,7 +627,7 @@
     "CDE-Schulung & Anwendersupport"
   ],
   "about.tech.pillar2_tag": "02 / ENTWICKLUNG",
-  "about.tech.pillar2_title": "02. CUSTOM CODE & PLUGINS",
+  "about.tech.pillar2_title": "CUSTOM CODE & PLUGINS",
   "about.tech.pillar2_sub": "Programmiersprachen, BIM-APIs, Backend-Dienste und Softwareintegrationen zur Realisierung der internen pyBIM-Automatisierungsarchitektur.",
   "about.tech.pillar2_status": "INTERNE F&E",
   "about.tech.f2_1_title": "Sprachen",
@@ -680,7 +680,7 @@
     "BCF"
   ],
   "about.tech.pillar3_tag": "03 / STANDARDS",
-  "about.tech.pillar3_title": "03. SOUVERÄNE KI & COMPLIANCE",
+  "about.tech.pillar3_title": "SOUVERÄNE KI & COMPLIANCE",
   "about.tech.pillar3_sub": "Informationsmanagement-Frameworks, nationale Richtlinien, offene Spezifikationen und explorative lokale KI-Forschung.",
   "about.tech.pillar3_status": "STANDARDS & FORSCHUNG",
   "about.tech.f3_1_title": "ISO / UNI",
