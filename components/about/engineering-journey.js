@@ -97,54 +97,57 @@ export default function EngineeringJourney() {
         </motion.div>        {/* ========================================================= */}
         {/* CONNECTED ENGINEERING TIMELINE                            */}
         {/* ========================================================= */}
-        <div className="relative">
+        <div className="space-y-12 lg:space-y-16">
           
-          {/* Continuous Vertical Backbone Rail (Visible on md and above) */}
-          {/* Gutter: left-6 is 24px. Node width is w-12 (48px) centered at 24px (left-0, w-12). */}
-          <div 
-            className="pointer-events-none absolute left-6 top-8 bottom-36 w-px z-0 hidden md:block" 
-            aria-hidden="true"
-          >
-            <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
-              <motion.line 
-                x1="0" 
-                y1="0" 
-                x2="0" 
-                y2="100%" 
-                stroke="currentColor" 
-                className="text-slate-300 dark:text-slate-700" 
-                strokeWidth="2" 
-                strokeDasharray="6 6"
-                initial={shouldReduceMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              />
-            </svg>
-          </div>
-
-          <motion.div 
-            className="space-y-12 lg:space-y-16"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-          >
-
-            {/* ----------------------------------------------------- */}
-            {/* STAGE 01: BIM Engineering Foundations                 */}
-            {/* ----------------------------------------------------- */}
-            <motion.div 
-              variants={itemVariants}
-              className="relative z-10 md:pl-20"
+          {/* Timeline Stages Container: Rail originates at Stage 01 node center and terminates at Stage 03 node center */}
+          <div className="relative">
+            {/* Continuous Vertical Backbone Rail (Visible on md and above) */}
+            {/* Starts at top-13 (geometric center of Stage 01 w-12 node at top-7) */}
+            {/* Ends at bottom-13 (geometric center of Stage 03 w-12 node at top-7) */}
+            <div 
+              className="pointer-events-none absolute left-6 top-13 bottom-13 w-px z-0 hidden md:block" 
+              aria-hidden="true"
             >
-              {/* Timeline Node Indicator centered at x = 24px (left: 0, w: 48px) */}
-              <div 
-                className="hidden md:flex absolute left-0 top-7 w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border-2 border-emerald-500 shadow-md shadow-emerald-500/15 items-center justify-center text-emerald-600 dark:text-emerald-400 z-20"
-                aria-hidden="true"
+              <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                <motion.line 
+                  x1="0" 
+                  y1="0" 
+                  x2="0" 
+                  y2="100%" 
+                  stroke="currentColor" 
+                  className="text-slate-300 dark:text-slate-700" 
+                  strokeWidth="2" 
+                  strokeDasharray="6 6"
+                  initial={shouldReduceMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+                  whileInView={{ pathLength: 1, opacity: 1 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                />
+              </svg>
+            </div>
+
+            <motion.div 
+              className="space-y-12 lg:space-y-16"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+            >
+
+              {/* ----------------------------------------------------- */}
+              {/* STAGE 01: BIM Engineering Foundations                 */}
+              {/* ----------------------------------------------------- */}
+              <motion.div 
+                variants={itemVariants}
+                className="relative z-10 md:pl-20"
               >
-                <CheckCircle2 className="w-5 h-5" />
-              </div>
+                {/* Timeline Node Indicator centered at x = 24px (left: 0, w: 48px), y = 52px (top: 28px + 24px) */}
+                <div 
+                  className="hidden md:flex absolute left-0 top-7 w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border-2 border-emerald-500 shadow-md shadow-emerald-500/15 items-center justify-center text-emerald-600 dark:text-emerald-400 z-20"
+                  aria-hidden="true"
+                >
+                  <CheckCircle2 className="w-5 h-5" />
+                </div>
 
               {/* Stage Card: Distinct Emerald Border Architecture */}
               <div className="rounded-2xl border-2 border-emerald-500/45 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-6 sm:p-8 lg:p-10 shadow-lg shadow-emerald-500/5 dark:shadow-emerald-500/10 transition-colors">
@@ -202,7 +205,7 @@ export default function EngineeringJourney() {
                     {/* Process Flow: Vertical Stack with clear connector arrows */}
                     <div className="space-y-2.5">
                       {/* Station 1: BIM Data */}
-                      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 shadow-xs">
+                      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
                           <span className="text-[15px] font-mono font-bold text-brand-textPrimary">
                             {t("about.journey.p1_diag_step1")}
@@ -219,7 +222,7 @@ export default function EngineeringJourney() {
                       </div>
 
                       {/* Station 2: Engineering Review */}
-                      <div className="rounded-xl border-2 border-emerald-500/50 bg-emerald-50/60 dark:bg-emerald-950/30 p-3.5 shadow-xs">
+                      <div className="rounded-xl border-2 border-emerald-500/50 bg-emerald-50/60 dark:bg-emerald-950/30 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
                           <span className="text-[15px] font-mono font-bold text-emerald-700 dark:text-emerald-400">
                             {t("about.journey.p1_diag_step2")}
@@ -236,7 +239,7 @@ export default function EngineeringJourney() {
                       </div>
 
                       {/* Station 3: Project Delivery */}
-                      <div className="rounded-xl border-2 border-emerald-500 bg-white dark:bg-slate-900 p-3.5 shadow-xs">
+                      <div className="rounded-xl border-2 border-emerald-500 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
                           <span className="text-[15px] font-mono font-bold text-brand-textPrimary">
                             {t("about.journey.p1_diag_step3")}
@@ -324,7 +327,7 @@ export default function EngineeringJourney() {
                     {/* Process Flow: Vertical Stack with bi-directional and forward connectors */}
                     <div className="space-y-2.5">
                       {/* Station 1: BIM Delivery */}
-                      <div className="rounded-xl border border-emerald-500/40 bg-white dark:bg-slate-900 p-3.5 shadow-xs">
+                      <div className="rounded-xl border border-emerald-500/40 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
                           <span className="text-[15px] font-mono font-bold text-emerald-700 dark:text-emerald-400">
                             {t("about.journey.p2_diag_step1")}
@@ -341,7 +344,7 @@ export default function EngineeringJourney() {
                       </div>
 
                       {/* Station 2: Internal Automation (Center Stage) */}
-                      <div className="rounded-xl border-2 border-brand-primary bg-brand-primary/15 dark:bg-brand-primary/20 p-3.5 shadow-xs">
+                      <div className="rounded-xl border-2 border-brand-primary bg-brand-primary/15 dark:bg-brand-primary/20 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
                           <span className="text-[15px] font-mono font-bold text-brand-primary">
                             {t("about.journey.p2_diag_step2")}
@@ -358,7 +361,7 @@ export default function EngineeringJourney() {
                       </div>
 
                       {/* Station 3: Engineering Feedback */}
-                      <div className="rounded-xl border border-brand-primary/40 bg-white dark:bg-slate-900 p-3.5 shadow-xs">
+                      <div className="rounded-xl border border-brand-primary/40 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
                           <span className="text-[15px] font-mono font-bold text-brand-textPrimary">
                             {t("about.journey.p2_diag_step3")}
@@ -446,7 +449,7 @@ export default function EngineeringJourney() {
                     {/* Process Flow: Vertical Stack with clear connector arrows */}
                     <div className="space-y-2.5">
                       {/* Station 1: Engineering Data */}
-                      <div className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-3.5 shadow-xs">
+                      <div className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
                           <span className="text-[15px] font-mono font-bold text-slate-700 dark:text-slate-300">
                             {t("about.journey.p3_diag_step1")}
@@ -463,7 +466,7 @@ export default function EngineeringJourney() {
                       </div>
 
                       {/* Station 2: AI Research (Conceptual) */}
-                      <div className="rounded-xl border border-dashed border-slate-400 dark:border-slate-600 bg-slate-100/70 dark:bg-slate-800/60 p-3.5 shadow-xs">
+                      <div className="rounded-xl border border-dashed border-slate-400 dark:border-slate-600 bg-slate-100/70 dark:bg-slate-800/60 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
                           <span className="text-[15px] font-mono font-bold text-slate-700 dark:text-slate-300">
                             {t("about.journey.p3_diag_step2")}
@@ -480,7 +483,7 @@ export default function EngineeringJourney() {
                       </div>
 
                       {/* Station 3: Human Review */}
-                      <div className="rounded-xl border border-brand-primary/40 bg-white dark:bg-slate-900 p-3.5 shadow-xs">
+                      <div className="rounded-xl border border-brand-primary/40 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
                           <span className="text-[15px] font-mono font-bold text-brand-primary">
                             {t("about.journey.p3_diag_step3")}
@@ -497,34 +500,39 @@ export default function EngineeringJourney() {
               </div>
             </motion.div>
 
-            {/* ----------------------------------------------------- */}
-            {/* BEYOND THE CURRENT ROADMAP: Clean Non-Interactive Note */}
-            {/* ----------------------------------------------------- */}
-            <motion.div 
-              variants={itemVariants}
-              className="relative z-10 md:pl-20 pt-2"
-            >
-              <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 p-6 sm:p-7">
-                <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary shrink-0 mt-0.5">
-                    <Compass className="w-4 h-4" aria-hidden="true" />
-                  </div>
-                  <div className="space-y-1.5">
-                    <h4 className="text-base sm:text-lg font-bold text-brand-textPrimary">
-                      {t("about.journey.beyond_title")}
-                    </h4>
-                    <p className="text-sm sm:text-base text-brand-textSecondary leading-relaxed max-w-3xl">
-                      {t("about.journey.beyond_desc")}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
           </motion.div>
         </div>
+
+        {/* ----------------------------------------------------- */}
+        {/* BEYOND THE CURRENT ROADMAP: Clean Non-Interactive Note */}
+        {/* ----------------------------------------------------- */}
+        <motion.div 
+          variants={itemVariants}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 md:pl-20 pt-2"
+        >
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 p-6 sm:p-7">
+            <div className="flex items-start gap-3.5">
+              <div className="w-8 h-8 rounded-lg bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary shrink-0 mt-0.5">
+                <Compass className="w-4 h-4" aria-hidden="true" />
+              </div>
+              <div className="space-y-1.5">
+                <h4 className="text-base sm:text-lg font-bold text-brand-textPrimary">
+                  {t("about.journey.beyond_title")}
+                </h4>
+                <p className="text-sm sm:text-base text-brand-textSecondary leading-relaxed max-w-3xl">
+                  {t("about.journey.beyond_desc")}
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
       </div>
     </section>
   );
 }
+
