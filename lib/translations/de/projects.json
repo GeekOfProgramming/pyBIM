@@ -37,6 +37,33 @@
   "projects.dev.step4_title": "Menschliche Ingenieurprüfung",
   "projects.dev.step4_desc": "Obligatorische BIM-Manager-Validierung, Konformitätsprüfung, keine ungeprüften Ausgaben",
   "projects.dev.step5_title": "Verifizierte Projektergebnisse",
+  "projects.nav.index_label": "INDEX:",
+  "projects.nav.aria_label": "Abschnittsverzeichnis der Erfolgsgeschichten",
+  "projects.hero.aria_label": "Hero der Erfolgsgeschichten",
+
+  "projects.dev.pipeline.badge_input": "INPUT",
+  "projects.dev.pipeline.badge_context": "KONTEXT",
+  "projects.dev.pipeline.badge_synthesis": "SYNTHESE",
+  "projects.dev.pipeline.badge_output": "OUTPUT",
+
+  "projects.dev.ws_status.research": "FORSCHUNG",
+  "projects.dev.ws_status.prototype": "PROTOTYP",
+  "projects.dev.ws_status.in_development": "IN ENTWICKLUNG",
+
+  "projects.dev.ws1_focus": "IFC- und RVT-Schema",
+  "projects.dev.ws2_focus": "Revit-API & pyRevit",
+  "projects.dev.ws3_focus": "Ausschreibungs- & Modellaudit",
+
+  "projects.dev.tags.semantic_indexing": "Semantische Indexierung",
+  "projects.dev.tags.openbim_ifc": "OpenBIM / IFC",
+  "projects.dev.tags.natural_language_parsing": "Parsing natürlicher Sprache",
+  "projects.dev.tags.ast_validation": "AST-Validierung",
+  "projects.dev.tags.python_synthesis": "Python-Synthese",
+  "projects.dev.tags.syntax_guardrails": "Syntax-Leitplanken",
+  "projects.dev.tags.tender_spec_parsing": "Spezifikations-Parsing",
+  "projects.dev.tags.cross_parameter_audit": "Cross-Parameter-Audit",
+  "projects.dev.tags.verification_reports": "Verifikationsberichte",
+
   "projects.dev.step5_desc": "Geprüfte Datentabellen, pyRevit-Skripte, Parameter-Prüfberichte",
   "projects.dev.human_review_notice": "Menschliche Aufsicht: Alle LLM-Experimente unterliegen strikter menschlicher Ingenieurvalidierung. Ergebnisse sind niemals autonom.",
   "projects.dev.workstreams_heading": "Aktive Forschungsbereiche",
