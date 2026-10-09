@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
     de: "Wir bereiten eine Auswahl an BIM-Engineering-Projekten, Fallstudien und Kundenperspektiven für die Veröffentlichung vor, sobald die entsprechenden Unterlagen geprüft und freigegeben sind."
   };
 
-  const siteUrl = "https://pybim.com";
+  const siteUrl = "https://www.pybim.com";
   const currentUrl = `${siteUrl}/${locale}/success-stories`;
 
   return {

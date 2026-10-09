@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = "https://pybim.com";
+  const baseUrl = "https://www.pybim.com";
   const now = new Date();
   const locales = ["en", "it", "de"];
 

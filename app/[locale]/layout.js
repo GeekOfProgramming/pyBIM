@@ -23,28 +23,28 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500", "600"],
 });
 
-const siteUrl = "https://pybim.com";
+const siteUrl = "https://www.pybim.com";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const currentUrl = `${siteUrl}/${locale}`;
 
   const titles = {
-    en: "pyBIM | Advanced BIM & Software Development Lab",
-    it: "pyBIM | Laboratorio Avanzato BIM & Sviluppo Software",
-    de: "pyBIM | Erweitertes BIM & Softwareentwicklungs-Labor"
+    en: "pyBIM | BIM Engineering & Revit Automation Services",
+    it: "pyBIM | Servizi di Ingegneria BIM & Automazione Revit",
+    de: "pyBIM | BIM-Engineering & Revit-Automatisierungsdienste"
   };
 
   const descriptions = {
-    en: "pyBIM is a software development lab for the AEC industry. We engineer custom Revit API C# plugins, Python data pipelines, and structured OpenBIM workflows.",
-    it: "pyBIM è un laboratorio di sviluppo software per il settore AEC. Sviluppiamo plugin personalizzati Revit API in C#, pipeline di dati in Python e flussi di lavoro OpenBIM strutturati.",
-    de: "pyBIM ist ein Softwareentwicklungs-Labor für die AEC-Branche. Wir entwickeln maßgeschneiderte Revit API C#-Plugins, Python-Daten-Pipelines und strukturierte OpenBIM-Workflows."
+    en: "pyBIM supports AEC engineering teams with BIM workflows, Revit automation, structured model information and technical coordination. Explore our current services and development roadmap.",
+    it: "pyBIM supporta i team AEC con flussi di lavoro BIM, automazione Revit, gestione informativa del modello e coordinamento tecnico. Scopri i nostri servizi e la roadmap.",
+    de: "pyBIM unterstützt AEC-Teams mit BIM-Workflows, Revit-Automatisierung, strukturierten Modellinformationen und technischer Koordination. Entdecken Sie unsere Leistungen und Roadmap."
   };
 
   const ogDescriptions = {
-    en: "Automating the AEC industry with Python, Revit API C#, and OpenBIM workflows.",
-    it: "Automazione nel settore AEC con flussi di lavoro Python, Revit API C# e OpenBIM.",
-    de: "Automatisierung der AEC-Branche mit Python, Revit API C# und OpenBIM-Workflows."
+    en: "pyBIM supports AEC engineering teams with BIM workflows, Revit automation, structured model information and technical coordination.",
+    it: "pyBIM supporta i team AEC con flussi di lavoro BIM, automazione Revit, gestione informativa del modello e coordinamento tecnico.",
+    de: "pyBIM unterstützt AEC-Teams mit BIM-Workflows, Revit-Automatisierung, strukturierten Modellinformationen und technischer Koordination."
   };
 
   return {
@@ -66,16 +66,15 @@ export async function generateMetadata({ params }) {
       }
     },
     keywords: [
+      "BIM Engineering",
       "BIM Automation",
-      "pyRevit scripting",
-      "Dynamo automation",
-      "Revit API C#",
-      "Python for Architecture",
-      "AEC Software Development",
-      "BIM Management Europe",
-      "ISO 19650 Compliance",
-      "UNI 11337 Standard",
-      "COBie Asset Handover"
+      "Revit API",
+      "pyRevit",
+      "Dynamo Automation",
+      "Python AEC",
+      "OpenBIM Workflows",
+      "Technical Coordination",
+      "Model Management"
     ],
     openGraph: {
       title: titles[locale] || titles.en,
@@ -89,7 +88,7 @@ export async function generateMetadata({ params }) {
           url: "/og-image.jpg",
           width: 1200,
           height: 630,
-          alt: "pyBIM - Advanced BIM & Software Development Lab"
+          alt: "pyBIM - BIM Engineering & Revit Automation Services"
         }
       ]
     },
