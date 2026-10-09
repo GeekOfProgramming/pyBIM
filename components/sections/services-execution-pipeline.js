@@ -48,7 +48,7 @@ export default function ServicesExecutionPipeline({ data }) {
           accentBg: "bg-brand-primary/10",
           accentBorder: "border-brand-primary/30",
           borderHover: "hover:border-brand-primary/40",
-          railColor: "text-brand-primary/70",
+          spineColor: "#2563eb",
           badgeColor: "bg-brand-primary text-white"
         };
       case 1:
@@ -58,7 +58,7 @@ export default function ServicesExecutionPipeline({ data }) {
           accentBg: "bg-sky-500/10",
           accentBorder: "border-sky-500/30",
           borderHover: "hover:border-sky-500/40",
-          railColor: "text-sky-500/70",
+          spineColor: "#0ea5e9",
           badgeColor: "bg-sky-600 text-white"
         };
       case 2:
@@ -68,7 +68,7 @@ export default function ServicesExecutionPipeline({ data }) {
           accentBg: "bg-indigo-500/10",
           accentBorder: "border-indigo-500/30",
           borderHover: "hover:border-indigo-500/40",
-          railColor: "text-indigo-500/70",
+          spineColor: "#6366f1",
           badgeColor: "bg-indigo-600 text-white"
         };
       case 3:
@@ -79,7 +79,7 @@ export default function ServicesExecutionPipeline({ data }) {
           accentBg: "bg-emerald-500/10",
           accentBorder: "border-emerald-500/30",
           borderHover: "hover:border-emerald-500/40",
-          railColor: "text-emerald-500/70",
+          spineColor: "#10b981",
           badgeColor: "bg-emerald-600 text-white"
         };
     }
@@ -91,27 +91,33 @@ export default function ServicesExecutionPipeline({ data }) {
       className="py-20 md:py-24 lg:py-28 bg-brand-base border-b border-brand-border relative overflow-hidden scroll-mt-20 lg:scroll-mt-24"
       aria-labelledby={`${baseId}-title`}
     >
-      {/* Background Architectural Canvas with Subtle Drafting Grid & Datum Lines */}
+      {/* ========================================================================= */}
+      {/* ENGINEERING DOCUMENTATION STORYBOARD BACKGROUND                           */}
+      {/* Sheet registration lines, corner framing cues, and restrained depth       */}
+      {/* ========================================================================= */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        {/* Soft Ambient Engineering Lighting */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-4/5 h-[600px] bg-brand-primary/[0.03] dark:bg-brand-primary/[0.04] rounded-full blur-3xl pointer-events-none" />
+        {/* Soft Controlled Ambient Atmosphere */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-3/4 h-[550px] bg-gradient-to-b from-brand-primary/[0.035] via-sky-500/[0.02] to-transparent dark:from-brand-primary/[0.06] dark:via-sky-500/[0.03] dark:to-transparent rounded-full blur-3xl pointer-events-none" />
 
-        {/* Fine Architectural Grid Pattern */}
+        {/* Documentation Sheet Boundary Guides (Subtle technical margins) */}
+        <div className="max-w-7xl mx-auto h-full px-6 lg:px-8 relative">
+          <div className="absolute left-6 lg:left-8 top-0 bottom-0 w-px border-l border-dashed border-slate-300/40 dark:border-slate-800/60" />
+          <div className="absolute right-6 lg:right-8 top-0 bottom-0 w-px border-r border-dashed border-slate-300/40 dark:border-slate-800/60" />
+        </div>
+
+        {/* Fine Engineering Sheet Grid (Light, non-repetitive micro-hatch) */}
         <svg 
-          className="absolute inset-0 w-full h-full stroke-slate-300/30 dark:stroke-slate-700/25 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_80%)]" 
+          className="absolute inset-0 w-full h-full stroke-slate-400/20 dark:stroke-slate-700/20 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_85%)]" 
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <pattern id={`${baseId}-pipeline-grid`} width="56" height="56" patternUnits="userSpaceOnUse">
-              <path d="M 56 0 L 0 0 0 56" fill="none" strokeWidth="0.75" />
+            <pattern id={`${baseId}-doc-grid`} width="72" height="72" patternUnits="userSpaceOnUse">
+              <path d="M 72 0 L 0 0 0 72" fill="none" strokeWidth="0.5" strokeDasharray="2 6" />
+              <path d="M 0 0 L 8 0 M 0 0 L 0 8" fill="none" strokeWidth="1" strokeOpacity="0.4" />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill={`url(#${baseId}-pipeline-grid)`} />
+          <rect width="100%" height="100%" fill={`url(#${baseId}-doc-grid)`} />
         </svg>
-
-        {/* Structural Blueprint Axis Hairlines */}
-        <div className="absolute left-8 top-0 bottom-0 w-px border-l border-dashed border-slate-300/20 dark:border-slate-700/25 hidden xl:block" />
-        <div className="absolute right-8 top-0 bottom-0 w-px border-r border-dashed border-slate-300/20 dark:border-slate-700/25 hidden xl:block" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -121,7 +127,7 @@ export default function ServicesExecutionPipeline({ data }) {
           initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-4xl mb-14 lg:mb-16"
         >
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
@@ -155,65 +161,79 @@ export default function ServicesExecutionPipeline({ data }) {
           </p>
         </motion.div>
 
-        {/* Continuous Four-Stage Storyboard with Connected Process Spine */}
-        <div className="relative">
-          
-          {/* Vertical Engineering Process Spine (Connecting Milestones along left margin in desktop) */}
-          <div 
-            className="hidden lg:block absolute left-6 top-8 bottom-8 w-px pointer-events-none" 
-            aria-hidden="true"
-          >
-            <svg className="w-px h-full overflow-visible" fill="none">
-              <motion.line
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="100%"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeDasharray="4 4"
-                className="text-brand-border dark:text-slate-700"
-                initial={{ pathLength: shouldReduceMotion ? 1 : 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, ease: "easeOut" }}
-              />
-            </svg>
-          </div>
+        {/* ========================================================================= */}
+        {/* FOUR-STAGE STORYBOARD WITH DEDICATED PROCESS SPINE GUTTER                 */}
+        {/* The spine has its own column on desktop and connects directly into stages */}
+        {/* ========================================================================= */}
+        <div className="space-y-8 lg:space-y-10">
+          {steps.map((step, idx) => {
+            const theme = getStageTheme(idx);
+            const artifact = step.artifact || {};
+            const diagram = step.diagram || {};
+            const actionLabel = artifact.actionLabel || "SPEC";
+            const isLast = idx === steps.length - 1;
 
-          {/* Sequential Milestone Stations */}
-          <div className="space-y-8 lg:space-y-12">
-            {steps.map((step, idx) => {
-              const theme = getStageTheme(idx);
-              const artifact = step.artifact || {};
-              const actionLabel = artifact.actionLabel || "SPEC";
+            return (
+              <div 
+                key={step.num || idx} 
+                className="relative lg:grid lg:grid-cols-[56px_1fr] lg:gap-8 items-start"
+              >
+                {/* ------------------------------------------------------------- */}
+                {/* DEDICATED PROCESS SPINE COLUMN (Desktop Visible Rail)         */}
+                {/* ------------------------------------------------------------- */}
+                <div className="hidden lg:flex flex-col items-center self-stretch relative pt-6" aria-hidden="true">
+                  {/* Milestone Node */}
+                  <div 
+                    className={`w-12 h-12 rounded-2xl ${theme.accentBg} border-2 ${theme.accentBorder} flex items-center justify-center font-mono font-bold text-caption text-brand-textPrimary shrink-0 z-10 shadow-sm bg-brand-surface`}
+                  >
+                    {step.num || `0${idx + 1}`}
+                  </div>
 
-              return (
+                  {/* Horizontal Branch Connector into Card */}
+                  <div className="absolute top-12 left-12 w-8 h-px border-t-2 border-dashed border-brand-border dark:border-slate-700 pointer-events-none z-0" />
+
+                  {/* Vertical Spine Segment to next milestone */}
+                  {!isLast && (
+                    <div className="w-0.5 flex-1 relative my-2 bg-brand-border/60 dark:bg-slate-800">
+                      <motion.div
+                        className="w-full absolute inset-0 origin-top"
+                        style={{ backgroundColor: theme.spineColor }}
+                        initial={{ scaleY: shouldReduceMotion ? 1 : 0 }}
+                        whileInView={{ scaleY: 1 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* ------------------------------------------------------------- */}
+                {/* MILESTONE CARD ARTICLE                                        */}
+                {/* ------------------------------------------------------------- */}
                 <motion.article
-                  key={step.num || idx}
                   initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
+                  transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className={`relative rounded-2xl lg:rounded-3xl bg-brand-card/95 dark:bg-slate-900/90 backdrop-blur-sm border border-brand-border/80 ${theme.borderHover} p-6 sm:p-8 lg:p-10 shadow-sm transition-colors duration-200`}
                 >
                   {/* Milestone Header Bar */}
                   <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-brand-border/60">
                     <div className="flex items-center gap-3.5">
-                      {/* Milestone Number & Icon Badge */}
-                      <div className={`w-11 h-11 rounded-2xl ${theme.accentBg} border ${theme.accentBorder} flex items-center justify-center shrink-0`}>
+                      {/* Mobile-only milestone number tag */}
+                      <span className="lg:hidden text-technical font-mono font-bold text-brand-textSecondary px-2.5 py-1 rounded-lg bg-brand-surface border border-brand-border shrink-0">
+                        {step.num || `0${idx + 1}`}
+                      </span>
+
+                      {/* Icon Badge */}
+                      <div className={`w-10 h-10 rounded-2xl ${theme.accentBg} border ${theme.accentBorder} flex items-center justify-center shrink-0`}>
                         {theme.icon}
                       </div>
 
                       <div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-technical font-mono font-bold text-brand-textSecondary px-2 py-0.5 rounded bg-brand-surface border border-brand-border">
-                            {step.num || `0${idx + 1}`}
-                          </span>
-                          <span className={`text-technical font-mono font-bold ${theme.accentText} uppercase tracking-wider`}>
-                            {step.mapLabel || `STAGE 0${idx + 1}`}
-                          </span>
-                        </div>
+                        <span className={`text-technical font-mono font-bold ${theme.accentText} uppercase tracking-wider block`}>
+                          {step.mapLabel || `STAGE 0${idx + 1}`}
+                        </span>
                       </div>
                     </div>
 
@@ -227,7 +247,7 @@ export default function ServicesExecutionPipeline({ data }) {
                   {/* Asymmetric 5/7 Grid Composition */}
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
                     
-                    {/* Left Area (5 cols): Narrative, Requirements Description, and Typical Output */}
+                    {/* Left Narrative Area (5 cols) */}
                     <div className="lg:col-span-5 flex flex-col justify-between">
                       <div>
                         <h3 className="text-card-title font-bold text-brand-textPrimary mb-3 tracking-tight leading-snug">
@@ -239,7 +259,7 @@ export default function ServicesExecutionPipeline({ data }) {
                         </p>
                       </div>
 
-                      {/* Typical Output Box (No truncate: multi-line clean wrapping) */}
+                      {/* Typical Output Box */}
                       {step.output && (
                         <div className="p-3.5 rounded-xl bg-brand-surface border border-brand-border/80 flex items-start gap-3 mt-auto">
                           <div className={`w-5 h-5 rounded-md ${theme.accentBg} border ${theme.accentBorder} flex items-center justify-center shrink-0 mt-0.5`}>
@@ -257,7 +277,7 @@ export default function ServicesExecutionPipeline({ data }) {
                       )}
                     </div>
 
-                    {/* Right Area (7 cols): Distinct Technical Visual HUD & Artifact Panel */}
+                    {/* Right Visual HUD Panel (7 cols) */}
                     <div className="lg:col-span-7 flex flex-col justify-center">
                       <figure 
                         className="rounded-xl border border-brand-border/80 bg-brand-surface/70 dark:bg-slate-950/60 p-4 sm:p-6 relative overflow-hidden flex flex-col justify-between h-full m-0"
@@ -287,11 +307,11 @@ export default function ServicesExecutionPipeline({ data }) {
                               {/* Source Inputs Block */}
                               <div className="sm:col-span-5 bg-brand-card p-3 rounded-lg border border-brand-border/70 shadow-sm text-technical font-mono">
                                 <div className="flex items-center gap-1.5 text-brand-textSecondary mb-1 font-semibold">
-                                  <FileSpreadsheet className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
-                                  <span>CLIENT EIR / BEP</span>
+                                  <FileSpreadsheet className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
+                                  <span className="truncate">{diagram.sourceBadge || "CLIENT EIR / BEP"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  Project Requirements
+                                  {diagram.sourceLabel || "Project Requirements"}
                                 </span>
                               </div>
 
@@ -307,7 +327,7 @@ export default function ServicesExecutionPipeline({ data }) {
                                     initial={{ pathLength: shouldReduceMotion ? 1 : 0 }}
                                     whileInView={{ pathLength: 1 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.45, delay: 0.2 }}
+                                    transition={{ duration: shouldReduceMotion ? 0 : 0.45, delay: 0.2 }}
                                   />
                                   <polygon points="21,8 29,12 21,16" fill="currentColor" className="text-brand-primary" />
                                 </svg>
@@ -317,55 +337,116 @@ export default function ServicesExecutionPipeline({ data }) {
                               {/* Scope Target Block */}
                               <div className="sm:col-span-5 bg-brand-primary/10 dark:bg-brand-primary/15 p-3 rounded-lg border border-brand-primary/30 text-technical font-mono shadow-sm">
                                 <div className="flex items-center gap-1.5 text-brand-primary mb-1 font-bold">
-                                  <FileCheck2 className="w-3.5 h-3.5" aria-hidden="true" />
-                                  <span>TECHNICAL SCOPE</span>
+                                  <FileCheck2 className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                                  <span className="truncate">{diagram.targetBadge || "TECHNICAL SCOPE"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  Defined Acceptance Criteria
+                                  {diagram.targetLabel || "Defined Acceptance Criteria"}
                                 </span>
                               </div>
                             </div>
                           </div>
                         )}
 
-                        {/* --- STAGE 02 GRAPHIC: Rules & Automation Logic Specification --- */}
+                        {/* --- STAGE 02 GRAPHIC: Connected Rule Logic & Automation Flow --- */}
+                        {/* Parameter Mapping → Validation Logic → API Task Scoping */}
                         {idx === 1 && (
                           <div className="space-y-3.5 my-auto">
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 items-center font-mono text-technical">
-                              {/* Rule 1: Parameter Mapping */}
+                            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 font-mono text-technical">
+                              {/* Node 1: Parameter Mapping */}
                               <motion.div 
                                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.35, delay: shouldReduceMotion ? 0 : 0.15 }}
-                                className="bg-brand-card p-2.5 rounded-lg border border-brand-border/70 text-center shadow-sm"
+                                transition={{ duration: shouldReduceMotion ? 0 : 0.35, delay: shouldReduceMotion ? 0 : 0.15 }}
+                                className="flex-1 bg-brand-card p-3 rounded-lg border border-brand-border/70 text-center shadow-sm"
                               >
-                                <span className="block text-brand-textSecondary font-semibold mb-0.5">RULE LAYER</span>
-                                <span className="text-caption font-bold text-brand-textPrimary">Parameter Mapping</span>
+                                <span className="block text-brand-textSecondary font-semibold mb-1 uppercase tracking-wider text-technical">
+                                  {diagram.node1Badge || "RULE LAYER"}
+                                </span>
+                                <span className="text-caption font-bold text-brand-textPrimary block">
+                                  {diagram.node1Label || "Parameter Mapping"}
+                                </span>
                               </motion.div>
 
-                              {/* Rule 2: Validation Logic Gate */}
+                              {/* Vector Connector 1 -> 2 */}
+                              <div className="hidden sm:flex items-center justify-center w-8 shrink-0" aria-hidden="true">
+                                <svg className="w-8 h-6 overflow-visible" viewBox="0 0 32 20" fill="none">
+                                  <motion.path
+                                    d="M 2 10 L 22 10"
+                                    stroke="currentColor"
+                                    strokeWidth="1.75"
+                                    strokeDasharray="3 3"
+                                    className="text-sky-500/70"
+                                    initial={{ pathLength: shouldReduceMotion ? 1 : 0 }}
+                                    whileInView={{ pathLength: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: shouldReduceMotion ? 0 : 0.4, delay: 0.2 }}
+                                  />
+                                  <polygon points="20,6 28,10 20,14" fill="currentColor" className="text-sky-500" />
+                                </svg>
+                              </div>
+                              <div className="sm:hidden flex justify-center py-0.5 text-sky-500" aria-hidden="true">
+                                <svg className="w-4 h-5" viewBox="0 0 16 20" fill="none">
+                                  <path d="M 8 2 L 8 14" stroke="currentColor" strokeWidth="1.75" strokeDasharray="2 2" />
+                                  <polygon points="4,12 8,18 12,12" fill="currentColor" />
+                                </svg>
+                              </div>
+
+                              {/* Node 2: Validation Rules (Logic Gate) */}
                               <motion.div 
                                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.35, delay: shouldReduceMotion ? 0 : 0.28 }}
-                                className="bg-sky-500/10 dark:bg-sky-950/40 p-2.5 rounded-lg border border-sky-500/40 text-center shadow-sm"
+                                transition={{ duration: shouldReduceMotion ? 0 : 0.35, delay: shouldReduceMotion ? 0 : 0.28 }}
+                                className="flex-1 bg-sky-500/10 dark:bg-sky-950/40 p-3 rounded-lg border border-sky-500/40 text-center shadow-sm"
                               >
-                                <span className="block text-sky-600 dark:text-sky-400 font-bold mb-0.5">LOGIC GATE</span>
-                                <span className="text-caption font-bold text-brand-textPrimary">Validation Rules</span>
+                                <span className="block text-sky-600 dark:text-sky-400 font-bold mb-1 uppercase tracking-wider text-technical">
+                                  {diagram.node2Badge || "LOGIC GATE"}
+                                </span>
+                                <span className="text-caption font-bold text-brand-textPrimary block">
+                                  {diagram.node2Label || "Validation Rules"}
+                                </span>
                               </motion.div>
 
-                              {/* Rule 3: API Task Scoping */}
+                              {/* Vector Connector 2 -> 3 */}
+                              <div className="hidden sm:flex items-center justify-center w-8 shrink-0" aria-hidden="true">
+                                <svg className="w-8 h-6 overflow-visible" viewBox="0 0 32 20" fill="none">
+                                  <motion.path
+                                    d="M 2 10 L 22 10"
+                                    stroke="currentColor"
+                                    strokeWidth="1.75"
+                                    strokeDasharray="3 3"
+                                    className="text-sky-500/70"
+                                    initial={{ pathLength: shouldReduceMotion ? 1 : 0 }}
+                                    whileInView={{ pathLength: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: shouldReduceMotion ? 0 : 0.4, delay: 0.35 }}
+                                  />
+                                  <polygon points="20,6 28,10 20,14" fill="currentColor" className="text-sky-500" />
+                                </svg>
+                              </div>
+                              <div className="sm:hidden flex justify-center py-0.5 text-sky-500" aria-hidden="true">
+                                <svg className="w-4 h-5" viewBox="0 0 16 20" fill="none">
+                                  <path d="M 8 2 L 8 14" stroke="currentColor" strokeWidth="1.75" strokeDasharray="2 2" />
+                                  <polygon points="4,12 8,18 12,12" fill="currentColor" />
+                                </svg>
+                              </div>
+
+                              {/* Node 3: API Task Scoping */}
                               <motion.div 
                                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.35, delay: shouldReduceMotion ? 0 : 0.4 }}
-                                className="bg-brand-card p-2.5 rounded-lg border border-brand-border/70 text-center shadow-sm"
+                                transition={{ duration: shouldReduceMotion ? 0 : 0.35, delay: shouldReduceMotion ? 0 : 0.42 }}
+                                className="flex-1 bg-brand-card p-3 rounded-lg border border-brand-border/70 text-center shadow-sm"
                               >
-                                <span className="block text-brand-textSecondary font-semibold mb-0.5">AUTOMATION</span>
-                                <span className="text-caption font-bold text-brand-textPrimary">API Task Scoping</span>
+                                <span className="block text-brand-textSecondary font-semibold mb-1 uppercase tracking-wider text-technical">
+                                  {diagram.node3Badge || "AUTOMATION"}
+                                </span>
+                                <span className="text-caption font-bold text-brand-textPrimary block">
+                                  {diagram.node3Label || "API Task Scoping"}
+                                </span>
                               </motion.div>
                             </div>
                           </div>
@@ -378,11 +459,11 @@ export default function ServicesExecutionPipeline({ data }) {
                               {/* Source Host Model */}
                               <div className="sm:col-span-5 bg-brand-card p-3 rounded-lg border border-brand-border/70 shadow-sm text-technical font-mono">
                                 <div className="flex items-center gap-1.5 text-brand-textSecondary mb-1 font-semibold">
-                                  <Boxes className="w-3.5 h-3.5 text-indigo-500" aria-hidden="true" />
-                                  <span>MODEL HOST</span>
+                                  <Boxes className="w-3.5 h-3.5 text-indigo-500 shrink-0" aria-hidden="true" />
+                                  <span className="truncate">{diagram.sourceBadge || "MODEL HOST"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  Revit API Execution
+                                  {diagram.sourceLabel || "Revit API Execution"}
                                 </span>
                               </div>
 
@@ -398,7 +479,7 @@ export default function ServicesExecutionPipeline({ data }) {
                                     initial={{ pathLength: shouldReduceMotion ? 1 : 0 }}
                                     whileInView={{ pathLength: 1 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.45, delay: 0.2 }}
+                                    transition={{ duration: shouldReduceMotion ? 0 : 0.45, delay: 0.2 }}
                                   />
                                   <polygon points="21,8 29,12 21,16" fill="currentColor" className="text-indigo-500" />
                                 </svg>
@@ -408,11 +489,11 @@ export default function ServicesExecutionPipeline({ data }) {
                               {/* Multi-discipline Coordinated Target */}
                               <div className="sm:col-span-5 bg-indigo-500/10 dark:bg-indigo-950/40 p-3 rounded-lg border border-indigo-500/35 text-technical font-mono shadow-sm">
                                 <div className="flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 mb-1 font-bold">
-                                  <Layers className="w-3.5 h-3.5" aria-hidden="true" />
-                                  <span>COORDINATION</span>
+                                  <Layers className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                                  <span className="truncate">{diagram.targetBadge || "COORDINATION"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  Synchronized Outputs
+                                  {diagram.targetLabel || "Synchronized Outputs"}
                                 </span>
                               </div>
                             </div>
@@ -426,11 +507,11 @@ export default function ServicesExecutionPipeline({ data }) {
                               {/* Audit & Issue Tracking */}
                               <div className="sm:col-span-5 bg-brand-card p-3 rounded-lg border border-brand-border/70 shadow-sm text-technical font-mono">
                                 <div className="flex items-center gap-1.5 text-brand-textSecondary mb-1 font-semibold">
-                                  <ShieldAlert className="w-3.5 h-3.5 text-emerald-500" aria-hidden="true" />
-                                  <span>AUDIT DOSSIER</span>
+                                  <ShieldAlert className="w-3.5 h-3.5 text-emerald-500 shrink-0" aria-hidden="true" />
+                                  <span className="truncate">{diagram.sourceBadge || "AUDIT DOSSIER"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  BCF Issue Tracking
+                                  {diagram.sourceLabel || "BCF Issue Tracking"}
                                 </span>
                               </div>
 
@@ -446,7 +527,7 @@ export default function ServicesExecutionPipeline({ data }) {
                                     initial={{ pathLength: shouldReduceMotion ? 1 : 0 }}
                                     whileInView={{ pathLength: 1 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.45, delay: 0.2 }}
+                                    transition={{ duration: shouldReduceMotion ? 0 : 0.45, delay: 0.2 }}
                                   />
                                   <polygon points="21,8 29,12 21,16" fill="currentColor" className="text-emerald-500" />
                                 </svg>
@@ -456,11 +537,11 @@ export default function ServicesExecutionPipeline({ data }) {
                               {/* Handover Package Target */}
                               <div className="sm:col-span-5 bg-emerald-500/10 dark:bg-emerald-950/40 p-3 rounded-lg border border-emerald-500/35 text-technical font-mono shadow-sm">
                                 <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 mb-1 font-bold">
-                                  <ClipboardCheck className="w-3.5 h-3.5" aria-hidden="true" />
-                                  <span>HANDOVER PACKAGE</span>
+                                  <ClipboardCheck className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                                  <span className="truncate">{diagram.targetBadge || "HANDOVER PACKAGE"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  Reviewed Deliverables
+                                  {diagram.targetLabel || "Reviewed Deliverables"}
                                 </span>
                               </div>
                             </div>
@@ -489,10 +570,9 @@ export default function ServicesExecutionPipeline({ data }) {
 
                   </div>
                 </motion.article>
-              );
-            })}
-          </div>
-
+              </div>
+            );
+          })}
         </div>
 
       </div>
