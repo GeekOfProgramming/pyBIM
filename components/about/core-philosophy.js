@@ -257,11 +257,11 @@ export default function CorePhilosophy() {
 
                 {/* ================================================= */}
                 {/* DEDICATED ENGINEERING CONTROL DIAGRAM              */}
-                {/* Responsive HTML/CSS Architecture Nodes + SVG Paths */}
+                {/* Option A: CSS Grid with Dedicated Connector Cells  */}
                 {/* ================================================= */}
                 <div className="rounded-xl border border-brand-primary/25 bg-brand-primary/[0.03] dark:bg-blue-950/25 p-4 sm:p-5 mb-6">
                   {/* Schematic Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-brand-primary mb-4 pb-2 border-b border-brand-primary/15">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-brand-primary mb-5 pb-2 border-b border-brand-primary/15">
                     <span className="font-bold tracking-wider">{t("about.philosophy.col2_diagram_header")}</span>
                     <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-brand-primary/10 text-brand-primary border border-brand-primary/25">
                       {t("about.philosophy.col2_diagram_badge")}
@@ -269,107 +269,103 @@ export default function CorePhilosophy() {
                   </div>
 
                   {/* ------------------------------------------------ */}
-                  {/* DESKTOP DIAGRAM VIEW (Hidden below md)            */}
+                  {/* DESKTOP DIAGRAM VIEW (5-Column Grid with Connectors) */}
                   {/* ------------------------------------------------ */}
-                  <div className="hidden md:block relative w-full pt-1 pb-1">
-                    {/* Background Connecting Vectors (SVG) */}
-                    <svg 
-                      className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible text-brand-primary" 
-                      preserveAspectRatio="none"
-                      viewBox="0 0 100 100"
-                    >
-                      <defs>
-                        <marker id="arrow-primary" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                          <path d="M 0 1 L 9 5 L 0 9 z" fill="currentColor" />
-                        </marker>
-                        <marker id="arrow-emerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                          <path d="M 0 1 L 9 5 L 0 9 z" className="fill-emerald-600 dark:fill-emerald-400" />
-                        </marker>
-                        <marker id="arrow-slate" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                          <path d="M 0 1 L 9 5 L 0 9 z" className="fill-slate-400 dark:fill-slate-500" />
-                        </marker>
-                      </defs>
-
-                      {/* Vector 1 -> 2: Delivery Path Horizontal */}
-                      <line 
-                        x1="30%" y1="26%" 
-                        x2="35%" y2="26%" 
-                        stroke="currentColor" 
-                        strokeWidth="1.8" 
-                        markerEnd="url(#arrow-primary)" 
-                      />
-
-                      {/* Vector 2 -> 3: To Delivery Deliverables */}
-                      <line 
-                        x1="65%" y1="26%" 
-                        x2="70%" y2="26%" 
-                        stroke="#10b981" 
-                        strokeWidth="1.8" 
-                        markerEnd="url(#arrow-emerald)" 
-                      />
-
-                      {/* Vector 2 downward branch -> R&D */}
-                      <path 
-                        d="M 50% 48% L 50% 64%" 
-                        stroke="currentColor" 
-                        strokeWidth="1.6" 
-                        strokeDasharray="3 3" 
-                        markerEnd="url(#arrow-primary)" 
-                      />
-
-                      {/* Vector R&D -> Future Automation */}
-                      <line 
-                        x1="58%" y1="84%" 
-                        x2="65%" y2="84%" 
-                        className="stroke-slate-400 dark:stroke-slate-600" 
-                        strokeWidth="1.6" 
-                        strokeDasharray="3 3" 
-                        markerEnd="url(#arrow-slate)" 
-                      />
-                    </svg>
-
-                    {/* Primary Branch Nodes (Delivery Path - Available Now) */}
-                    <div className="relative z-10 grid grid-cols-12 gap-3.5 mb-11">
-                      {/* Node 1: Project Information */}
-                      <div className="col-span-4 rounded-xl border border-brand-primary/40 bg-white dark:bg-slate-900 p-3 shadow-xs flex flex-col justify-center min-h-[76px]">
-                        <span className="text-xs font-mono font-bold text-brand-textPrimary leading-snug">
+                  <div className="hidden lg:block">
+                    {/* Primary Flow: [Node 1] -> [Arrow] -> [Node 2] -> [Arrow] -> [Node 3] */}
+                    <div className="grid grid-cols-[1fr_32px_1fr_32px_1fr] items-center gap-0">
+                      
+                      {/* Primary Node 01: BIM Project Information */}
+                      <motion.div 
+                        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4 }}
+                        className="rounded-xl border border-brand-primary/40 bg-white dark:bg-slate-900 p-3.5 shadow-xs flex flex-col justify-center min-h-[82px]"
+                      >
+                        <span className="text-sm font-mono font-bold text-brand-textPrimary leading-snug">
                           {t("about.philosophy.col2_node_info")}
                         </span>
-                        <span className="text-[11px] font-mono text-brand-textSecondary mt-0.5">
+                        <span className="text-xs font-mono text-brand-textSecondary mt-1">
                           {t("about.philosophy.col2_node_info_sub")}
                         </span>
+                      </motion.div>
+
+                      {/* Connector 1 -> 2: Dedicated Grid Cell with SVG Arrow */}
+                      <div className="flex items-center justify-center text-brand-primary w-full px-1" aria-hidden="true">
+                        <svg className="w-full h-4 overflow-visible" viewBox="0 0 24 16" fill="none">
+                          <line x1="0" y1="8" x2="18" y2="8" stroke="currentColor" strokeWidth="2" />
+                          <polygon points="16,4 23,8 16,12" fill="currentColor" />
+                        </svg>
                       </div>
 
-                      {/* Spacer between Node 1 & 2 */}
-                      <div className="col-span-0" aria-hidden="true" />
-
-                      {/* Node 2: Engineering Processes */}
-                      <div className="col-span-4 rounded-xl border-2 border-brand-primary bg-brand-primary/10 dark:bg-brand-primary/15 p-3 shadow-xs flex flex-col justify-center min-h-[76px]">
-                        <span className="text-xs font-mono font-bold text-brand-primary leading-snug">
+                      {/* Primary Node 02: Engineering Processes */}
+                      <motion.div 
+                        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: shouldReduceMotion ? 0 : 0.1 }}
+                        className="rounded-xl border-2 border-brand-primary bg-brand-primary/10 dark:bg-brand-primary/15 p-3.5 shadow-xs flex flex-col justify-center min-h-[82px]"
+                      >
+                        <span className="text-sm font-mono font-bold text-brand-primary leading-snug">
                           {t("about.philosophy.col2_node_process")}
                         </span>
-                        <span className="text-[11px] font-mono text-brand-textSecondary mt-0.5">
+                        <span className="text-xs font-mono text-brand-textSecondary mt-1">
                           {t("about.philosophy.col2_node_process_sub")}
                         </span>
+                      </motion.div>
+
+                      {/* Connector 2 -> 3: Dedicated Grid Cell with SVG Arrow */}
+                      <div className="flex items-center justify-center text-emerald-600 dark:text-emerald-400 w-full px-1" aria-hidden="true">
+                        <svg className="w-full h-4 overflow-visible" viewBox="0 0 24 16" fill="none">
+                          <line x1="0" y1="8" x2="18" y2="8" stroke="currentColor" strokeWidth="2" />
+                          <polygon points="16,4 23,8 16,12" fill="currentColor" />
+                        </svg>
                       </div>
 
-                      {/* Node 3: Coordinated Deliverables */}
-                      <div className="col-span-4 rounded-xl border-2 border-emerald-500/70 bg-emerald-50/70 dark:bg-emerald-950/30 p-3 shadow-xs flex flex-col justify-center min-h-[76px]">
-                        <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 leading-snug">
+                      {/* Primary Node 03: Human Review & Deliverables (Restrained Emerald) */}
+                      <motion.div 
+                        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: shouldReduceMotion ? 0 : 0.2 }}
+                        className="rounded-xl border-2 border-emerald-500/60 bg-emerald-50/50 dark:bg-emerald-950/25 p-3.5 shadow-xs flex flex-col justify-center min-h-[82px]"
+                      >
+                        <span className="text-sm font-mono font-bold text-emerald-700 dark:text-emerald-400 leading-snug">
                           {t("about.philosophy.col2_node_review")}
                         </span>
-                        <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-500 mt-0.5">
+                        <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 mt-1">
                           {t("about.philosophy.col2_node_review_sub")}
                         </span>
-                      </div>
+                      </motion.div>
+
                     </div>
 
-                    {/* Secondary Branch Nodes (Internal R&D - Visually Distinct) */}
-                    <div className="relative z-10 grid grid-cols-12 gap-3.5 items-center">
-                      <div className="col-span-2" aria-hidden="true" />
+                    {/* Secondary Downward Branch Connector to R&D */}
+                    <div className="grid grid-cols-[1fr_32px_1fr_32px_1fr] items-center my-2" aria-hidden="true">
+                      <div />
+                      <div />
+                      {/* Downward Branch directly aligned below Node 02 center */}
+                      <div className="flex flex-col items-center justify-center h-7 text-brand-primary">
+                        <svg className="w-4 h-full overflow-visible" viewBox="0 0 16 24" fill="none">
+                          <line x1="8" y1="0" x2="8" y2="18" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" />
+                          <polygon points="4,16 8,23 12,16" fill="currentColor" />
+                        </svg>
+                      </div>
+                      <div />
+                      <div />
+                    </div>
 
-                      {/* Secondary Node 1: Internal Software R&D */}
-                      <div className="col-span-5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 p-3 shadow-xs flex flex-col justify-center min-h-[68px]">
+                    {/* Secondary R&D Lane: Subdued Blue / Slate Accents */}
+                    <motion.div 
+                      initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: shouldReduceMotion ? 0 : 0.3 }}
+                      className="grid grid-cols-[1fr_32px_1.5fr] items-center gap-0 max-w-xl mx-auto"
+                    >
+                      {/* Secondary Node 01: Internal Software R&D */}
+                      <div className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 p-3 shadow-xs flex flex-col justify-center min-h-[72px]">
                         <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 leading-snug">
                           {t("about.philosophy.col2_branch_title")}
                         </span>
@@ -378,8 +374,16 @@ export default function CorePhilosophy() {
                         </span>
                       </div>
 
-                      {/* Secondary Node 2: Future Connected Automation */}
-                      <div className="col-span-5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/50 p-3 shadow-xs flex flex-col justify-center min-h-[68px]">
+                      {/* Connector R&D -> Automation */}
+                      <div className="flex items-center justify-center text-slate-400 dark:text-slate-600 w-full px-1" aria-hidden="true">
+                        <svg className="w-full h-4 overflow-visible" viewBox="0 0 24 16" fill="none">
+                          <line x1="0" y1="8" x2="18" y2="8" stroke="currentColor" strokeWidth="1.8" strokeDasharray="3 3" />
+                          <polygon points="16,4 23,8 16,12" fill="currentColor" />
+                        </svg>
+                      </div>
+
+                      {/* Secondary Node 02: Future Connected Automation */}
+                      <div className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/50 p-3 shadow-xs flex flex-col justify-center min-h-[72px]">
                         <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 leading-snug">
                           {t("about.philosophy.col2_branch_step2")}
                         </span>
@@ -387,70 +391,70 @@ export default function CorePhilosophy() {
                           {t("about.philosophy.col2_branch_step2_sub")}
                         </span>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
 
                   {/* ------------------------------------------------ */}
-                  {/* MOBILE & TABLET PROGRESSION VIEW (Shown below md) */}
+                  {/* MOBILE & TABLET PROGRESSION VIEW (Shown below lg) */}
                   {/* ------------------------------------------------ */}
-                  <div className="block md:hidden space-y-3">
+                  <div className="block lg:hidden space-y-3">
                     {/* Primary Branch Label */}
                     <div className="flex items-center gap-2 pt-1 pb-1">
                       <div className="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true" />
-                      <span className="text-[11px] font-mono font-bold text-emerald-700 dark:text-emerald-400 uppercase">
+                      <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 uppercase">
                         {t("about.philosophy.col2_status_services")}
                       </span>
                     </div>
 
                     {/* Step 1 */}
-                    <div className="rounded-lg border border-brand-primary/40 bg-white dark:bg-slate-900 p-3">
-                      <span className="text-xs font-mono font-bold text-brand-textPrimary block">
+                    <div className="rounded-xl border border-brand-primary/40 bg-white dark:bg-slate-900 p-3.5 shadow-xs">
+                      <span className="text-sm font-mono font-bold text-brand-textPrimary block">
                         {t("about.philosophy.col2_node_info")}
                       </span>
-                      <span className="text-[11px] font-mono text-brand-textSecondary block mt-0.5">
+                      <span className="text-xs font-mono text-brand-textSecondary block mt-0.5">
                         {t("about.philosophy.col2_node_info_sub")}
                       </span>
                     </div>
 
-                    <div className="flex justify-center" aria-hidden="true">
-                      <ArrowDown className="w-4 h-4 text-brand-primary" />
+                    <div className="flex justify-center -my-1" aria-hidden="true">
+                      <span className="text-brand-primary font-mono text-sm">↓</span>
                     </div>
 
                     {/* Step 2 */}
-                    <div className="rounded-lg border-2 border-brand-primary bg-brand-primary/10 dark:bg-brand-primary/15 p-3">
-                      <span className="text-xs font-mono font-bold text-brand-primary block">
+                    <div className="rounded-xl border-2 border-brand-primary bg-brand-primary/10 dark:bg-brand-primary/15 p-3.5 shadow-xs">
+                      <span className="text-sm font-mono font-bold text-brand-primary block">
                         {t("about.philosophy.col2_node_process")}
                       </span>
-                      <span className="text-[11px] font-mono text-brand-textSecondary block mt-0.5">
+                      <span className="text-xs font-mono text-brand-textSecondary block mt-0.5">
                         {t("about.philosophy.col2_node_process_sub")}
                       </span>
                     </div>
 
-                    <div className="flex justify-center" aria-hidden="true">
-                      <ArrowDown className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    <div className="flex justify-center -my-1" aria-hidden="true">
+                      <span className="text-emerald-600 dark:text-emerald-400 font-mono text-sm">↓</span>
                     </div>
 
                     {/* Step 3 */}
-                    <div className="rounded-lg border-2 border-emerald-500/70 bg-emerald-50/70 dark:bg-emerald-950/30 p-3">
-                      <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 block">
+                    <div className="rounded-xl border-2 border-emerald-500/60 bg-emerald-50/50 dark:bg-emerald-950/25 p-3.5 shadow-xs">
+                      <span className="text-sm font-mono font-bold text-emerald-700 dark:text-emerald-400 block">
                         {t("about.philosophy.col2_node_review")}
                       </span>
-                      <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-500 block mt-0.5">
+                      <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 block mt-0.5">
                         {t("about.philosophy.col2_node_review_sub")}
                       </span>
                     </div>
 
                     {/* R&D Divider */}
-                    <div className="pt-3 pb-1 border-t border-brand-primary/15">
-                      <div className="flex items-center gap-2 mb-2">
+                    <div className="pt-4 pb-1 border-t border-brand-primary/15">
+                      <div className="flex items-center gap-2 mb-2.5">
                         <GitBranch className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
-                        <span className="text-[11px] font-mono font-bold text-brand-primary uppercase">
+                        <span className="text-xs font-mono font-bold text-brand-primary uppercase">
                           {t("about.philosophy.col2_status_rd")}
                         </span>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <div className="rounded-lg border border-dashed border-slate-300 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-3">
                           <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 block">
                             {t("about.philosophy.col2_branch_title")}
                           </span>
@@ -459,7 +463,7 @@ export default function CorePhilosophy() {
                           </span>
                         </div>
 
-                        <div className="rounded-lg border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/50 p-3">
+                        <div className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/50 p-3">
                           <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 block">
                             {t("about.philosophy.col2_branch_step2")}
                           </span>
