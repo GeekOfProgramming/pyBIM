@@ -20,14 +20,16 @@ import {
  * ManifestoHero Component (Section 01 - The Manifesto Hero)
  * 
  * pyBIM Design System v2 — Engineering Precision
- * Visual Concept: Engineering Evolution (01 Delivery -> 02 Connected Automation -> 03 Private AI)
+ * Task A01-R1: Editorial Balance, Diagram Clarity & Capability Accuracy
  * Background Family B: variant="surface" (#F1F5F9 light / #0F172A dark)
  * 
  * Strict Scope:
  * - Preserves original brand headline: "Scale Your BIM Execution Through Code, Not Headcount."
- * - Replaces exaggerated claims with factual engineering capabilities.
- * - Represents ISO 19650 and UNI 11337 accurately.
- * - Distinctive custom SVG schematic with restrained, finite entrance animation and useReducedMotion.
+ * - Balanced two-part editorial narrative: Lead for current delivery services + R&D paragraph.
+ * - Restructured 3-stage capability architecture diagram with clean vertical progression.
+ * - Strictly >= 12px labels (no text-[10px]).
+ * - Safe typography tokens (no shadow-xs or backdrop-blur-xs).
+ * - Factual localized footer: ISO 19650 / UNI 11337 and Engineering Delivery / Applied R&D.
  */
 export default function ManifestoHero() {
   const { t } = useLanguage();
@@ -56,7 +58,7 @@ export default function ManifestoHero() {
   };
 
   const diagramItemVariants = {
-    hidden: { opacity: shouldReduceMotion ? 1 : 0, scale: shouldReduceMotion ? 1 : 0.96 },
+    hidden: { opacity: shouldReduceMotion ? 1 : 0, scale: shouldReduceMotion ? 1 : 0.97 },
     visible: {
       opacity: 1,
       scale: 1,
@@ -75,7 +77,7 @@ export default function ManifestoHero() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-16 items-center"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-16 items-start"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -88,14 +90,14 @@ export default function ManifestoHero() {
             {/* Eyebrow & Verified Location Context */}
             <motion.div 
               variants={itemVariants}
-              className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-6"
+              className="flex flex-wrap items-center gap-3 mb-6"
             >
               <div className="inline-flex items-center gap-1.5 rounded-full border border-brand-primary/25 bg-brand-primary/10 px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider text-brand-primary uppercase">
                 <Terminal className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>{t("about.manifesto.badge")}</span>
               </div>
 
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 px-3 py-1.5 text-xs font-medium text-brand-textSecondary shadow-xs backdrop-blur-xs">
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 px-3 py-1.5 text-xs font-medium text-brand-textSecondary shadow-sm backdrop-blur-sm">
                 <MapPin className="w-3.5 h-3.5 text-brand-primary/80" aria-hidden="true" />
                 <span>{t("about.manifesto.location")}</span>
               </div>
@@ -110,13 +112,15 @@ export default function ManifestoHero() {
               {t("about.manifesto.title")}
             </motion.h1>
 
-            {/* Approved Factual Engineering Paragraph */}
-            <motion.p 
-              variants={itemVariants}
-              className="text-base sm:text-lg text-brand-textSecondary leading-relaxed font-normal mb-8 max-w-2xl"
-            >
-              {t("about.manifesto.subtitle")}
-            </motion.p>
+            {/* Structured Editorial Copy: Concise Lead + R&D Note */}
+            <motion.div variants={itemVariants} className="space-y-4 mb-8 max-w-2xl">
+              <p className="text-base sm:text-lg text-brand-textPrimary font-medium leading-relaxed">
+                {t("about.manifesto.lead")}
+              </p>
+              <p className="text-sm sm:text-base text-brand-textSecondary leading-relaxed">
+                {t("about.manifesto.rd_note")}
+              </p>
+            </motion.div>
 
             {/* Standards & Engineering Core Stack Row */}
             <motion.div 
@@ -129,16 +133,16 @@ export default function ManifestoHero() {
                 </span>
                 
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-xs font-medium text-brand-textPrimary shadow-xs">
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-xs font-medium text-brand-textPrimary shadow-sm">
                     ISO 19650
                   </span>
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-xs font-medium text-brand-textPrimary shadow-xs">
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-xs font-medium text-brand-textPrimary shadow-sm">
                     UNI 11337
                   </span>
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-xs font-medium text-brand-textPrimary shadow-xs">
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-xs font-medium text-brand-textPrimary shadow-sm">
                     Revit API
                   </span>
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-xs font-medium text-brand-textPrimary shadow-xs">
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-xs font-medium text-brand-textPrimary shadow-sm">
                     Python / C#
                   </span>
                 </div>
@@ -166,8 +170,8 @@ export default function ManifestoHero() {
               {/* Schematic Header */}
               <div className="flex items-center justify-between pb-4 mb-5 border-b border-slate-200/80 dark:border-slate-800/80">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-brand-primary animate-pulse" aria-hidden="true" />
-                  <span className="text-[11px] font-mono font-bold tracking-widest text-brand-primary uppercase">
+                  <div className="w-2 h-2 rounded-full bg-brand-primary" aria-hidden="true" />
+                  <span className="text-xs font-mono font-bold tracking-widest text-brand-primary uppercase">
                     {t("about.manifesto.diagram_eyebrow")}
                   </span>
                 </div>
@@ -179,9 +183,9 @@ export default function ManifestoHero() {
               {/* Architectural Evolution Flow (3 Layers) */}
               <div className="space-y-4 relative">
                 
-                {/* Connecting Axis Linework SVG */}
+                {/* Connecting Axis Rail */}
                 <div 
-                  className="pointer-events-none absolute left-6 top-8 bottom-8 w-px z-0 hidden sm:block" 
+                  className="pointer-events-none absolute left-5 top-7 bottom-7 w-px z-0 hidden sm:block" 
                   aria-hidden="true"
                 >
                   <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
@@ -203,24 +207,24 @@ export default function ManifestoHero() {
                 {/* --------------------------------------------------- */}
                 <motion.div 
                   variants={itemVariants}
-                  className="relative z-10 rounded-xl border border-emerald-500/30 bg-emerald-50/40 dark:bg-emerald-950/20 p-4 transition-colors"
+                  className="relative z-10 rounded-xl border border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-950/25 p-4 transition-colors"
                 >
                   <div className="flex items-start gap-3.5">
-                    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-mono text-xs font-bold shadow-xs">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-mono text-xs font-bold shadow-sm">
                       <CheckCircle2 className="w-4 h-4" />
                     </div>
 
                     <div className="flex-grow min-w-0">
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-400">
+                          <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">
                             {t("about.manifesto.phase1_num")}
                           </span>
                           <h3 className="text-sm font-bold text-brand-textPrimary">
                             {t("about.manifesto.phase1_title")}
                           </h3>
                         </div>
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wide bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
+                        <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
                           {t("about.manifesto.phase1_status")}
                         </span>
                       </div>
@@ -236,24 +240,24 @@ export default function ManifestoHero() {
                 {/* --------------------------------------------------- */}
                 <motion.div 
                   variants={itemVariants}
-                  className="relative z-10 rounded-xl border border-brand-primary/30 bg-brand-primary/[0.04] dark:bg-blue-950/20 p-4 transition-colors"
+                  className="relative z-10 rounded-xl border border-brand-primary/30 bg-brand-primary/[0.04] dark:bg-blue-950/25 p-4 transition-colors"
                 >
                   <div className="flex items-start gap-3.5">
-                    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-brand-primary/15 border border-brand-primary/30 text-brand-primary flex items-center justify-center font-mono text-xs font-bold shadow-xs">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-primary/15 border border-brand-primary/30 text-brand-primary flex items-center justify-center font-mono text-xs font-bold shadow-sm">
                       <Network className="w-4 h-4" />
                     </div>
 
                     <div className="flex-grow min-w-0">
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono font-bold text-brand-primary">
+                          <span className="text-xs font-mono font-bold text-brand-primary">
                             {t("about.manifesto.phase2_num")}
                           </span>
                           <h3 className="text-sm font-bold text-brand-textPrimary">
                             {t("about.manifesto.phase2_title")}
                           </h3>
                         </div>
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wide bg-brand-primary/15 text-brand-primary dark:text-blue-300 border border-brand-primary/30">
+                        <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-brand-primary/15 text-brand-primary dark:text-blue-300 border border-brand-primary/30">
                           {t("about.manifesto.phase2_status")}
                         </span>
                       </div>
@@ -269,24 +273,24 @@ export default function ManifestoHero() {
                 {/* --------------------------------------------------- */}
                 <motion.div 
                   variants={itemVariants}
-                  className="relative z-10 rounded-xl border border-slate-300 dark:border-slate-700/70 bg-slate-100/60 dark:bg-slate-800/40 p-4 transition-colors"
+                  className="relative z-10 rounded-xl border border-slate-300 dark:border-slate-700/70 bg-slate-100/70 dark:bg-slate-800/40 p-4 transition-colors"
                 >
                   <div className="flex items-start gap-3.5">
-                    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center font-mono text-xs font-bold shadow-xs">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center font-mono text-xs font-bold shadow-sm">
                       <FlaskConical className="w-4 h-4" />
                     </div>
 
                     <div className="flex-grow min-w-0">
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono font-bold text-slate-600 dark:text-slate-400">
+                          <span className="text-xs font-mono font-bold text-slate-600 dark:text-slate-400">
                             {t("about.manifesto.phase3_num")}
                           </span>
                           <h3 className="text-sm font-bold text-brand-textPrimary">
                             {t("about.manifesto.phase3_title")}
                           </h3>
                         </div>
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wide bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
+                        <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
                           {t("about.manifesto.phase3_status")}
                         </span>
                       </div>
@@ -300,11 +304,11 @@ export default function ManifestoHero() {
               </div>
 
               {/* Factual Architectural Linework Footer */}
-              <div className="mt-5 pt-3 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-brand-textSecondary/70">
-                <span>ISO 19650 / UNI 11337 ALIGNED</span>
-                <span className="flex items-center gap-1.5">
-                  <Code2 className="w-3 h-3 text-brand-primary" aria-hidden="true" />
-                  REVIT API / CLOUD ENGINE
+              <div className="mt-5 pt-3.5 border-t border-slate-200/70 dark:border-slate-800/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-brand-textSecondary">
+                <span>{t("about.manifesto.footer_standards")}</span>
+                <span className="flex items-center gap-1.5 text-brand-textPrimary">
+                  <Code2 className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
+                  {t("about.manifesto.footer_delivery")}
                 </span>
               </div>
 
