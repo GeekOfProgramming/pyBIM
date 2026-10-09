@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { motion, useReducedMotion } from "framer-motion";
+import ArchitecturalCanvas from "@/components/education/architectural-canvas";
 
 export default function EducationPageLayout() {
   const { t } = useLanguage();
@@ -52,17 +53,17 @@ export default function EducationPageLayout() {
       opacity: 1,
       transition: {
         staggerChildren: shouldReduceMotion ? 0 : 0.08,
-        delayChildren: shouldReduceMotion ? 0 : 0.1,
+        delayChildren: shouldReduceMotion ? 0 : 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 14 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: shouldReduceMotion ? 0 : 0.5, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -119,127 +120,11 @@ export default function EducationPageLayout() {
         className="pointer-events-none absolute top-16 left-[-60px] lg:left-10 w-[300px] sm:w-[420px] h-[280px] sm:h-[360px] bg-blue-600/[0.02] dark:bg-blue-600/[0.05] rounded-full blur-[100px] sm:blur-[120px] z-0" 
       />
 
-      {/* ================= LAYER C: ARCHITECTURAL / BIM GEOMETRY MOTIF (DESKTOP DEDICATED) ================= */}
-      {/* Positioned exclusively on desktop (lg+) in the negative space framing the Knowledge Preview sheet */}
-      <div 
-        aria-hidden="true" 
-        className="hidden lg:block pointer-events-none absolute lg:-top-8 lg:right-[-10px] xl:right-10 lg:w-[680px] xl:w-[740px] lg:h-[580px] xl:h-[620px] z-0 select-none opacity-45 dark:opacity-75 text-slate-600 dark:text-blue-300 transition-opacity duration-300"
-      >
-        <svg 
-          viewBox="0 0 740 620" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
-        >
-          <defs>
-            {/* Top Plane Gradient Fill */}
-            <linearGradient id="eduIsoTop" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="currentColor" stopOpacity="0.12" />
-              <stop offset="100%" stopColor="currentColor" stopOpacity="0.03" />
-            </linearGradient>
-            {/* Left Front Plane Gradient */}
-            <linearGradient id="eduIsoFront" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="currentColor" stopOpacity="0.08" />
-              <stop offset="100%" stopColor="currentColor" stopOpacity="0.01" />
-            </linearGradient>
-            {/* Right Side Plane Gradient */}
-            <linearGradient id="eduIsoSide" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="currentColor" stopOpacity="0.14" />
-              <stop offset="100%" stopColor="currentColor" stopOpacity="0.02" />
-            </linearGradient>
-            {/* Subtle Cyan Accented Plane */}
-            <linearGradient id="eduCyanPlane" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.18" />
-              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.04" />
-            </linearGradient>
-          </defs>
-
-          {/* Coordinate Origin & Directional Vectors (X, Y, Z) */}
-          <g opacity="0.8">
-            <line x1="420" y1="340" x2="620" y2="455" stroke="currentColor" strokeWidth="1.25" strokeDasharray="3 3" />
-            <line x1="420" y1="340" x2="220" y2="455" stroke="currentColor" strokeWidth="1.25" strokeDasharray="3 3" />
-            <line x1="420" y1="340" x2="420" y2="120" stroke="currentColor" strokeWidth="1.25" strokeDasharray="3 3" />
-            {/* Direction Labels */}
-            <text x="630" y="465" fill="currentColor" fontSize="10" fontFamily="monospace" opacity="0.7">AXIS +X</text>
-            <text x="165" y="465" fill="currentColor" fontSize="10" fontFamily="monospace" opacity="0.7">AXIS +Y</text>
-            <text x="412" y="105" fill="currentColor" fontSize="10" fontFamily="monospace" opacity="0.7">AXIS +Z</text>
-          </g>
-
-          {/* Isometric Ground Spatial Grid Plane */}
-          <g opacity="0.45" stroke="currentColor" strokeWidth="0.75">
-            <line x1="280" y1="420" x2="520" y2="558" />
-            <line x1="320" y1="397" x2="560" y2="535" />
-            <line x1="360" y1="374" x2="600" y2="512" />
-            <line x1="400" y1="351" x2="640" y2="489" />
-
-            <line x1="480" y1="374" x2="240" y2="512" />
-            <line x1="520" y1="397" x2="280" y2="535" />
-            <line x1="560" y1="420" x2="320" y2="558" />
-            <line x1="600" y1="443" x2="360" y2="581" />
-          </g>
-
-          {/* Base Structural Volume (Level 00) */}
-          <g stroke="currentColor" strokeWidth="1.25">
-            {/* Top Face */}
-            <polygon points="420,290 540,360 420,430 300,360" fill="url(#eduIsoTop)" />
-            {/* Left Face */}
-            <polygon points="300,360 420,430 420,490 300,420" fill="url(#eduIsoFront)" />
-            {/* Right Face */}
-            <polygon points="420,430 540,360 540,420 420,490" fill="url(#eduIsoSide)" />
-          </g>
-
-          {/* Elevated Cantilevered Floor Volume (Level 01) */}
-          <g stroke="currentColor" strokeWidth="1.25">
-            {/* Upper Offset Structural Prism */}
-            <polygon points="450,180 600,265 450,350 300,265" fill="url(#eduCyanPlane)" stroke="#38bdf8" strokeWidth="1.2" />
-            <polygon points="300,265 450,350 450,390 300,305" fill="url(#eduIsoFront)" />
-            <polygon points="450,350 600,265 600,305 450,390" fill="url(#eduIsoSide)" />
-          </g>
-
-          {/* Structural Core Column / Tower Volume (Level 02) */}
-          <g stroke="currentColor" strokeWidth="1.25">
-            <polygon points="420,110 490,150 420,190 350,150" fill="url(#eduIsoTop)" />
-            <polygon points="350,150 420,190 420,270 350,230" fill="url(#eduIsoFront)" />
-            <polygon points="420,190 490,150 490,230 420,270" fill="url(#eduIsoSide)" />
-          </g>
-
-          {/* Hidden Internal Wireframe Lines */}
-          <g stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.6">
-            <line x1="300" y1="360" x2="420" y2="420" />
-            <line x1="420" y1="420" x2="540" y2="360" />
-            <line x1="420" y1="420" x2="420" y2="490" />
-          </g>
-
-          {/* Dimension Witness Lines & Level Indicators */}
-          <g stroke="currentColor" strokeWidth="0.8" opacity="0.75">
-            {/* Level 02 Marker */}
-            <line x1="490" y1="110" x2="590" y2="110" />
-            <line x1="585" y1="105" x2="595" y2="115" strokeWidth="1.5" />
-            <text x="602" y="113" fill="currentColor" fontSize="10" fontFamily="monospace" fontWeight="bold">LVL 02 // +7.20m</text>
-
-            {/* Level 01 Marker */}
-            <line x1="600" y1="265" x2="680" y2="265" />
-            <line x1="675" y1="260" x2="685" y2="270" strokeWidth="1.5" />
-            <text x="692" y="268" fill="currentColor" fontSize="10" fontFamily="monospace" fontWeight="bold">LVL 01 // +3.60m</text>
-
-            {/* Datum Base Marker */}
-            <line x1="540" y1="490" x2="630" y2="490" />
-            <line x1="625" y1="485" x2="635" y2="495" strokeWidth="1.5" />
-            <text x="642" y="493" fill="currentColor" fontSize="10" fontFamily="monospace">BASE // ±0.00</text>
-          </g>
-
-          {/* Structural Precision Nodes (Intersections) */}
-          <g fill="currentColor" opacity="0.85">
-            <circle cx="420" cy="110" r="3" />
-            <circle cx="450" cy="180" r="3" />
-            <circle cx="600" cy="265" r="3.5" fill="#38bdf8" />
-            <circle cx="300" cy="265" r="3" />
-            <circle cx="450" cy="350" r="3.5" fill="#38bdf8" />
-            <circle cx="420" cy="430" r="3" />
-            <circle cx="420" cy="490" r="3" />
-          </g>
-        </svg>
-      </div>
+      {/* ================= LAYER C: SIGNATURE ARCHITECTURAL DRAWING (DESKTOP DEDICATED) ================= */}
+      {/* Controlled vector drawing reveal settling into a serene static composition */}
+      <ArchitecturalCanvas
+        className="hidden lg:block absolute lg:-top-8 lg:right-[-10px] xl:right-10 lg:w-[680px] xl:w-[760px] lg:h-[580px] xl:h-[640px] z-0"
+      />
 
       {/* Edge Falloff Shadow in Dark Mode */}
       <div 
@@ -345,13 +230,13 @@ export default function EducationPageLayout() {
             id="knowledge-areas"
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.55, delay: shouldReduceMotion ? 0 : 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="scroll-mt-28 lg:col-span-5 w-full"
             role="region"
             aria-labelledby={`${baseId}-preview-heading`}
           >
             {/* Unified Technical Blueprint Specification Sheet */}
-            <div className="rounded-3xl bg-brand-card/95 dark:bg-slate-900/90 border border-brand-border/80 dark:border-slate-800 shadow-xl shadow-brand-base/10 dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-md p-5 sm:p-7 relative overflow-hidden">
+            <div className="rounded-3xl bg-brand-card/95 dark:bg-slate-900/90 border border-brand-border/80 dark:border-slate-800 shadow-xl shadow-brand-base/10 dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-md p-5 sm:p-7 relative overflow-hidden transition-all duration-300">
               
               {/* Subtle Hairline Top Gradient Accent */}
               <div 
@@ -384,7 +269,7 @@ export default function EducationPageLayout() {
                   return (
                     <article
                       key={area.num}
-                      className="py-3.5 first:pt-2 last:pb-1 px-2.5 -mx-2.5 rounded-2xl hover:bg-brand-surface/50 dark:hover:bg-slate-800/40 transition-colors flex items-start gap-3.5"
+                      className="py-3.5 first:pt-2 last:pb-1 px-2.5 -mx-2.5 rounded-2xl hover:bg-brand-surface/50 dark:hover:bg-slate-800/40 transition-colors flex items-start gap-3.5 cursor-default select-none"
                     >
                       {/* Numeric Index Badge */}
                       <span className="w-8 h-8 rounded-xl bg-brand-surface dark:bg-slate-800/90 border border-brand-border/80 dark:border-slate-700/80 text-brand-primary flex items-center justify-center font-mono font-bold text-caption shrink-0 mt-0.5">
