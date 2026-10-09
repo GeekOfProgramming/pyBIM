@@ -68,7 +68,7 @@ export default function EducationPageLayout() {
   };
 
   return (
-    <div id="education-intro" className="scroll-mt-28 relative w-full min-h-[calc(100vh-5rem)] bg-brand-base flex flex-col justify-center overflow-hidden">
+    <div id="education-intro" className="scroll-mt-28 relative w-full bg-brand-base overflow-hidden">
       
       {/* ================= LAYER A: TECHNICAL ARCHITECTURAL DRAFTING CANVAS ================= */}
       {/* Precision Drafting Grid masked primarily to background negative space */}
@@ -102,7 +102,7 @@ export default function EducationPageLayout() {
       </div>
 
       {/* ================= LAYER B: TARGETED ATMOSPHERIC LIGHTING ================= */}
-      {/* 1. Primary Ambient Core framing the Desktop Geometry & Knowledge Panel */}
+      {/* 1. Primary Ambient Core framing the Right Composition */}
       <div 
         aria-hidden="true" 
         className="pointer-events-none absolute -top-16 right-[-80px] lg:right-12 w-[340px] sm:w-[460px] lg:w-[520px] h-[340px] sm:h-[420px] lg:h-[460px] bg-gradient-to-br from-blue-500/[0.08] via-indigo-500/[0.05] to-transparent dark:from-blue-500/[0.16] dark:via-indigo-500/[0.08] dark:to-transparent rounded-full blur-[80px] sm:blur-[100px] z-0" 
@@ -120,30 +120,24 @@ export default function EducationPageLayout() {
         className="pointer-events-none absolute top-16 left-[-60px] lg:left-10 w-[300px] sm:w-[420px] h-[280px] sm:h-[360px] bg-blue-600/[0.02] dark:bg-blue-600/[0.05] rounded-full blur-[100px] sm:blur-[120px] z-0" 
       />
 
-      {/* ================= LAYER C: SIGNATURE ARCHITECTURAL DRAWING (DESKTOP DEDICATED) ================= */}
-      {/* Controlled vector drawing reveal settling into a serene static composition */}
-      <ArchitecturalCanvas
-        className="hidden lg:block absolute lg:-top-8 lg:right-[-10px] xl:right-10 lg:w-[680px] xl:w-[760px] lg:h-[580px] xl:h-[640px] z-0"
-      />
-
       {/* Edge Falloff Shadow in Dark Mode */}
       <div 
         aria-hidden="true" 
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-brand-base to-transparent opacity-0 dark:opacity-80 z-0" 
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-brand-base to-transparent opacity-0 dark:opacity-80 z-0" 
       />
 
       {/* ================= MAIN CONTENT LAYER ================= */}
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-14 sm:py-16 md:py-20 lg:py-24 pb-28 lg:pb-24 w-full z-10">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-12 pb-20 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 w-full z-10">
         
-        {/* Asymmetrical Editorial Composition: Left Narrative / Right Technical Knowledge Sheet */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 xl:gap-14 items-center">
+        {/* Asymmetrical Editorial Composition: Left Narrative / Right Integrated Visual Stage */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 xl:gap-14 items-start">
           
           {/* ================= LEFT COLUMN: Editorial Hero & Actions ================= */}
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 flex flex-col items-start text-left"
+            className="lg:col-span-7 flex flex-col items-start text-left lg:pt-2"
           >
             {/* Eyebrow & Calm In Preparation Status */}
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-5 sm:mb-6">
@@ -153,12 +147,12 @@ export default function EducationPageLayout() {
                 <span>
                   {eyebrowText.includes("pyBIM") ? (
                     <>
-                      <span className="normal-case">pyBIM</span>
+                      <span className="normal-case font-bold">pyBIM</span>
                       {eyebrowText.replace("pyBIM", "")}
                     </>
                   ) : (
                     <>
-                      <span className="normal-case">pyBIM</span>
+                      <span className="normal-case font-bold">pyBIM</span>
                       {" · "}
                       {eyebrowText}
                     </>
@@ -176,7 +170,7 @@ export default function EducationPageLayout() {
             {/* Two-Part Editorial Headline */}
             <motion.h1 
               variants={itemVariants} 
-              className="text-section-sm sm:text-section lg:text-display font-extrabold text-brand-textPrimary tracking-tight mb-5 sm:mb-6 leading-[1.15]"
+              className="text-section-sm sm:text-section lg:text-display font-extrabold text-brand-textPrimary tracking-tight mb-5 sm:mb-6 leading-[1.12]"
             >
               <span>{headlinePart1}</span>{" "}
               <br className="hidden sm:inline" />
@@ -225,17 +219,23 @@ export default function EducationPageLayout() {
             </motion.div>
           </motion.div>
 
-          {/* ================= RIGHT COLUMN: Architectural Knowledge Blueprint Sheet ================= */}
+          {/* ================= RIGHT COLUMN: Integrated Visual Composition ================= */}
+          {/* Upper: ArchitecturalCanvas / Lower: Knowledge Areas Panel */}
           <motion.div 
             id="knowledge-areas"
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.55, delay: shouldReduceMotion ? 0 : 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="scroll-mt-28 lg:col-span-5 w-full"
+            className="scroll-mt-28 lg:col-span-5 w-full flex flex-col gap-6"
             role="region"
             aria-labelledby={`${baseId}-preview-heading`}
           >
-            {/* Unified Technical Blueprint Specification Sheet */}
+            {/* UPPER AREA: Dedicated Architectural Geometry Canvas (Desktop Only) */}
+            <div className="hidden lg:block w-full aspect-[16/10] xl:aspect-[16/9] relative rounded-3xl bg-brand-surface/40 dark:bg-slate-900/40 border border-brand-border/70 dark:border-slate-800 p-4 overflow-hidden shadow-sm backdrop-blur-md">
+              <ArchitecturalCanvas className="w-full h-full" />
+            </div>
+
+            {/* LOWER AREA: Technical Knowledge Areas Specification Sheet */}
             <div className="rounded-3xl bg-brand-card/95 dark:bg-slate-900/90 border border-brand-border/80 dark:border-slate-800 shadow-xl shadow-brand-base/10 dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-md p-5 sm:p-7 relative overflow-hidden transition-all duration-300">
               
               {/* Subtle Hairline Top Gradient Accent */}

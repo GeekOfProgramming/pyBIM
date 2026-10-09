@@ -13,7 +13,7 @@ import { motion, useReducedMotion } from "framer-motion";
  * 4. Translucent spatial surfaces fade in & precision nodes highlight
  * 5. Full geometry settles into a stable, serene engineering presentation
  * 
- * Supports full light & dark theme styling and instant render when prefers-reduced-motion is active.
+ * Accurately centered with responsive viewBox and full light/dark theme support.
  */
 export default function ArchitecturalCanvas({ className = "" }) {
   const shouldReduceMotion = useReducedMotion();
@@ -21,10 +21,10 @@ export default function ArchitecturalCanvas({ className = "" }) {
 
   // Animation variants respecting reduced motion
   const axisVariant = {
-    hidden: { pathLength: shouldReduceMotion ? 1 : 0, opacity: shouldReduceMotion ? 0.7 : 0 },
+    hidden: { pathLength: shouldReduceMotion ? 1 : 0, opacity: shouldReduceMotion ? 0.75 : 0 },
     visible: {
       pathLength: 1,
-      opacity: 0.75,
+      opacity: 0.8,
       transition: { duration: shouldReduceMotion ? 0 : 0.65, ease: [0.16, 1, 0.3, 1] },
     },
   };
@@ -33,8 +33,8 @@ export default function ArchitecturalCanvas({ className = "" }) {
     hidden: { pathLength: shouldReduceMotion ? 1 : 0, opacity: shouldReduceMotion ? 0.35 : 0 },
     visible: {
       pathLength: 1,
-      opacity: 0.4,
-      transition: { duration: shouldReduceMotion ? 0 : 0.7, delay: shouldReduceMotion ? 0 : 0.15, ease: [0.16, 1, 0.3, 1] },
+      opacity: 0.45,
+      transition: { duration: shouldReduceMotion ? 0 : 0.7, delay: shouldReduceMotion ? 0 : 0.12, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -43,7 +43,7 @@ export default function ArchitecturalCanvas({ className = "" }) {
     visible: {
       pathLength: 1,
       opacity: 1,
-      transition: { duration: shouldReduceMotion ? 0 : 0.85, delay: shouldReduceMotion ? 0 : 0.25, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: shouldReduceMotion ? 0 : 0.85, delay: shouldReduceMotion ? 0 : 0.22, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -51,51 +51,52 @@ export default function ArchitecturalCanvas({ className = "" }) {
     hidden: { opacity: shouldReduceMotion ? 1 : 0 },
     visible: {
       opacity: 1,
-      transition: { duration: shouldReduceMotion ? 0 : 0.6, delay: shouldReduceMotion ? 0 : 0.45, ease: "easeOut" },
+      transition: { duration: shouldReduceMotion ? 0 : 0.6, delay: shouldReduceMotion ? 0 : 0.4, ease: "easeOut" },
     },
   };
 
   const nodeVariant = {
-    hidden: { scale: shouldReduceMotion ? 1 : 0, opacity: shouldReduceMotion ? 0.85 : 0 },
+    hidden: { scale: shouldReduceMotion ? 1 : 0, opacity: shouldReduceMotion ? 0.9 : 0 },
     visible: {
       scale: 1,
-      opacity: 0.9,
-      transition: { duration: shouldReduceMotion ? 0 : 0.4, delay: shouldReduceMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] },
+      opacity: 0.95,
+      transition: { duration: shouldReduceMotion ? 0 : 0.4, delay: shouldReduceMotion ? 0 : 0.55, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
   return (
     <div
       aria-hidden="true"
-      className={`pointer-events-none select-none ${className}`}
+      className={`pointer-events-none select-none flex items-center justify-center ${className}`}
     >
       <svg
-        viewBox="0 0 760 640"
+        viewBox="160 85 570 515"
+        preserveAspectRatio="xMidYMid meet"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full text-slate-500 dark:text-blue-300 opacity-60 dark:opacity-80 transition-opacity duration-300"
+        className="w-full h-full text-slate-600 dark:text-cyan-300 opacity-75 dark:opacity-90 transition-opacity duration-300 overflow-visible"
       >
         <defs>
           {/* Surface Gradients */}
           <linearGradient id={`${idPrefix}-isoTop`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="currentColor" stopOpacity="0.12" />
-            <stop offset="100%" stopColor="currentColor" stopOpacity="0.02" />
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.14" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0.03" />
           </linearGradient>
 
           <linearGradient id={`${idPrefix}-isoFront`} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="currentColor" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="currentColor" stopOpacity="0.01" />
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.10" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0.02" />
           </linearGradient>
 
           <linearGradient id={`${idPrefix}-isoSide`} x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="currentColor" stopOpacity="0.14" />
-            <stop offset="100%" stopColor="currentColor" stopOpacity="0.02" />
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.16" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0.03" />
           </linearGradient>
 
           {/* Cyan Highlighting Plane */}
           <linearGradient id={`${idPrefix}-cyanPlane`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.16" />
-            <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.03" />
+            <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.22" />
+            <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.05" />
           </linearGradient>
         </defs>
 
@@ -151,7 +152,7 @@ export default function ArchitecturalCanvas({ className = "" }) {
             variants={surfaceVariant}
             initial="hidden"
             animate="visible"
-            className="font-mono text-technical opacity-70"
+            className="font-mono text-technical opacity-75 font-bold"
           >
             +X
           </motion.text>
@@ -164,7 +165,7 @@ export default function ArchitecturalCanvas({ className = "" }) {
             variants={surfaceVariant}
             initial="hidden"
             animate="visible"
-            className="font-mono text-technical opacity-70"
+            className="font-mono text-technical opacity-75 font-bold"
           >
             +Y
           </motion.text>
@@ -177,7 +178,7 @@ export default function ArchitecturalCanvas({ className = "" }) {
             variants={surfaceVariant}
             initial="hidden"
             animate="visible"
-            className="font-mono text-technical opacity-70"
+            className="font-mono text-technical opacity-75 font-bold"
           >
             +Z
           </motion.text>
@@ -229,8 +230,8 @@ export default function ArchitecturalCanvas({ className = "" }) {
           <motion.polygon
             points="460,185 620,275 460,365 300,275"
             fill={`url(#${idPrefix}-cyanPlane)`}
-            stroke="#38bdf8"
-            strokeWidth="1.3"
+            stroke="#06b6d4"
+            strokeWidth="1.4"
             variants={wireframeVariant}
             initial="hidden"
             animate="visible"
@@ -297,7 +298,7 @@ export default function ArchitecturalCanvas({ className = "" }) {
         <motion.g
           stroke="currentColor"
           strokeWidth="0.8"
-          opacity="0.65"
+          opacity="0.7"
           variants={surfaceVariant}
           initial="hidden"
           animate="visible"
@@ -322,9 +323,9 @@ export default function ArchitecturalCanvas({ className = "" }) {
         <g fill="currentColor">
           <motion.circle cx="430" cy="110" r="3" variants={nodeVariant} initial="hidden" animate="visible" />
           <motion.circle cx="460" cy="185" r="3" variants={nodeVariant} initial="hidden" animate="visible" />
-          <motion.circle cx="620" cy="275" r="3.5" fill="#38bdf8" variants={nodeVariant} initial="hidden" animate="visible" />
+          <motion.circle cx="620" cy="275" r="3.5" fill="#06b6d4" variants={nodeVariant} initial="hidden" animate="visible" />
           <motion.circle cx="300" cy="275" r="3" variants={nodeVariant} initial="hidden" animate="visible" />
-          <motion.circle cx="460" cy="365" r="3.5" fill="#38bdf8" variants={nodeVariant} initial="hidden" animate="visible" />
+          <motion.circle cx="460" cy="365" r="3.5" fill="#06b6d4" variants={nodeVariant} initial="hidden" animate="visible" />
           <motion.circle cx="430" cy="450" r="3" variants={nodeVariant} initial="hidden" animate="visible" />
           <motion.circle cx="430" cy="515" r="3" variants={nodeVariant} initial="hidden" animate="visible" />
         </g>
