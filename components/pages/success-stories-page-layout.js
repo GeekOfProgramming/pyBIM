@@ -534,7 +534,7 @@ export default function SuccessStoriesPageLayout() {
                       }`}>
                         0{stepItem.step}
                       </span>
-                      <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
+                      <span className={`text-technical font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
                         stepItem.isGate
                           ? "bg-amber-500/20 text-amber-800 dark:text-amber-300 font-semibold"
                           : "bg-slate-500/10 text-brand-textSecondary"
