@@ -58,8 +58,12 @@ export default function ServicesEngineeringCapabilities({ data }) {
       className="py-20 md:py-24 lg:py-28 bg-brand-surface border-b border-brand-border relative overflow-hidden scroll-mt-20 lg:scroll-mt-24"
       aria-labelledby={`${baseId}-title`}
     >
-      {/* Background CAD Drafting Canvas with Subtle Grid Lines */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      {/* Background Architectural Canvas with Subtle Drafting Grid & Linework */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        {/* Soft Ambient Engineering Lighting */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-96 bg-brand-primary/[0.03] dark:bg-brand-primary/[0.05] rounded-full blur-3xl pointer-events-none" />
+
+        {/* Fine Architectural Grid Pattern */}
         <svg 
           className="absolute inset-0 w-full h-full stroke-slate-300/30 dark:stroke-slate-700/30 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_80%)]" 
           xmlns="http://www.w3.org/2000/svg"
@@ -71,6 +75,10 @@ export default function ServicesEngineeringCapabilities({ data }) {
           </defs>
           <rect width="100%" height="100%" fill={`url(#${baseId}-drafting-grid)`} />
         </svg>
+
+        {/* Structural Blueprint Axis Hairlines */}
+        <div className="absolute left-8 top-0 bottom-0 w-px border-l border-dashed border-slate-300/20 dark:border-slate-700/25 hidden xl:block" />
+        <div className="absolute right-8 top-0 bottom-0 w-px border-r border-dashed border-slate-300/20 dark:border-slate-700/25 hidden xl:block" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
