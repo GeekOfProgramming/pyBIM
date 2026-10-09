@@ -5,17 +5,12 @@ import {
   Workflow, 
   ShieldCheck, 
   Boxes, 
-  Sparkles,
-  ArrowRight,
-  Layers,
-  Code2,
-  FileCheck2,
-  GitBranch,
-  Terminal,
-  Cpu,
-  Eye,
+  Layers, 
+  Cpu, 
+  Eye, 
   CheckCircle2,
-  Radio
+  FileCheck2,
+  ArrowRight
 } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
@@ -32,18 +27,67 @@ export default function ServicesEngineeringOutcomes({ data }) {
     labels: {
       canvasLabel: "ENGINEERING IMPACT CANVAS",
       interactiveNote: "Select an outcome to inspect the workflow architecture",
-      activeFocus: "ACTIVE FOCUS"
+      activeFocus: "ACTIVE FOCUS",
+      inspectButton: "Inspect Workflow",
+      selectedStatus: "Active",
+      outcome1: {
+        manualHeading: "Manual Operations",
+        items: [
+          { name: "Parameter Transcription", code: "01" },
+          { name: "Repetitive Sheet QA", code: "02" },
+          { name: "Naming Verification", code: "03" }
+        ],
+        routineBadge: "AUTOMATION",
+        routineTitle: "Defined Routine",
+        routineDesc: "Targeted scripts & batch rules",
+        gateBadge: "GATEWAY",
+        gateTitle: "Engineer Review",
+        gateDesc: "Supervision & decisions",
+        footerLeft: "WORKFLOW STRUCTURE",
+        footerRight: "SUPERVISED AUTOMATION"
+      },
+      outcome2: {
+        rulesHeading: "Rule Definition Framework",
+        reportHeading: "EXCEPTION AUDIT REPORT",
+        reportStatus: "REVIEW PROCESS",
+        exceptions: [
+          { name: "Inconsistent Parameter Types", tag: "IDENTIFIED" },
+          { name: "Missing Classification Tags", tag: "FLAGGED" },
+          { name: "Naming Convention Discrepancies", tag: "REPORTED" }
+        ],
+        reportNote: "Clear criteria turn vague model issues into actionable, reviewable line items.",
+        footerLeft: "INFORMATION ASSURANCE",
+        footerRight: "STRUCTURED REPORTING"
+      },
+      outcome3: {
+        envHeading: "Existing Environments",
+        envRvt: "Autodesk Revit",
+        envRvtSub: "Native API & Parameter Workflows",
+        envIfc: "OpenBIM IFC4",
+        envIfcSub: "Vendor-neutral Model Exchange",
+        envBcf: "Issue Tracking",
+        envBcfSub: "Open Issue Collaboration",
+        coreHeading: "CONNECTED WORKFLOW FABRIC",
+        coreBadge: "OPEN ECOSYSTEM",
+        disciplinesLabel: "DISCIPLINES",
+        disciplinesVal: "ARC · STR · MEP",
+        interfaceLabel: "INTERFACE",
+        interfaceVal: "Python / C# / API",
+        coreNote: "Solutions integrate alongside your established software stack, avoiding unnecessary workflow disruptions.",
+        footerLeft: "ECOSYSTEM INTEGRATION",
+        footerRight: "PRACTICAL ADAPTATION"
+      },
+      mobileSummaries: [
+        "PROCESS: REPETITIVE → ROUTINE → REVIEW",
+        "QUALITY: RULES → AUDIT → ACTIONABLE REPORT",
+        "INTEGRATION: REVIT + IFC + BCF WORKFLOW"
+      ]
     },
     columns: []
   };
 
   const columns = outcomes.columns || [];
-  const labels = outcomes.labels || {
-    canvasLabel: "ENGINEERING IMPACT CANVAS",
-    interactiveNote: "Select an outcome to inspect the workflow architecture",
-    activeFocus: "ACTIVE FOCUS"
-  };
-
+  const labels = outcomes.labels || {};
   const activeColumn = columns[selectedIdx] || columns[0] || {};
 
   const getOutcomeIcon = (iconKey, className = "w-5 h-5") => {
@@ -94,6 +138,10 @@ export default function ServicesEngineeringOutcomes({ data }) {
     }
   };
 
+  const c1 = labels.outcome1 || {};
+  const c2 = labels.outcome2 || {};
+  const c3 = labels.outcome3 || {};
+
   return (
     <section 
       id="engineering-outcomes"
@@ -101,33 +149,31 @@ export default function ServicesEngineeringOutcomes({ data }) {
       aria-labelledby={`${baseId}-title`}
     >
       {/* ========================================================================= */}
-      {/* ARCHITECTURAL BACKGROUND: Precision Engineering Connected Field           */}
-      {/* Layered information contours, technical registration marks & subtle glow */}
+      {/* BACKGROUND: Family B (Surface) — Soft Architectural Drafting & Tone       */}
+      {/* Restrained linework without dense repeating dots or distracting overlays  */}
       {/* ========================================================================= */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        {/* Localized focal lighting */}
-        <div className="absolute top-1/3 right-1/4 w-[600px] h-[400px] bg-gradient-to-br from-brand-primary/[0.04] via-sky-500/[0.02] to-transparent dark:from-brand-primary/[0.08] dark:via-sky-500/[0.03] dark:to-transparent rounded-full blur-[100px] pointer-events-none" />
+        {/* Soft Controlled Ambient Lighting */}
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[350px] bg-brand-primary/[0.035] dark:bg-brand-primary/[0.06] rounded-full blur-3xl pointer-events-none" />
 
-        {/* Technical Coordinate Field (Sparse precision lines, not a generic dense grid) */}
+        {/* Delicate Architectural Boundary Guides */}
+        <div className="max-w-7xl mx-auto h-full px-6 lg:px-8 relative">
+          <div className="absolute left-6 lg:left-8 top-0 bottom-0 w-px border-l border-dashed border-slate-300/40 dark:border-slate-800/50" />
+          <div className="absolute right-6 lg:right-8 top-0 bottom-0 w-px border-r border-dashed border-slate-300/40 dark:border-slate-800/50" />
+        </div>
+
+        {/* Sparse Technical Grid (Family B Surface Pattern) */}
         <svg 
-          className="absolute inset-0 w-full h-full stroke-slate-400/25 dark:stroke-slate-700/25 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" 
+          className="absolute inset-0 w-full h-full stroke-slate-400/20 dark:stroke-slate-700/20 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_80%)]" 
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <pattern id={`${baseId}-outcomes-field`} width="120" height="120" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.5" fill="currentColor" opacity="0.4" />
-              <line x1="2" y1="2" x2="16" y2="2" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.3" />
-              <line x1="2" y1="2" x2="2" y2="16" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.3" />
+            <pattern id={`${baseId}-outcomes-surface-grid`} width="64" height="64" patternUnits="userSpaceOnUse">
+              <path d="M 64 0 L 0 0 0 64" fill="none" strokeWidth="0.5" strokeDasharray="3 5" />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill={`url(#${baseId}-outcomes-field)`} />
+          <rect width="100%" height="100%" fill={`url(#${baseId}-outcomes-surface-grid)`} />
         </svg>
-
-        {/* Architectural Structural Axis Guides */}
-        <div className="max-w-7xl mx-auto h-full px-6 lg:px-8 relative">
-          <div className="absolute left-6 lg:left-8 top-0 bottom-0 w-px border-l border-dashed border-slate-300/30 dark:border-slate-800/50" />
-          <div className="absolute right-6 lg:right-8 top-0 bottom-0 w-px border-r border-dashed border-slate-300/30 dark:border-slate-800/50" />
-        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -162,12 +208,12 @@ export default function ServicesEngineeringOutcomes({ data }) {
         </motion.div>
 
         {/* ========================================================================= */}
-        {/* DESKTOP: ENGINEERING IMPACT CANVAS (Left 3 Narratives + Right Large Canvas) */}
+        {/* DESKTOP: ENGINEERING IMPACT CANVAS (Left 3 Narratives + Right Canvas)      */}
         {/* ========================================================================= */}
         <div className="hidden lg:grid lg:grid-cols-12 gap-8 xl:gap-10 items-start">
           
           {/* ----------------------------------------------------------------------- */}
-          {/* LEFT COLUMN (5 COLS): 3 Outcome Narratives with Interactive Focus       */}
+          {/* LEFT COLUMN (5 COLS): 3 Semantic Articles with Accessible Select Buttons */}
           {/* ----------------------------------------------------------------------- */}
           <div className="lg:col-span-5 flex flex-col gap-4">
             {columns.map((col, idx) => {
@@ -175,25 +221,16 @@ export default function ServicesEngineeringOutcomes({ data }) {
               const accent = getOutcomeAccent(idx);
 
               return (
-                <div
+                <article
                   key={col.id || idx}
-                  role="button"
-                  tabIndex={0}
-                  aria-pressed={isSelected}
-                  onClick={() => setSelectedIdx(idx)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      setSelectedIdx(idx);
-                    }
-                  }}
-                  className={`text-left p-6 xl:p-7 rounded-2xl transition-all duration-200 cursor-pointer relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${
+                  aria-labelledby={`${baseId}-outcome-heading-${idx}`}
+                  className={`p-6 xl:p-7 rounded-2xl transition-all duration-200 relative ${
                     isSelected
                       ? `bg-brand-card border-2 ${accent.border} shadow-md ring-2 ${accent.ring}`
                       : "bg-brand-card/80 border border-brand-border/70 hover:border-brand-border hover:bg-brand-card"
                   }`}
                 >
-                  {/* Active Indicator Bar */}
+                  {/* Active Indicator Strip */}
                   {isSelected && (
                     <motion.div
                       layoutId={`${baseId}-active-pill`}
@@ -202,7 +239,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
                     />
                   )}
 
-                  {/* Header Row: Num + Category + Selection Tag */}
+                  {/* Header Row */}
                   <div className="flex items-center justify-between gap-3 mb-3">
                     <div className="flex items-center gap-2.5">
                       <div className={`w-8 h-8 rounded-xl ${accent.bg} border ${accent.lightBorder} flex items-center justify-center shrink-0`}>
@@ -220,19 +257,22 @@ export default function ServicesEngineeringOutcomes({ data }) {
                     </div>
                   </div>
 
-                  {/* Outcome Title (H3) */}
-                  <h3 className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-2.5">
+                  {/* Full Title (H3) */}
+                  <h3 
+                    id={`${baseId}-outcome-heading-${idx}`}
+                    className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-2.5"
+                  >
                     {col.title}
                   </h3>
 
-                  {/* Full Description (Never clipped or hidden) */}
+                  {/* Complete Description (Always readable) */}
                   <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed mb-4">
                     {col.desc}
                   </p>
 
                   {/* Topics Pills */}
                   {Array.isArray(col.topics) && (
-                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-brand-border/50">
+                    <div className="flex flex-wrap gap-1.5 pt-3 mb-4 border-t border-brand-border/50">
                       {col.topics.map((topic, tIdx) => (
                         <span 
                           key={tIdx}
@@ -243,7 +283,25 @@ export default function ServicesEngineeringOutcomes({ data }) {
                       ))}
                     </div>
                   )}
-                </div>
+
+                  {/* Accessible Native Focus/Inspect Button */}
+                  <div className="pt-2">
+                    <button
+                      type="button"
+                      aria-pressed={isSelected}
+                      onClick={() => setSelectedIdx(idx)}
+                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-technical font-mono font-bold uppercase transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${
+                        isSelected
+                          ? `${accent.bg} ${accent.text} border ${accent.lightBorder}`
+                          : "bg-brand-surface border border-brand-border text-brand-textSecondary hover:text-brand-textPrimary hover:border-brand-primary/40"
+                      }`}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-current" aria-hidden="true" />
+                      <span>{isSelected ? (labels.selectedStatus || "Active") : (labels.inspectButton || "Inspect Workflow")}</span>
+                      <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                    </button>
+                  </div>
+                </article>
               );
             })}
           </div>
@@ -254,24 +312,24 @@ export default function ServicesEngineeringOutcomes({ data }) {
           <div className="lg:col-span-7 sticky top-28">
             <figure 
               className="rounded-3xl bg-brand-card/95 border border-brand-border shadow-lg p-6 xl:p-8 backdrop-blur-sm relative overflow-hidden"
-              aria-label={`${activeColumn.title} - ${labels.canvasLabel}`}
+              aria-label={`${activeColumn.title} - ${labels.canvasLabel || "ENGINEERING IMPACT CANVAS"}`}
             >
               <figcaption className="sr-only">
                 {activeColumn.title}: {activeColumn.desc}
               </figcaption>
 
-              {/* Canvas HUD Header */}
+              {/* Canvas HUD Header with Static Status Indicator */}
               <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-6 border-b border-brand-border/70 text-technical font-mono">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" aria-hidden="true" />
                   <span className="font-bold text-brand-textPrimary uppercase tracking-wider">
-                    {labels.canvasLabel}
+                    {labels.canvasLabel || "ENGINEERING IMPACT CANVAS"}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <span className="text-technical font-mono text-brand-textSecondary uppercase">
-                    {labels.activeFocus}:
+                    {labels.activeFocus || "ACTIVE FOCUS"}:
                   </span>
                   <span className="px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-brand-surface border border-brand-border text-brand-primary">
                     {activeColumn.num} · {activeColumn.category}
@@ -300,18 +358,26 @@ export default function ServicesEngineeringOutcomes({ data }) {
                         {/* Step 1: Repeated Manual Operations */}
                         <div className="col-span-4 space-y-2 font-mono text-technical">
                           <span className="block text-caption font-bold text-brand-textSecondary uppercase tracking-wider mb-2">
-                            Manual Repetitions
+                            {c1.manualHeading || "Manual Operations"}
                           </span>
-                          {["Parameter Transcription", "Repetitive Sheet QA", "Naming Verification"].map((item, i) => (
+                          {(c1.items || [
+                            { name: "Parameter Transcription", code: "01" },
+                            { name: "Repetitive Sheet QA", code: "02" },
+                            { name: "Naming Verification", code: "03" }
+                          ]).map((item, i) => (
                             <motion.div
                               key={i}
                               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.3, delay: shouldReduceMotion ? 0 : i * 0.1 }}
-                              className="bg-brand-surface p-2.5 rounded-xl border border-brand-border/70 flex items-center justify-between shadow-xs"
+                              className="bg-brand-surface p-2.5 rounded-xl border border-brand-border/70 flex items-center justify-between"
                             >
-                              <span className="text-brand-textSecondary text-technical truncate font-medium">{item}</span>
-                              <span className="text-caption font-mono text-brand-textSecondary/60 shrink-0">#0{i + 1}</span>
+                              <span className="text-brand-textSecondary text-technical font-medium leading-tight">
+                                {item.name}
+                              </span>
+                              <span className="text-caption font-mono text-brand-textSecondary/60 shrink-0 ml-2">
+                                #{item.code || `0${i + 1}`}
+                              </span>
                             </motion.div>
                           ))}
                         </div>
@@ -339,13 +405,13 @@ export default function ServicesEngineeringOutcomes({ data }) {
                             <Cpu className="w-5 h-5" aria-hidden="true" />
                           </div>
                           <span className="block text-technical font-bold text-brand-primary uppercase tracking-wider mb-1">
-                            AUTOMATION
+                            {c1.routineBadge || "AUTOMATION"}
                           </span>
                           <span className="text-caption font-bold text-brand-textPrimary block mb-1">
-                            Defined Routine
+                            {c1.routineTitle || "Defined Routine"}
                           </span>
-                          <span className="text-technical text-brand-textSecondary block">
-                            Targeted scripts & batch rules
+                          <span className="text-technical text-brand-textSecondary block leading-snug">
+                            {c1.routineDesc || "Targeted scripts & batch rules"}
                           </span>
                         </div>
 
@@ -372,13 +438,13 @@ export default function ServicesEngineeringOutcomes({ data }) {
                             <Eye className="w-5 h-5" aria-hidden="true" />
                           </div>
                           <span className="block text-technical font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
-                            GATEWAY
+                            {c1.gateBadge || "GATEWAY"}
                           </span>
                           <span className="text-caption font-bold text-brand-textPrimary block mb-1">
-                            Engineer Review
+                            {c1.gateTitle || "Engineer Review"}
                           </span>
-                          <span className="text-technical text-brand-textSecondary block">
-                            Supervision & decisions
+                          <span className="text-technical text-brand-textSecondary block leading-snug">
+                            {c1.gateDesc || "Supervision & decisions"}
                           </span>
                         </div>
 
@@ -386,8 +452,8 @@ export default function ServicesEngineeringOutcomes({ data }) {
 
                       {/* Technical Footnote Banner */}
                       <div className="p-3 rounded-xl bg-brand-surface/60 border border-brand-border/60 flex items-center justify-between text-technical font-mono text-brand-textSecondary">
-                        <span>WORKFLOW CONTROL // STRUCTURED AUTOMATION APPLIED</span>
-                        <span className="text-brand-primary font-bold">100% AUDITABLE ROUTINE</span>
+                        <span>{c1.footerLeft || "WORKFLOW STRUCTURE"}</span>
+                        <span className="text-brand-primary font-bold">{c1.footerRight || "SUPERVISED AUTOMATION"}</span>
                       </div>
                     </motion.div>
                   )}
@@ -410,13 +476,13 @@ export default function ServicesEngineeringOutcomes({ data }) {
                         {/* Information Rules Matrix (Neutral markers, no fake checkmarks) */}
                         <div className="col-span-6 space-y-2.5">
                           <span className="block text-caption font-bold text-brand-textSecondary uppercase tracking-wider mb-2">
-                            Rule Definition Framework
+                            {c2.rulesHeading || "Rule Definition Framework"}
                           </span>
                           {[
-                            { rule: "ISO 19650 PropertySets", tag: "SCHEMA", code: "PAR.01" },
-                            { rule: "OmniClass / UniFormat", tag: "CLASSIFICATION", code: "CLS.02" },
-                            { rule: "Model Naming Syntax", tag: "SYNTAX", code: "NOM.03" },
-                            { rule: "Discipline Model Bounds", tag: "COORDINATION", code: "GEO.04" }
+                            { rule: "ISO 19650 PropertySets", tag: "SCHEMA" },
+                            { rule: "OmniClass / UniFormat", tag: "CLASSIFICATION" },
+                            { rule: "Model Naming Syntax", tag: "SYNTAX" },
+                            { rule: "Discipline Model Bounds", tag: "COORDINATION" }
                           ].map((item, i) => (
                             <motion.div
                               key={i}
@@ -427,9 +493,9 @@ export default function ServicesEngineeringOutcomes({ data }) {
                             >
                               <div className="flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 rounded-full bg-sky-500 shrink-0" aria-hidden="true" />
-                                <span className="text-brand-textPrimary font-semibold">{item.rule}</span>
+                                <span className="text-brand-textPrimary font-semibold leading-tight">{item.rule}</span>
                               </div>
-                              <span className="px-2 py-0.5 rounded bg-brand-card border border-brand-border text-sky-600 dark:text-sky-400 font-bold uppercase">
+                              <span className="px-2 py-0.5 rounded bg-brand-card border border-brand-border text-sky-600 dark:text-sky-400 font-bold uppercase text-technical ml-2 shrink-0">
                                 {item.tag}
                               </span>
                             </motion.div>
@@ -440,34 +506,30 @@ export default function ServicesEngineeringOutcomes({ data }) {
                         <div className="col-span-6 bg-sky-500/10 dark:bg-sky-950/30 p-5 rounded-2xl border border-sky-500/35 space-y-3">
                           <div className="flex items-center justify-between pb-2 border-b border-sky-500/30 text-technical">
                             <span className="font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
-                              EXCEPTION AUDIT REPORT
+                              {c2.reportHeading || "EXCEPTION AUDIT REPORT"}
                             </span>
-                            <span className="text-brand-textSecondary">STATUS: VERIFIED</span>
+                            <span className="text-brand-textSecondary text-technical">
+                              {c2.reportStatus || "REVIEW PROCESS"}
+                            </span>
                           </div>
                           
                           <div className="space-y-2 text-technical">
-                            <div className="p-2.5 rounded-lg bg-brand-card/90 border border-brand-border flex items-center justify-between">
-                              <span className="text-brand-textPrimary font-medium">Inconsistent Parameter Types</span>
-                              <span className="px-2 py-0.5 rounded bg-brand-surface font-mono font-bold text-brand-textSecondary">
-                                IDENTIFIED
-                              </span>
-                            </div>
-                            <div className="p-2.5 rounded-lg bg-brand-card/90 border border-brand-border flex items-center justify-between">
-                              <span className="text-brand-textPrimary font-medium">Missing Classification Tags</span>
-                              <span className="px-2 py-0.5 rounded bg-brand-surface font-mono font-bold text-brand-textSecondary">
-                                FLAGGED
-                              </span>
-                            </div>
-                            <div className="p-2.5 rounded-lg bg-brand-card/90 border border-brand-border flex items-center justify-between">
-                              <span className="text-brand-textPrimary font-medium">Naming Convention Discrepancies</span>
-                              <span className="px-2 py-0.5 rounded bg-brand-surface font-mono font-bold text-brand-textSecondary">
-                                REPORTED
-                              </span>
-                            </div>
+                            {(c2.exceptions || [
+                              { name: "Inconsistent Parameter Types", tag: "IDENTIFIED" },
+                              { name: "Missing Classification Tags", tag: "FLAGGED" },
+                              { name: "Naming Convention Discrepancies", tag: "REPORTED" }
+                            ]).map((exc, eIdx) => (
+                              <div key={eIdx} className="p-2.5 rounded-lg bg-brand-card/90 border border-brand-border flex items-center justify-between">
+                                <span className="text-brand-textPrimary font-medium leading-tight">{exc.name}</span>
+                                <span className="px-2 py-0.5 rounded bg-brand-surface font-mono font-bold text-brand-textSecondary text-technical shrink-0 ml-2">
+                                  {exc.tag}
+                                </span>
+                              </div>
+                            ))}
                           </div>
 
                           <p className="text-technical text-brand-textSecondary pt-1 leading-relaxed">
-                            Clear criteria turn vague model issues into actionable, reviewable line items.
+                            {c2.reportNote || "Clear criteria turn vague model issues into actionable, reviewable line items."}
                           </p>
                         </div>
 
@@ -475,8 +537,8 @@ export default function ServicesEngineeringOutcomes({ data }) {
 
                       {/* Technical Footnote Banner */}
                       <div className="p-3 rounded-xl bg-brand-surface/60 border border-brand-border/60 flex items-center justify-between text-technical font-mono text-brand-textSecondary">
-                        <span>DATA DISCREPANCY MANAGEMENT // MODEL QUALITY ASSURANCE</span>
-                        <span className="text-sky-600 dark:text-sky-400 font-bold">STRUCTURED REPORTING</span>
+                        <span>{c2.footerLeft || "INFORMATION ASSURANCE"}</span>
+                        <span className="text-sky-600 dark:text-sky-400 font-bold">{c2.footerRight || "STRUCTURED REPORTING"}</span>
                       </div>
                     </motion.div>
                   )}
@@ -499,36 +561,36 @@ export default function ServicesEngineeringOutcomes({ data }) {
                         {/* Source Software Platforms */}
                         <div className="col-span-4 space-y-2.5 text-technical">
                           <span className="block text-caption font-bold text-brand-textSecondary uppercase tracking-wider mb-2">
-                            Existing Environments
+                            {c3.envHeading || "Existing Environments"}
                           </span>
                           
                           <div className="bg-brand-surface p-3 rounded-xl border border-brand-border/70 flex items-center gap-3">
-                            <span className="px-2 py-1 rounded bg-indigo-500/10 border border-indigo-500/30 text-indigo-600 dark:text-indigo-400 font-bold">
+                            <span className="px-2 py-1 rounded bg-indigo-500/10 border border-indigo-500/30 text-indigo-600 dark:text-indigo-400 font-bold shrink-0">
                               RVT
                             </span>
-                            <div>
-                              <span className="text-brand-textPrimary font-bold block">Autodesk Revit</span>
-                              <span className="text-brand-textSecondary text-technical">Native API & Parameter Workflows</span>
+                            <div className="min-w-0">
+                              <span className="text-brand-textPrimary font-bold block leading-tight">{c3.envRvt || "Autodesk Revit"}</span>
+                              <span className="text-brand-textSecondary text-technical leading-tight block">{c3.envRvtSub || "Native API & Parameter Workflows"}</span>
                             </div>
                           </div>
 
                           <div className="bg-brand-surface p-3 rounded-xl border border-brand-border/70 flex items-center gap-3">
-                            <span className="px-2 py-1 rounded bg-teal-500/10 border border-teal-500/30 text-teal-600 dark:text-teal-400 font-bold">
+                            <span className="px-2 py-1 rounded bg-teal-500/10 border border-teal-500/30 text-teal-600 dark:text-teal-400 font-bold shrink-0">
                               IFC
                             </span>
-                            <div>
-                              <span className="text-brand-textPrimary font-bold block">OpenBIM IFC4</span>
-                              <span className="text-brand-textSecondary text-technical">Vendor-neutral Model Exchange</span>
+                            <div className="min-w-0">
+                              <span className="text-brand-textPrimary font-bold block leading-tight">{c3.envIfc || "OpenBIM IFC4"}</span>
+                              <span className="text-brand-textSecondary text-technical leading-tight block">{c3.envIfcSub || "Vendor-neutral Model Exchange"}</span>
                             </div>
                           </div>
 
                           <div className="bg-brand-surface p-3 rounded-xl border border-brand-border/70 flex items-center gap-3">
-                            <span className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/30 text-sky-600 dark:text-sky-400 font-bold">
+                            <span className="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/30 text-sky-600 dark:text-sky-400 font-bold shrink-0">
                               BCF
                             </span>
-                            <div>
-                              <span className="text-brand-textPrimary font-bold block">Issue Tracking</span>
-                              <span className="text-brand-textSecondary text-technical">Open Issue Collaboration</span>
+                            <div className="min-w-0">
+                              <span className="text-brand-textPrimary font-bold block leading-tight">{c3.envBcf || "Issue Tracking"}</span>
+                              <span className="text-brand-textSecondary text-technical leading-tight block">{c3.envBcfSub || "Open Issue Collaboration"}</span>
                             </div>
                           </div>
                         </div>
@@ -554,24 +616,26 @@ export default function ServicesEngineeringOutcomes({ data }) {
                         <div className="col-span-7 bg-indigo-500/10 dark:bg-indigo-950/30 p-5 rounded-2xl border border-indigo-500/35 space-y-3">
                           <div className="flex items-center justify-between pb-2 border-b border-indigo-500/30 text-technical">
                             <span className="font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
-                              CONNECTED WORKFLOW FABRIC
+                              {c3.coreHeading || "CONNECTED WORKFLOW FABRIC"}
                             </span>
-                            <span className="text-brand-textSecondary">OPEN ECOSYSTEM</span>
+                            <span className="text-brand-textSecondary text-technical">
+                              {c3.coreBadge || "OPEN ECOSYSTEM"}
+                            </span>
                           </div>
 
                           <div className="grid grid-cols-2 gap-2 text-technical">
                             <div className="p-2.5 rounded-lg bg-brand-card/90 border border-brand-border">
-                              <span className="text-technical text-brand-textSecondary block uppercase mb-0.5">DISCIPLINES</span>
-                              <span className="font-bold text-brand-textPrimary">ARC · STR · MEP</span>
+                              <span className="text-technical text-brand-textSecondary block uppercase mb-0.5">{c3.disciplinesLabel || "DISCIPLINES"}</span>
+                              <span className="font-bold text-brand-textPrimary">{c3.disciplinesVal || "ARC · STR · MEP"}</span>
                             </div>
                             <div className="p-2.5 rounded-lg bg-brand-card/90 border border-brand-border">
-                              <span className="text-technical text-brand-textSecondary block uppercase mb-0.5">INTERFACE</span>
-                              <span className="font-bold text-brand-textPrimary">Python / C# / API</span>
+                              <span className="text-technical text-brand-textSecondary block uppercase mb-0.5">{c3.interfaceLabel || "INTERFACE"}</span>
+                              <span className="font-bold text-brand-textPrimary">{c3.interfaceVal || "Python / C# / API"}</span>
                             </div>
                           </div>
 
                           <p className="text-technical text-brand-textSecondary pt-1 leading-relaxed">
-                            Solutions integrate seamlessly with your established software stack, avoiding disruptive migrations or vendor lock-in.
+                            {c3.coreNote || "Solutions integrate alongside your established software stack, avoiding unnecessary workflow disruptions."}
                           </p>
                         </div>
 
@@ -579,8 +643,8 @@ export default function ServicesEngineeringOutcomes({ data }) {
 
                       {/* Technical Footnote Banner */}
                       <div className="p-3 rounded-xl bg-brand-surface/60 border border-brand-border/60 flex items-center justify-between text-technical font-mono text-brand-textSecondary">
-                        <span>ECOSYSTEM INTEGRATION // BUILT AROUND ESTABLISHED TOOLS</span>
-                        <span className="text-indigo-600 dark:text-indigo-400 font-bold">ZERO DISRUPTION</span>
+                        <span>{c3.footerLeft || "ECOSYSTEM INTEGRATION"}</span>
+                        <span className="text-indigo-600 dark:text-indigo-400 font-bold">{c3.footerRight || "PRACTICAL ADAPTATION"}</span>
                       </div>
                     </motion.div>
                   )}
@@ -589,8 +653,8 @@ export default function ServicesEngineeringOutcomes({ data }) {
 
               {/* Bottom Canvas Interactive Hint */}
               <div className="pt-4 mt-6 border-t border-brand-border/60 flex items-center justify-between text-technical font-mono text-brand-textSecondary">
-                <span>{labels.interactiveNote}</span>
-                <span className="text-brand-textSecondary/60 hidden sm:inline-block">pyBIM // SYS.OUTCOMES</span>
+                <span>{labels.interactiveNote || "Select an outcome to inspect the workflow architecture"}</span>
+                <span className="text-brand-textSecondary/60 hidden sm:inline-block">pyBIM</span>
               </div>
 
             </figure>
@@ -604,6 +668,13 @@ export default function ServicesEngineeringOutcomes({ data }) {
         <div className="lg:hidden space-y-6">
           {columns.map((col, idx) => {
             const accent = getOutcomeAccent(idx);
+            const mobileSummary = labels.mobileSummaries?.[idx] || (
+              idx === 0 
+                ? "PROCESS: REPETITIVE → ROUTINE → REVIEW" 
+                : idx === 1 
+                ? "QUALITY: RULES → AUDIT → ACTIONABLE REPORT" 
+                : "INTEGRATION: REVIT + IFC + BCF WORKFLOW"
+            );
 
             return (
               <article
@@ -637,14 +708,10 @@ export default function ServicesEngineeringOutcomes({ data }) {
                   {col.desc}
                 </p>
 
-                {/* Simplified Compact Graphic for Mobile */}
+                {/* Localized Compact Schematic Summary for Mobile */}
                 <div className="p-3.5 rounded-xl bg-brand-surface border border-brand-border font-mono text-technical space-y-2">
-                  <span className="block font-bold text-brand-textSecondary uppercase tracking-wider">
-                    {idx === 0 
-                      ? "PROCESS: REPETITIVE → ROUTINE → REVIEW" 
-                      : idx === 1 
-                      ? "QUALITY: RULES → AUDIT → ACTIONABLE REPORT" 
-                      : "INTEGRATION: REVIT + IFC + BCF WORKFLOW"}
+                  <span className="block font-bold text-brand-textSecondary uppercase tracking-wider leading-snug">
+                    {mobileSummary}
                   </span>
 
                   {Array.isArray(col.topics) && (
