@@ -12,6 +12,7 @@ import {
   ArrowDown
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import ServicesSectionBackdrop from "@/components/sections/services-section-backdrop";
 
 export default function ServicesEarlyAccessBanner({ data }) {
   const shouldReduceMotion = useReducedMotion();
@@ -61,12 +62,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
       aria-labelledby={`${baseId}-title`}
     >
       {/* Background Architectural Canvas (Family A - Base) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className="max-w-7xl mx-auto h-full px-6 lg:px-8 relative">
-          <div className="absolute left-6 lg:left-8 top-0 bottom-0 w-px border-l border-dashed border-slate-300/30 dark:border-slate-800/50" />
-          <div className="absolute right-6 lg:right-8 top-0 bottom-0 w-px border-r border-dashed border-slate-300/30 dark:border-slate-800/50" />
-        </div>
-      </div>
+      <ServicesSectionBackdrop variant="base" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         

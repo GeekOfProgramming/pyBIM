@@ -13,6 +13,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import ServicesSectionBackdrop from "@/components/sections/services-section-backdrop";
 
 export default function ServicesEngineeringOutcomes({ data }) {
   const shouldReduceMotion = useReducedMotion();
@@ -150,31 +151,8 @@ export default function ServicesEngineeringOutcomes({ data }) {
     >
       {/* ========================================================================= */}
       {/* BACKGROUND: Family B (Surface) — Soft Architectural Drafting & Tone       */}
-      {/* Restrained linework without dense repeating dots or distracting overlays  */}
       {/* ========================================================================= */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        {/* Soft Controlled Ambient Lighting */}
-        <div className="absolute top-1/4 right-1/4 w-[500px] h-[350px] bg-brand-primary/[0.035] dark:bg-brand-primary/[0.06] rounded-full blur-3xl pointer-events-none" />
-
-        {/* Delicate Architectural Boundary Guides */}
-        <div className="max-w-7xl mx-auto h-full px-6 lg:px-8 relative">
-          <div className="absolute left-6 lg:left-8 top-0 bottom-0 w-px border-l border-dashed border-slate-300/40 dark:border-slate-800/50" />
-          <div className="absolute right-6 lg:right-8 top-0 bottom-0 w-px border-r border-dashed border-slate-300/40 dark:border-slate-800/50" />
-        </div>
-
-        {/* Sparse Technical Grid (Family B Surface Pattern) */}
-        <svg 
-          className="absolute inset-0 w-full h-full stroke-slate-400/20 dark:stroke-slate-700/20 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_80%)]" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern id={`${baseId}-outcomes-surface-grid`} width="64" height="64" patternUnits="userSpaceOnUse">
-              <path d="M 64 0 L 0 0 0 64" fill="none" strokeWidth="0.5" strokeDasharray="3 5" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill={`url(#${baseId}-outcomes-surface-grid)`} />
-        </svg>
-      </div>
+      <ServicesSectionBackdrop variant="surface" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         

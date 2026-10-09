@@ -15,6 +15,7 @@ import {
   FileSpreadsheet
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import ServicesSectionBackdrop from "@/components/sections/services-section-backdrop";
 
 export default function ServicesExecutionPipeline({ data }) {
   const shouldReduceMotion = useReducedMotion();
@@ -91,34 +92,8 @@ export default function ServicesExecutionPipeline({ data }) {
       className="py-20 md:py-24 lg:py-28 bg-brand-base border-b border-brand-border relative overflow-hidden scroll-mt-20 lg:scroll-mt-24"
       aria-labelledby={`${baseId}-title`}
     >
-      {/* ========================================================================= */}
-      {/* ENGINEERING DOCUMENTATION STORYBOARD BACKGROUND                           */}
-      {/* Sheet registration lines, corner framing cues, and restrained depth       */}
-      {/* ========================================================================= */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        {/* Soft Controlled Ambient Atmosphere */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-3/4 h-[550px] bg-gradient-to-b from-brand-primary/[0.035] via-sky-500/[0.02] to-transparent dark:from-brand-primary/[0.06] dark:via-sky-500/[0.03] dark:to-transparent rounded-full blur-3xl pointer-events-none" />
-
-        {/* Documentation Sheet Boundary Guides (Subtle technical margins) */}
-        <div className="max-w-7xl mx-auto h-full px-6 lg:px-8 relative">
-          <div className="absolute left-6 lg:left-8 top-0 bottom-0 w-px border-l border-dashed border-slate-300/40 dark:border-slate-800/60" />
-          <div className="absolute right-6 lg:right-8 top-0 bottom-0 w-px border-r border-dashed border-slate-300/40 dark:border-slate-800/60" />
-        </div>
-
-        {/* Fine Engineering Sheet Grid (Light, non-repetitive micro-hatch) */}
-        <svg 
-          className="absolute inset-0 w-full h-full stroke-slate-400/20 dark:stroke-slate-700/20 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_85%)]" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern id={`${baseId}-doc-grid`} width="72" height="72" patternUnits="userSpaceOnUse">
-              <path d="M 72 0 L 0 0 0 72" fill="none" strokeWidth="0.5" strokeDasharray="2 6" />
-              <path d="M 0 0 L 8 0 M 0 0 L 0 8" fill="none" strokeWidth="1" strokeOpacity="0.4" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill={`url(#${baseId}-doc-grid)`} />
-        </svg>
-      </div>
+      {/* Background Architectural Canvas (Family A - Base) */}
+      <ServicesSectionBackdrop variant="base" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         
@@ -192,7 +167,7 @@ export default function ServicesExecutionPipeline({ data }) {
                   {/* Horizontal Branch Connector into Card */}
                   <div className="absolute top-12 left-12 w-8 h-px border-t-2 border-dashed border-brand-border dark:border-slate-700 pointer-events-none z-0" />
 
-                  {/* Vertical Spine Segment to next milestone or terminal endpoint */}
+                  {/* Vertical Spine Segment to next milestone or terminal completion */}
                   {!isLast ? (
                     <div className="w-0.5 flex-1 relative my-2 bg-brand-border/60 dark:bg-slate-800">
                       <motion.div
@@ -205,24 +180,24 @@ export default function ServicesExecutionPipeline({ data }) {
                       />
                     </div>
                   ) : (
-                    <div className="flex flex-col items-center my-2">
-                      <div className="w-0.5 h-10 relative bg-brand-border/60 dark:bg-slate-800">
+                    /* Final stage deliberate terminal connector: short vertical segment with terminal endpoint node */
+                    <div className="flex flex-col items-center mt-2 pb-2">
+                      <div className="w-0.5 h-10 relative bg-brand-border/60 dark:bg-slate-800 overflow-hidden">
                         <motion.div
                           className="w-full absolute inset-0 origin-top"
                           style={{ backgroundColor: theme.spineColor }}
                           initial={{ scaleY: shouldReduceMotion ? 1 : 0 }}
                           whileInView={{ scaleY: 1 }}
                           viewport={{ once: true, margin: "-50px" }}
-                          transition={{ duration: shouldReduceMotion ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
+                          transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] }}
                         />
                       </div>
-                      {/* Terminal Endpoint Node communicating finished delivery pipeline */}
-                      <motion.div 
-                        initial={shouldReduceMotion ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                      <motion.div
+                        className="w-3.5 h-3.5 rounded-full border-2 border-emerald-500/80 bg-brand-surface dark:bg-slate-900 flex items-center justify-center -mt-0.5 z-10 shadow-sm"
+                        initial={{ scale: shouldReduceMotion ? 1 : 0, opacity: shouldReduceMotion ? 1 : 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: shouldReduceMotion ? 0 : 0.3, delay: shouldReduceMotion ? 0 : 0.35 }}
-                        className="w-3.5 h-3.5 rounded-full border-2 border-emerald-500 bg-brand-surface shadow-sm shadow-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5"
+                        transition={{ duration: shouldReduceMotion ? 0 : 0.4, delay: shouldReduceMotion ? 0 : 0.3, ease: "easeOut" }}
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
                       </motion.div>

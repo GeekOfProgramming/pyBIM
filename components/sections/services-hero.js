@@ -17,6 +17,7 @@ import {
   Compass
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import ServicesSectionBackdrop from "@/components/sections/services-section-backdrop";
 
 export default function ServicesHero({ data }) {
   const shouldReduceMotion = useReducedMotion();
@@ -192,42 +193,8 @@ export default function ServicesHero({ data }) {
       aria-label="Services Hero"
       className="scroll-mt-28 relative w-full overflow-hidden bg-brand-base pt-16 pb-16 md:pt-24 md:pb-24 lg:pt-28 lg:pb-32 border-b border-brand-border/60 transition-colors"
     >
-      {/* ========================================================================= */}
-      {/* ARCHITECTURAL BACKGROUND: Fine Coordinate Blueprint Linework & Ambient Glow */}
-      {/* ========================================================================= */}
-      <div 
-        className="pointer-events-none absolute inset-0 z-0 text-slate-900 dark:text-cyan-200"
-        style={{
-          maskImage: "radial-gradient(ellipse 85% 70% at 65% 35%, black 25%, transparent 85%)",
-          WebkitMaskImage: "radial-gradient(ellipse 85% 70% at 65% 35%, black 25%, transparent 85%)",
-        }}
-        aria-hidden="true"
-      >
-        <svg className="w-full h-full opacity-[0.045] dark:opacity-[0.085]" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="services-blueprint-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.5" />
-            </pattern>
-            <pattern id="services-major-grid" width="160" height="160" patternUnits="userSpaceOnUse">
-              <rect width="160" height="160" fill="url(#services-blueprint-grid)" />
-              <path d="M 160 0 L 0 0 0 160" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.8" />
-              {/* Coordinate axis crosshairs */}
-              <path d="M -6 0 L 6 0 M 0 -6 L 0 6" stroke="currentColor" strokeWidth="1.2" strokeOpacity="1" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#services-major-grid)" />
-        </svg>
-      </div>
-
-      {/* Atmospheric Multi-Point Lighting Focused on Right Engineering Schematic */}
-      <div 
-        aria-hidden="true" 
-        className="pointer-events-none absolute -top-32 right-1/4 w-[580px] h-[480px] bg-gradient-to-br from-blue-500/[0.09] via-cyan-500/[0.05] to-transparent dark:from-blue-500/[0.16] dark:via-cyan-500/[0.08] dark:to-transparent rounded-full blur-[110px] z-0" 
-      />
-      <div 
-        aria-hidden="true" 
-        className="pointer-events-none absolute top-1/2 left-0 w-[420px] h-[360px] bg-blue-600/[0.035] dark:bg-blue-600/[0.07] rounded-full blur-[120px] z-0" 
-      />
+      {/* Family A (Base) Architectural Background */}
+      <ServicesSectionBackdrop variant="base" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 xl:gap-16 items-center">
