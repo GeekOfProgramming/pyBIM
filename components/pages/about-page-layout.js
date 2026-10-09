@@ -5,6 +5,7 @@ import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, Code2, Cpu, Cog, Briefcase, Terminal, Activity, Shield, Users, Zap, Building } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import TeamPartnersSection from "@/components/sections/team-partners-section";
+import ManifestoHero from "@/components/about/manifesto-hero";
 
 export default function AboutPageLayout({ teamData }) {
   const { t } = useLanguage();
@@ -32,22 +33,8 @@ export default function AboutPageLayout({ teamData }) {
 
   return (
     <div className="w-full bg-brand-base">
-      {/* SECTION 1: Hero Section (The Manifesto) */}
-      <section id="manifesto" className="relative flex flex-col items-center justify-center py-32 overflow-hidden border-b border-brand-border bg-brand-surface">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.05),transparent_60%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(37,99,235,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(37,99,235,0.03)_1px,transparent_1px)] bg-[size:32px_32px]" />
-        </div>
-
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center relative z-10 mt-12">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-8 backdrop-blur-sm shadow-sm">
-            <Terminal className="w-4 h-4" /> {t("about.manifesto.badge")}
-          </div>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-brand-textPrimary tracking-tight mb-8 leading-tight max-w-5xl mx-auto" dangerouslySetInnerHTML={{ __html: t("about.manifesto.title") }} />
-          <h2 className="text-lg md:text-xl text-brand-textSecondary leading-relaxed max-w-3xl mx-auto font-medium mb-12" dangerouslySetInnerHTML={{ __html: t("about.manifesto.subtitle") }} />
-
-        </div>
-      </section>
+      {/* SECTION 1: Hero Section (The Manifesto / Engineering Evolution) */}
+      <ManifestoHero />
 
       {/* SECTION 2: Core Philosophy (3 Column Grid) */}
       <section className="bg-brand-base w-full border-b border-brand-border py-24 lg:py-32">
