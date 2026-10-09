@@ -734,5 +734,6 @@
   "about.tech.detail_eyebrow": "FAMILY SPECIFICATIONS",
   "about.tech.detail_notice_p1": "All services remain subject to project requirements and agreed operational scope.",
   "about.tech.detail_notice_p2": "Phase 02 automation modules are undergoing internal technical validation prior to commercial deployment.",
-  "about.tech.detail_notice_p3": "AI-assisted workflows are under technical research and do not constitute legal certification or replace professional engineering review."
+  "about.tech.detail_notice_p3": "AI-assisted workflows are under technical research and do not constitute legal certification or replace professional engineering review.",
+  "about.tech.headings_count": "Headings"
 }

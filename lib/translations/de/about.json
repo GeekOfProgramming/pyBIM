@@ -733,5 +733,6 @@
   "about.tech.detail_eyebrow": "GRUPPEN-SPEZIFIKATIONEN",
   "about.tech.detail_notice_p1": "Alle Leistungen unterliegen den jeweiligen Projekterfordernissen und dem vertraglich vereinbarten Leistungsumfang.",
   "about.tech.detail_notice_p2": "Die Automatisierungsmodule der Phase 02 befinden sich vor einer kommerziellen Bereitstellung in der internen technischen Validierung.",
-  "about.tech.detail_notice_p3": "KI-gestützte Workflows sind Gegenstand technischer Forschung; sie stellen keine Rechtszertifizierung dar und ersetzen keine fachliche Ingenieurprüfung."
+  "about.tech.detail_notice_p3": "KI-gestützte Workflows sind Gegenstand technischer Forschung; sie stellen keine Rechtszertifizierung dar und ersetzen keine fachliche Ingenieurprüfung.",
+  "about.tech.headings_count": "Positionen"
 }

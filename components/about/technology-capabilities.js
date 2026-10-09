@@ -9,14 +9,10 @@ import {
   Layers, 
   Terminal, 
   Shield, 
-  Code2, 
   ChevronRight, 
   CheckCircle2, 
-  ExternalLink,
-  Cpu,
-  Database,
-  Search,
-  Sparkles,
+  FileCode2,
+  FileCheck2,
   Info
 } from "lucide-react";
 
@@ -24,18 +20,26 @@ import {
  * TechnologyCapabilities Component (Section 04 - Tech Stack & Standards)
  * 
  * pyBIM Design System v2 — Engineering Precision
- * Task A04 — Three-Pillar Technical Catalogue Redesign
+ * Task A04-R1 — Precision Alignment & Accessibility Refinement
  * 
  * Architecture:
  * - 3 Primary Pillars:
- *   1. 01. BIM Execution & Delivery (5 Service Families, 55 Service Headings)
- *   2. 02. Custom Code & Plugins (6 Tech Families: Languages, APIs, Backend, Frontend, Data/AI, Integration)
- *   3. 03. Sovereign AI & Compliance (6 Reference Families: ISO/UNI, Italian Regulations, OpenBIM, Handover, Classification, Local AI Research)
- * - Progressive Disclosure:
- *   - 3 prominent, aligned overview cards on top.
- *   - 1 shared full-width details panel beneath with smooth, finite transitions.
+ *   1. 01. BIM Execution & Delivery (5 Service Families, exactly 55 Service Headings)
+ *   2. 02. Custom Code & Plugins (6 Tech Families, 25 Technology & Framework Identifiers)
+ *   3. 03. Sovereign AI & Compliance (6 Reference Families, 23 Standards & Research Topics)
+ * - Synchronized Multi-Row Layout:
+ *   - Semantic regions aligned horizontally across all 3 cards at desktop:
+ *     Row 1: Header metadata (icon, pillar identifier, and wrapped status badge)
+ *     Row 2: Main pillar title (20-22px font-bold)
+ *     Row 3: Concise description (14-15px text-brand-textSecondary)
+ *     Row 4: Divider & Family Specifications label (strictly synchronized baseline)
+ *     Row 5: Interactive Category Selectors (min 44px touch target, natural wrap, no truncate)
+ * - Semantic Item Icons in Details Panel:
+ *   - Pillar 01: CheckCircle2 (verified engineering project deliverables)
+ *   - Pillar 02: FileCode2 (development technologies, APIs & code modules)
+ *   - Pillar 03: FileCheck2 (regulatory standards, specifications & research topics)
  * - Engineering Background Family A: variant="base" (#FFFFFF light / #080C14 dark)
- * - Complete localization in EN, IT, DE with semantic typography and keyboard accessibility.
+ * - 100% data preservation and full EN, IT, DE parity.
  */
 export default function TechnologyCapabilities() {
   const { t } = useLanguage();
@@ -61,7 +65,7 @@ export default function TechnologyCapabilities() {
     setSelectedFamilyId(familyId);
   };
 
-  // Icon map
+  // Pillar Icon Map
   const pillarIcons = {
     Layers: <Layers className="w-5 h-5" aria-hidden="true" />,
     Terminal: <Terminal className="w-5 h-5" aria-hidden="true" />,
@@ -111,6 +115,19 @@ export default function TechnologyCapabilities() {
   const rawItems = t(activeFamily.itemsKey);
   const activeItemsList = Array.isArray(rawItems) ? rawItems : [];
 
+  // Semantic icon for detail items based on active pillar
+  const renderItemIcon = (pillarId) => {
+    switch (pillarId) {
+      case "bim-delivery":
+        return <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />;
+      case "development":
+        return <FileCode2 className="w-4 h-4 text-brand-primary dark:text-blue-400" aria-hidden="true" />;
+      case "standards":
+      default:
+        return <FileCheck2 className="w-4 h-4 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />;
+    }
+  };
+
   return (
     <section
       id="tech-stack"
@@ -126,7 +143,7 @@ export default function TechnologyCapabilities() {
         {/* SECTION HEADER: Editorial Introduction                    */}
         {/* ========================================================= */}
         <motion.div
-          className="max-w-3xl mb-14 lg:mb-18"
+          className="max-w-3xl mb-14 lg:mb-16"
           initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
@@ -152,9 +169,9 @@ export default function TechnologyCapabilities() {
         </motion.div>
 
         {/* ========================================================= */}
-        {/* THREE-PILLAR OVERVIEW CARDS                               */}
+        {/* THREE-PILLAR OVERVIEW CARDS (SYNCHRONIZED INTERNAL ROWS)   */}
         {/* ========================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7 mb-10 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7 mb-12 items-stretch">
           {CATALOGUE_PILLARS.map((pillar, pIdx) => {
             const isPillarSelected = selectedPillarId === pillar.id;
             const colors = getPillarColorClasses(pillar.id, isPillarSelected);
@@ -170,44 +187,54 @@ export default function TechnologyCapabilities() {
                   delay: shouldReduceMotion ? 0 : pIdx * 0.09,
                   ease: [0.16, 1, 0.3, 1] 
                 }}
-                className={`relative rounded-2xl border transition-all duration-300 flex flex-col justify-between p-6 sm:p-7 backdrop-blur-md ${
+                className={`relative rounded-2xl border transition-all duration-300 p-6 sm:p-7 backdrop-blur-md flex flex-col ${
                   isPillarSelected
                     ? `bg-white dark:bg-slate-900 ${colors.activeBorder}`
                     : "bg-white/75 dark:bg-slate-900/75 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm"
                 }`}
               >
-                {/* Pillar Header & Metadata */}
-                <div>
-                  <div className="flex items-center justify-between gap-3 mb-4">
-                    <div className="flex items-center gap-2.5">
-                      <div className={`p-2 rounded-xl border ${colors.badge}`}>
-                        {pillarIcons[pillar.icon]}
-                      </div>
-                      <span className="text-xs font-mono font-bold tracking-widest text-brand-textSecondary uppercase">
-                        {t(pillar.tagKey)}
-                      </span>
+                {/* 1. Header Metadata Row: Fixed height min-h-[48px] for clean baseline alignment */}
+                <div className="flex items-start justify-between gap-3 min-h-[48px] mb-4">
+                  <div className="flex items-center gap-2.5">
+                    <div className={`w-9 h-9 rounded-xl border flex items-center justify-center shrink-0 shadow-sm ${colors.badge}`}>
+                      {pillarIcons[pillar.icon]}
                     </div>
-
-                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold tracking-wide uppercase border ${colors.badge}`}>
-                      {t(pillar.statusKey)}
+                    <span className="text-xs font-mono font-bold tracking-wider text-brand-textSecondary uppercase">
+                      {t(pillar.tagKey)}
                     </span>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold text-brand-textPrimary tracking-tight mb-2">
+                  <span className={`inline-flex items-center text-center px-2.5 py-1 rounded-full text-xs font-mono font-bold tracking-wide uppercase border shrink-0 ${colors.badge}`}>
+                    {t(pillar.statusKey)}
+                  </span>
+                </div>
+
+                {/* 2. Main Pillar Title: Synchronized 20-22px heading with min-h for multi-line parity */}
+                <div className="min-h-[58px] sm:min-h-[64px] flex items-center mb-2">
+                  <h3 className="text-lg sm:text-[21px] font-bold text-brand-textPrimary tracking-tight leading-snug">
                     {t(pillar.titleKey)}
                   </h3>
+                </div>
 
-                  <p className="text-xs sm:text-sm text-brand-textSecondary leading-relaxed mb-6">
+                {/* 3. Short Description: Synchronized 14-15px text with consistent vertical track */}
+                <div className="min-h-[68px] sm:min-h-[72px] mb-6">
+                  <p className="text-sm text-brand-textSecondary leading-relaxed">
                     {t(pillar.subKey)}
                   </p>
                 </div>
 
-                {/* Subordinate Category Selectors */}
-                <div className="pt-4 border-t border-slate-200/80 dark:border-slate-800/80 space-y-1.5">
-                  <div className="text-[11px] font-mono font-semibold tracking-wider text-brand-textSecondary/80 uppercase mb-2">
-                    {t("about.tech.detail_eyebrow")} ({pillar.families.length})
-                  </div>
+                {/* 4. Category Divider & Family Specifications Label */}
+                <div className="pt-4 border-t border-slate-200/80 dark:border-slate-800/80 mb-3 flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold tracking-wider text-brand-textSecondary uppercase">
+                    {t("about.tech.detail_eyebrow")}
+                  </span>
+                  <span className="text-xs font-mono font-semibold text-brand-textSecondary/80">
+                    ({pillar.families.length})
+                  </span>
+                </div>
 
+                {/* 5. Subordinate Category Selectors Area */}
+                <div className="flex-1 flex flex-col justify-start space-y-2">
                   {pillar.families.map((family) => {
                     const isFamilyActive = isPillarSelected && selectedFamilyId === family.id;
 
@@ -216,28 +243,28 @@ export default function TechnologyCapabilities() {
                         key={family.id}
                         type="button"
                         onClick={() => handleSelectFamily(pillar.id, family.id)}
-                        className={`w-full group text-left px-3 py-2.5 rounded-xl border text-xs font-mono transition-all duration-200 flex items-center justify-between ${
+                        className={`w-full group text-left px-3.5 py-3 rounded-xl border font-mono transition-all duration-200 flex items-center justify-between min-h-[44px] focus:outline-hidden focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 ${
                           isFamilyActive
-                            ? `${colors.selectedBg} font-bold shadow-xs`
+                            ? `${colors.selectedBg} font-bold shadow-sm`
                             : "border-transparent bg-slate-50/70 dark:bg-slate-800/40 text-brand-textSecondary hover:bg-slate-100 dark:hover:bg-slate-800/70 hover:text-brand-textPrimary"
                         }`}
                         aria-pressed={isFamilyActive}
                       >
-                        <div className="flex items-center gap-2.5 min-w-0 pr-2">
-                          <span className={`font-mono text-[11px] ${isFamilyActive ? colors.accentText : "text-brand-textSecondary/70"}`}>
+                        <div className="flex items-center gap-3 min-w-0 pr-2">
+                          <span className={`text-xs font-mono font-semibold shrink-0 ${isFamilyActive ? colors.accentText : "text-brand-textSecondary/70"}`}>
                             {family.num}
                           </span>
-                          <span className="truncate">
+                          <span className="text-sm font-sans font-medium text-brand-textPrimary leading-snug break-words">
                             {t(family.titleKey)}
                           </span>
                         </div>
 
-                        <div className="flex items-center gap-1.5 shrink-0">
-                          <span className="text-[10px] font-mono opacity-60">
+                        <div className="flex items-center gap-2 shrink-0">
+                          <span className="text-xs font-mono text-brand-textSecondary/80 tabular-nums">
                             {family.itemCount}
                           </span>
                           <ChevronRight 
-                            className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                            className={`w-4 h-4 transition-transform duration-200 ${
                               isFamilyActive ? "translate-x-0.5 text-current" : "text-brand-textSecondary/50 group-hover:translate-x-0.5"
                             }`} 
                             aria-hidden="true" 
@@ -289,7 +316,7 @@ export default function TechnologyCapabilities() {
                   {t(activePillar.statusKey)}
                 </span>
                 <span className="text-xs font-mono text-brand-textSecondary">
-                  {activeItemsList.length} Headings
+                  {activeItemsList.length} {t("about.tech.headings_count")}
                 </span>
               </div>
             </div>
@@ -299,18 +326,18 @@ export default function TechnologyCapabilities() {
               {t(activeFamily.descKey)}
             </p>
 
-            {/* Responsive Headings Grid */}
+            {/* Responsive Headings Grid with Semantic Iconography */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 mb-8">
               {activeItemsList.map((itemTitle, itemIdx) => (
                 <div
                   key={itemIdx}
-                  className="rounded-xl border border-slate-200/90 dark:border-slate-800/90 bg-slate-50/60 dark:bg-slate-800/40 p-3.5 sm:p-4 flex items-start gap-3 transition-colors hover:bg-white dark:hover:bg-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 shadow-xs"
+                  className="rounded-xl border border-slate-200/90 dark:border-slate-800/90 bg-slate-50/60 dark:bg-slate-800/40 p-3.5 sm:p-4 flex items-start gap-3 transition-colors hover:bg-white dark:hover:bg-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm"
                 >
-                  <div className={`mt-0.5 rounded-full p-1 shrink-0 ${activeColorClasses.badge}`}>
-                    <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
+                  <div className={`mt-0.5 rounded-lg p-1.5 shrink-0 ${activeColorClasses.badge}`}>
+                    {renderItemIcon(activePillar.id)}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <span className="text-xs sm:text-sm font-semibold text-brand-textPrimary leading-snug block">
+                    <span className="text-sm font-semibold text-brand-textPrimary leading-snug block">
                       {itemTitle}
                     </span>
                   </div>
@@ -319,18 +346,13 @@ export default function TechnologyCapabilities() {
             </div>
 
             {/* Factual Operational Notice Footer */}
-            <div className={`pt-4 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono rounded-xl p-3.5 ${activeColorClasses.noticeBorder}`}>
-              <div className="flex items-center gap-2">
-                <Info className="w-4 h-4 shrink-0 opacity-80" aria-hidden="true" />
-                <span>
-                  {activePillar.id === "bim-delivery" && t("about.tech.detail_notice_p1")}
-                  {activePillar.id === "development" && t("about.tech.detail_notice_p2")}
-                  {activePillar.id === "standards" && t("about.tech.detail_notice_p3")}
-                </span>
-              </div>
-              <span className="text-[11px] uppercase tracking-wider text-brand-textSecondary shrink-0 sm:text-right">
-                pyBIM Technical Catalogue v2
-              </span>
+            <div className={`flex items-start sm:items-center gap-3 text-xs font-mono rounded-xl p-3.5 border ${activeColorClasses.noticeBorder}`}>
+              <Info className="w-4 h-4 shrink-0 opacity-80 mt-0.5 sm:mt-0" aria-hidden="true" />
+              <p className="leading-relaxed">
+                {activePillar.id === "bim-delivery" && t("about.tech.detail_notice_p1")}
+                {activePillar.id === "development" && t("about.tech.detail_notice_p2")}
+                {activePillar.id === "standards" && t("about.tech.detail_notice_p3")}
+              </p>
             </div>
           </motion.div>
         </AnimatePresence>

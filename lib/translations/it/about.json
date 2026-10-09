@@ -733,5 +733,6 @@
   "about.tech.detail_eyebrow": "SPECIFICHE DI GRUPPO",
   "about.tech.detail_notice_p1": "Tutti i servizi rimangono subordinati ai requisiti di progetto e all'ambito operativo concordato.",
   "about.tech.detail_notice_p2": "I moduli di automazione della Fase 02 sono sottoposti a convalida tecnica interna prima del rilascio commerciale.",
-  "about.tech.detail_notice_p3": "I flussi assistiti da intelligenza artificiale sono oggetto di ricerca tecnica e non costituiscono certificazione legale né sostituiscono la revisione ingegneristica professionale."
+  "about.tech.detail_notice_p3": "I flussi assistiti da intelligenza artificiale sono oggetto di ricerca tecnica e non costituiscono certificazione legale né sostituiscono la revisione ingegneristica professionale.",
+  "about.tech.headings_count": "Voci"
 }
