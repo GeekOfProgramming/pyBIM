@@ -210,15 +210,10 @@ export default function TechnologyCapabilities() {
                   aria-pressed={isPillarSelected}
                   aria-label={`${t(pillar.titleKey)} — ${t(pillar.tagKey)}`}
                 >
-                  {/* 1. Header Metadata Row: Icon, Tag & Status Badge */}
-                  <div className="flex items-start justify-between gap-2.5 mb-3 sm:mb-3.5 w-full">
-                    <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                      <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl border flex items-center justify-center shrink-0 shadow-sm transition-transform duration-200 group-hover:scale-105 ${colors.badge}`}>
-                        {pillarIcons[pillar.icon]}
-                      </div>
-                      <span className="text-[11px] sm:text-xs font-mono font-bold tracking-wider text-brand-textSecondary uppercase truncate">
-                        {t(pillar.tagKey)}
-                      </span>
+                  {/* 1. Header Metadata Row: Icon & Status Badge */}
+                  <div className="flex items-center justify-between gap-2.5 mb-3 sm:mb-3.5 w-full">
+                    <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl border flex items-center justify-center shrink-0 shadow-sm transition-transform duration-200 group-hover:scale-105 ${colors.badge}`}>
+                      {pillarIcons[pillar.icon]}
                     </div>
 
                     <span className={`inline-flex items-center text-center px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-mono font-bold tracking-wide uppercase border shrink-0 ${colors.badge}`}>
