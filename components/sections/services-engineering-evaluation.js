@@ -6,9 +6,14 @@ import {
   FileCheck2, 
   Layers, 
   FileText,
-  SlidersHorizontal 
+  SlidersHorizontal,
+  ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
+  GitBranch
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
 const assessmentIcons = {
   "workflow-efficiency": Workflow,
@@ -20,160 +25,208 @@ export default function ServicesEngineeringEvaluation({ data }) {
   const shouldReduceMotion = useReducedMotion();
   const baseId = useId();
 
-  const evaluation = data || {
-    tag: "ENGINEERING EVALUATION",
-    badge: "PROJECT-SPECIFIC EVALUATION",
-    headline: "Clear Criteria. Reviewable Engineering Results.",
-    subtitle: "BIM workflows should be assessed against agreed project requirements, available model data, and relevant engineering checks—not universal speed or accuracy promises.",
-    methodologyNote: "Evaluation criteria, checks, and reporting methods are defined according to the project scope. The examples below illustrate possible assessment areas, not measured performance results.",
-    criteriaLabel: "EVALUATION CRITERIA",
-    assessments: []
-  };
+  if (!data) return null;
 
+  const evaluation = data;
   const assessments = evaluation.assessments || [];
+  const colLabels = evaluation.columnLabels || {
+    domain: "Review Domain",
+    criteria: "Evaluation Criteria",
+    evidence: "Possible Review Evidence"
+  };
 
   return (
     <section 
       id="engineering-evaluation"
-      className="py-20 md:py-24 lg:py-28 bg-brand-base border-b border-brand-border overflow-hidden"
+      className="scroll-mt-28 py-20 md:py-24 lg:py-28 bg-brand-base border-b border-brand-border relative overflow-hidden"
       aria-labelledby={`${baseId}-title`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* Background Rhythm: Family A (Base / Architectural) */}
+      <EngineeringBackdrop variant="base" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         
-        {/* Editorial Two-Column Composition */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
-          
-          {/* Left Column: Evaluation Introduction (35-40% width on desktop) */}
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="lg:col-span-5 flex flex-col"
+        {/* ========================================================================= */}
+        {/* AREA A: METHODOLOGY INTRODUCTION (Typographically crisp editorial lead)    */}
+        {/* ========================================================================= */}
+        <motion.div
+          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-4xl mb-12 lg:mb-16"
+        >
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3 mb-4">
+            <span className="h-px bg-brand-primary w-10 md:w-14" aria-hidden="true" />
+            <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
+              {evaluation.tag}
+            </span>
+          </div>
+
+          {/* Headline */}
+          <h2 
+            id={`${baseId}-title`}
+            className="text-section-sm lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
           >
-            {/* Section Eyebrow */}
-            <div className="flex items-center gap-3 mb-4">
-              <span className="h-px bg-brand-primary w-10 md:w-14" aria-hidden="true" />
-              <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
-                {evaluation.tag}
-              </span>
-            </div>
+            {evaluation.headline}
+          </h2>
 
-            {/* Headline */}
-            <h2 
-              id={`${baseId}-title`}
-              className="text-section-sm lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
-            >
-              {evaluation.headline}
-            </h2>
+          {/* Subtitle */}
+          <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed mb-6 max-w-3xl">
+            {evaluation.subtitle}
+          </p>
 
-            {/* Subtitle */}
-            <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed mb-8">
-              {evaluation.subtitle}
-            </p>
-
-            {/* Supporting Methodology Note Box */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-brand-surface border border-brand-border/80 shadow-sm">
-              <div className="flex items-center gap-2 mb-2.5">
-                <span className="w-2 h-2 rounded-full bg-brand-primary shrink-0" aria-hidden="true" />
-                <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-primary">
+          {/* Project-Specific Methodology Note */}
+          {evaluation.methodologyNote && (
+            <div className="inline-flex items-start sm:items-center gap-3 px-4 py-3 rounded-xl bg-brand-surface border border-brand-border/80 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-brand-primary shrink-0 mt-1 sm:mt-0" aria-hidden="true" />
+              <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-primary shrink-0">
                   {evaluation.badge}
                 </span>
+                <span className="hidden sm:inline text-brand-border" aria-hidden="true">·</span>
+                <span className="text-caption text-brand-textSecondary font-medium">
+                  {evaluation.methodologyNote}
+                </span>
               </div>
-              <p className="text-body-sm text-brand-textSecondary font-medium leading-relaxed">
-                {evaluation.methodologyNote}
-              </p>
             </div>
-          </motion.div>
+          )}
+        </motion.div>
 
-          {/* Right Column: Engineering Evaluation Ledger (60-65% width on desktop) */}
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className="lg:col-span-7"
-          >
-            <div className="rounded-3xl bg-brand-card border border-brand-border divide-y divide-brand-border/80 overflow-hidden shadow-sm">
-              {assessments.map((item, idx) => {
-                const IconComponent = assessmentIcons[item.id] || SlidersHorizontal;
+        {/* ========================================================================= */}
+        {/* AREA B: ENGINEERING VERIFICATION MATRIX (Unified Precision Review Sheet) */}
+        {/* ========================================================================= */}
+        <motion.div
+          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="rounded-3xl bg-brand-cardElevated border border-brand-border shadow-lg shadow-black/5 overflow-hidden"
+          role="region"
+          aria-label="Engineering Verification Matrix"
+        >
+          {/* Matrix Header Row (Visible on Desktop 1024px+) */}
+          <div className="hidden lg:grid grid-cols-12 gap-6 px-8 py-4 bg-brand-surface/90 border-b border-brand-border/80 text-technical font-mono font-bold uppercase tracking-wider text-brand-textSecondary">
+            <div className="col-span-5 flex items-center gap-2">
+              <GitBranch className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
+              <span>{colLabels.domain}</span>
+            </div>
+            <div className="col-span-4 flex items-center gap-2">
+              <SlidersHorizontal className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
+              <span>{colLabels.criteria}</span>
+            </div>
+            <div className="col-span-3 flex items-center gap-2">
+              <FileText className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
+              <span>{colLabels.evidence}</span>
+            </div>
+          </div>
 
-                return (
-                  <article
-                    key={item.id || idx}
-                    id={`${baseId}-assessment-${idx}`}
-                    aria-labelledby={`${baseId}-assessment-title-${idx}`}
-                    className="p-6 sm:p-8 hover:bg-brand-surface/40 transition-colors"
-                  >
-                    {/* Header Row: Num + Icon + Category */}
-                    <div className="flex items-center justify-between gap-3 mb-4">
-                      <div className="flex items-center gap-3">
-                        <span className="w-8 h-8 rounded-lg bg-brand-surface border border-brand-border text-brand-primary flex items-center justify-center font-mono font-bold text-caption shrink-0">
+          {/* Three Integrated Evaluation Tracks */}
+          <div className="divide-y divide-brand-border/80">
+            {assessments.map((item, idx) => {
+              const IconComponent = assessmentIcons[item.id] || SlidersHorizontal;
+
+              return (
+                <motion.article
+                  key={item.id || idx}
+                  id={`${baseId}-track-${idx}`}
+                  aria-labelledby={`${baseId}-track-title-${idx}`}
+                  initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                  className="p-6 sm:p-8 lg:px-8 lg:py-7 hover:bg-brand-surface/30 transition-colors"
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-6 items-center">
+                    
+                    {/* 1. Review Domain (Number + Icon + Category + Title + Description) */}
+                    <div className="lg:col-span-5 flex flex-col">
+                      <div className="flex items-center gap-3 mb-2.5">
+                        <span className="w-7 h-7 rounded-lg bg-brand-surface border border-brand-border text-brand-primary flex items-center justify-center font-mono font-bold text-caption shrink-0">
                           {item.num}
                         </span>
                         <div className="flex items-center gap-2 text-brand-primary">
                           <IconComponent className="w-4 h-4 shrink-0" aria-hidden="true" />
-                          <span className="text-technical font-mono font-bold uppercase tracking-wider">
+                          <span className="text-caption font-mono font-bold uppercase tracking-wider">
                             {item.category}
                           </span>
                         </div>
                       </div>
+
+                      <h3 
+                        id={`${baseId}-track-title-${idx}`}
+                        className="text-card-title sm:text-xl font-bold text-brand-textPrimary tracking-tight mb-2 leading-snug"
+                      >
+                        {item.title}
+                      </h3>
+
+                      <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed">
+                        {item.desc}
+                      </p>
                     </div>
 
-                    {/* Title */}
-                    <h3 
-                      id={`${baseId}-assessment-title-${idx}`}
-                      className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-2.5 leading-snug"
-                    >
-                      {item.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-body-sm text-brand-textSecondary font-medium leading-relaxed mb-6">
-                      {item.desc}
-                    </p>
-
-                    {/* Structured Evaluation Specification: Criteria + Evidence */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4 pt-5 border-t border-brand-border/60">
-                      
-                      {/* Evaluation Criteria */}
-                      <div>
-                        <span className="block text-technical font-mono font-bold uppercase tracking-wider text-brand-textSecondary mb-2">
-                          {evaluation.criteriaLabel || "EVALUATION CRITERIA"}
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {item.criteria && item.criteria.map((crit, cIdx) => (
-                            <span
-                              key={cIdx}
-                              className="px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-caption font-mono font-medium text-brand-textPrimary"
-                            >
-                              {crit}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Evidence Example */}
-                      <div>
-                        <span className="block text-technical font-mono font-bold uppercase tracking-wider text-brand-primary mb-2">
-                          {item.evidenceLabel || "POSSIBLE REVIEW EVIDENCE"}
-                        </span>
-                        <div className="p-2.5 rounded-xl bg-brand-surface border border-brand-border/70 flex items-start gap-2">
-                          <FileText className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" aria-hidden="true" />
-                          <span className="text-caption font-medium text-brand-textSecondary leading-normal">
-                            {item.evidence}
-                          </span>
-                        </div>
-                      </div>
-
+                    {/* Desktop Directional Traceability Indicator between Domain & Criteria */}
+                    <div className="hidden lg:flex items-center justify-center -mr-3 text-brand-primary/40 shrink-0 pointer-events-none" aria-hidden="true">
+                      <motion.div
+                        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.2 + idx * 0.1 }}
+                      >
+                        <ArrowRight className="w-4 h-4 text-brand-primary/50" />
+                      </motion.div>
                     </div>
-                  </article>
-                );
-              })}
-            </div>
-          </motion.div>
 
-        </div>
+                    {/* 2. Evaluation Criteria (Structured Tags with Numbered Traceability) */}
+                    <div className="lg:col-span-4 flex flex-col justify-center">
+                      <span className="lg:hidden block text-technical font-mono font-bold uppercase tracking-wider text-brand-textSecondary mb-2">
+                        {evaluation.criteriaLabel || colLabels.criteria}
+                      </span>
+                      <div className="flex flex-col gap-2">
+                        {item.criteria && item.criteria.map((crit, cIdx) => (
+                          <div 
+                            key={cIdx}
+                            className="flex items-center gap-2.5 p-2 rounded-lg bg-brand-surface/80 border border-brand-border/70 text-body-sm text-brand-textPrimary"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-brand-primary shrink-0" aria-hidden="true" />
+                            <span className="font-mono text-caption font-semibold leading-tight">{crit}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Desktop Directional Traceability Indicator between Criteria & Evidence */}
+                    <div className="hidden lg:flex items-center justify-center -mr-3 text-brand-primary/40 shrink-0 pointer-events-none" aria-hidden="true">
+                      <motion.div
+                        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.35 + idx * 0.1 }}
+                      >
+                        <ArrowRight className="w-4 h-4 text-brand-primary/50" />
+                      </motion.div>
+                    </div>
+
+                    {/* 3. Possible Review Evidence (Clean Ledger Specification) */}
+                    <div className="lg:col-span-3 flex flex-col justify-center">
+                      <span className="lg:hidden block text-technical font-mono font-bold uppercase tracking-wider text-brand-primary mb-2">
+                        {item.evidenceLabel || colLabels.evidence}
+                      </span>
+                      <div className="p-3.5 rounded-xl bg-brand-surface/90 border border-brand-border/90 flex items-start gap-2.5 shadow-sm">
+                        <FileText className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" aria-hidden="true" />
+                        <span className="text-caption font-medium text-brand-textSecondary leading-relaxed">
+                          {item.evidence}
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+        </motion.div>
 
       </div>
     </section>
