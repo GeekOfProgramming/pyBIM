@@ -7,7 +7,7 @@ import {
   ShieldCheck, 
   Boxes, 
   Workflow, 
-  ArrowRight
+  ArrowDown
 } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
@@ -165,11 +165,11 @@ export default function EngineeringImpact() {
                   }`}
                 >
                   <div className="flex items-start justify-between gap-4 mb-3">
-                    <div className="flex items-center gap-3">
-                      <span className={`inline-flex items-center justify-center font-mono text-xs font-bold px-2.5 py-1 rounded-md border ${item.badgeStyle}`}>
+                    <div className="flex items-center gap-3 min-w-0">
+                      <span className={`inline-flex items-center justify-center font-mono text-xs font-bold px-2.5 py-1 rounded-md border shrink-0 ${item.badgeStyle}`}>
                         {t(item.numKey)}
                       </span>
-                      <h3 className="text-base sm:text-lg font-bold text-brand-textPrimary tracking-tight">
+                      <h3 className="text-base sm:text-lg font-bold text-brand-textPrimary tracking-tight break-words">
                         {t(item.titleKey)}
                       </h3>
                     </div>
@@ -178,7 +178,7 @@ export default function EngineeringImpact() {
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-brand-textSecondary leading-relaxed">
+                  <p className="text-xs sm:text-sm text-brand-textSecondary leading-relaxed break-words">
                     {t(item.descKey)}
                   </p>
                 </button>
@@ -227,11 +227,11 @@ export default function EngineeringImpact() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold text-brand-textPrimary tracking-tight mb-2">
+                  <h3 className="text-xl sm:text-2xl font-bold text-brand-textPrimary tracking-tight mb-2 break-words">
                     {t(currentOutcome.titleKey)}
                   </h3>
 
-                  <p className="text-sm sm:text-base text-brand-textSecondary leading-relaxed">
+                  <p className="text-sm sm:text-base text-brand-textSecondary leading-relaxed break-words">
                     {t(currentOutcome.descKey)}
                   </p>
                 </div>
@@ -263,71 +263,73 @@ export default function EngineeringImpact() {
                   {currentOutcome.id === "outcome1" && (
                     <div className="flex flex-col gap-3">
                       {/* Step 1: Manual Tasks */}
-                      <div className="flex items-center justify-between gap-3 p-3 rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60">
-                        <div className="flex items-center gap-3 min-w-0">
+                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-2">
+                        {/* Upper row: Status dot + Full process title */}
+                        <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0" />
-                          <div className="min-w-0">
-                            <div className="text-sm sm:text-base font-semibold text-brand-textPrimary">
-                              {t("about.impact.v2.outcome1.diag_step1_title")}
-                            </div>
-                            <div className="text-xs sm:text-sm text-brand-textSecondary">
-                              {t("about.impact.v2.outcome1.diag_step1_sub")}
-                            </div>
-                          </div>
+                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                            {t("about.impact.v2.outcome1.diag_step1_title")}
+                          </h4>
                         </div>
-                        <span className="text-xs font-mono px-2.5 py-1 rounded bg-brand-surface text-brand-textSecondary shrink-0 border border-brand-border/40">
-                          {t("about.impact.v2.diag.stage_01")}
-                        </span>
+                        {/* Lower row: Full process description + wrapped badge */}
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-brand-border/30">
+                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                            {t("about.impact.v2.outcome1.diag_step1_sub")}
+                          </p>
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-brand-surface text-brand-textSecondary shrink-0 border border-brand-border/40">
+                            {t("about.impact.v2.diag.stage_01")}
+                          </span>
+                        </div>
                       </div>
 
-                      {/* Explicit Downward Connector Arrow */}
-                      <div className="flex justify-center -my-0.5 text-brand-primary" aria-hidden="true">
-                        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-                          <path d="M10 0V12M10 12L5 7M10 12L15 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                      {/* Directional Downward Connector Arrow */}
+                      <div className="flex justify-center -my-1 text-brand-primary" aria-hidden="true">
+                        <ArrowDown className="w-4 h-4" />
                       </div>
 
                       {/* Step 2: Structured Workflow */}
-                      <div className="flex items-center justify-between gap-3 p-3 rounded-lg border border-cyan-500/30 bg-cyan-500/5 dark:bg-cyan-950/20">
-                        <div className="flex items-center gap-3 min-w-0">
+                      <div className="rounded-lg border border-cyan-500/30 bg-cyan-500/5 dark:bg-cyan-950/20 p-3 sm:p-3.5 space-y-2">
+                        {/* Upper row */}
+                        <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-cyan-500 shrink-0" />
-                          <div className="min-w-0">
-                            <div className="text-sm sm:text-base font-semibold text-cyan-700 dark:text-cyan-300">
-                              {t("about.impact.v2.outcome1.diag_step2_title")}
-                            </div>
-                            <div className="text-xs sm:text-sm text-brand-textSecondary">
-                              {t("about.impact.v2.outcome1.diag_step2_sub")}
-                            </div>
-                          </div>
+                          <h4 className="text-sm sm:text-base font-semibold text-cyan-700 dark:text-cyan-300 break-words">
+                            {t("about.impact.v2.outcome1.diag_step2_title")}
+                          </h4>
                         </div>
-                        <span className="text-xs font-mono px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 shrink-0 border border-cyan-500/20">
-                          {t("about.impact.v2.diag.automated")}
-                        </span>
+                        {/* Lower row */}
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-cyan-500/20">
+                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                            {t("about.impact.v2.outcome1.diag_step2_sub")}
+                          </p>
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 shrink-0 border border-cyan-500/20 font-medium">
+                            {t("about.impact.v2.diag.automated")}
+                          </span>
+                        </div>
                       </div>
 
-                      {/* Explicit Downward Connector Arrow */}
-                      <div className="flex justify-center -my-0.5 text-brand-primary" aria-hidden="true">
-                        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-                          <path d="M10 0V12M10 12L5 7M10 12L15 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                      {/* Directional Downward Connector Arrow */}
+                      <div className="flex justify-center -my-1 text-brand-primary" aria-hidden="true">
+                        <ArrowDown className="w-4 h-4" />
                       </div>
 
                       {/* Step 3: Engineering Review */}
-                      <div className="flex items-center justify-between gap-3 p-3 rounded-lg border border-blue-500/40 bg-blue-500/10 dark:bg-blue-950/30">
-                        <div className="flex items-center gap-3 min-w-0">
+                      <div className="rounded-lg border border-blue-500/40 bg-blue-500/10 dark:bg-blue-950/30 p-3 sm:p-3.5 space-y-2">
+                        {/* Upper row */}
+                        <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-brand-primary shrink-0" />
-                          <div className="min-w-0">
-                            <div className="text-sm sm:text-base font-semibold text-brand-textPrimary">
-                              {t("about.impact.v2.outcome1.diag_step3_title")}
-                            </div>
-                            <div className="text-xs sm:text-sm text-brand-textSecondary">
-                              {t("about.impact.v2.outcome1.diag_step3_sub")}
-                            </div>
-                          </div>
+                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                            {t("about.impact.v2.outcome1.diag_step3_title")}
+                          </h4>
                         </div>
-                        <span className="text-xs font-mono px-2.5 py-1 rounded bg-blue-500/20 text-brand-primary font-medium shrink-0 border border-blue-500/30">
-                          {t("about.impact.v2.diag.expert_gate")}
-                        </span>
+                        {/* Lower row */}
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-blue-500/20">
+                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                            {t("about.impact.v2.outcome1.diag_step3_sub")}
+                          </p>
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-blue-500/20 text-brand-primary font-medium shrink-0 border border-blue-500/30">
+                            {t("about.impact.v2.diag.expert_gate")}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -336,71 +338,73 @@ export default function EngineeringImpact() {
                   {currentOutcome.id === "outcome2" && (
                     <div className="flex flex-col gap-3">
                       {/* Layer 1: Model Data */}
-                      <div className="flex items-center justify-between gap-3 p-3 rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60">
-                        <div className="flex items-center gap-3 min-w-0">
+                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-2">
+                        {/* Upper row */}
+                        <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0" />
-                          <div className="min-w-0">
-                            <div className="text-sm sm:text-base font-semibold text-brand-textPrimary">
-                              {t("about.impact.v2.outcome2.diag_step1_title")}
-                            </div>
-                            <div className="text-xs sm:text-sm text-brand-textSecondary">
-                              {t("about.impact.v2.outcome2.diag_step1_sub")}
-                            </div>
-                          </div>
+                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                            {t("about.impact.v2.outcome2.diag_step1_title")}
+                          </h4>
                         </div>
-                        <span className="text-xs font-mono px-2.5 py-1 rounded bg-brand-surface text-brand-textSecondary shrink-0 border border-brand-border/40">
-                          {t("about.impact.v2.diag.input_data")}
-                        </span>
+                        {/* Lower row */}
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-brand-border/30">
+                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                            {t("about.impact.v2.outcome2.diag_step1_sub")}
+                          </p>
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-brand-surface text-brand-textSecondary shrink-0 border border-brand-border/40">
+                            {t("about.impact.v2.diag.input_data")}
+                          </span>
+                        </div>
                       </div>
 
-                      {/* Explicit Downward Connector Arrow */}
-                      <div className="flex justify-center -my-0.5 text-cyan-600 dark:text-cyan-400" aria-hidden="true">
-                        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-                          <path d="M10 0V12M10 12L5 7M10 12L15 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                      {/* Directional Downward Connector Arrow */}
+                      <div className="flex justify-center -my-1 text-cyan-600 dark:text-cyan-400" aria-hidden="true">
+                        <ArrowDown className="w-4 h-4" />
                       </div>
 
                       {/* Layer 2: Defined Rules */}
-                      <div className="flex items-center justify-between gap-3 p-3 rounded-lg border border-blue-500/30 bg-blue-500/5 dark:bg-blue-950/20">
-                        <div className="flex items-center gap-3 min-w-0">
+                      <div className="rounded-lg border border-blue-500/30 bg-blue-500/5 dark:bg-blue-950/20 p-3 sm:p-3.5 space-y-2">
+                        {/* Upper row */}
+                        <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-brand-primary shrink-0" />
-                          <div className="min-w-0">
-                            <div className="text-sm sm:text-base font-semibold text-brand-textPrimary">
-                              {t("about.impact.v2.outcome2.diag_step2_title")}
-                            </div>
-                            <div className="text-xs sm:text-sm text-brand-textSecondary">
-                              {t("about.impact.v2.outcome2.diag_step2_sub")}
-                            </div>
-                          </div>
+                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                            {t("about.impact.v2.outcome2.diag_step2_title")}
+                          </h4>
                         </div>
-                        <span className="text-xs font-mono px-2.5 py-1 rounded bg-blue-500/10 text-brand-primary shrink-0 border border-blue-500/20">
-                          {t("about.impact.v2.diag.rule_matrix")}
-                        </span>
+                        {/* Lower row */}
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-blue-500/20">
+                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                            {t("about.impact.v2.outcome2.diag_step2_sub")}
+                          </p>
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-blue-500/10 text-brand-primary shrink-0 border border-blue-500/20 font-medium">
+                            {t("about.impact.v2.diag.rule_matrix")}
+                          </span>
+                        </div>
                       </div>
 
-                      {/* Explicit Downward Connector Arrow */}
-                      <div className="flex justify-center -my-0.5 text-cyan-600 dark:text-cyan-400" aria-hidden="true">
-                        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-                          <path d="M10 0V12M10 12L5 7M10 12L15 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                      {/* Directional Downward Connector Arrow */}
+                      <div className="flex justify-center -my-1 text-cyan-600 dark:text-cyan-400" aria-hidden="true">
+                        <ArrowDown className="w-4 h-4" />
                       </div>
 
                       {/* Layer 3: Reviewable Issues */}
-                      <div className="flex items-center justify-between gap-3 p-3 rounded-lg border border-amber-500/30 bg-amber-500/5 dark:bg-amber-950/20">
-                        <div className="flex items-center gap-3 min-w-0">
+                      <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 dark:bg-amber-950/20 p-3 sm:p-3.5 space-y-2">
+                        {/* Upper row */}
+                        <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0" />
-                          <div className="min-w-0">
-                            <div className="text-sm sm:text-base font-semibold text-brand-textPrimary">
-                              {t("about.impact.v2.outcome2.diag_step3_title")}
-                            </div>
-                            <div className="text-xs sm:text-sm text-brand-textSecondary">
-                              {t("about.impact.v2.outcome2.diag_step3_sub")}
-                            </div>
-                          </div>
+                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                            {t("about.impact.v2.outcome2.diag_step3_title")}
+                          </h4>
                         </div>
-                        <span className="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 shrink-0 border border-amber-500/20">
-                          {t("about.impact.v2.diag.flagged_action")}
-                        </span>
+                        {/* Lower row */}
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-amber-500/20">
+                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                            {t("about.impact.v2.outcome2.diag_step3_sub")}
+                          </p>
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 shrink-0 border border-amber-500/20 font-medium">
+                            {t("about.impact.v2.diag.flagged_action")}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -409,71 +413,73 @@ export default function EngineeringImpact() {
                   {currentOutcome.id === "outcome3" && (
                     <div className="flex flex-col gap-3">
                       {/* Inputs: 3 Disciplines */}
-                      <div className="flex items-center justify-between gap-3 p-3 rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60">
-                        <div className="flex items-center gap-3 min-w-0">
+                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-2">
+                        {/* Upper row */}
+                        <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0" />
-                          <div className="min-w-0">
-                            <div className="text-sm sm:text-base font-semibold text-brand-textPrimary">
-                              {t("about.impact.v2.outcome3.diag_step1_title")}
-                            </div>
-                            <div className="text-xs sm:text-sm text-brand-textSecondary">
-                              {t("about.impact.v2.outcome3.diag_step1_sub")}
-                            </div>
-                          </div>
+                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                            {t("about.impact.v2.outcome3.diag_step1_title")}
+                          </h4>
                         </div>
-                        <span className="text-xs font-mono px-2.5 py-1 rounded bg-brand-surface text-brand-textSecondary shrink-0 border border-brand-border/40">
-                          {t("about.impact.v2.diag.three_disciplines")}
-                        </span>
+                        {/* Lower row */}
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-brand-border/30">
+                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                            {t("about.impact.v2.outcome3.diag_step1_sub")}
+                          </p>
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-brand-surface text-brand-textSecondary shrink-0 border border-brand-border/40">
+                            {t("about.impact.v2.diag.three_disciplines")}
+                          </span>
+                        </div>
                       </div>
 
-                      {/* Explicit Downward Connector Arrow */}
-                      <div className="flex justify-center -my-0.5 text-indigo-600 dark:text-indigo-400" aria-hidden="true">
-                        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-                          <path d="M10 0V12M10 12L5 7M10 12L15 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                      {/* Directional Downward Connector Arrow */}
+                      <div className="flex justify-center -my-1 text-indigo-600 dark:text-indigo-400" aria-hidden="true">
+                        <ArrowDown className="w-4 h-4" />
                       </div>
 
                       {/* Exchange: OpenBIM */}
-                      <div className="flex items-center justify-between gap-3 p-3 rounded-lg border border-indigo-500/30 bg-indigo-500/5 dark:bg-indigo-950/20">
-                        <div className="flex items-center gap-3 min-w-0">
+                      <div className="rounded-lg border border-indigo-500/30 bg-indigo-500/5 dark:bg-indigo-950/20 p-3 sm:p-3.5 space-y-2">
+                        {/* Upper row */}
+                        <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-indigo-500 shrink-0" />
-                          <div className="min-w-0">
-                            <div className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-300">
-                              {t("about.impact.v2.outcome3.diag_step2_title")}
-                            </div>
-                            <div className="text-xs sm:text-sm text-brand-textSecondary">
-                              {t("about.impact.v2.outcome3.diag_step2_sub")}
-                            </div>
-                          </div>
+                          <h4 className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-300 break-words">
+                            {t("about.impact.v2.outcome3.diag_step2_title")}
+                          </h4>
                         </div>
-                        <span className="text-xs font-mono px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 shrink-0 border border-indigo-500/20">
-                          {t("about.impact.v2.diag.ifc_bcf")}
-                        </span>
+                        {/* Lower row */}
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-indigo-500/20">
+                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                            {t("about.impact.v2.outcome3.diag_step2_sub")}
+                          </p>
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 shrink-0 border border-indigo-500/20 font-medium">
+                            {t("about.impact.v2.diag.ifc_bcf")}
+                          </span>
+                        </div>
                       </div>
 
-                      {/* Explicit Downward Connector Arrow */}
-                      <div className="flex justify-center -my-0.5 text-indigo-600 dark:text-indigo-400" aria-hidden="true">
-                        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-                          <path d="M10 0V12M10 12L5 7M10 12L15 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                      {/* Directional Downward Connector Arrow */}
+                      <div className="flex justify-center -my-1 text-indigo-600 dark:text-indigo-400" aria-hidden="true">
+                        <ArrowDown className="w-4 h-4" />
                       </div>
 
                       {/* Output: Reviewed Deliverables */}
-                      <div className="flex items-center justify-between gap-3 p-3 rounded-lg border border-brand-primary/40 bg-brand-primary/10 dark:bg-blue-950/30">
-                        <div className="flex items-center gap-3 min-w-0">
+                      <div className="rounded-lg border border-brand-primary/40 bg-brand-primary/10 dark:bg-blue-950/30 p-3 sm:p-3.5 space-y-2">
+                        {/* Upper row */}
+                        <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-brand-primary shrink-0" />
-                          <div className="min-w-0">
-                            <div className="text-sm sm:text-base font-semibold text-brand-textPrimary">
-                              {t("about.impact.v2.outcome3.diag_step3_title")}
-                            </div>
-                            <div className="text-xs sm:text-sm text-brand-textSecondary">
-                              {t("about.impact.v2.outcome3.diag_step3_sub")}
-                            </div>
-                          </div>
+                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                            {t("about.impact.v2.outcome3.diag_step3_title")}
+                          </h4>
                         </div>
-                        <span className="text-xs font-mono px-2.5 py-1 rounded bg-blue-500/20 text-brand-primary font-medium shrink-0 border border-blue-500/30">
-                          {t("about.impact.v2.diag.coordinated")}
-                        </span>
+                        {/* Lower row */}
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-blue-500/20">
+                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                            {t("about.impact.v2.outcome3.diag_step3_sub")}
+                          </p>
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-blue-500/20 text-brand-primary font-medium shrink-0 border border-blue-500/30">
+                            {t("about.impact.v2.diag.coordinated")}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   )}
