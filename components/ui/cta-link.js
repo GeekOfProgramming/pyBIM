@@ -29,20 +29,20 @@ export default function CtaLink({
   ...props
 }) {
   const baseClasses =
-    "group inline-flex items-center justify-center text-center font-semibold normal-case text-body-sm tracking-normal transition-all duration-200 rounded-full select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-brand-base disabled:opacity-50 disabled:pointer-events-none";
+    "group inline-flex items-center justify-center text-center font-semibold normal-case text-body-sm tracking-normal transition-all duration-200 rounded-full select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-actionPrimary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-brand-base disabled:opacity-50 disabled:pointer-events-none";
 
   const sizeClasses = "min-h-[48px] sm:min-h-[52px] px-6 sm:px-7 py-3 sm:py-3.5";
 
   let variantClasses = "";
   if (variant === "primary") {
     variantClasses =
-      "bg-brand-primary hover:bg-brand-primary/90 text-white shadow-md shadow-brand-primary/20 hover:shadow-lg hover:shadow-brand-primary/30 active:scale-[0.99]";
+      "bg-brand-actionPrimary hover:bg-brand-actionPrimaryHover text-brand-actionOnPrimary shadow-md shadow-brand-actionPrimary/20 hover:shadow-lg hover:shadow-brand-actionPrimary/30 active:scale-[0.99]";
   } else if (variant === "secondary") {
     variantClasses =
-      "bg-brand-surface hover:bg-brand-card text-brand-textPrimary hover:text-brand-primary border border-brand-border hover:border-brand-primary/40 active:scale-[0.99]";
+      "bg-brand-surface hover:bg-brand-cardElevated text-brand-textPrimary hover:text-brand-primary border border-brand-border/80 hover:border-brand-primary/40 active:scale-[0.99]";
   } else if (variant === "tertiary") {
     variantClasses =
-      "text-brand-primary hover:text-brand-primary/80 !p-0 !min-h-0 !rounded-none font-semibold normal-case hover:underline";
+      "text-brand-actionPrimary hover:text-brand-actionPrimaryHover !p-0 !min-h-0 !rounded-none font-semibold normal-case hover:underline";
   }
 
   const widthClass = fullWidth ? "w-full" : "w-full sm:w-auto";

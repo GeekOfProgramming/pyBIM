@@ -242,8 +242,8 @@ export default function Header() {
             )}
           </div>
 
-          <Link href={`/${language}/portal/dashboard`} className="hidden rounded-full bg-brand-accent px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-brand-accentHover hover:-translate-y-0.5 md:flex items-center gap-2 font-mono">
-            <Shield className="w-3.5 h-3.5 text-white" />
+          <Link href={`/${language}/portal/dashboard`} className="hidden rounded-full bg-brand-accentAction px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-brand-accentOnAction shadow-md transition hover:bg-brand-accentHover hover:-translate-y-0.5 md:flex items-center gap-2 font-mono">
+            <Shield className="w-3.5 h-3.5 text-brand-accentOnAction" />
             {t("header.portal_btn") || "Client Portal"}
           </Link>
         </div>
