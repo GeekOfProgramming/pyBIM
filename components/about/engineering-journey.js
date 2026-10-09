@@ -101,31 +101,7 @@ export default function EngineeringJourney() {
           
           {/* Timeline Stages Container: Rail originates at Stage 01 node center and terminates at Stage 03 node center */}
           <div className="relative">
-            {/* Continuous Vertical Backbone Rail (Visible on md and above) */}
-            {/* Starts at top-13 (geometric center of Stage 01 w-12 node at top-7) */}
-            {/* Ends at bottom-13 (geometric center of Stage 03 w-12 node at top-7) */}
-            <div 
-              className="pointer-events-none absolute left-6 top-13 bottom-13 w-px z-0 hidden md:block" 
-              aria-hidden="true"
-            >
-              <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
-                <motion.line 
-                  x1="0" 
-                  y1="0" 
-                  x2="0" 
-                  y2="100%" 
-                  stroke="currentColor" 
-                  className="text-slate-300 dark:text-slate-700" 
-                  strokeWidth="2" 
-                  strokeDasharray="6 6"
-                  initial={shouldReduceMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 1 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                />
-              </svg>
-            </div>
-
+            {/* Continuous Vertical Backbone Rail: Connected via discrete inter-stage segments from Stage 01 to Stage 02 and Stage 02 to Stage 03 */}
             <motion.div 
               className="space-y-12 lg:space-y-16"
               variants={containerVariants}
@@ -141,6 +117,29 @@ export default function EngineeringJourney() {
                 variants={itemVariants}
                 className="relative z-10 md:pl-20"
               >
+                {/* Connecting Rail from Stage 01 to Stage 02 (Segment 1) */}
+                <div 
+                  className="pointer-events-none absolute left-6 top-[52px] -bottom-12 lg:-bottom-16 w-px z-0 hidden md:block" 
+                  aria-hidden="true"
+                >
+                  <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                    <motion.line 
+                      x1="0" 
+                      y1="0" 
+                      x2="0" 
+                      y2="100%" 
+                      stroke="currentColor" 
+                      className="text-slate-300 dark:text-slate-700" 
+                      strokeWidth="2" 
+                      strokeDasharray="6 6"
+                      initial={shouldReduceMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+                      whileInView={{ pathLength: 1, opacity: 1 }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                  </svg>
+                </div>
+
                 {/* Timeline Node Indicator centered at x = 24px (left: 0, w: 48px), y = 52px (top: 28px + 24px) */}
                 <div 
                   className="hidden md:flex absolute left-0 top-7 w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border-2 border-emerald-500 shadow-md shadow-emerald-500/15 items-center justify-center text-emerald-600 dark:text-emerald-400 z-20"
@@ -263,6 +262,29 @@ export default function EngineeringJourney() {
               variants={itemVariants}
               className="relative z-10 md:pl-20"
             >
+              {/* Connecting Rail from Stage 02 to Stage 03 (Segment 2) */}
+              <div 
+                className="pointer-events-none absolute left-6 top-[52px] -bottom-12 lg:-bottom-16 w-px z-0 hidden md:block" 
+                aria-hidden="true"
+              >
+                <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                  <motion.line 
+                    x1="0" 
+                    y1="0" 
+                    x2="0" 
+                    y2="100%" 
+                    stroke="currentColor" 
+                    className="text-slate-300 dark:text-slate-700" 
+                    strokeWidth="2" 
+                    strokeDasharray="6 6"
+                    initial={shouldReduceMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 1 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </svg>
+              </div>
+
               {/* Timeline Node Indicator centered at x = 24px (left: 0, w: 48px) */}
               <div 
                 className="hidden md:flex absolute left-0 top-7 w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border-2 border-brand-primary shadow-md shadow-brand-primary/15 items-center justify-center text-brand-primary z-20"
