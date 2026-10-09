@@ -41,10 +41,10 @@ export default function EngineeringImpact() {
       descKey: "about.impact.v2.outcome2.desc",
       icon: FileCheck2,
       accentColor: "cyan",
-      badgeStyle: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20",
+      badgeStyle: "bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border-cyan-500/20",
       activeBorder: "border-cyan-500 ring-1 ring-cyan-500/30 bg-brand-base dark:bg-slate-900 shadow-md",
       inactiveBorder: "border-brand-border bg-brand-base/60 dark:bg-slate-900/50 hover:border-cyan-500/40",
-      iconBoxStyle: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20",
+      iconBoxStyle: "bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border-cyan-500/20",
     },
     {
       id: "outcome3",
@@ -53,10 +53,10 @@ export default function EngineeringImpact() {
       descKey: "about.impact.v2.outcome3.desc",
       icon: Boxes,
       accentColor: "indigo",
-      badgeStyle: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+      badgeStyle: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border-indigo-500/20",
       activeBorder: "border-indigo-500 ring-1 ring-indigo-500/30 bg-brand-base dark:bg-slate-900 shadow-md",
       inactiveBorder: "border-brand-border bg-brand-base/60 dark:bg-slate-900/50 hover:border-indigo-500/40",
-      iconBoxStyle: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+      iconBoxStyle: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border-indigo-500/20",
     },
   ];
 
@@ -164,15 +164,10 @@ export default function EngineeringImpact() {
                     isSelected ? item.activeBorder : item.inactiveBorder
                   }`}
                 >
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <span className={`inline-flex items-center justify-center font-mono text-xs font-bold px-2.5 py-1 rounded-md border shrink-0 ${item.badgeStyle}`}>
-                        {t(item.numKey)}
-                      </span>
-                      <h3 className="text-base sm:text-lg font-bold text-brand-textPrimary tracking-tight break-words">
-                        {t(item.titleKey)}
-                      </h3>
-                    </div>
+                  <div className="flex items-center justify-between gap-4 mb-3">
+                    <h3 className="text-base sm:text-lg font-bold text-brand-textPrimary tracking-tight break-words min-w-0">
+                      {t(item.titleKey)}
+                    </h3>
                     <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 ${item.iconBoxStyle}`}>
                       <IconComponent className="w-4 h-4" aria-hidden="true" />
                     </div>
@@ -194,7 +189,7 @@ export default function EngineeringImpact() {
               id={`outcome-panel-${currentOutcome.id}`}
               role="tabpanel"
               aria-labelledby={`outcome-tab-${currentOutcome.id}`}
-              className="rounded-2xl sm:rounded-3xl border border-brand-border bg-brand-base/90 dark:bg-slate-900/90 backdrop-blur-md p-6 sm:p-8 lg:p-9 shadow-md relative overflow-hidden"
+              className="rounded-2xl sm:rounded-3xl border border-brand-border bg-brand-base/90 dark:bg-slate-900/90 backdrop-blur-md p-5 sm:p-6 lg:p-6 shadow-md relative overflow-hidden"
             >
               {/* Subtle Ambient Radial Highlight */}
               <div 
@@ -214,48 +209,27 @@ export default function EngineeringImpact() {
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: shouldReduceMotion ? 0.05 : 0.25, ease: "easeOut" }}
-                className="relative z-10 flex flex-col justify-between"
+                className="relative z-10"
               >
-                {/* Inspector Header */}
-                <div className="mb-6 pb-5 border-b border-brand-border/70">
-                  <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand-primary">
-                      {t("about.impact.v2.inspector.badge")} // {t(currentOutcome.numKey)}
-                    </span>
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-brand-surface text-brand-textSecondary border border-brand-border/60">
-                      {t("about.impact.v2.inspector.flow_direction")}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl sm:text-2xl font-bold text-brand-textPrimary tracking-tight mb-2 break-words">
-                    {t(currentOutcome.titleKey)}
-                  </h3>
-
-                  <p className="text-sm sm:text-base text-brand-textSecondary leading-relaxed break-words">
-                    {t(currentOutcome.descKey)}
-                  </p>
-                </div>
-
                 {/* Dedicated Engineering Process Diagram Area */}
                 <div 
                   className="rounded-xl border border-brand-border bg-brand-surface/90 dark:bg-slate-950/70 p-5 sm:p-6"
                   role="region"
                   aria-label={t("about.impact.v2.inspector.diagram_label")}
                 >
-                  <div className="flex items-center justify-between text-xs font-mono text-brand-textSecondary/80 mb-4 px-1">
-                    <span className="uppercase tracking-wider font-semibold text-brand-primary">
+                  <div className="flex items-center text-xs font-mono text-brand-textSecondary/80 mb-4 px-1">
+                    <span className={`uppercase tracking-wider font-semibold ${
+                      currentOutcome.id === "outcome1" 
+                        ? "text-brand-primary" 
+                        : currentOutcome.id === "outcome2" 
+                        ? "text-cyan-700 dark:text-cyan-400" 
+                        : "text-indigo-700 dark:text-indigo-400"
+                    }`}>
                       {currentOutcome.id === "outcome1" 
                         ? t("about.impact.v2.diag.process_sequence")
                         : currentOutcome.id === "outcome2"
                         ? t("about.impact.v2.diag.verification_schema")
                         : t("about.impact.v2.diag.coordination_model")}
-                    </span>
-                    <span>
-                      {currentOutcome.id === "outcome1"
-                        ? t("about.impact.v2.diag.stages_count")
-                        : currentOutcome.id === "outcome2"
-                        ? t("about.impact.v2.diag.audit_layers")
-                        : t("about.impact.v2.diag.handover_rail")}
                     </span>
                   </div>
 
@@ -263,7 +237,7 @@ export default function EngineeringImpact() {
                   {currentOutcome.id === "outcome1" && (
                     <div className="flex flex-col gap-3">
                       {/* Step 1: Manual Tasks */}
-                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-2">
+                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-1.5">
                         {/* Upper row: Status dot + Full process title */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0" />
@@ -271,14 +245,11 @@ export default function EngineeringImpact() {
                             {t("about.impact.v2.outcome1.diag_step1_title")}
                           </h4>
                         </div>
-                        {/* Lower row: Full process description + wrapped badge */}
-                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-brand-border/30">
+                        {/* Lower row: Full process description */}
+                        <div className="pt-1 border-t border-brand-border/30">
                           <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
                             {t("about.impact.v2.outcome1.diag_step1_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-brand-surface text-brand-textSecondary shrink-0 border border-brand-border/40">
-                            {t("about.impact.v2.diag.stage_01")}
-                          </span>
                         </div>
                       </div>
 
@@ -401,7 +372,7 @@ export default function EngineeringImpact() {
                           <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
                             {t("about.impact.v2.outcome2.diag_step3_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 shrink-0 border border-amber-500/20 font-medium">
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-700 dark:text-amber-300 shrink-0 border border-amber-500/20 font-medium">
                             {t("about.impact.v2.diag.flagged_action")}
                           </span>
                         </div>
@@ -413,7 +384,7 @@ export default function EngineeringImpact() {
                   {currentOutcome.id === "outcome3" && (
                     <div className="flex flex-col gap-3">
                       {/* Inputs: 3 Disciplines */}
-                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-2">
+                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-1.5">
                         {/* Upper row */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0" />
@@ -422,13 +393,10 @@ export default function EngineeringImpact() {
                           </h4>
                         </div>
                         {/* Lower row */}
-                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-brand-border/30">
+                        <div className="pt-1 border-t border-brand-border/30">
                           <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
                             {t("about.impact.v2.outcome3.diag_step1_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-brand-surface text-brand-textSecondary shrink-0 border border-brand-border/40">
-                            {t("about.impact.v2.diag.three_disciplines")}
-                          </span>
                         </div>
                       </div>
 
@@ -451,7 +419,7 @@ export default function EngineeringImpact() {
                           <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
                             {t("about.impact.v2.outcome3.diag_step2_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 shrink-0 border border-indigo-500/20 font-medium">
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 shrink-0 border border-indigo-500/20 font-medium">
                             {t("about.impact.v2.diag.ifc_bcf")}
                           </span>
                         </div>
