@@ -101,7 +101,7 @@ export default function ServicesEngineeringCapabilities({ data }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
-                className="rounded-2xl lg:rounded-3xl bg-brand-card/95 dark:bg-slate-900/90 backdrop-blur-sm border border-brand-border/80 shadow-sm transition-colors duration-200 relative overflow-hidden"
+                className="rounded-2xl lg:rounded-3xl bg-brand-cardElevated backdrop-blur-sm border border-brand-border/80 shadow-sm transition-colors duration-200 relative overflow-hidden"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 p-6 sm:p-8 lg:p-10 items-stretch">
                   

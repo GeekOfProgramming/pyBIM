@@ -213,7 +213,7 @@ export default function ServicesExecutionPipeline({ data }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className={`relative rounded-2xl lg:rounded-3xl bg-brand-card/95 dark:bg-slate-900/90 backdrop-blur-sm border border-brand-border/80 ${theme.borderHover} p-6 sm:p-8 lg:p-10 shadow-sm transition-colors duration-200`}
+                  className={`relative rounded-2xl lg:rounded-3xl bg-brand-cardElevated backdrop-blur-sm border border-brand-border/80 ${theme.borderHover} p-6 sm:p-8 lg:p-10 shadow-sm transition-colors duration-200`}
                 >
                   {/* Milestone Header Bar */}
                   <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-brand-border/60">
