@@ -217,7 +217,7 @@ export default function EngineeringImpact() {
                   role="region"
                   aria-label={t("about.impact.v2.inspector.diagram_label")}
                 >
-                  <div className="flex items-center justify-between text-xs font-mono text-brand-textSecondary/80 mb-4 px-1">
+                  <div className="flex items-center text-xs font-mono text-brand-textSecondary/80 mb-4 px-1">
                     <span className="uppercase tracking-wider font-semibold text-brand-primary">
                       {currentOutcome.id === "outcome1" 
                         ? t("about.impact.v2.diag.process_sequence")
@@ -225,20 +225,13 @@ export default function EngineeringImpact() {
                         ? t("about.impact.v2.diag.verification_schema")
                         : t("about.impact.v2.diag.coordination_model")}
                     </span>
-                    <span>
-                      {currentOutcome.id === "outcome1"
-                        ? t("about.impact.v2.diag.stages_count")
-                        : currentOutcome.id === "outcome2"
-                        ? t("about.impact.v2.diag.audit_layers")
-                        : t("about.impact.v2.diag.handover_rail")}
-                    </span>
                   </div>
 
                   {/* DIAGRAM 01: Workflow Efficiency */}
                   {currentOutcome.id === "outcome1" && (
                     <div className="flex flex-col gap-3">
                       {/* Step 1: Manual Tasks */}
-                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-2">
+                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-1.5">
                         {/* Upper row: Status dot + Full process title */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0" />
@@ -246,14 +239,11 @@ export default function EngineeringImpact() {
                             {t("about.impact.v2.outcome1.diag_step1_title")}
                           </h4>
                         </div>
-                        {/* Lower row: Full process description + wrapped badge */}
-                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-brand-border/30">
+                        {/* Lower row: Full process description */}
+                        <div className="pt-1 border-t border-brand-border/30">
                           <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
                             {t("about.impact.v2.outcome1.diag_step1_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-brand-surface text-brand-textSecondary shrink-0 border border-brand-border/40">
-                            {t("about.impact.v2.diag.stage_01")}
-                          </span>
                         </div>
                       </div>
 
@@ -388,7 +378,7 @@ export default function EngineeringImpact() {
                   {currentOutcome.id === "outcome3" && (
                     <div className="flex flex-col gap-3">
                       {/* Inputs: 3 Disciplines */}
-                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-2">
+                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-1.5">
                         {/* Upper row */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0" />
@@ -397,13 +387,10 @@ export default function EngineeringImpact() {
                           </h4>
                         </div>
                         {/* Lower row */}
-                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-brand-border/30">
+                        <div className="pt-1 border-t border-brand-border/30">
                           <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
                             {t("about.impact.v2.outcome3.diag_step1_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-brand-surface text-brand-textSecondary shrink-0 border border-brand-border/40">
-                            {t("about.impact.v2.diag.three_disciplines")}
-                          </span>
                         </div>
                       </div>
 
