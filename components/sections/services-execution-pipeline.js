@@ -192,8 +192,8 @@ export default function ServicesExecutionPipeline({ data }) {
                   {/* Horizontal Branch Connector into Card */}
                   <div className="absolute top-12 left-12 w-8 h-px border-t-2 border-dashed border-brand-border dark:border-slate-700 pointer-events-none z-0" />
 
-                  {/* Vertical Spine Segment to next milestone */}
-                  {!isLast && (
+                  {/* Vertical Spine Segment to next milestone or terminal endpoint */}
+                  {!isLast ? (
                     <div className="w-0.5 flex-1 relative my-2 bg-brand-border/60 dark:bg-slate-800">
                       <motion.div
                         className="w-full absolute inset-0 origin-top"
@@ -203,6 +203,29 @@ export default function ServicesExecutionPipeline({ data }) {
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] }}
                       />
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center my-2">
+                      <div className="w-0.5 h-10 relative bg-brand-border/60 dark:bg-slate-800">
+                        <motion.div
+                          className="w-full absolute inset-0 origin-top"
+                          style={{ backgroundColor: theme.spineColor }}
+                          initial={{ scaleY: shouldReduceMotion ? 1 : 0 }}
+                          whileInView={{ scaleY: 1 }}
+                          viewport={{ once: true, margin: "-50px" }}
+                          transition={{ duration: shouldReduceMotion ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
+                        />
+                      </div>
+                      {/* Terminal Endpoint Node communicating finished delivery pipeline */}
+                      <motion.div 
+                        initial={shouldReduceMotion ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                        whileInView={{ scale: 1, opacity: 1 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: shouldReduceMotion ? 0 : 0.3, delay: shouldReduceMotion ? 0 : 0.35 }}
+                        className="w-3.5 h-3.5 rounded-full border-2 border-emerald-500 bg-brand-surface shadow-sm shadow-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
+                      </motion.div>
                     </div>
                   )}
                 </div>
