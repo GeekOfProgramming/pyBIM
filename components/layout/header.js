@@ -197,7 +197,7 @@ export default function Header() {
                     <div className="w-[62%] bg-white dark:bg-slate-900 grid grid-cols-12 divide-x divide-brand-border/60 dark:divide-slate-800">
                       
                       {/* Left: Section Navigation ("On this page") */}
-                      <div className="col-span-7 p-5 flex flex-col justify-between">
+                      <div className="col-span-6 p-5 flex flex-col justify-between">
                         <div>
                           <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textSecondary block mb-3 px-2">
                             {t("header.mega.on_this_page") || "On this page"}
@@ -237,7 +237,7 @@ export default function Header() {
                       </div>
 
                       {/* Right: Contextual Overview & Synced Section Explanations */}
-                      <div className="col-span-5 p-5 bg-brand-surface/40 dark:bg-slate-950/30 flex flex-col justify-between">
+                      <div className="col-span-6 p-5 bg-brand-surface/40 dark:bg-slate-950/30 flex flex-col justify-between">
                         <div>
                           <div className="inline-flex items-center gap-2 text-technical font-mono font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 mb-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
@@ -254,7 +254,7 @@ export default function Header() {
 
                         <div className="pt-3 border-t border-brand-border/60 dark:border-slate-800/80">
                           <span className="text-technical font-mono text-brand-textSecondary/70 block">
-                            4 verified page sections
+                            {t("header.mega.stories_sections_count") || "04 Sections"}
                           </span>
                         </div>
                       </div>
