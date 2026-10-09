@@ -13,30 +13,30 @@ import {
   CheckCircle2, 
   Clock, 
   FlaskConical,
-  Code2
+  Code2,
+  Workflow
 } from "lucide-react";
 
 /**
  * ManifestoHero Component (Section 01 - The Manifesto Hero)
  * 
  * pyBIM Design System v2 — Engineering Precision
- * Task A01-R1: Editorial Balance, Diagram Clarity & Capability Accuracy
+ * Task A01-R2: Editorial Readability & Engineering Progression Rail
  * Background Family B: variant="surface" (#F1F5F9 light / #0F172A dark)
  * 
- * Strict Scope:
- * - Preserves original brand headline: "Scale Your BIM Execution Through Code, Not Headcount."
- * - Balanced two-part editorial narrative: Lead for current delivery services + R&D paragraph.
- * - Restructured 3-stage capability architecture diagram with clean vertical progression.
- * - Strictly >= 12px labels (no text-[10px]).
- * - Safe typography tokens (no shadow-xs or backdrop-blur-xs).
- * - Factual localized footer: ISO 19650 / UNI 11337 and Engineering Delivery / Applied R&D.
+ * Refinements:
+ * - Clear editorial measure on left column: Lead for current delivery + Paragraph 2 for R&D/Standards.
+ * - Right panel transformed into an integrated Engineering Progression Rail rather than 3 standalone nested boxes.
+ * - Continuous visual connector with distinct stage nodes (01 Established -> 02 In-house Testing -> 03 R&D).
+ * - Factual localized capability labels: no custom plugin products, no cloud engine claim.
+ * - Strictly >= 12px micro-labels, full reduced-motion support.
  */
 export default function ManifestoHero() {
   const { t } = useLanguage();
   const shouldReduceMotion = useReducedMotion();
   const titleId = useId();
 
-  // Animation variants
+  // Motion variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -58,7 +58,7 @@ export default function ManifestoHero() {
   };
 
   const diagramItemVariants = {
-    hidden: { opacity: shouldReduceMotion ? 1 : 0, scale: shouldReduceMotion ? 1 : 0.97 },
+    hidden: { opacity: shouldReduceMotion ? 1 : 0, scale: shouldReduceMotion ? 1 : 0.98 },
     visible: {
       opacity: 1,
       scale: 1,
@@ -112,7 +112,7 @@ export default function ManifestoHero() {
               {t("about.manifesto.title")}
             </motion.h1>
 
-            {/* Structured Editorial Copy: Concise Lead + R&D Note */}
+            {/* Structured Editorial Copy: Paragraph 1 (Lead) + Paragraph 2 (R&D & Standards) */}
             <motion.div variants={itemVariants} className="space-y-4 mb-8 max-w-2xl">
               <p className="text-base sm:text-lg text-brand-textPrimary font-medium leading-relaxed">
                 {t("about.manifesto.lead")}
@@ -157,7 +157,7 @@ export default function ManifestoHero() {
           <div className="lg:col-span-5 w-full">
             <motion.div 
               variants={diagramItemVariants}
-              className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/85 backdrop-blur-md p-6 sm:p-7 shadow-lg shadow-slate-900/5 dark:shadow-black/20 overflow-hidden"
+              className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/85 dark:bg-slate-900/85 backdrop-blur-md p-6 sm:p-7 shadow-lg shadow-slate-900/5 dark:shadow-black/20 overflow-hidden"
               role="region"
               aria-label={t("about.manifesto.aria_label")}
             >
@@ -168,7 +168,7 @@ export default function ManifestoHero() {
               />
 
               {/* Schematic Header */}
-              <div className="flex items-center justify-between pb-4 mb-5 border-b border-slate-200/80 dark:border-slate-800/80">
+              <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-200/80 dark:border-slate-800/80">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-brand-primary" aria-hidden="true" />
                   <span className="text-xs font-mono font-bold tracking-widest text-brand-primary uppercase">
@@ -180,12 +180,12 @@ export default function ManifestoHero() {
                 </span>
               </div>
 
-              {/* Architectural Evolution Flow (3 Layers) */}
-              <div className="space-y-4 relative">
+              {/* Coherent Connected Progression Rail */}
+              <div className="relative pl-7 sm:pl-8 space-y-6">
                 
-                {/* Connecting Axis Rail */}
+                {/* Continuous Connecting Rail Line */}
                 <div 
-                  className="pointer-events-none absolute left-5 top-7 bottom-7 w-px z-0 hidden sm:block" 
+                  className="pointer-events-none absolute left-[13px] sm:left-[15px] top-3 bottom-5 w-px z-0" 
                   aria-hidden="true"
                 >
                   <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
@@ -203,108 +203,105 @@ export default function ManifestoHero() {
                 </div>
 
                 {/* --------------------------------------------------- */}
-                {/* LAYER 01: Engineering Delivery (AVAILABLE NOW)      */}
+                {/* STAGE 01: Engineering Delivery (AVAILABLE NOW)      */}
                 {/* --------------------------------------------------- */}
-                <motion.div 
-                  variants={itemVariants}
-                  className="relative z-10 rounded-xl border border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-950/25 p-4 transition-colors"
-                >
-                  <div className="flex items-start gap-3.5">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-mono text-xs font-bold shadow-sm">
-                      <CheckCircle2 className="w-4 h-4" />
-                    </div>
+                <motion.div variants={itemVariants} className="relative z-10">
+                  {/* Rail Node */}
+                  <div 
+                    className="absolute -left-7 sm:-left-8 top-1 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-xs"
+                    aria-hidden="true"
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                  </div>
 
-                    <div className="flex-grow min-w-0">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">
-                            {t("about.manifesto.phase1_num")}
-                          </span>
-                          <h3 className="text-sm font-bold text-brand-textPrimary">
-                            {t("about.manifesto.phase1_title")}
-                          </h3>
-                        </div>
-                        <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
-                          {t("about.manifesto.phase1_status")}
+                  <div className="rounded-xl border border-emerald-500/25 bg-emerald-50/40 dark:bg-emerald-950/20 p-4 transition-colors">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">
+                          {t("about.manifesto.phase1_num")}
                         </span>
+                        <h3 className="text-sm font-bold text-brand-textPrimary">
+                          {t("about.manifesto.phase1_title")}
+                        </h3>
                       </div>
-                      <p className="text-xs text-brand-textSecondary leading-relaxed">
-                        {t("about.manifesto.phase1_desc")}
-                      </p>
+                      <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
+                        {t("about.manifesto.phase1_status")}
+                      </span>
                     </div>
+                    <p className="text-xs text-brand-textSecondary leading-relaxed">
+                      {t("about.manifesto.phase1_desc")}
+                    </p>
                   </div>
                 </motion.div>
 
                 {/* --------------------------------------------------- */}
-                {/* LAYER 02: Connected Automation (INTERNAL TESTING)  */}
+                {/* STAGE 02: Connected Automation (INTERNAL TESTING)  */}
                 {/* --------------------------------------------------- */}
-                <motion.div 
-                  variants={itemVariants}
-                  className="relative z-10 rounded-xl border border-brand-primary/30 bg-brand-primary/[0.04] dark:bg-blue-950/25 p-4 transition-colors"
-                >
-                  <div className="flex items-start gap-3.5">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-primary/15 border border-brand-primary/30 text-brand-primary flex items-center justify-center font-mono text-xs font-bold shadow-sm">
-                      <Network className="w-4 h-4" />
-                    </div>
+                <motion.div variants={itemVariants} className="relative z-10">
+                  {/* Rail Node */}
+                  <div 
+                    className="absolute -left-7 sm:-left-8 top-1 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-brand-primary text-brand-primary flex items-center justify-center shadow-xs"
+                    aria-hidden="true"
+                  >
+                    <Network className="w-3.5 h-3.5" />
+                  </div>
 
-                    <div className="flex-grow min-w-0">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono font-bold text-brand-primary">
-                            {t("about.manifesto.phase2_num")}
-                          </span>
-                          <h3 className="text-sm font-bold text-brand-textPrimary">
-                            {t("about.manifesto.phase2_title")}
-                          </h3>
-                        </div>
-                        <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-brand-primary/15 text-brand-primary dark:text-blue-300 border border-brand-primary/30">
-                          {t("about.manifesto.phase2_status")}
+                  <div className="rounded-xl border border-brand-primary/25 bg-brand-primary/[0.04] dark:bg-blue-950/20 p-4 transition-colors">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold text-brand-primary">
+                          {t("about.manifesto.phase2_num")}
                         </span>
+                        <h3 className="text-sm font-bold text-brand-textPrimary">
+                          {t("about.manifesto.phase2_title")}
+                        </h3>
                       </div>
-                      <p className="text-xs text-brand-textSecondary leading-relaxed">
-                        {t("about.manifesto.phase2_desc")}
-                      </p>
+                      <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-brand-primary/15 text-brand-primary dark:text-blue-300 border border-brand-primary/30">
+                        {t("about.manifesto.phase2_status")}
+                      </span>
                     </div>
+                    <p className="text-xs text-brand-textSecondary leading-relaxed">
+                      {t("about.manifesto.phase2_desc")}
+                    </p>
                   </div>
                 </motion.div>
 
                 {/* --------------------------------------------------- */}
-                {/* LAYER 03: Private AI Infrastructure (R&D)          */}
+                {/* STAGE 03: Private AI Infrastructure (R&D)          */}
                 {/* --------------------------------------------------- */}
-                <motion.div 
-                  variants={itemVariants}
-                  className="relative z-10 rounded-xl border border-slate-300 dark:border-slate-700/70 bg-slate-100/70 dark:bg-slate-800/40 p-4 transition-colors"
-                >
-                  <div className="flex items-start gap-3.5">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center font-mono text-xs font-bold shadow-sm">
-                      <FlaskConical className="w-4 h-4" />
-                    </div>
+                <motion.div variants={itemVariants} className="relative z-10">
+                  {/* Rail Node */}
+                  <div 
+                    className="absolute -left-7 sm:-left-8 top-1 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-600 text-slate-600 dark:text-slate-400 flex items-center justify-center shadow-xs"
+                    aria-hidden="true"
+                  >
+                    <FlaskConical className="w-3.5 h-3.5" />
+                  </div>
 
-                    <div className="flex-grow min-w-0">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono font-bold text-slate-600 dark:text-slate-400">
-                            {t("about.manifesto.phase3_num")}
-                          </span>
-                          <h3 className="text-sm font-bold text-brand-textPrimary">
-                            {t("about.manifesto.phase3_title")}
-                          </h3>
-                        </div>
-                        <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
-                          {t("about.manifesto.phase3_status")}
+                  <div className="rounded-xl border border-slate-300/80 dark:border-slate-700/70 bg-slate-100/60 dark:bg-slate-800/40 p-4 transition-colors">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold text-slate-600 dark:text-slate-400">
+                          {t("about.manifesto.phase3_num")}
                         </span>
+                        <h3 className="text-sm font-bold text-brand-textPrimary">
+                          {t("about.manifesto.phase3_title")}
+                        </h3>
                       </div>
-                      <p className="text-xs text-brand-textSecondary leading-relaxed">
-                        {t("about.manifesto.phase3_desc")}
-                      </p>
+                      <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
+                        {t("about.manifesto.phase3_status")}
+                      </span>
                     </div>
+                    <p className="text-xs text-brand-textSecondary leading-relaxed">
+                      {t("about.manifesto.phase3_desc")}
+                    </p>
                   </div>
                 </motion.div>
 
               </div>
 
               {/* Factual Architectural Linework Footer */}
-              <div className="mt-5 pt-3.5 border-t border-slate-200/70 dark:border-slate-800/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-brand-textSecondary">
+              <div className="mt-6 pt-3.5 border-t border-slate-200/70 dark:border-slate-800/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-brand-textSecondary">
                 <span>{t("about.manifesto.footer_standards")}</span>
                 <span className="flex items-center gap-1.5 text-brand-textPrimary">
                   <Code2 className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
