@@ -3,81 +3,55 @@ import HomePageLayout from "@/components/pages/home-page-layout";
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const titles = {
-    en: "Advanced BIM & Software Development Lab",
-    it: "Laboratorio Avanzato BIM & Sviluppo Software",
-    de: "Erweitertes BIM & Softwareentwicklungs-Labor"
+    en: "pyBIM | BIM Engineering & Revit Automation Services",
+    it: "pyBIM | Servizi di Ingegneria BIM & Automazione Revit",
+    de: "pyBIM | BIM-Engineering & Revit-Automatisierungsdienste"
+  };
+
+  const descriptions = {
+    en: "pyBIM supports AEC engineering teams with BIM workflows, Revit automation, structured model information and technical coordination. Explore our current services and development roadmap.",
+    it: "pyBIM supporta i team AEC con flussi di lavoro BIM, automazione Revit, gestione informativa del modello e coordinamento tecnico. Scopri i nostri servizi e la roadmap.",
+    de: "pyBIM unterstützt AEC-Teams mit BIM-Workflows, Revit-Automatisierung, strukturierten Modellinformationen und technischer Koordination. Entdecken Sie unsere Leistungen und Roadmap."
   };
   
   return {
-    title: titles[locale] || titles.en
+    title: {
+      absolute: titles[locale] || titles.en
+    },
+    description: descriptions[locale] || descriptions.en
   };
 }
+
+const siteUrl = "https://www.pybim.com";
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "pyBIM",
-  url: "https://pybim.com",
-  logo: "https://pybim.com/logo_black_transparent.png",
+  url: siteUrl,
+  logo: `${siteUrl}/logo_black_transparent.png`,
   email: "info@pybim.com",
-  description: "pyBIM is an engineering & software development lab for the AEC industry specializing in BIM automation, Revit API C# plugins, and OpenBIM workflows.",
-  sameAs: ["https://pybim.com"]
+  description: "pyBIM provides BIM engineering services and develops tailored automation workflows for the architecture, engineering and construction industry, with a focus on Revit-based processes, model information and technical coordination."
 };
 
-const localBusinessSchema = {
+const websiteSchema = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "pyBIM - Advanced BIM & Software Development Lab",
-  image: "https://pybim.com/og-image.jpg",
-  email: "info@pybim.com",
-  priceRange: "€€€",
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "IT"
-  },
-  areaServed: ["European Union", "DACH Region", "Italy", "United Kingdom"],
-  url: "https://pybim.com",
-  knowsAbout: [
-    "BIM Automation",
-    "Revit API Development",
-    "Dynamo Scripting",
-    "Python Data Pipelines",
-    "OpenBIM Workflows",
-    "UNI 11337 Standard",
-    "COBie Asset Handover",
-    "Digital Twins"
-  ]
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Is specialized coding expertise required to operate your custom plugins?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "No. All programmatic logic is encapsulated within intuitive Graphical User Interfaces (WPF) or custom ribbon toolbars. Execution requires zero syntax knowledge from the end-user."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "How does pyBIM ensure compliance with European BIM mandates?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Our workflows strictly adhere to ISO 19650, UNI 11337, and Decreto BIM protocols. We automate COBie extraction and CDE data validation to guarantee 100% tender compliance."
-      }
-    }
-  ]
+  "@type": "WebSite",
+  name: "pyBIM",
+  url: siteUrl
 };
 
 export default function HomePage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       <HomePageLayout />
     </>
   );

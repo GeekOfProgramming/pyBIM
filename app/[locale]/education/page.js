@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
     de: "Wir bereiten praxisnahe BIM-Lernressourcen, technische Einblicke und Workflow-Leitfäden vor. Demnächst verfügbar."
   };
 
-  const siteUrl = "https://pybim.com";
+  const siteUrl = "https://www.pybim.com";
   const currentUrl = `${siteUrl}/${locale}/education`;
 
   return {

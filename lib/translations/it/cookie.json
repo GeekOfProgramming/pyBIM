@@ -3,12 +3,24 @@
   "cookie_policy.placeholder": "Questo documento è attualmente in fase di adeguamento agli standard GDPR. La policy ufficiale generata da Iubenda sarà presto disponibile qui.",
   "cookie_policy.embed_link_text": "Informativa sui Cookie",
 
-  "cookie.banner.title": "La tua privacy è la nostra priorità",
-  "cookie.banner.desc_prefix": "Utilizziamo i cookie per migliorare la tua esperienza di navigazione, offrire contenuti personalizzati e analizzare il nostro traffico. Cliccando su \"Accetta tutti\", acconsenti all'uso dei cookie in conformità con la nostra",
+  "cookie.banner.title": "Scelte su Cookie e Privacy",
+  "cookie.banner.desc_prefix": "Utilizziamo l'archiviazione strettamente necessaria per il funzionamento del sito e analisi anonime opzionali per misurare le prestazioni. Puoi gestire le tue preferenze o consultare la nostra",
   "cookie.banner.privacy_policy": "Informativa sulla Privacy",
   "cookie.banner.and": "e",
   "cookie.banner.cookie_policy": "Informativa sui Cookie",
+  "cookie.banner.btn_reject_optional": "Rifiuta opzionali",
   "cookie.banner.btn_customize": "Personalizza",
   "cookie.banner.btn_accept_all": "Accetta tutti",
-  "cookie.banner.alert_customize": "Il pannello delle preferenze dei cookie si aprirà qui."
+
+  "cookie.modal.title": "Preferenze Cookie",
+  "cookie.modal.desc": "Gestisci quali tecnologie di memorizzazione autorizzare. Le tecnologie strettamente necessarie non possono essere disattivate poiché garantiscono la sicurezza e il funzionamento del sito.",
+  "cookie.category.necessary.title": "Strettamente Necessari",
+  "cookie.category.necessary.badge": "Sempre attivo",
+  "cookie.category.necessary.desc": "Essenziali per la navigazione di base, i token di sicurezza, le preferenze di lingua e lo stato dell'interfaccia.",
+  "cookie.category.analytics.title": "Analisi e Prestazioni",
+  "cookie.category.analytics.desc": "Consente la misurazione anonima e aggregata del traffico tramite Vercel Analytics per ottimizzare le prestazioni. Nessun tracciamento pubblicitario o di terze parti.",
+  "cookie.modal.btn_save": "Salva preferenze",
+  "cookie.modal.btn_accept_all": "Accetta tutti",
+  "cookie.modal.btn_cancel": "Annulla",
+  "cookie.footer.manage_preferences": "Preferenze Cookie"
 }

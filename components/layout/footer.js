@@ -217,11 +217,22 @@ export default function Footer() {
           <p className="text-xs font-mono text-white/80 text-center md:text-left">
             {t("footer.bottom.copyright")}
           </p>
-          <div className="flex gap-6 text-xs font-mono text-white/80 justify-center flex-wrap">
+          <div className="flex gap-6 text-xs font-mono text-white/80 justify-center flex-wrap items-center">
             <Link href="/privacy-policy" className="hover:text-white transition">{t("footer.bottom.privacy_policy")}</Link>
             <Link href="/security" className="hover:text-white transition">{t("footer.bottom.enterprise_security")}</Link>
             <Link href="/cookie-policy" className="hover:text-white transition">{t("footer.bottom.cookie_policy")}</Link>
             <Link href="/terms-and-conditions" className="hover:text-white transition">{t("footer.bottom.terms_and_conditions")}</Link>
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new Event("open_cookie_preferences"));
+                }
+              }}
+              className="hover:text-white transition cursor-pointer text-left bg-transparent border-none p-0 font-mono text-xs text-white/80 underline-offset-2 hover:underline"
+            >
+              {t("cookie.footer.manage_preferences") || "Cookie Preferences"}
+            </button>
           </div>
         </div>
       </div>

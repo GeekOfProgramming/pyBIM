@@ -3,12 +3,24 @@
   "cookie_policy.placeholder": "Dieses Dokument wird derzeit an die DSGVO-Standards angepasst. Die offizielle Richtlinie von Iubenda wird hier in Kürze verfügbar sein.",
   "cookie_policy.embed_link_text": "Cookie-Richtlinie",
 
-  "cookie.banner.title": "Ihre Privatsphäre ist unsere Priorität",
-  "cookie.banner.desc_prefix": "Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern, personalisierte Inhalte bereitzustellen und unseren Datenverkehr zu analysieren. Durch Klicken auf „Alle akzeptieren“ stimmen Sie der Verwendung von Cookies gemäß unserer",
+  "cookie.banner.title": "Cookie- und Datenschutzeinstellungen",
+  "cookie.banner.desc_prefix": "Wir nutzen technisch notwendige Speicherungen für den Betrieb der Website sowie optionale anonyme Analysen zur Leistungsmessung. Sie können Ihre Einstellungen anpassen oder unsere",
   "cookie.banner.privacy_policy": "Datenschutzerklärung",
   "cookie.banner.and": "und",
   "cookie.banner.cookie_policy": "Cookie-Richtlinie",
+  "cookie.banner.btn_reject_optional": "Optionale ablehnen",
   "cookie.banner.btn_customize": "Anpassen",
   "cookie.banner.btn_accept_all": "Alle akzeptieren",
-  "cookie.banner.alert_customize": "Das Cookie-Einstellungsfeld wird hier geöffnet."
+
+  "cookie.modal.title": "Cookie-Einstellungen",
+  "cookie.modal.desc": "Wählen Sie, welche Speichertechnologien Sie zulassen möchten. Technisch notwendige Technologien können nicht deaktiviert werden, da sie für Basisfunktionen und Sicherheit erforderlich sind.",
+  "cookie.category.necessary.title": "Technisch notwendig",
+  "cookie.category.necessary.badge": "Immer aktiv",
+  "cookie.category.necessary.desc": "Unerlässlich für Basisfunktionen, Sicherheits-Tokens, Sprachauswahl und Schnittstellen-Status.",
+  "cookie.category.analytics.title": "Analyse & Leistung",
+  "cookie.category.analytics.desc": "Ermöglicht eine anonyme, aggregierte Datenverkehrsmessung mit Vercel Analytics zur Optimierung der Website. Kein seitenübergreifendes Werbetracking.",
+  "cookie.modal.btn_save": "Einstellungen speichern",
+  "cookie.modal.btn_accept_all": "Alle akzeptieren",
+  "cookie.modal.btn_cancel": "Abbrechen",
+  "cookie.footer.manage_preferences": "Cookie-Einstellungen"
 }
