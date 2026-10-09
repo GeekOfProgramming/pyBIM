@@ -530,7 +530,7 @@ export default function EngineeringJourney() {
             </div>
           </div>
         </motion.div>
-
+        </div>
       </div>
     </section>
   );
