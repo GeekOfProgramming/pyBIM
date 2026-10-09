@@ -1,6 +1,6 @@
-# pyBIM Global Design System
+# pyBIM Global Design System v2: Engineering Precision
 
-This document serves as the single source of truth for design tokens, typography, semantic colors, brand identity, layout systems, and component styling conventions across the **pyBIM** digital platform.
+This document serves as the official specification for design tokens, typography, semantic colors, accessible contrast, section rhythm, component geometry, and motion guidelines across the **pyBIM** digital platform.
 
 ---
 
@@ -24,25 +24,27 @@ When parent badges or headers use Tailwind's `uppercase` utility, text can inadv
   ```
 
 ### Machine Identifiers & Technical Preservations
-Machine-readable references must remain intact and are exempt from display casing rules:
+Machine-readable references remain intact and are exempt from display casing rules:
 - URLs and domains: `https://pybim.com`, `pybim.it`
-- Email addresses: `info@pybim.com`, `careers@pybim.com`
 - Repository and code paths: `c:\bim`, `GeekOfProgramming/pyBIM`
 - Internal code identifiers, cookies, localStorage keys: `pybim_theme`, `pybim_token`
-- Package names and CLI commands
 
 ---
 
-## 2. Premium Visual Language & Art Direction
+## 2. Visual Language & Art Direction
 
-The pyBIM design philosophy communicates:
-**Engineering Precision × Modern Software × Enterprise Credibility**
+The pyBIM Design System v2 communicates:
+**Engineering Precision × Architectural Clarity × Modern Software × Enterprise Credibility**
 
-### Visual Qualities
-- **Clean & Precise:** Architectural grid foundations, fine hairline borders (`border-brand-border/60`), subtle depth.
-- **Controlled Palette:** Calibrated brand blue (`#2563EB` / `#3B82F6`), high-contrast dark mode slate neutrals, semantic status accents.
-- **Design Restraint:** Avoid gratuitous AI startup neon glows, excessive glassmorphism, or decorative clutter. Every visual element must serve communication, navigation, or engineering hierarchy.
-- **Technical Illustrations:** Use structured workflow HUDs, schematic diagrams, and terminal nodes to communicate real engineering methodology rather than generic marketing stock imagery.
+### Core Principles
+- **Dual Aesthetic:**
+  - **Dark (Engineering):** High technology, data processing, 3D modeling, deep precision.
+  - **Light (Architectural):** Technical documentation, clarity, structural transparency, corporate trust.
+- **Three Coordinated Brand Accents:**
+  - **Primary Blue (`#2563EB`):** Interactive actions, main CTA fills, selected states, authoritative focal points.
+  - **Technical Cyan (`#22D3EE`):** BIM schemas, architectural graphs, Revit API connectors, non-text data visualization.
+  - **Brand Orange (`#F97316`):** Client Portal identity, high-priority visual alert (never overused across engineering diagrams).
+- **Design Restraint:** Avoid generic marketing stock imagery, fake live terminal outputs, or decorative neon noise. Every graphic element represents real engineering methodology.
 
 ---
 
@@ -52,116 +54,140 @@ The platform standardizes on **exactly two font families** loaded natively via `
 
 | Font Family | Variable | Tailwind Class | Primary Role |
 | :--- | :--- | :--- | :--- |
-| **Inter** | `--font-inter` | `font-sans` | All headings, body copy, descriptions, buttons, forms, navigation, and general UI across EN, IT, and DE locales. |
+| **Inter** | `--font-inter` | `font-sans` | Headings, body copy, descriptions, buttons, forms, navigation, and commercial UI across EN, IT, and DE locales. |
 | **JetBrains Mono** | `--font-jetbrains-mono` | `font-mono` | Technical badges, engineering identifiers, code strings, process flow steps, and schematic diagram labels. |
 
-### Font Weights
-- `font-normal` (400): Standard body copy and secondary descriptions.
-- `font-medium` (500): UI buttons, list items, card descriptions, lead text.
-- `font-semibold` (600): Interactive action labels, card subheadings, technical tags.
-- `font-bold` (700): Section headings (`H2`), card titles (`H3`), primary buttons.
-- `font-extrabold` (800): Major Display titles, hero headlines.
-
 ---
 
-## 4. Typography Scale Tokens
+## 4. Responsive Typography Scale Tokens
 
-All font sizes, line heights, and letter-spacings are governed by centralized Tailwind `fontSize` tokens:
+All font sizes, line heights, and letter-spacings are governed by centralized Tailwind tokens:
 
-| Token | Size | Line Height | Tracking | Semantic Role / Usage |
-| :--- | :--- | :--- | :--- | :--- |
-| `text-display` | `3.5rem` (56px) | `4rem` (64px) | `-0.025em` | Main Hero headline (`H1`) on desktop. |
-| `text-section` | `2.5rem` (40px) | `3rem` (48px) | `-0.02em` | Primary Section title (`H2`) on desktop (`lg+`). |
-| `text-section-sm` | `2rem` (32px) | `2.5rem` (40px) | `-0.015em` | Section title on tablet/mobile, or sub-section banner headings. |
-| `text-card-title` | `1.5rem` (24px) | `2rem` (32px) | `-0.01em` | Major capability card / phase card heading (`H3`). |
-| `text-lead` | `1.125rem` (18px) | `1.75rem` (28px) | `-0.005em` | Section introductory lead paragraphs. |
-| `text-body` | `1rem` (16px) | `1.625rem` (26px) | `normal` | Standard descriptive paragraphs and card body copy. |
-| `text-body-sm` | `0.875rem` (14px) | `1.375rem` (22px) | `normal` | Secondary card copy, feature bullet items, micro-descriptions. |
-| `text-caption` | `0.75rem` (12px) | `1.125rem` (18px) | `0.04em` | Section eyebrows, button text, badges, status pills. |
-| `text-technical` | `0.6875rem` (11px)| `1rem` (16px) | `0.025em` | Technical diagram labels, schema nodes, mono identifiers (minimum legible size). |
+| Token | Mobile Target | Desktop Target | Line Height | Tracking | Semantic Role |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `text-display` | `36–40px` | `56–64px` | `1.1–1.15` | `-0.025em` | Main Hero headline (`H1`). |
+| `text-section` | `28–32px` | `40–44px` | `1.2` | `-0.02em` | Major Section title (`H2`). |
+| `text-section-sm` | `24px` | `32px` | `1.25` | `-0.015em` | Tablet section title, sub-section banner headings. |
+| `text-card-title` | `18–20px` | `22–24px` | `1.3` | `-0.01em` | Capability card / phase card heading (`H3`). |
+| `text-lead` | `17–18px` | `18–20px` | `1.55` | `-0.005em` | Section introductory lead paragraphs. |
+| `text-body` | `16px` | `16px` | `1.625` | `normal` | Standard descriptive paragraphs and card copy. |
+| `text-body-sm` | `14px` | `14px` | `1.4` | `normal` | Secondary card copy, feature bullet items. |
+| `text-caption` | `12–13px` | `12–13px` | `1.3` | `0.04em` | Section eyebrows, button text, badges, status pills. |
+| `text-technical` | `11–12px` | `12–13px` | `1.4` | `0.025em` | Technical diagram labels, schema nodes, mono identifiers. |
 
 > [!IMPORTANT]
-> **No Micro-Text Below 11px:** Arbitrary pixel classes such as `text-[8px]`, `text-[9px]`, and `text-[10px]` are prohibited. Use `text-technical` (11px) or `text-caption` (12px) with `font-mono`.
-> **No Text Truncation on Meaningful Outputs:** Avoid `truncate` on technical deliverables, schema properties, or German/Italian localized labels. Allow text to wrap cleanly.
+> **No Micro-Text Below 11px:** Arbitrary pixel classes such as `text-[8px]`, `text-[9px]`, and `text-[10px]` are prohibited.
+> **No Text Truncation on Meaningful Outputs:** Avoid `truncate` or `line-clamp` on essential engineering outputs. Allow German and Italian headings to wrap naturally.
 
 ---
 
-## 5. Grid, Alignment & Spacing System
+## 5. Semantic Color System & Dark Mode
 
-### Shared Container
-All page content aligns to the universal container:
-`max-w-7xl mx-auto px-6 lg:px-8`
+All colors use space-separated RGB CSS variables defined in `app/globals.css`:
 
-### Section-to-Section Rhythm
-- **Desktop (`lg` / `xl`):** `py-20 md:py-24 lg:py-28` (approx 88–112px padding).
-- **Tablet (`md`):** `py-16 md:py-20` (approx 64–80px padding).
-- **Mobile:** `py-12 md:py-16` (approx 48–64px padding).
-- Compact CTA banners adjust vertical padding down to maintain visual density.
-
-### Equal-Height vs Content-Driven Heights
-- **Comparison Grids (e.g. Section 02 Roadmap):** Use CSS `subgrid` across rows (`md:grid-rows-subgrid md:row-span-8`) so phase numbers, titles, descriptions, and CTA footers align across identical baselines.
-- **Asymmetrical / Editorial Panels (e.g. Section 08 Engagement Pathways, Section 06 Outcomes Rail):** Use content-driven height (`flex flex-col`) with `mt-auto` anchoring bottom elements, eliminating unnatural blank space caused by forced stretching or unbounded `justify-between`.
-
----
-
-## 6. Shared CTA & Interaction System
-
-All interactive navigation buttons use the standardized component:
-`components/ui/cta-link.js`
-
-### CTA Specifications
-
-| Property | Primary Variant | Secondary Variant | Tertiary Variant |
-| :--- | :--- | :--- | :--- |
-| **Visual Role** | Main section action / Available Now | Alternate action / In Development | Inline text navigation |
-| **Background** | `bg-brand-primary hover:bg-brand-primary/90` | `bg-brand-surface hover:bg-brand-card` | Transparent / None |
-| **Border** | None | `border border-brand-border hover:border-brand-primary/40` | None |
-| **Text Color** | `text-white` | `text-brand-textPrimary hover:text-brand-primary` | `text-brand-primary hover:underline` |
-| **Typography** | `text-caption font-bold uppercase tracking-wider` | `text-caption font-bold uppercase tracking-wider` | `text-body-sm font-semibold` |
-| **Geometry** | `rounded-full` | `rounded-full` | None |
-| **Touch Target** | `min-h-[48px] sm:min-h-[52px]` | `min-h-[48px] sm:min-h-[52px]` | Inline height |
-| **Padding** | `px-6 sm:px-7 py-3 sm:py-3.5` | `px-6 sm:px-7 py-3 sm:py-3.5` | `p-0` |
-| **Icon** | `ArrowRight` (16px, `group-hover:translate-x-1`) | `ArrowRight` (16px, `group-hover:translate-x-1`) | Inline chevron |
-| **Shadow** | `shadow-md shadow-brand-primary/20` | `shadow-sm` | None |
-| **Focus** | Visible outline ring `focus-visible:ring-2 focus-visible:ring-brand-primary` | Visible outline ring `focus-visible:ring-2 focus-visible:ring-brand-primary` | Standard browser focus ring |
-
----
-
-## 7. Usability Heuristics & UX Rules
-
-1. **Fitts's Law:** All primary and secondary interactive targets guarantee a minimum touch height of `48px` (`min-h-[48px] sm:min-h-[52px]`) with balanced horizontal padding for effortless mobile tapping and desktop clicking.
-2. **Hick's Law:** Avoid competing primary actions within the same zone. Each section presents one distinct primary action; secondary exploratory actions are visually subordinate.
-3. **Jakob's Law:** Standard links are used for page and hash transitions (`LocalizedLink`); buttons are reserved for state-changing forms and interactions. Navigation never mimics fake completed actions.
-4. **Von Restorff Effect:** Strategic prominence distinguishes available services ("Available Now" with blue CTA fill and emerald indicator) from in-development roadmap items (neutral secondary styling).
-5. **Progressive Disclosure:** Complex architecture diagrams provide readable high-level layers with structured annotations, allowing technical stakeholders to inspect details without cluttering core messaging.
-
----
-
-## 8. Semantic Color System
-
-The platform uses RGB CSS variables defined in `app/globals.css` with dark mode support via the `.dark` class:
-
-| Semantic Token | Tailwind Class | Light Mode (RGB / Hex) | Dark Mode (RGB / Hex) | Role / Usage |
+| Semantic Token | Tailwind Class | Light Mode (Hex / RGB) | Dark Mode (Hex / RGB) | Role / Usage |
 | :--- | :--- | :--- | :--- | :--- |
-| `base` | `bg-brand-base` | `255 255 255` (#FFFFFF) | `8 12 20` (#080C14) | Page background, alternating section foundation. |
-| `surface` | `bg-brand-surface` | `241 245 249` (#F1F5F9) | `15 23 42` (#0F172A) | Alternating section background, secondary containers. |
-| `surfaceHover` | `hover:bg-brand-surfaceHover` | `226 232 240` (#E2E8F0) | `30 41 59` (#1E293B) | Hover state for surface modules. |
-| `card` | `bg-brand-card` | `255 255 255` (#FFFFFF) | `15 23 42` (#0F172A) | Elevated capability panels, cards, dialogs. |
-| `primary` | `text-brand-primary` / `bg-brand-primary` | `37 99 235` (#2563EB) | `59 130 246` (#3B82F6) | Primary brand blue, key actions, icons, active borders. |
-| `primaryHover` | `hover:bg-brand-primaryHover` | `29 78 216` (#1D4ED8) | `96 165 250` (#60A5FA) | Primary button hover state. |
-| `accent` | `bg-brand-accent` | `249 115 22` (#F97316) | `249 115 22` (#F97316) | Intentional warm accents (e.g., Client Portal CTA). |
-| `textPrimary` | `text-brand-textPrimary` | `15 23 42` (#0F172A) | `248 250 252` (#F8FAFC) | Primary headings, titles, high-emphasis copy. |
-| `textSecondary` | `text-brand-textSecondary` | `71 85 105` (#475569) | `148 163 184` (#94A3B8) | Paragraph descriptions, subtitles, supporting metadata. |
-| `border` | `border-brand-border` | `226 232 240` (#E2E8F0) | `30 41 59` (#1E293B) | Subtle card borders, dividers, bounding tracks. |
+| `base` | `bg-brand-base` | `#FFFFFF` (`255 255 255`) | `#080C14` (`8 12 20`) | Canvas background, Family A base foundation. |
+| `surface` | `bg-brand-surface` | `#F1F5F9` (`241 245 249`) | `#0F172A` (`15 23 42`) | Family B surface foundation, secondary containers. |
+| `surfaceHover` | `hover:bg-brand-surfaceHover` | `#E2E8F0` (`226 232 240`) | `#1E293B` (`30 41 59`) | Hover state for surface cards and list items. |
+| `card` | `bg-brand-card` | `#FFFFFF` (`255 255 255`) | `#0F172A` (`15 23 42`) | Standard card surface. |
+| `cardElevated` | `bg-brand-cardElevated` | `#FFFFFF` (`255 255 255`) | `#152237` (`21 34 55`) | **Approved Dark Elevated Card** (provides tonal lift without heavy drop shadows). |
+| `primary` | `text-brand-primary` | `#2563EB` (`37 99 235`) | `#3B82F6` (`59 130 246`) | Brand blue for icons, linework, and borders. |
+| `primaryHover`| `hover:bg-brand-primaryHover`| `#1D4ED8` (`29 78 216`) | `#60A5FA` (`96 165 250`) | Hover state for secondary blue highlights. |
+| `actionPrimary` | `bg-brand-actionPrimary` | `#2563EB` (`37 99 235`) | `#2563EB` (`37 99 235`) | **Accessible Action Fill** (guarantees WCAG AA 5.17:1 on white text in both themes). |
+| `actionPrimaryHover` | `hover:bg-brand-actionPrimaryHover` | `#1D4ED8` (`29 78 216`) | `#1D4ED8` (`29 78 216`) | Action button hover fill. |
+| `actionOnPrimary` | `text-brand-actionOnPrimary` | `#FFFFFF` (`255 255 255`) | `#FFFFFF` (`255 255 255`) | Action button foreground label. |
+| `accentAction`| `bg-brand-accentAction` | `#F97316` (`249 115 22`) | `#F97316` (`249 115 22`) | Client Portal Action Orange. |
+| `accentOnAction` | `text-brand-accentOnAction` | `#0F172A` (`15 23 42`) | `#0F172A` (`15 23 42`) | **Accessible Dark Navy Label on Orange** (WCAG AA > 7.5:1 contrast). |
+| `textPrimary` | `text-brand-textPrimary` | `#0F172A` (`15 23 42`) | `#F8FAFC` (`248 250 252`) | Primary headings, high-emphasis copy. |
+| `textSecondary`| `text-brand-textSecondary` | `#475569` (`71 85 105`) | `#94A3B8` (`148 163 184`) | Descriptive paragraphs, subtitles, metadata. |
+| `border` | `border-brand-border` | `#E2E8F0` (`226 232 240`) | `#1E293B` (`30 41 59`) | Subtle hairline borders (`border-brand-border/80`). |
 
 ---
 
-## 9. Accessibility & Motion Guidelines
+## 6. Accessible Action Color System (WCAG AA Compliance)
 
-1. **Contrast Compliance:** All text styles conform to WCAG AA contrast standards (minimum 4.5:1 for regular text, 3:1 for large display titles).
-2. **Motion Preference:** Always use Framer Motion's `useReducedMotion()` hook. When `prefers-reduced-motion` is active:
-   - Disable continuous loops and pulse indicators.
-   - Set transform animations to static offsets (`y: 0`).
-   - Retain pure opacity transitions or immediate renders.
-3. **Semantic Hierarchy:** Exactly one `H1` per page, section headings strictly use `H2`, and card titles use `H3`.
-4. **Localization Resilience:** All layouts accommodate length variations across English, Italian, and German without overflowing or clipping.
+Ordinary text requires minimum **4.5:1** contrast ratio; large text requires **3:1**.
+
+### Contrast Audit Matrix
+| Visual Combination | Contrast Ratio | WCAG AA Status | Design System v2 Treatment |
+| :--- | :--- | :--- | :--- |
+| White on `#2563EB` (Primary Blue) | **5.17:1** | Pass | **Approved** for `CtaLink` primary in both Light and Dark modes. |
+| White on `#3B82F6` (Electric Blue) | **3.68:1** | Fail | Disallowed for white text. Used only for icons and linework. |
+| White on `#F97316` (Laser Orange) | **2.80:1** | Fail | Disallowed for white button text. |
+| Dark Navy (`#0F172A`) on `#F97316` | **7.54:1** | Pass (AAA) | **Approved** for Client Portal button label and badge. |
+
+---
+
+## 7. Section Rhythm System (A/B Alternation)
+
+Major content chapters must alternate backgrounds to reduce visual fatigue and communicate narrative progression:
+
+### Family A — BASE / Architectural (`bg-brand-base`)
+- Light: `#FFFFFF` / Dark: `#080C14`
+- Reusable helper: `<EngineeringBackdrop variant="base" />`
+- Visual motif: Clean architectural space, soft central illumination, masked geometric linework in negative space.
+- Zero vertical dashed content boundary lines (`border-l border-dashed` prohibited).
+
+### Family B — SURFACE / Technical (`bg-brand-surface`)
+- Light: `#F1F5F9` / Dark: `#0F172A`
+- Reusable helper: `<EngineeringBackdrop variant="surface" />`
+- Visual motif: Technical-paper atmosphere, quiet non-repeating drafting geometry, restrained ambient glow.
+- Zero dense repeating crosshairs, zero fake content bounding frames.
+
+### Page Allocation Matrix
+| Route | Section | Title | Family |
+| :--- | :--- | :--- | :--- |
+| **Services** | S01 | Hero & Overview | **A (Base)** |
+| | S02 | Execution Roadmap | **B (Surface)** |
+| | S03 | Early Access Banner | **A (Base)** |
+| | S04 | Engineering Capabilities (Workbench) | **B (Surface)** |
+| | S05 | Engineering Delivery Process | **A (Base)** |
+| | S06 | Engineering Outcomes | **B (Surface)** |
+| **Education** | Hero | Engineering Knowledge | **A (Base)** |
+| | Areas | Practical Learning & Guidance | **A (Base)** |
+| **Success Stories** | 01 | Success Stories Hero | **A (Base)** |
+| | 02 | Completed Projects | **B (Surface)** |
+| | 03 | AI & LLM Development | **A (Base)** |
+| | 04 | Active Research Workstreams | **A (Base)** *(nested within AI/LLM)* |
+| | 05 | Client Testimonials | **B (Surface)** |
+
+---
+
+## 8. Geometry & Spacing Standards
+
+- **Spacing Rhythm:** 4px grid.
+- **Universal Container:** `max-w-7xl mx-auto px-6 lg:px-8` (~1280px).
+- **Section Padding:**
+  - Desktop: `py-20 md:py-24 lg:py-28` (88–112px).
+  - Mobile: `py-12 md:py-16` (48–64px).
+- **Card Geometry:**
+  - Main Cards: `rounded-2xl lg:rounded-3xl` (16–24px).
+  - Technical Inset Panels: `rounded-xl lg:rounded-2xl` (12–16px).
+  - Padding: `p-6 sm:p-8 lg:p-10`.
+- **Button Geometry:**
+  - Main Action CTAs: `rounded-full`, min height `48px` (`min-h-[48px] sm:min-h-[52px]`).
+  - Small Controls / Pills: `rounded-lg` or `rounded-full`, min height `36px`.
+- **Card Nesting Hierarchy:**
+  1. Section Surface (`base` or `surface`).
+  2. Main Content Card (`cardElevated` or `card` with `border-brand-border/80`).
+  3. Supporting Technical HUD (inset with `bg-brand-surface` or `bg-slate-950/60`).
+  *(Never use 3+ nested bordered boxes).*
+
+---
+
+## 9. Motion Standards & Accessibility
+
+Framer Motion is the official animation library.
+
+### Motion Tiers
+- **Tier 1 (Micro Interactions):** `150–220ms` (buttons, tabs, hover states, toggles).
+- **Tier 2 (Component Entrances & SVGs):** `350–900ms` (pathLength drawing, progress bars, workflow nodes).
+- **Tier 3 (Section Reveals):** `450–700ms` (editorial text fade-ins, viewport triggers with `viewport={{ once: true }}`).
+
+### Reduced Motion Rules
+Always integrate `useReducedMotion()`. When true:
+- Set `scale` and `y` offsets to 0 immediately.
+- Draw SVG paths with `pathLength: 1` instantly.
+- Retain instantaneous opacity transitions (`duration: 0`).
+- Prohibit infinite looping pulses or simulated scanlines.

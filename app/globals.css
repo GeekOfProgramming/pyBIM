@@ -7,10 +7,16 @@
   --brand-surface: 241 245 249;       /* #F1F5F9 */
   --brand-surfaceHover: 226 232 240;  /* #E2E8F0 */
   --brand-card: 255 255 255;          /* #FFFFFF */
+  --brand-cardElevated: 255 255 255;  /* #FFFFFF */
   --brand-primary: 37 99 235;         /* #2563EB */
   --brand-primaryHover: 29 78 216;    /* #1D4ED8 */
+  --brand-actionPrimary: 37 99 235;   /* #2563EB - Accessible Action Blue (WCAG AA > 4.5:1 on white) */
+  --brand-actionPrimaryHover: 29 78 216; /* #1D4ED8 */
+  --brand-actionOnPrimary: 255 255 255;  /* #FFFFFF */
   --brand-accent: 249 115 22;         /* #F97316 */
   --brand-accentHover: 234 88 12;     /* #EA580C */
+  --brand-accentAction: 249 115 22;   /* #F97316 - Client Portal Action Orange */
+  --brand-accentOnAction: 15 23 42;   /* #0F172A - Dark Navy on Orange (WCAG AA > 7:1) */
   --brand-textPrimary: 15 23 42;      /* #0F172A */
   --brand-textSecondary: 71 85 105;   /* #475569 */
   --brand-border: 226 232 240;        /* #E2E8F0 */
@@ -21,10 +27,16 @@
   --brand-surface: 15 23 42;          /* #0F172A Slate 900 */
   --brand-surfaceHover: 30 41 59;     /* #1E293B Slate 800 */
   --brand-card: 15 23 42;             /* #0F172A Slate 900 */
-  --brand-primary: 59 130 246;        /* #3B82F6 Electric Blue */
+  --brand-cardElevated: 21 34 55;     /* #152237 Approved Dark Elevated Card */
+  --brand-primary: 59 130 246;        /* #3B82F6 Electric Blue for Linework / Icons */
   --brand-primaryHover: 96 165 250;   /* #60A5FA Blue 400 */
+  --brand-actionPrimary: 37 99 235;   /* #2563EB - Contrast-safe Action Blue in Dark Mode too (5.17:1 on white) */
+  --brand-actionPrimaryHover: 29 78 216; /* #1D4ED8 */
+  --brand-actionOnPrimary: 255 255 255;  /* #FFFFFF */
   --brand-accent: 249 115 22;         /* #F97316 Laser Orange */
   --brand-accentHover: 251 146 60;    /* #FB923C Orange 400 */
+  --brand-accentAction: 249 115 22;   /* #F97316 - Client Portal Action Orange */
+  --brand-accentOnAction: 15 23 42;   /* #0F172A - Dark Navy on Orange (WCAG AA > 7:1) */
   --brand-textPrimary: 248 250 252;   /* #F8FAFC Ice White */
   --brand-textSecondary: 148 163 184; /* #94A3B8 Silver Gray */
   --brand-border: 30 41 59;           /* #1E293B Slate 800 */
