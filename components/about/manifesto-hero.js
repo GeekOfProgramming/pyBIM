@@ -208,7 +208,7 @@ export default function ManifestoHero() {
                 <motion.div variants={itemVariants} className="relative z-10">
                   {/* Rail Node: centered at x = 14px (left: 0, w: 28px) */}
                   <div 
-                    className="absolute left-[-36px] sm:left-[-40px] top-3.5 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-xs"
+                    className="absolute left-[-36px] sm:left-[-40px] top-3.5 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-sm"
                     aria-hidden="true"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5" />
@@ -241,7 +241,7 @@ export default function ManifestoHero() {
                 <motion.div variants={itemVariants} className="relative z-10">
                   {/* Rail Node: centered at x = 14px (left: 0, w: 28px) */}
                   <div 
-                    className="absolute left-[-36px] sm:left-[-40px] top-3.5 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-brand-primary text-brand-primary flex items-center justify-center shadow-xs"
+                    className="absolute left-[-36px] sm:left-[-40px] top-3.5 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-brand-primary text-brand-primary flex items-center justify-center shadow-sm"
                     aria-hidden="true"
                   >
                     <Network className="w-3.5 h-3.5" />
@@ -274,7 +274,7 @@ export default function ManifestoHero() {
                 <motion.div variants={itemVariants} className="relative z-10">
                   {/* Rail Node: centered at x = 14px (left: 0, w: 28px) */}
                   <div 
-                    className="absolute left-[-36px] sm:left-[-40px] top-3.5 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-600 text-slate-600 dark:text-slate-400 flex items-center justify-center shadow-xs"
+                    className="absolute left-[-36px] sm:left-[-40px] top-3.5 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-600 text-slate-600 dark:text-slate-400 flex items-center justify-center shadow-sm"
                     aria-hidden="true"
                   >
                     <FlaskConical className="w-3.5 h-3.5" />
@@ -305,7 +305,7 @@ export default function ManifestoHero() {
 
               {/* Factual Architectural Linework Footer: 2 naturally balanced columns */}
               <div className="mt-6 pt-3.5 border-t border-slate-200/70 dark:border-slate-800/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs font-mono text-brand-textSecondary">
-                <span className="truncate">{t("about.manifesto.footer_standards")}</span>
+                <span>{t("about.manifesto.footer_standards")}</span>
                 <span className="flex items-center gap-1.5 text-brand-textPrimary shrink-0 sm:self-auto">
                   <Code2 className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
                   <span>{t("about.manifesto.footer_delivery")}</span>
