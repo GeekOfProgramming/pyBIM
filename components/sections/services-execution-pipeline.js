@@ -205,15 +205,15 @@ export default function ServicesExecutionPipeline({ data }) {
                       />
                     </div>
                   ) : (
-                    <div className="flex flex-col items-center my-2">
-                      <div className="w-0.5 h-10 relative bg-brand-border/60 dark:bg-slate-800">
+                    <div className="flex flex-col items-center my-2 flex-1 max-h-56 min-h-[140px]">
+                      <div className="w-0.5 flex-1 relative bg-brand-border/60 dark:bg-slate-800">
                         <motion.div
                           className="w-full absolute inset-0 origin-top"
                           style={{ backgroundColor: theme.spineColor }}
                           initial={{ scaleY: shouldReduceMotion ? 1 : 0 }}
                           whileInView={{ scaleY: 1 }}
                           viewport={{ once: true, margin: "-50px" }}
-                          transition={{ duration: shouldReduceMotion ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
+                          transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] }}
                         />
                       </div>
                       {/* Terminal Endpoint Node communicating finished delivery pipeline */}
@@ -221,8 +221,8 @@ export default function ServicesExecutionPipeline({ data }) {
                         initial={shouldReduceMotion ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: shouldReduceMotion ? 0 : 0.3, delay: shouldReduceMotion ? 0 : 0.35 }}
-                        className="w-3.5 h-3.5 rounded-full border-2 border-emerald-500 bg-brand-surface shadow-sm shadow-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5"
+                        transition={{ duration: shouldReduceMotion ? 0 : 0.3, delay: shouldReduceMotion ? 0 : 0.45 }}
+                        className="w-4 h-4 rounded-full border-2 border-emerald-500 bg-brand-surface shadow-sm shadow-emerald-500/25 flex items-center justify-center shrink-0 mt-1 ring-4 ring-emerald-500/10"
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
                       </motion.div>
@@ -238,7 +238,7 @@ export default function ServicesExecutionPipeline({ data }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className={`relative rounded-2xl lg:rounded-3xl bg-brand-card/95 dark:bg-slate-900/90 backdrop-blur-sm border border-brand-border/80 ${theme.borderHover} p-6 sm:p-8 lg:p-10 shadow-sm transition-colors duration-200`}
+                  className={`relative rounded-2xl lg:rounded-3xl bg-brand-cardElevated backdrop-blur-sm border border-brand-border/80 ${theme.borderHover} p-6 sm:p-8 lg:p-10 shadow-sm transition-colors duration-200`}
                 >
                   {/* Milestone Header Bar */}
                   <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-brand-border/60">
