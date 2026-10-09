@@ -224,82 +224,95 @@ export default function ServicesEngineeringOutcomes({ data }) {
                 <article
                   key={col.id || idx}
                   aria-labelledby={`${baseId}-outcome-heading-${idx}`}
-                  className={`p-6 xl:p-7 rounded-2xl transition-all duration-200 relative ${
+                  className={`group p-6 xl:p-7 rounded-2xl transition-all duration-200 relative cursor-pointer focus-within:ring-2 focus-within:${accent.ring} ${
                     isSelected
-                      ? `bg-brand-card border-2 ${accent.border} shadow-md ring-2 ${accent.ring}`
-                      : "bg-brand-card/80 border border-brand-border/70 hover:border-brand-border hover:bg-brand-card"
+                      ? `bg-brand-cardElevated border-2 ${accent.border} shadow-md ring-2 ${accent.ring}`
+                      : "bg-brand-cardElevated/90 border border-brand-border/70 hover:border-brand-border hover:bg-brand-cardElevated"
                   }`}
+                  onClick={() => setSelectedIdx(idx)}
                 >
+                  {/* Native Accessible Button Hit Target Spanning Full Card Surface */}
+                  <button
+                    type="button"
+                    aria-pressed={isSelected}
+                    aria-labelledby={`${baseId}-outcome-heading-${idx}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedIdx(idx);
+                    }}
+                    className="absolute inset-0 w-full h-full rounded-2xl cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 z-10"
+                    aria-label={`${col.title} — ${isSelected ? (labels.selectedStatus || "Active") : (labels.inspectButton || "Select Outcome")}`}
+                  />
+
                   {/* Active Indicator Strip */}
                   {isSelected && (
                     <motion.div
                       layoutId={`${baseId}-active-pill`}
-                      className={`absolute left-0 top-6 bottom-6 w-1 rounded-r-full ${accent.solidBg}`}
+                      className={`absolute left-0 top-6 bottom-6 w-1 rounded-r-full ${accent.solidBg} z-20 pointer-events-none`}
                       transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
                     />
                   )}
 
-                  {/* Header Row */}
-                  <div className="flex items-center justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-2.5">
-                      <div className={`w-8 h-8 rounded-xl ${accent.bg} border ${accent.lightBorder} flex items-center justify-center shrink-0`}>
-                        {getOutcomeIcon(col.icon || col.id, "w-4 h-4")}
-                      </div>
-                      <span className={`text-technical font-mono font-bold uppercase tracking-wider ${accent.text}`}>
-                        {col.category}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <span className="text-technical font-mono font-bold text-brand-textSecondary px-2 py-0.5 rounded bg-brand-surface border border-brand-border">
-                        {col.num || `0${idx + 1}`}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Full Title (H3) */}
-                  <h3 
-                    id={`${baseId}-outcome-heading-${idx}`}
-                    className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-2.5"
-                  >
-                    {col.title}
-                  </h3>
-
-                  {/* Complete Description (Always readable) */}
-                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed mb-4">
-                    {col.desc}
-                  </p>
-
-                  {/* Topics Pills */}
-                  {Array.isArray(col.topics) && (
-                    <div className="flex flex-wrap gap-1.5 pt-3 mb-4 border-t border-brand-border/50">
-                      {col.topics.map((topic, tIdx) => (
-                        <span 
-                          key={tIdx}
-                          className="inline-flex items-center text-technical font-mono font-medium px-2 py-0.5 rounded bg-brand-surface border border-brand-border text-brand-textSecondary"
-                        >
-                          {topic}
+                  <div className="relative z-0 pointer-events-none">
+                    {/* Header Row */}
+                    <div className="flex items-center justify-between gap-3 mb-3">
+                      <div className="flex items-center gap-2.5">
+                        <div className={`w-8 h-8 rounded-xl ${accent.bg} border ${accent.lightBorder} flex items-center justify-center shrink-0`}>
+                          {getOutcomeIcon(col.icon || col.id, "w-4 h-4")}
+                        </div>
+                        <span className={`text-technical font-mono font-bold uppercase tracking-wider ${accent.text}`}>
+                          {col.category}
                         </span>
-                      ))}
-                    </div>
-                  )}
+                      </div>
 
-                  {/* Accessible Native Focus/Inspect Button */}
-                  <div className="pt-2">
-                    <button
-                      type="button"
-                      aria-pressed={isSelected}
-                      onClick={() => setSelectedIdx(idx)}
-                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-technical font-mono font-bold uppercase transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${
-                        isSelected
-                          ? `${accent.bg} ${accent.text} border ${accent.lightBorder}`
-                          : "bg-brand-surface border border-brand-border text-brand-textSecondary hover:text-brand-textPrimary hover:border-brand-primary/40"
-                      }`}
+                      <div className="flex items-center gap-2">
+                        <span className="text-technical font-mono font-bold text-brand-textSecondary px-2 py-0.5 rounded bg-brand-surface border border-brand-border">
+                          {col.num || `0${idx + 1}`}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Full Title (H3) */}
+                    <h3 
+                      id={`${baseId}-outcome-heading-${idx}`}
+                      className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-2.5"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-current" aria-hidden="true" />
-                      <span>{isSelected ? (labels.selectedStatus || "Active") : (labels.inspectButton || "Inspect Workflow")}</span>
-                      <ArrowRight className="w-3 h-3" aria-hidden="true" />
-                    </button>
+                      {col.title}
+                    </h3>
+
+                    {/* Complete Description (Always readable) */}
+                    <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed mb-4">
+                      {col.desc}
+                    </p>
+
+                    {/* Topics Pills */}
+                    {Array.isArray(col.topics) && (
+                      <div className="flex flex-wrap gap-1.5 pt-3 mb-4 border-t border-brand-border/50">
+                        {col.topics.map((topic, tIdx) => (
+                          <span 
+                            key={tIdx}
+                            className="inline-flex items-center text-technical font-mono font-medium px-2 py-0.5 rounded bg-brand-surface border border-brand-border text-brand-textSecondary"
+                          >
+                            {topic}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Noninteractive Status / Action Indication */}
+                    <div className="pt-2">
+                      <span
+                        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-technical font-mono font-bold uppercase transition-colors ${
+                          isSelected
+                            ? `${accent.bg} ${accent.text} border ${accent.lightBorder}`
+                            : "bg-brand-surface border border-brand-border text-brand-textSecondary group-hover:text-brand-textPrimary group-hover:border-brand-primary/40"
+                        }`}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-current" aria-hidden="true" />
+                        <span>{isSelected ? (labels.selectedStatus || "Active") : (labels.inspectButton || "Inspect Workflow")}</span>
+                        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                      </span>
+                    </div>
                   </div>
                 </article>
               );
@@ -311,7 +324,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
           {/* ----------------------------------------------------------------------- */}
           <div className="lg:col-span-7 sticky top-28">
             <figure 
-              className="rounded-3xl bg-brand-card/95 border border-brand-border shadow-lg p-6 xl:p-8 backdrop-blur-sm relative overflow-hidden"
+              className="rounded-3xl bg-brand-cardElevated border border-brand-border shadow-lg p-6 xl:p-8 backdrop-blur-sm relative overflow-hidden"
               aria-label={`${activeColumn.title} - ${labels.canvasLabel || "ENGINEERING IMPACT CANVAS"}`}
             >
               <figcaption className="sr-only">
