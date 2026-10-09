@@ -101,7 +101,7 @@ export default function EngineeringImpact() {
         {/* SECTION HEADER: Editorial Introduction                    */}
         {/* ========================================================= */}
         <motion.div
-          className="max-w-3xl mb-14 lg:mb-18"
+          className="max-w-3xl mb-14 lg:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
