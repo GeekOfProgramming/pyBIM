@@ -181,18 +181,18 @@ export default function ManifestoHero() {
               </div>
 
               {/* Coherent Connected Progression Rail */}
-              <div className="relative pl-7 sm:pl-8 space-y-6">
+              <div className="relative pl-9 sm:pl-10 space-y-5">
                 
-                {/* Continuous Connecting Rail Line */}
+                {/* Continuous Connecting Rail Line: perfectly centered with circular node centers (14px from left) */}
                 <div 
-                  className="pointer-events-none absolute left-[13px] sm:left-[15px] top-3 bottom-5 w-px z-0" 
+                  className="pointer-events-none absolute left-[13px] top-4 bottom-5 w-px z-0" 
                   aria-hidden="true"
                 >
                   <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
                     <line 
-                      x1="0" 
+                      x1="0.5" 
                       y1="0" 
-                      x2="0" 
+                      x2="0.5" 
                       y2="100%" 
                       stroke="currentColor" 
                       className="text-slate-300 dark:text-slate-700" 
@@ -206,29 +206,30 @@ export default function ManifestoHero() {
                 {/* STAGE 01: Engineering Delivery (AVAILABLE NOW)      */}
                 {/* --------------------------------------------------- */}
                 <motion.div variants={itemVariants} className="relative z-10">
-                  {/* Rail Node */}
+                  {/* Rail Node: centered at x = 14px (left: 0, w: 28px) */}
                   <div 
-                    className="absolute -left-7 sm:-left-8 top-1 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-xs"
+                    className="absolute left-[-36px] sm:left-[-40px] top-3.5 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-xs"
                     aria-hidden="true"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5" />
                   </div>
 
                   <div className="rounded-xl border border-emerald-500/25 bg-emerald-50/40 dark:bg-emerald-950/20 p-4 transition-colors">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">
-                          {t("about.manifesto.phase1_num")}
-                        </span>
-                        <h3 className="text-sm font-bold text-brand-textPrimary">
-                          {t("about.manifesto.phase1_title")}
-                        </h3>
-                      </div>
-                      <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
-                        {t("about.manifesto.phase1_status")}
+                    {/* Unified Stage Grid Layout */}
+                    <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr_auto] gap-x-2.5 gap-y-1.5 items-start sm:items-baseline mb-2">
+                      <span className="font-mono text-xs font-bold text-emerald-700 dark:text-emerald-400 w-5">
+                        {t("about.manifesto.phase1_num")}
                       </span>
+                      <h3 className="text-sm font-bold text-brand-textPrimary leading-snug">
+                        {t("about.manifesto.phase1_title")}
+                      </h3>
+                      <div className="sm:text-right">
+                        <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-[11px] font-mono font-bold tracking-wide whitespace-nowrap bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
+                          {t("about.manifesto.phase1_status")}
+                        </span>
+                      </div>
                     </div>
-                    <p className="text-xs text-brand-textSecondary leading-relaxed">
+                    <p className="text-xs text-brand-textSecondary leading-relaxed sm:pl-[29px]">
                       {t("about.manifesto.phase1_desc")}
                     </p>
                   </div>
@@ -238,29 +239,30 @@ export default function ManifestoHero() {
                 {/* STAGE 02: Connected Automation (INTERNAL TESTING)  */}
                 {/* --------------------------------------------------- */}
                 <motion.div variants={itemVariants} className="relative z-10">
-                  {/* Rail Node */}
+                  {/* Rail Node: centered at x = 14px (left: 0, w: 28px) */}
                   <div 
-                    className="absolute -left-7 sm:-left-8 top-1 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-brand-primary text-brand-primary flex items-center justify-center shadow-xs"
+                    className="absolute left-[-36px] sm:left-[-40px] top-3.5 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-brand-primary text-brand-primary flex items-center justify-center shadow-xs"
                     aria-hidden="true"
                   >
                     <Network className="w-3.5 h-3.5" />
                   </div>
 
                   <div className="rounded-xl border border-brand-primary/25 bg-brand-primary/[0.04] dark:bg-blue-950/20 p-4 transition-colors">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-bold text-brand-primary">
-                          {t("about.manifesto.phase2_num")}
-                        </span>
-                        <h3 className="text-sm font-bold text-brand-textPrimary">
-                          {t("about.manifesto.phase2_title")}
-                        </h3>
-                      </div>
-                      <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-brand-primary/15 text-brand-primary dark:text-blue-300 border border-brand-primary/30">
-                        {t("about.manifesto.phase2_status")}
+                    {/* Unified Stage Grid Layout */}
+                    <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr_auto] gap-x-2.5 gap-y-1.5 items-start sm:items-baseline mb-2">
+                      <span className="font-mono text-xs font-bold text-brand-primary w-5">
+                        {t("about.manifesto.phase2_num")}
                       </span>
+                      <h3 className="text-sm font-bold text-brand-textPrimary leading-snug">
+                        {t("about.manifesto.phase2_title")}
+                      </h3>
+                      <div className="sm:text-right">
+                        <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-[11px] font-mono font-bold tracking-wide whitespace-nowrap bg-brand-primary/15 text-brand-primary dark:text-blue-300 border border-brand-primary/30">
+                          {t("about.manifesto.phase2_status")}
+                        </span>
+                      </div>
                     </div>
-                    <p className="text-xs text-brand-textSecondary leading-relaxed">
+                    <p className="text-xs text-brand-textSecondary leading-relaxed sm:pl-[29px]">
                       {t("about.manifesto.phase2_desc")}
                     </p>
                   </div>
@@ -270,29 +272,30 @@ export default function ManifestoHero() {
                 {/* STAGE 03: Private AI Infrastructure (R&D)          */}
                 {/* --------------------------------------------------- */}
                 <motion.div variants={itemVariants} className="relative z-10">
-                  {/* Rail Node */}
+                  {/* Rail Node: centered at x = 14px (left: 0, w: 28px) */}
                   <div 
-                    className="absolute -left-7 sm:-left-8 top-1 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-600 text-slate-600 dark:text-slate-400 flex items-center justify-center shadow-xs"
+                    className="absolute left-[-36px] sm:left-[-40px] top-3.5 w-7 h-7 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-600 text-slate-600 dark:text-slate-400 flex items-center justify-center shadow-xs"
                     aria-hidden="true"
                   >
                     <FlaskConical className="w-3.5 h-3.5" />
                   </div>
 
                   <div className="rounded-xl border border-slate-300/80 dark:border-slate-700/70 bg-slate-100/60 dark:bg-slate-800/40 p-4 transition-colors">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-bold text-slate-600 dark:text-slate-400">
-                          {t("about.manifesto.phase3_num")}
-                        </span>
-                        <h3 className="text-sm font-bold text-brand-textPrimary">
-                          {t("about.manifesto.phase3_title")}
-                        </h3>
-                      </div>
-                      <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
-                        {t("about.manifesto.phase3_status")}
+                    {/* Unified Stage Grid Layout */}
+                    <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr_auto] gap-x-2.5 gap-y-1.5 items-start sm:items-baseline mb-2">
+                      <span className="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 w-5">
+                        {t("about.manifesto.phase3_num")}
                       </span>
+                      <h3 className="text-sm font-bold text-brand-textPrimary leading-snug">
+                        {t("about.manifesto.phase3_title")}
+                      </h3>
+                      <div className="sm:text-right">
+                        <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-[11px] font-mono font-bold tracking-wide whitespace-nowrap bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
+                          {t("about.manifesto.phase3_status")}
+                        </span>
+                      </div>
                     </div>
-                    <p className="text-xs text-brand-textSecondary leading-relaxed">
+                    <p className="text-xs text-brand-textSecondary leading-relaxed sm:pl-[29px]">
                       {t("about.manifesto.phase3_desc")}
                     </p>
                   </div>
@@ -300,12 +303,12 @@ export default function ManifestoHero() {
 
               </div>
 
-              {/* Factual Architectural Linework Footer */}
-              <div className="mt-6 pt-3.5 border-t border-slate-200/70 dark:border-slate-800/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-brand-textSecondary">
-                <span>{t("about.manifesto.footer_standards")}</span>
-                <span className="flex items-center gap-1.5 text-brand-textPrimary">
-                  <Code2 className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
-                  {t("about.manifesto.footer_delivery")}
+              {/* Factual Architectural Linework Footer: 2 naturally balanced columns */}
+              <div className="mt-6 pt-3.5 border-t border-slate-200/70 dark:border-slate-800/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs font-mono text-brand-textSecondary">
+                <span className="truncate">{t("about.manifesto.footer_standards")}</span>
+                <span className="flex items-center gap-1.5 text-brand-textPrimary shrink-0 sm:self-auto">
+                  <Code2 className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
+                  <span>{t("about.manifesto.footer_delivery")}</span>
                 </span>
               </div>
 
