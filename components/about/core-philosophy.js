@@ -226,13 +226,18 @@ export default function CorePhilosophy() {
 
               <div className="relative z-10">
                 
-                {/* Header Row */}
-                <div className="flex items-center justify-between gap-4 mb-5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider bg-brand-primary/10 text-brand-primary border border-brand-primary/25 uppercase">
-                    <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-                    {t("about.philosophy.col2_label")}
-                  </span>
-                  <div className="w-9 h-9 rounded-xl bg-brand-primary/10 border border-brand-primary/25 flex items-center justify-center text-brand-primary shadow-xs">
+                {/* Brand & Eyebrow Row */}
+                <div className="flex items-center justify-between gap-4 mb-4 pb-3 border-b border-brand-primary/15">
+                  <div className="flex items-baseline gap-3">
+                    {/* Exact pyBIM Brand Wordmark (Inter Bold/ExtraBold, 24-28px desktop, 22-24px mobile, no text-transform) */}
+                    <span className="font-sans font-extrabold text-[22px] sm:text-[26px] tracking-tight text-brand-textPrimary leading-none select-none">
+                      pyBIM
+                    </span>
+                    <span className="text-xs font-mono font-semibold tracking-wider text-brand-primary">
+                      {t("about.philosophy.col2_label")}
+                    </span>
+                  </div>
+                  <div className="w-9 h-9 rounded-xl bg-brand-primary/10 border border-brand-primary/25 flex items-center justify-center text-brand-primary shadow-xs shrink-0">
                     <Cpu className="w-5 h-5" aria-hidden="true" />
                   </div>
                 </div>
@@ -251,103 +256,234 @@ export default function CorePhilosophy() {
                 </p>
 
                 {/* ================================================= */}
-                {/* DEDICATED ENGINEERING CONTROL DIAGRAM (Large SVG)  */}
+                {/* DEDICATED ENGINEERING CONTROL DIAGRAM              */}
+                {/* Responsive HTML/CSS Architecture Nodes + SVG Paths */}
                 {/* ================================================= */}
-                <div className="rounded-xl border border-brand-primary/20 bg-brand-primary/[0.03] dark:bg-blue-950/25 p-5 mb-6">
-                  <div className="flex items-center justify-between text-xs font-mono text-brand-primary mb-4 pb-2 border-b border-brand-primary/15">
-                    <span>{t("about.philosophy.col2_diagram_header")}</span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold">DUAL-BRANCH ORCHESTRATION</span>
+                <div className="rounded-xl border border-brand-primary/25 bg-brand-primary/[0.03] dark:bg-blue-950/25 p-4 sm:p-5 mb-6">
+                  {/* Schematic Header */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-brand-primary mb-4 pb-2 border-b border-brand-primary/15">
+                    <span className="font-bold tracking-wider">{t("about.philosophy.col2_diagram_header")}</span>
+                    <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-brand-primary/10 text-brand-primary border border-brand-primary/25">
+                      {t("about.philosophy.col2_diagram_badge")}
+                    </span>
                   </div>
 
-                  <svg className="w-full h-auto text-brand-primary" viewBox="0 0 460 170" fill="none">
-                    
-                    {/* Background Grid Pattern */}
-                    <rect x="5" y="5" width="450" height="160" rx="8" className="stroke-brand-primary/20" strokeWidth="1" strokeDasharray="4 4" />
+                  {/* ------------------------------------------------ */}
+                  {/* DESKTOP DIAGRAM VIEW (Hidden below md)            */}
+                  {/* ------------------------------------------------ */}
+                  <div className="hidden md:block relative w-full pt-1 pb-1">
+                    {/* Background Connecting Vectors (SVG) */}
+                    <svg 
+                      className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible text-brand-primary" 
+                      preserveAspectRatio="none"
+                      viewBox="0 0 100 100"
+                    >
+                      <defs>
+                        <marker id="arrow-primary" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                          <path d="M 0 1 L 9 5 L 0 9 z" fill="currentColor" />
+                        </marker>
+                        <marker id="arrow-emerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                          <path d="M 0 1 L 9 5 L 0 9 z" className="fill-emerald-600 dark:fill-emerald-400" />
+                        </marker>
+                        <marker id="arrow-slate" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                          <path d="M 0 1 L 9 5 L 0 9 z" className="fill-slate-400 dark:fill-slate-500" />
+                        </marker>
+                      </defs>
 
-                    {/* ------------------------------------------------ */}
-                    {/* PRIMARY BRANCH: Current Engineering Delivery     */}
-                    {/* ------------------------------------------------ */}
-                    
-                    {/* Node 1: Project Information */}
-                    <rect x="20" y="24" width="115" height="44" rx="6" className="fill-white dark:fill-slate-900 stroke-brand-primary/50" strokeWidth="1.5" />
-                    <text x="77" y="44" textAnchor="middle" className="text-[10px] font-mono font-bold fill-brand-textPrimary" fontSize="10">
-                      {t("about.philosophy.col2_node_info")}
-                    </text>
-                    <text x="77" y="58" textAnchor="middle" className="text-[9px] font-mono fill-brand-textSecondary" fontSize="9">
-                      MODELS &amp; SPECS
-                    </text>
+                      {/* Vector 1 -> 2: Delivery Path Horizontal */}
+                      <line 
+                        x1="30%" y1="26%" 
+                        x2="35%" y2="26%" 
+                        stroke="currentColor" 
+                        strokeWidth="1.8" 
+                        markerEnd="url(#arrow-primary)" 
+                      />
 
-                    {/* Vector 1 -> 2 */}
-                    <path d="M 135 46 L 165 46" stroke="currentColor" strokeWidth="1.5" />
-                    <polygon points="163,43 169,46 163,49" fill="currentColor" />
+                      {/* Vector 2 -> 3: To Delivery Deliverables */}
+                      <line 
+                        x1="65%" y1="26%" 
+                        x2="70%" y2="26%" 
+                        stroke="#10b981" 
+                        strokeWidth="1.8" 
+                        markerEnd="url(#arrow-emerald)" 
+                      />
 
-                    {/* Node 2: Engineering Processes */}
-                    <rect x="170" y="24" width="115" height="44" rx="6" className="fill-brand-primary/15 stroke-brand-primary" strokeWidth="1.5" />
-                    <text x="227" y="44" textAnchor="middle" className="text-[10px] font-mono font-bold fill-brand-primary" fontSize="10">
-                      {t("about.philosophy.col2_node_process")}
-                    </text>
-                    <text x="227" y="58" textAnchor="middle" className="text-[9px] font-mono fill-brand-textSecondary" fontSize="9">
-                      DISCIPLINE &amp; AUDIT
-                    </text>
+                      {/* Vector 2 downward branch -> R&D */}
+                      <path 
+                        d="M 50% 48% L 50% 64%" 
+                        stroke="currentColor" 
+                        strokeWidth="1.6" 
+                        strokeDasharray="3 3" 
+                        markerEnd="url(#arrow-primary)" 
+                      />
 
-                    {/* Vector 2 -> 3 */}
-                    <path d="M 285 46 L 315 46" stroke="currentColor" strokeWidth="1.5" />
-                    <polygon points="313,43 319,46 313,49" fill="currentColor" />
+                      {/* Vector R&D -> Future Automation */}
+                      <line 
+                        x1="58%" y1="84%" 
+                        x2="65%" y2="84%" 
+                        className="stroke-slate-400 dark:stroke-slate-600" 
+                        strokeWidth="1.6" 
+                        strokeDasharray="3 3" 
+                        markerEnd="url(#arrow-slate)" 
+                      />
+                    </svg>
 
-                    {/* Node 3: Human Review / Coordinated Deliverables */}
-                    <rect x="320" y="18" width="125" height="56" rx="6" className="fill-emerald-500/15 stroke-emerald-500" strokeWidth="1.5" />
-                    <text x="382" y="42" textAnchor="middle" className="text-[10px] font-mono font-bold fill-emerald-700 dark:fill-emerald-400" fontSize="10">
-                      {t("about.philosophy.col2_node_review")}
-                    </text>
-                    <text x="382" y="58" textAnchor="middle" className="text-[9px] font-mono fill-emerald-600 dark:fill-emerald-400" fontSize="9">
-                      DELIVERY STAGE
-                    </text>
+                    {/* Primary Branch Nodes (Delivery Path - Available Now) */}
+                    <div className="relative z-10 grid grid-cols-12 gap-3.5 mb-11">
+                      {/* Node 1: Project Information */}
+                      <div className="col-span-4 rounded-xl border border-brand-primary/40 bg-white dark:bg-slate-900 p-3 shadow-xs flex flex-col justify-center min-h-[76px]">
+                        <span className="text-xs font-mono font-bold text-brand-textPrimary leading-snug">
+                          {t("about.philosophy.col2_node_info")}
+                        </span>
+                        <span className="text-[11px] font-mono text-brand-textSecondary mt-0.5">
+                          {t("about.philosophy.col2_node_info_sub")}
+                        </span>
+                      </div>
 
-                    {/* ------------------------------------------------ */}
-                    {/* SECONDARY BRANCH: Internal Software R&D          */}
-                    {/* ------------------------------------------------ */}
-                    
-                    {/* Branch connector from Node 2 downward */}
-                    <path d="M 227 68 L 227 98" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
-                    <polygon points="224,96 227,102 230,96" fill="currentColor" />
+                      {/* Spacer between Node 1 & 2 */}
+                      <div className="col-span-0" aria-hidden="true" />
 
-                    {/* Secondary Branch Hub */}
-                    <rect x="90" y="104" width="130" height="46" rx="6" className="fill-white dark:fill-slate-900 stroke-slate-300 dark:stroke-slate-700" strokeWidth="1.5" strokeDasharray="4 4" />
-                    <text x="155" y="124" textAnchor="middle" className="text-[10px] font-mono font-bold fill-slate-700 dark:fill-slate-300" fontSize="10">
-                      {t("about.philosophy.col2_branch_title")}
-                    </text>
-                    <text x="155" y="139" textAnchor="middle" className="text-[9px] font-mono fill-brand-primary font-medium" fontSize="9">
-                      {t("about.philosophy.col2_branch_step1")}
-                    </text>
+                      {/* Node 2: Engineering Processes */}
+                      <div className="col-span-4 rounded-xl border-2 border-brand-primary bg-brand-primary/10 dark:bg-brand-primary/15 p-3 shadow-xs flex flex-col justify-center min-h-[76px]">
+                        <span className="text-xs font-mono font-bold text-brand-primary leading-snug">
+                          {t("about.philosophy.col2_node_process")}
+                        </span>
+                        <span className="text-[11px] font-mono text-brand-textSecondary mt-0.5">
+                          {t("about.philosophy.col2_node_process_sub")}
+                        </span>
+                      </div>
 
-                    {/* Vector Secondary -> Future automation */}
-                    <path d="M 220 127 L 275 127" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
-                    <polygon points="273,124 279,127 273,130" fill="currentColor" />
+                      {/* Node 3: Coordinated Deliverables */}
+                      <div className="col-span-4 rounded-xl border-2 border-emerald-500/70 bg-emerald-50/70 dark:bg-emerald-950/30 p-3 shadow-xs flex flex-col justify-center min-h-[76px]">
+                        <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 leading-snug">
+                          {t("about.philosophy.col2_node_review")}
+                        </span>
+                        <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-500 mt-0.5">
+                          {t("about.philosophy.col2_node_review_sub")}
+                        </span>
+                      </div>
+                    </div>
 
-                    {/* Secondary Destination Node: Future Connected Automation */}
-                    <rect x="280" y="104" width="150" height="46" rx="6" className="fill-slate-100/70 dark:fill-slate-800/70 stroke-slate-400 dark:stroke-slate-600" strokeWidth="1.5" />
-                    <text x="355" y="124" textAnchor="middle" className="text-[10px] font-mono font-bold fill-slate-700 dark:fill-slate-300" fontSize="10">
-                      {t("about.philosophy.col2_branch_step2")}
-                    </text>
-                    <text x="355" y="139" textAnchor="middle" className="text-[9px] font-mono fill-slate-500 dark:fill-slate-400" fontSize="9">
-                      VALIDATION PIPELINE
-                    </text>
+                    {/* Secondary Branch Nodes (Internal R&D - Visually Distinct) */}
+                    <div className="relative z-10 grid grid-cols-12 gap-3.5 items-center">
+                      <div className="col-span-2" aria-hidden="true" />
 
-                  </svg>
-                </div>
+                      {/* Secondary Node 1: Internal Software R&D */}
+                      <div className="col-span-5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 p-3 shadow-xs flex flex-col justify-center min-h-[68px]">
+                        <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 leading-snug">
+                          {t("about.philosophy.col2_branch_title")}
+                        </span>
+                        <span className="text-[11px] font-mono text-brand-primary mt-0.5">
+                          {t("about.philosophy.col2_branch_step1")}
+                        </span>
+                      </div>
 
-                {/* Compact Availability Status Strip */}
-                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/50 p-4 space-y-2">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" aria-hidden="true" />
-                      <span className="font-semibold text-brand-textPrimary">
+                      {/* Secondary Node 2: Future Connected Automation */}
+                      <div className="col-span-5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/50 p-3 shadow-xs flex flex-col justify-center min-h-[68px]">
+                        <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 leading-snug">
+                          {t("about.philosophy.col2_branch_step2")}
+                        </span>
+                        <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-0.5">
+                          {t("about.philosophy.col2_branch_step2_sub")}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ------------------------------------------------ */}
+                  {/* MOBILE & TABLET PROGRESSION VIEW (Shown below md) */}
+                  {/* ------------------------------------------------ */}
+                  <div className="block md:hidden space-y-3">
+                    {/* Primary Branch Label */}
+                    <div className="flex items-center gap-2 pt-1 pb-1">
+                      <div className="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true" />
+                      <span className="text-[11px] font-mono font-bold text-emerald-700 dark:text-emerald-400 uppercase">
                         {t("about.philosophy.col2_status_services")}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-3.5 h-3.5 text-brand-primary flex-shrink-0" aria-hidden="true" />
-                      <span className="font-semibold text-brand-textPrimary">
+
+                    {/* Step 1 */}
+                    <div className="rounded-lg border border-brand-primary/40 bg-white dark:bg-slate-900 p-3">
+                      <span className="text-xs font-mono font-bold text-brand-textPrimary block">
+                        {t("about.philosophy.col2_node_info")}
+                      </span>
+                      <span className="text-[11px] font-mono text-brand-textSecondary block mt-0.5">
+                        {t("about.philosophy.col2_node_info_sub")}
+                      </span>
+                    </div>
+
+                    <div className="flex justify-center" aria-hidden="true">
+                      <ArrowDown className="w-4 h-4 text-brand-primary" />
+                    </div>
+
+                    {/* Step 2 */}
+                    <div className="rounded-lg border-2 border-brand-primary bg-brand-primary/10 dark:bg-brand-primary/15 p-3">
+                      <span className="text-xs font-mono font-bold text-brand-primary block">
+                        {t("about.philosophy.col2_node_process")}
+                      </span>
+                      <span className="text-[11px] font-mono text-brand-textSecondary block mt-0.5">
+                        {t("about.philosophy.col2_node_process_sub")}
+                      </span>
+                    </div>
+
+                    <div className="flex justify-center" aria-hidden="true">
+                      <ArrowDown className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    </div>
+
+                    {/* Step 3 */}
+                    <div className="rounded-lg border-2 border-emerald-500/70 bg-emerald-50/70 dark:bg-emerald-950/30 p-3">
+                      <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 block">
+                        {t("about.philosophy.col2_node_review")}
+                      </span>
+                      <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-500 block mt-0.5">
+                        {t("about.philosophy.col2_node_review_sub")}
+                      </span>
+                    </div>
+
+                    {/* R&D Divider */}
+                    <div className="pt-3 pb-1 border-t border-brand-primary/15">
+                      <div className="flex items-center gap-2 mb-2">
+                        <GitBranch className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
+                        <span className="text-[11px] font-mono font-bold text-brand-primary uppercase">
+                          {t("about.philosophy.col2_status_rd")}
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div className="rounded-lg border border-dashed border-slate-300 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-3">
+                          <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 block">
+                            {t("about.philosophy.col2_branch_title")}
+                          </span>
+                          <span className="text-[11px] font-mono text-brand-primary block mt-0.5">
+                            {t("about.philosophy.col2_branch_step1")}
+                          </span>
+                        </div>
+
+                        <div className="rounded-lg border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/50 p-3">
+                          <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 block">
+                            {t("about.philosophy.col2_branch_step2")}
+                          </span>
+                          <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 block mt-0.5">
+                            {t("about.philosophy.col2_branch_step2_sub")}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Compact Availability Status Strip: 2 Balanced Responsive Rows */}
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/50 p-4 space-y-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" aria-hidden="true" />
+                      <span className="font-semibold text-brand-textPrimary leading-tight">
+                        {t("about.philosophy.col2_status_services")}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Clock className="w-3.5 h-3.5 text-brand-primary shrink-0 mt-0.5" aria-hidden="true" />
+                      <span className="font-semibold text-brand-textPrimary leading-tight">
                         {t("about.philosophy.col2_status_rd")}
                       </span>
                     </div>
