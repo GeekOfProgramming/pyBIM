@@ -180,7 +180,7 @@ export default function TechnologyCapabilities() {
         {/* ========================================================= */}
         {/* 1. THREE-PILLAR OVERVIEW CARDS (TOP LEVEL SELECTION)       */}
         {/* ========================================================= */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-7 mb-7 sm:mb-9 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-7 mb-7 sm:mb-9 items-stretch">
           {CATALOGUE_PILLARS.map((pillar, pIdx) => {
             const isPillarSelected = selectedPillarId === pillar.id;
             const colors = getPillarColorClasses(pillar.id, isPillarSelected);
@@ -206,23 +206,24 @@ export default function TechnologyCapabilities() {
                 <button
                   type="button"
                   onClick={() => handleSelectPillar(pillar.id)}
-                  className="w-full text-left rounded-2xl p-4 sm:p-5 lg:p-6 focus:outline-hidden focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 group cursor-pointer transition-all flex flex-col justify-between h-full"
+                  className="w-full text-left rounded-2xl p-4 sm:p-5 lg:p-6 focus:outline-hidden focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 group cursor-pointer transition-all flex flex-col md:flex-row lg:flex-col justify-between md:items-center lg:items-stretch gap-3 md:gap-6 lg:gap-3 h-full"
                   aria-pressed={isPillarSelected}
                   aria-label={`${t(pillar.titleKey)} — ${t(pillar.tagKey)}`}
                 >
-                  {/* 1. Header Metadata Row: Icon & Status Badge */}
-                  <div className="flex items-center justify-between gap-2.5 mb-3 sm:mb-3.5 w-full">
-                    <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl border flex items-center justify-center shrink-0 shadow-sm transition-transform duration-200 group-hover:scale-105 ${colors.badge}`}>
-                      {pillarIcons[pillar.icon]}
+                  {/* Tablet Left Area / Mobile & Desktop Top: Icon, Status Badge & Title */}
+                  <div className="w-full md:w-1/2 lg:w-full">
+                    {/* Header Metadata Row: Icon & Status Badge */}
+                    <div className="flex items-center justify-between gap-2.5 mb-2.5 sm:mb-3 w-full">
+                      <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl border flex items-center justify-center shrink-0 shadow-sm transition-transform duration-200 group-hover:scale-105 ${colors.badge}`}>
+                        {pillarIcons[pillar.icon]}
+                      </div>
+
+                      <span className={`inline-flex items-center text-center px-2.5 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-mono font-bold tracking-wide uppercase border shrink-0 ${colors.badge}`}>
+                        {t(pillar.statusKey)}
+                      </span>
                     </div>
 
-                    <span className={`inline-flex items-center text-center px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-mono font-bold tracking-wide uppercase border shrink-0 ${colors.badge}`}>
-                      {t(pillar.statusKey)}
-                    </span>
-                  </div>
-
-                  {/* 2. Main Pillar Title */}
-                  <div className="mb-1.5 sm:mb-2">
+                    {/* Main Pillar Title */}
                     <h3 className={`text-base sm:text-lg lg:text-[20px] font-bold tracking-tight leading-snug transition-colors break-words ${
                       isPillarSelected ? "text-brand-textPrimary" : "text-brand-textPrimary/90 group-hover:text-brand-textPrimary"
                     }`}>
@@ -230,8 +231,8 @@ export default function TechnologyCapabilities() {
                     </h3>
                   </div>
 
-                  {/* 3. Short Description */}
-                  <div>
+                  {/* Tablet Right Area / Mobile & Desktop Bottom: Introductory Description */}
+                  <div className="w-full md:w-1/2 lg:w-full md:border-l md:border-slate-200/60 md:dark:border-slate-800/60 md:pl-6 lg:border-l-0 lg:pl-0">
                     <p className="text-xs sm:text-sm text-brand-textSecondary leading-relaxed break-words">
                       {t(pillar.subKey)}
                     </p>
