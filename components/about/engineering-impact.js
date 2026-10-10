@@ -101,7 +101,7 @@ export default function EngineeringImpact() {
         {/* SECTION HEADER: Editorial Introduction                    */}
         {/* ========================================================= */}
         <motion.div
-          className="max-w-3xl mb-14 lg:mb-18"
+          className="max-w-3xl mb-14 lg:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
@@ -144,7 +144,7 @@ export default function EngineeringImpact() {
           {/* ------------------------------------------------------- */}
           <div 
             className="lg:col-span-5 flex flex-col gap-4"
-            role="tablist"
+            role="group"
             aria-label={t("about.impact.v2.eyebrow")}
           >
             {outcomes.map((item) => {
@@ -156,9 +156,8 @@ export default function EngineeringImpact() {
                   key={item.id}
                   id={`outcome-tab-${item.id}`}
                   type="button"
-                  role="tab"
-                  aria-selected={isSelected}
-                  aria-controls={`outcome-panel-${item.id}`}
+                  aria-pressed={isSelected}
+                  aria-controls="outcome-inspector"
                   onClick={() => setActiveOutcomeId(item.id)}
                   className={`text-left w-full rounded-2xl border p-5 sm:p-6 transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 relative ${
                     isSelected ? item.activeBorder : item.inactiveBorder
@@ -186,8 +185,8 @@ export default function EngineeringImpact() {
           {/* ------------------------------------------------------- */}
           <div className="lg:col-span-7">
             <div 
-              id={`outcome-panel-${currentOutcome.id}`}
-              role="tabpanel"
+              id="outcome-inspector"
+              role="region"
               aria-labelledby={`outcome-tab-${currentOutcome.id}`}
               className="rounded-2xl sm:rounded-3xl border border-brand-border bg-brand-base/90 dark:bg-slate-900/90 backdrop-blur-md p-5 sm:p-6 lg:p-6 shadow-md relative overflow-hidden"
             >
@@ -309,7 +308,7 @@ export default function EngineeringImpact() {
                   {currentOutcome.id === "outcome2" && (
                     <div className="flex flex-col gap-3">
                       {/* Layer 1: Model Data */}
-                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-2">
+                      <div className="rounded-lg border border-brand-border/60 bg-brand-base/60 dark:bg-slate-900/60 p-3 sm:p-3.5 space-y-1.5">
                         {/* Upper row */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0" />
@@ -318,13 +317,10 @@ export default function EngineeringImpact() {
                           </h4>
                         </div>
                         {/* Lower row */}
-                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-brand-border/30">
+                        <div className="pt-1 border-t border-brand-border/30">
                           <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
                             {t("about.impact.v2.outcome2.diag_step1_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-brand-surface text-brand-textSecondary shrink-0 border border-brand-border/40">
-                            {t("about.impact.v2.diag.input_data")}
-                          </span>
                         </div>
                       </div>
 
