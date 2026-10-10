@@ -8,6 +8,7 @@ import EngineeringJourney from "@/components/about/engineering-journey";
 import TechnologyCapabilities from "@/components/about/technology-capabilities";
 import EngineeringImpact from "@/components/about/engineering-impact";
 import B2BCollaborationCTA from "@/components/about/b2b-collaboration-cta";
+import BimAiArchitecture from "@/components/about/bim-ai-architecture";
 
 export default function AboutPageLayout({ teamData }) {
   useEffect(() => {
@@ -53,6 +54,9 @@ export default function AboutPageLayout({ teamData }) {
 
       {/* SECTION 7: Team & Leadership */}
       <TeamPartnersSection teamData={teamData} />
+
+      {/* SECTION 8: Strategic BIM & AI Architecture */}
+      <BimAiArchitecture />
 
     </div>
   );
