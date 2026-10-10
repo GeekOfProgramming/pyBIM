@@ -58,14 +58,6 @@ export default function B2BCollaborationCTA() {
                   <strong className="text-brand-textPrimary text-sm font-semibold block mb-1">{t("about.cta.c1_item3_title")}</strong>
                   <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item3_desc") }} />
                 </div>
-                <div>
-                  <strong className="text-brand-textPrimary text-sm font-semibold block mb-1">{t("about.cta.c1_item4_title")}</strong>
-                  <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item4_desc") }} />
-                </div>
-                <div>
-                  <strong className="text-brand-textPrimary text-sm font-semibold block mb-1">{t("about.cta.c1_item5_title")}</strong>
-                  <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item5_desc") }} />
-                </div>
               </div>
             </div>
             <div className="relative z-10 w-full">
@@ -107,14 +99,6 @@ export default function B2BCollaborationCTA() {
                 <div>
                   <strong className="text-brand-textPrimary text-sm font-semibold block mb-1">{t("about.cta.c2_item3_title")}</strong>
                   <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c2_item3_desc") }} />
-                </div>
-                <div>
-                  <strong className="text-brand-textPrimary text-sm font-semibold block mb-1">{t("about.cta.c2_item4_title")}</strong>
-                  <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c2_item4_desc") }} />
-                </div>
-                <div>
-                  <strong className="text-brand-textPrimary text-sm font-semibold block mb-1">{t("about.cta.c2_item5_title")}</strong>
-                  <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c2_item5_desc") }} />
                 </div>
               </div>
             </div>
