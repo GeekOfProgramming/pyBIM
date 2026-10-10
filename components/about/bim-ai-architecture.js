@@ -7,7 +7,7 @@ export default function BimAiArchitecture() {
   const { t } = useLanguage();
 
   return (
-    <section className="bg-white dark:bg-[#09090b] w-full border-t border-gray-200 dark:border-neutral-800 py-24 lg:py-32 overflow-hidden text-gray-700 dark:text-slate-300 font-sans">
+    <section id="bim-ai-architecture" className="scroll-mt-24 bg-white dark:bg-[#09090b] w-full border-t border-gray-200 dark:border-neutral-800 py-24 lg:py-32 overflow-hidden text-gray-700 dark:text-slate-300 font-sans">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
         {/* HEADER BLOCK */}
