@@ -33,7 +33,7 @@ export default function TeamPartnerCard({ person, onClick }) {
       className="group relative rounded-3xl overflow-hidden cursor-pointer shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-base"
     >
       {/* Background Image / Neutral Placeholder */}
-      <div className="aspect-[4/5] w-full">
+      <div className="aspect-[4/5] xl:aspect-square w-full">
         {isApprovedPortrait ? (
           <img
             src={person.image}
