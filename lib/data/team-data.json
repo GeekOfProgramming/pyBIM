@@ -3,9 +3,9 @@
     {
       "id": "t1",
       "image": null,
-      "email": "matteo.rossi@pybim.com",
-      "linkedin": "#",
-      "github": "#",
+      "email": "hamid.lotfalian@pybim.it",
+      "linkedin": "https://www.linkedin.com/in/hamid-lotfalian",
+      "github": "https://github.com/GeekOfProgramming",
       "en": {
         "name": "Hamid Lotfalian",
         "role": "Co-Founder & Head of Technology",
@@ -55,9 +55,9 @@
     {
       "id": "t2",
       "image": null,
-      "email": "leonardo.romano@pybim.com",
-      "linkedin": "#",
-      "github": "#",
+      "email": "hamed.sharifi@pybim.it",
+      "linkedin": "https://www.linkedin.com/in/hamedsharifi/",
+      "github": null,
       "en": {
         "name": "Hamed Sharifi",
         "role": "Co-Founder & Head of BIM Engineering",
