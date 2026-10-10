@@ -3,7 +3,22 @@
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { useLanguage } from "@/lib/LanguageContext";
-import { ChevronRight, CheckCircle2, Terminal, Server, Cpu, Building, Heart, Zap, Sparkles, Users, Briefcase, ArrowRight, Copy, Check } from "lucide-react";
+import WorkWithUsHero from "@/components/careers/work-with-us-hero";
+import {
+  ChevronRight,
+  CheckCircle2,
+  Terminal,
+  Server,
+  Cpu,
+  Briefcase,
+  ArrowRight,
+  Copy,
+  Check,
+  ShieldCheck,
+  FileCheck2,
+  Workflow,
+  Sparkles
+} from "lucide-react";
 
 export default function CareersPageLayout({ jobs }) {
   const { language, t } = useLanguage();
@@ -43,48 +58,85 @@ export default function CareersPageLayout({ jobs }) {
 
   return (
     <div className="bg-brand-base">
-      {/* Hero Section - Culture & Benefits */}
-      <section id="culture" className="relative overflow-hidden py-24 lg:py-32 border-b border-brand-border bg-brand-surface">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.05),transparent_60%)]"></div>
-        <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
-        
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-8 shadow-sm">
-              {t("careers.hero.tag")}
+
+      {/* S01: Work With pyBIM Hero */}
+      <WorkWithUsHero />
+
+      {/* S02: How We Work (Extracted Culture Section) */}
+      <section id="culture" className="scroll-mt-24 py-20 lg:py-28 border-b border-brand-border bg-brand-surface">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+
+          {/* Section Introduction */}
+          <div className="max-w-3xl mb-12 lg:mb-16">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="h-px bg-brand-primary w-8 sm:w-12" aria-hidden="true" />
+              <span className="text-xs font-mono font-bold text-brand-primary tracking-widest uppercase">
+                {t("careers.culture.eyebrow")}
+              </span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-textPrimary tracking-tight mb-8">
-              {t("careers.hero.title")}
-            </h1>
-            <p className="text-lg text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.hero.desc") }} />
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-4">
+              {t("careers.culture.title")}
+            </h2>
+            <p className="text-base sm:text-lg font-sans text-brand-textSecondary leading-relaxed">
+              {t("careers.culture.desc")}
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            <div className="bg-brand-card border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box1_title")}</h3>
-              <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box1_desc") }} />
-            </div>
-            
-            <div className="bg-brand-card border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box2_title")}</h3>
-              <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box2_desc") }} />
-            </div>
-
-            <div className="bg-brand-card border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box3_title")}</h3>
-              <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box3_desc") }} />
+          {/* Four Principles Grid */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
+            <div className="bg-brand-cardElevated border border-brand-border rounded-3xl p-7 sm:p-8 shadow-xs hover:shadow-md transition-all hover:border-brand-primary/40">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                <ShieldCheck className="w-5 h-5" aria-hidden="true" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-brand-textPrimary mb-2.5">
+                {t("careers.culture.box1_title")}
+              </h3>
+              <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed">
+                {t("careers.culture.box1_desc")}
+              </p>
             </div>
 
-            <div className="bg-brand-card border border-brand-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:border-brand-primary/30">
-              <h3 className="text-xl font-bold text-brand-textPrimary mb-3">{t("careers.culture.box4_title")}</h3>
-              <p className="text-brand-textSecondary leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: t("careers.culture.box4_desc") }} />
+            <div className="bg-brand-cardElevated border border-brand-border rounded-3xl p-7 sm:p-8 shadow-xs hover:shadow-md transition-all hover:border-brand-primary/40">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center mb-4">
+                <FileCheck2 className="w-5 h-5" aria-hidden="true" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-brand-textPrimary mb-2.5">
+                {t("careers.culture.box2_title")}
+              </h3>
+              <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed">
+                {t("careers.culture.box2_desc")}
+              </p>
+            </div>
+
+            <div className="bg-brand-cardElevated border border-brand-border rounded-3xl p-7 sm:p-8 shadow-xs hover:shadow-md transition-all hover:border-brand-primary/40">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4">
+                <Cpu className="w-5 h-5" aria-hidden="true" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-brand-textPrimary mb-2.5">
+                {t("careers.culture.box3_title")}
+              </h3>
+              <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed">
+                {t("careers.culture.box3_desc")}
+              </p>
+            </div>
+
+            <div className="bg-brand-cardElevated border border-brand-border rounded-3xl p-7 sm:p-8 shadow-xs hover:shadow-md transition-all hover:border-brand-primary/40">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                <Workflow className="w-5 h-5" aria-hidden="true" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-brand-textPrimary mb-2.5">
+                {t("careers.culture.box4_title")}
+              </h3>
+              <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed">
+                {t("careers.culture.box4_desc")}
+              </p>
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* Open Positions Section */}
+      {/* S04: Open Positions Section (Preserved Target) */}
       <section id="positions" className="scroll-mt-24 py-24 relative border-b border-brand-border bg-brand-base">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-16 md:text-center">
@@ -101,17 +153,17 @@ export default function CareersPageLayout({ jobs }) {
 
           {jobs.length === 0 ? (
             <div className="bg-brand-card border border-brand-border rounded-[2.5rem] p-8 md:p-12 shadow-sm text-left max-w-4xl mx-auto">
-              
+
               <div className="inline-block px-3 py-1 rounded-lg bg-brand-accent/10 text-brand-accent text-xs font-bold tracking-widest uppercase border border-brand-accent/20 mb-6">
                 {t("careers.empty.status")}
               </div>
-              
+
               <p className="text-brand-textSecondary text-lg font-medium leading-relaxed mb-10" dangerouslySetInnerHTML={{ __html: t("careers.empty.desc1") }} />
-              
+
               <h3 className="text-2xl md:text-3xl font-bold text-brand-textPrimary mb-4">{t("careers.empty.title")}</h3>
-              
+
               <p className="text-brand-textSecondary text-lg font-medium leading-relaxed mb-8" dangerouslySetInnerHTML={{ __html: t("careers.empty.desc2") }} />
-              
+
               <ul className="space-y-4 mb-10">
                 <li className="flex gap-3 items-start">
                   <CheckCircle2 className="w-6 h-6 text-brand-primary shrink-0 mt-0.5" />
@@ -126,7 +178,7 @@ export default function CareersPageLayout({ jobs }) {
                   <span className="text-brand-textSecondary font-medium" dangerouslySetInnerHTML={{ __html: t("careers.empty.li3") }} />
                 </li>
               </ul>
-              
+
               <div className="bg-brand-surface border border-brand-border rounded-2xl p-4 text-sm text-brand-textSecondary font-medium italic">
                 {t("careers.empty.note")}
               </div>
@@ -137,18 +189,18 @@ export default function CareersPageLayout({ jobs }) {
                   <Terminal className="w-4 h-4" />
                   <span>// SYNTAX_FILTER_PROTOCOL</span>
                 </div>
-                
+
                 <h4 className="text-2xl font-bold text-brand-textPrimary tracking-tight mb-2">
                   Strict Submission Protocol
                 </h4>
-                
+
                 <p className="text-brand-textSecondary text-sm md:text-base font-medium leading-relaxed mb-6">
                   Our incoming mail server utilizes automated parsing. Submissions deviating from the exact structural syntax below are immediately dropped at the server level. By transmitting, you acknowledge this automated rejection policy.
                 </p>
 
                 {/* Terminal Code Block */}
                 <div className="rounded-2xl bg-[#09090b] border border-neutral-800 overflow-hidden shadow-2xl mb-8">
-                  <div className="bg-[#0f1115] px-4 py-3 border-b border-neutral-800 flex items-center justify-between">
+                  <div className="bg-[#0f1115] px-4 py-3 border-neutral-800 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
                       <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
@@ -206,15 +258,15 @@ BODY REQUIRED STRUCTURE:
                     <p className="text-brand-textSecondary text-sm mb-6 leading-relaxed line-clamp-3 font-medium">
                       {language === "it" ? job.descriptionIt : job.descriptionEn}
                     </p>
-                    
+
                     <Link href={`/careers/${job.id}`} className="mt-auto inline-flex items-center text-sm font-bold text-brand-accent uppercase tracking-widest">
-                      {language === "it" ? "Scopri di più" : t("careers.card.btn")} 
+                      {language === "it" ? "Scopri di più" : t("careers.card.btn")}
                       <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 ))}
               </div>
-              
+
               {hasMore && (
                 <div className="mt-16 flex justify-center">
                   <button
@@ -230,7 +282,7 @@ BODY REQUIRED STRUCTURE:
         </div>
       </section>
 
-      {/* Engineering Culture / Life at pyBIM Section */}
+      {/* Preserved Engineering Culture / Life at pyBIM Section (#life anchor) */}
       <span id="engineering-culture" className="scroll-mt-28" />
       <section id="life" className="scroll-mt-28 py-24 bg-brand-surface">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
