@@ -9,9 +9,15 @@ export default function TeamPartnerCard({ person, onClick }) {
   // Stock unapproved photos (e.g. Unsplash) or missing images should show neutral placeholder
   const isApprovedPortrait = Boolean(person.image && !person.image.includes("unsplash.com"));
 
+  const handleClick = (e) => {
+    e.currentTarget.focus({ preventScroll: true });
+    onClick(person);
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
+      e.currentTarget.focus({ preventScroll: true });
       onClick(person);
     }
   };
@@ -22,7 +28,7 @@ export default function TeamPartnerCard({ person, onClick }) {
       tabIndex={0}
       aria-haspopup="dialog"
       aria-label={`${data.name} — ${data.role}`}
-      onClick={() => onClick(person)}
+      onClick={handleClick}
       onKeyDown={handleKeyDown}
       className="group relative rounded-3xl overflow-hidden cursor-pointer shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-base"
     >
