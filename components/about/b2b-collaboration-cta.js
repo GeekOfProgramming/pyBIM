@@ -26,10 +26,10 @@ export default function B2BCollaborationCTA() {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-12">
 
           {/* Card 1 For Clients */}
-          <div className="rounded-[2.5rem] border border-brand-border bg-white dark:bg-slate-900 shadow-lg p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/30 transition-colors">
+          <div className="xl:col-span-7 rounded-[2.5rem] border border-brand-border bg-white dark:bg-slate-900 shadow-lg p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/30 transition-colors">
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-surface blur-[80px] rounded-full pointer-events-none group-hover:bg-brand-primary/5 transition-colors" />
             <div className="relative z-10 w-full mb-10">
               <div className="flex items-center gap-4 mb-6">
@@ -78,7 +78,7 @@ export default function B2BCollaborationCTA() {
           </div>
 
           {/* Card 2 For Talent */}
-          <div className="rounded-[2.5rem] border border-brand-primary/20 bg-white dark:bg-slate-900 shadow-xl p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/50 transition-colors">
+          <div className="xl:col-span-5 rounded-[2.5rem] border border-brand-primary/20 bg-white dark:bg-slate-900 shadow-xl p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/50 transition-colors">
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 blur-[80px] rounded-full group-hover:bg-brand-primary/10 transition-colors pointer-events-none" />
             <div className="relative z-10 w-full mb-10">
               <div className="flex items-center gap-4 mb-6">
