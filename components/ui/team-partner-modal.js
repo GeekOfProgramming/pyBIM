@@ -1,11 +1,89 @@
 "use client";
+import { useEffect, useRef, useId } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { X, Mail, Linkedin, Github, UserRound } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function TeamPartnerModal({ person, onClose }) {
   const { t, language } = useLanguage();
-  
+  const nameId = useId();
+  const modalRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const previousActiveElementRef = useRef(null);
+
+  // Capture active element before opening, restore on unmount
+  useEffect(() => {
+    previousActiveElementRef.current = document.activeElement;
+
+    // Background scroll lock
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    // Initial focus on Close button
+    if (closeButtonRef.current) {
+      closeButtonRef.current.focus({ preventScroll: true });
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      if (
+        previousActiveElementRef.current &&
+        typeof previousActiveElementRef.current.focus === "function" &&
+        document.contains(previousActiveElementRef.current)
+      ) {
+        previousActiveElementRef.current.focus({ preventScroll: true });
+      }
+    };
+  }, []);
+
+  // Escape key handler & focus trap
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (e.key === "Tab") {
+        if (!modalRef.current) return;
+        const focusableSelector =
+          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+        const focusables = Array.from(
+          modalRef.current.querySelectorAll(focusableSelector)
+        ).filter(
+          (el) => !el.hasAttribute("disabled") && el.getAttribute("aria-hidden") !== "true" && el.offsetParent !== null
+        );
+
+        if (focusables.length === 0) {
+          e.preventDefault();
+          modalRef.current.focus({ preventScroll: true });
+          return;
+        }
+
+        const firstElement = focusables[0];
+        const lastElement = focusables[focusables.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement || !modalRef.current.contains(document.activeElement)) {
+            e.preventDefault();
+            lastElement.focus({ preventScroll: true });
+          }
+        } else {
+          if (document.activeElement === lastElement || !modalRef.current.contains(document.activeElement)) {
+            e.preventDefault();
+            firstElement.focus({ preventScroll: true });
+          }
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
   if (!person) return null;
   const data = person[language] || person.it;
 
@@ -15,14 +93,21 @@ export default function TeamPartnerModal({ person, onClose }) {
   return (
     <div className="fixed inset-0 z-[1100] flex p-4 sm:p-6 bg-black/60 backdrop-blur-md overflow-y-auto">
       {/* Click outside to close */}
-      <div className="fixed inset-0" onClick={onClose} />
+      <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
 
-      <div className="relative w-full max-w-5xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row m-auto border border-brand-border dark:border-slate-800 transition-colors">
-        
+      <div
+        ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={nameId}
+        tabIndex={-1}
+        className="relative w-full max-w-5xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row m-auto border border-brand-border dark:border-slate-800 transition-colors focus:outline-none"
+      >
         {/* Close Button */}
         <button 
+          ref={closeButtonRef}
           onClick={onClose}
-          className="absolute top-5 right-5 z-20 w-10 h-10 bg-white/90 dark:bg-slate-800/90 hover:bg-brand-surface dark:hover:bg-slate-700 rounded-full flex items-center justify-center text-brand-textPrimary border border-brand-border dark:border-slate-700 shadow-sm transition-all hover:scale-105"
+          className="absolute top-5 right-5 z-20 w-10 h-10 bg-white/90 dark:bg-slate-800/90 hover:bg-brand-surface dark:hover:bg-slate-700 rounded-full flex items-center justify-center text-brand-textPrimary border border-brand-border dark:border-slate-700 shadow-sm transition-all hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -48,7 +133,7 @@ export default function TeamPartnerModal({ person, onClose }) {
             </div>
             
             <div className="text-center md:text-left mb-6">
-              <h3 className="text-2xl font-bold text-brand-textPrimary">{data.name}</h3>
+              <h3 id={nameId} className="text-2xl font-bold text-brand-textPrimary">{data.name}</h3>
               <p className="text-sm font-semibold text-brand-primary mt-1">{data.role}</p>
             </div>
           </div>
