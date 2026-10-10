@@ -7,48 +7,48 @@
       "linkedin": "#",
       "github": "#",
       "en": {
-        "name": "Matteo Rossi",
-        "role": "Co-Founder & Lead AI Infrastructure",
-        "bio": "Architecting local LLM pipelines, containerized deployment (Docker), and reverse VPN tunneling. Bridges AI frameworks with native Python/C# execution.",
+        "name": "Hamid Lotfalian",
+        "role": "Co-Founder & Head of Technology",
+        "bio": "Hamid leads software and technology development at pyBIM, connecting BIM workflows with web applications, automation and local AI systems. His focus is on building maintainable tools and reliable technical workflows around actual project requirements.",
         "core_stack": [
-          "<strong>AI/Data:</strong> Python, LangChain, ChromaDB, Ollama (Local LLMs)",
-          "<strong>AEC Execution:</strong> C# (.NET), Revit API, Navisworks API",
-          "<strong>Infrastructure:</strong> Docker, Linux (Ubuntu), Tailscale (Zero-Trust Networking)"
+          "<strong>Software & Web Development:</strong> Web applications, technical interfaces and supporting services.",
+          "<strong>Local AI & LLM Systems:</strong> Local language-model workflows, data retrieval and integration with engineering processes.",
+          "<strong>Automation & Infrastructure:</strong> Python-based tooling, systems integration and deployment workflows."
         ],
         "operational_focus": [
-          "Development of secure, offline AI execution pipelines for Tier-1 contractors.",
-          "Algorithmic translation of ISO 19650 protocols into executable codebase.",
-          "Containerized deployment of headless OpenBIM workflows."
+          "Define the software architecture and maintain the pyBIM website and technical tools.",
+          "Develop and evaluate automation and local AI capabilities for defined BIM use cases.",
+          "Coordinate software implementation, testing and integration with BIM engineering requirements."
         ]
       },
       "it": {
-        "name": "Matteo Rossi",
-        "role": "Co-fondatore & Responsabile Infrastruttura IA",
-        "bio": "Progettazione di pipeline LLM locali, deployment containerizzato (Docker) e tunneling VPN inverso. Connette i framework di IA con l'esecuzione nativa in Python/C#.",
+        "name": "Hamid Lotfalian",
+        "role": "Co-fondatore e Responsabile dello Sviluppo Tecnologico",
+        "bio": "Hamid guida lo sviluppo software e tecnologico di pyBIM, collegando i flussi di lavoro BIM ad applicazioni web, automazione e sistemi di intelligenza artificiale locali. Si concentra sulla creazione di strumenti manutenibili e processi tecnici affidabili, costruiti a partire dalle esigenze effettive dei progetti.",
         "core_stack": [
-          "<strong>IA/Dati:</strong> Python, LangChain, ChromaDB, Ollama (LLM Locali)",
-          "<strong>Esecuzione AEC:</strong> C# (.NET), Revit API, Navisworks API",
-          "<strong>Infrastruttura:</strong> Docker, Linux (Ubuntu), Tailscale (Zero-Trust Networking)"
+          "<strong>Sviluppo software e web:</strong> Applicazioni web, interfacce tecniche e servizi di supporto.",
+          "<strong>IA locale e sistemi LLM:</strong> Flussi con modelli linguistici locali, recupero delle informazioni e integrazione nei processi ingegneristici.",
+          "<strong>Automazione e infrastruttura:</strong> Strumenti basati su Python, integrazione di sistemi e processi di deployment."
         ],
         "operational_focus": [
-          "Sviluppo di pipeline di esecuzione IA sicure e offline per appaltatori e general contractor Tier-1.",
-          "Traduzione algoritmica dei protocolli ISO 19650 in codice eseguibile.",
-          "Deployment containerizzato di flussi di lavoro OpenBIM headless."
+          "Definire l'architettura software e curare il sito web e gli strumenti tecnici di pyBIM.",
+          "Sviluppare e valutare soluzioni di automazione e IA locale per casi d'uso BIM definiti.",
+          "Coordinare implementazione, test e integrazione del software con i requisiti dell'ingegneria BIM."
         ]
       },
       "de": {
-        "name": "Matteo Rossi",
-        "role": "Mitgründer & Leiter KI-Infrastruktur",
-        "bio": "Architektur lokaler LLM-Pipelines, containerisiertes Deployment (Docker) und Reverse-VPN-Tunneling. Verbindet KI-Frameworks mit nativer Python/C#-Ausführung.",
+        "name": "Hamid Lotfalian",
+        "role": "Mitgründer & Leiter Technologieentwicklung",
+        "bio": "Hamid verantwortet die Software- und Technologieentwicklung bei pyBIM. Er verbindet BIM-Workflows mit Webanwendungen, Automatisierung und lokalen KI-Systemen. Im Mittelpunkt stehen wartbare Werkzeuge und verlässliche technische Abläufe, die sich an konkreten Projektanforderungen orientieren.",
         "core_stack": [
-          "<strong>KI/Daten:</strong> Python, LangChain, ChromaDB, Ollama (Lokale LLMs)",
-          "<strong>AEC-Ausführung:</strong> C# (.NET), Revit API, Navisworks API",
-          "<strong>Infrastruktur:</strong> Docker, Linux (Ubuntu), Tailscale (Zero-Trust-Networking)"
+          "<strong>Software- und Webentwicklung:</strong> Webanwendungen, technische Benutzeroberflächen und unterstützende Dienste.",
+          "<strong>Lokale KI- und LLM-Systeme:</strong> Abläufe mit lokalen Sprachmodellen, Informationsabruf und Integration in Engineering-Prozesse.",
+          "<strong>Automatisierung und Infrastruktur:</strong> Python-basierte Werkzeuge, Systemintegration und Deployment-Prozesse."
         ],
         "operational_focus": [
-          "Entwicklung sicherer Offline-KI-Ausführungspipelines für Tier-1-Generalunternehmer.",
-          "Algorithmische Übersetzung von ISO 19650-Protokollen in ausführbare Codebasen.",
-          "Containerisiertes Deployment von Headless-OpenBIM-Workflows."
+          "Softwarearchitektur definieren sowie die pyBIM-Website und technische Werkzeuge betreuen.",
+          "Automatisierungs- und lokale KI-Funktionen für definierte BIM-Anwendungsfälle entwickeln und bewerten.",
+          "Softwareimplementierung, Tests und Integration mit den Anforderungen des BIM-Engineerings abstimmen."
         ]
       }
     },
@@ -59,48 +59,48 @@
       "linkedin": "#",
       "github": "#",
       "en": {
-        "name": "Leonardo Romano",
-        "role": "Co-Founder & Head of BIM Data Strategy",
-        "bio": "Directs AEC domain logic. Translates ISO 19650 protocols, clash matrices, and EIR requirements into computational data structures for algorithmic processing.",
+        "name": "Hamed Sharifi",
+        "role": "Co-Founder & Head of BIM Engineering",
+        "bio": "Hamed leads the BIM engineering side of pyBIM, shaping project requirements, coordination workflows and technical deliverables. He connects practical BIM needs with the software and automation solutions developed by the technology team.",
         "core_stack": [
-          "<strong>AEC Validation:</strong> Navisworks Manage, Solibri Office, Revit",
-          "<strong>Data Structuring:</strong> JSON, CSV Schemas (Knowledge base preparation for RAG)",
-          "<strong>Protocol Compliance:</strong> ISO 19650, UNI 11337, EIR/BEP architecture"
+          "<strong>BIM Modeling & Coordination:</strong> Model workflows, discipline coordination and issue resolution.",
+          "<strong>Information Requirements:</strong> BIM execution planning, information structures and standards-aligned workflows where applicable.",
+          "<strong>Model QA/QC:</strong> Technical review of model consistency, deliverables and project requirements."
         ],
         "operational_focus": [
-          "Translating complex AEC mandates into discrete logic flows for AI execution.",
-          "Defining clash matrix parameters to automate the elimination of false-positive MEP/Structural conflicts.",
-          "Auditing Python/C# execution outputs against European engineering standards."
+          "Define BIM scope, technical requirements and expected project deliverables.",
+          "Identify repetitive BIM processes and collaborate on appropriate automation opportunities.",
+          "Review engineering outputs and coordinate technical quality before delivery."
         ]
       },
       "it": {
-        "name": "Leonardo Romano",
-        "role": "Co-fondatore & Responsabile Strategia Dati BIM",
-        "bio": "Dirige la logica di dominio AEC. Traduce i protocolli ISO 19650, le matrici di interferenza (clash) e i requisiti EIR in strutture dati computazionali per l'elaborazione algoritmica.",
+        "name": "Hamed Sharifi",
+        "role": "Co-fondatore e Responsabile dell'Ingegneria BIM",
+        "bio": "Hamed guida l'area di ingegneria BIM di pyBIM, definendo requisiti di progetto, flussi di coordinamento e deliverable tecnici. Collega le esigenze operative del BIM alle soluzioni software e di automazione sviluppate dall'area tecnologica.",
         "core_stack": [
-          "<strong>Validazione AEC:</strong> Navisworks Manage, Solibri Office, Revit",
-          "<strong>Strutturazione Dati:</strong> Schemi JSON, CSV (Preparazione knowledge base per RAG)",
-          "<strong>Conformità Protocolli:</strong> Architettura ISO 19650, UNI 11337, EIR/BEP"
+          "<strong>Modellazione e coordinamento BIM:</strong> Flussi di modellazione, coordinamento interdisciplinare e gestione delle interferenze.",
+          "<strong>Requisiti informativi:</strong> Pianificazione dell'esecuzione BIM, strutturazione delle informazioni e processi allineati agli standard, ove applicabili.",
+          "<strong>QA/QC dei modelli:</strong> Verifica tecnica della coerenza dei modelli, dei deliverable e dei requisiti di progetto."
         ],
         "operational_focus": [
-          "Traduzione di complessi requisiti AEC in flussi logici discreti per l'esecuzione tramite IA.",
-          "Definizione dei parametri della matrice di clash per automatizzare l'eliminazione dei falsi positivi tra impianti MEP e strutture.",
-          "Audit degli output di esecuzione Python/C# a fronte delle normative ingegneristiche europee."
+          "Definire l'ambito BIM, i requisiti tecnici e i deliverable attesi.",
+          "Individuare i processi BIM ripetitivi e collaborare all'identificazione di opportunità di automazione appropriate.",
+          "Verificare gli output ingegneristici e coordinare il controllo qualità tecnico prima della consegna."
         ]
       },
       "de": {
-        "name": "Leonardo Romano",
-        "role": "Mitgründer & Leiter BIM-Datenstrategie",
-        "bio": "Leitet die AEC-Fachlogik. Übersetzt ISO 19650-Protokolle, Kollisionsmatrizen und AIA-Vorgaben in rechnergestützte Datenstrukturen für die algorithmische Verarbeitung.",
+        "name": "Hamed Sharifi",
+        "role": "Mitgründer & Leiter BIM-Engineering",
+        "bio": "Hamed leitet den BIM-Engineering-Bereich von pyBIM und definiert Projektanforderungen, Koordinationsabläufe und technische Lieferergebnisse. Er verbindet die praktischen Anforderungen der BIM-Arbeit mit den Software- und Automatisierungslösungen des Technologiebereichs.",
         "core_stack": [
-          "<strong>AEC-Validierung:</strong> Navisworks Manage, Solibri Office, Revit",
-          "<strong>Datenstrukturierung:</strong> JSON, CSV-Schemata (Vorbereitung der Wissensbasis für RAG)",
-          "<strong>Protokollkonformität:</strong> ISO 19650, UNI 11337, AIA/BAP-Architektur"
+          "<strong>BIM-Modellierung und Koordination:</strong> Modellierungsabläufe, fachübergreifende Koordination und Konfliktbearbeitung.",
+          "<strong>Informationsanforderungen:</strong> BIM-Abwicklungsplanung, Informationsstrukturen und gegebenenfalls normorientierte Arbeitsabläufe.",
+          "<strong>Modell-QA/QC:</strong> Technische Prüfung von Modellkonsistenz, Lieferergebnissen und Projektanforderungen."
         ],
         "operational_focus": [
-          "Übersetzung komplexer AEC-Vorgaben in diskrete Logikflüsse für die KI-Ausführung.",
-          "Definition von Kollisionsmatrix-Parametern zur automatisierten Beseitigung falsch-positiver TGA/Tragwerks-Konflikte.",
-          "Auditierung von Python/C#-Ausführungsergebnissen anhand europäischer Ingenieurstandards."
+          "BIM-Leistungsumfang, technische Anforderungen und erwartete Lieferergebnisse definieren.",
+          "Wiederkehrende BIM-Prozesse identifizieren und geeignete Automatisierungsmöglichkeiten gemeinsam bewerten.",
+          "Engineering-Ergebnisse prüfen und die technische Qualitätssicherung vor der Übergabe koordinieren."
         ]
       }
     }
