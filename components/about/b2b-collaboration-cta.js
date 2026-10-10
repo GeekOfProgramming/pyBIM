@@ -29,49 +29,50 @@ export default function B2BCollaborationCTA() {
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-12">
 
           {/* Card 1 For Clients */}
-          <div className="xl:col-span-7 rounded-[2.5rem] border border-brand-border bg-white dark:bg-slate-900 shadow-lg p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/30 transition-colors">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-surface blur-[80px] rounded-full pointer-events-none group-hover:bg-brand-primary/5 transition-colors" />
+          <div className="xl:col-span-7 rounded-[2.5rem] border-2 border-brand-primary/40 dark:border-brand-primary/50 bg-brand-cardElevated shadow-md p-10 md:p-14 flex flex-col items-start justify-between relative overflow-hidden group hover:border-brand-primary/70 transition-colors">
             <div className="relative z-10 w-full mb-10">
-              <div className="flex items-center gap-4 mb-6">
-                <Briefcase className="w-10 h-10 text-brand-primary/60 group-hover:text-brand-primary transition-colors" />
-                <div className="text-sm font-mono font-bold text-brand-primary tracking-wider">{t("about.cta.c1_tag")}</div>
+              <div className="flex items-center gap-3.5 mb-6">
+                <div className="rounded-xl p-2.5 bg-brand-primary/10 text-brand-primary">
+                  <Briefcase className="w-8 h-8" aria-hidden="true" />
+                </div>
+                <div className="text-xs font-mono font-bold text-brand-primary tracking-widest uppercase">{t("about.cta.c1_tag")}</div>
               </div>
-              <h3 className="text-3xl font-bold text-brand-textPrimary leading-snug mb-4">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-textPrimary leading-tight mb-4 tracking-tight">
                 {t("about.cta.c1_title")}
               </h3>
-              <p className="text-brand-textSecondary text-base font-medium leading-relaxed mb-8">
+              <p className="text-brand-textSecondary text-base font-normal leading-relaxed mb-8">
                 {t("about.cta.c1_subtitle")}
               </p>
-              <div className="bg-brand-surface/50 border border-brand-border rounded-2xl p-6 space-y-5">
-                <div className="text-xs font-bold uppercase tracking-widest text-brand-textSecondary mb-2">{t("about.cta.c1_box_title")}</div>
+              <div className="bg-brand-surface/70 dark:bg-slate-900/60 border border-brand-border/80 dark:border-slate-800/80 rounded-2xl p-6 sm:p-7 space-y-5">
+                <div className="text-xs font-mono font-bold uppercase tracking-widest text-brand-textSecondary mb-2">{t("about.cta.c1_box_title")}</div>
                 
                 <div>
-                  <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c1_item1_title")}</strong>
+                  <strong className="text-brand-textPrimary text-sm font-semibold block mb-1">{t("about.cta.c1_item1_title")}</strong>
                   <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item1_desc") }} />
                 </div>
                 <div>
-                  <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c1_item2_title")}</strong>
+                  <strong className="text-brand-textPrimary text-sm font-semibold block mb-1">{t("about.cta.c1_item2_title")}</strong>
                   <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item2_desc") }} />
                 </div>
                 <div>
-                  <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c1_item3_title")}</strong>
+                  <strong className="text-brand-textPrimary text-sm font-semibold block mb-1">{t("about.cta.c1_item3_title")}</strong>
                   <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item3_desc") }} />
                 </div>
                 <div>
-                  <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c1_item4_title")}</strong>
+                  <strong className="text-brand-textPrimary text-sm font-semibold block mb-1">{t("about.cta.c1_item4_title")}</strong>
                   <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item4_desc") }} />
                 </div>
                 <div>
-                  <strong className="text-brand-textPrimary text-sm block mb-1">{t("about.cta.c1_item5_title")}</strong>
+                  <strong className="text-brand-textPrimary text-sm font-semibold block mb-1">{t("about.cta.c1_item5_title")}</strong>
                   <span className="text-brand-textSecondary text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t("about.cta.c1_item5_desc") }} />
                 </div>
               </div>
             </div>
             <div className="relative z-10 w-full">
-              <Link href="/contact#calculator" className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full border border-brand-border bg-brand-surface px-8 py-4 font-bold text-brand-textPrimary hover:bg-white dark:hover:bg-slate-800 hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all mb-6 uppercase text-sm tracking-wider">
+              <Link href="/contact#calculator" className="inline-flex w-full md:w-auto items-center justify-center gap-2.5 rounded-full bg-brand-accentAction px-8 py-4 min-h-[52px] font-bold text-brand-accentOnAction hover:bg-brand-accentHover hover:shadow-lg transition-all focus:outline-hidden focus:ring-2 focus:ring-brand-accentAction focus:ring-offset-2 dark:focus:ring-offset-slate-900 mb-6 uppercase text-sm tracking-wider shadow-sm">
                 {t("about.cta.c1_btn")} <ArrowRight className="w-4 h-4" />
               </Link>
-              <p className="text-xs text-brand-textSecondary italic leading-relaxed border-t border-brand-border/60 pt-4">
+              <p className="text-xs text-brand-textSecondary italic leading-relaxed border-t border-brand-border/60 dark:border-slate-800/60 pt-4">
                 {t("about.cta.c1_sub")}
               </p>
             </div>
