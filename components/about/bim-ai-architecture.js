@@ -41,7 +41,7 @@ export default function BimAiArchitecture() {
                 {t("about.team.ecosystem.manifest_title")}
               </h3>
               <div className="text-xs font-mono text-orange-600 dark:text-orange-400 font-semibold mb-3">
-                System Architecture
+                {t("about.team.ecosystem.manifest_subtitle")}
               </div>
               <p className="text-gray-600 dark:text-neutral-400 text-sm leading-relaxed mb-6">
                 {t("about.team.ecosystem.manifest_desc")}
