@@ -1,6 +1,6 @@
 "use client";
 import Link from "@/components/layout/LocalizedLink";
-import { X, Mail, Linkedin, Github } from "lucide-react";
+import { X, Mail, Linkedin, Github, UserRound } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function TeamPartnerModal({ person, onClose }) {
@@ -8,6 +8,9 @@ export default function TeamPartnerModal({ person, onClose }) {
   
   if (!person) return null;
   const data = person[language] || person.it;
+
+  // Stock unapproved photos (e.g. Unsplash) or missing images should show neutral placeholder
+  const isApprovedPortrait = Boolean(person.image && !person.image.includes("unsplash.com"));
 
   return (
     <div className="fixed inset-0 z-[1100] flex p-4 sm:p-6 bg-black/60 backdrop-blur-md overflow-y-auto">
@@ -29,11 +32,19 @@ export default function TeamPartnerModal({ person, onClose }) {
         <div className="w-full md:w-5/12 flex flex-col bg-brand-surface dark:bg-slate-950/60 p-6 sm:p-8 border-b md:border-b-0 md:border-r border-brand-border dark:border-slate-800 justify-between">
           <div>
             <div className="relative rounded-2xl overflow-hidden shadow-md border border-brand-border dark:border-slate-800 aspect-[4/5] w-full mb-6">
-              <img 
-                src={person.image || "/Pictures/General/hvac-industrial.jpg"} 
-                alt={data.name} 
-                className="w-full h-full object-cover"
-              />
+              {isApprovedPortrait ? (
+                <img
+                  src={person.image}
+                  alt={data.name}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-slate-100 dark:bg-slate-900/90 flex flex-col items-center justify-center">
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-slate-200/70 dark:bg-slate-800/80 border border-brand-border flex items-center justify-center text-brand-textSecondary">
+                    <UserRound className="w-12 h-12 sm:w-14 sm:h-14 stroke-[1.5]" />
+                  </div>
+                </div>
+              )}
             </div>
             
             <div className="text-center md:text-left mb-6">

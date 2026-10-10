@@ -2,7 +2,7 @@
   "teamMembers": [
     {
       "id": "t1",
-      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop",
+      "image": null,
       "email": "matteo.rossi@pybim.com",
       "linkedin": "#",
       "github": "#",
@@ -54,7 +54,7 @@
     },
     {
       "id": "t2",
-      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
+      "image": null,
       "email": "leonardo.romano@pybim.com",
       "linkedin": "#",
       "github": "#",
