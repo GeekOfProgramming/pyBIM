@@ -10,6 +10,22 @@ export default function B2BCollaborationCTA() {
   return (
     <section className="bg-brand-base w-full py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="max-w-3xl mb-10 sm:mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="h-px bg-brand-primary w-8 sm:w-12" aria-hidden="true" />
+            <span className="text-xs font-mono font-bold text-brand-primary tracking-widest uppercase">
+              {t("about.cta.section_tag")}
+            </span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-4">
+            {t("about.cta.section_title")}
+          </h2>
+          <p className="text-base sm:text-lg font-sans text-brand-textSecondary leading-relaxed">
+            {t("about.cta.section_subtitle")}
+          </p>
+        </div>
+
         <div className="grid gap-8 md:grid-cols-2">
 
           {/* Card 1 For Clients */}
