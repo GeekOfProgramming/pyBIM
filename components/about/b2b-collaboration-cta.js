@@ -8,7 +8,7 @@ export default function B2BCollaborationCTA() {
   const { t } = useLanguage();
 
   return (
-    <section className="bg-brand-base w-full py-24 lg:py-32">
+    <section id="collaboration" className="scroll-mt-24 bg-brand-base w-full py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-10 sm:mb-12">

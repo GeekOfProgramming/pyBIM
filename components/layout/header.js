@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Globe, ChevronDown, ChevronRight, Briefcase, FileText, Code2, Users, Building, Activity, Shield, Terminal, Cog, Calculator, UserCircle, Cpu, GitBranch } from "lucide-react";
+import { Globe, ChevronDown, ChevronRight, Briefcase, FileText, Code2, Users, Building, Activity, Shield, Terminal, Cog, Calculator, UserCircle, Cpu, GitBranch, Layers, FileCheck2 } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { useTheme } from "@/lib/ThemeContext";
 import ThemeToggle from "@/components/ui/ThemeToggle";
@@ -25,10 +25,13 @@ const pyBimLeftMenu = [
 const pyBimRightMenu = {
   who_we_are: [
     { labelKey: "header.mega.manifesto", icon: Terminal, href: "/about#manifesto" },
+    { labelKey: "header.mega.philosophy", icon: Layers, href: "/about#philosophy" },
     { labelKey: "header.mega.journey", icon: Activity, href: "/about#journey" },
     { labelKey: "header.mega.tech_stack", icon: Code2, href: "/about#tech-stack" },
-    { labelKey: "header.mega.impact", icon: Shield, href: "/about#impact" },
+    { labelKey: "header.mega.impact", icon: FileCheck2, href: "/about#impact" },
+    { labelKey: "header.mega.collaboration", icon: Briefcase, href: "/about#collaboration" },
     { labelKey: "header.mega.team", icon: Users, href: "/about#team" },
+    { labelKey: "header.mega.bim_ai_architecture", icon: Cpu, href: "/about#bim-ai-architecture" },
   ],
   success_stories: [
     { labelKey: "header.mega.completed_projects", icon: Briefcase, href: "/success-stories#completed-projects" },
@@ -184,8 +187,8 @@ export default function Header() {
                   </div>
 
                   {/* Right Submenu Column for all groups */}
-                  <div className="w-[62%] bg-white dark:bg-slate-900 p-6 flex flex-col justify-center">
-                    <div className="flex flex-col gap-3">
+                  <div className="w-[62%] bg-white dark:bg-slate-900 p-4 sm:p-5 flex flex-col justify-start max-h-[min(70vh,520px)] overflow-y-auto">
+                    <div className="flex flex-col gap-1.5">
                       {pyBimRightMenu[activeMegaMenuItem]?.map((subItem, idx) => {
                         const Icon = subItem.icon;
                         return (
@@ -193,12 +196,12 @@ export default function Header() {
                             key={idx}
                             href={getLocalizedUrl(subItem.href)}
                             onClick={() => setMegaMenuOpen(false)}
-                            className="group flex items-center gap-4 p-2 rounded-lg hover:bg-brand-surface dark:hover:bg-slate-800/60 transition min-h-[44px]"
+                            className="group flex items-center gap-3.5 p-2 rounded-lg hover:bg-brand-surface dark:hover:bg-slate-800/60 transition min-h-[44px]"
                           >
-                            <div className="shrink-0 w-10 h-10 rounded-full bg-brand-surface dark:bg-slate-800 border border-brand-border dark:border-slate-700 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
-                              <Icon className="w-5 h-5" />
+                            <div className="shrink-0 w-9 h-9 rounded-full bg-brand-surface dark:bg-slate-800 border border-brand-border dark:border-slate-700 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
+                              <Icon className="w-4 h-4" />
                             </div>
-                            <span className="font-semibold text-sm text-brand-textPrimary group-hover:text-brand-primary transition-colors">{t(subItem.labelKey)}</span>
+                            <span className="font-semibold text-sm text-brand-textPrimary group-hover:text-brand-primary transition-colors leading-snug">{t(subItem.labelKey)}</span>
                           </Link>
                         );
                       })}
