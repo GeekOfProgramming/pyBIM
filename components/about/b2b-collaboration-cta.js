@@ -119,7 +119,7 @@ export default function B2BCollaborationCTA() {
               </div>
             </div>
             <div className="relative z-10 w-full">
-              <Link href="/careers#positions" className="inline-flex w-full md:w-auto items-center justify-center gap-2.5 rounded-full border border-brand-border hover:border-brand-primary/50 dark:border-slate-700 dark:hover:border-slate-600 bg-brand-surface/60 hover:bg-brand-surface dark:bg-slate-800/40 dark:hover:bg-slate-800/80 px-8 py-4 min-h-[52px] font-bold text-brand-textPrimary hover:text-brand-primary transition-all focus:outline-hidden focus:ring-2 focus:ring-brand-primary/40 focus:ring-offset-2 dark:focus:ring-offset-slate-900 mb-6 uppercase text-sm tracking-wider shadow-2xs">
+              <Link href="/careers#positions" className="inline-flex w-full md:w-auto items-center justify-center gap-2.5 rounded-full border border-brand-border hover:border-brand-primary/50 dark:border-slate-700 dark:hover:border-slate-600 bg-brand-surface/60 hover:bg-brand-surface dark:bg-slate-800/40 dark:hover:bg-slate-800/80 px-8 py-4 min-h-[52px] font-bold text-brand-textPrimary hover:text-brand-primary transition-all focus:outline-hidden focus:ring-2 focus:ring-brand-primary/40 focus:ring-offset-2 dark:focus:ring-offset-slate-900 mb-6 uppercase text-sm tracking-wider shadow-sm">
                 {t("about.cta.c2_btn")} <ArrowRight className="w-4 h-4" />
               </Link>
               <p className="text-xs text-brand-textSecondary/80 italic leading-relaxed border-t border-brand-border/60 dark:border-slate-800/60 pt-4">
