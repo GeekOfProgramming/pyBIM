@@ -53,18 +53,42 @@ export default function TeamPartnerModal({ person, onClose }) {
             </div>
           </div>
           
-          {/* Validation Vectors */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 sm:p-5 text-center shadow-sm border border-brand-border dark:border-slate-700 mt-auto flex items-center justify-center gap-6">
-            <a href="#" className="text-brand-textSecondary hover:text-brand-primary transition-all hover:scale-110" aria-label="LinkedIn">
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-brand-textSecondary hover:text-brand-primary transition-all hover:scale-110" aria-label="GitHub">
-              <Github className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-brand-textSecondary hover:text-brand-primary transition-all hover:scale-110" aria-label="Email">
-              <Mail className="w-5 h-5" />
-            </a>
-          </div>
+          {/* Contact Links */}
+          {Boolean(person.linkedin || person.github || person.email) && (
+            <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 sm:p-5 text-center shadow-sm border border-brand-border dark:border-slate-700 mt-auto flex items-center justify-center gap-6">
+              {person.linkedin && person.linkedin.startsWith("https://") && (
+                <a
+                  href={person.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-textSecondary hover:text-brand-primary transition-all hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg p-1"
+                  aria-label={`LinkedIn — ${data.name}`}
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              )}
+              {person.github && person.github.startsWith("https://") && (
+                <a
+                  href={person.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-textSecondary hover:text-brand-primary transition-all hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg p-1"
+                  aria-label={`GitHub — ${data.name}`}
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+              )}
+              {person.email && (
+                <a
+                  href={`mailto:${person.email}`}
+                  className="text-brand-textSecondary hover:text-brand-primary transition-all hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg p-1"
+                  aria-label={`Email — ${data.name}`}
+                >
+                  <Mail className="w-5 h-5" />
+                </a>
+              )}
+            </div>
+          )}
         </div>
 
         {/* RIGHT COLUMN: Details */}
