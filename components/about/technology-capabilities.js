@@ -59,6 +59,15 @@ export default function TechnologyCapabilities() {
     return activePillar.families.find((f) => f.id === selectedFamilyId) || activePillar.families[0];
   }, [activePillar, selectedFamilyId]);
 
+  // Handler to select pillar (defaults to its first family)
+  const handleSelectPillar = (pillarId) => {
+    setSelectedPillarId(pillarId);
+    const targetPillar = CATALOGUE_PILLARS.find((p) => p.id === pillarId);
+    if (targetPillar && targetPillar.families?.length > 0) {
+      setSelectedFamilyId(targetPillar.families[0].id);
+    }
+  };
+
   // Handler to select family
   const handleSelectFamily = (pillarId, familyId) => {
     setSelectedPillarId(pillarId);
@@ -169,9 +178,9 @@ export default function TechnologyCapabilities() {
         </motion.div>
 
         {/* ========================================================= */}
-        {/* THREE-PILLAR OVERVIEW CARDS (SYNCHRONIZED INTERNAL ROWS)   */}
+        {/* 1. THREE-PILLAR OVERVIEW CARDS (TOP LEVEL SELECTION)       */}
         {/* ========================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7 mb-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-7 mb-7 sm:mb-9 items-stretch">
           {CATALOGUE_PILLARS.map((pillar, pIdx) => {
             const isPillarSelected = selectedPillarId === pillar.id;
             const colors = getPillarColorClasses(pillar.id, isPillarSelected);
@@ -187,157 +196,125 @@ export default function TechnologyCapabilities() {
                   delay: shouldReduceMotion ? 0 : pIdx * 0.09,
                   ease: [0.16, 1, 0.3, 1] 
                 }}
-                className={`relative rounded-2xl border transition-all duration-300 p-6 sm:p-7 backdrop-blur-md flex flex-col ${
+                className={`relative rounded-2xl border transition-all duration-300 backdrop-blur-md flex flex-col ${
                   isPillarSelected
                     ? `bg-white dark:bg-slate-900 ${colors.activeBorder}`
                     : "bg-white/75 dark:bg-slate-900/75 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm"
                 }`}
               >
-                {/* 1. Header Metadata Row: Fixed height min-h-[48px] for clean baseline alignment */}
-                <div className="flex items-start justify-between gap-3 min-h-[48px] mb-4">
-                  <div className="flex items-center gap-2.5">
-                    <div className={`w-9 h-9 rounded-xl border flex items-center justify-center shrink-0 shadow-sm ${colors.badge}`}>
-                      {pillarIcons[pillar.icon]}
+                {/* Interactive Selectable Pillar Card */}
+                <button
+                  type="button"
+                  onClick={() => handleSelectPillar(pillar.id)}
+                  className="w-full text-left rounded-2xl p-4 sm:p-5 lg:p-6 focus:outline-hidden focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 group cursor-pointer transition-all flex flex-col md:flex-row lg:flex-col justify-between md:items-center lg:items-stretch gap-3 md:gap-6 lg:gap-3 h-full"
+                  aria-pressed={isPillarSelected}
+                  aria-label={`${t(pillar.titleKey)} — ${t(pillar.tagKey)}`}
+                >
+                  {/* Tablet Left Area / Mobile & Desktop Top: Icon, Status Badge & Title */}
+                  <div className="w-full md:w-1/2 lg:w-full">
+                    {/* Header Metadata Row: Icon & Status Badge */}
+                    <div className="flex items-center justify-between gap-2.5 mb-2.5 sm:mb-3 w-full">
+                      <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl border flex items-center justify-center shrink-0 shadow-sm transition-transform duration-200 group-hover:scale-105 ${colors.badge}`}>
+                        {pillarIcons[pillar.icon]}
+                      </div>
+
+                      <span className={`inline-flex items-center text-center px-2.5 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-mono font-bold tracking-wide uppercase border shrink-0 ${colors.badge}`}>
+                        {t(pillar.statusKey)}
+                      </span>
                     </div>
-                    <span className="text-xs font-mono font-bold tracking-wider text-brand-textSecondary uppercase">
-                      {t(pillar.tagKey)}
-                    </span>
+
+                    {/* Main Pillar Title */}
+                    <h3 className={`text-base sm:text-lg lg:text-[20px] font-bold tracking-tight leading-snug transition-colors break-words ${
+                      isPillarSelected ? "text-brand-textPrimary" : "text-brand-textPrimary/90 group-hover:text-brand-textPrimary"
+                    }`}>
+                      {t(pillar.titleKey)}
+                    </h3>
                   </div>
 
-                  <span className={`inline-flex items-center text-center px-2.5 py-1 rounded-full text-xs font-mono font-bold tracking-wide uppercase border shrink-0 ${colors.badge}`}>
-                    {t(pillar.statusKey)}
-                  </span>
-                </div>
-
-                {/* 2. Main Pillar Title: Synchronized 20-22px heading with min-h for multi-line parity */}
-                <div className="min-h-[58px] sm:min-h-[64px] flex items-center mb-2">
-                  <h3 className="text-lg sm:text-[21px] font-bold text-brand-textPrimary tracking-tight leading-snug">
-                    {t(pillar.titleKey)}
-                  </h3>
-                </div>
-
-                {/* 3. Short Description: Synchronized 14-15px text with consistent vertical track */}
-                <div className="min-h-[68px] sm:min-h-[72px] mb-6">
-                  <p className="text-sm text-brand-textSecondary leading-relaxed">
-                    {t(pillar.subKey)}
-                  </p>
-                </div>
-
-                {/* 4. Category Divider & Family Specifications Label */}
-                <div className="pt-4 border-t border-slate-200/80 dark:border-slate-800/80 mb-3 flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold tracking-wider text-brand-textSecondary uppercase">
-                    {t("about.tech.detail_eyebrow")}
-                  </span>
-                  <span className="text-xs font-mono font-semibold text-brand-textSecondary/80">
-                    ({pillar.families.length})
-                  </span>
-                </div>
-
-                {/* 5. Subordinate Category Selectors Area */}
-                <div className="flex-1 flex flex-col justify-start space-y-2">
-                  {pillar.families.map((family) => {
-                    const isFamilyActive = isPillarSelected && selectedFamilyId === family.id;
-
-                    return (
-                      <button
-                        key={family.id}
-                        type="button"
-                        onClick={() => handleSelectFamily(pillar.id, family.id)}
-                        className={`w-full group text-left px-3.5 py-3 rounded-xl border font-mono transition-all duration-200 flex items-center justify-between min-h-[44px] focus:outline-hidden focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 ${
-                          isFamilyActive
-                            ? `${colors.selectedBg} font-bold shadow-sm`
-                            : "border-transparent bg-slate-50/70 dark:bg-slate-800/40 text-brand-textSecondary hover:bg-slate-100 dark:hover:bg-slate-800/70 hover:text-brand-textPrimary"
-                        }`}
-                        aria-pressed={isFamilyActive}
-                      >
-                        <div className="flex items-center gap-3 min-w-0 pr-2">
-                          <span className={`text-xs font-mono font-semibold shrink-0 ${isFamilyActive ? colors.accentText : "text-brand-textSecondary/70"}`}>
-                            {family.num}
-                          </span>
-                          <span className="text-sm font-sans font-medium text-brand-textPrimary leading-snug break-words">
-                            {t(family.titleKey)}
-                          </span>
-                        </div>
-
-                        <div className="flex items-center gap-2 shrink-0">
-                          <span className="text-xs font-mono text-brand-textSecondary/80 tabular-nums">
-                            {family.itemCount}
-                          </span>
-                          <ChevronRight 
-                            className={`w-4 h-4 transition-transform duration-200 ${
-                              isFamilyActive ? "translate-x-0.5 text-current" : "text-brand-textSecondary/50 group-hover:translate-x-0.5"
-                            }`} 
-                            aria-hidden="true" 
-                          />
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
+                  {/* Tablet Right Area / Mobile & Desktop Bottom: Introductory Description */}
+                  <div className="w-full md:w-1/2 lg:w-full md:border-l md:border-slate-200/60 md:dark:border-slate-800/60 md:pl-6 lg:border-l-0 lg:pl-0">
+                    <p className="text-xs sm:text-sm text-brand-textSecondary leading-relaxed break-words">
+                      {t(pillar.subKey)}
+                    </p>
+                  </div>
+                </button>
               </motion.div>
             );
           })}
         </div>
 
         {/* ========================================================= */}
-        {/* SHARED FULL-WIDTH DETAILS PANEL (PROGRESSIVE DISCLOSURE)  */}
+        {/* 2. SHARED HORIZONTAL FAMILY SELECTOR                       */}
+        {/* ========================================================= */}
+        <div className="mb-7 sm:mb-8 p-3 sm:p-4 rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-md shadow-sm">
+          {/* Responsive Grid / Horizontal Family Options */}
+          <div className={`grid grid-cols-2 sm:grid-cols-3 ${activePillar.families.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-6"} gap-2 sm:gap-2.5`}>
+            {activePillar.families.map((family) => {
+              const isFamilyActive = selectedFamilyId === family.id;
+
+              return (
+                <button
+                  key={family.id}
+                  type="button"
+                  onClick={() => handleSelectFamily(activePillar.id, family.id)}
+                  className={`group text-center px-3 py-3.5 sm:py-4 rounded-xl border transition-all duration-200 flex items-center justify-center min-h-[56px] focus:outline-hidden focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 ${
+                    isFamilyActive
+                      ? `${activeColorClasses.selectedBg} font-bold shadow-sm ${activeColorClasses.activeBorder}`
+                      : "border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900/90 text-brand-textSecondary hover:border-slate-300 dark:hover:border-slate-700 hover:text-brand-textPrimary shadow-2xs"
+                  }`}
+                  aria-pressed={isFamilyActive}
+                >
+                  <span className="text-sm sm:text-base font-sans font-semibold text-brand-textPrimary leading-snug break-words">
+                    {t(family.titleKey)}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ========================================================= */}
+        {/* 3. SHARED COMPACT DETAILS PANEL (DYNAMIC CONTENT)          */}
         {/* ========================================================= */}
         <AnimatePresence mode="wait">
           <motion.div
             key={`${selectedPillarId}-${selectedFamilyId}`}
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-            className={`relative rounded-3xl border ${activeColorClasses.activeBorder} bg-white dark:bg-slate-900/95 backdrop-blur-xl p-6 sm:p-8 lg:p-10 shadow-xl overflow-hidden`}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -4 }}
+            transition={{ 
+              duration: shouldReduceMotion ? 0 : 0.19, 
+              ease: [0.16, 1, 0.3, 1] 
+            }}
+            className={`relative rounded-2xl sm:rounded-3xl border ${activeColorClasses.activeBorder} bg-white dark:bg-slate-900/95 backdrop-blur-xl p-5 sm:p-7 shadow-lg overflow-hidden`}
             role="region"
             aria-live="polite"
             aria-label={`${t(activePillar.titleKey)} — ${t(activeFamily.titleKey)}`}
           >
-            {/* Top Status & Family Breadcrumb */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-8 border-b border-slate-200/80 dark:border-slate-800/80">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono font-bold tracking-widest text-brand-primary uppercase">
-                    {t(activePillar.tagKey)}
-                  </span>
-                  <span className="text-slate-300 dark:text-slate-700">/</span>
-                  <span className="text-xs font-mono font-bold text-brand-textSecondary uppercase">
-                    {activeFamily.num} {t(activeFamily.titleKey)}
-                  </span>
-                </div>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-brand-textPrimary tracking-tight">
-                  {t(activeFamily.titleKey)}
-                </h3>
-              </div>
-
-              <div className="flex items-center gap-2 self-start sm:self-auto">
-                <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider border ${activeColorClasses.badge}`}>
-                  {t(activePillar.statusKey)}
-                </span>
-                <span className="text-xs font-mono text-brand-textSecondary">
-                  {activeItemsList.length} {t("about.tech.headings_count")}
-                </span>
-              </div>
+            {/* Header: Family Title */}
+            <div className="pb-3.5 mb-4 border-b border-slate-200/70 dark:border-slate-800/70">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-brand-textPrimary tracking-tight">
+                {t(activeFamily.titleKey)}
+              </h3>
             </div>
 
             {/* Context Narrative */}
-            <p className="text-sm sm:text-base text-brand-textSecondary leading-relaxed max-w-4xl mb-8">
+            <p className="text-sm text-brand-textSecondary leading-relaxed max-w-4xl mb-6">
               {t(activeFamily.descKey)}
             </p>
 
-            {/* Responsive Headings Grid with Semantic Iconography */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 mb-8">
+            {/* Responsive Headings Grid with Semantic Iconography (Compact Rows) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-2.5 mb-5">
               {activeItemsList.map((itemTitle, itemIdx) => (
                 <div
                   key={itemIdx}
-                  className="rounded-xl border border-slate-200/90 dark:border-slate-800/90 bg-slate-50/60 dark:bg-slate-800/40 p-3.5 sm:p-4 flex items-start gap-3 transition-colors hover:bg-white dark:hover:bg-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm"
+                  className="rounded-lg sm:rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-800/35 py-2 px-2.5 sm:py-2.5 sm:px-3 flex items-start gap-2.5 transition-colors hover:bg-white dark:hover:bg-slate-800/70 hover:border-slate-300 dark:hover:border-slate-700"
                 >
-                  <div className={`mt-0.5 rounded-lg p-1.5 shrink-0 ${activeColorClasses.badge}`}>
+                  <div className={`mt-0.5 rounded-md p-1 shrink-0 ${activeColorClasses.badge}`}>
                     {renderItemIcon(activePillar.id)}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <span className="text-sm font-semibold text-brand-textPrimary leading-snug block">
+                    <span className="text-xs sm:text-sm font-semibold text-brand-textPrimary leading-snug block break-words">
                       {itemTitle}
                     </span>
                   </div>
@@ -346,7 +323,7 @@ export default function TechnologyCapabilities() {
             </div>
 
             {/* Factual Operational Notice Footer */}
-            <div className={`flex items-start sm:items-center gap-3 text-xs font-mono rounded-xl p-3.5 border ${activeColorClasses.noticeBorder}`}>
+            <div className={`flex items-start sm:items-center gap-2.5 text-xs font-mono rounded-xl p-3 border ${activeColorClasses.noticeBorder}`}>
               <Info className="w-4 h-4 shrink-0 opacity-80 mt-0.5 sm:mt-0" aria-hidden="true" />
               <p className="leading-relaxed">
                 {activePillar.id === "bim-delivery" && t("about.tech.detail_notice_p1")}

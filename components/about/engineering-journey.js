@@ -1,7 +1,7 @@
 "use client";
 
-import { useId } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef, useId } from "react";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useLanguage } from "@/lib/LanguageContext";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 import { 
@@ -34,6 +34,22 @@ export default function EngineeringJourney() {
   const { t } = useLanguage();
   const shouldReduceMotion = useReducedMotion();
   const headingId = useId();
+  const timelineRef = useRef(null);
+
+  // Scroll-linked highlight along the 3-stage timeline wrapper
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 75%", "end 50%"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const scaleY = useTransform(smoothProgress, [0, 1], [0, 1]);
+  const glowTop = useTransform(smoothProgress, (val) => `${Math.min(Math.max(val * 100, 0), 100)}%`);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -99,31 +115,34 @@ export default function EngineeringJourney() {
         {/* ========================================================= */}
         <div className="space-y-12 lg:space-y-16">
           
-          {/* Timeline Stages Container: Rail originates at Stage 01 node center and terminates at Stage 03 node center */}
-          <div className="relative">
+          {/* Timeline Stages Container: Continuous vertical engineering backbone rail from Stage 01 node center to the base of Stage 03 */}
+          <div ref={timelineRef} className="relative">
             {/* Continuous Vertical Backbone Rail (Visible on md and above) */}
-            {/* Starts at top-13 (geometric center of Stage 01 w-12 node at top-7) */}
-            {/* Ends at bottom-13 (geometric center of Stage 03 w-12 node at top-7) */}
             <div 
-              className="pointer-events-none absolute left-6 top-13 bottom-13 w-px z-0 hidden md:block" 
+              className="pointer-events-none absolute left-6 top-[52px] bottom-0 w-px z-0 hidden md:block" 
               aria-hidden="true"
             >
-              <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
-                <motion.line 
-                  x1="0" 
-                  y1="0" 
-                  x2="0" 
-                  y2="100%" 
-                  stroke="currentColor" 
-                  className="text-slate-300 dark:text-slate-700" 
-                  strokeWidth="2" 
-                  strokeDasharray="6 6"
-                  initial={shouldReduceMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 1 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              {/* 1. Static Foundation Neutral Rail (Always visible) */}
+              <div className="absolute inset-0 w-full bg-slate-300 dark:bg-slate-700/80" />
+
+              {/* 2. Scroll-Linked Progress Highlight Line (Cyan/Blue) */}
+              {!shouldReduceMotion && (
+                <motion.div 
+                  className="absolute inset-0 w-full bg-gradient-to-b from-emerald-500 via-brand-primary to-cyan-400 origin-top shadow-[0_0_8px_rgba(59,130,246,0.6)]"
+                  style={{ scaleY }}
                 />
-              </svg>
+              )}
+
+              {/* 3. Leading Scroll-Linked Highlight Glow Point */}
+              {!shouldReduceMotion && (
+                <motion.div 
+                  className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-cyan-400 border border-white dark:border-slate-900 shadow-[0_0_10px_#22d3ee]"
+                  style={{ top: glowTop }}
+                />
+              )}
+
+              {/* 4. Terminal End-Point Anchor (Bottom of Stage 03 card) */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 rounded-full bg-slate-400 dark:bg-slate-600 border border-white dark:border-slate-900" />
             </div>
 
             <motion.div 
