@@ -40,7 +40,7 @@ export default function B2BCollaborationCTA() {
               </div>
 
               {/* Title & Subtitle container with flexible spacing */}
-              <div className="mb-8">
+              <div className="mb-8 xl:min-h-[160px]">
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-textPrimary leading-tight mb-4 tracking-tight">
                   {t("about.cta.c1_title")}
                 </h3>
@@ -93,7 +93,7 @@ export default function B2BCollaborationCTA() {
               </div>
 
               {/* Title & Subtitle container with flexible spacing */}
-              <div className="mb-8">
+              <div className="mb-8 xl:min-h-[160px]">
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-textPrimary leading-tight mb-4 tracking-tight">
                   {t("about.cta.c2_title")}
                 </h3>
