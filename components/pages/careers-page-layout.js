@@ -5,6 +5,7 @@ import Link from "@/components/layout/LocalizedLink";
 import { useLanguage } from "@/lib/LanguageContext";
 import WorkWithUsHero from "@/components/careers/work-with-us-hero";
 import HowWeWorkSection from "@/components/careers/how-we-work-section";
+import ExpertiseAreasSection from "@/components/careers/expertise-areas-section";
 import {
   ChevronRight,
   CheckCircle2,
@@ -61,6 +62,9 @@ export default function CareersPageLayout({ jobs }) {
 
       {/* S02: How We Work (Extracted Culture Section) */}
       <HowWeWorkSection />
+
+      {/* S03: Where You Can Contribute (Expertise Areas) */}
+      <ExpertiseAreasSection />
 
       {/* S04: Open Positions Section (Preserved Target) */}
       <section id="positions" className="scroll-mt-24 py-24 relative border-b border-brand-border bg-brand-base">
