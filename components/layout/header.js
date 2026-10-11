@@ -40,9 +40,10 @@ const pyBimRightMenu = {
     { labelKey: "header.mega.client_testimonials", icon: Users, href: "/success-stories#testimonials" },
   ],
   work_with_us: [
-    { labelKey: "header.mega.culture_benefits", icon: Users, href: "/careers#culture" },
-    { labelKey: "header.mega.open_positions", icon: Briefcase, href: "/careers#positions" },
-    { labelKey: "header.mega.life_at_pybim", icon: Building, href: "/careers#life" },
+    { labelKey: "header.mega.careers_how_we_work", icon: Users, href: "/careers#culture" },
+    { labelKey: "header.mega.careers_expertise", icon: Layers, href: "/careers#expertise" },
+    { labelKey: "header.mega.careers_opportunities", icon: Briefcase, href: "/careers#positions" },
+    { labelKey: "header.mega.careers_apply", icon: UserCircle, href: "/careers#apply" },
   ],
   contact_us: [
     { labelKey: "header.mega.audit", icon: Briefcase, href: "/contact#audit" },
