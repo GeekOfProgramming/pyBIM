@@ -10,5 +10,8 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "vars": {
+    "ENVIRONMENT": "staging"
+  },
   "workers_dev": true
 }
