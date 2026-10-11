@@ -245,7 +245,7 @@ export default function WorkWithUsHero() {
                               {track.title}
                             </h3>
                           </div>
-                          <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono font-bold tracking-wide uppercase border ${track.badgeClass}`}>
+                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-caption font-mono font-bold tracking-wide uppercase border ${track.badgeClass}`}>
                             {track.tag}
                           </span>
                         </div>
