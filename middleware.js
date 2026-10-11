@@ -7,6 +7,16 @@ const defaultLocale = 'en';
 export async function middleware(req) {
   const { pathname } = req.nextUrl;
 
+  const hostname = req.nextUrl.hostname || '';
+  const isStagingPreview = hostname.includes('workers.dev') || process.env.ENVIRONMENT === 'staging' || process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview';
+
+  function applyStagingHeaders(response) {
+    if (isStagingPreview) {
+      response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+    }
+    return response;
+  }
+
   // Protect Portal Routes (Fail-closed: requires valid token and configured secret)
   if (pathname.includes('/portal')) {
     const token = req.cookies.get('auth_token')?.value;
@@ -17,9 +27,7 @@ export async function middleware(req) {
     if (!token || !secretKey) {
       const url = req.nextUrl.clone();
       url.pathname = `/${currentLocale}/login`;
-      const redirectRes = NextResponse.redirect(url);
-      redirectRes.headers.set('X-Robots-Tag', 'noindex, nofollow');
-      return redirectRes;
+      return applyStagingHeaders(NextResponse.redirect(url));
     }
     
     try {
@@ -27,9 +35,7 @@ export async function middleware(req) {
     } catch (err) {
       const url = req.nextUrl.clone();
       url.pathname = `/${currentLocale}/login`;
-      const redirectRes = NextResponse.redirect(url);
-      redirectRes.headers.set('X-Robots-Tag', 'noindex, nofollow');
-      return redirectRes;
+      return applyStagingHeaders(NextResponse.redirect(url));
     }
   }
 
@@ -39,17 +45,13 @@ export async function middleware(req) {
   );
 
   if (pathnameHasLocale) {
-    const res = NextResponse.next();
-    res.headers.set('X-Robots-Tag', 'noindex, nofollow');
-    return res;
+    return applyStagingHeaders(NextResponse.next());
   }
 
   // Redirect if there is no locale (and it's not an excluded path)
   const url = req.nextUrl.clone();
   url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
-  const redirectRes = NextResponse.redirect(url);
-  redirectRes.headers.set('X-Robots-Tag', 'noindex, nofollow');
-  return redirectRes;
+  return applyStagingHeaders(NextResponse.redirect(url));
 }
 
 export const config = {
