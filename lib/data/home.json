@@ -1,14 +1,13 @@
 {
   "en": {
     "hero": {
-      "badge": "SOVEREIGN AI & BIM AUTOMATION INFRASTRUCTURE",
-      "title_main": "Sovereign AI Infrastructure",
-      "title_highlight": "for BIM Automation.",
-      "description": "We deploy production-level BIM automation and sovereign AI systems for complex global engineering and construction enterprises. Private on-premise inference, zero data leakage, and customized model-to-code pipelines designed for maximum ROI.",
-      "cta_primary": "REQUEST AUDIT",
-      "microcopy_primary": "Zero Data Leakage • Air-Gapped Behind Corporate Firewall",
-      "cta_secondary": "EXPLORE SOLUTIONS",
-      "microcopy_secondary": "Explore Our 3 Core Engineering Vectors"
+      "badge": "BIM ENGINEERING · PROJECT DELIVERY",
+      "title_main": "BIM Engineering That Delivers.",
+      "title_highlight": "Technology That Moves It Forward.",
+      "description": "pyBIM supports AEC teams with BIM modeling, model coordination, quality assurance, and structured digital delivery. Our flexible engineering specialists combine established BIM practices with in-house Revit automation and AI-assisted workflows where appropriate.",
+      "cta_primary": "Discuss Your BIM Project",
+      "cta_secondary": "Explore BIM Services",
+      "capability_line": "BIM Modeling · Coordination · Model QA · Digital Delivery"
     },
     "paradigmShift": {
       "section_title": "Scale Through Code, Not Headcount.",
@@ -167,14 +166,13 @@
   },
   "it": {
     "hero": {
-      "badge": "INFRASTRUTTURA IA SOVRANA & AUTOMAZIONE BIM",
-      "title_main": "Infrastruttura IA Sovrana",
-      "title_highlight": "per l'Automazione BIM.",
-      "description": "Implementiamo automazione BIM di livello produttivo e sistemi IA sovrani per grandi imprese di ingegneria e costruzioni. Inferenza locale privata, zero fuga di dati e pipeline da modello a codice progettate per il massimo ROI.",
-      "cta_primary": "RICHIEDI AUDIT",
-      "microcopy_primary": "Zero Fuga di Dati • Air-Gapped dietro Firewall Aziendale",
-      "cta_secondary": "ESPLORA SOLUZIONI",
-      "microcopy_secondary": "Scopri i Nostri 3 Vettori Ingegneristici"
+      "badge": "INGEGNERIA BIM · CONSEGNA PROGETTUALE",
+      "title_main": "Ingegneria BIM che Risponde con Precisione.",
+      "title_highlight": "Tecnologia che Fa Progredire i Progetti.",
+      "description": "pyBIM supporta i team AEC con modellazione BIM, coordinamento modelli, controllo qualità e consegna digitale strutturata. I nostri specialisti uniscono pratiche BIM consolidate ad automazione Revit interna e flussi assistiti da intelligenza artificiale mirati.",
+      "cta_primary": "Discuti il Tuo Progetto BIM",
+      "cta_secondary": "Esplora i Servizi BIM",
+      "capability_line": "Modellazione BIM · Coordinamento · Model QA · Consegna Digitale"
     },
     "paradigmShift": {
       "section_title": "Scala Tramite il Codice, Non con il Personale.",
@@ -333,14 +331,13 @@
   },
   "de": {
     "hero": {
-      "badge": "SOUVERÄNE KI & BIM-AUTOMATISIERUNGS-INFRASTRUKTUR",
-      "title_main": "Souveräne KI-Infrastruktur",
-      "title_highlight": "für BIM-Automatisierung.",
-      "description": "Wir implementieren BIM-Automatisierung auf Produktionsniveau und souveräne KI-Systeme für komplexe globale Ingenieur- und Bauunternehmen. Private lokale Inferenz, null Datenverlust und maßgeschneiderte Model-to-Code-Pipelines für maximalen ROI.",
-      "cta_primary": "AUDIT ANFORDERN",
-      "microcopy_primary": "Null Datenverlust • Air-Gapped hinter der Unternehmens-Firewall",
-      "cta_secondary": "LÖSUNGEN ERKUNDEN",
-      "microcopy_secondary": "Entdecken Sie unsere 3 Engineering-Vektoren"
+      "badge": "BIM-ENGINEERING · PROJEKTABWICKLUNG",
+      "title_main": "BIM-Engineering, das verlässlich liefert.",
+      "title_highlight": "Technologie, die Projekte voranbringt.",
+      "description": "pyBIM unterstützt AEC-Teams bei BIM-Modellierung, Modellkoordination, Qualitätssicherung und strukturierter digitaler Projektabwicklung. Unsere flexiblen Spezialisten verbinden bewährte BIM-Praxis mit interner Revit-Automatisierung und gezielten KI-gestützten Workflows.",
+      "cta_primary": "BIM-Projekt besprechen",
+      "cta_secondary": "BIM-Services entdecken",
+      "capability_line": "BIM-Modellierung · Koordination · Modell-QA · Digitale Abwicklung"
     },
     "paradigmShift": {
       "section_title": "Skalieren durch Code, nicht durch Personalbestand.",
