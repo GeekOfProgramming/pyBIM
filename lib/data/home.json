@@ -356,20 +356,20 @@
       "microcopy": "(100% Free & Secure Data Handling. Validate your heaviest Revit models through our local pipelines. Corporate email domains only. No credit card required.)"
     },
     "finalProjectCta": {
-      "badge": "MANAGED BIM OUTSOURCING & EXECUTION",
-      "headline": "Ready to Deliver Your Next BIM Project with Zero Clashes?",
-      "desc": "Outsource your multidisciplinary BIM modeling, shop drawings, and clash coordination with algorithmic precision. We integrate directly into your Common Data Environment (CDE), eliminating bottlenecks and guaranteeing on-time delivery under ISO 19650.",
+      "badge": "BIM ENGINEERING · PROJECT DELIVERY",
+      "headline": "Ready to Move Your BIM Project Forward?",
+      "desc": "Whether you're developing BIM models, coordinating disciplines, or preparing a digital handover, pyBIM provides focused engineering support tailored to your project's scope. Our specialists combine established BIM practices with in-house automation where it adds value.",
       "commitments": [
-        "100% Guaranteed Zero-Clash Delivery Matrix",
-        "Direct CDE Integration (Autodesk Construction Cloud / BIM 360 / Trimble)",
-        "Strict Bilateral NDA & Data Sovereignty Guaranteed"
+        "BIM modeling, multidisciplinary coordination, and model QA",
+        "Flexible engineering expertise matched to project requirements",
+        "Structured BIM deliverables with human-led quality review"
       ],
-      "cardBadge": "PROJECT INTAKE // 48-HOUR RESPONSE",
-      "cardTitle": "Initiate Your Project Scope & Model Audit",
-      "cardDesc": "Submit your project requirements, model volume, or tender specs through our primary audit form to receive a detailed technical feasibility review and turnaround timeline within 24-48 hours.",
-      "cta": "OPEN PROJECT AUDIT FORM",
-      "securityNotice": "All project submissions protected under bilateral NDA.",
-      "locationNotice": "Padua, IT HQ"
+      "cardBadge": "PROJECT ENQUIRY · BIM SERVICES",
+      "cardTitle": "Let's Define Your Project Scope.",
+      "cardDesc": "Tell us about your project, the disciplines involved, available drawings or models, and the deliverables you need. We'll review the information and discuss suitable next steps.",
+      "cta": "OPEN PROJECT ENQUIRY FORM",
+      "securityNotice": "Need an NDA? Confidentiality arrangements can be discussed before sharing sensitive project files.",
+      "locationNotice": "Padua, Italy"
     }
   },
   "it": {
@@ -729,20 +729,20 @@
       "microcopy": "(Gestione dei dati 100% gratuita e sicura. Valida i tuoi modelli Revit più complessi tramite le nostre pipeline locali. Solo domini email aziendali. Nessuna carta di credito richiesta.)"
     },
     "finalProjectCta": {
-      "badge": "MANAGED BIM OUTSOURCING & EXECUTION",
-      "headline": "Pronti a Realizzare il Vostro Prossimo Progetto BIM Senza Interferenze?",
-      "desc": "Affidateci in outsourcing la modellazione BIM multidisciplinare, i disegni costruttivi e il coordinamento delle interferenze con precisione algoritmica. Ci integriamo direttamente nel vostro CDE, garantendo tempi certi e piena conformità a ISO 19650.",
+      "badge": "INGEGNERIA BIM · CONSEGNA PROGETTUALE",
+      "headline": "Pronti a far avanzare il vostro progetto BIM?",
+      "desc": "Che si tratti di sviluppare modelli BIM, coordinare le discipline o preparare la consegna digitale, pyBIM offre supporto ingegneristico mirato, adattato all'ambito del vostro progetto. I nostri specialisti combinano pratiche BIM consolidate con strumenti di automazione sviluppati internamente, quando apportano un valore concreto.",
       "commitments": [
-        "Matrice di Consegna Garantita con Zero Interferenze (Zero-Clash)",
-        "Integrazione Diretta nel CDE (Autodesk Construction Cloud / BIM 360 / Trimble)",
-        "Accordo di Riservatezza NDA Bilaterale & Sovranità dei Dati"
+        "Modellazione BIM, coordinamento multidisciplinare e controllo qualità dei modelli",
+        "Competenze ingegneristiche flessibili, adeguate ai requisiti del progetto",
+        "Elaborati BIM strutturati con verifica qualitativa supervisionata da professionisti"
       ],
-      "cardBadge": "RICEZIONE PROGETTI // RISPOSTA IN 48 ORE",
-      "cardTitle": "Avvia l'Audit Tecnico e la Stima del Progetto",
-      "cardDesc": "Invia i requisiti, i volumi del modello o i capitolati attraverso il modulo di audit principale per ricevere una valutazione tecnica di fattibilità e un cronoprogramma preciso in 24-48 ore.",
-      "cta": "APRI IL MODULO DI AUDIT PROGETTO",
-      "securityNotice": "Tutte le richieste sono protette da accordo NDA bilaterale.",
-      "locationNotice": "Padova, IT HQ"
+      "cardBadge": "RICHIESTA DI PROGETTO · SERVIZI BIM",
+      "cardTitle": "Definiamo insieme l'ambito del vostro progetto.",
+      "cardDesc": "Raccontateci il vostro progetto, le discipline coinvolte, i disegni o i modelli disponibili e gli elaborati richiesti. Esamineremo le informazioni per comprendere le vostre esigenze e valutare i prossimi passi.",
+      "cta": "APRI IL MODULO DI RICHIESTA PROGETTO",
+      "securityNotice": "Serve un accordo di riservatezza (NDA)? Possiamo concordarlo prima della condivisione di documenti riservati.",
+      "locationNotice": "Padova, Italia"
     }
   },
   "de": {
@@ -1102,20 +1102,20 @@
       "microcopy": "(100 % kostenlose & sichere Datenverarbeitung. Testen Sie Ihre komplexesten Revit-Modelle über unsere lokalen Pipelines. Nur geschäftliche E-Mail-Domains. Keine Kreditkarte erforderlich.)"
     },
     "finalProjectCta": {
-      "badge": "MANAGED BIM OUTSOURCING & EXECUTION",
-      "headline": "Bereit für Ihr nächstes kollisionsfreies BIM-Projekt?",
-      "desc": "Lagern Sie multidisziplinäre BIM-Modellierung, Werkplanung und Kollisionsprüfung mit algorithmischer Präzision an uns aus. Wir binden uns direkt in Ihre CDE ein – mit Termingarantie und vollständiger ISO 19650-Konformität.",
+      "badge": "BIM-ENGINEERING · PROJEKTABWICKLUNG",
+      "headline": "Bereit, Ihr BIM-Projekt voranzubringen?",
+      "desc": "Ob Sie BIM-Modelle entwickeln, Fachdisziplinen koordinieren oder eine digitale Projektübergabe vorbereiten möchten: pyBIM unterstützt Sie mit bedarfsgerechten Ingenieurleistungen, abgestimmt auf Ihren Projektumfang. Unsere Fachleute verbinden bewährte BIM-Verfahren mit eigens entwickelten Automatisierungswerkzeugen, wo dies sinnvoll ist.",
       "commitments": [
-        "Garantierte kollisionsfreie Übergabematrix (Zero-Clash)",
-        "Direkte CDE-Integration (Autodesk Construction Cloud / BIM 360 / Trimble)",
-        "Strenge bilaterale Geheimhaltungsvereinbarung (NDA) & Datensouveränität"
+        "BIM-Modellierung, fachübergreifende Koordination und Modellqualitätssicherung",
+        "Flexibel einsetzbare Ingenieurkompetenz, abgestimmt auf die Projektanforderungen",
+        "Strukturierte BIM-Lieferergebnisse mit fachlicher Qualitätsprüfung"
       ],
-      "cardBadge": "PROJEKTERFASSUNG // 48-STUNDEN-ANTWORT",
-      "cardTitle": "Technisches Projekt-Audit & Scoping anfordern",
-      "cardDesc": "Übermitteln Sie Ihre Projektanforderungen oder Modellvolumina über unser primäres Audit-Formular, um innerhalb von 24–48 Stunden eine detaillierte Machbarkeitsanalyse und Terminplanung zu erhalten.",
-      "cta": "PROJEKT-AUDIT-FORMULAR ÖFFNEN",
-      "securityNotice": "Alle Projekteingaben sind durch bilaterale NDA geschützt.",
-      "locationNotice": "Padua, IT HQ"
+      "cardBadge": "PROJEKTANFRAGE · BIM-DIENSTLEISTUNGEN",
+      "cardTitle": "Lassen Sie uns Ihren Projektumfang klären.",
+      "cardDesc": "Beschreiben Sie uns Ihr Vorhaben, die beteiligten Fachdisziplinen, vorhandene Pläne oder Modelle sowie die benötigten Lieferergebnisse. Wir prüfen Ihre Angaben und besprechen mögliche nächste Schritte.",
+      "cta": "PROJEKTANFRAGEFORMULAR ÖFFNEN",
+      "securityNotice": "Sie benötigen eine Vertraulichkeitsvereinbarung (NDA)? Diese können wir vor der Weitergabe sensibler Projektunterlagen besprechen.",
+      "locationNotice": "Padua, Italien"
     }
   }
 }

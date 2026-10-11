@@ -80,7 +80,7 @@ export default function FinalProjectCtaBanner() {
                   <Lock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                   {t.securityNotice}
                 </span>
-                <span className="text-gray-400 dark:text-slate-500 hidden sm:inline">{t.locationNotice || "Padua, IT HQ"}</span>
+                <span className="text-gray-400 dark:text-slate-500 hidden sm:inline">{t.locationNotice}</span>
               </div>
             </div>
           </div>
