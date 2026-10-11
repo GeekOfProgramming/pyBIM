@@ -6,9 +6,19 @@ import { routeMetadata } from "@/lib/site-copy";
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const titles = routeMetadata.about.titles;
+  const siteUrl = "https://pybim.com";
+  const currentUrl = `${siteUrl}/${locale}/about`;
   
   return {
-    title: titles[locale] || titles.en
+    title: titles[locale] || titles.en,
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        en: `${siteUrl}/en/about`,
+        it: `${siteUrl}/it/about`,
+        de: `${siteUrl}/de/about`,
+      },
+    },
   };
 }
 

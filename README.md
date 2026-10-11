@@ -30,7 +30,7 @@ pyBIM is a specialized engineering and software development lab for the Architec
 - **UI & Styling**: React 18, [Tailwind CSS](https://tailwindcss.com/), Lucide Icons, Embla Carousel
 - **Security & Auth**: JWT (`jose`), Sliding Window In-Memory Rate Limiting, Middleware Protection
 - **Spreadsheet Generation**: ExcelJS (Dynamic ISO 19650 ROI Matrix)
-- **Deployment**: Vercel / European Cloud / Air-Gapped Local Appliance
+- **Deployment**: Cloudflare Workers + OpenNext / European Cloud / Air-Gapped Local Appliance
 
 ### BIM & Algorithmic Automation Ecosystem
 - **Core Languages**: C# (.NET 8 / .NET Framework 4.8), Python 3.11+, JavaScript / TypeScript

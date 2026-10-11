@@ -6,7 +6,6 @@ import GoToTop from "@/components/layout/go-to-top";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import { ThemeProvider } from "@/lib/ThemeContext";
 import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
-import IsolatedAnalytics from "@/components/ui/IsolatedAnalytics";
 import CookieConsent from "@/components/ui/CookieConsent";
 
 const inter = Inter({
@@ -25,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 import { siteMetadata } from "@/lib/site-copy";
 
-const siteUrl = "https://www.pybim.com";
+const siteUrl = "https://pybim.com";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
@@ -109,7 +108,6 @@ export default function RootLayout({ children, params }) {
             <Footer />
             <MobileBottomNav />
             <CookieConsent />
-            <IsolatedAnalytics />
           </LanguageProvider>
         </ThemeProvider>
       </body>

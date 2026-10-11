@@ -8,7 +8,7 @@ export async function middleware(req) {
   const { pathname } = req.nextUrl;
 
   const hostname = req.nextUrl.hostname || '';
-  const isStagingPreview = hostname.includes('workers.dev') || process.env.ENVIRONMENT === 'staging' || process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview';
+  const isStagingPreview = hostname.includes('workers.dev') || process.env.ENVIRONMENT === 'staging';
 
   function applyStagingHeaders(response) {
     if (isStagingPreview) {

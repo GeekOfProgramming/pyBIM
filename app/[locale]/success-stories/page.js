@@ -5,7 +5,7 @@ export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const { titles, descriptions } = routeMetadata.successStories;
 
-  const siteUrl = "https://www.pybim.com";
+  const siteUrl = "https://pybim.com";
   const currentUrl = `${siteUrl}/${locale}/success-stories`;
 
   return {

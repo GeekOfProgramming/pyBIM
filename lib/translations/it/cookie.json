@@ -18,7 +18,7 @@
   "cookie.category.necessary.badge": "Sempre attivo",
   "cookie.category.necessary.desc": "Essenziali per la navigazione di base, i token di sicurezza, le preferenze di lingua e lo stato dell'interfaccia.",
   "cookie.category.analytics.title": "Analisi e Prestazioni",
-  "cookie.category.analytics.desc": "Consente la misurazione anonima e aggregata del traffico tramite Vercel Analytics per ottimizzare le prestazioni. Nessun tracciamento pubblicitario o di terze parti.",
+  "cookie.category.analytics.desc": "Consente la misurazione anonima e aggregata del traffico per ottimizzare le prestazioni della piattaforma. Nessun tracciamento pubblicitario o di terze parti.",
   "cookie.modal.btn_save": "Salva preferenze",
   "cookie.modal.btn_accept_all": "Accetta tutti",
   "cookie.modal.btn_cancel": "Annulla",

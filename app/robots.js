@@ -7,6 +7,6 @@ export default function robots() {
         disallow: ["/api/", "/test/", "/admin/"]
       }
     ],
-    sitemap: "https://www.pybim.com/sitemap.xml"
+    sitemap: "https://pybim.com/sitemap.xml"
   };
 }

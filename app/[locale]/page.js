@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const siteUrl = "https://www.pybim.com";
+const siteUrl = "https://pybim.com";
 
 const organizationSchema = {
   "@context": "https://schema.org",

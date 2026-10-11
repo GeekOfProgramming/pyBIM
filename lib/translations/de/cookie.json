@@ -18,7 +18,7 @@
   "cookie.category.necessary.badge": "Immer aktiv",
   "cookie.category.necessary.desc": "Unerlässlich für Basisfunktionen, Sicherheits-Tokens, Sprachauswahl und Schnittstellen-Status.",
   "cookie.category.analytics.title": "Analyse & Leistung",
-  "cookie.category.analytics.desc": "Ermöglicht eine anonyme, aggregierte Datenverkehrsmessung mit Vercel Analytics zur Optimierung der Website. Kein seitenübergreifendes Werbetracking.",
+  "cookie.category.analytics.desc": "Ermöglicht eine anonyme, aggregierte Datenverkehrsmessung zur Optimierung der Plattform. Kein seitenübergreifendes Werbetracking.",
   "cookie.modal.btn_save": "Einstellungen speichern",
   "cookie.modal.btn_accept_all": "Alle akzeptieren",
   "cookie.modal.btn_cancel": "Abbrechen",

@@ -35,10 +35,19 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-# local storage & reference archives
+
+# local storage, worktrees & reference archives
+.worktrees/
 GitHub Files/
 *.zip
 .claude/
+.idea/
+.vscode/
+config.toml
+
+# temporary audit artifacts
+.qa-audit/
+artifacts/
 
 # cloudflare & opennext build artifacts
 .open-next/

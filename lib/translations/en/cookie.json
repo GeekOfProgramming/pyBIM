@@ -18,7 +18,7 @@
   "cookie.category.necessary.badge": "Always Active",
   "cookie.category.necessary.desc": "Essential for core navigation, security tokens, language preferences, and interface state.",
   "cookie.category.analytics.title": "Analytics & Performance",
-  "cookie.category.analytics.desc": "Enables anonymous aggregated traffic measurement through Vercel Analytics to improve site performance. No cross-site tracking or advertising profiling.",
+  "cookie.category.analytics.desc": "Enables anonymous aggregated traffic measurement to evaluate platform performance. No cross-site tracking or advertising profiling.",
   "cookie.modal.btn_save": "Save Preferences",
   "cookie.modal.btn_accept_all": "Accept All",
   "cookie.modal.btn_cancel": "Cancel",
