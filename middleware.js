@@ -17,7 +17,9 @@ export async function middleware(req) {
     if (!token || !secretKey) {
       const url = req.nextUrl.clone();
       url.pathname = `/${currentLocale}/login`;
-      return NextResponse.redirect(url);
+      const redirectRes = NextResponse.redirect(url);
+      redirectRes.headers.set('X-Robots-Tag', 'noindex, nofollow');
+      return redirectRes;
     }
     
     try {
@@ -25,7 +27,9 @@ export async function middleware(req) {
     } catch (err) {
       const url = req.nextUrl.clone();
       url.pathname = `/${currentLocale}/login`;
-      return NextResponse.redirect(url);
+      const redirectRes = NextResponse.redirect(url);
+      redirectRes.headers.set('X-Robots-Tag', 'noindex, nofollow');
+      return redirectRes;
     }
   }
 
@@ -34,12 +38,18 @@ export async function middleware(req) {
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (pathnameHasLocale) return NextResponse.next();
+  if (pathnameHasLocale) {
+    const res = NextResponse.next();
+    res.headers.set('X-Robots-Tag', 'noindex, nofollow');
+    return res;
+  }
 
   // Redirect if there is no locale (and it's not an excluded path)
   const url = req.nextUrl.clone();
   url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
-  return NextResponse.redirect(url);
+  const redirectRes = NextResponse.redirect(url);
+  redirectRes.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  return redirectRes;
 }
 
 export const config = {

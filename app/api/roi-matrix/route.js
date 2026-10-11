@@ -14,6 +14,14 @@ export async function POST(req) {
     const body = await req.json();
     const { name, companyName, email, modelerCount, hourlyRate, language = 'en' } = body;
 
+    // Guard against Workers Free CPU execution limits on staging
+    if (process.env.ROI_GENERATION_ENABLED !== "true") {
+      return Response.json(
+        { ok: false, error: "Automated ROI workbook export is temporarily disabled on this preview staging environment to protect edge compute limits." },
+        { status: 503 }
+      );
+    }
+
     if (!name || !companyName || !email || !modelerCount || !hourlyRate) {
       return Response.json({ ok: false, error: "Missing required calculation parameters." }, { status: 400 });
     }
