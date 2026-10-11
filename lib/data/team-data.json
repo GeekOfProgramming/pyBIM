@@ -1,58 +1,6 @@
 {
   "teamMembers": [
     {
-      "id": "t1",
-      "image": null,
-      "email": "hamid.lotfalian@pybim.it",
-      "linkedin": "https://www.linkedin.com/in/hamid-lotfalian",
-      "github": "https://github.com/GeekOfProgramming",
-      "en": {
-        "name": "Hamid Lotfalian",
-        "role": "Co-Founder & Head of Technology",
-        "bio": "Hamid leads software and technology development at pyBIM, connecting BIM workflows with web applications, automation and local AI systems. His focus is on building maintainable tools and reliable technical workflows around actual project requirements.",
-        "core_stack": [
-          "<strong>Software & Web Development:</strong> Web applications, technical interfaces and supporting services.",
-          "<strong>Local AI & LLM Systems:</strong> Local language-model workflows, data retrieval and integration with engineering processes.",
-          "<strong>Automation & Infrastructure:</strong> Python-based tooling, systems integration and deployment workflows."
-        ],
-        "operational_focus": [
-          "Define the software architecture and maintain the pyBIM website and technical tools.",
-          "Develop and evaluate automation and local AI capabilities for defined BIM use cases.",
-          "Coordinate software implementation, testing and integration with BIM engineering requirements."
-        ]
-      },
-      "it": {
-        "name": "Hamid Lotfalian",
-        "role": "Co-fondatore e Responsabile dello Sviluppo Tecnologico",
-        "bio": "Hamid guida lo sviluppo software e tecnologico di pyBIM, collegando i flussi di lavoro BIM ad applicazioni web, automazione e sistemi di intelligenza artificiale locali. Si concentra sulla creazione di strumenti manutenibili e processi tecnici affidabili, costruiti a partire dalle esigenze effettive dei progetti.",
-        "core_stack": [
-          "<strong>Sviluppo software e web:</strong> Applicazioni web, interfacce tecniche e servizi di supporto.",
-          "<strong>IA locale e sistemi LLM:</strong> Flussi con modelli linguistici locali, recupero delle informazioni e integrazione nei processi ingegneristici.",
-          "<strong>Automazione e infrastruttura:</strong> Strumenti basati su Python, integrazione di sistemi e processi di deployment."
-        ],
-        "operational_focus": [
-          "Definire l'architettura software e curare il sito web e gli strumenti tecnici di pyBIM.",
-          "Sviluppare e valutare soluzioni di automazione e IA locale per casi d'uso BIM definiti.",
-          "Coordinare implementazione, test e integrazione del software con i requisiti dell'ingegneria BIM."
-        ]
-      },
-      "de": {
-        "name": "Hamid Lotfalian",
-        "role": "Mitgründer & Leiter Technologieentwicklung",
-        "bio": "Hamid verantwortet die Software- und Technologieentwicklung bei pyBIM. Er verbindet BIM-Workflows mit Webanwendungen, Automatisierung und lokalen KI-Systemen. Im Mittelpunkt stehen wartbare Werkzeuge und verlässliche technische Abläufe, die sich an konkreten Projektanforderungen orientieren.",
-        "core_stack": [
-          "<strong>Software- und Webentwicklung:</strong> Webanwendungen, technische Benutzeroberflächen und unterstützende Dienste.",
-          "<strong>Lokale KI- und LLM-Systeme:</strong> Abläufe mit lokalen Sprachmodellen, Informationsabruf und Integration in Engineering-Prozesse.",
-          "<strong>Automatisierung und Infrastruktur:</strong> Python-basierte Werkzeuge, Systemintegration und Deployment-Prozesse."
-        ],
-        "operational_focus": [
-          "Softwarearchitektur definieren sowie die pyBIM-Website und technische Werkzeuge betreuen.",
-          "Automatisierungs- und lokale KI-Funktionen für definierte BIM-Anwendungsfälle entwickeln und bewerten.",
-          "Softwareimplementierung, Tests und Integration mit den Anforderungen des BIM-Engineerings abstimmen."
-        ]
-      }
-    },
-    {
       "id": "t2",
       "image": null,
       "email": "hamed.sharifi@pybim.it",
@@ -101,6 +49,58 @@
           "BIM-Leistungsumfang, technische Anforderungen und erwartete Lieferergebnisse definieren.",
           "Wiederkehrende BIM-Prozesse identifizieren und geeignete Automatisierungsmöglichkeiten gemeinsam bewerten.",
           "Engineering-Ergebnisse prüfen und die technische Qualitätssicherung vor der Übergabe koordinieren."
+        ]
+      }
+    },
+    {
+      "id": "t1",
+      "image": null,
+      "email": "hamid.lotfalian@pybim.it",
+      "linkedin": "https://www.linkedin.com/in/hamid-lotfalian",
+      "github": "https://github.com/GeekOfProgramming",
+      "en": {
+        "name": "Hamid Lotfalian",
+        "role": "Co-Founder & Head of Technology",
+        "bio": "Hamid leads software and technology development at pyBIM, connecting BIM workflows with web applications, automation and local AI systems. His focus is on building maintainable tools and reliable technical workflows around actual project requirements.",
+        "core_stack": [
+          "<strong>Software & Web Development:</strong> Web applications, technical interfaces and supporting services.",
+          "<strong>Local AI & LLM Systems:</strong> Local language-model workflows, data retrieval and integration with engineering processes.",
+          "<strong>Automation & Infrastructure:</strong> Python-based tooling, systems integration and deployment workflows."
+        ],
+        "operational_focus": [
+          "Define the software architecture and maintain the pyBIM website and technical tools.",
+          "Develop and evaluate automation and local AI capabilities for defined BIM use cases.",
+          "Coordinate software implementation, testing and integration with BIM engineering requirements."
+        ]
+      },
+      "it": {
+        "name": "Hamid Lotfalian",
+        "role": "Co-fondatore e Responsabile dello Sviluppo Tecnologico",
+        "bio": "Hamid guida lo sviluppo software e tecnologico di pyBIM, collegando i flussi di lavoro BIM ad applicazioni web, automazione e sistemi di intelligenza artificiale locali. Si concentra sulla creazione di strumenti manutenibili e processi tecnici affidabili, costruiti a partire dalle esigenze effettive dei progetti.",
+        "core_stack": [
+          "<strong>Sviluppo software e web:</strong> Applicazioni web, interfacce tecniche e servizi di supporto.",
+          "<strong>IA locale e sistemi LLM:</strong> Flussi con modelli linguistici locali, recupero delle informazioni e integrazione nei processi ingegneristici.",
+          "<strong>Automazione e infrastruttura:</strong> Strumenti basati su Python, integrazione di sistemi e processi di deployment."
+        ],
+        "operational_focus": [
+          "Definire l'architettura software e curare il sito web e gli strumenti tecnici di pyBIM.",
+          "Sviluppare e valutare soluzioni di automazione e IA locale per casi d'uso BIM definiti.",
+          "Coordinare implementazione, test e integrazione del software con i requisiti dell'ingegneria BIM."
+        ]
+      },
+      "de": {
+        "name": "Hamid Lotfalian",
+        "role": "Mitgründer & Leiter Technologieentwicklung",
+        "bio": "Hamid verantwortet die Software- und Technologieentwicklung bei pyBIM. Er verbindet BIM-Workflows mit Webanwendungen, Automatisierung und lokalen KI-Systemen. Im Mittelpunkt stehen wartbare Werkzeuge und verlässliche technische Abläufe, die sich an konkreten Projektanforderungen orientieren.",
+        "core_stack": [
+          "<strong>Software- und Webentwicklung:</strong> Webanwendungen, technische Benutzeroberflächen und unterstützende Dienste.",
+          "<strong>Lokale KI- und LLM-Systeme:</strong> Abläufe mit lokalen Sprachmodellen, Informationsabruf und Integration in Engineering-Prozesse.",
+          "<strong>Automatisierung und Infrastruktur:</strong> Python-basierte Werkzeuge, Systemintegration und Deployment-Prozesse."
+        ],
+        "operational_focus": [
+          "Softwarearchitektur definieren sowie die pyBIM-Website und technische Werkzeuge betreuen.",
+          "Automatisierungs- und lokale KI-Funktionen für definierte BIM-Anwendungsfälle entwickeln und bewerten.",
+          "Softwareimplementierung, Tests und Integration mit den Anforderungen des BIM-Engineerings abstimmen."
         ]
       }
     }
