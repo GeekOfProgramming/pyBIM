@@ -8,7 +8,6 @@ import {
   FileText,
   Boxes,
   FileCheck2,
-  ArrowRight,
   ArrowDown,
   Users,
   Workflow,
@@ -77,7 +76,7 @@ export default function DeploymentModels() {
         </div>
 
         {/* =========================================================================
-            THREE-BLOCK DELIVERY FLOW: 3 / 6 / 3 Desktop Grid Ratio with Animated Ribbon Connectors
+            THREE-BLOCK DELIVERY FLOW: 3 / 6 / 3 Desktop Grid Ratio with Precision Animated Connectors
             1. LEFT: col-span-12 lg:col-span-3 (Project Input - Vertically aligned with Center Hub)
             2. CENTER: col-span-12 lg:col-span-6 (Four-Card pyBIM Architecture: Top Card, Center Hub, Two Lower Cards)
             3. RIGHT: col-span-12 lg:col-span-3 (Delivery Output - Vertically aligned with Center Hub)
@@ -88,57 +87,94 @@ export default function DeploymentModels() {
           className="relative"
         >
           {/* Desktop 12-Column Grid */}
-          <div className="hidden lg:grid lg:grid-cols-12 gap-6 items-start relative">
+          <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start relative">
 
             {/* -----------------------------------------------------------------------
                 COLUMN 1: LEFT — col-span-3 (Project Input)
                 Positioned on central row (aligned with pyBIM Hub)
                 ----------------------------------------------------------------------- */}
-            <div className="lg:col-span-3 flex flex-col pt-36">
+            <div className="lg:col-span-3 flex flex-col pt-36 relative">
               <motion.article
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4 }}
-                className="flex flex-col justify-between rounded-2xl bg-brand-card/95 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:ring-1 hover:ring-slate-300 dark:hover:ring-slate-700 min-h-[310px] relative group cursor-default"
+                className="flex flex-col justify-start rounded-2xl bg-brand-card/95 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 p-6 sm:p-7 shadow-sm transition-all duration-200 hover:shadow-md hover:ring-1 hover:ring-slate-300 dark:hover:ring-slate-700 min-h-[290px] relative group cursor-default"
                 aria-labelledby={`${sectionId}-input-title`}
               >
-                <div>
-                  <div className="flex items-center justify-between gap-3 mb-5">
-                    <span className="font-mono text-caption font-bold text-slate-500 dark:text-slate-400 tracking-wider uppercase">
-                      {data.input.label}
-                    </span>
-                    <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 shrink-0">
-                      <FileText className="w-4 h-4" aria-hidden="true" />
-                    </div>
-                  </div>
-
-                  <h3
-                    id={`${sectionId}-input-title`}
-                    className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-1.5"
-                  >
-                    {data.input.title}
-                  </h3>
-
-                  <p className="font-mono text-caption font-semibold text-brand-primary tracking-wide mb-3">
-                    {data.input.supporting}
-                  </p>
-
-                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed">
-                    {data.input.description}
-                  </p>
-                </div>
-
-                <div className="mt-6 pt-3.5 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center justify-between text-brand-textSecondary">
-                  <span className="font-mono text-[11px] tracking-wider uppercase text-slate-500 dark:text-slate-400">
-                    Step 01
+                <div className="flex items-center justify-between gap-3 mb-5">
+                  <span className="font-mono text-caption font-bold text-slate-500 dark:text-slate-400 tracking-wider uppercase">
+                    {data.input.label}
                   </span>
-                  <div className="flex items-center gap-1 font-mono text-[11px] font-semibold text-brand-primary">
-                    <span>To pyBIM</span>
-                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                  <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 shrink-0">
+                    <FileText className="w-4 h-4" aria-hidden="true" />
                   </div>
                 </div>
+
+                <h3
+                  id={`${sectionId}-input-title`}
+                  className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-1.5"
+                >
+                  {data.input.title}
+                </h3>
+
+                <p className="font-mono text-caption font-semibold text-brand-primary tracking-wide mb-3">
+                  {data.input.supporting}
+                </p>
+
+                <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed">
+                  {data.input.description}
+                </p>
               </motion.article>
+
+              {/* CONNECTOR A: Spans precisely the 32px gap between Col 1 and Col 2 */}
+              <div
+                className="absolute right-0 top-[280px] translate-x-full w-8 h-8 pointer-events-none z-20 flex items-center justify-center"
+                aria-hidden="true"
+              >
+                <svg className="w-8 h-8 overflow-visible" viewBox="0 0 32 32">
+                  {/* Subtle persistent baseline */}
+                  <line
+                    x1="0"
+                    y1="16"
+                    x2="26"
+                    y2="16"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-slate-300 dark:text-slate-700"
+                  />
+                  {/* Directional Arrowhead */}
+                  <path
+                    d="M 22 11 L 30 16 L 22 21 Z"
+                    fill="currentColor"
+                    className="text-brand-primary"
+                  />
+                  {/* Sequential Illuminated Segment: 0.0s to 1.6s */}
+                  {!shouldReduceMotion && (
+                    <motion.line
+                      x1="0"
+                      y1="16"
+                      x2="26"
+                      y2="16"
+                      stroke="#22D3EE"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeDasharray="14 32"
+                      initial={{ strokeDashoffset: 32, opacity: 0 }}
+                      animate={{
+                        strokeDashoffset: [32, -18, -18, 32],
+                        opacity: [0, 1, 0, 0],
+                      }}
+                      transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        times: [0, 0.27, 0.32, 1],
+                        ease: "easeInOut",
+                      }}
+                    />
+                  )}
+                </svg>
+              </div>
             </div>
 
             {/* -----------------------------------------------------------------------
@@ -158,7 +194,7 @@ export default function DeploymentModels() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4 }}
-                className="w-full max-w-lg rounded-2xl bg-brand-card/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:ring-1 hover:ring-brand-primary/40 text-center relative group cursor-default"
+                className="w-full max-w-lg rounded-2xl bg-brand-card/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-5 shadow-sm transition-all duration-200 hover:shadow-md hover:ring-1 hover:ring-brand-primary/40 text-center relative group cursor-default"
                 aria-labelledby={`${sectionId}-flex-title`}
               >
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-[11px] font-bold tracking-wider mb-2 uppercase">
@@ -180,28 +216,42 @@ export default function DeploymentModels() {
                 </p>
               </motion.article>
 
-              {/* VERTICAL CONNECTOR: Top Card to Center Hub with Animated Ribbon */}
-              <div className="w-full flex justify-center py-2 h-10 select-none relative" aria-hidden="true">
+              {/* VERTICAL CONNECTOR: Top Card to Center Hub with Directional Cues */}
+              <div className="w-full flex justify-center py-1.5 h-10 select-none relative" aria-hidden="true">
                 <svg className="w-8 h-10 overflow-visible" viewBox="0 0 32 40">
-                  <line x1="16" y1="0" x2="16" y2="40" stroke="currentColor" strokeWidth="1.5" className="text-slate-300 dark:text-slate-700" strokeDasharray="3 3" />
+                  <line
+                    x1="16"
+                    y1="0"
+                    x2="16"
+                    y2="34"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    className="text-slate-300 dark:text-slate-700"
+                  />
+                  <path
+                    d="M 12 30 L 16 38 L 20 30 Z"
+                    fill="currentColor"
+                    className="text-brand-primary"
+                  />
                   {!shouldReduceMotion && (
                     <motion.line
                       x1="16"
                       y1="0"
                       x2="16"
-                      y2="40"
+                      y2="34"
                       stroke="#22D3EE"
-                      strokeWidth="2.5"
+                      strokeWidth="2"
                       strokeLinecap="round"
-                      initial={{ pathLength: 0, opacity: 0 }}
+                      strokeDasharray="10 40"
+                      initial={{ strokeDashoffset: 40, opacity: 0 }}
                       animate={{
-                        pathLength: [0, 1, 1, 0],
-                        opacity: [0, 1, 1, 0],
+                        strokeDashoffset: [40, -10, -10, 40],
+                        opacity: [0, 0.9, 0, 0],
                       }}
                       transition={{
                         duration: 6,
                         repeat: Infinity,
-                        times: [0.15, 0.35, 0.55, 0.75],
+                        times: [0.1, 0.35, 0.45, 1],
                         ease: "easeInOut",
                       }}
                     />
@@ -211,133 +261,76 @@ export default function DeploymentModels() {
 
               {/* MAIN CENTER HUB: pyBIM Coordinated Delivery (Dominant) */}
               <div className="w-full relative">
-
-                {/* HORIZONTAL CONNECTOR A (LEFT to CENTER) with Animated Traveling Ribbon */}
-                <div
-                  className="absolute -left-6 top-1/2 -translate-y-1/2 -translate-x-full w-6 h-8 pointer-events-none z-20 flex items-center justify-center"
-                  aria-hidden="true"
-                >
-                  <svg className="w-6 h-8 overflow-visible" viewBox="0 0 24 32">
-                    <line x1="0" y1="16" x2="24" y2="16" stroke="currentColor" strokeWidth="2" className="text-slate-300 dark:text-slate-700" />
-                    <polygon points="22,12 28,16 22,20" fill="currentColor" className="text-brand-primary" />
-                    {!shouldReduceMotion && (
-                      <motion.circle
-                        cx="0"
-                        cy="16"
-                        r="3.5"
-                        fill="#22D3EE"
-                        animate={{
-                          cx: [0, 24],
-                          opacity: [0, 1, 1, 0],
-                        }}
-                        transition={{
-                          duration: 6,
-                          repeat: Infinity,
-                          times: [0, 0.25],
-                          ease: "easeInOut",
-                        }}
-                      />
-                    )}
-                  </svg>
-                </div>
-
-                {/* HORIZONTAL CONNECTOR B (CENTER to RIGHT) with Animated Traveling Ribbon */}
-                <div
-                  className="absolute -right-6 top-1/2 -translate-y-1/2 translate-x-full w-6 h-8 pointer-events-none z-20 flex items-center justify-center"
-                  aria-hidden="true"
-                >
-                  <svg className="w-6 h-8 overflow-visible" viewBox="0 0 24 32">
-                    <line x1="0" y1="16" x2="24" y2="16" stroke="currentColor" strokeWidth="2" className="text-slate-300 dark:text-slate-700" />
-                    <polygon points="22,12 28,16 22,20" fill="currentColor" className="text-emerald-500" />
-                    {!shouldReduceMotion && (
-                      <motion.circle
-                        cx="0"
-                        cy="16"
-                        r="3.5"
-                        fill="#10B981"
-                        animate={{
-                          cx: [0, 24],
-                          opacity: [0, 1, 1, 0],
-                        }}
-                        transition={{
-                          duration: 6,
-                          repeat: Infinity,
-                          times: [0.35, 0.6],
-                          ease: "easeInOut",
-                        }}
-                      />
-                    )}
-                  </svg>
-                </div>
-
                 <motion.article
                   initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.98 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.4, delay: 0.08 }}
-                  className="w-full flex flex-col justify-between rounded-2xl lg:rounded-3xl bg-brand-cardElevated border-2 border-brand-primary/50 bg-blue-50/25 dark:bg-blue-950/25 p-7 lg:p-8 shadow-lg transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:ring-1 hover:ring-brand-primary min-h-[310px] relative group cursor-default"
+                  className="w-full flex flex-col justify-start rounded-2xl lg:rounded-3xl bg-brand-cardElevated border-2 border-brand-primary/50 bg-blue-50/25 dark:bg-blue-950/25 p-7 lg:p-8 shadow-lg transition-all duration-200 hover:shadow-xl hover:ring-1 hover:ring-brand-primary min-h-[290px] relative group cursor-default"
                   aria-labelledby={`${sectionId}-center-title`}
                 >
-                  <div>
-                    <div className="flex items-center justify-between gap-3 mb-5">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/25">
-                        <span className="w-2 h-2 rounded-full bg-brand-primary animate-pulse" aria-hidden="true" />
-                        <span className="font-mono text-caption font-bold text-brand-primary tracking-wider uppercase">
-                          {data.center.label}
-                        </span>
-                      </div>
-                      <div className="w-10 h-10 rounded-xl bg-brand-primary/15 border border-brand-primary/30 flex items-center justify-center text-brand-primary shrink-0">
-                        <Boxes className="w-5 h-5" aria-hidden="true" />
-                      </div>
+                  <div className="flex items-center justify-between gap-3 mb-5">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/25">
+                      <span className="w-2 h-2 rounded-full bg-brand-primary animate-pulse" aria-hidden="true" />
+                      <span className="font-mono text-caption font-bold text-brand-primary tracking-wider uppercase">
+                        {data.center.label}
+                      </span>
                     </div>
-
-                    <h3
-                      id={`${sectionId}-center-title`}
-                      className="text-2xl lg:text-[26px] font-extrabold text-brand-textPrimary tracking-tight mb-2 leading-snug"
-                    >
-                      {data.center.title}
-                    </h3>
-
-                    <p className="font-mono text-caption font-semibold text-brand-primary tracking-wide mb-4">
-                      {data.center.supporting}
-                    </p>
-
-                    <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed">
-                      {data.center.description}
-                    </p>
+                    <div className="w-10 h-10 rounded-xl bg-brand-primary/15 border border-brand-primary/30 flex items-center justify-center text-brand-primary shrink-0">
+                      <Boxes className="w-5 h-5" aria-hidden="true" />
+                    </div>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-brand-border/70 flex items-center justify-between text-brand-textSecondary">
-                    <span className="font-mono text-[11px] tracking-wider uppercase text-brand-textSecondary/80">
-                      Step 02 · Execution & Review
-                    </span>
-                    <span className="font-mono text-[11px] font-semibold text-brand-primary">
-                      Engineering Core
-                    </span>
-                  </div>
+                  <h3
+                    id={`${sectionId}-center-title`}
+                    className="text-2xl lg:text-[26px] font-extrabold text-brand-textPrimary tracking-tight mb-2 leading-snug"
+                  >
+                    {data.center.title}
+                  </h3>
+
+                  <p className="font-mono text-caption font-semibold text-brand-primary tracking-wide mb-3">
+                    {data.center.supporting}
+                  </p>
+
+                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed">
+                    {data.center.description}
+                  </p>
                 </motion.article>
               </div>
 
               {/* BRANCHED CONNECTOR: Center Hub to Lower Two Cards */}
-              <div className="w-full flex justify-center py-2 h-10 select-none relative" aria-hidden="true">
-                <svg className="w-full max-w-md h-10 overflow-visible" viewBox="0 0 200 40">
-                  <path d="M 100,0 L 100,20 L 50,40 M 100,20 L 150,40" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-300 dark:text-slate-700" strokeDasharray="3 3" />
+              <div className="w-full flex justify-center py-2 h-12 select-none relative" aria-hidden="true">
+                <svg className="w-full max-w-md h-12 overflow-visible" viewBox="0 0 200 48">
+                  {/* Stem and Branches */}
+                  <path
+                    d="M 100,0 L 100,22 L 50,22 L 50,40 M 100,22 L 150,22 L 150,40"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    className="text-slate-300 dark:text-slate-700"
+                  />
+                  {/* Branch Arrowheads */}
+                  <path d="M 46 36 L 50 44 L 54 36 Z" fill="currentColor" className="text-cyan-500" />
+                  <path d="M 146 36 L 150 44 L 154 36 Z" fill="currentColor" className="text-emerald-500" />
+
+                  {/* Synchronized Simultaneous Illuminated Ribbon: 2.1s to 3.7s */}
                   {!shouldReduceMotion && (
                     <motion.path
-                      d="M 100,0 L 100,20 L 50,40 M 100,20 L 150,40"
+                      d="M 100,0 L 100,22 L 50,22 L 50,40 M 100,22 L 150,22 L 150,40"
                       fill="none"
                       stroke="#22D3EE"
-                      strokeWidth="2.5"
+                      strokeWidth="2"
                       strokeLinecap="round"
-                      initial={{ pathLength: 0, opacity: 0 }}
+                      strokeDasharray="20 120"
+                      initial={{ strokeDashoffset: 120, opacity: 0 }}
                       animate={{
-                        pathLength: [0, 1, 1, 0],
-                        opacity: [0, 1, 1, 0],
+                        strokeDashoffset: [120, -20, -20, 120],
+                        opacity: [0, 0.85, 0, 0],
                       }}
                       transition={{
                         duration: 6,
                         repeat: Infinity,
-                        times: [0.2, 0.4, 0.6, 0.8],
+                        times: [0.35, 0.65, 0.72, 1],
                         ease: "easeInOut",
                       }}
                     />
@@ -354,28 +347,26 @@ export default function DeploymentModels() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.4, delay: 0.12 }}
-                  className="rounded-xl bg-brand-card/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-4 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:ring-1 hover:ring-cyan-500/30 text-left relative group cursor-default flex flex-col justify-between"
+                  className="rounded-xl bg-brand-card/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-4 shadow-sm transition-all duration-200 hover:shadow-md hover:ring-1 hover:ring-cyan-500/30 text-left relative group cursor-default flex flex-col justify-start min-h-[160px]"
                   aria-labelledby={`${sectionId}-auto-title`}
                 >
-                  <div>
-                    <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-mono text-[10px] font-bold tracking-wider mb-2 uppercase">
-                      <span>{automationCap.tag}</span>
-                    </div>
-
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <AutoIcon className="w-4 h-4 text-cyan-500 shrink-0" aria-hidden="true" />
-                      <h4
-                        id={`${sectionId}-auto-title`}
-                        className="text-body-sm font-bold text-brand-textPrimary"
-                      >
-                        {automationCap.title}
-                      </h4>
-                    </div>
-
-                    <p className="text-caption text-brand-textSecondary leading-relaxed">
-                      {automationCap.description}
-                    </p>
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-mono text-[10px] font-bold tracking-wider mb-2 uppercase self-start">
+                    <span>{automationCap.tag}</span>
                   </div>
+
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <AutoIcon className="w-4 h-4 text-cyan-500 shrink-0" aria-hidden="true" />
+                    <h4
+                      id={`${sectionId}-auto-title`}
+                      className="text-body-sm font-bold text-brand-textPrimary"
+                    >
+                      {automationCap.title}
+                    </h4>
+                  </div>
+
+                  <p className="text-caption text-brand-textSecondary leading-relaxed">
+                    {automationCap.description}
+                  </p>
                 </motion.article>
 
                 {/* Lower Card 2: Human-Led Quality Review */}
@@ -384,28 +375,26 @@ export default function DeploymentModels() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.4, delay: 0.16 }}
-                  className="rounded-xl bg-brand-card/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-4 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:ring-1 hover:ring-emerald-500/30 text-left relative group cursor-default flex flex-col justify-between"
+                  className="rounded-xl bg-brand-card/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-4 shadow-sm transition-all duration-200 hover:shadow-md hover:ring-1 hover:ring-emerald-500/30 text-left relative group cursor-default flex flex-col justify-start min-h-[160px]"
                   aria-labelledby={`${sectionId}-qual-title`}
                 >
-                  <div>
-                    <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-mono text-[10px] font-bold tracking-wider mb-2 uppercase">
-                      <span>{qualityCap.tag}</span>
-                    </div>
-
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <QualIcon className="w-4 h-4 text-emerald-500 shrink-0" aria-hidden="true" />
-                      <h4
-                        id={`${sectionId}-qual-title`}
-                        className="text-body-sm font-bold text-brand-textPrimary"
-                      >
-                        {qualityCap.title}
-                      </h4>
-                    </div>
-
-                    <p className="text-caption text-brand-textSecondary leading-relaxed">
-                      {qualityCap.description}
-                    </p>
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-mono text-[10px] font-bold tracking-wider mb-2 uppercase self-start">
+                    <span>{qualityCap.tag}</span>
                   </div>
+
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <QualIcon className="w-4 h-4 text-emerald-500 shrink-0" aria-hidden="true" />
+                    <h4
+                      id={`${sectionId}-qual-title`}
+                      className="text-body-sm font-bold text-brand-textPrimary"
+                    >
+                      {qualityCap.title}
+                    </h4>
+                  </div>
+
+                  <p className="text-caption text-brand-textSecondary leading-relaxed">
+                    {qualityCap.description}
+                  </p>
                 </motion.article>
 
               </div>
@@ -416,56 +405,95 @@ export default function DeploymentModels() {
                 COLUMN 3: RIGHT — col-span-3 (Reviewed BIM Deliverables)
                 Positioned on central row (aligned with pyBIM Hub)
                 ----------------------------------------------------------------------- */}
-            <div className="lg:col-span-3 flex flex-col pt-36">
+            <div className="lg:col-span-3 flex flex-col pt-36 relative">
+
+              {/* CONNECTOR B: Spans precisely the 32px gap between Col 2 and Col 3 */}
+              <div
+                className="absolute left-0 top-[280px] -translate-x-full w-8 h-8 pointer-events-none z-20 flex items-center justify-center"
+                aria-hidden="true"
+              >
+                <svg className="w-8 h-8 overflow-visible" viewBox="0 0 32 32">
+                  {/* Subtle persistent baseline */}
+                  <line
+                    x1="0"
+                    y1="16"
+                    x2="26"
+                    y2="16"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-slate-300 dark:text-slate-700"
+                  />
+                  {/* Directional Arrowhead */}
+                  <path
+                    d="M 22 11 L 30 16 L 22 21 Z"
+                    fill="currentColor"
+                    className="text-emerald-500"
+                  />
+                  {/* Sequential Illuminated Segment: 2.1s to 3.7s */}
+                  {!shouldReduceMotion && (
+                    <motion.line
+                      x1="0"
+                      y1="16"
+                      x2="26"
+                      y2="16"
+                      stroke="#10B981"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeDasharray="14 32"
+                      initial={{ strokeDashoffset: 32, opacity: 0 }}
+                      animate={{
+                        strokeDashoffset: [32, 32, -18, -18, 32],
+                        opacity: [0, 0, 1, 0, 0],
+                      }}
+                      transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        times: [0, 0.35, 0.62, 0.68, 1],
+                        ease: "easeInOut",
+                      }}
+                    />
+                  )}
+                </svg>
+              </div>
+
               <motion.article
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4 }}
-                className="flex flex-col justify-between rounded-2xl bg-brand-card/95 dark:bg-slate-900/70 border border-emerald-500/35 bg-emerald-50/15 dark:bg-emerald-950/15 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:ring-1 hover:ring-emerald-500/40 min-h-[310px] relative group cursor-default"
+                className="flex flex-col justify-start rounded-2xl bg-brand-card/95 dark:bg-slate-900/70 border border-emerald-500/35 bg-emerald-50/15 dark:bg-emerald-950/15 p-6 sm:p-7 shadow-sm transition-all duration-200 hover:shadow-md hover:ring-1 hover:ring-emerald-500/40 min-h-[290px] relative group cursor-default"
                 aria-labelledby={`${sectionId}-output-title`}
               >
-                <div>
-                  <div className="flex items-center justify-between gap-3 mb-5">
-                    <span className="font-mono text-caption font-bold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">
-                      {data.output.label}
-                    </span>
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
-                      <FileCheck2 className="w-4 h-4" aria-hidden="true" />
-                    </div>
+                <div className="flex items-center justify-between gap-3 mb-5">
+                  <span className="font-mono text-caption font-bold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">
+                    {data.output.label}
+                  </span>
+                  <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
+                    <FileCheck2 className="w-4 h-4" aria-hidden="true" />
                   </div>
-
-                  <h3
-                    id={`${sectionId}-output-title`}
-                    className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-1.5"
-                  >
-                    {data.output.title}
-                  </h3>
-
-                  <p className="font-mono text-caption font-semibold text-emerald-600 dark:text-emerald-400 tracking-wide mb-3">
-                    {data.output.supporting}
-                  </p>
-
-                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed">
-                    {data.output.description}
-                  </p>
                 </div>
 
-                <div className="mt-6 pt-3.5 border-t border-emerald-200/50 dark:border-emerald-900/40 flex items-center justify-between text-brand-textSecondary">
-                  <span className="font-mono text-[11px] tracking-wider uppercase text-emerald-600/90 dark:text-emerald-400/90">
-                    Step 03 · Handover
-                  </span>
-                  <span className="font-mono text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
-                    Ready for Project
-                  </span>
-                </div>
+                <h3
+                  id={`${sectionId}-output-title`}
+                  className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-1.5"
+                >
+                  {data.output.title}
+                </h3>
+
+                <p className="font-mono text-caption font-semibold text-emerald-600 dark:text-emerald-400 tracking-wide mb-3">
+                  {data.output.supporting}
+                </p>
+
+                <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed">
+                  {data.output.description}
+                </p>
               </motion.article>
             </div>
 
           </div>
 
           {/* =========================================================================
-              MOBILE & TABLET STACK: Clean Vertical Order (Preserving All 4 Central Cards)
+              MOBILE & TABLET STACK: Clean Vertical Flow (Preserving All 4 Central Cards)
               ========================================================================= */}
           <div className="lg:hidden flex flex-col space-y-4">
 
@@ -489,7 +517,7 @@ export default function DeploymentModels() {
             </div>
 
             {/* Down Connector */}
-            <div className="flex justify-center py-1" aria-hidden="true">
+            <div className="flex justify-center py-1 text-slate-400 dark:text-slate-600" aria-hidden="true">
               <ArrowDown className="w-4 h-4 text-brand-primary" />
             </div>
 
@@ -562,7 +590,7 @@ export default function DeploymentModels() {
             </div>
 
             {/* Down Connector */}
-            <div className="flex justify-center py-1" aria-hidden="true">
+            <div className="flex justify-center py-1 text-slate-400 dark:text-slate-600" aria-hidden="true">
               <ArrowDown className="w-4 h-4 text-emerald-500" />
             </div>
 
