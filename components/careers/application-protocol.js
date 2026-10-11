@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "@/components/layout/LocalizedLink";
 import { Terminal, Copy, Check, AlertCircle, ArrowRight, ShieldCheck, Mail } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -11,10 +12,16 @@ import { useLanguage } from "@/lib/LanguageContext";
  * Standardizes email syntax for five technical disciplines without misleading
  * automated rejection claims.
  */
-export default function ApplicationProtocol({ preselectedRoleCode = "BIM-MOD" }) {
+export default function ApplicationProtocol({
+  activeCode: controlledCode,
+  onSelectCode,
+  preselectedRoleCode = "BIM-MOD"
+}) {
   const { t } = useLanguage();
+  const [internalCode, setInternalCode] = useState(preselectedRoleCode);
   const [copyStatus, setCopyStatus] = useState("idle"); // idle | copied | error
-  const [activeCode, setActiveCode] = useState(preselectedRoleCode);
+
+  const activeCode = controlledCode !== undefined ? controlledCode : internalCode;
 
   const roleCodes = [
     { code: "BIM-MOD", label: "BIM Modeler" },
@@ -24,11 +31,18 @@ export default function ApplicationProtocol({ preselectedRoleCode = "BIM-MOD" })
     { code: "LLM-AI", label: "LLM & AI Engineering" },
   ];
 
-  const getTemplateText = (code) => {
-    return `SUBJECT: PYBIM-APPLICATION | ${code} | [FULL_NAME]
+  const handleSelectCode = (code) => {
+    if (onSelectCode) {
+      onSelectCode(code);
+    } else {
+      setInternalCode(code);
+    }
+  };
 
-BODY STRUCTURE:
-> CANDIDATE: [Full Name]
+  const getSubjectText = (code) => `PYBIM-APPLICATION | ${code} | [FULL_NAME]`;
+
+  const getBodyText = (code) => {
+    return `> CANDIDATE: [Full Name]
 > TARGET ROLE: ${code}
 > PRIMARY SPECIALIZATION: [e.g., Structural BIM / Revit API / RAG Workflows]
 > PROFESSIONAL BACKGROUND: [Short technical introduction]
@@ -36,10 +50,17 @@ BODY STRUCTURE:
 > AVAILABILITY: [Project-based / Ongoing part-time / Full availability]`;
   };
 
+  const getFullTemplateText = (code) => {
+    return `SUBJECT: ${getSubjectText(code)}
+
+BODY STRUCTURE:
+${getBodyText(code)}`;
+  };
+
   const handleCopy = async () => {
     try {
       if (typeof navigator !== "undefined" && navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(getTemplateText(activeCode));
+        await navigator.clipboard.writeText(getFullTemplateText(activeCode));
         setCopyStatus("copied");
         setTimeout(() => setCopyStatus("idle"), 2500);
       } else {
@@ -52,8 +73,8 @@ BODY STRUCTURE:
     }
   };
 
-  const mailtoSubject = encodeURIComponent(`PYBIM-APPLICATION | ${activeCode} | [FULL_NAME]`);
-  const mailtoBody = encodeURIComponent(getTemplateText(activeCode));
+  const mailtoSubject = encodeURIComponent(getSubjectText(activeCode));
+  const mailtoBody = encodeURIComponent(getBodyText(activeCode));
   const mailtoUrl = `mailto:careers@pybim.com?subject=${mailtoSubject}&body=${mailtoBody}`;
 
   return (
@@ -92,7 +113,7 @@ BODY STRUCTURE:
                 <button
                   key={rc.code}
                   type="button"
-                  onClick={() => setActiveCode(rc.code)}
+                  onClick={() => handleSelectCode(rc.code)}
                   className={`px-3.5 py-1.5 rounded-full font-mono text-caption font-bold tracking-wide transition-all border focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary min-h-[36px] ${
                     isSelected
                       ? "bg-brand-primary text-white border-brand-primary shadow-xs"
@@ -145,7 +166,7 @@ BODY STRUCTURE:
           </div>
 
           <pre className="p-5 sm:p-6 text-body-sm font-mono text-brand-textPrimary dark:text-slate-200 overflow-x-auto leading-relaxed selection:bg-brand-primary/20">
-            {getTemplateText(activeCode)}
+            {getFullTemplateText(activeCode)}
           </pre>
         </div>
 
@@ -213,12 +234,15 @@ BODY STRUCTURE:
             </div>
           </div>
 
-          {/* Privacy Notice in Inter */}
+          {/* Privacy Notice in Inter with LocalizedLink */}
           <div className="mt-6 pt-4 flex items-start gap-2.5 text-body-sm font-sans text-brand-textSecondary leading-relaxed border-t border-brand-border/60">
             <ShieldCheck className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" aria-hidden="true" />
             <span>
-              {t("careers.protocol.privacy_notice") ||
-                "By transmitting your application, you consent to the processing of personal data for recruitment and collaboration evaluation pursuant to GDPR (EU Regulation 2016/679) and Italian D.lgs. 196/2003."}
+              {t("careers.protocol.privacy_prefix") || "Before sharing your details, please review our"}{" "}
+              <Link href="/privacy-policy" className="text-brand-primary hover:underline font-medium">
+                {t("careers.protocol.privacy_link") || "Privacy Policy"}
+              </Link>
+              {t("careers.protocol.privacy_suffix") || ". Include only information relevant to your application, and do not disclose sensitive personal data or confidential client material."}
             </span>
           </div>
         </div>
