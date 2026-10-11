@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2, AlertCircle, Check } from "lucide-react";
 import DirectChannelsSection from "@/components/contact/direct-channels-section";
 import FAQSection from "@/components/sections/faq-section";
 import { useLanguage } from "@/lib/LanguageContext";
-import BimCalculatorCta from "@/components/sections/bim-calculator-cta";
+import RoiMatrixSection from "@/components/contact/roi-matrix-section";
 import PriorityQueueSection from "@/components/sections/priority-queue-section";
 
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
@@ -472,8 +472,8 @@ export default function ContactPageLayout() {
       {/* S02 — CONNECT WITH pyBIM (Direct Channels) */}
       <DirectChannelsSection />
 
-      {/* BIM ROI CALCULATOR CTA */}
-      <BimCalculatorCta />
+      {/* S03 — BIM AUTOMATION ROI MATRIX */}
+      <RoiMatrixSection />
 
       {/* SOVEREIGN AI PRIORITY QUEUE / EARLY ACCESS FORM */}
       <PriorityQueueSection />
