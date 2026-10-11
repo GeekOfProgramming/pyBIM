@@ -2,17 +2,7 @@
 
 import { useState, useId } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { 
-  Calculator, 
-  ArrowRight, 
-  TrendingUp, 
-  Clock, 
-  Sliders, 
-  CheckCircle2, 
-  AlertCircle, 
-  ShieldCheck,
-  Lock
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
@@ -20,30 +10,37 @@ import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
  * RoiMatrixSection Component (Section 03 — BIM Automation ROI Matrix)
  *
  * pyBIM Design System v2 — Engineering Precision
- * Task CONTACT-03A: BIM Automation ROI Matrix Redesign
+ * Task CONTACT-03A-R1: Visual Design Correction & Brand Alignment
  *
- * Architecture & Rhythm:
+ * Visual & Functional Architecture:
  * - Alternating rhythm: S03 is Family A Base (bg-brand-base + EngineeringBackdrop variant="base")
  * - Section ID: id="calculator" (preserves existing Contact page anchor and mega-menu links)
  * - Standard container: max-w-7xl mx-auto px-6 lg:px-8
- * - Layout: Desktop 12-column grid (5/12 Left explanation, 7/12 Right interactive interface)
- *   Mobile stacks into single column with clear readability and no clipped views.
+ * - Unified Outer Container: Restores the original single large rounded inset container
+ *   (rounded-[2.5rem] bg-brand-surface border border-brand-border p-8 md:p-12 lg:p-14 shadow-xl)
+ *   encompassing both the left explanation and the right calculator.
+ * - Grid: Desktop 5/12 Left editorial column, 7/12 Right form card. Stacks cleanly on mobile.
  *
  * Left Column (5/12):
- * - Eyebrow: BIM AUTOMATION · ROI MATRIX
- * - H2: Estimate the Impact of BIM Automation.
- * - Concise, professional B2B engineering problem, impact, solution, and 3 deliverables.
+ * - Eyebrow: BIM AUTOMATION · ROI MATRIX (JetBrains Mono uppercase pill badge)
+ * - H2: Estimate the Impact of BIM Automation. (Inter font, matching site typography scale)
+ * - Introduction: Clean editorial lead paragraph
+ * - Narrative: The Problem, The Impact, The Solution formatted as bold inline lead-ins followed
+ *   by readable body text — zero individual cards or box overload.
+ * - What the Matrix Delivers: Three concise deliverables as a compact list with subtle accent markers.
  *
  * Right Column (7/12):
- * - Group 01: Four operational calculation inputs with reference workbook defaults (1, 85, 12, 48)
- * - Group 02: Estimated results presentation area with conservative (50%), expected (75%), optimized (100%)
- *   scenarios, marked in an honest pending validation state without fabricated numbers.
- * - Group 03: Mandatory business identity fields (Full Name, Company Name, Corporate Email)
- *   with corporate domain eligibility guidance and privacy disclosure link.
+ * - Unified form container (bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 lg:p-10 border border-brand-border dark:border-slate-800 shadow-xl)
+ * - Group 01: Four operational inputs (BIM Modelers, Hourly Rate, Manual Hours/Wk, Working Weeks/Yr)
+ *   matching CONTACT-01 input styling.
+ * - Group 02: Compact, integrated estimated results notice with 50%, 75%, 100% scenarios and no
+ *   fabricated numbers or internal development jargon.
+ * - Group 03: Three mandatory business identity fields (Full Name, Company Name, Corporate Email)
+ *   with corporate domain eligibility guidance and privacy policy checkbox.
  * - Primary CTA: Pill-shaped "Request Full ROI Matrix" with verified submission state handling.
  */
 export default function RoiMatrixSection() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const headingId = useId();
 
   // Group 01: Four operational inputs (workbook defaults)
@@ -57,13 +54,12 @@ export default function RoiMatrixSection() {
     name: "",
     companyName: "",
     email: "",
-    privacyAccepted: false
+    privacyAccepted: false,
   });
 
   // Access request UI state
   const [loading, setLoading] = useState(false);
-  const [accessState, setAccessState] = useState("initial"); // 'initial' | 'pending_backend' | 'error'
-  const [errorMessage, setErrorMessage] = useState("");
+  const [accessNotice, setAccessNotice] = useState(null); // { type: 'pending' | 'error', message: string }
 
   const updateIdentity = (field, value) => {
     setBusinessIdentity((prev) => ({ ...prev, [field]: value }));
@@ -78,39 +74,47 @@ export default function RoiMatrixSection() {
       !businessIdentity.companyName.trim() ||
       !businessIdentity.email.trim()
     ) {
-      setErrorMessage(
-        t("roi.validation.required_fields") ||
-          "Please fill in all required business identity fields."
-      );
-      setAccessState("error");
+      setAccessNotice({
+        type: "error",
+        message:
+          t("roi.validation.required_fields") ||
+          "Please fill in all required business identity fields.",
+      });
       return;
     }
 
-    // Basic email format check
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(businessIdentity.email.trim())) {
-      setErrorMessage(
-        t("roi.validation.invalid_email") ||
-          "Please provide a valid corporate email address."
-      );
-      setAccessState("error");
+      setAccessNotice({
+        type: "error",
+        message:
+          t("roi.validation.invalid_email") ||
+          "Please provide a valid corporate email address.",
+      });
       return;
     }
 
     if (!businessIdentity.privacyAccepted) {
-      setErrorMessage(
-        t("roi.validation.privacy_required") ||
-          "Please accept the privacy policy to proceed."
-      );
-      setAccessState("error");
+      setAccessNotice({
+        type: "error",
+        message:
+          t("roi.validation.privacy_required") ||
+          "Please accept the privacy policy to proceed.",
+      });
       return;
     }
 
-    // Honest handling: Controlled backend is planned for CONTACT-03B
+    // Honest handling: Controlled backend delivery is being prepared (CONTACT-03B).
+    // No fake confirmation or simulated success is rendered.
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      setAccessState("pending_backend");
+      setAccessNotice({
+        type: "pending",
+        message:
+          t("roi.access.controlled_notice") ||
+          "The corporate distribution system is currently being prepared. Automated downloads remain restricted until security validation is active.",
+      });
     }, 400);
   };
 
@@ -124,115 +128,119 @@ export default function RoiMatrixSection() {
       <EngineeringBackdrop variant="base" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
+        {/* ========================================================= */}
+        {/* UNIFIED SECTION CONTAINER (Restored from Original S03)     */}
+        {/* ========================================================= */}
+        <div className="rounded-[2.5rem] bg-brand-surface border border-brand-border p-8 md:p-12 lg:p-14 shadow-xl flex flex-col lg:flex-row gap-12 lg:gap-14 xl:gap-16 items-start relative overflow-hidden">
           
-          {/* ========================================================= */}
-          {/* LEFT COLUMN: Explanation & Value Proposition (5 of 12)    */}
-          {/* ========================================================= */}
-          <div className="lg:col-span-5 flex flex-col items-start text-left">
-            {/* Section Eyebrow */}
-            <div className="flex items-center gap-3 mb-4">
-              <span className="h-px bg-brand-primary w-8 sm:w-12" aria-hidden="true" />
-              <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
-                {t("roi.section.eyebrow") || "BIM AUTOMATION · ROI MATRIX"}
-              </span>
+          {/* Subtle Ambient Illumination */}
+          <div
+            className="absolute top-0 right-0 -mr-20 -mt-20 w-72 h-72 rounded-full bg-brand-primary/5 blur-3xl pointer-events-none"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full bg-blue-500/5 blur-3xl pointer-events-none"
+            aria-hidden="true"
+          />
+
+          {/* ======================================================= */}
+          {/* LEFT COLUMN: Editorial & Value Proposition (5 of 12)    */}
+          {/* ======================================================= */}
+          <div className="lg:w-5/12 w-full flex flex-col items-start text-left relative z-10">
+            {/* Section Eyebrow Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-xs font-mono font-semibold text-brand-primary mb-6 shadow-xs">
+              {t("roi.badge") || "// BIM AUTOMATION · ROI MATRIX"}
             </div>
 
-            {/* Section H2 */}
+            {/* Section H2 Headline */}
             <h2
               id={headingId}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-section-sm xl:text-section font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-5"
             >
               {t("roi.section.title") || "Estimate the Impact of BIM Automation."}
             </h2>
 
             {/* Introductory Lead */}
-            <p className="text-body sm:text-lead font-sans text-brand-textSecondary font-medium leading-relaxed mb-8">
+            <p className="text-body sm:text-lead font-sans text-brand-textSecondary font-medium leading-relaxed mb-6">
               {t("roi.section.desc") ||
                 "Explore how repetitive BIM workflows affect engineering capacity and operational costs, and assess the potential value of targeted automation."}
             </p>
 
-            {/* Structured Problem, Impact, Solution Narrative */}
-            <div className="space-y-4 mb-8 w-full">
-              <div className="p-4 rounded-2xl bg-brand-surface/70 border border-brand-border/80">
-                <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary mb-1.5 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" aria-hidden="true" />
-                  {t("roi.narrative.problem_title") || "The Problem"}
-                </h3>
-                <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed">
-                  {t("roi.narrative.problem_desc") ||
-                    "Manual coordination, repetitive data entry and fragmented BIM workflows consume valuable engineering time."}
-                </p>
-              </div>
+            {/* Editorial Narrative (Inline lead-ins without box cards) */}
+            <div className="space-y-4 mb-8 text-body-sm font-sans text-brand-textSecondary leading-relaxed">
+              <p>
+                <strong className="text-brand-textPrimary font-semibold">
+                  {t("roi.narrative.problem_lead") || "The Problem:"}{" "}
+                </strong>
+                {t("roi.narrative.problem_desc") ||
+                  "Manual coordination, repetitive data entry and fragmented BIM workflows consume valuable engineering time."}
+              </p>
 
-              <div className="p-4 rounded-2xl bg-brand-surface/70 border border-brand-border/80">
-                <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary mb-1.5 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-500" aria-hidden="true" />
-                  {t("roi.narrative.impact_title") || "The Impact"}
-                </h3>
-                <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed">
-                  {t("roi.narrative.impact_desc") ||
-                    "Recurring operational tasks can reduce delivery capacity, increase coordination overhead and limit the time available for higher-value engineering work."}
-                </p>
-              </div>
+              <p>
+                <strong className="text-brand-textPrimary font-semibold">
+                  {t("roi.narrative.impact_lead") || "The Impact:"}{" "}
+                </strong>
+                {t("roi.narrative.impact_desc") ||
+                  "Recurring operational tasks can reduce delivery capacity, increase coordination overhead and limit the time available for higher-value engineering work."}
+              </p>
 
-              <div className="p-4 rounded-2xl bg-brand-surface/70 border border-brand-border/80">
-                <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary mb-1.5 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" aria-hidden="true" />
-                  {t("roi.narrative.solution_title") || "The Solution"}
-                </h3>
-                <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed">
-                  {t("roi.narrative.solution_desc") ||
-                    "Targeted automation using tools such as Revit scripting, Python and C# can streamline repetitive operations and support more consistent digital delivery."}
-                </p>
-              </div>
+              <p>
+                <strong className="text-brand-textPrimary font-semibold">
+                  {t("roi.narrative.solution_lead") || "The Solution:"}{" "}
+                </strong>
+                {t("roi.narrative.solution_desc") ||
+                  "Targeted automation using tools such as Revit scripting, Python and C# can streamline repetitive operations and support more consistent digital delivery."}
+              </p>
             </div>
 
-            {/* Deliverables List (Three concise benefits) */}
+            {/* What the Matrix Delivers: Compact Editorial List */}
             <div className="w-full pt-6 border-t border-brand-border/80">
               <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary mb-4">
                 {t("roi.deliverables.title") || "What the Matrix Delivers"}
               </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3 text-body-sm font-sans text-brand-textSecondary">
-                  <span className="font-mono text-caption font-bold text-brand-primary px-1.5 py-0.5 rounded bg-brand-surface border border-brand-border/80 shrink-0 mt-0.5">
-                    01
-                  </span>
+              <ul className="space-y-3.5 text-body-sm font-sans text-brand-textSecondary">
+                <li className="flex items-start gap-3">
+                  <span
+                    className="shrink-0 w-2 h-2 mt-2 rounded-full bg-brand-primary"
+                    aria-hidden="true"
+                  />
                   <div>
-                    <strong className="text-brand-textPrimary block font-semibold">
+                    <strong className="text-brand-textPrimary font-semibold">
                       {t("roi.deliverables.d1_title") || "Identify Operational Inefficiencies"}
                     </strong>
-                    <span className="leading-relaxed">
+                    <span className="block text-body-sm text-brand-textSecondary leading-relaxed">
                       {t("roi.deliverables.d1_desc") ||
                         "Estimate how repetitive BIM tasks contribute to time and cost overhead."}
                     </span>
                   </div>
                 </li>
 
-                <li className="flex items-start gap-3 text-body-sm font-sans text-brand-textSecondary">
-                  <span className="font-mono text-caption font-bold text-brand-primary px-1.5 py-0.5 rounded bg-brand-surface border border-brand-border/80 shrink-0 mt-0.5">
-                    02
-                  </span>
+                <li className="flex items-start gap-3">
+                  <span
+                    className="shrink-0 w-2 h-2 mt-2 rounded-full bg-brand-primary"
+                    aria-hidden="true"
+                  />
                   <div>
-                    <strong className="text-brand-textPrimary block font-semibold">
+                    <strong className="text-brand-textPrimary font-semibold">
                       {t("roi.deliverables.d2_title") || "Explore Automation Scenarios"}
                     </strong>
-                    <span className="leading-relaxed">
+                    <span className="block text-body-sm text-brand-textSecondary leading-relaxed">
                       {t("roi.deliverables.d2_desc") ||
                         "Compare conservative, expected and optimized adoption assumptions."}
                     </span>
                   </div>
                 </li>
 
-                <li className="flex items-start gap-3 text-body-sm font-sans text-brand-textSecondary">
-                  <span className="font-mono text-caption font-bold text-brand-primary px-1.5 py-0.5 rounded bg-brand-surface border border-brand-border/80 shrink-0 mt-0.5">
-                    03
-                  </span>
+                <li className="flex items-start gap-3">
+                  <span
+                    className="shrink-0 w-2 h-2 mt-2 rounded-full bg-brand-primary"
+                    aria-hidden="true"
+                  />
                   <div>
-                    <strong className="text-brand-textPrimary block font-semibold">
+                    <strong className="text-brand-textPrimary font-semibold">
                       {t("roi.deliverables.d3_title") || "Support Investment Decisions"}
                     </strong>
-                    <span className="leading-relaxed">
+                    <span className="block text-body-sm text-brand-textSecondary leading-relaxed">
                       {t("roi.deliverables.d3_desc") ||
                         "Use structured financial estimates to inform conversations about automation priorities."}
                     </span>
@@ -242,244 +250,169 @@ export default function RoiMatrixSection() {
             </div>
           </div>
 
-          {/* ========================================================= */}
-          {/* RIGHT COLUMN: Calculator & Access Request (7 of 12)       */}
-          {/* ========================================================= */}
-          <div className="lg:col-span-7 w-full">
-            <div className="relative rounded-3xl border border-brand-border/80 bg-brand-cardElevated p-6 sm:p-8 lg:p-10 shadow-xl shadow-brand-base/5 dark:shadow-black/20">
-              
-              {/* GROUP 01: ROI Calculation Inputs */}
-              <div className="mb-8 pb-8 border-b border-brand-border/70">
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <div className="flex items-center gap-2">
-                    <Sliders className="w-4 h-4 text-brand-primary" aria-hidden="true" />
+          {/* ======================================================= */}
+          {/* RIGHT COLUMN: Calculator & Access Form (7 of 12)        */}
+          {/* ======================================================= */}
+          <div className="lg:w-7/12 w-full relative z-10">
+            <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 lg:p-10 border border-brand-border dark:border-slate-800 shadow-xl transition-colors">
+              <form onSubmit={handleRequestAccess} noValidate className="space-y-6">
+                {/* --------------------------------------------------- */}
+                {/* GROUP 01: ROI Calculation Inputs                    */}
+                {/* --------------------------------------------------- */}
+                <div>
+                  <div className="flex items-center justify-between pb-3 mb-4 border-b border-brand-border/70">
                     <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
                       {t("roi.inputs.group_title") || "01 · ROI Calculation Inputs"}
                     </h3>
-                  </div>
-                  <span className="text-caption font-mono text-brand-textSecondary hidden sm:inline">
-                    {t("roi.inputs.group_note") || "// Reference Baseline Values"}
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Field 01: Modeler Count */}
-                  <div className="space-y-1.5">
-                    <label
-                      htmlFor="roi-modeler-count"
-                      className="text-body-sm font-medium font-sans text-brand-textPrimary"
-                    >
-                      {t("roi.inputs.modeler_count") || "Number of BIM Modelers"}
-                    </label>
-                    <input
-                      id="roi-modeler-count"
-                      type="number"
-                      min="1"
-                      step="1"
-                      value={modelerCount}
-                      onChange={(e) => setModelerCount(e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
-                    />
-                    <p className="text-caption font-mono text-brand-textSecondary">
-                      {t("roi.inputs.modeler_count_unit") || "Engineers / Modelers"}
-                    </p>
+                    <span className="text-caption font-mono text-brand-textSecondary hidden sm:inline">
+                      {t("roi.inputs.group_note") || "Baseline Parameters"}
+                    </span>
                   </div>
 
-                  {/* Field 02: Hourly Labor Cost */}
-                  <div className="space-y-1.5">
-                    <label
-                      htmlFor="roi-hourly-rate"
-                      className="text-body-sm font-medium font-sans text-brand-textPrimary"
-                    >
-                      {t("roi.inputs.hourly_rate") || "Hourly Labor Cost (€)"}
-                    </label>
-                    <input
-                      id="roi-hourly-rate"
-                      type="number"
-                      min="1"
-                      step="0.5"
-                      value={hourlyRate}
-                      onChange={(e) => setHourlyRate(e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
-                    />
-                    <p className="text-caption font-mono text-brand-textSecondary">
-                      {t("roi.inputs.hourly_rate_unit") || "€ / hour rate"}
-                    </p>
-                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Field 01: Modeler Count */}
+                    <div className="space-y-1.5">
+                      <label
+                        htmlFor="roi-modeler-count"
+                        className="text-body-sm font-medium font-sans text-brand-textPrimary"
+                      >
+                        {t("roi.inputs.modeler_count") || "Number of BIM Modelers"}
+                      </label>
+                      <input
+                        id="roi-modeler-count"
+                        type="number"
+                        min="1"
+                        step="1"
+                        value={modelerCount}
+                        onChange={(e) => setModelerCount(e.target.value)}
+                        placeholder="1"
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                      />
+                    </div>
 
-                  {/* Field 03: Manual Hours Wasted */}
-                  <div className="space-y-1.5">
-                    <label
-                      htmlFor="roi-hours-wasted"
-                      className="text-body-sm font-medium font-sans text-brand-textPrimary"
-                    >
-                      {t("roi.inputs.hours_wasted") || "Manual Hours / Week (per modeler)"}
-                    </label>
-                    <input
-                      id="roi-hours-wasted"
-                      type="number"
-                      min="0"
-                      step="0.5"
-                      value={hoursWasted}
-                      onChange={(e) => setHoursWasted(e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
-                    />
-                    <p className="text-caption font-mono text-brand-textSecondary">
-                      {t("roi.inputs.hours_wasted_unit") || "Hours / week"}
-                    </p>
-                  </div>
+                    {/* Field 02: Hourly Labor Cost */}
+                    <div className="space-y-1.5">
+                      <label
+                        htmlFor="roi-hourly-rate"
+                        className="text-body-sm font-medium font-sans text-brand-textPrimary"
+                      >
+                        {t("roi.inputs.hourly_rate") || "Hourly Labor Cost (€)"}
+                      </label>
+                      <input
+                        id="roi-hourly-rate"
+                        type="number"
+                        min="1"
+                        step="any"
+                        value={hourlyRate}
+                        onChange={(e) => setHourlyRate(e.target.value)}
+                        placeholder="85"
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                      />
+                    </div>
 
-                  {/* Field 04: Working Weeks */}
-                  <div className="space-y-1.5">
-                    <label
-                      htmlFor="roi-working-weeks"
-                      className="text-body-sm font-medium font-sans text-brand-textPrimary"
-                    >
-                      {t("roi.inputs.working_weeks") || "Working Weeks / Year"}
-                    </label>
-                    <input
-                      id="roi-working-weeks"
-                      type="number"
-                      min="1"
-                      max="52"
-                      step="1"
-                      value={workingWeeks}
-                      onChange={(e) => setWorkingWeeks(e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
-                    />
-                    <p className="text-caption font-mono text-brand-textSecondary">
-                      {t("roi.inputs.working_weeks_unit") || "Weeks / year"}
-                    </p>
+                    {/* Field 03: Manual Hours Wasted */}
+                    <div className="space-y-1.5">
+                      <label
+                        htmlFor="roi-hours-wasted"
+                        className="text-body-sm font-medium font-sans text-brand-textPrimary"
+                      >
+                        {t("roi.inputs.hours_wasted") || "Manual Hours / Week (per modeler)"}
+                      </label>
+                      <input
+                        id="roi-hours-wasted"
+                        type="number"
+                        min="0"
+                        step="0.5"
+                        value={hoursWasted}
+                        onChange={(e) => setHoursWasted(e.target.value)}
+                        placeholder="12"
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                      />
+                    </div>
+
+                    {/* Field 04: Working Weeks */}
+                    <div className="space-y-1.5">
+                      <label
+                        htmlFor="roi-working-weeks"
+                        className="text-body-sm font-medium font-sans text-brand-textPrimary"
+                      >
+                        {t("roi.inputs.working_weeks") || "Working Weeks / Year"}
+                      </label>
+                      <input
+                        id="roi-working-weeks"
+                        type="number"
+                        min="1"
+                        max="52"
+                        step="1"
+                        value={workingWeeks}
+                        onChange={(e) => setWorkingWeeks(e.target.value)}
+                        placeholder="48"
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* GROUP 02: Estimated Results (Restrained Numerical Dashboard) */}
-              <div className="mb-8 pb-8 border-b border-brand-border/70">
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-brand-primary" aria-hidden="true" />
+                {/* --------------------------------------------------- */}
+                {/* GROUP 02: Estimated Results (Integrated Summary)    */}
+                {/* --------------------------------------------------- */}
+                <div className="rounded-2xl bg-brand-surface/70 border border-brand-border/80 p-4 sm:p-5 space-y-3">
+                  <div className="flex items-center justify-between gap-2">
                     <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
                       {t("roi.results.group_title") || "02 · Estimated Results"}
                     </h3>
-                  </div>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30">
-                    <Clock className="w-3 h-3" />
-                    {t("roi.results.status_badge") || "Model Reconciliation in Progress"}
-                  </span>
-                </div>
-
-                {/* Dashboard Metric Blocks */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                  <div className="p-4 rounded-2xl bg-brand-surface/70 border border-brand-border/80">
-                    <span className="text-caption font-mono uppercase tracking-wider text-brand-textSecondary block mb-1">
-                      {t("roi.results.recovered_hours") || "Recovered Engineering Hours"}
+                    <span className="text-caption font-mono text-brand-textSecondary">
+                      {t("roi.results.status_note") || "Detailed estimates available after validation"}
                     </span>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-2xl font-bold font-mono text-brand-textPrimary tracking-tight">
-                        —
-                      </span>
-                      <span className="text-caption font-mono text-brand-textSecondary">
-                        {t("roi.results.pending_reconciliation") || "Formula audit pending"}
-                      </span>
-                    </div>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-brand-surface/70 border border-brand-border/80">
-                    <span className="text-caption font-mono uppercase tracking-wider text-brand-textSecondary block mb-1">
-                      {t("roi.results.annual_value") || "Potential Annual Financial Value"}
-                    </span>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-2xl font-bold font-mono text-brand-textPrimary tracking-tight">
-                        —
-                      </span>
-                      <span className="text-caption font-mono text-brand-textSecondary">
-                        {t("roi.results.pending_reconciliation") || "Formula audit pending"}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Three Adoption Scenarios from Workbook */}
-                <div className="p-4 rounded-2xl bg-brand-surface/40 border border-brand-border/70 space-y-2.5">
-                  <span className="text-caption font-mono font-semibold uppercase tracking-wider text-brand-textSecondary block">
-                    {t("roi.results.scenarios_title") || "Workbook Adoption Scenarios"}
-                  </span>
-
-                  <div className="grid grid-cols-3 gap-2 text-center">
-                    <div className="p-2.5 rounded-xl bg-brand-cardElevated border border-brand-border/70">
-                      <span className="text-[11px] font-mono font-bold text-brand-primary block">
+                  {/* Compact Scenario Badges */}
+                  <div className="grid grid-cols-3 gap-2.5 text-center">
+                    <div className="p-2 rounded-xl bg-brand-cardElevated border border-brand-border/70">
+                      <span className="text-caption font-mono font-bold text-brand-primary block">
                         50%
                       </span>
-                      <span className="text-caption font-sans text-brand-textSecondary block">
+                      <span className="text-[11px] font-sans text-brand-textSecondary block">
                         {t("roi.results.conservative") || "Conservative"}
                       </span>
                     </div>
 
-                    <div className="p-2.5 rounded-xl bg-brand-cardElevated border border-brand-primary/40">
-                      <span className="text-[11px] font-mono font-bold text-brand-primary block">
+                    <div className="p-2 rounded-xl bg-brand-cardElevated border border-brand-primary/40">
+                      <span className="text-caption font-mono font-bold text-brand-primary block">
                         75%
                       </span>
-                      <span className="text-caption font-sans text-brand-textSecondary block">
+                      <span className="text-[11px] font-sans text-brand-textSecondary block">
                         {t("roi.results.expected") || "Expected"}
                       </span>
                     </div>
 
-                    <div className="p-2.5 rounded-xl bg-brand-cardElevated border border-brand-border/70">
-                      <span className="text-[11px] font-mono font-bold text-brand-primary block">
+                    <div className="p-2 rounded-xl bg-brand-cardElevated border border-brand-border/70">
+                      <span className="text-caption font-mono font-bold text-brand-primary block">
                         100%
                       </span>
-                      <span className="text-caption font-sans text-brand-textSecondary block">
+                      <span className="text-[11px] font-sans text-brand-textSecondary block">
                         {t("roi.results.optimized") || "Optimized"}
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-caption font-sans text-brand-textSecondary pt-1 leading-relaxed">
-                    {t("roi.results.disclaimer") ||
-                      "Operational inputs remain interactive. Verified financial calculations are currently undergoing mathematical audit (CONTACT-03C) to guarantee multi-regional consistency."}
+                  <p className="text-caption font-sans text-brand-textSecondary leading-relaxed pt-0.5">
+                    {t("roi.results.summary_notice") ||
+                      "Detailed financial estimates and recovered capacity projections are provided in the full ROI Matrix workbook."}
                   </p>
                 </div>
-              </div>
 
-              {/* GROUP 03: Request Full ROI Matrix (Business Identity) */}
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <ShieldCheck className="w-4 h-4 text-brand-primary" aria-hidden="true" />
-                  <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
-                    {t("roi.access.group_title") || "03 · Request Full ROI Matrix"}
-                  </h3>
-                </div>
-
-                {accessState === "pending_backend" ? (
-                  <div className="p-6 rounded-2xl bg-brand-surface border border-brand-border text-center space-y-3">
-                    <div className="w-12 h-12 rounded-full bg-brand-primary/10 text-brand-primary flex items-center justify-center mx-auto">
-                      <Lock className="w-6 h-6" />
-                    </div>
-                    <h4 className="text-lg font-bold font-sans text-brand-textPrimary">
-                      {t("roi.access.controlled_title") || "Controlled Access In Preparation"}
-                    </h4>
-                    <p className="text-body-sm font-sans text-brand-textSecondary max-w-md mx-auto leading-relaxed">
-                      {t("roi.access.controlled_desc") ||
-                        "Your request parameters have been noted. The authorized corporate delivery endpoint and domain verification system are currently being prepared (CONTACT-03B). Unrestricted downloads remain disabled."}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => setAccessState("initial")}
-                      className="text-caption font-mono font-bold text-brand-primary hover:underline uppercase tracking-wider pt-2"
-                    >
-                      {t("roi.access.reset_btn") || "Back to form"}
-                    </button>
+                {/* --------------------------------------------------- */}
+                {/* GROUP 03: Request Full ROI Matrix (Business Identity) */}
+                {/* --------------------------------------------------- */}
+                <div>
+                  <div className="pb-3 mb-4 border-b border-brand-border/70">
+                    <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
+                      {t("roi.access.group_title") || "03 · Request Full ROI Matrix"}
+                    </h3>
                   </div>
-                ) : (
-                  <form onSubmit={handleRequestAccess} noValidate className="space-y-4">
-                    {accessState === "error" && errorMessage && (
-                      <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/25 flex items-start gap-2.5 text-body-sm font-sans text-red-700 dark:text-red-400">
-                        <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-                        <span>{errorMessage}</span>
-                      </div>
-                    )}
 
+                  <div className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Field 05: Full Name */}
                       <div className="space-y-1.5">
@@ -543,7 +476,7 @@ export default function RoiMatrixSection() {
                       </p>
                     </div>
 
-                    {/* Privacy Checkbox */}
+                    {/* Privacy Consent Checkbox */}
                     <div className="flex items-start gap-3 pt-1">
                       <input
                         type="checkbox"
@@ -574,6 +507,24 @@ export default function RoiMatrixSection() {
                       </label>
                     </div>
 
+                    {/* Inline Notice State (Error or In-Preparation) */}
+                    {accessNotice && (
+                      <div
+                        className={`p-3.5 rounded-xl border flex items-start gap-2.5 text-body-sm font-sans ${
+                          accessNotice.type === "error"
+                            ? "bg-red-500/10 border-red-500/25 text-red-700 dark:text-red-400"
+                            : "bg-blue-500/10 border-blue-500/25 text-brand-textPrimary"
+                        }`}
+                      >
+                        {accessNotice.type === "error" ? (
+                          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                        ) : (
+                          <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                        )}
+                        <span className="leading-relaxed">{accessNotice.message}</span>
+                      </div>
+                    )}
+
                     {/* Pill Primary CTA Button */}
                     <div className="pt-2">
                       <button
@@ -592,11 +543,12 @@ export default function RoiMatrixSection() {
                         />
                       </button>
                     </div>
-                  </form>
-                )}
-              </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
+
         </div>
       </div>
     </section>
