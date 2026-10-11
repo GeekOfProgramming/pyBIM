@@ -109,12 +109,14 @@
       "input": {
         "tag": "PROJECT INPUT",
         "title": "Your Project Requirements",
-        "subtitle": "Scope · Disciplines · Deliverables"
+        "subtitle": "Scope · Disciplines · Deliverables",
+        "description": "BIM scope, participating engineering disciplines, and project delivery criteria defined before kickoff."
       },
       "hub": {
         "badge": "COORDINATED DELIVERY HUB",
         "title": "pyBIM Coordinated Delivery",
-        "subtitle": "Engineering-led project execution"
+        "subtitle": "Engineering-led project execution",
+        "description": "BIM specialist teams and internal automation tools orchestrated under dedicated engineering leadership."
       },
       "capabilities": [
         {
@@ -139,7 +141,8 @@
       "output": {
         "tag": "DELIVERY OUTPUT",
         "title": "Reviewed BIM Deliverables",
-        "subtitle": "Model outputs and documentation aligned with the agreed project requirements."
+        "subtitle": "Model outputs and documentation aligned with the agreed project requirements.",
+        "description": "Model files, structured documentation, and coordination packages prepared for final handover."
       },
       "supporting_statement": "Flexible by design. Accountable in delivery.",
       "cta": {
@@ -468,12 +471,14 @@
       "input": {
         "tag": "INPUT DI PROGETTO",
         "title": "Requisiti di Progetto",
-        "subtitle": "Ambito · Discipline · Deliverable"
+        "subtitle": "Ambito · Discipline · Deliverable",
+        "description": "Ambito BIM, discipline ingegneristiche e criteri di consegna definiti prima dell'avvio."
       },
       "hub": {
         "badge": "HUB DI CONSEGNA COORDINATA",
         "title": "Consegna Coordinata pyBIM",
-        "subtitle": "Esecuzione di progetto guidata da ingegneri"
+        "subtitle": "Esecuzione di progetto guidata da ingegneri",
+        "description": "Team specialistici BIM e strumenti interni orchestrati sotto la guida di ingegneri dedicati."
       },
       "capabilities": [
         {
@@ -498,7 +503,8 @@
       "output": {
         "tag": "OUTPUT DI CONSEGNA",
         "title": "Deliverable BIM Verificati",
-        "subtitle": "Modelli e documentazione allineati con i requisiti concordati di progetto."
+        "subtitle": "Modelli e documentazione allineati con i requisiti concordati di progetto.",
+        "description": "File di modello, documentazione strutturata e pacchetti di coordinamento predisposti per la consegna."
       },
       "supporting_statement": "Flessibili nella struttura. Responsabili nella consegna.",
       "cta": {
@@ -827,12 +833,14 @@
       "input": {
         "tag": "PROJEKTEINGABE",
         "title": "Ihre Projektanforderungen",
-        "subtitle": "Umfang · Disziplinen · Lieferergebnisse"
+        "subtitle": "Umfang · Disziplinen · Lieferergebnisse",
+        "description": "BIM-Umfang, beteiligte Fachdisziplinen und Lieferkriterien, definiert vor Projektstart."
       },
       "hub": {
         "badge": "KOORDINIERTER LIEFER-HUB",
         "title": "Koordinierte pyBIM-Lieferung",
-        "subtitle": "Ingenieurgeführte Projektabwicklung"
+        "subtitle": "Ingenieurgeführte Projektabwicklung",
+        "description": "Spezialisierte BIM-Teams und interne Automatisierungstools unter leitender Ingenieurführung."
       },
       "capabilities": [
         {
@@ -857,7 +865,8 @@
       "output": {
         "tag": "LIEFERERGEBNIS",
         "title": "Geprüfte BIM-Lieferergebnisse",
-        "subtitle": "Modellausgaben und Dokumentation, abgestimmt auf die vereinbarten Projektanforderungen."
+        "subtitle": "Modellausgaben und Dokumentation, abgestimmt auf die vereinbarten Projektanforderungen.",
+        "description": "Modelldateien, strukturierte Dokumentation und Koordinationspakete, aufbereitet für die Übergabe."
       },
       "supporting_statement": "Flexibel im Aufbau. Verbindlich in der Lieferung.",
       "cta": {
