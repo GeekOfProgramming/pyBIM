@@ -112,13 +112,13 @@ export default function OpportunityDetailModal({ role, onClose, onApplyRole }) {
         aria-labelledby={titleId}
         aria-describedby={descId}
         tabIndex={-1}
-        className="relative w-full max-w-4xl bg-white dark:bg-slate-900 rounded-3xl sm:rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col m-auto border border-brand-border dark:border-slate-800 transition-colors focus:outline-none max-h-[90vh]"
+        className="relative w-full max-w-4xl bg-brand-cardElevated rounded-3xl sm:rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col m-auto border border-brand-border/80 transition-colors focus:outline-none max-h-[90vh]"
       >
         {/* Modal Top Header Bar */}
-        <div className="sticky top-0 z-20 flex items-center justify-between px-6 sm:px-8 py-5 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-brand-border dark:border-slate-800">
+        <div className="sticky top-0 z-20 flex items-center justify-between px-6 sm:px-8 py-5 bg-brand-cardElevated/95 backdrop-blur-md border-b border-brand-border/70">
           <div className="flex items-center gap-3">
             <span
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-caption font-mono font-bold tracking-wide uppercase border ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-caption font-mono font-bold tracking-wider uppercase border ${
                 isActive
                   ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30"
                   : "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/30"
@@ -136,7 +136,7 @@ export default function OpportunityDetailModal({ role, onClose, onApplyRole }) {
             ref={closeButtonRef}
             onClick={onClose}
             type="button"
-            className="w-10 h-10 bg-brand-surface dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full flex items-center justify-center text-brand-textPrimary border border-brand-border dark:border-slate-700 shadow-xs transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+            className="w-10 h-10 bg-brand-surface hover:bg-brand-surfaceHover rounded-full flex items-center justify-center text-brand-textPrimary border border-brand-border shadow-xs transition-all hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
             aria-label={t("careers.positions.modal.close") || "Close modal"}
           >
             <X className="w-5 h-5" />
@@ -155,7 +155,7 @@ export default function OpportunityDetailModal({ role, onClose, onApplyRole }) {
                 <span className="font-mono text-caption font-bold text-brand-primary tracking-wider uppercase block">
                   // {role.num} · {role.code}
                 </span>
-                <h3 id={titleId} className="text-2xl sm:text-3xl font-extrabold font-sans text-brand-textPrimary tracking-tight">
+                <h3 id={titleId} className="text-card-title sm:text-section-sm font-extrabold font-sans text-brand-textPrimary tracking-tight">
                   {role.title}
                 </h3>
               </div>
@@ -166,7 +166,7 @@ export default function OpportunityDetailModal({ role, onClose, onApplyRole }) {
           </div>
 
           {/* Section: Typical Responsibilities */}
-          <div className="rounded-2xl p-6 bg-brand-surface/60 border border-brand-border/80">
+          <div className="rounded-2xl p-6 bg-brand-surface/60 border border-brand-border/70">
             <h4 className="text-caption font-mono font-bold tracking-wider text-brand-primary uppercase mb-4 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" aria-hidden="true" />
               <span>{t("careers.positions.modal.responsibilities") || "Typical Responsibilities"}</span>
@@ -202,7 +202,7 @@ export default function OpportunityDetailModal({ role, onClose, onApplyRole }) {
 
           {/* Section: Evidence Guidance & Collaboration Context */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-5 rounded-2xl bg-brand-surface/40 border border-brand-border/80 flex flex-col justify-between">
+            <div className="p-5 rounded-2xl bg-brand-surface/40 border border-brand-border/70 flex flex-col justify-between">
               <div>
                 <h5 className="text-caption font-mono font-bold tracking-wider text-brand-textPrimary uppercase mb-2 flex items-center gap-2">
                   <FileCode2 className="w-4 h-4 text-brand-primary" />
@@ -214,7 +214,7 @@ export default function OpportunityDetailModal({ role, onClose, onApplyRole }) {
               </div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-brand-surface/40 border border-brand-border/80 flex flex-col justify-between">
+            <div className="p-5 rounded-2xl bg-brand-surface/40 border border-brand-border/70 flex flex-col justify-between">
               <div>
                 <h5 className="text-caption font-mono font-bold tracking-wider text-brand-textPrimary uppercase mb-2 flex items-center gap-2">
                   <Layers className="w-4 h-4 text-brand-primary" />
@@ -236,10 +236,10 @@ export default function OpportunityDetailModal({ role, onClose, onApplyRole }) {
             <button
               onClick={handleApplyClick}
               type="button"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-actionPrimary hover:bg-brand-actionPrimaryHover text-brand-actionOnPrimary font-bold text-caption tracking-wider uppercase transition-all shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+              className="group inline-flex items-center justify-center gap-2.5 rounded-full min-h-[48px] sm:min-h-[52px] px-7 py-3 sm:py-3.5 bg-brand-actionPrimary hover:bg-brand-actionPrimaryHover text-brand-actionOnPrimary text-body-sm font-semibold tracking-normal shadow-md shadow-brand-actionPrimary/20 hover:shadow-lg hover:shadow-brand-actionPrimary/30 transition-all active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-actionPrimary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-brand-base"
             >
               <span>{t("careers.positions.modal.apply_btn") || "Apply for this Role"}</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </button>
           </div>
         </div>
