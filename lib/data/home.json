@@ -94,12 +94,14 @@
       "input": {
         "tag": "PROJECT INPUT",
         "title": "Your Project Requirements",
-        "subtitle": "Scope · Disciplines · Deliverables"
+        "subtitle": "Scope · Disciplines · Deliverables",
+        "description": "BIM scope, participating engineering disciplines, and project delivery criteria defined before kickoff."
       },
       "hub": {
         "badge": "COORDINATED DELIVERY HUB",
         "title": "pyBIM Coordinated Delivery",
-        "subtitle": "Engineering-led project execution"
+        "subtitle": "Engineering-led project execution",
+        "description": "BIM specialist teams and internal automation tools orchestrated under dedicated engineering leadership."
       },
       "capabilities": [
         {
@@ -124,7 +126,8 @@
       "output": {
         "tag": "DELIVERY OUTPUT",
         "title": "Reviewed BIM Deliverables",
-        "subtitle": "Model outputs and documentation aligned with the agreed project requirements."
+        "subtitle": "Model outputs and documentation aligned with the agreed project requirements.",
+        "description": "Model files, structured documentation, and coordination packages prepared for final handover."
       },
       "supporting_statement": "Flexible by design. Accountable in delivery.",
       "cta": {
@@ -209,10 +212,26 @@
       "title_part2": "Trusted by Tier-1 Enterprise.",
       "description": "Engineered from the computational and structural research cores of Padua and Torino. We deploy mathematically verified algorithmic infrastructure across the most complex AEC projects in the UK, Europe, and Italy.",
       "partners": [
-        { "id": "unipd", "name": "UNIPD (Padua)", "subtitle": "Information & Algorithmic Engineering" },
-        { "id": "polito", "name": "POLITO (Torino)", "subtitle": "Advanced Civil & Structural Engineering" },
-        { "id": "tier1", "name": "TIER-1 AEC", "subtitle": "Enterprise Infrastructure Deployment" },
-        { "id": "iso", "name": "ISO 19650 VERIFIED", "subtitle": "Part 2 & Part 5 Data Compliance" }
+        {
+          "id": "unipd",
+          "name": "UNIPD (Padua)",
+          "subtitle": "Information & Algorithmic Engineering"
+        },
+        {
+          "id": "polito",
+          "name": "POLITO (Torino)",
+          "subtitle": "Advanced Civil & Structural Engineering"
+        },
+        {
+          "id": "tier1",
+          "name": "TIER-1 AEC",
+          "subtitle": "Enterprise Infrastructure Deployment"
+        },
+        {
+          "id": "iso",
+          "name": "ISO 19650 VERIFIED",
+          "subtitle": "Part 2 & Part 5 Data Compliance"
+        }
       ]
     },
     "validationProtocol": {
@@ -331,12 +350,14 @@
       "input": {
         "tag": "INPUT DI PROGETTO",
         "title": "Requisiti di Progetto",
-        "subtitle": "Ambito · Discipline · Deliverable"
+        "subtitle": "Ambito · Discipline · Deliverable",
+        "description": "Ambito BIM, discipline ingegneristiche e criteri di consegna definiti prima dell'avvio."
       },
       "hub": {
         "badge": "HUB DI CONSEGNA COORDINATA",
         "title": "Consegna Coordinata pyBIM",
-        "subtitle": "Esecuzione di progetto guidata da ingegneri"
+        "subtitle": "Esecuzione di progetto guidata da ingegneri",
+        "description": "Team specialistici BIM e strumenti interni orchestrati sotto la guida di ingegneri dedicati."
       },
       "capabilities": [
         {
@@ -361,7 +382,8 @@
       "output": {
         "tag": "OUTPUT DI CONSEGNA",
         "title": "Deliverable BIM Verificati",
-        "subtitle": "Modelli e documentazione allineati con i requisiti concordati di progetto."
+        "subtitle": "Modelli e documentazione allineati con i requisiti concordati di progetto.",
+        "description": "File di modello, documentazione strutturata e pacchetti di coordinamento predisposti per la consegna."
       },
       "supporting_statement": "Flessibili nella struttura. Responsabili nella consegna.",
       "cta": {
@@ -446,10 +468,26 @@
       "title_part2": "Scelto da Grandi Imprese Tier-1.",
       "description": "Sviluppato dai centri di ricerca computazionale e strutturale di Padova e Torino. Implementiamo infrastrutture algoritmiche matematicamente verificate nei progetti AEC più complessi nel Regno Unito, in Europa e in Italia.",
       "partners": [
-        { "id": "unipd", "name": "UNIPD (Padova)", "subtitle": "Ingegneria dell'Informazione e Algoritmica" },
-        { "id": "polito", "name": "POLITO (Torino)", "subtitle": "Ingegneria Civile e Strutturale Avanzata" },
-        { "id": "tier1", "name": "AEC TIER-1", "subtitle": "Implementazione Infrastrutture Enterprise" },
-        { "id": "iso", "name": "VERIFICATO ISO 19650", "subtitle": "Conformità Dati Parte 2 e Parte 5" }
+        {
+          "id": "unipd",
+          "name": "UNIPD (Padova)",
+          "subtitle": "Ingegneria dell'Informazione e Algoritmica"
+        },
+        {
+          "id": "polito",
+          "name": "POLITO (Torino)",
+          "subtitle": "Ingegneria Civile e Strutturale Avanzata"
+        },
+        {
+          "id": "tier1",
+          "name": "AEC TIER-1",
+          "subtitle": "Implementazione Infrastrutture Enterprise"
+        },
+        {
+          "id": "iso",
+          "name": "VERIFICATO ISO 19650",
+          "subtitle": "Conformità Dati Parte 2 e Parte 5"
+        }
       ]
     },
     "validationProtocol": {
@@ -568,12 +606,14 @@
       "input": {
         "tag": "PROJEKTEINGABE",
         "title": "Ihre Projektanforderungen",
-        "subtitle": "Umfang · Disziplinen · Lieferergebnisse"
+        "subtitle": "Umfang · Disziplinen · Lieferergebnisse",
+        "description": "BIM-Umfang, beteiligte Fachdisziplinen und Lieferkriterien, definiert vor Projektstart."
       },
       "hub": {
         "badge": "KOORDINIERTER LIEFER-HUB",
         "title": "Koordinierte pyBIM-Lieferung",
-        "subtitle": "Ingenieurgeführte Projektabwicklung"
+        "subtitle": "Ingenieurgeführte Projektabwicklung",
+        "description": "Spezialisierte BIM-Teams und interne Automatisierungstools unter leitender Ingenieurführung."
       },
       "capabilities": [
         {
@@ -598,7 +638,8 @@
       "output": {
         "tag": "LIEFERERGEBNIS",
         "title": "Geprüfte BIM-Lieferergebnisse",
-        "subtitle": "Modellausgaben und Dokumentation, abgestimmt auf die vereinbarten Projektanforderungen."
+        "subtitle": "Modellausgaben und Dokumentation, abgestimmt auf die vereinbarten Projektanforderungen.",
+        "description": "Modelldateien, strukturierte Dokumentation und Koordinationspakete, aufbereitet für die Übergabe."
       },
       "supporting_statement": "Flexibel im Aufbau. Verbindlich in der Lieferung.",
       "cta": {
@@ -683,10 +724,26 @@
       "title_part2": "Bewährt bei führenden Tier-1-Unternehmen.",
       "description": "Entwickelt in den computativen und strukturellen Forschungszentren von Padua und Turin. Wir implementieren mathematisch geprüfte algorithmische Infrastruktur in den komplexesten AEC-Projekten im Vereinigten Königreich, in Europa und in Italien.",
       "partners": [
-        { "id": "unipd", "name": "UNIPD (Padua)", "subtitle": "Informations- & Algorithmen-Engineering" },
-        { "id": "polito", "name": "POLITO (Turin)", "subtitle": "Fortgeschrittenes Bau- & Struktur-Engineering" },
-        { "id": "tier1", "name": "TIER-1 AEC", "subtitle": "Enterprise-Infrastruktur-Bereitstellung" },
-        { "id": "iso", "name": "ISO 19650 VERIFIZIERT", "subtitle": "Teil 2 & Teil 5 Datenkonformität" }
+        {
+          "id": "unipd",
+          "name": "UNIPD (Padua)",
+          "subtitle": "Informations- & Algorithmen-Engineering"
+        },
+        {
+          "id": "polito",
+          "name": "POLITO (Turin)",
+          "subtitle": "Fortgeschrittenes Bau- & Struktur-Engineering"
+        },
+        {
+          "id": "tier1",
+          "name": "TIER-1 AEC",
+          "subtitle": "Enterprise-Infrastruktur-Bereitstellung"
+        },
+        {
+          "id": "iso",
+          "name": "ISO 19650 VERIFIZIERT",
+          "subtitle": "Teil 2 & Teil 5 Datenkonformität"
+        }
       ]
     },
     "validationProtocol": {
@@ -711,4 +768,3 @@
     }
   }
 }
-
