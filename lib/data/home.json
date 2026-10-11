@@ -7,7 +7,22 @@
       "description": "pyBIM supports AEC teams with BIM modeling, model coordination, quality assurance, and structured digital delivery. Our flexible engineering specialists combine established BIM practices with in-house Revit automation and AI-assisted workflows where appropriate.",
       "cta_primary": "Discuss Your BIM Project",
       "cta_secondary": "Explore BIM Services",
-      "capability_line": "BIM Modeling · Coordination · Model QA · Digital Delivery"
+      "capability_line": "BIM Modeling · Coordination · Model QA · Digital Delivery",
+      "schematic": {
+        "badge": "BIM Delivery Pipeline",
+        "tag": "pyBIM // ARCHITECTURE",
+        "node1_title": "BIM Modeling & Development",
+        "node1_badge": "LOD 300–400",
+        "node1_desc": "Multidisciplinary architectural and MEP model authoring with structured parameter schemas.",
+        "node2_title": "Coordination & Clash Audit",
+        "node2_badge": "ISO 19650",
+        "node2_desc": "Automated conflict resolution matrices across design disciplines in shared CDE environments.",
+        "node3_title": "Model QA & Digital Handover",
+        "node3_badge": "VERIFIED",
+        "node3_desc": "Automated model health auditing, parameter completeness checks, and IFC compliance verification.",
+        "footer_label": "Delivery Standard",
+        "footer_val": "OpenBIM · IFC4 · Revit API"
+      }
     },
     "paradigmShift": {
       "badge": "BIM ENGINEERING SERVICES",
@@ -184,17 +199,34 @@
           "note_id": "#442B",
           "quote": "\"Zero data leakage isn't an optional feature; it's our operational foundation. By containerizing algorithms directly behind your corporate firewall, we eliminate IP risks entirely while guaranteeing full ISO 19650-5 cybersecurity compliance.\""
         }
-      ]
+      ],
+      "operational_note_label": "OPERATIONAL NOTE"
     },
     "strategicEcosystem": {
       "title_part1": "Backed by Academic Rigor.",
       "title_part2": "Trusted by Tier-1 Enterprise.",
       "description": "Engineered from the computational and structural research cores of Padua and Torino. We deploy mathematically verified algorithmic infrastructure across the most complex AEC projects in the UK, Europe, and Italy.",
       "partners": [
-        { "id": "unipd", "name": "UNIPD (Padua)", "subtitle": "Information & Algorithmic Engineering" },
-        { "id": "polito", "name": "POLITO (Torino)", "subtitle": "Advanced Civil & Structural Engineering" },
-        { "id": "tier1", "name": "TIER-1 AEC", "subtitle": "Enterprise Infrastructure Deployment" },
-        { "id": "iso", "name": "ISO 19650 VERIFIED", "subtitle": "Part 2 & Part 5 Data Compliance" }
+        {
+          "id": "unipd",
+          "name": "UNIPD (Padua)",
+          "subtitle": "Information & Algorithmic Engineering"
+        },
+        {
+          "id": "polito",
+          "name": "POLITO (Torino)",
+          "subtitle": "Advanced Civil & Structural Engineering"
+        },
+        {
+          "id": "tier1",
+          "name": "TIER-1 AEC",
+          "subtitle": "Enterprise Infrastructure Deployment"
+        },
+        {
+          "id": "iso",
+          "name": "ISO 19650 VERIFIED",
+          "subtitle": "Part 2 & Part 5 Data Compliance"
+        }
       ]
     },
     "validationProtocol": {
@@ -216,6 +248,22 @@
       ],
       "cta": "REQUEST POC AUDIT",
       "microcopy": "(100% Free & Secure Data Handling. Validate your heaviest Revit models through our local pipelines. Corporate email domains only. No credit card required.)"
+    },
+    "finalProjectCta": {
+      "badge": "MANAGED BIM OUTSOURCING & EXECUTION",
+      "headline": "Ready to Deliver Your Next BIM Project with Zero Clashes?",
+      "desc": "Outsource your multidisciplinary BIM modeling, shop drawings, and clash coordination with algorithmic precision. We integrate directly into your Common Data Environment (CDE), eliminating bottlenecks and guaranteeing on-time delivery under ISO 19650.",
+      "commitments": [
+        "100% Guaranteed Zero-Clash Delivery Matrix",
+        "Direct CDE Integration (Autodesk Construction Cloud / BIM 360 / Trimble)",
+        "Strict Bilateral NDA & Data Sovereignty Guaranteed"
+      ],
+      "cardBadge": "PROJECT INTAKE // 48-HOUR RESPONSE",
+      "cardTitle": "Initiate Your Project Scope & Model Audit",
+      "cardDesc": "Submit your project requirements, model volume, or tender specs through our primary audit form to receive a detailed technical feasibility review and turnaround timeline within 24-48 hours.",
+      "cta": "OPEN PROJECT AUDIT FORM",
+      "securityNotice": "All project submissions protected under bilateral NDA.",
+      "locationNotice": "Padua, IT HQ"
     }
   },
   "it": {
@@ -226,7 +274,22 @@
       "description": "pyBIM supporta i team AEC con modellazione BIM, coordinamento modelli, controllo qualità e consegna digitale strutturata. I nostri specialisti uniscono pratiche BIM consolidate ad automazione Revit interna e flussi assistiti da intelligenza artificiale mirati.",
       "cta_primary": "Discuti il Tuo Progetto BIM",
       "cta_secondary": "Esplora i Servizi BIM",
-      "capability_line": "Modellazione BIM · Coordinamento · Model QA · Consegna Digitale"
+      "capability_line": "Modellazione BIM · Coordinamento · Model QA · Consegna Digitale",
+      "schematic": {
+        "badge": "Pipeline di Consegna BIM",
+        "tag": "pyBIM // ARCHITETTURA",
+        "node1_title": "Modellazione & Sviluppo BIM",
+        "node1_badge": "LOD 300–400",
+        "node1_desc": "Creazione di modelli architettonici e MEP multidisciplinari con schemi informativi strutturati.",
+        "node2_title": "Coordinamento & Audit Clash",
+        "node2_badge": "ISO 19650",
+        "node2_desc": "Matrici di risoluzione automatizzata dei conflitti tra discipline in ambienti CDE condivisi.",
+        "node3_title": "Model QA & Consegna Digitale",
+        "node3_badge": "VERIFICATO",
+        "node3_desc": "Audit automatizzato dello stato del modello, verifica completezza parametri e conformità IFC.",
+        "footer_label": "Standard di Consegna",
+        "footer_val": "OpenBIM · IFC4 · Revit API"
+      }
     },
     "paradigmShift": {
       "badge": "SERVIZI DI INGEGNERIA BIM",
@@ -403,17 +466,34 @@
           "note_id": "#442B",
           "quote": "\"La totale assenza di perdite di dati non è una funzionalità accessoria; è il fondamento operativo. Containerizzando gli algoritmi direttamente dietro il vostro firewall aziendale, eliminiamo del tutto i rischi per la proprietà intellettuale garantendo la piena conformità di sicurezza ISO 19650-5.\""
         }
-      ]
+      ],
+      "operational_note_label": "NOTA OPERATIVA"
     },
     "strategicEcosystem": {
       "title_part1": "Supportato dal Rigore Accademico.",
       "title_part2": "Scelto da Grandi Imprese Tier-1.",
       "description": "Sviluppato dai centri di ricerca computazionale e strutturale di Padova e Torino. Implementiamo infrastrutture algoritmiche matematicamente verificate nei progetti AEC più complessi nel Regno Unito, in Europa e in Italia.",
       "partners": [
-        { "id": "unipd", "name": "UNIPD (Padova)", "subtitle": "Ingegneria dell'Informazione e Algoritmica" },
-        { "id": "polito", "name": "POLITO (Torino)", "subtitle": "Ingegneria Civile e Strutturale Avanzata" },
-        { "id": "tier1", "name": "AEC TIER-1", "subtitle": "Implementazione Infrastrutture Enterprise" },
-        { "id": "iso", "name": "VERIFICATO ISO 19650", "subtitle": "Conformità Dati Parte 2 e Parte 5" }
+        {
+          "id": "unipd",
+          "name": "UNIPD (Padova)",
+          "subtitle": "Ingegneria dell'Informazione e Algoritmica"
+        },
+        {
+          "id": "polito",
+          "name": "POLITO (Torino)",
+          "subtitle": "Ingegneria Civile e Strutturale Avanzata"
+        },
+        {
+          "id": "tier1",
+          "name": "AEC TIER-1",
+          "subtitle": "Implementazione Infrastrutture Enterprise"
+        },
+        {
+          "id": "iso",
+          "name": "VERIFICATO ISO 19650",
+          "subtitle": "Conformità Dati Parte 2 e Parte 5"
+        }
       ]
     },
     "validationProtocol": {
@@ -435,6 +515,22 @@
       ],
       "cta": "RICHIEDI AUDIT POC",
       "microcopy": "(Gestione dei dati 100% gratuita e sicura. Valida i tuoi modelli Revit più complessi tramite le nostre pipeline locali. Solo domini email aziendali. Nessuna carta di credito richiesta.)"
+    },
+    "finalProjectCta": {
+      "badge": "MANAGED BIM OUTSOURCING & EXECUTION",
+      "headline": "Pronti a Realizzare il Vostro Prossimo Progetto BIM Senza Interferenze?",
+      "desc": "Affidateci in outsourcing la modellazione BIM multidisciplinare, i disegni costruttivi e il coordinamento delle interferenze con precisione algoritmica. Ci integriamo direttamente nel vostro CDE, garantendo tempi certi e piena conformità a ISO 19650.",
+      "commitments": [
+        "Matrice di Consegna Garantita con Zero Interferenze (Zero-Clash)",
+        "Integrazione Diretta nel CDE (Autodesk Construction Cloud / BIM 360 / Trimble)",
+        "Accordo di Riservatezza NDA Bilaterale & Sovranità dei Dati"
+      ],
+      "cardBadge": "RICEZIONE PROGETTI // RISPOSTA IN 48 ORE",
+      "cardTitle": "Avvia l'Audit Tecnico e la Stima del Progetto",
+      "cardDesc": "Invia i requisiti, i volumi del modello o i capitolati attraverso il modulo di audit principale per ricevere una valutazione tecnica di fattibilità e un cronoprogramma preciso in 24-48 ore.",
+      "cta": "APRI IL MODULO DI AUDIT PROGETTO",
+      "securityNotice": "Tutte le richieste sono protette da accordo NDA bilaterale.",
+      "locationNotice": "Padova, IT HQ"
     }
   },
   "de": {
@@ -445,7 +541,22 @@
       "description": "pyBIM unterstützt AEC-Teams bei BIM-Modellierung, Modellkoordination, Qualitätssicherung und strukturierter digitaler Projektabwicklung. Unsere flexiblen Spezialisten verbinden bewährte BIM-Praxis mit interner Revit-Automatisierung und gezielten KI-gestützten Workflows.",
       "cta_primary": "BIM-Projekt besprechen",
       "cta_secondary": "BIM-Services entdecken",
-      "capability_line": "BIM-Modellierung · Koordination · Modell-QA · Digitale Abwicklung"
+      "capability_line": "BIM-Modellierung · Koordination · Modell-QA · Digitale Abwicklung",
+      "schematic": {
+        "badge": "BIM-Lieferpipeline",
+        "tag": "pyBIM // ARCHITEKTUR",
+        "node1_title": "BIM-Modellierung & Modellentwicklung",
+        "node1_badge": "LOD 300–400",
+        "node1_desc": "Multidisziplinäre architektonische und TGA-Modellerstellung mit strukturierten Parameterschemata.",
+        "node2_title": "Koordination & Kollisionsprüfung",
+        "node2_badge": "ISO 19650",
+        "node2_desc": "Automatisierte Konfliktlösungsmatrizen über Fachdisziplinen hinweg in gemeinsamen CDE-Umgebungen.",
+        "node3_title": "Modell-QA & Digitale Übergabe",
+        "node3_badge": "VERIFIZIERT",
+        "node3_desc": "Automatisierte Modellprüfung, Parameter-Vollständigkeitsprüfungen und IFC-Konformitätsvalidierung.",
+        "footer_label": "Lieferstandard",
+        "footer_val": "OpenBIM · IFC4 · Revit API"
+      }
     },
     "paradigmShift": {
       "badge": "BIM-ENGINEERING-SERVICES",
@@ -622,17 +733,34 @@
           "note_id": "#442B",
           "quote": "\"Vollständiger Schutz vor Datenlecks ist kein optionales Feature, sondern unser betriebliches Fundament. Durch die Containerisierung unserer Algorithmen hinter Ihrer Firewall eliminieren wir IP-Risiken vollständig und garantieren ISO 19650-5-Cybersicherheits-Konformität.\""
         }
-      ]
+      ],
+      "operational_note_label": "OPERATIVER HINWEIS"
     },
     "strategicEcosystem": {
       "title_part1": "Fundiert durch akademische Exzellenz.",
       "title_part2": "Bewährt bei führenden Tier-1-Unternehmen.",
       "description": "Entwickelt in den computativen und strukturellen Forschungszentren von Padua und Turin. Wir implementieren mathematisch geprüfte algorithmische Infrastruktur in den komplexesten AEC-Projekten im Vereinigten Königreich, in Europa und in Italien.",
       "partners": [
-        { "id": "unipd", "name": "UNIPD (Padua)", "subtitle": "Informations- & Algorithmen-Engineering" },
-        { "id": "polito", "name": "POLITO (Turin)", "subtitle": "Fortgeschrittenes Bau- & Struktur-Engineering" },
-        { "id": "tier1", "name": "TIER-1 AEC", "subtitle": "Enterprise-Infrastruktur-Bereitstellung" },
-        { "id": "iso", "name": "ISO 19650 VERIFIZIERT", "subtitle": "Teil 2 & Teil 5 Datenkonformität" }
+        {
+          "id": "unipd",
+          "name": "UNIPD (Padua)",
+          "subtitle": "Informations- & Algorithmen-Engineering"
+        },
+        {
+          "id": "polito",
+          "name": "POLITO (Turin)",
+          "subtitle": "Fortgeschrittenes Bau- & Struktur-Engineering"
+        },
+        {
+          "id": "tier1",
+          "name": "TIER-1 AEC",
+          "subtitle": "Enterprise-Infrastruktur-Bereitstellung"
+        },
+        {
+          "id": "iso",
+          "name": "ISO 19650 VERIFIZIERT",
+          "subtitle": "Teil 2 & Teil 5 Datenkonformität"
+        }
       ]
     },
     "validationProtocol": {
@@ -654,7 +782,22 @@
       ],
       "cta": "POC-AUDIT ANFORDERN",
       "microcopy": "(100 % kostenlose & sichere Datenverarbeitung. Testen Sie Ihre komplexesten Revit-Modelle über unsere lokalen Pipelines. Nur geschäftliche E-Mail-Domains. Keine Kreditkarte erforderlich.)"
+    },
+    "finalProjectCta": {
+      "badge": "MANAGED BIM OUTSOURCING & EXECUTION",
+      "headline": "Bereit für Ihr nächstes kollisionsfreies BIM-Projekt?",
+      "desc": "Lagern Sie multidisziplinäre BIM-Modellierung, Werkplanung und Kollisionsprüfung mit algorithmischer Präzision an uns aus. Wir binden uns direkt in Ihre CDE ein – mit Termingarantie und vollständiger ISO 19650-Konformität.",
+      "commitments": [
+        "Garantierte kollisionsfreie Übergabematrix (Zero-Clash)",
+        "Direkte CDE-Integration (Autodesk Construction Cloud / BIM 360 / Trimble)",
+        "Strenge bilaterale Geheimhaltungsvereinbarung (NDA) & Datensouveränität"
+      ],
+      "cardBadge": "PROJEKTERFASSUNG // 48-STUNDEN-ANTWORT",
+      "cardTitle": "Technisches Projekt-Audit & Scoping anfordern",
+      "cardDesc": "Übermitteln Sie Ihre Projektanforderungen oder Modellvolumina über unser primäres Audit-Formular, um innerhalb von 24–48 Stunden eine detaillierte Machbarkeitsanalyse und Terminplanung zu erhalten.",
+      "cta": "PROJEKT-AUDIT-FORMULAR ÖFFNEN",
+      "securityNotice": "Alle Projekteingaben sind durch bilaterale NDA geschützt.",
+      "locationNotice": "Padua, IT HQ"
     }
   }
 }
-
