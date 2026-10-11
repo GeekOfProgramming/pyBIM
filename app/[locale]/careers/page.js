@@ -1,12 +1,10 @@
 import CareersPageLayout from "@/components/pages/careers-page-layout";
 import { db } from "@/lib/db";
+import { routeMetadata } from "@/lib/site-copy";
+
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const titles = {
-    en: "Careers",
-    it: "Lavora con noi",
-    de: "Karriere"
-  };
+  const titles = routeMetadata.careers.titles;
   
   return {
     title: titles[locale] || titles.en

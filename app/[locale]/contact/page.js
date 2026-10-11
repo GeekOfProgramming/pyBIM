@@ -1,12 +1,9 @@
 import ContactPageLayout from "@/components/pages/contact-page-layout";
+import { routeMetadata } from "@/lib/site-copy";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const titles = {
-    en: "Contact Us",
-    it: "Contatti",
-    de: "Kontakt"
-  };
+  const titles = routeMetadata.contact.titles;
   
   return {
     title: titles[locale] || titles.en

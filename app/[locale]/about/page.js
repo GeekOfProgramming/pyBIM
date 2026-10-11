@@ -1,14 +1,11 @@
 import AboutPageLayout from "@/components/pages/about-page-layout";
 import teamData from "@/lib/data/team-data.json";
 import { db } from "@/lib/db";
+import { routeMetadata } from "@/lib/site-copy";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const titles = {
-    en: "About Us",
-    it: "Chi siamo",
-    de: "Über uns"
-  };
+  const titles = routeMetadata.about.titles;
   
   return {
     title: titles[locale] || titles.en

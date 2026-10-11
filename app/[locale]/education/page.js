@@ -1,18 +1,9 @@
 import EducationPageLayout from "@/components/pages/education-page-layout";
+import { routeMetadata } from "@/lib/site-copy";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const titles = {
-    en: "Education & Training — Coming Soon",
-    it: "Formazione e Risorse BIM — Prossimamente",
-    de: "BIM-Wissen und Weiterbildung — Demnächst verfügbar"
-  };
-
-  const descriptions = {
-    en: "We're preparing practical BIM learning resources, engineering insights, and workflow guides. Coming soon.",
-    it: "Stiamo preparando risorse formative BIM, approfondimenti tecnici e guide pratiche ai workflow. Prossimamente.",
-    de: "Wir bereiten praxisnahe BIM-Lernressourcen, technische Einblicke und Workflow-Leitfäden vor. Demnächst verfügbar."
-  };
+  const { titles, descriptions } = routeMetadata.education;
 
   const siteUrl = "https://www.pybim.com";
   const currentUrl = `${siteUrl}/${locale}/education`;
