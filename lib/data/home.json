@@ -277,25 +277,40 @@
       "blueprint_aria_label": "Project Delivery Blueprint: Four-stage engagement process from project brief to BIM delivery."
     },
     "coreArchitects": {
-      "section_title": "Core Engineering Unit",
-      "section_subtitle": "Operating from the academic and technological hub of Padua, Italy, our R&D unit translates complex AEC bottlenecks into executable C# and Python infrastructure.",
-      "architects": [
-        {
-          "id": "lead_sys_eng",
-          "role": "Lead Algorithmic Engineer",
-          "department": "BIM Automation & Revit API",
-          "note_id": "#890A",
-          "quote": "\"Scaling facility engineering is no longer a human resource problem. It is purely a computational challenge. We replace margins of error and manual drafting hours with mathematically verified lines of code.\""
+      "eyebrow": "BEYOND TODAY'S BIM WORKFLOWS",
+      "heading": "The Next Layer of BIM Is Taking Shape.",
+      "description": "Alongside our engineering services, we're developing proprietary BIM automation technology and exploring future private AI workflows. Each initiative follows its own development and evaluation process.",
+      "phase2": {
+        "label": "PHASE II",
+        "status": "CONTROLLED PRIVATE TESTING",
+        "title": "pyBIM Cloud Connect",
+        "positioning": "Connected automation for BIM teams.",
+        "description": "We're developing a Revit-connected automation environment designed to make selected engineering workflows and reusable tools more accessible to BIM teams. Development and evaluation continue in controlled private settings.",
+        "metadata": [
+          {
+            "label": "CURRENT STAGE",
+            "value": "Private evaluation"
+          },
+          {
+            "label": "INDICATIVE RELEASE WINDOW",
+            "value": "Q2–Q4 2027"
+          }
+        ],
+        "timing_note": "Target timing is indicative and subject to development, integration testing, reliability and security review.",
+        "cta": {
+          "label": "Apply for Private Access",
+          "href": "/contact#priority-queue"
         },
-        {
-          "id": "head_ai_infra",
-          "role": "Head of Sovereign AI",
-          "department": "Local LLMs & OpenBIM",
-          "note_id": "#442B",
-          "quote": "\"Zero data leakage isn't an optional feature; it's our operational foundation. By containerizing algorithms directly behind your corporate firewall, we eliminate IP risks entirely while guaranteeing full ISO 19650-5 cybersecurity compliance.\""
-        }
-      ],
-      "operational_note_label": "OPERATIONAL NOTE"
+        "qualification": "Applications are reviewed individually. Submission does not guarantee access or acceptance."
+      },
+      "phase3": {
+        "eyebrow": "RESEARCH HORIZON",
+        "label": "PHASE III",
+        "status": "ACTIVE R&D",
+        "title": "Private AI Infrastructure",
+        "description": "Exploratory work into private AI environments and human-supervised engineering workflows, with deployment approaches and potential applications subject to ongoing research and technical validation.",
+        "availability_note": "Research-stage initiative. No public release date announced."
+      }
     },
     "strategicEcosystem": {
       "title_part1": "Backed by Academic Rigor.",
@@ -639,25 +654,40 @@
       "blueprint_aria_label": "Project Delivery Blueprint: Processo di collaborazione in quattro fasi, dal brief di progetto alla consegna BIM."
     },
     "coreArchitects": {
-      "section_title": "Unità Ingegneristica Principale",
-      "section_subtitle": "Operando dal polo accademico e tecnologico di Padova, la nostra unità di R&S traduce i colli di bottiglia complessi dell'AEC in infrastrutture eseguibili in C# e Python.",
-      "architects": [
-        {
-          "id": "lead_sys_eng",
-          "role": "Lead Algorithmic Engineer",
-          "department": "Automazione BIM & Revit API",
-          "note_id": "#890A",
-          "quote": "\"Scalare l'ingegneria delle infrastrutture e degli edifici non è più una questione di risorse umane. È una sfida puramente computazionale. Sostituiamo i margini di errore e le ore di disegno manuale con righe di codice matematicamente verificate.\""
+      "eyebrow": "OLTRE I WORKFLOW BIM ATTUALI",
+      "heading": "Il Prossimo Livello del BIM Sta Prendendo Forma.",
+      "description": "Accanto ai nostri servizi di ingegneria, stiamo sviluppando tecnologia proprietaria di automazione BIM ed esplorando futuri workflow di intelligenza artificiale privata. Ciascuna iniziativa segue il proprio percorso di sviluppo e valutazione.",
+      "phase2": {
+        "label": "FASE II",
+        "status": "TESTING PRIVATO CONTROLLATO",
+        "title": "pyBIM Cloud Connect",
+        "positioning": "Automazione connessa per i team BIM.",
+        "description": "Stiamo sviluppando un ambiente di automazione connesso a Revit progettato per rendere flussi di lavoro ingegneristici selezionati e strumenti riutilizzabili più accessibili ai team BIM. Lo sviluppo e la valutazione proseguono in contesti privati controllati.",
+        "metadata": [
+          {
+            "label": "FASE ATTUALE",
+            "value": "Valutazione privata"
+          },
+          {
+            "label": "FINESTRA DI RILASCIO INDICATIVA",
+            "value": "Q2–Q4 2027"
+          }
+        ],
+        "timing_note": "Le tempistiche target sono indicative e soggette a sviluppo, test di integrazione, revisione di affidabilità e sicurezza.",
+        "cta": {
+          "label": "Richiedi Accesso Privato",
+          "href": "/contact#priority-queue"
         },
-        {
-          "id": "head_ai_infra",
-          "role": "Head of Sovereign AI",
-          "department": "LLM Locali & OpenBIM",
-          "note_id": "#442B",
-          "quote": "\"La totale assenza di perdite di dati non è una funzionalità accessoria; è il fondamento operativo. Containerizzando gli algoritmi direttamente dietro il vostro firewall aziendale, eliminiamo del tutto i rischi per la proprietà intellettuale garantendo la piena conformità di sicurezza ISO 19650-5.\""
-        }
-      ],
-      "operational_note_label": "NOTA OPERATIVA"
+        "qualification": "Le richieste vengono esaminate individualmente. L'invio non garantisce l'accesso o l'accettazione."
+      },
+      "phase3": {
+        "eyebrow": "ORIZZONTE DI RICERCA",
+        "label": "FASE III",
+        "status": "R&S ATTIVA",
+        "title": "Infrastruttura AI Privata",
+        "description": "Attività esplorativa su ambienti di intelligenza artificiale privata e flussi di lavoro ingegneristici supervisionati dall'uomo, con modelli di implementazione e potenziali applicazioni soggetti a continua ricerca e convalida tecnica.",
+        "availability_note": "Iniziativa in fase di ricerca. Nessuna data di rilascio pubblico annunciata."
+      }
     },
     "strategicEcosystem": {
       "title_part1": "Supportato dal Rigore Accademico.",
@@ -1001,25 +1031,40 @@
       "blueprint_aria_label": "Project Delivery Blueprint: Vierstufiger Projektablauf vom Briefing bis zur BIM-Übergabe."
     },
     "coreArchitects": {
-      "section_title": "Kern-Engineering-Einheit",
-      "section_subtitle": "Ausgehend vom akademischen und technologischen Zentrum Padua (Italien) übersetzt unsere F&E-Einheit komplexe AEC-Engpässe in ausführbare C#- und Python-Infrastrukturen.",
-      "architects": [
-        {
-          "id": "lead_sys_eng",
-          "role": "Leitender Algorithmen-Ingenieur",
-          "department": "BIM-Automatisierung & Revit-API",
-          "note_id": "#890A",
-          "quote": "\"Die Skalierung des Bauingenieurwesens ist kein Personalproblem mehr. Es ist eine rein rechnerische Herausforderung. Wir ersetzen Fehleranfälligkeit und manuelle Konstruktionsstunden durch mathematisch verifizierte Codezeilen.\""
+      "eyebrow": "ÜBER HEUTIGE BIM-WORKFLOWS HINAUS",
+      "heading": "Die nächste Ebene des BIM nimmt Gestalt an.",
+      "description": "Parallel zu unseren Ingenieurdienstleistungen entwickeln wir eigene BIM-Automatisierungstechnologie und erforschen künftige private KI-Workflows. Jede Initiative folgt ihrem eigenen Entwicklungs- und Evaluierungsprozess.",
+      "phase2": {
+        "label": "PHASE II",
+        "status": "KONTROLLIERTER PRIVATER TESTBETRIEB",
+        "title": "pyBIM Cloud Connect",
+        "positioning": "Vernetzte Automatisierung für BIM-Teams.",
+        "description": "Wir entwickeln eine Revit-integrierte Automatisierungsumgebung, die ausgewählte Engineering-Workflows und wiederverwendbare Tools für BIM-Teams zugänglicher macht. Entwicklung und Evaluierung werden in kontrollierten privaten Umgebungen fortgeführt.",
+        "metadata": [
+          {
+            "label": "AKTUELLE PHASE",
+            "value": "Private Evaluierung"
+          },
+          {
+            "label": "INDIKATIVES RELEASE-FENSTER",
+            "value": "Q2–Q4 2027"
+          }
+        ],
+        "timing_note": "Der Zielzeitraum ist indikativ und unterliegt Entwicklung, Integrationstests, Zuverlässigkeits- und Sicherheitsprüfungen.",
+        "cta": {
+          "label": "Privaten Zugang anfragen",
+          "href": "/contact#priority-queue"
         },
-        {
-          "id": "head_ai_infra",
-          "role": "Leiter Souveräne KI",
-          "department": "Lokale LLMs & OpenBIM",
-          "note_id": "#442B",
-          "quote": "\"Vollständiger Schutz vor Datenlecks ist kein optionales Feature, sondern unser betriebliches Fundament. Durch die Containerisierung unserer Algorithmen hinter Ihrer Firewall eliminieren wir IP-Risiken vollständig und garantieren ISO 19650-5-Cybersicherheits-Konformität.\""
-        }
-      ],
-      "operational_note_label": "OPERATIVER HINWEIS"
+        "qualification": "Bewerbungen werden individuell geprüft. Die Einreichung garantiert keinen Zugang oder Annahme."
+      },
+      "phase3": {
+        "eyebrow": "FORSCHUNGSHORIZONT",
+        "label": "PHASE III",
+        "status": "AKTIVE F&E",
+        "title": "Private KI-Infrastruktur",
+        "description": "Explorative Arbeiten zu privaten KI-Umgebungen und menschlich beaufsichtigten Engineering-Workflows, wobei Bereitstellungsansätze und potenzielle Anwendungen fortlaufender Forschung und technischer Validierung unterliegen.",
+        "availability_note": "Initiative im Forschungsstadium. Kein öffentliches Veröffentlichungsdatum angekündigt."
+      }
     },
     "strategicEcosystem": {
       "title_part1": "Fundiert durch akademische Exzellenz.",
