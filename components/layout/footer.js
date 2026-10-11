@@ -152,7 +152,7 @@ export default function Footer() {
                   <span className="inline-flex items-center gap-1 text-[11px] font-mono text-[#DCE9FF]">
                     <MapPin className="w-3 h-3 text-cyan-400 shrink-0" />
                     <span>{t("footer.legal.location")}</span>
-                  </div>
+                  </span>
                 </div>
 
                 <ul className="space-y-1.5 text-xs text-[#E2E8F0] font-mono pt-2 border-t border-[#4E70A2]/50">
