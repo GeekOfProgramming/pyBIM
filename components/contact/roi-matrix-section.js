@@ -43,11 +43,11 @@ export default function RoiMatrixSection() {
   const { t } = useLanguage();
   const headingId = useId();
 
-  // Group 01: Four operational inputs (workbook defaults)
-  const [modelerCount, setModelerCount] = useState("1");
-  const [hourlyRate, setHourlyRate] = useState("85");
-  const [hoursWasted, setHoursWasted] = useState("12");
-  const [workingWeeks, setWorkingWeeks] = useState("48");
+  // Group 01: Four operational inputs (empty initial values, explicit user input required)
+  const [modelerCount, setModelerCount] = useState("");
+  const [hourlyRate, setHourlyRate] = useState("");
+  const [hoursWasted, setHoursWasted] = useState("");
+  const [workingWeeks, setWorkingWeeks] = useState("");
 
   // Group 03: Three mandatory business identity fields
   const [businessIdentity, setBusinessIdentity] = useState({
@@ -68,7 +68,80 @@ export default function RoiMatrixSection() {
   const handleRequestAccess = (e) => {
     e.preventDefault();
 
-    // Frontend validation
+    // 1. Validate Group 01: All four operational inputs are mandatory
+    if (
+      !modelerCount.trim() ||
+      !hourlyRate.trim() ||
+      !hoursWasted.trim() ||
+      !workingWeeks.trim()
+    ) {
+      setAccessNotice({
+        type: "error",
+        message:
+          t("roi.validation.required_fields") ||
+          "Please complete all seven required fields before submitting.",
+      });
+      return;
+    }
+
+    // Number of BIM Modelers: integer, minimum 1
+    const modelersNum = Number(modelerCount.trim());
+    if (
+      !Number.isInteger(modelersNum) ||
+      modelersNum < 1 ||
+      !Number.isFinite(modelersNum)
+    ) {
+      setAccessNotice({
+        type: "error",
+        message:
+          t("roi.validation.invalid_modelers") ||
+          "Number of BIM modelers must be an integer of at least 1.",
+      });
+      return;
+    }
+
+    // Hourly Labor Cost (€): positive finite number
+    const rateNum = Number(hourlyRate.trim());
+    if (isNaN(rateNum) || rateNum <= 0 || !Number.isFinite(rateNum)) {
+      setAccessNotice({
+        type: "error",
+        message:
+          t("roi.validation.invalid_rate") ||
+          "Hourly labor cost must be a positive number.",
+      });
+      return;
+    }
+
+    // Manual Hours / Week: positive finite number
+    const hoursNum = Number(hoursWasted.trim());
+    if (isNaN(hoursNum) || hoursNum <= 0 || !Number.isFinite(hoursNum)) {
+      setAccessNotice({
+        type: "error",
+        message:
+          t("roi.validation.invalid_hours") ||
+          "Manual hours per week must be a positive number.",
+      });
+      return;
+    }
+
+    // Working Weeks / Year: integer between 1 and 52
+    const weeksNum = Number(workingWeeks.trim());
+    if (
+      !Number.isInteger(weeksNum) ||
+      weeksNum < 1 ||
+      weeksNum > 52 ||
+      !Number.isFinite(weeksNum)
+    ) {
+      setAccessNotice({
+        type: "error",
+        message:
+          t("roi.validation.invalid_weeks") ||
+          "Working weeks per year must be an integer between 1 and 52.",
+      });
+      return;
+    }
+
+    // 2. Validate Group 03: Business identity fields
     if (
       !businessIdentity.name.trim() ||
       !businessIdentity.companyName.trim() ||
@@ -78,7 +151,7 @@ export default function RoiMatrixSection() {
         type: "error",
         message:
           t("roi.validation.required_fields") ||
-          "Please fill in all required business identity fields.",
+          "Please complete all seven required fields before submitting.",
       });
       return;
     }
@@ -94,15 +167,19 @@ export default function RoiMatrixSection() {
       return;
     }
 
+    // 3. Mandatory legal acknowledgment
     if (!businessIdentity.privacyAccepted) {
       setAccessNotice({
         type: "error",
         message:
           t("roi.validation.privacy_required") ||
-          "Please accept the privacy policy to proceed.",
+          "Please accept the Privacy Policy and Terms & Conditions to proceed.",
       });
       return;
     }
+
+    // Clear previous error notices
+    setAccessNotice(null);
 
     // Honest handling: Controlled backend delivery is being prepared (CONTACT-03B).
     // No fake confirmation or simulated success is rendered.
@@ -113,7 +190,7 @@ export default function RoiMatrixSection() {
         type: "pending",
         message:
           t("roi.access.controlled_notice") ||
-          "The corporate distribution system is currently being prepared. Automated downloads remain restricted until security validation is active.",
+          "Corporate delivery and verified enterprise distribution are currently being prepared. Automated public downloads remain restricted.",
       });
     }, 400);
   };
@@ -262,7 +339,7 @@ export default function RoiMatrixSection() {
                 <div>
                   <div className="flex items-center justify-between pb-3 mb-4 border-b border-brand-border/70">
                     <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
-                      {t("roi.inputs.group_title") || "01 · ROI Calculation Inputs"}
+                      {t("roi.inputs.group_title") || "ROI Calculation Inputs"}
                     </h3>
                     <span className="text-caption font-mono text-brand-textSecondary hidden sm:inline">
                       {t("roi.inputs.group_note") || "Baseline Parameters"}
@@ -276,16 +353,18 @@ export default function RoiMatrixSection() {
                         htmlFor="roi-modeler-count"
                         className="text-body-sm font-medium font-sans text-brand-textPrimary"
                       >
-                        {t("roi.inputs.modeler_count") || "Number of BIM Modelers"}
+                        {t("roi.inputs.modeler_count") || "Number of BIM Modelers"}{" "}
+                        <span className="text-brand-primary">*</span>
                       </label>
                       <input
                         id="roi-modeler-count"
                         type="number"
+                        required
                         min="1"
                         step="1"
                         value={modelerCount}
                         onChange={(e) => setModelerCount(e.target.value)}
-                        placeholder="1"
+                        placeholder="e.g. 1"
                         className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
                     </div>
@@ -296,16 +375,18 @@ export default function RoiMatrixSection() {
                         htmlFor="roi-hourly-rate"
                         className="text-body-sm font-medium font-sans text-brand-textPrimary"
                       >
-                        {t("roi.inputs.hourly_rate") || "Hourly Labor Cost (€)"}
+                        {t("roi.inputs.hourly_rate") || "Hourly Labor Cost (€)"}{" "}
+                        <span className="text-brand-primary">*</span>
                       </label>
                       <input
                         id="roi-hourly-rate"
                         type="number"
+                        required
                         min="1"
                         step="any"
                         value={hourlyRate}
                         onChange={(e) => setHourlyRate(e.target.value)}
-                        placeholder="85"
+                        placeholder="e.g. 85"
                         className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
                     </div>
@@ -316,16 +397,18 @@ export default function RoiMatrixSection() {
                         htmlFor="roi-hours-wasted"
                         className="text-body-sm font-medium font-sans text-brand-textPrimary"
                       >
-                        {t("roi.inputs.hours_wasted") || "Manual Hours / Week (per modeler)"}
+                        {t("roi.inputs.hours_wasted") || "Manual Hours / Week (per modeler)"}{" "}
+                        <span className="text-brand-primary">*</span>
                       </label>
                       <input
                         id="roi-hours-wasted"
                         type="number"
-                        min="0"
+                        required
+                        min="0.5"
                         step="0.5"
                         value={hoursWasted}
                         onChange={(e) => setHoursWasted(e.target.value)}
-                        placeholder="12"
+                        placeholder="e.g. 12"
                         className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
                     </div>
@@ -336,17 +419,19 @@ export default function RoiMatrixSection() {
                         htmlFor="roi-working-weeks"
                         className="text-body-sm font-medium font-sans text-brand-textPrimary"
                       >
-                        {t("roi.inputs.working_weeks") || "Working Weeks / Year"}
+                        {t("roi.inputs.working_weeks") || "Working Weeks / Year"}{" "}
+                        <span className="text-brand-primary">*</span>
                       </label>
                       <input
                         id="roi-working-weeks"
                         type="number"
+                        required
                         min="1"
                         max="52"
                         step="1"
                         value={workingWeeks}
                         onChange={(e) => setWorkingWeeks(e.target.value)}
-                        placeholder="48"
+                        placeholder="e.g. 48"
                         className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
                     </div>
@@ -359,7 +444,7 @@ export default function RoiMatrixSection() {
                 <div className="rounded-2xl bg-brand-surface/70 border border-brand-border/80 p-4 sm:p-5 space-y-3">
                   <div className="flex items-center justify-between gap-2">
                     <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
-                      {t("roi.results.group_title") || "02 · Estimated Results"}
+                      {t("roi.results.group_title") || "Estimated Results"}
                     </h3>
                     <span className="text-caption font-mono text-brand-textSecondary">
                       {t("roi.results.status_note") || "Detailed estimates available after validation"}
@@ -408,7 +493,7 @@ export default function RoiMatrixSection() {
                 <div>
                   <div className="pb-3 mb-4 border-b border-brand-border/70">
                     <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
-                      {t("roi.access.group_title") || "03 · Request Full ROI Matrix"}
+                      {t("roi.access.group_title") || "Request Full ROI Matrix"}
                     </h3>
                   </div>
 
