@@ -242,7 +242,7 @@ export default function ExpertiseAreasSection() {
                     role="tab"
                     id={`tab-${tab.id}`}
                     aria-selected={isSelected}
-                    aria-controls={`panel-${tab.id}`}
+                    aria-controls="expertise-tabpanel"
                     tabIndex={isSelected ? 0 : -1}
                     onClick={() => setActiveId(tab.id)}
                     onKeyDown={(e) => handleKeyDown(e, idx)}
@@ -301,7 +301,7 @@ export default function ExpertiseAreasSection() {
           <div className="lg:col-span-7 w-full">
             <div
               role="tabpanel"
-              id={`panel-${activeItem.id}`}
+              id="expertise-tabpanel"
               aria-labelledby={`tab-${activeItem.id}`}
               tabIndex={0}
               className="relative rounded-3xl border border-brand-border/80 bg-brand-cardElevated p-7 sm:p-9 lg:p-10 shadow-xl shadow-brand-base/5 dark:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary flex flex-col justify-between min-h-[520px]"
@@ -321,7 +321,7 @@ export default function ExpertiseAreasSection() {
                       <div className="flex items-center gap-2">
                         <span className={`w-2 h-2 rounded-full ${activeItem.dotClass}`} aria-hidden="true" />
                         <span className="font-mono text-caption font-bold tracking-widest text-brand-primary uppercase">
-                          // DISCIPLINE {activeItem.num}
+                          // {t("careers.expertise.discipline_label") || "DISCIPLINE"} {activeItem.num}
                         </span>
                       </div>
                       <span className="font-mono text-caption font-bold tracking-wider px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-textSecondary">
@@ -337,7 +337,7 @@ export default function ExpertiseAreasSection() {
                       {activeItem.summary}
                     </p>
 
-                    {/* BIM Modeler: Four Explicit Modeling Disciplines */}
+                    {/* BIM Modeler: Four Explicit Modeling Disciplines in 2x2 grid */}
                     {activeItem.id === "bim-modeler" && activeItem.specializations && (
                       <div className="mb-8 p-5 rounded-2xl bg-brand-surface/70 border border-brand-border/80">
                         <div className="flex items-center justify-between gap-2 mb-3">
@@ -348,10 +348,10 @@ export default function ExpertiseAreasSection() {
                             </span>
                           </div>
                           <span className="text-technical font-mono text-brand-textSecondary">
-                            // 4 Specialized Disciplines
+                            {t("careers.expertise.specializations_subtitle") || "// 4 Specialized Disciplines"}
                           </span>
                         </div>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                        <div className="grid grid-cols-2 gap-3">
                           {activeItem.specializations.map((spec, i) => (
                             <div
                               key={i}
