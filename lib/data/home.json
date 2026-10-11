@@ -104,7 +104,7 @@
       "eyebrow": "HOW pyBIM DELIVERS",
       "heading": "The Right Expertise. Assembled Around Your Project.",
       "description": "We organize BIM specialists around each project's technical requirements, support suitable tasks with in-house automation, and keep technical oversight and quality review in the hands of our engineering team.",
-      "diagram_aria_label": "Engineering Delivery Process: Three-block workflow showing Project Requirements feeding into pyBIM Coordinated Delivery to produce Reviewed BIM Deliverables.",
+      "diagram_aria_label": "pyBIM Engineering Delivery Network: Connected diagram showing Project Requirements feeding into pyBIM Coordinated Delivery supported by Flexible Engineering, In-House Automation, and Human Quality Review to produce Reviewed BIM Deliverables.",
       "input": {
         "label": "PROJECT INPUT",
         "title": "Your Project Requirements",
@@ -119,18 +119,21 @@
         "capabilities": [
           {
             "id": "flexible_engineering",
+            "tag": "LIQUID TEAM APPROACH",
             "title": "Flexible Engineering Capacity",
-            "description": "Specialists matched to project requirements."
+            "description": "A project-fit mix of BIM specialists and technical disciplines, organized around the agreed scope."
           },
           {
             "id": "automation",
+            "tag": "IN-HOUSE TOOLING",
             "title": "Purpose-Built Automation",
-            "description": "Targeted Revit and data workflows."
+            "description": "Revit API, Python and C# tools support suitable repetitive and data-intensive tasks where appropriate."
           },
           {
             "id": "quality_review",
+            "tag": "HUMAN OVERSIGHT",
             "title": "Human-Led Quality Review",
-            "description": "Technical oversight by engineering professionals."
+            "description": "Technical checks, model coordination and deliverable review remain under engineering responsibility."
           }
         ]
       },
@@ -474,7 +477,7 @@
       "eyebrow": "COME LAVORA pyBIM",
       "heading": "Le Competenze Giuste. Organizzate Attorno al Tuo Progetto.",
       "description": "Organizziamo specialisti BIM attorno ai requisiti tecnici di ciascun progetto, supportiamo i task idonei con automazioni interne e manteniamo la supervisione tecnica e il controllo qualità nelle mani del nostro team di ingegneria.",
-      "diagram_aria_label": "Processo di Erogazione Ingegneristica: Flusso a tre blocchi che mostra i Requisiti di Progetto convogliati nell'Erogazione Coordinata pyBIM per produrre Deliverable BIM Revisionati.",
+      "diagram_aria_label": "Rete di Erogazione Ingegneristica pyBIM: Diagramma connesso che mostra i Requisiti di Progetto convogliati nell'Erogazione Coordinata pyBIM, supportata da Capacità Flessibile, Automazione Interna e Revisione Umana della Qualità per produrre Deliverable BIM Revisionati.",
       "input": {
         "label": "INPUT DI PROGETTO",
         "title": "I Requisiti del Tuo Progetto",
@@ -489,18 +492,21 @@
         "capabilities": [
           {
             "id": "flexible_engineering",
+            "tag": "APPROCCIO LIQUID TEAM",
             "title": "Capacità Ingegneristica Flessibile",
-            "description": "Specialisti allineati ai requisiti di progetto."
+            "description": "Un mix su misura di specialisti BIM e discipline tecniche, organizzato attorno all'ambito concordato."
           },
           {
             "id": "automation",
+            "tag": "TOOLING INTERNO",
             "title": "Automazione Mirata",
-            "description": "Workflow specifici per Revit e gestione dati."
+            "description": "Strumenti Revit API, Python e C# supportano task ripetitivi e ad alta intensità di dati dove opportuno."
           },
           {
             "id": "quality_review",
+            "tag": "SUPERVISIONE UMANA",
             "title": "Revisione della Qualità Guidata dall'Uomo",
-            "description": "Supervisione tecnica affidata a professionisti dell'ingegneria."
+            "description": "Controlli tecnici, coordinamento dei modelli e revisione degli elaborati rimangono sotto responsabilità ingegneristica."
           }
         ]
       },
@@ -844,7 +850,7 @@
       "eyebrow": "WIE pyBIM LIEFERT",
       "heading": "Die richtige Expertise. Um Ihr Projekt herum organisiert.",
       "description": "Wir organisieren BIM-Spezialisten passgenau nach den technischen Anforderungen jedes Projekts, unterstützen geeignete Aufgaben durch interne Automatisierung und belassen die technische Aufsicht und Qualitätsprüfung in den Händen unseres Engineering-Teams.",
-      "diagram_aria_label": "Engineering-Bereitstellungsprozess: Dreiteiliger Ablauf, der Projektanforderungen über die koordinierte pyBIM-Lieferung zu geprüften BIM-Deliverables führt.",
+      "diagram_aria_label": "pyBIM Engineering-Liefernetzwerk: Verbundenes Diagramm, das Projektanforderungen über die koordinierte pyBIM-Lieferung, gestützt durch flexible Kapazität, interne Werkzeuge und ingenieurgeführte Qualitätsprüfung, zu geprüften BIM-Deliverables führt.",
       "input": {
         "label": "PROJEKT-INPUT",
         "title": "Ihre Projektanforderungen",
@@ -853,24 +859,27 @@
       },
       "center": {
         "label": "pyBIM ENGINEERING",
-        "title": "Koordinierte pyBIM-Bereitstellung",
+        "title": "Koordinierte pyBIM-Lieferung",
         "supporting": "Ingenieurgeführte Projektabwicklung",
         "description": "Wir stellen die passende BIM-Expertise zusammen, koordinieren die vereinbarten Leistungen und setzen interne Automatisierungen gezielt dort ein, wo sie praktischen Mehrwert bieten.",
         "capabilities": [
           {
             "id": "flexible_engineering",
+            "tag": "LIQUID-TEAM-ANSATZ",
             "title": "Flexible Engineering-Kapazität",
-            "description": "Spezialisten abgestimmt auf Projektanforderungen."
+            "description": "Ein projektspezifischer Mix aus BIM-Spezialisten und Fachdisziplinen, abgestimmt auf den vereinbarten Leistungsumfang."
           },
           {
             "id": "automation",
+            "tag": "INTERNE WERKZEUGE",
             "title": "Zweckgerichtete Automatisierung",
-            "description": "Gezielte Workflows für Revit und Datenmanagement."
+            "description": "Revit-API-, Python- und C#-Werkzeuge unterstützen geeignete repetitive und datenintensive Aufgaben, wo zweckmäßig."
           },
           {
             "id": "quality_review",
+            "tag": "MENSCHLICHE AUFSICHT",
             "title": "Ingenieurgeführte Qualitätsprüfung",
-            "description": "Technische Aufsicht durch erfahrene Fachingenieure."
+            "description": "Technische Prüfungen, Modellkoordination und Überprüfung der Lieferergebnisse verbleiben in ingenieurmäßiger Verantwortung."
           }
         ]
       },
@@ -880,7 +889,7 @@
         "supporting": "Modelle · Dokumentation · Koordinationsergebnisse",
         "description": "Modelldateien und begleitende Projektdokumentationen werden geprüft und exakt nach vereinbartem Leistungsumfang aufbereitet."
       },
-      "supporting_statement": "Flexibel im Design. Verbindlich in der Lieferung."
+      "supporting_statement": "Flexibel im Aufbau. Verbindlich in der Lieferung."
     },
     "executionPipeline": {
       "eyebrow": "ENGINEERING-LIEFERERGEBNISSE",
