@@ -64,6 +64,15 @@ export async function POST(req) {
     const randomTicketNum = Math.floor(1000 + Math.random() * 9000);
     const queueReference = `PYBIM-WAITLIST-${randomTicketNum}`;
 
+    // Check SMTP configuration (fail-closed if unconfigured)
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.CONTACT_TO) {
+      console.warn("[STAGING NOTICE] Outbound email service is not configured on staging.");
+      return Response.json(
+        { ok: false, error: "Early access queue service is not configured on this environment." },
+        { status: 503 }
+      );
+    }
+
     // Configure Mail Transporter
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -78,7 +87,7 @@ export async function POST(req) {
     // 1. Send Internal Notification Email to pyBIM Engineering / Admin
     try {
       await transporter.sendMail({
-        from: `pyBIM Priority Queue <${process.env.SMTP_FROM}>`,
+        from: `pyBIM Priority Queue <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
         to: process.env.CONTACT_TO,
         subject: `[Early Access Application] ${companyName} (${queueReference})`,
         replyTo: email,
@@ -110,6 +119,10 @@ export async function POST(req) {
       });
     } catch (adminMailErr) {
       console.error("Failed to dispatch internal notification:", adminMailErr);
+      return Response.json(
+        { ok: false, error: "Failed to dispatch application. Please try again later." },
+        { status: 502 }
+      );
     }
 
     // 2. Send Auto-Responder Email directly to Applicant (The Prestige Strategy)

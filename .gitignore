@@ -39,3 +39,7 @@ yarn-error.log*
 GitHub Files/
 *.zip
 .claude/
+
+# cloudflare & opennext build artifacts
+.open-next/
+.wrangler/

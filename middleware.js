@@ -1,31 +1,27 @@
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose/jwt/verify";
 
-const JWT_SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET || 'pybim_enterprise_sovereign_secret_key_2026'
-);
-
 const locales = ['en', 'it', 'de'];
 const defaultLocale = 'en';
 
 export async function middleware(req) {
   const { pathname } = req.nextUrl;
 
-  // Protect Portal Routes
+  // Protect Portal Routes (Fail-closed: requires valid token and configured secret)
   if (pathname.includes('/portal')) {
     const token = req.cookies.get('auth_token')?.value;
-    
-    // Determine the current locale for redirect, defaulting to English
     const currentLocale = locales.find(locale => pathname.startsWith(`/${locale}/`)) || defaultLocale;
 
-    if (!token) {
+    const secretKey = process.env.JWT_SECRET ? new TextEncoder().encode(process.env.JWT_SECRET) : null;
+
+    if (!token || !secretKey) {
       const url = req.nextUrl.clone();
       url.pathname = `/${currentLocale}/login`;
       return NextResponse.redirect(url);
     }
     
     try {
-      await jwtVerify(token, JWT_SECRET);
+      await jwtVerify(token, secretKey);
     } catch (err) {
       const url = req.nextUrl.clone();
       url.pathname = `/${currentLocale}/login`;

@@ -34,6 +34,13 @@ export async function POST(request) {
       return NextResponse.json({ success: true, message: 'Authentication completed.' }, { status: 200 });
     }
 
+    if (!process.env.JWT_SECRET) {
+      return NextResponse.json(
+        { error: 'Portal authentication service is not configured on this staging environment.' },
+        { status: 503 }
+      );
+    }
+
     if (!email || !password) {
       return NextResponse.json({ error: 'Email and password are required' }, { status: 400 });
     }
