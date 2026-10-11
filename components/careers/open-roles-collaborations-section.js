@@ -5,7 +5,6 @@ import Link from "@/components/layout/LocalizedLink";
 import { useLanguage } from "@/lib/LanguageContext";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 import OpportunityDetailModal from "@/components/careers/opportunity-detail-modal";
-import ApplicationProtocol from "@/components/careers/application-protocol";
 import {
   Building2,
   Sliders,
@@ -30,11 +29,10 @@ import {
  * - Detail Modals: Full role briefs, responsibilities, skills, evidence & context
  * - Application Protocol: Structured intake syntax and honest submission guidelines
  */
-export default function OpenRolesCollaborationsSection({ jobs = [] }) {
+export default function OpenRolesCollaborationsSection({ jobs = [], onApplyRole }) {
   const { language, t } = useLanguage();
   const titleId = useId();
   const [selectedRole, setSelectedRole] = useState(null);
-  const [preselectedCode, setPreselectedCode] = useState("BIM-MOD");
 
   const roles = [
     {
@@ -208,12 +206,15 @@ export default function OpenRolesCollaborationsSection({ jobs = [] }) {
   const ongoingGroupRoles = roles.filter((r) => r.group === "ongoing");
 
   const handleApplyRole = (roleCode) => {
-    setPreselectedCode(roleCode);
-    const protocolEl = document.getElementById("protocol");
-    if (protocolEl) {
-      setTimeout(() => {
-        protocolEl.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 100);
+    if (onApplyRole) {
+      onApplyRole(roleCode);
+    } else {
+      const protocolEl = document.getElementById("protocol") || document.getElementById("apply");
+      if (protocolEl) {
+        setTimeout(() => {
+          protocolEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
     }
   };
 
@@ -385,11 +386,6 @@ export default function OpenRolesCollaborationsSection({ jobs = [] }) {
             })}
           </div>
         </div>
-
-        {/* ========================================================= */}
-        {/* COMPONENT: Application Protocol                           */}
-        {/* ========================================================= */}
-        <ApplicationProtocol preselectedRoleCode={preselectedCode} />
 
         {/* ========================================================= */}
         {/* DYNAMIC JOBS LISTING (Preserves compatibility if any)     */}
