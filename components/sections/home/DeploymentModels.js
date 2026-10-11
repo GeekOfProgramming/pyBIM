@@ -267,7 +267,8 @@ export default function DeploymentModels() {
                         }}
                       />
                     )}
-                  </div>
+                  </svg>
+                </div>
 
                 <motion.article
                   initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.98 }}
