@@ -1,57 +1,140 @@
 "use client";
 
-import { GraduationCap, Building, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { useId } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
 import homeData from "@/lib/data/home.json";
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function StrategicEcosystem() {
   const { language } = useLanguage();
   const data = (homeData[language] || homeData.en).strategicEcosystem;
-
-  const getIcon = (id) => {
-    switch (id) {
-      case "unipd":
-        return <GraduationCap className="w-8 h-8 text-brand-primary mb-4 group-hover:scale-110 transition-transform" />;
-      case "polito":
-        return <Building className="w-8 h-8 text-brand-primary mb-4 group-hover:scale-110 transition-transform" />;
-      case "tier1":
-        return <CheckCircle2 className="w-8 h-8 text-brand-primary mb-4 group-hover:scale-110 transition-transform" />;
-      case "iso":
-        return <ShieldCheck className="w-8 h-8 text-emerald-500 dark:text-emerald-400 mb-4 group-hover:scale-110 transition-transform" />;
-      default:
-        return <Building className="w-8 h-8 text-brand-primary mb-4 group-hover:scale-110 transition-transform" />;
-    }
-  };
+  const shouldReduceMotion = useReducedMotion();
+  const sectionId = useId();
 
   return (
-    <section className="py-24 md:py-32 px-6 lg:px-8 bg-white dark:bg-brand-base text-gray-900 dark:text-white border-b border-gray-200 dark:border-slate-800 relative transition-colors">
-      <div className="max-w-7xl mx-auto text-center relative z-10">
-        <h2 className="text-2xl md:text-4xl font-extrabold text-gray-500 dark:text-slate-400 tracking-tight mb-4">
-          {data.title_part1} <span className="text-gray-900 dark:text-white">{data.title_part2}</span>
-        </h2>
-        <p className="text-gray-600 dark:text-slate-400 font-mono text-xs md:text-sm mb-16 max-w-2xl mx-auto uppercase tracking-wider leading-relaxed">
-          {data.description}
-        </p>
+    <section
+      id="strategic-ecosystem"
+      className="relative py-20 md:py-28 lg:py-32 px-6 lg:px-8 w-full bg-brand-base text-brand-textPrimary border-b border-brand-border overflow-hidden transition-colors"
+      aria-labelledby={`${sectionId}-heading`}
+    >
+      {/* Family A — Base Architectural Background */}
+      <EngineeringBackdrop variant="base" />
 
-        {/* 4 Credential Badges Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-          {data.partners.map((partner) => (
-            <div
-              key={partner.id}
-              className="rounded-2xl bg-gray-50 dark:bg-slate-900/70 border border-gray-200 dark:border-slate-800 p-6 md:p-8 flex flex-col items-center justify-between text-center hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300 shadow-sm group backdrop-blur-sm"
-            >
-              {getIcon(partner.id)}
-              <div className="font-mono text-xs md:text-sm font-bold tracking-widest text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 uppercase">
-                {partner.name}
-              </div>
-              {partner.subtitle && (
-                <div className="text-[11px] font-mono text-gray-500 dark:text-slate-400 leading-relaxed">
-                  {partner.subtitle}
-                </div>
-              )}
-            </div>
-          ))}
+      <div className="max-w-7xl mx-auto relative z-10">
+
+        {/* =========================================================================
+            SECTION HEADER: Left-Aligned Editorial Architecture
+            ========================================================================= */}
+        <div className="max-w-3xl mb-16 md:mb-24 lg:mb-28">
+          {/* Eyebrow Pill */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-caption font-bold tracking-widest uppercase mb-5 select-none shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" aria-hidden="true" />
+            <span>{data.eyebrow}</span>
+          </div>
+
+          {/* Semantic Single H2 Heading */}
+          <h2
+            id={`${sectionId}-heading`}
+            className="text-section font-extrabold text-brand-textPrimary tracking-tight mb-5"
+          >
+            {data.heading}
+          </h2>
+
+          {/* Editorial Introduction */}
+          <p className="text-lead text-brand-textSecondary font-normal leading-relaxed">
+            {data.description}
+          </p>
         </div>
+
+        {/* =========================================================================
+            MAIN CANVAS: AEC Editorial Typography Installation
+            Oversized Asymmetric Compositions (Architecture · Engineering · Construction)
+            Sitting on open architectural canvas with ZERO cards, ZERO borders, ZERO grids
+            ========================================================================= */}
+        <div className="space-y-20 md:space-y-28 lg:space-y-36">
+
+          {data.audiences.map((audience, index) => {
+            const isHighlight = audience.id === "engineering";
+            const isShifted = index === 1;
+
+            return (
+              <motion.article
+                key={audience.id}
+                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.45, delay: index * 0.12 }}
+                className={`w-full flex flex-col ${
+                  isShifted ? "lg:items-end lg:text-right" : "lg:items-start lg:text-left"
+                }`}
+                aria-labelledby={`${sectionId}-${audience.id}-title`}
+              >
+                <div className={`w-full max-w-4xl ${isShifted ? "lg:mr-0 lg:ml-auto" : "lg:ml-0 lg:mr-auto"}`}>
+
+                  {/* Oversized Expressive Typographic Word */}
+                  <div
+                    className={`font-sans font-black tracking-tighter select-none leading-[0.92] mb-5 lg:mb-7 transition-colors ${
+                      isHighlight
+                        ? "text-brand-primary"
+                        : "text-brand-textPrimary"
+                    } text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl`}
+                    aria-hidden="true"
+                  >
+                    {audience.display}
+                  </div>
+
+                  {/* Subordinate Audience Heading, Capability Line & Description */}
+                  <div
+                    className={`flex flex-col space-y-3.5 ${
+                      isShifted ? "lg:items-end" : "lg:items-start"
+                    }`}
+                  >
+                    {/* Audience Subtitle & Capability Rail */}
+                    <div
+                      className={`flex flex-wrap items-center gap-3 ${
+                        isShifted ? "lg:justify-end" : "lg:justify-start"
+                      }`}
+                    >
+                      <h3
+                        id={`${sectionId}-${audience.id}-title`}
+                        className="text-card-title sm:text-xl font-bold text-brand-textPrimary tracking-tight"
+                      >
+                        {audience.name}
+                      </h3>
+
+                      <span
+                        className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-brand-border"
+                        aria-hidden="true"
+                      />
+
+                      <span className="font-mono text-caption font-semibold text-brand-primary tracking-wide">
+                        {audience.capability_line}
+                      </span>
+                    </div>
+
+                    {/* Explanatory Narrative Description */}
+                    <p className="max-w-2xl text-body sm:text-lead text-brand-textSecondary font-normal leading-relaxed">
+                      {audience.description}
+                    </p>
+                  </div>
+
+                </div>
+              </motion.article>
+            );
+          })}
+
+        </div>
+
+        {/* =========================================================================
+            CLOSING STATEMENT: Quiet Editorial Closing Line (Zero CTA Buttons)
+            ========================================================================= */}
+        <div className="mt-20 md:mt-28 lg:mt-32 pt-8 border-t border-brand-border/70 text-center">
+          <p className="font-mono text-caption text-brand-textSecondary tracking-wide max-w-2xl mx-auto">
+            {data.closing_statement}
+          </p>
+        </div>
+
       </div>
     </section>
   );

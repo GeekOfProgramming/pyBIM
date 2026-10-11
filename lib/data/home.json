@@ -313,31 +313,33 @@
       }
     },
     "strategicEcosystem": {
-      "title_part1": "Backed by Academic Rigor.",
-      "title_part2": "Trusted by Tier-1 Enterprise.",
-      "description": "Engineered from the computational and structural research cores of Padua and Torino. We deploy mathematically verified algorithmic infrastructure across the most complex AEC projects in the UK, Europe, and Italy.",
-      "partners": [
+      "eyebrow": "WHO WE SUPPORT",
+      "heading": "For the Teams That Make Projects Happen.",
+      "description": "pyBIM provides BIM engineering support adapted to the working needs of architecture practices, engineering consultancies, and construction delivery teams.",
+      "audiences": [
         {
-          "id": "unipd",
-          "name": "UNIPD (Padua)",
-          "subtitle": "Information & Algorithmic Engineering"
+          "id": "architecture",
+          "display": "Architecture.",
+          "name": "Architecture Studios",
+          "description": "BIM model development, model updates, and documentation aligned with design information and agreed project requirements.",
+          "capability_line": "Model Development · BIM Documentation"
         },
         {
-          "id": "polito",
-          "name": "POLITO (Torino)",
-          "subtitle": "Advanced Civil & Structural Engineering"
+          "id": "engineering",
+          "display": "Engineering.",
+          "name": "Engineering Consultancies",
+          "description": "Discipline-specific model support, multidisciplinary coordination, and structured model information review.",
+          "capability_line": "Coordination · Model QA · Technical Information"
         },
         {
-          "id": "tier1",
-          "name": "TIER-1 AEC",
-          "subtitle": "Enterprise Infrastructure Deployment"
-        },
-        {
-          "id": "iso",
-          "name": "ISO 19650 VERIFIED",
-          "subtitle": "Part 2 & Part 5 Data Compliance"
+          "id": "construction",
+          "display": "Construction.",
+          "name": "Contractors & Delivery Teams",
+          "description": "Coordination reviews, model-based documentation, and structured BIM deliverables aligned with the agreed project scope.",
+          "capability_line": "Coordination Reviews · Digital Deliverables"
         }
-      ]
+      ],
+      "closing_statement": "Different project requirements. A collaboration model adapted to your scope."
     },
     "validationProtocol": {
       "section_title": "The pyBIM Proof of Concept (PoC) Simulation",
@@ -690,31 +692,33 @@
       }
     },
     "strategicEcosystem": {
-      "title_part1": "Supportato dal Rigore Accademico.",
-      "title_part2": "Scelto da Grandi Imprese Tier-1.",
-      "description": "Sviluppato dai centri di ricerca computazionale e strutturale di Padova e Torino. Implementiamo infrastrutture algoritmiche matematicamente verificate nei progetti AEC più complessi nel Regno Unito, in Europa e in Italia.",
-      "partners": [
+      "eyebrow": "CHI SUPPORTIAMO",
+      "heading": "Per i Team Che Danno Vita ai Progetti.",
+      "description": "pyBIM fornisce supporto ingegneristico BIM adattato alle esigenze operative di studi di architettura, società di ingegneria e team di esecuzione cantieri.",
+      "audiences": [
         {
-          "id": "unipd",
-          "name": "UNIPD (Padova)",
-          "subtitle": "Ingegneria dell'Informazione e Algoritmica"
+          "id": "architecture",
+          "display": "Architettura.",
+          "name": "Studi di Architettura",
+          "description": "Sviluppo di modelli BIM, aggiornamenti e documentazione allineati alle informazioni di progetto e ai requisiti concordati.",
+          "capability_line": "Sviluppo Modelli · Documentazione BIM"
         },
         {
-          "id": "polito",
-          "name": "POLITO (Torino)",
-          "subtitle": "Ingegneria Civile e Strutturale Avanzata"
+          "id": "engineering",
+          "display": "Ingegneria.",
+          "name": "Società di Ingegneria",
+          "description": "Supporto modellazione specialistica per disciplina, coordinamento multidisciplinare e revisione strutturata delle informazioni informative.",
+          "capability_line": "Coordinamento · Model QA · Informazioni Tecniche"
         },
         {
-          "id": "tier1",
-          "name": "AEC TIER-1",
-          "subtitle": "Implementazione Infrastrutture Enterprise"
-        },
-        {
-          "id": "iso",
-          "name": "VERIFICATO ISO 19650",
-          "subtitle": "Conformità Dati Parte 2 e Parte 5"
+          "id": "construction",
+          "display": "Costruzioni.",
+          "name": "Imprese & Team di Consegna",
+          "description": "Revisioni di coordinamento, documentazione basata sui modelli ed elaborati BIM strutturati allineati all'ambito contrattuale concordato.",
+          "capability_line": "Revisioni di Coordinamento · Consegne Digitali"
         }
-      ]
+      ],
+      "closing_statement": "Requisiti di progetto differenti. Un modello di collaborazione su misura per il vostro ambito operativo."
     },
     "validationProtocol": {
       "section_title": "La Simulazione Proof of Concept (PoC) di pyBIM",
@@ -1067,31 +1071,33 @@
       }
     },
     "strategicEcosystem": {
-      "title_part1": "Fundiert durch akademische Exzellenz.",
-      "title_part2": "Bewährt bei führenden Tier-1-Unternehmen.",
-      "description": "Entwickelt in den computativen und strukturellen Forschungszentren von Padua und Turin. Wir implementieren mathematisch geprüfte algorithmische Infrastruktur in den komplexesten AEC-Projekten im Vereinigten Königreich, in Europa und in Italien.",
-      "partners": [
+      "eyebrow": "WEN WIR UNTERSTÜTZEN",
+      "heading": "Für die Teams, die Projekte Wirklichkeit werden lassen.",
+      "description": "pyBIM bietet BIM-Engineering-Unterstützung, abgestimmt auf die Arbeitsanforderungen von Architekturbüros, Ingenieurberatungen und Bauausführungsteams.",
+      "audiences": [
         {
-          "id": "unipd",
-          "name": "UNIPD (Padua)",
-          "subtitle": "Informations- & Algorithmen-Engineering"
+          "id": "architecture",
+          "display": "Architektur.",
+          "name": "Architekturbüros",
+          "description": "BIM-Modellerstellung, Modellfortschreibung und Dokumentation, abgestimmt auf Entwurfsinformationen und vereinbarte Projektanforderungen.",
+          "capability_line": "Modellerstellung · BIM-Dokumentation"
         },
         {
-          "id": "polito",
-          "name": "POLITO (Turin)",
-          "subtitle": "Fortgeschrittenes Bau- & Struktur-Engineering"
+          "id": "engineering",
+          "display": "Ingenieurwesen.",
+          "name": "Ingenieurberatungen",
+          "description": "Fachdisziplinäre Modellierungsunterstützung, multidisziplinäre Koordination und strukturierte Prüfung technischer Modellinformationen.",
+          "capability_line": "Koordination · Modell-QS · Technische Informationen"
         },
         {
-          "id": "tier1",
-          "name": "TIER-1 AEC",
-          "subtitle": "Enterprise-Infrastruktur-Bereitstellung"
-        },
-        {
-          "id": "iso",
-          "name": "ISO 19650 VERIFIZIERT",
-          "subtitle": "Teil 2 & Teil 5 Datenkonformität"
+          "id": "construction",
+          "display": "Bauausführung.",
+          "name": "Bauunternehmen & Ausführungsteams",
+          "description": "Koordinationsprüfungen, modellbasierte Dokumentation und strukturierte BIM-Deliverables im Einklang mit dem vereinbarten Projektumfang.",
+          "capability_line": "Koordinationsprüfungen · Digitale Deliverables"
         }
-      ]
+      ],
+      "closing_statement": "Unterschiedliche Projektanforderungen. Ein Kooperationsmodell, abgestimmt auf Ihren Leistungsumfang."
     },
     "validationProtocol": {
       "section_title": "Die pyBIM Proof-of-Concept (PoC) Simulation",
