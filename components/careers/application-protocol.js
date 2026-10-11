@@ -171,7 +171,7 @@ ${getBodyText(code)}`;
         </div>
 
         {/* Action Button & Dispatch Details with CtaLink Primary Geometry */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-8 mb-8 border-b border-brand-border/70">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <a
             href={mailtoUrl}
             className="group inline-flex items-center justify-center gap-2.5 rounded-full min-h-[48px] sm:min-h-[52px] px-7 py-3 sm:py-3.5 bg-brand-actionPrimary hover:bg-brand-actionPrimaryHover text-brand-actionOnPrimary text-body-sm font-semibold tracking-normal shadow-md shadow-brand-actionPrimary/20 hover:shadow-lg hover:shadow-brand-actionPrimary/30 transition-all active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-actionPrimary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-brand-base"
@@ -183,6 +183,19 @@ ${getBodyText(code)}`;
 
           <span className="text-caption font-mono text-brand-textSecondary">
             {t("careers.protocol.sub_note") || "// Designated recipient: careers@pybim.com"}
+          </span>
+        </div>
+
+        {/* Applicant Data Notice */}
+        <div className="mt-6 pt-5 pb-8 mb-8 border-t border-b border-brand-border/70 flex items-start gap-2.5 text-body-sm font-sans text-brand-textSecondary leading-relaxed">
+          <ShieldCheck className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" aria-hidden="true" />
+          <span>
+            {t("careers.protocol.privacy_prefix") ||
+              "By initiating an application email, you voluntarily provide your personal information, CV, and work samples. pyBIM processes these materials solely to evaluate employment or project-based collaboration opportunities and conduct related follow-up communications. Submissions are never used for unrelated marketing. Please include only details relevant to your technical background, and do not disclose sensitive personal data or confidential client material. For more information on how we handle personal data, please review our"}{" "}
+            <Link href="/privacy-policy" className="text-brand-primary hover:underline font-medium">
+              {t("careers.protocol.privacy_link") || "Privacy Policy"}
+            </Link>
+            {t("careers.protocol.privacy_suffix") || "."}
           </span>
         </div>
 
@@ -232,18 +245,6 @@ ${getBodyText(code)}`;
                   "Applications may be considered according to current opportunities and available review capacity. Additional information may be requested when relevant."}
               </p>
             </div>
-          </div>
-
-          {/* Privacy Notice in Inter with LocalizedLink */}
-          <div className="mt-6 pt-4 flex items-start gap-2.5 text-body-sm font-sans text-brand-textSecondary leading-relaxed border-t border-brand-border/60">
-            <ShieldCheck className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" aria-hidden="true" />
-            <span>
-              {t("careers.protocol.privacy_prefix") || "Before sharing your details, please review our"}{" "}
-              <Link href="/privacy-policy" className="text-brand-primary hover:underline font-medium">
-                {t("careers.protocol.privacy_link") || "Privacy Policy"}
-              </Link>
-              {t("careers.protocol.privacy_suffix") || ". Include only information relevant to your application, and do not disclose sensitive personal data or confidential client material."}
-            </span>
           </div>
         </div>
       </div>
