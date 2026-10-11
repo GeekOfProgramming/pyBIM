@@ -9,6 +9,7 @@ import { Layers, ShieldCheck, GitMerge, FileCheck } from "lucide-react";
 export default function HeroSection() {
   const { language } = useLanguage();
   const data = (homeData[language] || homeData.en).hero;
+  const schematic = data.schematic || (homeData.en).hero.schematic;
 
   return (
     <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-40 lg:pb-32 px-6 lg:px-8 w-full bg-brand-base text-brand-textPrimary overflow-hidden border-b border-brand-border">
@@ -69,11 +70,11 @@ export default function HeroSection() {
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true" />
                   <span className="font-mono text-caption font-bold text-brand-textPrimary tracking-wider uppercase">
-                    BIM Delivery Pipeline
+                    {schematic.badge}
                   </span>
                 </div>
                 <span className="font-mono text-[11px] text-brand-textSecondary tracking-widest uppercase">
-                  pyBIM // ARCHITECTURE
+                  {schematic.tag}
                 </span>
               </div>
 
@@ -87,15 +88,15 @@ export default function HeroSection() {
                         <Layers className="w-4 h-4" />
                       </div>
                       <span className="font-sans font-bold text-body-sm text-brand-textPrimary">
-                        BIM Modeling & Development
+                        {schematic.node1_title}
                       </span>
                     </div>
                     <span className="font-mono text-[11px] text-brand-primary font-semibold">
-                      LOD 300–400
+                      {schematic.node1_badge}
                     </span>
                   </div>
                   <p className="text-body-sm text-brand-textSecondary pl-9 text-xs leading-relaxed">
-                    Multidisciplinary architectural and MEP model authoring with structured parameter schemas.
+                    {schematic.node1_desc}
                   </p>
                 </div>
 
@@ -107,15 +108,15 @@ export default function HeroSection() {
                         <GitMerge className="w-4 h-4" />
                       </div>
                       <span className="font-sans font-bold text-body-sm text-brand-textPrimary">
-                        Coordination & Clash Audit
+                        {schematic.node2_title}
                       </span>
                     </div>
                     <span className="font-mono text-[11px] text-cyan-600 dark:text-cyan-400 font-semibold">
-                      ISO 19650
+                      {schematic.node2_badge}
                     </span>
                   </div>
                   <p className="text-body-sm text-brand-textSecondary pl-9 text-xs leading-relaxed">
-                    Automated conflict resolution matrices across design disciplines in shared CDE environments.
+                    {schematic.node2_desc}
                   </p>
                 </div>
 
@@ -127,15 +128,15 @@ export default function HeroSection() {
                         <ShieldCheck className="w-4 h-4" />
                       </div>
                       <span className="font-sans font-bold text-body-sm text-brand-textPrimary">
-                        Model QA & Digital Handover
+                        {schematic.node3_title}
                       </span>
                     </div>
                     <span className="font-mono text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
-                      VERIFIED
+                      {schematic.node3_badge}
                     </span>
                   </div>
                   <p className="text-body-sm text-brand-textSecondary pl-9 text-xs leading-relaxed">
-                    Automated model health auditing, parameter completeness checks, and IFC compliance verification.
+                    {schematic.node3_desc}
                   </p>
                 </div>
               </div>
@@ -144,10 +145,10 @@ export default function HeroSection() {
               <div className="mt-4 pt-3.5 border-t border-brand-border/70 flex items-center justify-between text-[11px] font-mono text-brand-textSecondary">
                 <span className="flex items-center gap-1.5">
                   <FileCheck className="w-3.5 h-3.5 text-brand-primary" />
-                  <span>Delivery Standard</span>
+                  <span>{schematic.footer_label}</span>
                 </span>
                 <span className="text-brand-textPrimary font-semibold">
-                  OpenBIM · IFC4 · Revit API
+                  {schematic.footer_val}
                 </span>
               </div>
 

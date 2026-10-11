@@ -23,7 +23,7 @@ export default function Footer() {
         body: JSON.stringify({ email })
       });
       const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.error || "Failed");
+      if (!res.ok || !data.ok) throw new Error(data.error || t("footer.newsletter.generic_error"));
       setPopup({ type: "success", message: t("footer.newsletter.success_msg") });
       setEmail("");
     } catch (err) {
@@ -182,7 +182,7 @@ export default function Footer() {
                     href="https://github.com/pyBIM-collaboration"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="GitHub"
+                    aria-label={t("footer.social.github_label")}
                     className="flex items-center justify-center w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 hover:border-slate-700 transition"
                   >
                     <Github className="w-4 h-4" />
@@ -330,7 +330,7 @@ export default function Footer() {
                 }}
                 className="hover:text-white transition cursor-pointer text-left bg-transparent border-none p-0 font-mono text-xs text-slate-400 underline-offset-2 hover:underline"
               >
-                {t("cookie.footer.manage_preferences") || "Cookie Preferences"}
+                {t("cookie.footer.manage_preferences")}
               </button>
             </div>
 

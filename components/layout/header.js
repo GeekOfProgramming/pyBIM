@@ -105,11 +105,11 @@ export default function Header() {
   return (
     <header className={`sticky top-0 z-[1000] border-b border-brand-border bg-white/95 dark:bg-brand-base/90 dark:border-white/10 backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-sm" : "py-4"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-300">
-        <Link href={`/${language}`} className="flex items-center gap-4 text-left" aria-label={t("header.brand.aria_label") || "pyBIM home"}>
+        <Link href={`/${language}`} className="flex items-center gap-4 text-left" aria-label={t("header.brand.aria_label")}>
           <div className="flex items-center">
             <Image 
               src={logoSrc} 
-              alt={t("header.brand.logo_alt") || "pyBIM logo"} 
+              alt={t("header.brand.logo_alt")}
               width={180} 
               height={80} 
               className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-10" : "h-14"}`} 
@@ -146,7 +146,7 @@ export default function Header() {
               onClick={() => setMegaMenuOpen(!megaMenuOpen)}
               className={`flex items-center gap-1 transition px-4 py-2 rounded-full font-medium ${megaMenuOpen ? 'text-brand-primary bg-brand-surface' : 'text-brand-textSecondary hover:text-brand-primary hover:bg-brand-surface'}`}
             >
-              {t("header.nav.pybim") || "pyBIM"} <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${megaMenuOpen ? 'rotate-180' : ''}`} />
+              {t("header.nav.pybim")} <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${megaMenuOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {/* Megamenu Dropdown */}
@@ -154,7 +154,7 @@ export default function Header() {
               <div 
                 id="pybim-megamenu-dropdown"
                 role="region"
-                aria-label="pyBIM Menu"
+                aria-label={t("header.mega.aria_label")}
                 className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-[1000] transition-all duration-200 w-[600px]"
               >
                 <div className="bg-white dark:bg-slate-900 border border-brand-border dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex ring-1 ring-black/5 dark:ring-white/5">
@@ -248,7 +248,7 @@ export default function Header() {
 
           <Link href={`/${language}/portal/dashboard`} className="hidden rounded-full bg-brand-accentAction px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-brand-accentOnAction shadow-md transition hover:bg-brand-accentHover hover:-translate-y-0.5 md:flex items-center gap-2 font-mono">
             <Shield className="w-3.5 h-3.5 text-brand-accentOnAction" />
-            {t("header.portal_btn") || "Client Portal"}
+            {t("header.portal_btn")}
           </Link>
         </div>
       </div>

@@ -26,19 +26,18 @@ export default function FAQSection() {
       {/* Left Column: Heading, Eyebrow, Supporting Description & Contact Prompt */}
       <div className="lg:col-span-5 flex flex-col items-start text-left">
         <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-xs font-mono font-semibold text-brand-primary mb-6 shadow-xs">
-          {t("faq.badge") || "FREQUENTLY ASKED QUESTIONS"}
+          {t("faq.badge")}
         </div>
 
         <h2
           id={headingId}
           className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-5"
         >
-          {t("faq.title") || "Questions Before Getting Started?"}
+          {t("faq.title")}
         </h2>
 
         <p className="text-body sm:text-lead font-sans text-brand-textSecondary font-medium leading-relaxed mb-8">
-          {t("faq.desc") ||
-            "Find answers about our engineering services, project enquiries, BIM automation, confidentiality and private-access opportunities."}
+          {t("faq.desc")}
         </p>
 
         {/* Optional Final Contact Prompt */}
@@ -47,7 +46,7 @@ export default function FAQSection() {
             href="#project-enquiry"
             className="group inline-flex items-center gap-2 text-body-sm font-semibold text-brand-primary hover:text-brand-primaryHover transition-colors"
           >
-            <span>{t("faq.contact_prompt") || "Still have a question? Contact our team."}</span>
+            <span>{t("faq.contact_prompt")}</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
         </div>

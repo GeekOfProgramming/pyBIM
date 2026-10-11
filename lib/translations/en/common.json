@@ -33,5 +33,10 @@
   "theme.switch_light": "Switch to Light Mode",
   "theme.switch_dark": "Switch to Dark Mode",
   "common.coming_soon": "Coming Soon",
-  "common.date_unavailable": "Date unavailable"
+  "common.date_unavailable": "Date unavailable",
+  "nav.more": "More",
+  "common.go_to_top": "Go to top",
+  "common.previous": "Previous",
+  "common.next": "Next",
+  "common.close_modal": "Close modal"
 }

@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function GoToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -33,7 +35,7 @@ export default function GoToTop() {
     <button
       onClick={scrollToTop}
       className="fixed bottom-20 lg:bottom-5 right-5 z-40 inline-flex items-center justify-center rounded-full bg-brand-accent p-3 text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] transition hover:bg-brand-accent hover:translate-y-[-2px]"
-      aria-label="Go to top"
+      aria-label={t("common.go_to_top")}
     >
       <ArrowUp className="h-6 w-6" />
     </button>

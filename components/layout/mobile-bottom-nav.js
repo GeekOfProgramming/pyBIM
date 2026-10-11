@@ -46,7 +46,7 @@ export default function MobileBottomNav() {
   };
 
   const isMoreActive = isOpen || moreNavItems.some((item) => isItemActive(item.href));
-  const moreButtonText = language === "it" ? "Altro" : language === "de" ? "Mehr" : "More";
+  const moreButtonText = t("nav.more");
 
   return (
     <>

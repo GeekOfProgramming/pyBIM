@@ -57,7 +57,7 @@ export default function CoreArchitects() {
                 {/* Operational Note Dossier Box - Perfect Height & Symmetry */}
                 <div className="bg-gray-50 dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700/80 rounded-2xl p-6 flex-1 flex flex-col justify-between min-h-[200px]">
                   <div className="text-[11px] font-mono font-bold uppercase tracking-wider mb-3 flex items-center justify-between pb-2.5 border-b border-gray-200 dark:border-slate-700/60 flex-shrink-0">
-                    <span className="text-gray-500 dark:text-slate-400">OPERATIONAL NOTE</span>
+                    <span className="text-gray-500 dark:text-slate-400">{data.operational_note_label || "OPERATIONAL NOTE"}</span>
                     <span className="text-blue-600 dark:text-blue-400 px-2.5 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900/50 font-bold">
                       {architect.note_id}
                     </span>

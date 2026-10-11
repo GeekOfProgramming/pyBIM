@@ -34,13 +34,11 @@ export default function DirectChannelsSection() {
       icon: Mail,
       iconWrapClass:
         "bg-brand-primary/10 text-brand-primary border-brand-primary/25",
-      title: t("contact.channels.email.title") || "Business Email",
+      title: t("contact.channels.email.title"),
       destinationDisplay: "info@pybim.com",
       destinationHref: "mailto:info@pybim.com",
-      description:
-        t("contact.channels.email.desc") ||
-        "Project enquiries and business communication.",
-      ctaLabel: t("contact.channels.email.cta") || "Send Email",
+      description: t("contact.channels.email.desc"),
+      ctaLabel: t("contact.channels.email.cta"),
       isExternal: false,
       isPrimary: true,
     },
@@ -49,13 +47,11 @@ export default function DirectChannelsSection() {
       icon: Linkedin,
       iconWrapClass:
         "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/25",
-      title: t("contact.channels.linkedin.title") || "LinkedIn",
+      title: t("contact.channels.linkedin.title"),
       destinationDisplay: null,
       destinationHref: "https://www.linkedin.com/company/pybim",
-      description:
-        t("contact.channels.linkedin.desc") ||
-        "Company updates and professional connections.",
-      ctaLabel: t("contact.channels.linkedin.cta") || "View Profile",
+      description: t("contact.channels.linkedin.desc"),
+      ctaLabel: t("contact.channels.linkedin.cta"),
       isExternal: true,
       isPrimary: false,
     },
@@ -64,13 +60,11 @@ export default function DirectChannelsSection() {
       icon: Github,
       iconWrapClass:
         "bg-slate-500/10 text-slate-800 dark:text-slate-200 border-slate-500/25",
-      title: t("contact.channels.github.title") || "GitHub",
+      title: t("contact.channels.github.title"),
       destinationDisplay: null,
       destinationHref: "https://github.com/pyBIM-collaboration",
-      description:
-        t("contact.channels.github.desc") ||
-        "Our development organization and technical work.",
-      ctaLabel: t("contact.channels.github.cta") || "Visit GitHub",
+      description: t("contact.channels.github.desc"),
+      ctaLabel: t("contact.channels.github.cta"),
       isExternal: true,
       isPrimary: false,
     },
@@ -93,7 +87,7 @@ export default function DirectChannelsSection() {
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px bg-brand-primary w-8 sm:w-12" aria-hidden="true" />
             <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
-              {t("contact.channels.eyebrow") || "CONNECT & EXPLORE"}
+              {t("contact.channels.eyebrow")}
             </span>
           </div>
 
@@ -101,12 +95,11 @@ export default function DirectChannelsSection() {
             id={headingId}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-section-sm xl:text-section font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-4"
           >
-            {t("contact.channels.title") || "Connect with pyBIM."}
+            {t("contact.channels.title")}
           </h2>
 
           <p className="text-body sm:text-lead font-sans text-brand-textSecondary font-medium leading-relaxed">
-            {t("contact.channels.desc") ||
-              "Reach our team for project enquiries, connect with us professionally, or explore our technical presence."}
+            {t("contact.channels.desc")}
           </p>
         </div>
 

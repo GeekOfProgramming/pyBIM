@@ -44,5 +44,7 @@
   "footer.popup.success_title": "Erfolg!",
   "footer.popup.error_title": "Handlung erforderlich",
   "footer.popup.close_btn": "Schließen",
-  "footer.popup.got_it_btn": "Verstanden"
+  "footer.popup.got_it_btn": "Verstanden",
+  "footer.social.github_label": "GitHub",
+  "footer.newsletter.generic_error": "Anfrage fehlgeschlagen. Bitte versuchen Sie es erneut."
 }

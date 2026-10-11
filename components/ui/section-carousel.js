@@ -2,8 +2,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function SectionCarousel({ title, badge, badgeColor = "text-brand-accent", items, renderItem }) {
+  const { t } = useLanguage();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -36,14 +38,14 @@ export default function SectionCarousel({ title, badge, badgeColor = "text-brand
           <button 
             onClick={scrollPrev}
             className="w-12 h-12 rounded-full border border-brand-border dark:border-slate-700 bg-white dark:bg-slate-800 text-brand-textPrimary flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-105 active:scale-95 transition-all shadow-md"
-            aria-label="Previous"
+            aria-label={t("common.previous")}
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button 
             onClick={scrollNext}
             className="w-12 h-12 rounded-full border border-brand-border dark:border-slate-700 bg-white dark:bg-slate-800 text-brand-textPrimary flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-white hover:scale-105 active:scale-95 transition-all shadow-md"
-            aria-label="Next"
+            aria-label={t("common.next")}
           >
             <ChevronRight className="w-6 h-6" />
           </button>
