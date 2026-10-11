@@ -250,7 +250,7 @@ export default function OpenRolesCollaborationsSection({ jobs = [] }) {
               "Explore current and ongoing opportunities across BIM modeling, engineering automation, computational design, software development and AI."}
           </p>
 
-          <p className="text-caption font-mono text-brand-textSecondary/80 leading-relaxed">
+          <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed">
             {t("careers.positions.clarification") ||
               "Recruitment and project-based collaboration may follow different arrangements. Specific responsibilities and terms are discussed during individual review."}
           </p>
@@ -262,12 +262,12 @@ export default function OpenRolesCollaborationsSection({ jobs = [] }) {
         <div className="mb-14">
           <div className="flex items-center justify-between pb-3 mb-6 border-b border-brand-border/70">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" aria-hidden="true" />
               <h3 className="font-mono text-caption font-bold tracking-wider uppercase text-brand-textPrimary">
                 {t("careers.positions.group_active") || "Active Opportunities"}
               </h3>
             </div>
-            <span className="font-mono text-technical text-brand-textSecondary hidden sm:inline">
+            <span className="font-sans text-body-sm text-brand-textSecondary hidden sm:inline">
               {t("careers.positions.group_active_desc") || "Priority project scopes open for immediate engagement"}
             </span>
           </div>
@@ -288,8 +288,8 @@ export default function OpenRolesCollaborationsSection({ jobs = [] }) {
                       <span className="font-mono text-caption font-bold tracking-wider px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-textSecondary">
                         {role.num}
                       </span>
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold tracking-wide uppercase border bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/25">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-caption font-mono font-bold tracking-wider uppercase border bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" aria-hidden="true" />
                         {role.status}
                       </span>
                     </div>
@@ -300,7 +300,7 @@ export default function OpenRolesCollaborationsSection({ jobs = [] }) {
                     </div>
 
                     {/* Title */}
-                    <h4 className="text-xl font-bold font-sans text-brand-textPrimary tracking-tight mb-2 group-hover:text-brand-primary transition-colors">
+                    <h4 className="text-card-title font-bold font-sans text-brand-textPrimary tracking-tight mb-2 group-hover:text-brand-primary transition-colors leading-snug">
                       {role.title}
                     </h4>
 
@@ -311,7 +311,7 @@ export default function OpenRolesCollaborationsSection({ jobs = [] }) {
                   </div>
 
                   {/* Card Bottom: View Details Affordance */}
-                  <div className="pt-4 border-t border-brand-border/70 flex items-center justify-between text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
+                  <div className="pt-4 border-t border-brand-border/70 flex items-center justify-between text-caption font-mono font-bold text-brand-primary tracking-wider uppercase mt-auto">
                     <span>{t("careers.positions.view_details") || "View Details"}</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                   </div>
@@ -327,12 +327,12 @@ export default function OpenRolesCollaborationsSection({ jobs = [] }) {
         <div className="mb-14">
           <div className="flex items-center justify-between pb-3 mb-6 border-b border-brand-border/70">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-blue-500" aria-hidden="true" />
+              <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0" aria-hidden="true" />
               <h3 className="font-mono text-caption font-bold tracking-wider uppercase text-brand-textPrimary">
                 {t("careers.positions.group_ongoing") || "Ongoing Applications"}
               </h3>
             </div>
-            <span className="font-mono text-technical text-brand-textSecondary hidden sm:inline">
+            <span className="font-sans text-body-sm text-brand-textSecondary hidden sm:inline">
               {t("careers.positions.group_ongoing_desc") || "Continuous evaluation for specialized technical workflows"}
             </span>
           </div>
@@ -353,8 +353,8 @@ export default function OpenRolesCollaborationsSection({ jobs = [] }) {
                       <span className="font-mono text-caption font-bold tracking-wider px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-textSecondary">
                         {role.num}
                       </span>
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold tracking-wide uppercase border bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/25">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" aria-hidden="true" />
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-caption font-mono font-bold tracking-wider uppercase border bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/30">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" aria-hidden="true" />
                         {role.status}
                       </span>
                     </div>
@@ -365,7 +365,7 @@ export default function OpenRolesCollaborationsSection({ jobs = [] }) {
                     </div>
 
                     {/* Title */}
-                    <h4 className="text-xl font-bold font-sans text-brand-textPrimary tracking-tight mb-2 group-hover:text-brand-primary transition-colors">
+                    <h4 className="text-card-title font-bold font-sans text-brand-textPrimary tracking-tight mb-2 group-hover:text-brand-primary transition-colors leading-snug">
                       {role.title}
                     </h4>
 
@@ -376,7 +376,7 @@ export default function OpenRolesCollaborationsSection({ jobs = [] }) {
                   </div>
 
                   {/* Card Bottom: View Details Affordance */}
-                  <div className="pt-4 border-t border-brand-border/70 flex items-center justify-between text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
+                  <div className="pt-4 border-t border-brand-border/70 flex items-center justify-between text-caption font-mono font-bold text-brand-primary tracking-wider uppercase mt-auto">
                     <span>{t("careers.positions.view_details") || "View Details"}</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                   </div>

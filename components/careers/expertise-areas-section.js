@@ -213,7 +213,7 @@ export default function ExpertiseAreasSection() {
             {t("careers.expertise.desc")}
           </p>
 
-          <p className="text-caption font-mono text-brand-textSecondary/80 leading-relaxed">
+          <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed">
             {t("careers.expertise.clarification")}
           </p>
         </div>
@@ -266,7 +266,7 @@ export default function ExpertiseAreasSection() {
                       </div>
                       <div>
                         <span
-                          className={`block font-mono text-technical font-bold tracking-wider uppercase mb-0.5 ${
+                          className={`block font-mono text-caption font-bold tracking-wider uppercase mb-0.5 ${
                             isSelected ? "text-brand-primary" : "text-brand-textSecondary/70"
                           }`}
                         >
@@ -347,7 +347,7 @@ export default function ExpertiseAreasSection() {
                               {t("careers.expertise.specializations_title")}
                             </span>
                           </div>
-                          <span className="text-technical font-mono text-brand-textSecondary">
+                          <span className="text-caption font-mono text-brand-textSecondary">
                             {t("careers.expertise.specializations_subtitle") || "// 4 Specialized Disciplines"}
                           </span>
                         </div>
@@ -404,7 +404,7 @@ export default function ExpertiseAreasSection() {
                   </div>
 
                   {/* Factual Disclaimer Footer */}
-                  <div className="mt-8 pt-4 border-t border-brand-border/60 flex items-start gap-2.5 text-caption font-mono text-brand-textSecondary/80">
+                  <div className="mt-8 pt-4 border-t border-brand-border/60 flex items-start gap-2.5 text-body-sm font-sans text-brand-textSecondary">
                     <Info className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" aria-hidden="true" />
                     <span className="leading-relaxed">
                       {t("careers.expertise.disclaimer")}

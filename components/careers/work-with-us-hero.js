@@ -125,9 +125,20 @@ export default function WorkWithUsHero() {
               variants={itemVariants}
               className="flex flex-wrap items-center gap-3 mb-6"
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/25 bg-blue-500/10 px-3.5 py-1.5 text-xs font-mono font-bold tracking-wider text-blue-700 dark:text-blue-300 uppercase">
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/25 bg-blue-500/10 px-3.5 py-1.5 text-caption font-mono font-bold tracking-wider text-blue-700 dark:text-blue-300 uppercase">
                 <Users className="w-3.5 h-3.5" aria-hidden="true" />
-                <span>{t("careers.hero.tag")}</span>
+                <span>
+                  {typeof t("careers.hero.tag") === "string" && t("careers.hero.tag").includes("pyBIM") ? (
+                    t("careers.hero.tag").split("pyBIM").map((part, i, arr) => (
+                      <span key={i}>
+                        {part}
+                        {i < arr.length - 1 && <span className="normal-case">pyBIM</span>}
+                      </span>
+                    ))
+                  ) : (
+                    t("careers.hero.tag")
+                  )}
+                </span>
               </div>
             </motion.div>
 
