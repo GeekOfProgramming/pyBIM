@@ -1,148 +1,339 @@
 {
   "en": {
     "hero": {
-      "badge": "SOVEREIGN AI & BIM AUTOMATION INFRASTRUCTURE",
-      "title_main": "Sovereign AI Infrastructure",
-      "title_highlight": "for BIM Automation.",
-      "description": "We deploy production-level BIM automation and sovereign AI systems for complex global engineering and construction enterprises. Private on-premise inference, zero data leakage, and customized model-to-code pipelines designed for maximum ROI.",
-      "cta_primary": "REQUEST AUDIT",
-      "microcopy_primary": "Zero Data Leakage • Air-Gapped Behind Corporate Firewall",
-      "cta_secondary": "EXPLORE SOLUTIONS",
-      "microcopy_secondary": "Explore Our 3 Core Engineering Vectors"
-    },
-    "paradigmShift": {
-      "section_title": "Scale Through Code, Not Headcount.",
-      "section_subtitle": "Transition your infrastructure from brute-force manual labor to mathematically verified algorithmic execution.",
-      "traditional": {
-        "badge": "THE TRADITIONAL MODELING FARM",
-        "title": "Margin Erosion",
-        "points": [
-          "Scalability is strictly bottlenecked by expensive, continuous hiring cycles.",
-          "Brute-force manual parameter mapping mathematically guarantees fatal human errors.",
-          "Sluggish response times when processing major design alterations or visual clash resolutions."
-        ]
-      },
-      "autonomous": {
-        "badge": "pyBIM AUTONOMOUS EXECUTION",
-        "title": "Algorithmic Scalability",
-        "points": [
-          "Instantaneous execution of hundreds of workflows via custom Python and C# infrastructure.",
-          "100% Quality Assurance relying on binary machine logic, eliminating costly data entry errors.",
-          "Real-time algorithmic flexibility to process massive project alterations in seconds, not days."
-        ]
+      "badge": "BIM ENGINEERING · PROJECT DELIVERY",
+      "title_main": "BIM Engineering That Delivers.",
+      "title_highlight": "Technology That Moves It Forward.",
+      "description": "pyBIM supports AEC teams with BIM modeling, model coordination, quality assurance, and structured digital delivery. Our flexible engineering specialists combine established BIM practices with in-house Revit automation and AI-assisted workflows where appropriate.",
+      "cta_primary": "Discuss Your BIM Project",
+      "cta_secondary": "Explore BIM Services",
+      "capability_line": "BIM Modeling · Coordination · Model QA · Digital Delivery",
+      "schematic": {
+        "badge": "BIM Delivery Pipeline",
+        "tag": "pyBIM // ARCHITECTURE",
+        "node1_title": "BIM Modeling & Development",
+        "node1_badge": "LOD 300–400",
+        "node1_desc": "Multidisciplinary architectural and MEP model authoring with structured parameter schemas.",
+        "node2_title": "Coordination & Clash Audit",
+        "node2_badge": "ISO 19650",
+        "node2_desc": "Automated conflict resolution matrices across design disciplines in shared CDE environments.",
+        "node3_title": "Model QA & Digital Handover",
+        "node3_badge": "VERIFIED",
+        "node3_desc": "Automated model health auditing, parameter completeness checks, and IFC compliance verification.",
+        "footer_label": "Delivery Standard",
+        "footer_val": "OpenBIM · IFC4 · Revit API"
       }
     },
-    "deploymentModels": {
-      "section_title": "Core Deployment Vectors.",
-      "section_subtitle": "How pyBIM integrates with your engineering infrastructure and project workflows.",
-      "models": [
+    "paradigmShift": {
+      "badge": "BIM ENGINEERING SERVICES",
+      "section_title": "BIM Services, Built Around Your Project.",
+      "section_subtitle": "From BIM model development and multidisciplinary coordination to information validation and digital deliverables, pyBIM provides engineering-led services tailored to your project requirements.",
+      "supporting_positioning": "Engineering-led delivery, supported by purpose-built digital workflows.",
+      "scope_heading": "Typical Scope",
+      "deliverables_heading": "Typical Deliverables",
+      "cta_primary": "Discuss Your Project",
+      "cta_secondary": "Explore All BIM Services",
+      "services": [
         {
-          "id": "bim",
-          "vector": "VECTOR 01",
-          "title": "Managed BIM Execution",
-          "description": "Production modeling, clash detection, and ISO 19650 execution managed directly inside your Common Data Environment (CDE) with zero-clash guarantees.",
-          "badge": "MANAGED CDE // ISO 19650",
-          "link": "/services#bim-execution"
+          "id": "modeling_development",
+          "title": "BIM Modeling & Development",
+          "description": "Develop, refine and update BIM models using project documentation, existing model files and agreed information requirements.",
+          "scope": [
+            "BIM model development and updates",
+            "Revit-based modeling workflows",
+            "Discipline-specific and multidisciplinary model support",
+            "Model information organization"
+          ],
+          "deliverables": [
+            "Updated BIM model files",
+            "Structured model information",
+            "Agreed model outputs and documentation"
+          ]
         },
         {
-          "id": "code",
-          "vector": "VECTOR 02",
-          "title": "Custom API & Toolchains",
-          "description": "Tailored Python scripts, PyRevit tools, and C# add-ins built for your engineers to automate repetitive modeling, data mapping, and QA auditing.",
-          "badge": "NATIVE REVIT / .NET",
-          "link": "/services#custom-code"
+          "id": "coordination_clash",
+          "title": "BIM Coordination & Clash Detection",
+          "description": "Support multidisciplinary project teams through federated model review, clash identification, coordination checks and structured issue reporting.",
+          "scope": [
+            "Federated model coordination",
+            "Clash detection and interference review",
+            "Coordination issue identification",
+            "Multidisciplinary review support"
+          ],
+          "deliverables": [
+            "Coordination findings",
+            "Clash or issue reports",
+            "Reviewed models and agreed coordination outputs"
+          ]
         },
         {
-          "id": "ai",
-          "vector": "VECTOR 03",
-          "title": "Sovereign Enterprise Edge AI",
-          "description": "Private, air-gapped LLMs and vector search engines running locally on your LAN. Zero telemetry leakage, 100% data privacy under bilateral NDA.",
-          "badge": "AIR-GAPPED LAN // LOCAL GPU",
-          "link": "/services#sovereign-ai"
+          "id": "model_qa_validation",
+          "title": "BIM Model QA & Information Validation",
+          "description": "Review model structure, parameters, classifications and information consistency against agreed project requirements.",
+          "scope": [
+            "Model QA/QC",
+            "Parameter consistency checks",
+            "Naming and classification review",
+            "Information requirements validation"
+          ],
+          "deliverables": [
+            "Model review findings",
+            "Information validation reports",
+            "Recommended corrections or agreed QA outputs"
+          ]
+        },
+        {
+          "id": "documentation_delivery",
+          "title": "BIM Documentation & Digital Delivery",
+          "description": "Prepare structured model outputs and BIM-related documentation to support coordinated project delivery and handover.",
+          "scope": [
+            "BIM deliverable preparation",
+            "Model-based documentation",
+            "Output organization",
+            "Digital handover coordination"
+          ],
+          "deliverables": [
+            "Agreed model and documentation packages",
+            "Structured information exports",
+            "Project-specific digital handover files"
+          ]
         }
       ]
+    },
+    "deploymentModels": {
+      "eyebrow": "HOW pyBIM DELIVERS",
+      "heading": "The Right Expertise. Assembled Around Your Project.",
+      "description": "We organize BIM specialists around each project's technical requirements, support suitable tasks with in-house automation, and keep technical oversight and quality review in the hands of our engineering team.",
+      "diagram_aria_label": "pyBIM Engineering Delivery Network: Connected diagram showing Project Requirements feeding into pyBIM Coordinated Delivery supported by Flexible Engineering, In-House Automation, and Human Quality Review to produce Reviewed BIM Deliverables.",
+      "input": {
+        "label": "PROJECT INPUT",
+        "title": "Your Project Requirements",
+        "supporting": "Scope · Disciplines · Deliverables",
+        "description": "Project objectives, available documentation, relevant BIM disciplines, and agreed delivery requirements define the starting point."
+      },
+      "center": {
+        "label": "pyBIM ENGINEERING",
+        "title": "pyBIM Coordinated Delivery",
+        "supporting": "Engineering-led project execution",
+        "description": "We assemble suitable BIM expertise, coordinate the agreed work, and use in-house automation where it adds practical value.",
+        "capabilities": [
+          {
+            "id": "flexible_engineering",
+            "tag": "LIQUID TEAM APPROACH",
+            "title": "Flexible Engineering Capacity",
+            "description": "A project-fit mix of BIM specialists and technical disciplines, organized around the agreed scope."
+          },
+          {
+            "id": "automation",
+            "tag": "IN-HOUSE TOOLING",
+            "title": "Purpose-Built Automation",
+            "description": "Revit API, Python and C# tools support suitable repetitive and data-intensive tasks where appropriate."
+          },
+          {
+            "id": "quality_review",
+            "tag": "HUMAN OVERSIGHT",
+            "title": "Human-Led Quality Review",
+            "description": "Technical checks, model coordination and deliverable review remain under engineering responsibility."
+          }
+        ]
+      },
+      "output": {
+        "label": "DELIVERY OUTPUT",
+        "title": "Reviewed BIM Deliverables",
+        "supporting": "Models · Documentation · Coordination Outputs",
+        "description": "Model files and supporting project documentation are reviewed and prepared according to the agreed delivery scope."
+      },
+      "supporting_statement": "Flexible by design. Accountable in delivery."
     },
     "executionPipeline": {
-      "section_title": "Deterministic Algorithmic Pipeline.",
-      "section_subtitle": "How our platform translates complex project specifications and multidisciplinary models into verified code and zero-clash deliverables.",
-      "steps": [
-        {
-          "step": "01",
-          "title": "Multidisciplinary Ingestion",
-          "desc": "Native Revit models, IFC open standards, and client requirements (EIR/BEP) are programmatically ingested and mapped into a secure spatial graph database."
-        },
-        {
-          "step": "02",
-          "title": "Rule Engine & Logic Synthesis",
-          "desc": "Combining deterministic geometric constraints with isolated AI to generate collision arbitration matrices and parametric rules with zero statistical hallucinations."
-        },
-        {
-          "step": "03",
-          "title": "Direct CDE & API Execution",
-          "desc": "Compiled C# add-ins and Python pipelines execute directly inside your Revit model and cloud CDE, performing automated clash isolation and metadata sync in seconds."
-        },
-        {
-          "step": "04",
-          "title": "ISO 19650 Quality Commit",
-          "desc": "Algorithmic validation against ISO 19650-2 and ISO 19650-5 protocols. Models are committed to production only after 100% automated compliance verification."
+      "eyebrow": "ENGINEERING OUTPUTS",
+      "heading": "Inside a BIM Deliverable.",
+      "description": "Explore a conceptual BIM model to see how geometry, coordination review, and structured model information come together during engineering delivery.",
+      "viewer": {
+        "header": "BIM Evidence Studio",
+        "status": "Illustrative Engineering Demonstration",
+        "disclosure": "Conceptual BIM illustration — not a client project or an actual Revit model.",
+        "datums_label": "ISO 19650 ELEVATION DATUMS",
+        "quick_inspect_label": "SELECT INSPECTION FOCUS",
+        "check_prefix": "CHECK",
+        "annotations": {
+          "level_roof": "ROOF LEVEL",
+          "level_mid": "MID LEVEL",
+          "level_base": "BASE LEVEL",
+          "interface_tag": "INTERFACE 01",
+          "clearance_check": "CLEARANCE CHECK",
+          "qa_verified": "QA VERIFIED"
         }
-      ]
-    },
-    "systemBenchmarks": {
-      "section_title": "System Benchmarks",
-      "section_subtitle": "Real-world execution metrics. We measure throughput in milliseconds and precision in zero decimals, not marketing claims.",
-      "terminal_header": "pybim-core-engine v2.4 (x86_64-linux-sovereign)",
-      "command": "pybim-benchmark --target Revit2024 --mode sovereign",
-      "tests": [
+      },
+      "cta": {
+        "label": "Discuss Your BIM Project",
+        "href": "/contact#audit"
+      },
+      "visual": {
+        "mode": "schematic",
+        "image": null,
+        "image_alt": "Conceptual isometric BIM model schematic showing levels, columns, MEP routing, and QA data callouts",
+        "source_note": "pyBIM Conceptual Architecture Engine v1"
+      },
+      "topics": [
         {
-          "name": "[OK] Model Parsing: 1.2GB Multidisciplinary RVT/IFC4",
-          "result": "< 420ms"
+          "id": "geometry",
+          "title": "Model Geometry",
+          "tag": "LEVELS & STRUCTURE",
+          "callout": "Floor Slabs · Structural Grid · Spatial Volumes",
+          "description": "Explore the spatial organization of structural elements, levels, and model geometry in a conceptual BIM representation.",
+          "details": [
+            "Multi-level floor slab plates at defined elevations (L01–L03)",
+            "Extruded structural column grid maintaining load alignment",
+            "Spatial building envelope volume with isometric coordinate fidelity"
+          ],
+          "hotspot": {
+            "x": 33,
+            "y": 58
+          }
         },
         {
-          "name": "[OK] Spatial Clash Matrix: 124,000 Intersections",
-          "result": "1.8s (100% Resolved)"
+          "id": "coordination",
+          "title": "Coordination Review",
+          "tag": "INTERFACE INSPECTION",
+          "callout": "MEP Routing · Multidisciplinary Interface Marker",
+          "description": "Inspect an illustrative interface between building elements and engineering systems, highlighting an example issue for multidisciplinary review.",
+          "details": [
+            "Mechanical conduit routing traversing structural bays",
+            "Illustrative clearance inspection marker at service interface",
+            "Multi-discipline coordination review point for engineering oversight"
+          ],
+          "hotspot": {
+            "x": 48,
+            "y": 46
+          }
         },
         {
-          "name": "[OK] Parameter Injection: 48,000 Element Instances",
-          "result": "640ms"
-        },
-        {
-          "name": "[OK] ISO 19650-5 Air-Gap Security Audit",
-          "result": "PASSED (0 Telemetry Leaks)"
+          "id": "information",
+          "title": "Information QA",
+          "tag": "DATA VERIFICATION",
+          "callout": "Classification Schema · Property Sets · QA Audit",
+          "description": "See how model properties, classifications, and information checks contribute to structured BIM deliverables.",
+          "details": [
+            "Semantic IFC property classification schema (IfcColumn / IfcSlab)",
+            "Structured material specifications and performance parameters",
+            "Engineering deliverable verification prior to release"
+          ],
+          "hotspot": {
+            "x": 67,
+            "y": 28
+          }
         }
       ],
-      "status": "STATUS: ALL SYSTEMS VERIFIED & COMPLIANT // READY FOR DEPLOYMENT"
+      "diagram_aria_label": "Interactive BIM Evidence Studio: Isometric multi-level conceptual building model demonstrating geometry, coordination review, and information QA."
     },
-    "coreArchitects": {
-      "section_title": "Core Engineering Unit",
-      "section_subtitle": "Operating from the academic and technological hub of Padua, Italy, our R&D unit translates complex AEC bottlenecks into executable C# and Python infrastructure.",
-      "architects": [
+    "systemBenchmarks": {
+      "eyebrow": "YOUR PROJECT, OUR PROCESS",
+      "heading": "From Your Brief to BIM Delivery.",
+      "description": "A structured approach to defining your project scope, coordinating engineering work, reviewing outputs, and preparing BIM deliverables around your requirements.",
+      "process_note": "A typical engagement framework — adapted to each project's scope and requirements.",
+      "output_label": "TYPICAL OUTPUT",
+      "stages": [
         {
-          "id": "lead_sys_eng",
-          "role": "Lead Algorithmic Engineer",
-          "department": "BIM Automation & Revit API",
-          "note_id": "#890A",
-          "quote": "\"Scaling facility engineering is no longer a human resource problem. It is purely a computational challenge. We replace margins of error and manual drafting hours with mathematically verified lines of code.\""
+          "id": "discuss",
+          "label": "DISCUSS",
+          "title": "Start with your brief.",
+          "description": "Share your project objectives, available models or drawings, technical requirements, and the type of BIM support you need.",
+          "output": "Project enquiry and initial requirements"
         },
         {
-          "id": "head_ai_infra",
-          "role": "Head of Sovereign AI",
-          "department": "Local LLMs & OpenBIM",
-          "note_id": "#442B",
-          "quote": "\"Zero data leakage isn't an optional feature; it's our operational foundation. By containerizing algorithms directly behind your corporate firewall, we eliminate IP risks entirely while guaranteeing full ISO 19650-5 cybersecurity compliance.\""
+          "id": "define",
+          "label": "DEFINE",
+          "title": "Agree on the scope.",
+          "description": "Clarify the required disciplines, project responsibilities, model expectations, deliverables, and review criteria before execution.",
+          "output": "Defined scope and deliverables"
+        },
+        {
+          "id": "develop",
+          "label": "DEVELOP",
+          "title": "Build and coordinate.",
+          "description": "Our engineering team undertakes the agreed BIM modeling, coordination, and information-management activities, supported by internal tools where appropriate.",
+          "output": "Developed models and coordinated outputs"
+        },
+        {
+          "id": "handover",
+          "label": "HANDOVER",
+          "title": "Review and deliver.",
+          "description": "Review the agreed outputs against project requirements and prepare the model files, supporting documentation, and delivery package.",
+          "output": "Reviewed BIM deliverables"
         }
-      ]
+      ],
+      "closing_statement": "Your requirements define the workflow.",
+      "cta": {
+        "label": "Discuss Your BIM Project",
+        "href": "/contact#audit"
+      },
+      "blueprint_aria_label": "Project Delivery Blueprint: Four-stage engagement process from project brief to BIM delivery."
+    },
+    "coreArchitects": {
+      "eyebrow": "BEYOND TODAY'S BIM WORKFLOWS",
+      "heading": "The Next Layer of BIM Is Taking Shape.",
+      "description": "Alongside our engineering services, we're developing proprietary BIM automation technology and exploring future private AI workflows. Each initiative follows its own development and evaluation process.",
+      "phase2": {
+        "label": "PHASE II",
+        "status": "CONTROLLED PRIVATE TESTING",
+        "title": "pyBIM Cloud Connect",
+        "positioning": "Connected automation for BIM teams.",
+        "description": "We're developing a Revit-connected automation environment designed to make selected engineering workflows and reusable tools more accessible to BIM teams. Development and evaluation continue in controlled private settings.",
+        "metadata": [
+          {
+            "label": "CURRENT STAGE",
+            "value": "Private evaluation"
+          },
+          {
+            "label": "INDICATIVE RELEASE WINDOW",
+            "value": "Q2–Q4 2027"
+          }
+        ],
+        "timing_note": "Target timing is indicative and subject to development, integration testing, reliability and security review.",
+        "cta": {
+          "label": "Apply for Private Access",
+          "href": "/contact#priority-queue"
+        },
+        "qualification": "Applications are reviewed individually. Submission does not guarantee access or acceptance."
+      },
+      "phase3": {
+        "eyebrow": "RESEARCH HORIZON",
+        "label": "PHASE III",
+        "status": "ACTIVE R&D",
+        "title": "Private AI Infrastructure",
+        "description": "Exploratory work into private AI environments and human-supervised engineering workflows, with deployment approaches and potential applications subject to ongoing research and technical validation.",
+        "availability_note": "Research-stage initiative. No public release date announced."
+      }
     },
     "strategicEcosystem": {
-      "title_part1": "Backed by Academic Rigor.",
-      "title_part2": "Trusted by Tier-1 Enterprise.",
-      "description": "Engineered from the computational and structural research cores of Padua and Torino. We deploy mathematically verified algorithmic infrastructure across the most complex AEC projects in the UK, Europe, and Italy.",
-      "partners": [
-        { "id": "unipd", "name": "UNIPD (Padua)", "subtitle": "Information & Algorithmic Engineering" },
-        { "id": "polito", "name": "POLITO (Torino)", "subtitle": "Advanced Civil & Structural Engineering" },
-        { "id": "tier1", "name": "TIER-1 AEC", "subtitle": "Enterprise Infrastructure Deployment" },
-        { "id": "iso", "name": "ISO 19650 VERIFIED", "subtitle": "Part 2 & Part 5 Data Compliance" }
-      ]
+      "eyebrow": "WHO WE SUPPORT",
+      "heading": "For the Teams That Make Projects Happen.",
+      "description": "pyBIM provides BIM engineering support adapted to the working needs of architecture practices, engineering consultancies, and construction delivery teams.",
+      "audiences": [
+        {
+          "id": "architecture",
+          "display": "Architecture.",
+          "name": "Architecture Studios",
+          "description": "BIM model development, model updates, and documentation aligned with design information and agreed project requirements.",
+          "capability_line": "Model Development · BIM Documentation"
+        },
+        {
+          "id": "engineering",
+          "display": "Engineering.",
+          "name": "Engineering Consultancies",
+          "description": "Discipline-specific model support, multidisciplinary coordination, and structured model information review.",
+          "capability_line": "Coordination · Model QA · Technical Information"
+        },
+        {
+          "id": "construction",
+          "display": "Construction.",
+          "name": "Contractors & Delivery Teams",
+          "description": "Coordination reviews, model-based documentation, and structured BIM deliverables aligned with the agreed project scope.",
+          "capability_line": "Coordination Reviews · Digital Deliverables"
+        }
+      ],
+      "closing_statement": "Different project requirements. A collaboration model adapted to your scope."
     },
     "validationProtocol": {
       "section_title": "The pyBIM Proof of Concept (PoC) Simulation",
@@ -163,152 +354,359 @@
       ],
       "cta": "REQUEST POC AUDIT",
       "microcopy": "(100% Free & Secure Data Handling. Validate your heaviest Revit models through our local pipelines. Corporate email domains only. No credit card required.)"
+    },
+    "finalProjectCta": {
+      "badge": "BIM ENGINEERING · PROJECT DELIVERY",
+      "headline": "Ready to Move Your BIM Project Forward?",
+      "desc": "Whether you're developing BIM models, coordinating disciplines, or preparing a digital handover, pyBIM provides focused engineering support tailored to your project's scope. Our specialists combine established BIM practices with in-house automation where it adds value.",
+      "commitments": [
+        "BIM modeling, multidisciplinary coordination, and model QA",
+        "Flexible engineering expertise matched to project requirements",
+        "Structured BIM deliverables with human-led quality review"
+      ],
+      "cardBadge": "PROJECT ENQUIRY · BIM SERVICES",
+      "cardTitle": "Let's Define Your Project Scope.",
+      "cardDesc": "Tell us about your project, the disciplines involved, available drawings or models, and the deliverables you need. We'll review the information and discuss suitable next steps.",
+      "cta": "OPEN PROJECT ENQUIRY FORM",
+      "securityNotice": "Need an NDA? Confidentiality arrangements can be discussed before sharing sensitive project files.",
+      "locationNotice": "Padua, Italy"
     }
   },
   "it": {
     "hero": {
-      "badge": "INFRASTRUTTURA IA SOVRANA & AUTOMAZIONE BIM",
-      "title_main": "Infrastruttura IA Sovrana",
-      "title_highlight": "per l'Automazione BIM.",
-      "description": "Implementiamo automazione BIM di livello produttivo e sistemi IA sovrani per grandi imprese di ingegneria e costruzioni. Inferenza locale privata, zero fuga di dati e pipeline da modello a codice progettate per il massimo ROI.",
-      "cta_primary": "RICHIEDI AUDIT",
-      "microcopy_primary": "Zero Fuga di Dati • Air-Gapped dietro Firewall Aziendale",
-      "cta_secondary": "ESPLORA SOLUZIONI",
-      "microcopy_secondary": "Scopri i Nostri 3 Vettori Ingegneristici"
-    },
-    "paradigmShift": {
-      "section_title": "Scala Tramite il Codice, Non con il Personale.",
-      "section_subtitle": "Fai evolvere la tua infrastruttura dal lavoro manuale forzato a un'esecuzione algoritmica matematicamente verificata.",
-      "traditional": {
-        "badge": "IL MODELLISMO TRADIZIONALE A FORZA BRUTA",
-        "title": "Erosione dei Margini",
-        "points": [
-          "La scalabilità è rigidamente limitata da costosi e continui cicli di assunzione.",
-          "La mappatura manuale forzata dei parametri garantisce matematicamente errori umani fatali.",
-          "Tempi di risposta lenti nell'elaborazione di modifiche progettuali rilevanti o risoluzione delle interferenze visive."
-        ]
-      },
-      "autonomous": {
-        "badge": "ESECUZIONE AUTONOMA pyBIM",
-        "title": "Scalabilità Algoritmica",
-        "points": [
-          "Esecuzione istantanea di centinaia di flussi di lavoro tramite infrastruttura personalizzata in Python e C#.",
-          "Assicurazione Qualità al 100% basata su logica binaria automatizzata, eliminando costosi errori di immissione dati.",
-          "Flessibilità algoritmica in tempo reale per elaborare massicce modifiche al progetto in pochi secondi, non giorni."
-        ]
+      "badge": "INGEGNERIA BIM · CONSEGNA PROGETTUALE",
+      "title_main": "Ingegneria BIM che Risponde con Precisione.",
+      "title_highlight": "Tecnologia che Fa Progredire i Progetti.",
+      "description": "pyBIM supporta i team AEC con modellazione BIM, coordinamento modelli, controllo qualità e consegna digitale strutturata. I nostri specialisti uniscono pratiche BIM consolidate ad automazione Revit interna e flussi assistiti da intelligenza artificiale mirati.",
+      "cta_primary": "Discuti il Tuo Progetto BIM",
+      "cta_secondary": "Esplora i Servizi BIM",
+      "capability_line": "Modellazione BIM · Coordinamento · Model QA · Consegna Digitale",
+      "schematic": {
+        "badge": "Pipeline di Consegna BIM",
+        "tag": "pyBIM // ARCHITETTURA",
+        "node1_title": "Modellazione & Sviluppo BIM",
+        "node1_badge": "LOD 300–400",
+        "node1_desc": "Creazione di modelli architettonici e MEP multidisciplinari con schemi informativi strutturati.",
+        "node2_title": "Coordinamento & Audit Clash",
+        "node2_badge": "ISO 19650",
+        "node2_desc": "Matrici di risoluzione automatizzata dei conflitti tra discipline in ambienti CDE condivisi.",
+        "node3_title": "Model QA & Consegna Digitale",
+        "node3_badge": "VERIFICATO",
+        "node3_desc": "Audit automatizzato dello stato del modello, verifica completezza parametri e conformità IFC.",
+        "footer_label": "Standard di Consegna",
+        "footer_val": "OpenBIM · IFC4 · Revit API"
       }
     },
-    "deploymentModels": {
-      "section_title": "Vettori di Distribuzione Principali.",
-      "section_subtitle": "Come pyBIM si integra con l'infrastruttura ingegneristica e i flussi di lavoro del vostro studio.",
-      "models": [
+    "paradigmShift": {
+      "badge": "SERVIZI DI INGEGNERIA BIM",
+      "section_title": "Servizi BIM, Strutturati Intorno al Tuo Progetto.",
+      "section_subtitle": "Dallo sviluppo di modelli BIM e coordinamento multidisciplinare alla validazione informativa e deliverable digitali, pyBIM fornisce servizi ingegneristici su misura per i vostri requisiti di progetto.",
+      "supporting_positioning": "Consegna guidata dall'ingegneria, supportata da flussi di lavoro digitali dedicati.",
+      "scope_heading": "Ambito Tipico",
+      "deliverables_heading": "Deliverable Tipici",
+      "cta_primary": "Discuti il Tuo Progetto",
+      "cta_secondary": "Esplora Tutti i Servizi BIM",
+      "services": [
         {
-          "id": "bim",
-          "vector": "VETTORE 01",
-          "title": "Esecuzione BIM Gestita",
-          "description": "Modellazione di produzione, coordinamento interferenze e gestione conforme a ISO 19650 direttamente nel vostro CDE con garanzia zero-clash.",
-          "badge": "CDE GESTITO // ISO 19650",
-          "link": "/services#bim-execution"
+          "id": "modeling_development",
+          "title": "Modellazione & Sviluppo BIM",
+          "description": "Sviluppare, perfezionare e aggiornare modelli BIM partendo dalla documentazione di progetto, file di modello esistenti e requisiti informativi concordati.",
+          "scope": [
+            "Sviluppo e aggiornamento di modelli BIM",
+            "Flussi di modellazione basati su Revit",
+            "Supporto a modelli specialistici e multidisciplinari",
+            "Organizzazione delle informazioni di modello"
+          ],
+          "deliverables": [
+            "File di modello BIM aggiornati",
+            "Informazioni di modello strutturate",
+            "Elaborati grafici ed estrazioni concordate"
+          ]
         },
         {
-          "id": "code",
-          "vector": "VETTORE 02",
-          "title": "API e Toolchain Personalizzati",
-          "description": "Script Python dedicati, strumenti PyRevit e add-in C# per automatizzare compiti ripetitivi, mappatura parametri e audit di qualità.",
-          "badge": "REVIT NATIVO / .NET",
-          "link": "/services#custom-code"
+          "id": "coordination_clash",
+          "title": "Coordinamento BIM & Rilevamento Interferenze",
+          "description": "Supportare i team multidisciplinari attraverso revisione di modelli federati, individuazione dei clash, verifiche di coordinamento e reportistica strutturata delle problematiche.",
+          "scope": [
+            "Coordinamento di modelli federati",
+            "Rilevamento interferenze e clash review",
+            "Identificazione delle problematiche di coordinamento",
+            "Supporto alle sessioni di revisione multidisciplinare"
+          ],
+          "deliverables": [
+            "Evidenze di coordinamento",
+            "Report di clash e anomalie",
+            "Modelli revisionati e output di coordinamento concordati"
+          ]
         },
         {
-          "id": "ai",
-          "vector": "VETTORE 03",
-          "title": "IA Sovrana Enterprise Edge",
-          "description": "LLM privati e motori vettoriali isolati in esecuzione locale sulla vostra LAN. Zero fuga di dati e privacy totale sotto accordo NDA.",
-          "badge": "LAN AIR-GAPPED // GPU LOCALE",
-          "link": "/services#sovereign-ai"
+          "id": "model_qa_validation",
+          "title": "Model QA & Validazione Informativa BIM",
+          "description": "Verificare struttura del modello, parametri, classificazioni e coerenza informativa rispetto ai requisiti di progetto concordati.",
+          "scope": [
+            "QA/QC del modello",
+            "Verifiche di coerenza dei parametri",
+            "Revisione delle denominazioni e classificazioni",
+            "Validazione dei requisiti informativi"
+          ],
+          "deliverables": [
+            "Esiti di revisione del modello",
+            "Report di validazione informativa",
+            "Correzioni raccomandate o output QA concordati"
+          ]
+        },
+        {
+          "id": "documentation_delivery",
+          "title": "Documentazione BIM & Consegna Digitale",
+          "description": "Predisporre output di modello strutturati e documentazione tecnica BIM a supporto di una consegna coordinata e del passaggio di consegne.",
+          "scope": [
+            "Predisposizione dei deliverable BIM",
+            "Documentazione basata sul modello",
+            "Organizzazione delle esportazioni",
+            "Coordinamento della consegna digitale"
+          ],
+          "deliverables": [
+            "Pacchetti di modelli e documentazione concordati",
+            "Esportazioni informative strutturate",
+            "File di consegna digitale specifici per il progetto"
+          ]
         }
       ]
+    },
+    "deploymentModels": {
+      "eyebrow": "COME LAVORA pyBIM",
+      "heading": "Le Competenze Giuste. Organizzate Attorno al Tuo Progetto.",
+      "description": "Organizziamo specialisti BIM attorno ai requisiti tecnici di ciascun progetto, supportiamo i task idonei con automazioni interne e manteniamo la supervisione tecnica e il controllo qualità nelle mani del nostro team di ingegneria.",
+      "diagram_aria_label": "Rete di Erogazione Ingegneristica pyBIM: Diagramma connesso che mostra i Requisiti di Progetto convogliati nell'Erogazione Coordinata pyBIM, supportata da Capacità Flessibile, Automazione Interna e Revisione Umana della Qualità per produrre Deliverable BIM Revisionati.",
+      "input": {
+        "label": "INPUT DI PROGETTO",
+        "title": "I Requisiti del Tuo Progetto",
+        "supporting": "Ambito · Discipline · Deliverable",
+        "description": "Obiettivi del progetto, documentazione disponibile, discipline BIM pertinenti e requisiti di consegna concordati definiscono il punto di partenza."
+      },
+      "center": {
+        "label": "INGEGNERIA pyBIM",
+        "title": "Erogazione Coordinata pyBIM",
+        "supporting": "Esecuzione del progetto guidata dall'ingegneria",
+        "description": "Assembliamo le competenze BIM più idonee, coordiniamo il lavoro concordato e utilizziamo automazioni interne laddove apportano reale valore pratico.",
+        "capabilities": [
+          {
+            "id": "flexible_engineering",
+            "tag": "APPROCCIO LIQUID TEAM",
+            "title": "Capacità Ingegneristica Flessibile",
+            "description": "Un mix su misura di specialisti BIM e discipline tecniche, organizzato attorno all'ambito concordato."
+          },
+          {
+            "id": "automation",
+            "tag": "TOOLING INTERNO",
+            "title": "Automazione Mirata",
+            "description": "Strumenti Revit API, Python e C# supportano task ripetitivi e ad alta intensità di dati dove opportuno."
+          },
+          {
+            "id": "quality_review",
+            "tag": "SUPERVISIONE UMANA",
+            "title": "Revisione della Qualità Guidata dall'Uomo",
+            "description": "Controlli tecnici, coordinamento dei modelli e revisione degli elaborati rimangono sotto responsabilità ingegneristica."
+          }
+        ]
+      },
+      "output": {
+        "label": "OUTPUT DI CONSEGNA",
+        "title": "Deliverable BIM Revisionati",
+        "supporting": "Modelli · Documentazione · Elaborati di Coordinamento",
+        "description": "I file di modello e la documentazione tecnica a supporto vengono revisionati e preparati secondo l'ambito di fornitura concordato."
+      },
+      "supporting_statement": "Flessibile nella struttura. Responsabile nella consegna."
     },
     "executionPipeline": {
-      "section_title": "Pipeline Algoritmica Deterministica.",
-      "section_subtitle": "Come la nostra piattaforma trasforma specifiche complesse e modelli multidisciplinari in codice verificato e modelli esenti da clash.",
-      "steps": [
-        {
-          "step": "01",
-          "title": "Ingestione Multidisciplinare",
-          "desc": "Modelli nativi Revit, standard aperti IFC e requisiti di commessa (EIR/BEP) vengono acquisiti e mappati in un database a grafo spaziale sicuro."
-        },
-        {
-          "step": "02",
-          "title": "Motore di Regole e Sintesi Logica",
-          "desc": "Integrazione di vincoli geometrici deterministici con IA isolata per generare matrici di risoluzione interferenze senza allucinazioni statistiche."
-        },
-        {
-          "step": "03",
-          "title": "Esecuzione Diretta CDE & API",
-          "desc": "Add-in C# compilati e script Python operano direttamente nel modello Revit e nel CDE cloud, isolando clash e sincronizzando metadati in pochi secondi."
-        },
-        {
-          "step": "04",
-          "title": "Convalida di Qualità ISO 19650",
-          "desc": "Validazione algoritmica secondo i protocolli ISO 19650-2 e ISO 19650-5. I modelli vengono rilasciati solo dopo la piena conformità automatica."
+      "eyebrow": "OUTPUT INGEGNERISTICI",
+      "heading": "All'Interno di un Deliverable BIM.",
+      "description": "Esplora un modello BIM concettuale per osservare come geometria, revisione del coordinamento e informazioni strutturate del modello convergono durante la consegna ingegneristica.",
+      "viewer": {
+        "header": "BIM Evidence Studio",
+        "status": "Dimostrazione Ingegneristica Illustrativa",
+        "disclosure": "Illustrazione BIM concettuale — non costituisce un progetto cliente né un modello Revit effettivo.",
+        "datums_label": "QUOTE DI ELEVAZIONE ISO 19650",
+        "quick_inspect_label": "SELEZIONA FOCUS DI ISPEZIONE",
+        "check_prefix": "VERIFICA",
+        "annotations": {
+          "level_roof": "LIVELLO COPERTURA",
+          "level_mid": "LIVELLO INTERMEDIO",
+          "level_base": "LIVELLO BASE",
+          "interface_tag": "INTERFACCIA 01",
+          "clearance_check": "VERIFICA INTERFERENZA",
+          "qa_verified": "QA VERIFICATO"
         }
-      ]
-    },
-    "systemBenchmarks": {
-      "section_title": "Benchmark di Sistema",
-      "section_subtitle": "Metriche di esecuzione sul campo. Misuriamo la velocità in millisecondi e la precisione a zero decimali, non con promesse di marketing.",
-      "terminal_header": "pybim-core-engine v2.4 (x86_64-linux-sovereign)",
-      "command": "pybim-benchmark --target Revit2024 --mode sovereign",
-      "tests": [
+      },
+      "cta": {
+        "label": "Discuti il Tuo Progetto BIM",
+        "href": "/contact#audit"
+      },
+      "visual": {
+        "mode": "schematic",
+        "image": null,
+        "image_alt": "Schema concettuale isometrico di modello BIM che illustra livelli, pilastri, percorsi MEP e callout dati di QA",
+        "source_note": "pyBIM Conceptual Architecture Engine v1"
+      },
+      "topics": [
         {
-          "name": "[OK] Parsing Modello: 1.2GB RVT/IFC4 Multidisciplinare",
-          "result": "< 420ms"
+          "id": "geometry",
+          "title": "Geometria del Modello",
+          "tag": "LIVELLI E STRUTTURE",
+          "callout": "Solai di Piano · Griglia Strutturale · Volumi Spaziali",
+          "description": "Esplora l'organizzazione spaziale di elementi strutturali, livelli e geometria del modello in una rappresentazione BIM concettuale.",
+          "details": [
+            "Solai di piano multilivello a quote definite (L01–L03)",
+            "Griglia pilastri strutturali per l'allineamento dei carichi",
+            "Volume dell'involucro edilizio con fedeltà di coordinate isometriche"
+          ],
+          "hotspot": {
+            "x": 33,
+            "y": 58
+          }
         },
         {
-          "name": "[OK] Matrice Spaziale Clash: 124.000 Intersezioni",
-          "result": "1.8s (100% Risolto)"
+          "id": "coordination",
+          "title": "Revisione del Coordinamento",
+          "tag": "ISPEZIONE INTERFACCIA",
+          "callout": "Percorso MEP · Marker Interfaccia Multidisciplinare",
+          "description": "Esamina un'interfaccia illustrativa tra elementi costruttivi e impianti, evidenziando un esempio per la revisione multidisciplinare.",
+          "details": [
+            "Tracciato impiantistico MEP che attraversa le campate strutturali",
+            "Marker illustrativo di verifica interferenza all'interfaccia impiantistica",
+            "Punto di revisione del coordinamento per la supervisione ingegneristica"
+          ],
+          "hotspot": {
+            "x": 48,
+            "y": 46
+          }
         },
         {
-          "name": "[OK] Iniezione Parametri: 48.000 Istanze Sincronizzate",
-          "result": "640ms"
-        },
-        {
-          "name": "[OK] Audit di Sicurezza Air-Gap ISO 19650-5",
-          "result": "SUPERATO (0 Fughe Dati)"
+          "id": "information",
+          "title": "QA delle Informazioni",
+          "tag": "VERIFICA DATI",
+          "callout": "Schema Classificazione · Property Set · Audit QA",
+          "description": "Scopri come proprietà del modello, classificazioni e verifiche informative contribuiscono a deliverable BIM strutturati.",
+          "details": [
+            "Schema di classificazione semantica IFC (IfcColumn / IfcSlab)",
+            "Specifiche dei materiali strutturati e parametri prestazionali",
+            "Verifica dei deliverable ingegneristici prima del rilascio"
+          ],
+          "hotspot": {
+            "x": 67,
+            "y": 28
+          }
         }
       ],
-      "status": "STATO: SISTEMA VERIFICATO & CONFORME // PRONTO PER LA PRODUZIONE"
+      "diagram_aria_label": "BIM Evidence Studio Interattivo: Modello concettuale isometrico multilivello che dimostra geometria, revisione del coordinamento e QA delle informazioni."
     },
-    "coreArchitects": {
-      "section_title": "Unità Ingegneristica Principale",
-      "section_subtitle": "Operando dal polo accademico e tecnologico di Padova, la nostra unità di R&S traduce i colli di bottiglia complessi dell'AEC in infrastrutture eseguibili in C# e Python.",
-      "architects": [
+    "systemBenchmarks": {
+      "eyebrow": "IL TUO PROGETTO, IL NOSTRO PROCESSO",
+      "heading": "Dal Tuo Brief alla Consegna BIM.",
+      "description": "Un approccio strutturato per definire l'ambito del progetto, coordinare le attività ingegneristiche, revisionare gli output e predisporre i deliverable BIM attorno alle tue esigenze.",
+      "process_note": "Un quadro operativo tipico — adattato all'ambito e ai requisiti di ciascun progetto.",
+      "output_label": "OUTPUT TIPICO",
+      "stages": [
         {
-          "id": "lead_sys_eng",
-          "role": "Lead Algorithmic Engineer",
-          "department": "Automazione BIM & Revit API",
-          "note_id": "#890A",
-          "quote": "\"Scalare l'ingegneria delle infrastrutture e degli edifici non è più una questione di risorse umane. È una sfida puramente computazionale. Sostituiamo i margini di errore e le ore di disegno manuale con righe di codice matematicamente verificate.\""
+          "id": "discuss",
+          "label": "DISCUSSIONE",
+          "title": "Iniziamo dal tuo brief.",
+          "description": "Condividi gli obiettivi di progetto, i modelli o gli elaborati disponibili, i requisiti tecnici e la tipologia di supporto BIM richiesta.",
+          "output": "Richiesta di progetto e requisiti iniziali"
         },
         {
-          "id": "head_ai_infra",
-          "role": "Head of Sovereign AI",
-          "department": "LLM Locali & OpenBIM",
-          "note_id": "#442B",
-          "quote": "\"La totale assenza di perdite di dati non è una funzionalità accessoria; è il fondamento operativo. Containerizzando gli algoritmi direttamente dietro il vostro firewall aziendale, eliminiamo del tutto i rischi per la proprietà intellettuale garantendo la piena conformità di sicurezza ISO 19650-5.\""
+          "id": "define",
+          "label": "DEFINIZIONE",
+          "title": "Concordiamo l'ambito.",
+          "description": "Definiamo le discipline richieste, le responsabilità di progetto, i requisiti dei modelli, i deliverable e i criteri di revisione prima dell'esecuzione.",
+          "output": "Ambito e deliverable definiti"
+        },
+        {
+          "id": "develop",
+          "label": "SVILUPPO",
+          "title": "Modellazione e coordinamento.",
+          "description": "Il nostro team di ingegneri svolge le attività concordate di modellazione BIM, coordinamento e gestione informativa, supportato da strumenti interni ove opportuno.",
+          "output": "Modelli sviluppati e output coordinati"
+        },
+        {
+          "id": "handover",
+          "label": "CONSEGNA",
+          "title": "Revisione e rilascio.",
+          "description": "Revisioniamo gli output concordati rispetto ai requisiti di progetto e predisponiamo i file di modello, la documentazione a supporto e il pacchetto finale di consegna.",
+          "output": "Deliverable BIM verificati"
         }
-      ]
+      ],
+      "closing_statement": "I tuoi requisiti definiscono il flusso di lavoro.",
+      "cta": {
+        "label": "Discuti il Tuo Progetto BIM",
+        "href": "/contact#audit"
+      },
+      "blueprint_aria_label": "Project Delivery Blueprint: Processo di collaborazione in quattro fasi, dal brief di progetto alla consegna BIM."
+    },
+    "coreArchitects": {
+      "eyebrow": "OLTRE I WORKFLOW BIM ATTUALI",
+      "heading": "Il Prossimo Livello del BIM Sta Prendendo Forma.",
+      "description": "Accanto ai nostri servizi di ingegneria, stiamo sviluppando tecnologia proprietaria di automazione BIM ed esplorando futuri workflow di intelligenza artificiale privata. Ciascuna iniziativa segue il proprio percorso di sviluppo e valutazione.",
+      "phase2": {
+        "label": "FASE II",
+        "status": "TESTING PRIVATO CONTROLLATO",
+        "title": "pyBIM Cloud Connect",
+        "positioning": "Automazione connessa per i team BIM.",
+        "description": "Stiamo sviluppando un ambiente di automazione connesso a Revit progettato per rendere flussi di lavoro ingegneristici selezionati e strumenti riutilizzabili più accessibili ai team BIM. Lo sviluppo e la valutazione proseguono in contesti privati controllati.",
+        "metadata": [
+          {
+            "label": "FASE ATTUALE",
+            "value": "Valutazione privata"
+          },
+          {
+            "label": "FINESTRA DI RILASCIO INDICATIVA",
+            "value": "Q2–Q4 2027"
+          }
+        ],
+        "timing_note": "Le tempistiche target sono indicative e soggette a sviluppo, test di integrazione, revisione di affidabilità e sicurezza.",
+        "cta": {
+          "label": "Richiedi Accesso Privato",
+          "href": "/contact#priority-queue"
+        },
+        "qualification": "Le richieste vengono esaminate individualmente. L'invio non garantisce l'accesso o l'accettazione."
+      },
+      "phase3": {
+        "eyebrow": "ORIZZONTE DI RICERCA",
+        "label": "FASE III",
+        "status": "R&S ATTIVA",
+        "title": "Infrastruttura AI Privata",
+        "description": "Attività esplorativa su ambienti di intelligenza artificiale privata e flussi di lavoro ingegneristici supervisionati dall'uomo, con modelli di implementazione e potenziali applicazioni soggetti a continua ricerca e convalida tecnica.",
+        "availability_note": "Iniziativa in fase di ricerca. Nessuna data di rilascio pubblico annunciata."
+      }
     },
     "strategicEcosystem": {
-      "title_part1": "Supportato dal Rigore Accademico.",
-      "title_part2": "Scelto da Grandi Imprese Tier-1.",
-      "description": "Sviluppato dai centri di ricerca computazionale e strutturale di Padova e Torino. Implementiamo infrastrutture algoritmiche matematicamente verificate nei progetti AEC più complessi nel Regno Unito, in Europa e in Italia.",
-      "partners": [
-        { "id": "unipd", "name": "UNIPD (Padova)", "subtitle": "Ingegneria dell'Informazione e Algoritmica" },
-        { "id": "polito", "name": "POLITO (Torino)", "subtitle": "Ingegneria Civile e Strutturale Avanzata" },
-        { "id": "tier1", "name": "AEC TIER-1", "subtitle": "Implementazione Infrastrutture Enterprise" },
-        { "id": "iso", "name": "VERIFICATO ISO 19650", "subtitle": "Conformità Dati Parte 2 e Parte 5" }
-      ]
+      "eyebrow": "CHI SUPPORTIAMO",
+      "heading": "Per i Team Che Danno Vita ai Progetti.",
+      "description": "pyBIM fornisce supporto ingegneristico BIM adattato alle esigenze operative di studi di architettura, società di ingegneria e team di esecuzione cantieri.",
+      "audiences": [
+        {
+          "id": "architecture",
+          "display": "Architettura.",
+          "name": "Studi di Architettura",
+          "description": "Sviluppo di modelli BIM, aggiornamenti e documentazione allineati alle informazioni di progetto e ai requisiti concordati.",
+          "capability_line": "Sviluppo Modelli · Documentazione BIM"
+        },
+        {
+          "id": "engineering",
+          "display": "Ingegneria.",
+          "name": "Società di Ingegneria",
+          "description": "Supporto modellazione specialistica per disciplina, coordinamento multidisciplinare e revisione strutturata delle informazioni informative.",
+          "capability_line": "Coordinamento · Model QA · Informazioni Tecniche"
+        },
+        {
+          "id": "construction",
+          "display": "Costruzioni.",
+          "name": "Imprese & Team di Consegna",
+          "description": "Revisioni di coordinamento, documentazione basata sui modelli ed elaborati BIM strutturati allineati all'ambito contrattuale concordato.",
+          "capability_line": "Revisioni di Coordinamento · Consegne Digitali"
+        }
+      ],
+      "closing_statement": "Requisiti di progetto differenti. Un modello di collaborazione su misura per il vostro ambito operativo."
     },
     "validationProtocol": {
       "section_title": "La Simulazione Proof of Concept (PoC) di pyBIM",
@@ -329,152 +727,359 @@
       ],
       "cta": "RICHIEDI AUDIT POC",
       "microcopy": "(Gestione dei dati 100% gratuita e sicura. Valida i tuoi modelli Revit più complessi tramite le nostre pipeline locali. Solo domini email aziendali. Nessuna carta di credito richiesta.)"
+    },
+    "finalProjectCta": {
+      "badge": "INGEGNERIA BIM · CONSEGNA PROGETTUALE",
+      "headline": "Pronti a far avanzare il vostro progetto BIM?",
+      "desc": "Che si tratti di sviluppare modelli BIM, coordinare le discipline o preparare la consegna digitale, pyBIM offre supporto ingegneristico mirato, adattato all'ambito del vostro progetto. I nostri specialisti combinano pratiche BIM consolidate con strumenti di automazione sviluppati internamente, quando apportano un valore concreto.",
+      "commitments": [
+        "Modellazione BIM, coordinamento multidisciplinare e controllo qualità dei modelli",
+        "Competenze ingegneristiche flessibili, adeguate ai requisiti del progetto",
+        "Elaborati BIM strutturati con verifica qualitativa supervisionata da professionisti"
+      ],
+      "cardBadge": "RICHIESTA DI PROGETTO · SERVIZI BIM",
+      "cardTitle": "Definiamo insieme l'ambito del vostro progetto.",
+      "cardDesc": "Raccontateci il vostro progetto, le discipline coinvolte, i disegni o i modelli disponibili e gli elaborati richiesti. Esamineremo le informazioni per comprendere le vostre esigenze e valutare i prossimi passi.",
+      "cta": "APRI IL MODULO DI RICHIESTA PROGETTO",
+      "securityNotice": "Serve un accordo di riservatezza (NDA)? Possiamo concordarlo prima della condivisione di documenti riservati.",
+      "locationNotice": "Padova, Italia"
     }
   },
   "de": {
     "hero": {
-      "badge": "SOUVERÄNE KI & BIM-AUTOMATISIERUNGS-INFRASTRUKTUR",
-      "title_main": "Souveräne KI-Infrastruktur",
-      "title_highlight": "für BIM-Automatisierung.",
-      "description": "Wir implementieren BIM-Automatisierung auf Produktionsniveau und souveräne KI-Systeme für komplexe globale Ingenieur- und Bauunternehmen. Private lokale Inferenz, null Datenverlust und maßgeschneiderte Model-to-Code-Pipelines für maximalen ROI.",
-      "cta_primary": "AUDIT ANFORDERN",
-      "microcopy_primary": "Null Datenverlust • Air-Gapped hinter der Unternehmens-Firewall",
-      "cta_secondary": "LÖSUNGEN ERKUNDEN",
-      "microcopy_secondary": "Entdecken Sie unsere 3 Engineering-Vektoren"
-    },
-    "paradigmShift": {
-      "section_title": "Skalieren durch Code, nicht durch Personalbestand.",
-      "section_subtitle": "Transformieren Sie Ihre Infrastruktur von manueller Fleißarbeit zu mathematisch verifizierter algorithmischer Ausführung.",
-      "traditional": {
-        "badge": "DIE TRADITIONELLE MODELLIER-FARM",
-        "title": "Margenerosion",
-        "points": [
-          "Skalierbarkeit wird durch teure, kontinuierliche Einstellungszyklen drastisch gebremst.",
-          "Manuelle Parameter-Zuordnungen führen mathematisch unausweichlich zu fatalen menschlichen Fehlern.",
-          "Träge Reaktionszeiten bei der Bearbeitung größerer Entwurfsänderungen oder visuellen Kollisionsprüfungen."
-        ]
-      },
-      "autonomous": {
-        "badge": "pyBIM AUTONOME AUSFÜHRUNG",
-        "title": "Algorithmische Skalierbarkeit",
-        "points": [
-          "Verzögerungsfreie Ausführung von Hunderten Workflows über maßgeschneiderte Python- und C#-Infrastruktur.",
-          "100 % Qualitätssicherung basierend auf binärer Maschinenlogik, wodurch kostspielige Dateneingabefehler entfallen.",
-          "Echtzeit-Flexibilität auf algorithmischer Basis zur Abwicklung massiver Projektänderungen in Sekunden statt Tagen."
-        ]
+      "badge": "BIM-ENGINEERING · PROJEKTABWICKLUNG",
+      "title_main": "BIM-Engineering, das verlässlich liefert.",
+      "title_highlight": "Technologie, die Projekte voranbringt.",
+      "description": "pyBIM unterstützt AEC-Teams bei BIM-Modellierung, Modellkoordination, Qualitätssicherung und strukturierter digitaler Projektabwicklung. Unsere flexiblen Spezialisten verbinden bewährte BIM-Praxis mit interner Revit-Automatisierung und gezielten KI-gestützten Workflows.",
+      "cta_primary": "BIM-Projekt besprechen",
+      "cta_secondary": "BIM-Services entdecken",
+      "capability_line": "BIM-Modellierung · Koordination · Modell-QA · Digitale Abwicklung",
+      "schematic": {
+        "badge": "BIM-Lieferpipeline",
+        "tag": "pyBIM // ARCHITEKTUR",
+        "node1_title": "BIM-Modellierung & Modellentwicklung",
+        "node1_badge": "LOD 300–400",
+        "node1_desc": "Multidisziplinäre architektonische und TGA-Modellerstellung mit strukturierten Parameterschemata.",
+        "node2_title": "Koordination & Kollisionsprüfung",
+        "node2_badge": "ISO 19650",
+        "node2_desc": "Automatisierte Konfliktlösungsmatrizen über Fachdisziplinen hinweg in gemeinsamen CDE-Umgebungen.",
+        "node3_title": "Modell-QA & Digitale Übergabe",
+        "node3_badge": "VERIFIZIERT",
+        "node3_desc": "Automatisierte Modellprüfung, Parameter-Vollständigkeitsprüfungen und IFC-Konformitätsvalidierung.",
+        "footer_label": "Lieferstandard",
+        "footer_val": "OpenBIM · IFC4 · Revit API"
       }
     },
-    "deploymentModels": {
-      "section_title": "Zentrale Bereitstellungsvektoren.",
-      "section_subtitle": "Wie sich pyBIM nahtlos in Ihre Engineering-Infrastruktur und Projektabläufe integriert.",
-      "models": [
+    "paradigmShift": {
+      "badge": "BIM-ENGINEERING-SERVICES",
+      "section_title": "BIM Services, Built Around Your Project.",
+      "section_subtitle": "Von der BIM-Modellentwicklung und multidisziplinären Koordination bis hin zur Informationsprüfung und digitalen Projektabwicklung bietet pyBIM ingenieurtechnische Leistungen, die präzise auf Ihre Projektanforderungen abgestimmt sind.",
+      "supporting_positioning": "Ingenieurgeleitete Projektabwicklung, unterstützt durch maßgeschneiderte digitale Workflows.",
+      "scope_heading": "Typischer Leistungsumfang",
+      "deliverables_heading": "Typische Ergebnisse",
+      "cta_primary": "Projekt besprechen",
+      "cta_secondary": "Alle BIM-Services entdecken",
+      "services": [
         {
-          "id": "bim",
-          "vector": "VEKTOR 01",
-          "title": "Gemanagte BIM-Ausführung",
-          "description": "Produktionsmodellierung, Kollisionsprüfung und ISO 19650-konforme Abwicklung direkt in Ihrer CDE mit Null-Kollisions-Garantie.",
-          "badge": "GEMANAGTE CDE // ISO 19650",
-          "link": "/services#bim-execution"
+          "id": "modeling_development",
+          "title": "BIM-Modellierung & Modellentwicklung",
+          "description": "Erstellung, Weiterentwicklung und Aktualisierung von BIM-Modellen auf Basis von Projektdokumentation, Bestandsmodellen und vereinbarten Informationsanforderungen.",
+          "scope": [
+            "BIM-Modellerstellung und Modellfortschreibung",
+            "Revit-basierte Modellierungs-Workflows",
+            "Fachspezifische und multidisziplinäre Modellierungsunterstützung",
+            "Strukturierte Organisation von Modellinformationen"
+          ],
+          "deliverables": [
+            "Aktualisierte BIM-Modelldateien",
+            "Strukturierte Modellinformationen",
+            "Vereinbarte Planauswertungen und Modellexporte"
+          ]
         },
         {
-          "id": "code",
-          "vector": "VEKTOR 02",
-          "title": "Individuelle APIs & Toolchains",
-          "description": "Maßgeschneiderte Python-Skripte, PyRevit-Tools und C#-Plugins zur Automatisierung repetitiver Aufgaben und Modell-Audits.",
-          "badge": "NATIVES REVIT / .NET",
-          "link": "/services#custom-code"
+          "id": "coordination_clash",
+          "title": "BIM-Koordination & Kollisionsprüfung",
+          "description": "Unterstützung multidisziplinärer Projektteams durch Gesamtmodell-Prüfung, Kollisionserkennung, Koordinationsprüfungen und strukturierte Issue-Berichte.",
+          "scope": [
+            "Koordination von Gesamt- und Teilmodellen",
+            "Kollisionsprüfung und geometrische Konfliktanalyse",
+            "Identifikation von Koordinationspunkten",
+            "Begleitung multidisziplinärer Abstimmungsrunden"
+          ],
+          "deliverables": [
+            "Koordinationsergebnisse",
+            "Kollisions- und Prüfberichte",
+            "Geprüfte Modelle und abgestimmte Koordinationsdateien"
+          ]
         },
         {
-          "id": "ai",
-          "vector": "VEKTOR 03",
-          "title": "Souveräne Enterprise Edge-KI",
-          "description": "Private, isolierte LLMs und Vektordatenbanken lokal in Ihrem LAN. Null Datenabfluss und absolute Vertraulichkeit nach NDA.",
-          "badge": "AIR-GAPPED LAN // LOKALE GPU",
-          "link": "/services#sovereign-ai"
+          "id": "model_qa_validation",
+          "title": "BIM-Modell-QA & Informationsprüfung",
+          "description": "Prüfung von Modellstruktur, Parametern, Klassifikationen und Informationskonsistenz gemäß den vereinbarten Projektanforderungen.",
+          "scope": [
+            "Modell-Qualitätssicherung (QA/QC)",
+            "Prüfung der Parameterkonsistenz",
+            "Prüfung von Benennungskonventionen und Klassifikationen",
+            "Validierung der Informationsanforderungen"
+          ],
+          "deliverables": [
+            "Ergebnisse der Modellprüfung",
+            "Prüfberichte zur Informationsvalidierung",
+            "Korrekturvorschläge und vereinbarte QA-Auswertungen"
+          ]
+        },
+        {
+          "id": "documentation_delivery",
+          "title": "BIM-Dokumentation & Digitale Übergabe",
+          "description": "Aufbereitung strukturierter Modellausgaben und BIM-relevanter Dokumentation für eine koordinierte Projektabwicklung und Übergabe.",
+          "scope": [
+            "Erstellung von BIM-Lieferobjekten",
+            "Modellbasierte Dokumentationserstellung",
+            "Organisation von Datenexporten",
+            "Koordination der digitalen Übergabe"
+          ],
+          "deliverables": [
+            "Abgestimmte Modell- und Dokumentationspakete",
+            "Strukturierte Informationsexporte",
+            "Projektspezifische digitale Übergabedateien"
+          ]
         }
       ]
+    },
+    "deploymentModels": {
+      "eyebrow": "WIE pyBIM LIEFERT",
+      "heading": "Die richtige Expertise. Um Ihr Projekt herum organisiert.",
+      "description": "Wir organisieren BIM-Spezialisten passgenau nach den technischen Anforderungen jedes Projekts, unterstützen geeignete Aufgaben durch interne Automatisierung und belassen die technische Aufsicht und Qualitätsprüfung in den Händen unseres Engineering-Teams.",
+      "diagram_aria_label": "pyBIM Engineering-Liefernetzwerk: Verbundenes Diagramm, das Projektanforderungen über die koordinierte pyBIM-Lieferung, gestützt durch flexible Kapazität, interne Werkzeuge und ingenieurgeführte Qualitätsprüfung, zu geprüften BIM-Deliverables führt.",
+      "input": {
+        "label": "PROJEKT-INPUT",
+        "title": "Ihre Projektanforderungen",
+        "supporting": "Umfang · Fachdisziplinen · Deliverables",
+        "description": "Projektziele, verfügbare Unterlagen, relevante BIM-Fachdisziplinen und vereinbarte Übergabekriterien bilden die Ausgangsbasis."
+      },
+      "center": {
+        "label": "pyBIM ENGINEERING",
+        "title": "Koordinierte pyBIM-Lieferung",
+        "supporting": "Ingenieurgeführte Projektabwicklung",
+        "description": "Wir stellen die passende BIM-Expertise zusammen, koordinieren die vereinbarten Leistungen und setzen interne Automatisierungen gezielt dort ein, wo sie praktischen Mehrwert bieten.",
+        "capabilities": [
+          {
+            "id": "flexible_engineering",
+            "tag": "LIQUID-TEAM-ANSATZ",
+            "title": "Flexible Engineering-Kapazität",
+            "description": "Ein projektspezifischer Mix aus BIM-Spezialisten und Fachdisziplinen, abgestimmt auf den vereinbarten Leistungsumfang."
+          },
+          {
+            "id": "automation",
+            "tag": "INTERNE WERKZEUGE",
+            "title": "Zweckgerichtete Automatisierung",
+            "description": "Revit-API-, Python- und C#-Werkzeuge unterstützen geeignete repetitive und datenintensive Aufgaben, wo zweckmäßig."
+          },
+          {
+            "id": "quality_review",
+            "tag": "MENSCHLICHE AUFSICHT",
+            "title": "Ingenieurgeführte Qualitätsprüfung",
+            "description": "Technische Prüfungen, Modellkoordination und Überprüfung der Lieferergebnisse verbleiben in ingenieurmäßiger Verantwortung."
+          }
+        ]
+      },
+      "output": {
+        "label": "LIEFER-OUTPUT",
+        "title": "Geprüfte BIM-Deliverables",
+        "supporting": "Modelle · Dokumentation · Koordinationsergebnisse",
+        "description": "Modelldateien und begleitende Projektdokumentationen werden geprüft und exakt nach vereinbartem Leistungsumfang aufbereitet."
+      },
+      "supporting_statement": "Flexibel im Aufbau. Verbindlich in der Lieferung."
     },
     "executionPipeline": {
-      "section_title": "Deterministische algorithmische Pipeline.",
-      "section_subtitle": "Wie unsere Plattform komplexe Projektspezifikationen und multidisziplinäre Modelle in verifizierten Code und kollisionsfreie Ergebnisse überführt.",
-      "steps": [
-        {
-          "step": "01",
-          "title": "Multidisziplinäre Erfassung",
-          "desc": "Native Revit-Modelle, offene IFC-Standards und Auftraggeber-Vorgaben (AIA/BAP) werden automatisiert erfasst und in einer sicheren räumlichen Graphdatenbank abgebildet."
-        },
-        {
-          "step": "02",
-          "title": "Regel-Engine & Logiksynthese",
-          "desc": "Verbindung deterministischer geometrischer Restriktionen mit isolierter KI zur Erstellung kollisionsfreier Matrizen ohne statistische Halluzinationen."
-        },
-        {
-          "step": "03",
-          "title": "Direkte CDE- & API-Ausführung",
-          "desc": "Kompilierte C#-Plugins und Python-Pipelines operieren direkt im Revit-Modell und der Cloud-CDE, isolieren Kollisionen und synchronisieren Metadaten in Sekunden."
-        },
-        {
-          "step": "04",
-          "title": "ISO 19650 Qualitätsfreigabe",
-          "desc": "Algorithmische Validierung nach ISO 19650-2 und ISO 19650-5. Modelle werden erst nach 100 % automatisierter Konformitätsprüfung freigegeben."
+      "eyebrow": "ENGINEERING-LIEFERERGEBNISSE",
+      "heading": "Einblick in ein BIM-Lieferergebnis.",
+      "description": "Erkunden Sie ein konzeptionelles BIM-Modell und erleben Sie, wie Geometrie, Koordinationsprüfung und strukturierte Modellinformationen in der Projektabwicklung zusammenwirken.",
+      "viewer": {
+        "header": "BIM Evidence Studio",
+        "status": "Illustrative Engineering-Demonstration",
+        "disclosure": "Konzeptionelle BIM-Illustration — kein reales Kundenprojekt oder tatsächliches Revit-Modell.",
+        "datums_label": "ISO 19650 HÖHENKOTEN",
+        "quick_inspect_label": "PRÜFFOKUS AUSWÄHLEN",
+        "check_prefix": "PRÜFUNG",
+        "annotations": {
+          "level_roof": "DACHEBENE",
+          "level_mid": "ZWISCHENEBENE",
+          "level_base": "BASISEBENE",
+          "interface_tag": "SCHNITTSTELLE 01",
+          "clearance_check": "KOLLISIONSPRÜFUNG",
+          "qa_verified": "QA VERIFIZIERT"
         }
-      ]
-    },
-    "systemBenchmarks": {
-      "section_title": "System-Benchmarks",
-      "section_subtitle": "Reale Ausführungsmetriken. Wir messen Durchsatz in Millisekunden und Präzision in null Dezimalstellen, nicht in Marketing-Versprechen.",
-      "terminal_header": "pybim-core-engine v2.4 (x86_64-linux-sovereign)",
-      "command": "pybim-benchmark --target Revit2024 --mode sovereign",
-      "tests": [
+      },
+      "cta": {
+        "label": "Besprechen Sie Ihr BIM-Projekt",
+        "href": "/contact#audit"
+      },
+      "visual": {
+        "mode": "schematic",
+        "image": null,
+        "image_alt": "Konzeptionelles isometrisches BIM-Modellschema mit Geschossebenen, Stützen, TGA-Trassenführung und QA-Datenabrufen",
+        "source_note": "pyBIM Conceptual Architecture Engine v1"
+      },
+      "topics": [
         {
-          "name": "[OK] Modell-Parsing: 1.2GB multidisziplinäres RVT/IFC4",
-          "result": "< 420ms"
+          "id": "geometry",
+          "title": "Modellgeometrie",
+          "tag": "EBENEN & TRAGWERK",
+          "callout": "Geschossdecken · Tragwerksraster · Raumvolumen",
+          "description": "Erkunden Sie die räumliche Gliederung von Strukturelementen, Ebenen und Modellgeometrie in einer konzeptionellen BIM-Darstellung.",
+          "details": [
+            "Mehrgeschossige Deckenebenen auf definierten Höhenkoten (L01–L03)",
+            "Tragendes Stützenraster zur durchgängigen Lastabtragung",
+            "Räumliches Gebäudehüllenvolumen mit isometrischer Koordinatenpräzision"
+          ],
+          "hotspot": {
+            "x": 33,
+            "y": 58
+          }
         },
         {
-          "name": "[OK] Räumliche Kollisionsmatrix: 124.000 Schnittpunkte",
-          "result": "1.8s (100 % Behoben)"
+          "id": "coordination",
+          "title": "Koordinationsprüfung",
+          "tag": "SCHNITTSTELLENPRÜFUNG",
+          "callout": "TGA-Trasse · Multidisziplinärer Schnittstellenmarker",
+          "description": "Prüfen Sie eine illustrative Schnittstelle zwischen Bauelementen und Gebäudetechnik als Beispiel für die multidisziplinäre Abstimmung.",
+          "details": [
+            "TGA-Leitungstrasse durch strukturelle Deckenfelder",
+            "Illustrativer Kollisionsprüfmarker an der Systemschnittstelle",
+            "Multidisziplinärer Prüfpunkt zur ingenieurmäßigen Qualitätssicherung"
+          ],
+          "hotspot": {
+            "x": 48,
+            "y": 46
+          }
         },
         {
-          "name": "[OK] Parameter-Injektion: 48.000 Instanzen synchronisiert",
-          "result": "640ms"
-        },
-        {
-          "name": "[OK] ISO 19650-5 Air-Gap Sicherheitsprüfung",
-          "result": "BESTANDEN (0 Datenlecks)"
+          "id": "information",
+          "title": "Informations-QA",
+          "tag": "DATENVERIFIKATION",
+          "callout": "Klassifikationsschema · Property Sets · QA-Audit",
+          "description": "Erfahren Sie, wie Modelleigenschaften, Klassifikationen und Datenprüfungen zu strukturierten BIM-Lieferergebnissen beitragen.",
+          "details": [
+            "Semantisches IFC-Klassifikationsschema (IfcColumn / IfcSlab)",
+            "Strukturierte Materialkennwerte und Leistungsparameter",
+            "Verifikation der Engineering-Lieferergebnisse vor Freigabe"
+          ],
+          "hotspot": {
+            "x": 67,
+            "y": 28
+          }
         }
       ],
-      "status": "STATUS: ALLE SYSTEME GEPRÜFT & KONFORM // BEREIT FÜR DEN PRODUKTIONSEINSATZ"
+      "diagram_aria_label": "Interaktives BIM Evidence Studio: Isometrisches mehrgeschossiges BIM-Modell zur Veranschaulichung von Geometrie, Koordinationsprüfung und Informations-QA."
     },
-    "coreArchitects": {
-      "section_title": "Kern-Engineering-Einheit",
-      "section_subtitle": "Ausgehend vom akademischen und technologischen Zentrum Padua (Italien) übersetzt unsere F&E-Einheit komplexe AEC-Engpässe in ausführbare C#- und Python-Infrastrukturen.",
-      "architects": [
+    "systemBenchmarks": {
+      "eyebrow": "IHR PROJEKT, UNSER PROZESS",
+      "heading": "Von Ihrem Briefing zur BIM-Lieferung.",
+      "description": "Ein strukturierter Ansatz zur Festlegung des Leistungsumfangs, zur Koordination der Ingenieurleistungen, zur Prüfung der Arbeitsstände und zur Bereitstellung passgenauer BIM-Lieferergebnisse.",
+      "process_note": "Ein typischer Projektablauf — abgestimmt auf den Umfang und die Anforderungen jedes Projekts.",
+      "output_label": "TYPISCHES ERGEBNIS",
+      "stages": [
         {
-          "id": "lead_sys_eng",
-          "role": "Leitender Algorithmen-Ingenieur",
-          "department": "BIM-Automatisierung & Revit-API",
-          "note_id": "#890A",
-          "quote": "\"Die Skalierung des Bauingenieurwesens ist kein Personalproblem mehr. Es ist eine rein rechnerische Herausforderung. Wir ersetzen Fehleranfälligkeit und manuelle Konstruktionsstunden durch mathematisch verifizierte Codezeilen.\""
+          "id": "discuss",
+          "label": "ABSTIMMUNG",
+          "title": "Ausgangspunkt ist Ihr Briefing.",
+          "description": "Teilen Sie Ihre Projektziele, vorhandene Modelle oder Planunterlagen, technische Vorgaben und den gewünschten Umfang der BIM-Unterstützung mit uns.",
+          "output": "Projektanfrage und grundlegende Anforderungen"
         },
         {
-          "id": "head_ai_infra",
-          "role": "Leiter Souveräne KI",
-          "department": "Lokale LLMs & OpenBIM",
-          "note_id": "#442B",
-          "quote": "\"Vollständiger Schutz vor Datenlecks ist kein optionales Feature, sondern unser betriebliches Fundament. Durch die Containerisierung unserer Algorithmen hinter Ihrer Firewall eliminieren wir IP-Risiken vollständig und garantieren ISO 19650-5-Cybersicherheits-Konformität.\""
+          "id": "define",
+          "label": "DEFINITION",
+          "title": "Leistungsumfang vereinbaren.",
+          "description": "Festlegung der beteiligten Fachdisziplinen, Verantwortlichkeiten, Modellerwartungen, Lieferergebnisse und Prüfkriterien vor Beginn der Bearbeitung.",
+          "output": "Definierter Leistungsumfang und Lieferobjekte"
+        },
+        {
+          "id": "develop",
+          "label": "ENTWICKLUNG",
+          "title": "Modellierung und Koordination.",
+          "description": "Unser Ingenieurteam übernimmt die vereinbarte BIM-Modellierung, Koordination und das Informationsmanagement, bei Bedarf unterstützt durch interne Werkzeuge.",
+          "output": "Ausgearbeitete Fachmodelle und koordinierte Ergebnisse"
+        },
+        {
+          "id": "handover",
+          "label": "ÜBERGABE",
+          "title": "Prüfung und Bereitstellung.",
+          "description": "Abgleich der Ergebnisse mit den Projektanforderungen, Aufbereitung der Modelldateien, Begleitdokumentation und Zusammenstellung des Lieferpakets.",
+          "output": "Geprüfte BIM-Lieferergebnisse"
         }
-      ]
+      ],
+      "closing_statement": "Ihre Anforderungen bestimmen den Projektablauf.",
+      "cta": {
+        "label": "Besprechen Sie Ihr BIM-Projekt",
+        "href": "/contact#audit"
+      },
+      "blueprint_aria_label": "Project Delivery Blueprint: Vierstufiger Projektablauf vom Briefing bis zur BIM-Übergabe."
+    },
+    "coreArchitects": {
+      "eyebrow": "ÜBER HEUTIGE BIM-WORKFLOWS HINAUS",
+      "heading": "Die nächste Ebene des BIM nimmt Gestalt an.",
+      "description": "Parallel zu unseren Ingenieurdienstleistungen entwickeln wir eigene BIM-Automatisierungstechnologie und erforschen künftige private KI-Workflows. Jede Initiative folgt ihrem eigenen Entwicklungs- und Evaluierungsprozess.",
+      "phase2": {
+        "label": "PHASE II",
+        "status": "KONTROLLIERTER PRIVATER TESTBETRIEB",
+        "title": "pyBIM Cloud Connect",
+        "positioning": "Vernetzte Automatisierung für BIM-Teams.",
+        "description": "Wir entwickeln eine Revit-integrierte Automatisierungsumgebung, die ausgewählte Engineering-Workflows und wiederverwendbare Tools für BIM-Teams zugänglicher macht. Entwicklung und Evaluierung werden in kontrollierten privaten Umgebungen fortgeführt.",
+        "metadata": [
+          {
+            "label": "AKTUELLE PHASE",
+            "value": "Private Evaluierung"
+          },
+          {
+            "label": "INDIKATIVES RELEASE-FENSTER",
+            "value": "Q2–Q4 2027"
+          }
+        ],
+        "timing_note": "Der Zielzeitraum ist indikativ und unterliegt Entwicklung, Integrationstests, Zuverlässigkeits- und Sicherheitsprüfungen.",
+        "cta": {
+          "label": "Privaten Zugang anfragen",
+          "href": "/contact#priority-queue"
+        },
+        "qualification": "Bewerbungen werden individuell geprüft. Die Einreichung garantiert keinen Zugang oder Annahme."
+      },
+      "phase3": {
+        "eyebrow": "FORSCHUNGSHORIZONT",
+        "label": "PHASE III",
+        "status": "AKTIVE F&E",
+        "title": "Private KI-Infrastruktur",
+        "description": "Explorative Arbeiten zu privaten KI-Umgebungen und menschlich beaufsichtigten Engineering-Workflows, wobei Bereitstellungsansätze und potenzielle Anwendungen fortlaufender Forschung und technischer Validierung unterliegen.",
+        "availability_note": "Initiative im Forschungsstadium. Kein öffentliches Veröffentlichungsdatum angekündigt."
+      }
     },
     "strategicEcosystem": {
-      "title_part1": "Fundiert durch akademische Exzellenz.",
-      "title_part2": "Bewährt bei führenden Tier-1-Unternehmen.",
-      "description": "Entwickelt in den computativen und strukturellen Forschungszentren von Padua und Turin. Wir implementieren mathematisch geprüfte algorithmische Infrastruktur in den komplexesten AEC-Projekten im Vereinigten Königreich, in Europa und in Italien.",
-      "partners": [
-        { "id": "unipd", "name": "UNIPD (Padua)", "subtitle": "Informations- & Algorithmen-Engineering" },
-        { "id": "polito", "name": "POLITO (Turin)", "subtitle": "Fortgeschrittenes Bau- & Struktur-Engineering" },
-        { "id": "tier1", "name": "TIER-1 AEC", "subtitle": "Enterprise-Infrastruktur-Bereitstellung" },
-        { "id": "iso", "name": "ISO 19650 VERIFIZIERT", "subtitle": "Teil 2 & Teil 5 Datenkonformität" }
-      ]
+      "eyebrow": "WEN WIR UNTERSTÜTZEN",
+      "heading": "Für die Teams, die Projekte Wirklichkeit werden lassen.",
+      "description": "pyBIM bietet BIM-Engineering-Unterstützung, abgestimmt auf die Arbeitsanforderungen von Architekturbüros, Ingenieurberatungen und Bauausführungsteams.",
+      "audiences": [
+        {
+          "id": "architecture",
+          "display": "Architektur.",
+          "name": "Architekturbüros",
+          "description": "BIM-Modellerstellung, Modellfortschreibung und Dokumentation, abgestimmt auf Entwurfsinformationen und vereinbarte Projektanforderungen.",
+          "capability_line": "Modellerstellung · BIM-Dokumentation"
+        },
+        {
+          "id": "engineering",
+          "display": "Ingenieurwesen.",
+          "name": "Ingenieurberatungen",
+          "description": "Fachdisziplinäre Modellierungsunterstützung, multidisziplinäre Koordination und strukturierte Prüfung technischer Modellinformationen.",
+          "capability_line": "Koordination · Modell-QS · Technische Informationen"
+        },
+        {
+          "id": "construction",
+          "display": "Bauausführung.",
+          "name": "Bauunternehmen & Ausführungsteams",
+          "description": "Koordinationsprüfungen, modellbasierte Dokumentation und strukturierte BIM-Deliverables im Einklang mit dem vereinbarten Projektumfang.",
+          "capability_line": "Koordinationsprüfungen · Digitale Deliverables"
+        }
+      ],
+      "closing_statement": "Unterschiedliche Projektanforderungen. Ein Kooperationsmodell, abgestimmt auf Ihren Leistungsumfang."
     },
     "validationProtocol": {
       "section_title": "Die pyBIM Proof-of-Concept (PoC) Simulation",
@@ -495,7 +1100,22 @@
       ],
       "cta": "POC-AUDIT ANFORDERN",
       "microcopy": "(100 % kostenlose & sichere Datenverarbeitung. Testen Sie Ihre komplexesten Revit-Modelle über unsere lokalen Pipelines. Nur geschäftliche E-Mail-Domains. Keine Kreditkarte erforderlich.)"
+    },
+    "finalProjectCta": {
+      "badge": "BIM-ENGINEERING · PROJEKTABWICKLUNG",
+      "headline": "Bereit, Ihr BIM-Projekt voranzubringen?",
+      "desc": "Ob Sie BIM-Modelle entwickeln, Fachdisziplinen koordinieren oder eine digitale Projektübergabe vorbereiten möchten: pyBIM unterstützt Sie mit bedarfsgerechten Ingenieurleistungen, abgestimmt auf Ihren Projektumfang. Unsere Fachleute verbinden bewährte BIM-Verfahren mit eigens entwickelten Automatisierungswerkzeugen, wo dies sinnvoll ist.",
+      "commitments": [
+        "BIM-Modellierung, fachübergreifende Koordination und Modellqualitätssicherung",
+        "Flexibel einsetzbare Ingenieurkompetenz, abgestimmt auf die Projektanforderungen",
+        "Strukturierte BIM-Lieferergebnisse mit fachlicher Qualitätsprüfung"
+      ],
+      "cardBadge": "PROJEKTANFRAGE · BIM-DIENSTLEISTUNGEN",
+      "cardTitle": "Lassen Sie uns Ihren Projektumfang klären.",
+      "cardDesc": "Beschreiben Sie uns Ihr Vorhaben, die beteiligten Fachdisziplinen, vorhandene Pläne oder Modelle sowie die benötigten Lieferergebnisse. Wir prüfen Ihre Angaben und besprechen mögliche nächste Schritte.",
+      "cta": "PROJEKTANFRAGEFORMULAR ÖFFNEN",
+      "securityNotice": "Sie benötigen eine Vertraulichkeitsvereinbarung (NDA)? Diese können wir vor der Weitergabe sensibler Projektunterlagen besprechen.",
+      "locationNotice": "Padua, Italien"
     }
   }
 }
-

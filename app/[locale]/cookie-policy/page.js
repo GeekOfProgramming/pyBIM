@@ -1,12 +1,9 @@
 import CookiePolicyLayout from "@/components/pages/cookie-policy-layout";
+import { routeMetadata } from "@/lib/site-copy";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const titles = {
-    en: "Cookie Policy",
-    it: "Informativa sui Cookie",
-    de: "Cookie-Richtlinie"
-  };
+  const titles = routeMetadata.cookie.titles;
   
   return {
     title: titles[locale] || titles.en

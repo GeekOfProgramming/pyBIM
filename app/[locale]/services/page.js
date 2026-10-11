@@ -1,12 +1,9 @@
 import ServicesPageLayout from "@/components/pages/services-page-layout";
+import { routeMetadata } from "@/lib/site-copy";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const titles = {
-    en: "Services",
-    it: "Servizi",
-    de: "Dienstleistungen"
-  };
+  const titles = routeMetadata.services.titles;
   
   return {
     title: titles[locale] || titles.en

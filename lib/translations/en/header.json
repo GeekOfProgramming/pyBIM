@@ -32,5 +32,6 @@
   "header.mega.direct_channels": "Direct Channels",
   "header.mega.roi_matrix": "Algorithmic ROI Matrix",
   "header.mega.faq": "FAQ",
-  "header.portal_btn": "Client Portal"
+  "header.portal_btn": "Client Portal",
+  "header.mega.aria_label": "pyBIM Menu"
 }

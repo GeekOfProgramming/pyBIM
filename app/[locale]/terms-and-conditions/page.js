@@ -1,12 +1,9 @@
 import TermsAndConditionsClient from "@/components/pages/terms-and-conditions-client";
+import { routeMetadata } from "@/lib/site-copy";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const titles = {
-    en: "Terms & Conditions",
-    it: "Termini e Condizioni",
-    de: "Allgemeine Geschäftsbedingungen"
-  };
+  const titles = routeMetadata.terms.titles;
   
   return {
     title: titles[locale] || titles.en

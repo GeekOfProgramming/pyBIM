@@ -88,7 +88,7 @@ export default function PriorityQueueSection() {
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
             <div className="inline-flex items-center gap-2 bg-brand-card border border-brand-border px-4 py-2 rounded-xl shadow-sm">
               <span className="text-brand-textSecondary">{t("queue.status_label")}</span>
-              <span className="font-bold text-amber-600 dark:text-amber-400">{t("queue.status_val")}</span>
+              <span className="font-bold text-emerald-600 dark:text-emerald-400">{t("queue.status_val")}</span>
             </div>
             <div className="inline-flex items-center gap-2 bg-brand-card border border-brand-border px-4 py-2 rounded-xl shadow-sm">
               <span className="text-brand-textSecondary">{t("queue.cohort_label")}</span>

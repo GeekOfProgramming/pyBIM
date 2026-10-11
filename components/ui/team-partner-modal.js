@@ -108,7 +108,7 @@ export default function TeamPartnerModal({ person, onClose }) {
           ref={closeButtonRef}
           onClick={onClose}
           className="absolute top-5 right-5 z-20 w-10 h-10 bg-white/90 dark:bg-slate-800/90 hover:bg-brand-surface dark:hover:bg-slate-700 rounded-full flex items-center justify-center text-brand-textPrimary border border-brand-border dark:border-slate-700 shadow-sm transition-all hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
-          aria-label="Close modal"
+          aria-label={t("common.close_modal")}
         >
           <X className="w-5 h-5" />
         </button>

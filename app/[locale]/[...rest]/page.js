@@ -1,12 +1,9 @@
 import NotFound from "../not-found";
+import { routeMetadata } from "@/lib/site-copy";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const titles = {
-    en: "404 - Page Not Found",
-    it: "404 - Pagina Non Trovata",
-    de: "404 - Seite Nicht Gefunden"
-  };
+  const titles = routeMetadata.notFound.titles;
   
   return {
     title: titles[locale] || titles.en
