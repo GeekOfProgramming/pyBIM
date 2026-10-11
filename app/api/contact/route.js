@@ -53,6 +53,15 @@ export async function POST(req) {
       }
     }
 
+    // Check SMTP configuration (fail-closed if unconfigured)
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.CONTACT_TO) {
+      console.warn("[STAGING NOTICE] Outbound email service is not configured on staging.");
+      return Response.json(
+        { ok: false, error: "Email delivery service is not configured on this environment." },
+        { status: 503 }
+      );
+    }
+
     // Send Email
     try {
       const transporter = nodemailer.createTransport({
@@ -66,7 +75,7 @@ export async function POST(req) {
       });
 
       await transporter.sendMail({
-        from: `pyBIM Website <${process.env.SMTP_FROM}>`,
+        from: `pyBIM Website <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
         to: process.env.CONTACT_TO,
         subject: `New Technical Audit Request: ${companyName}`,
         replyTo: email,
@@ -84,11 +93,15 @@ export async function POST(req) {
           <p style="white-space: pre-wrap; padding: 12px; background: #f5f5f5; border-radius: 4px;">${message}</p>
         `
       });
+
+      return Response.json({ ok: true });
     } catch (emailError) {
       console.error("Failed to send email:", emailError);
+      return Response.json(
+        { ok: false, error: "Failed to dispatch email. Please try again later." },
+        { status: 502 }
+      );
     }
-
-    return Response.json({ ok: true });
   } catch (error) {
     console.error("API Error:", error);
     return Response.json({ ok: false, error: "Failed to save message" }, { status: 500 });

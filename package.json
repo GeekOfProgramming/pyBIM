@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "build:worker": "opennextjs-cloudflare build",
+    "preview:worker": "opennextjs-cloudflare preview"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -16,7 +18,7 @@
     "framer-motion": "^12.43.0",
     "jose": "^6.2.3",
     "lucide-react": "^0.468.0",
-    "next": "14.2.25",
+    "next": "14.2.35",
     "nodemailer": "^6.9.16",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -24,9 +26,11 @@
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.15.1",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "puppeteer-core": "^25.13.0",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "wrangler": "^4.149.0"
   }
 }

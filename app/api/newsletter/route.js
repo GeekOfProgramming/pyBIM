@@ -44,8 +44,14 @@ export async function POST(req) {
       );
     }
 
-    // (Database saving removed for Phase 1 since DB is disabled)
-    // For now, we just pretend it was successful so the UI shows a success message.
+    // Fail-closed staging check: storage is disabled until managed database is attached
+    if (process.env.NEWSLETTER_ENABLED !== "true") {
+      console.warn("[STAGING NOTICE] Newsletter subscriptions are disabled on staging.");
+      return Response.json(
+        { ok: false, error: "Newsletter subscription service is disabled on this staging environment." },
+        { status: 503 }
+      );
+    }
 
     return Response.json({ ok: true });
   } catch (error) {

@@ -21,13 +21,16 @@ export async function POST(req) {
       );
     }
 
-    // In a real application, you would save this to a database 
-    // or send an email to the HR department via Resend/SendGrid etc.
-    
-    // For now, we simulate a successful database insertion or email transmission.
-    console.log(`[CAREERS API] New spontaneous application from ${name} (${email}) with portfolio: ${githubUrl}`);
+    // Fail-closed staging check: Application intake is disabled until HR email/DB integration is attached
+    if (process.env.CAREERS_INTAKE_ENABLED !== "true") {
+      console.warn(`[STAGING NOTICE] Careers intake is disabled on staging. Submission from ${email} rejected.`);
+      return NextResponse.json(
+        { ok: false, error: "Spontaneous applications intake is disabled on this staging environment." },
+        { status: 503 }
+      );
+    }
 
-    // Return success
+    // Return success when intake service is explicitly enabled
     return NextResponse.json({ ok: true, message: "Application routed successfully." }, { status: 200 });
 
   } catch (error) {
