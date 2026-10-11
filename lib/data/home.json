@@ -10,26 +10,80 @@
       "capability_line": "BIM Modeling · Coordination · Model QA · Digital Delivery"
     },
     "paradigmShift": {
-      "section_title": "Scale Through Code, Not Headcount.",
-      "section_subtitle": "Transition your infrastructure from brute-force manual labor to mathematically verified algorithmic execution.",
-      "traditional": {
-        "badge": "THE TRADITIONAL MODELING FARM",
-        "title": "Margin Erosion",
-        "points": [
-          "Scalability is strictly bottlenecked by expensive, continuous hiring cycles.",
-          "Brute-force manual parameter mapping mathematically guarantees fatal human errors.",
-          "Sluggish response times when processing major design alterations or visual clash resolutions."
-        ]
-      },
-      "autonomous": {
-        "badge": "pyBIM AUTONOMOUS EXECUTION",
-        "title": "Algorithmic Scalability",
-        "points": [
-          "Instantaneous execution of hundreds of workflows via custom Python and C# infrastructure.",
-          "100% Quality Assurance relying on binary machine logic, eliminating costly data entry errors.",
-          "Real-time algorithmic flexibility to process massive project alterations in seconds, not days."
-        ]
-      }
+      "badge": "BIM ENGINEERING SERVICES",
+      "section_title": "BIM Services, Built Around Your Project.",
+      "section_subtitle": "From BIM model development and multidisciplinary coordination to information validation and digital deliverables, pyBIM provides engineering-led services tailored to your project requirements.",
+      "supporting_positioning": "Engineering-led delivery, supported by purpose-built digital workflows.",
+      "scope_heading": "Typical Scope",
+      "deliverables_heading": "Typical Deliverables",
+      "cta_primary": "Discuss Your Project",
+      "cta_secondary": "Explore All BIM Services",
+      "services": [
+        {
+          "id": "modeling_development",
+          "title": "BIM Modeling & Development",
+          "description": "Develop, refine and update BIM models using project documentation, existing model files and agreed information requirements.",
+          "scope": [
+            "BIM model development and updates",
+            "Revit-based modeling workflows",
+            "Discipline-specific and multidisciplinary model support",
+            "Model information organization"
+          ],
+          "deliverables": [
+            "Updated BIM model files",
+            "Structured model information",
+            "Agreed model outputs and documentation"
+          ]
+        },
+        {
+          "id": "coordination_clash",
+          "title": "BIM Coordination & Clash Detection",
+          "description": "Support multidisciplinary project teams through federated model review, clash identification, coordination checks and structured issue reporting.",
+          "scope": [
+            "Federated model coordination",
+            "Clash detection and interference review",
+            "Coordination issue identification",
+            "Multidisciplinary review support"
+          ],
+          "deliverables": [
+            "Coordination findings",
+            "Clash or issue reports",
+            "Reviewed models and agreed coordination outputs"
+          ]
+        },
+        {
+          "id": "model_qa_validation",
+          "title": "BIM Model QA & Information Validation",
+          "description": "Review model structure, parameters, classifications and information consistency against agreed project requirements.",
+          "scope": [
+            "Model QA/QC",
+            "Parameter consistency checks",
+            "Naming and classification review",
+            "Information requirements validation"
+          ],
+          "deliverables": [
+            "Model review findings",
+            "Information validation reports",
+            "Recommended corrections or agreed QA outputs"
+          ]
+        },
+        {
+          "id": "documentation_delivery",
+          "title": "BIM Documentation & Digital Delivery",
+          "description": "Prepare structured model outputs and BIM-related documentation to support coordinated project delivery and handover.",
+          "scope": [
+            "BIM deliverable preparation",
+            "Model-based documentation",
+            "Output organization",
+            "Digital handover coordination"
+          ],
+          "deliverables": [
+            "Agreed model and documentation packages",
+            "Structured information exports",
+            "Project-specific digital handover files"
+          ]
+        }
+      ]
     },
     "deploymentModels": {
       "section_title": "Core Deployment Vectors.",
@@ -175,26 +229,80 @@
       "capability_line": "Modellazione BIM · Coordinamento · Model QA · Consegna Digitale"
     },
     "paradigmShift": {
-      "section_title": "Scala Tramite il Codice, Non con il Personale.",
-      "section_subtitle": "Fai evolvere la tua infrastruttura dal lavoro manuale forzato a un'esecuzione algoritmica matematicamente verificata.",
-      "traditional": {
-        "badge": "IL MODELLISMO TRADIZIONALE A FORZA BRUTA",
-        "title": "Erosione dei Margini",
-        "points": [
-          "La scalabilità è rigidamente limitata da costosi e continui cicli di assunzione.",
-          "La mappatura manuale forzata dei parametri garantisce matematicamente errori umani fatali.",
-          "Tempi di risposta lenti nell'elaborazione di modifiche progettuali rilevanti o risoluzione delle interferenze visive."
-        ]
-      },
-      "autonomous": {
-        "badge": "ESECUZIONE AUTONOMA pyBIM",
-        "title": "Scalabilità Algoritmica",
-        "points": [
-          "Esecuzione istantanea di centinaia di flussi di lavoro tramite infrastruttura personalizzata in Python e C#.",
-          "Assicurazione Qualità al 100% basata su logica binaria automatizzata, eliminando costosi errori di immissione dati.",
-          "Flessibilità algoritmica in tempo reale per elaborare massicce modifiche al progetto in pochi secondi, non giorni."
-        ]
-      }
+      "badge": "SERVIZI DI INGEGNERIA BIM",
+      "section_title": "Servizi BIM, Strutturati Intorno al Tuo Progetto.",
+      "section_subtitle": "Dallo sviluppo di modelli BIM e coordinamento multidisciplinare alla validazione informativa e deliverable digitali, pyBIM fornisce servizi ingegneristici su misura per i vostri requisiti di progetto.",
+      "supporting_positioning": "Consegna guidata dall'ingegneria, supportata da flussi di lavoro digitali dedicati.",
+      "scope_heading": "Ambito Tipico",
+      "deliverables_heading": "Deliverable Tipici",
+      "cta_primary": "Discuti il Tuo Progetto",
+      "cta_secondary": "Esplora Tutti i Servizi BIM",
+      "services": [
+        {
+          "id": "modeling_development",
+          "title": "Modellazione & Sviluppo BIM",
+          "description": "Sviluppare, perfezionare e aggiornare modelli BIM partendo dalla documentazione di progetto, file di modello esistenti e requisiti informativi concordati.",
+          "scope": [
+            "Sviluppo e aggiornamento di modelli BIM",
+            "Flussi di modellazione basati su Revit",
+            "Supporto a modelli specialistici e multidisciplinari",
+            "Organizzazione delle informazioni di modello"
+          ],
+          "deliverables": [
+            "File di modello BIM aggiornati",
+            "Informazioni di modello strutturate",
+            "Elaborati grafici ed estrazioni concordate"
+          ]
+        },
+        {
+          "id": "coordination_clash",
+          "title": "Coordinamento BIM & Rilevamento Interferenze",
+          "description": "Supportare i team multidisciplinari attraverso revisione di modelli federati, individuazione dei clash, verifiche di coordinamento e reportistica strutturata delle problematiche.",
+          "scope": [
+            "Coordinamento di modelli federati",
+            "Rilevamento interferenze e clash review",
+            "Identificazione delle problematiche di coordinamento",
+            "Supporto alle sessioni di revisione multidisciplinare"
+          ],
+          "deliverables": [
+            "Evidenze di coordinamento",
+            "Report di clash e anomalie",
+            "Modelli revisionati e output di coordinamento concordati"
+          ]
+        },
+        {
+          "id": "model_qa_validation",
+          "title": "Model QA & Validazione Informativa BIM",
+          "description": "Verificare struttura del modello, parametri, classificazioni e coerenza informativa rispetto ai requisiti di progetto concordati.",
+          "scope": [
+            "QA/QC del modello",
+            "Verifiche di coerenza dei parametri",
+            "Revisione delle denominazioni e classificazioni",
+            "Validazione dei requisiti informativi"
+          ],
+          "deliverables": [
+            "Esiti di revisione del modello",
+            "Report di validazione informativa",
+            "Correzioni raccomandate o output QA concordati"
+          ]
+        },
+        {
+          "id": "documentation_delivery",
+          "title": "Documentazione BIM & Consegna Digitale",
+          "description": "Predisporre output di modello strutturati e documentazione tecnica BIM a supporto di una consegna coordinata e del passaggio di consegne.",
+          "scope": [
+            "Predisposizione dei deliverable BIM",
+            "Documentazione basata sul modello",
+            "Organizzazione delle esportazioni",
+            "Coordinamento della consegna digitale"
+          ],
+          "deliverables": [
+            "Pacchetti di modelli e documentazione concordati",
+            "Esportazioni informative strutturate",
+            "File di consegna digitale specifici per il progetto"
+          ]
+        }
+      ]
     },
     "deploymentModels": {
       "section_title": "Vettori di Distribuzione Principali.",
@@ -340,26 +448,80 @@
       "capability_line": "BIM-Modellierung · Koordination · Modell-QA · Digitale Abwicklung"
     },
     "paradigmShift": {
-      "section_title": "Skalieren durch Code, nicht durch Personalbestand.",
-      "section_subtitle": "Transformieren Sie Ihre Infrastruktur von manueller Fleißarbeit zu mathematisch verifizierter algorithmischer Ausführung.",
-      "traditional": {
-        "badge": "DIE TRADITIONELLE MODELLIER-FARM",
-        "title": "Margenerosion",
-        "points": [
-          "Skalierbarkeit wird durch teure, kontinuierliche Einstellungszyklen drastisch gebremst.",
-          "Manuelle Parameter-Zuordnungen führen mathematisch unausweichlich zu fatalen menschlichen Fehlern.",
-          "Träge Reaktionszeiten bei der Bearbeitung größerer Entwurfsänderungen oder visuellen Kollisionsprüfungen."
-        ]
-      },
-      "autonomous": {
-        "badge": "pyBIM AUTONOME AUSFÜHRUNG",
-        "title": "Algorithmische Skalierbarkeit",
-        "points": [
-          "Verzögerungsfreie Ausführung von Hunderten Workflows über maßgeschneiderte Python- und C#-Infrastruktur.",
-          "100 % Qualitätssicherung basierend auf binärer Maschinenlogik, wodurch kostspielige Dateneingabefehler entfallen.",
-          "Echtzeit-Flexibilität auf algorithmischer Basis zur Abwicklung massiver Projektänderungen in Sekunden statt Tagen."
-        ]
-      }
+      "badge": "BIM-ENGINEERING-SERVICES",
+      "section_title": "BIM Services, Built Around Your Project.",
+      "section_subtitle": "Von der BIM-Modellentwicklung und multidisziplinären Koordination bis hin zur Informationsprüfung und digitalen Projektabwicklung bietet pyBIM ingenieurtechnische Leistungen, die präzise auf Ihre Projektanforderungen abgestimmt sind.",
+      "supporting_positioning": "Ingenieurgeleitete Projektabwicklung, unterstützt durch maßgeschneiderte digitale Workflows.",
+      "scope_heading": "Typischer Leistungsumfang",
+      "deliverables_heading": "Typische Ergebnisse",
+      "cta_primary": "Projekt besprechen",
+      "cta_secondary": "Alle BIM-Services entdecken",
+      "services": [
+        {
+          "id": "modeling_development",
+          "title": "BIM-Modellierung & Modellentwicklung",
+          "description": "Erstellung, Weiterentwicklung und Aktualisierung von BIM-Modellen auf Basis von Projektdokumentation, Bestandsmodellen und vereinbarten Informationsanforderungen.",
+          "scope": [
+            "BIM-Modellerstellung und Modellfortschreibung",
+            "Revit-basierte Modellierungs-Workflows",
+            "Fachspezifische und multidisziplinäre Modellierungsunterstützung",
+            "Strukturierte Organisation von Modellinformationen"
+          ],
+          "deliverables": [
+            "Aktualisierte BIM-Modelldateien",
+            "Strukturierte Modellinformationen",
+            "Vereinbarte Planauswertungen und Modellexporte"
+          ]
+        },
+        {
+          "id": "coordination_clash",
+          "title": "BIM-Koordination & Kollisionsprüfung",
+          "description": "Unterstützung multidisziplinärer Projektteams durch Gesamtmodell-Prüfung, Kollisionserkennung, Koordinationsprüfungen und strukturierte Issue-Berichte.",
+          "scope": [
+            "Koordination von Gesamt- und Teilmodellen",
+            "Kollisionsprüfung und geometrische Konfliktanalyse",
+            "Identifikation von Koordinationspunkten",
+            "Begleitung multidisziplinärer Abstimmungsrunden"
+          ],
+          "deliverables": [
+            "Koordinationsergebnisse",
+            "Kollisions- und Prüfberichte",
+            "Geprüfte Modelle und abgestimmte Koordinationsdateien"
+          ]
+        },
+        {
+          "id": "model_qa_validation",
+          "title": "BIM-Modell-QA & Informationsprüfung",
+          "description": "Prüfung von Modellstruktur, Parametern, Klassifikationen und Informationskonsistenz gemäß den vereinbarten Projektanforderungen.",
+          "scope": [
+            "Modell-Qualitätssicherung (QA/QC)",
+            "Prüfung der Parameterkonsistenz",
+            "Prüfung von Benennungskonventionen und Klassifikationen",
+            "Validierung der Informationsanforderungen"
+          ],
+          "deliverables": [
+            "Ergebnisse der Modellprüfung",
+            "Prüfberichte zur Informationsvalidierung",
+            "Korrekturvorschläge und vereinbarte QA-Auswertungen"
+          ]
+        },
+        {
+          "id": "documentation_delivery",
+          "title": "BIM-Dokumentation & Digitale Übergabe",
+          "description": "Aufbereitung strukturierter Modellausgaben und BIM-relevanter Dokumentation für eine koordinierte Projektabwicklung und Übergabe.",
+          "scope": [
+            "Erstellung von BIM-Lieferobjekten",
+            "Modellbasierte Dokumentationserstellung",
+            "Organisation von Datenexporten",
+            "Koordination der digitalen Übergabe"
+          ],
+          "deliverables": [
+            "Abgestimmte Modell- und Dokumentationspakete",
+            "Strukturierte Informationsexporte",
+            "Projektspezifische digitale Übergabedateien"
+          ]
+        }
+      ]
     },
     "deploymentModels": {
       "section_title": "Zentrale Bereitstellungsvektoren.",
