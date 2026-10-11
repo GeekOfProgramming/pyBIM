@@ -4,7 +4,6 @@ import { useState, useId } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
 import homeData from "@/lib/data/home.json";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
-import CtaLink from "@/components/ui/cta-link";
 import {
   Box,
   GitMerge,
@@ -537,16 +536,6 @@ export default function ExecutionPipeline() {
           </div>
 
         </div>
-
-        {/* =========================================================================
-            PRIMARY CONTEXTUAL CTA (Post-Visualization Action)
-            ========================================================================= */}
-        <div className="mt-12 lg:mt-14 flex justify-center text-center">
-          <CtaLink href={data.cta.href} variant="primary">
-            {data.cta.label}
-          </CtaLink>
-        </div>
-
       </div>
     </section>
   );

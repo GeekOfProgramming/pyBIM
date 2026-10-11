@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
 import homeData from "@/lib/data/home.json";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
-import CtaLink from "@/components/ui/cta-link";
 import {
   Layers,
   GitMerge,
@@ -306,19 +305,6 @@ export default function ParadigmShift() {
               </div>
             );
           })}
-        </div>
-
-        {/* =========================================================================
-            BOTTOM CALL-TO-ACTION STRATEGY
-            ========================================================================= */}
-        <div className="pt-8 border-t border-brand-border/70 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-          <CtaLink href="/contact#audit" variant="primary">
-            {data.cta_primary}
-          </CtaLink>
-
-          <CtaLink href="/services" variant="secondary">
-            {data.cta_secondary}
-          </CtaLink>
         </div>
 
       </div>

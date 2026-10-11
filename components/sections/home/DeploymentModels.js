@@ -1,7 +1,6 @@
 "use client";
 
 import { useId } from "react";
-import LocalizedLink from "@/components/layout/LocalizedLink";
 import { useLanguage } from "@/lib/LanguageContext";
 import homeData from "@/lib/data/home.json";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
@@ -496,23 +495,12 @@ export default function DeploymentModels() {
         </div>
 
         {/* =========================================================================
-            BOTTOM STRATEGY BAR: Supporting Statement & Single Contextual CTA
+            BOTTOM STRATEGY BAR: Supporting Statement
             ========================================================================= */}
-        <div className="mt-14 lg:mt-16 pt-8 border-t border-brand-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-12 lg:mt-14 pt-6 border-t border-brand-border/60 text-center">
           <p className="font-mono text-caption text-brand-textSecondary tracking-wide">
             {data.supporting_statement}
           </p>
-
-          <LocalizedLink
-            href={data.cta.href}
-            className="group inline-flex items-center gap-2 text-body-sm font-semibold text-brand-primary hover:text-brand-primaryHover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg py-1 px-2 -mx-2 cursor-pointer"
-          >
-            <span>{data.cta.label}</span>
-            <ArrowRight
-              className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-              aria-hidden="true"
-            />
-          </LocalizedLink>
         </div>
       </div>
     </section>

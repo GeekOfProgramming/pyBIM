@@ -4,7 +4,6 @@ import { useId } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
 import homeData from "@/lib/data/home.json";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
-import CtaLink from "@/components/ui/cta-link";
 import { motion, useReducedMotion } from "framer-motion";
 
 export default function SystemBenchmarks() {
@@ -114,16 +113,12 @@ export default function SystemBenchmarks() {
         </ol>
 
         {/* =========================================================================
-            BOTTOM STRATEGY BAR: Closing Statement & Primary CTA
+            BOTTOM STRATEGY BAR: Closing Statement (Preserved after CTA consolidation)
             ========================================================================= */}
-        <div className="mt-14 lg:mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <div className="mt-12 lg:mt-14 pt-6 text-center">
           <p className="font-mono text-caption text-brand-textSecondary tracking-wide">
             {data.closing_statement}
           </p>
-
-          <CtaLink href={data.cta.href} variant="primary">
-            {data.cta.label}
-          </CtaLink>
         </div>
 
       </div>
