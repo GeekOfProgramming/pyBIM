@@ -86,34 +86,52 @@
       ]
     },
     "deploymentModels": {
-      "section_title": "Core Deployment Vectors.",
-      "section_subtitle": "How pyBIM integrates with your engineering infrastructure and project workflows.",
-      "models": [
+      "eyebrow": "HOW pyBIM DELIVERS",
+      "heading_part1": "The Right Expertise.",
+      "heading_part2": "Assembled Around Your Project.",
+      "description": "We organize BIM specialists around each project's technical requirements, support suitable tasks with in-house automation, and keep technical oversight and quality review in the hands of our engineering team.",
+      "diagram_aria_label": "pyBIM Engineering Delivery Network: Connected diagram showing project requirements feeding into coordinated delivery, supported concurrently by flexible engineering capacity, purpose-built automation, and human-led quality review to produce reviewed BIM deliverables.",
+      "input": {
+        "tag": "PROJECT INPUT",
+        "title": "Your Project Requirements",
+        "subtitle": "Scope · Disciplines · Deliverables"
+      },
+      "hub": {
+        "badge": "COORDINATED DELIVERY HUB",
+        "title": "pyBIM Coordinated Delivery",
+        "subtitle": "Engineering-led project execution"
+      },
+      "capabilities": [
         {
-          "id": "bim",
-          "vector": "VECTOR 01",
-          "title": "Managed BIM Execution",
-          "description": "Production modeling, clash detection, and ISO 19650 execution managed directly inside your Common Data Environment (CDE) with zero-clash guarantees.",
-          "badge": "MANAGED CDE // ISO 19650",
-          "link": "/services#bim-execution"
+          "id": "flexible_engineering",
+          "tag": "LIQUID TEAM APPROACH",
+          "title": "Flexible Engineering Capacity",
+          "description": "A project-fit mix of BIM specialists and technical disciplines, organized around the agreed scope."
         },
         {
-          "id": "code",
-          "vector": "VECTOR 02",
-          "title": "Custom API & Toolchains",
-          "description": "Tailored Python scripts, PyRevit tools, and C# add-ins built for your engineers to automate repetitive modeling, data mapping, and QA auditing.",
-          "badge": "NATIVE REVIT / .NET",
-          "link": "/services#custom-code"
+          "id": "automation",
+          "tag": "IN-HOUSE TOOLING",
+          "title": "Purpose-Built Automation",
+          "description": "Revit API, Python and C# tools support suitable repetitive and data-intensive tasks where appropriate."
         },
         {
-          "id": "ai",
-          "vector": "VECTOR 03",
-          "title": "Sovereign Enterprise Edge AI",
-          "description": "Private, air-gapped LLMs and vector search engines running locally on your LAN. Zero telemetry leakage, 100% data privacy under bilateral NDA.",
-          "badge": "AIR-GAPPED LAN // LOCAL GPU",
-          "link": "/services#sovereign-ai"
+          "id": "quality_review",
+          "tag": "HUMAN OVERSIGHT",
+          "title": "Human-Led Quality Review",
+          "description": "Technical checks, model coordination and deliverable review remain under engineering responsibility."
         }
-      ]
+      ],
+      "output": {
+        "tag": "DELIVERY OUTPUT",
+        "title": "Reviewed BIM Deliverables",
+        "subtitle": "Model outputs and documentation aligned with the agreed project requirements."
+      },
+      "supporting_statement": "Flexible by design. Accountable in delivery.",
+      "cta": {
+        "label": "Discuss Your BIM Project",
+        "href": "/contact#audit"
+      },
+      "capabilities_heading": "CONCURRENT CAPABILITIES"
     },
     "executionPipeline": {
       "section_title": "Deterministic Algorithmic Pipeline.",
@@ -305,34 +323,52 @@
       ]
     },
     "deploymentModels": {
-      "section_title": "Vettori di Distribuzione Principali.",
-      "section_subtitle": "Come pyBIM si integra con l'infrastruttura ingegneristica e i flussi di lavoro del vostro studio.",
-      "models": [
+      "eyebrow": "COME OPERA pyBIM",
+      "heading_part1": "Le Giuste Competenze.",
+      "heading_part2": "Organizzate Attorno al Tuo Progetto.",
+      "description": "Organizziamo specialisti BIM attorno ai requisiti tecnici di ciascun progetto, supportiamo le attività adatte con automazione interna e manteniamo la supervisione tecnica e il controllo qualità sotto la responsabilità dei nostri ingegneri.",
+      "diagram_aria_label": "Rete di Consegna Ingegneristica pyBIM: Diagramma connesso che illustra i requisiti di progetto gestiti dalla consegna coordinata, supportata contemporaneamente da capacità ingegneristica flessibile, automazione dedicata e controllo qualità ingegneristico per produrre deliverable BIM verificati.",
+      "input": {
+        "tag": "INPUT DI PROGETTO",
+        "title": "Requisiti di Progetto",
+        "subtitle": "Ambito · Discipline · Deliverable"
+      },
+      "hub": {
+        "badge": "HUB DI CONSEGNA COORDINATA",
+        "title": "Consegna Coordinata pyBIM",
+        "subtitle": "Esecuzione di progetto guidata da ingegneri"
+      },
+      "capabilities": [
         {
-          "id": "bim",
-          "vector": "VETTORE 01",
-          "title": "Esecuzione BIM Gestita",
-          "description": "Modellazione di produzione, coordinamento interferenze e gestione conforme a ISO 19650 direttamente nel vostro CDE con garanzia zero-clash.",
-          "badge": "CDE GESTITO // ISO 19650",
-          "link": "/services#bim-execution"
+          "id": "flexible_engineering",
+          "tag": "APPROCCIO LIQUID TEAM",
+          "title": "Capacità Ingegneristica Flessibile",
+          "description": "Un mix su misura di specialisti BIM e discipline tecniche, organizzato attorno all'ambito concordato."
         },
         {
-          "id": "code",
-          "vector": "VETTORE 02",
-          "title": "API e Toolchain Personalizzati",
-          "description": "Script Python dedicati, strumenti PyRevit e add-in C# per automatizzare compiti ripetitivi, mappatura parametri e audit di qualità.",
-          "badge": "REVIT NATIVO / .NET",
-          "link": "/services#custom-code"
+          "id": "automation",
+          "tag": "STRUMENTI INTERNI",
+          "title": "Automazione Dedicata",
+          "description": "Strumenti Revit API, Python e C# supportano attività ripetitive e ad alta intensità di dati dove opportuno."
         },
         {
-          "id": "ai",
-          "vector": "VETTORE 03",
-          "title": "IA Sovrana Enterprise Edge",
-          "description": "LLM privati e motori vettoriali isolati in esecuzione locale sulla vostra LAN. Zero fuga di dati e privacy totale sotto accordo NDA.",
-          "badge": "LAN AIR-GAPPED // GPU LOCALE",
-          "link": "/services#sovereign-ai"
+          "id": "quality_review",
+          "tag": "SUPERVISIONE UMANA",
+          "title": "Controllo Qualità Diretto da Ingegneri",
+          "description": "Verifiche tecniche, coordinamento dei modelli e revisione dei deliverable rimangono sotto responsabilità ingegneristica."
         }
-      ]
+      ],
+      "output": {
+        "tag": "OUTPUT DI CONSEGNA",
+        "title": "Deliverable BIM Verificati",
+        "subtitle": "Modelli e documentazione allineati con i requisiti concordati di progetto."
+      },
+      "supporting_statement": "Flessibili nella struttura. Responsabili nella consegna.",
+      "cta": {
+        "label": "Discuti il Tuo Progetto BIM",
+        "href": "/contact#audit"
+      },
+      "capabilities_heading": "COMPETENZE CONCOMITANTI"
     },
     "executionPipeline": {
       "section_title": "Pipeline Algoritmica Deterministica.",
@@ -524,34 +560,52 @@
       ]
     },
     "deploymentModels": {
-      "section_title": "Zentrale Bereitstellungsvektoren.",
-      "section_subtitle": "Wie sich pyBIM nahtlos in Ihre Engineering-Infrastruktur und Projektabläufe integriert.",
-      "models": [
+      "eyebrow": "WIE pyBIM LIEFERT",
+      "heading_part1": "Die Richtige Expertise.",
+      "heading_part2": "Zusammengestellt für Ihr Projekt.",
+      "description": "Wir stellen BIM-Spezialisten passgenau für die technischen Anforderungen Ihres Projekts zusammen, unterstützen geeignete Aufgaben durch interne Automatisierung und belassen technische Aufsicht und Qualitätsprüfung in den Händen unseres Ingenieurteams.",
+      "diagram_aria_label": "pyBIM Engineering-Liefernetzwerk: Verbundenes Diagramm, das zeigt, wie Projektanforderungen in die koordinierte Lieferung einfließen, parallel unterstützt durch flexible Engineering-Kapazität, gezielte Automatisierung und ingenieurgeführte Qualitätsprüfung zur Erstellung geprüfter BIM-Lieferergebnisse.",
+      "input": {
+        "tag": "PROJEKTEINGABE",
+        "title": "Ihre Projektanforderungen",
+        "subtitle": "Umfang · Disziplinen · Lieferergebnisse"
+      },
+      "hub": {
+        "badge": "KOORDINIERTER LIEFER-HUB",
+        "title": "Koordinierte pyBIM-Lieferung",
+        "subtitle": "Ingenieurgeführte Projektabwicklung"
+      },
+      "capabilities": [
         {
-          "id": "bim",
-          "vector": "VEKTOR 01",
-          "title": "Gemanagte BIM-Ausführung",
-          "description": "Produktionsmodellierung, Kollisionsprüfung und ISO 19650-konforme Abwicklung direkt in Ihrer CDE mit Null-Kollisions-Garantie.",
-          "badge": "GEMANAGTE CDE // ISO 19650",
-          "link": "/services#bim-execution"
+          "id": "flexible_engineering",
+          "tag": "LIQUID-TEAM-ANSATZ",
+          "title": "Flexible Engineering-Kapazität",
+          "description": "Ein projektspezifischer Mix aus BIM-Spezialisten und Fachdisziplinen, abgestimmt auf den vereinbarten Leistungsumfang."
         },
         {
-          "id": "code",
-          "vector": "VEKTOR 02",
-          "title": "Individuelle APIs & Toolchains",
-          "description": "Maßgeschneiderte Python-Skripte, PyRevit-Tools und C#-Plugins zur Automatisierung repetitiver Aufgaben und Modell-Audits.",
-          "badge": "NATIVES REVIT / .NET",
-          "link": "/services#custom-code"
+          "id": "automation",
+          "tag": "INTERNE WERKZEUGE",
+          "title": "Gezielte Automatisierung",
+          "description": "Revit-API-, Python- und C#-Werkzeuge unterstützen geeignete repetitive und datenintensive Aufgaben, wo zweckmäßig."
         },
         {
-          "id": "ai",
-          "vector": "VEKTOR 03",
-          "title": "Souveräne Enterprise Edge-KI",
-          "description": "Private, isolierte LLMs und Vektordatenbanken lokal in Ihrem LAN. Null Datenabfluss und absolute Vertraulichkeit nach NDA.",
-          "badge": "AIR-GAPPED LAN // LOKALE GPU",
-          "link": "/services#sovereign-ai"
+          "id": "quality_review",
+          "tag": "MENSCHLICHE AUFSICHT",
+          "title": "Ingenieurgeführte Qualitätsprüfung",
+          "description": "Technische Prüfungen, Modellkoordination und Überprüfung der Lieferergebnisse verbleiben in ingenieurmäßiger Verantwortung."
         }
-      ]
+      ],
+      "output": {
+        "tag": "LIEFERERGEBNIS",
+        "title": "Geprüfte BIM-Lieferergebnisse",
+        "subtitle": "Modellausgaben und Dokumentation, abgestimmt auf die vereinbarten Projektanforderungen."
+      },
+      "supporting_statement": "Flexibel im Aufbau. Verbindlich in der Lieferung.",
+      "cta": {
+        "label": "Besprechen Sie Ihr BIM-Projekt",
+        "href": "/contact#audit"
+      },
+      "capabilities_heading": "PARALLELE KOMPETENZEN"
     },
     "executionPipeline": {
       "section_title": "Deterministische algorithmische Pipeline.",
