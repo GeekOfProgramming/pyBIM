@@ -118,9 +118,14 @@ export default function Footer() {
       </section>
 
       {/* =========================================================================
-          TIER B — DEEP NAVY: Company, R&D, Navigation & Legal
+          TIER B — CORPORATE COBALT: Company, R&D, Navigation & Legal
           ========================================================================= */}
-      <section className="w-full bg-slate-950 text-slate-300 pt-14 pb-10 border-t border-slate-900">
+      <section
+        style={{
+          background: "linear-gradient(180deg, #2053A8 0%, #174080 52%, #102851 100%)",
+        }}
+        className="w-full text-[#E2E8F0] pt-14 pb-10 border-t border-[#4E70A2]/40"
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
           {/* Main 4-Column Navigation Layout */}
@@ -129,38 +134,38 @@ export default function Footer() {
             {/* Column A: pyBIM Identity & Engineering R&D Lab (span 4) */}
             <div className="lg:col-span-4 flex flex-col space-y-5">
               <div>
-                <span className="text-2xl font-bold tracking-tight text-white font-sans">
+                <span className="text-2xl font-bold tracking-tight text-[#F8FAFC] font-sans">
                   pyBIM
                 </span>
-                <p className="text-xs text-slate-400 mt-1 font-mono tracking-wide">
+                <p className="text-xs text-[#DCE9FF] mt-1 font-mono tracking-wide">
                   {t("footer.brand.identity_line")}
                 </p>
               </div>
 
               {/* Compact Engineering R&D Lab Block */}
-              <div className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 space-y-3">
+              <div className="rounded-xl border border-[#4E70A2] bg-[#10274D] p-4 space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-white tracking-wide">
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#F8FAFC] tracking-wide">
                     <span className="text-cyan-400 font-extrabold">&lt;/&gt;</span>
                     <span>{t("footer.legal.lab_name")}</span>
                   </div>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-400">
+                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-[#DCE9FF]">
                     <MapPin className="w-3 h-3 text-cyan-400 shrink-0" />
                     <span>{t("footer.legal.location")}</span>
-                  </span>
+                  </div>
                 </div>
 
-                <ul className="space-y-1.5 text-xs text-slate-300 font-mono pt-2 border-t border-slate-800/80">
-                  <li className="flex items-center gap-2 text-slate-300">
+                <ul className="space-y-1.5 text-xs text-[#E2E8F0] font-mono pt-2 border-t border-[#4E70A2]/50">
+                  <li className="flex items-center gap-2 text-[#E2E8F0]">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
                     <span>{t("footer.legal.compliance_1")}</span>
                   </li>
-                  <li className="flex items-center gap-2 text-slate-300">
+                  <li className="flex items-center gap-2 text-[#E2E8F0]">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
                     <span>{t("footer.legal.compliance_2")}</span>
                   </li>
-                  <li className="flex items-center gap-2 text-slate-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                  <li className="flex items-center gap-2 text-[#E2E8F0]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-300 shrink-0" />
                     <span>{t("footer.legal.compliance_3")}</span>
                   </li>
                 </ul>
@@ -174,7 +179,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={t("footer.social.linkedin_label")}
-                    className="flex items-center justify-center w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 hover:border-slate-700 transition"
+                    className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#10274D] border border-[#4E70A2] text-[#E2E8F0] hover:text-white hover:bg-[#174080] hover:border-white/50 transition"
                   >
                     <Linkedin className="w-4 h-4" />
                   </a>
@@ -183,7 +188,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={t("footer.social.github_label")}
-                    className="flex items-center justify-center w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 hover:border-slate-700 transition"
+                    className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#10274D] border border-[#4E70A2] text-[#E2E8F0] hover:text-white hover:bg-[#174080] hover:border-white/50 transition"
                   >
                     <Github className="w-4 h-4" />
                   </a>
@@ -193,37 +198,37 @@ export default function Footer() {
 
             {/* Column B: Quick Links (span 2 or 3) */}
             <div className="lg:col-span-2 md:pl-2">
-              <h4 className="font-bold text-white mb-4 uppercase tracking-wider text-xs font-mono">
+              <h4 className="font-bold text-[#F8FAFC] mb-4 uppercase tracking-wider text-xs font-mono">
                 {t("footer.quick_links.title")}
               </h4>
               <ul className="space-y-2.5 text-sm">
                 <li>
-                  <Link href="/" className="text-slate-400 hover:text-blue-400 transition">
+                  <Link href="/" className="text-[#E2E8F0] hover:text-white transition">
                     {t("footer.quick_links.home")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/success-stories" className="text-slate-400 hover:text-blue-400 transition">
+                  <Link href="/success-stories" className="text-[#E2E8F0] hover:text-white transition">
                     {t("footer.quick_links.projects")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services" className="text-slate-400 hover:text-blue-400 transition">
+                  <Link href="/services" className="text-[#E2E8F0] hover:text-white transition">
                     {t("footer.quick_links.services")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-slate-400 hover:text-blue-400 transition">
+                  <Link href="/about" className="text-[#E2E8F0] hover:text-white transition">
                     {t("footer.quick_links.who_we_are")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/careers" className="text-slate-400 hover:text-blue-400 transition">
+                  <Link href="/careers" className="text-[#E2E8F0] hover:text-white transition">
                     {t("footer.quick_links.work_with_us")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-slate-400 hover:text-blue-400 transition">
+                  <Link href="/contact" className="text-[#E2E8F0] hover:text-white transition">
                     {t("footer.quick_links.contact_us")}
                   </Link>
                 </li>
@@ -232,22 +237,22 @@ export default function Footer() {
 
             {/* Column C: Core Solutions (span 3) */}
             <div className="lg:col-span-3">
-              <h4 className="font-bold text-white mb-4 uppercase tracking-wider text-xs font-mono">
+              <h4 className="font-bold text-[#F8FAFC] mb-4 uppercase tracking-wider text-xs font-mono">
                 {t("footer.core_solutions.title")}
               </h4>
               <ul className="space-y-2.5 text-sm">
                 <li>
-                  <Link href="/services#capabilities" className="text-slate-400 hover:text-blue-400 transition block">
+                  <Link href="/services#capabilities" className="text-[#E2E8F0] hover:text-white transition block">
                     {t("footer.core_solutions.bim_execution")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services#execution-architecture" className="text-slate-400 hover:text-blue-400 transition block">
+                  <Link href="/services#execution-architecture" className="text-[#E2E8F0] hover:text-white transition block">
                     {t("footer.core_solutions.revit_automation")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services#roadmap" className="text-slate-400 hover:text-blue-400 transition block">
+                  <Link href="/services#roadmap" className="text-[#E2E8F0] hover:text-white transition block">
                     {t("footer.core_solutions.sovereign_ai")}
                   </Link>
                 </li>
@@ -256,31 +261,31 @@ export default function Footer() {
 
             {/* Column D: Contact (span 3) */}
             <div className="lg:col-span-3">
-              <h4 className="font-bold text-white mb-4 uppercase tracking-wider text-xs font-mono">
+              <h4 className="font-bold text-[#F8FAFC] mb-4 uppercase tracking-wider text-xs font-mono">
                 {t("footer.contact_info.title")}
               </h4>
               <ul className="space-y-3.5 text-sm">
                 <li className="flex items-start gap-2.5">
-                  <Mail className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-cyan-300 shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-[10px] text-slate-500 uppercase font-mono font-semibold">
+                    <div className="text-[10px] text-[#DCE9FF] uppercase font-mono font-semibold">
                       {t("footer.contact_info.email_label")}
                     </div>
                     <a
                       href="mailto:info@pybim.com"
-                      className="font-mono text-slate-300 hover:text-blue-400 transition"
+                      className="font-mono text-[#E2E8F0] hover:text-white transition"
                     >
                       {t("footer.contact_info.email_val")}
                     </a>
                   </div>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-cyan-300 shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-[10px] text-slate-500 uppercase font-mono font-semibold">
+                    <div className="text-[10px] text-[#DCE9FF] uppercase font-mono font-semibold">
                       {t("footer.contact_info.location_label")}
                     </div>
-                    <span className="text-slate-300">
+                    <span className="text-[#E2E8F0]">
                       {t("footer.contact_info.location_val")}
                     </span>
                   </div>
@@ -288,7 +293,7 @@ export default function Footer() {
                 <li className="pt-1">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-mono text-blue-400 hover:text-blue-300 transition"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-300 hover:text-white transition"
                   >
                     <span>{t("footer.contact_info.direct_link")}</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -300,15 +305,15 @@ export default function Footer() {
           </div>
 
           {/* Legal Bottom Row Separator */}
-          <div className="border-t border-slate-900 pt-8 pb-4 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="border-t border-[#4E70A2]/40 pt-8 pb-4 flex flex-col md:flex-row items-center justify-between gap-4">
 
             {/* Left: Copyright */}
-            <p className="text-xs font-mono text-slate-400 text-center md:text-left">
+            <p className="text-xs font-mono text-[#CBD5E1] text-center md:text-left">
               {t("footer.bottom.copyright")}
             </p>
 
             {/* Right: Legal Links & Cookie Preferences */}
-            <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-6 gap-y-2 text-xs font-mono text-slate-400">
+            <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-6 gap-y-2 text-xs font-mono text-[#CBD5E1]">
               <Link href="/privacy-policy" className="hover:text-white transition">
                 {t("footer.bottom.privacy_policy")}
               </Link>
@@ -328,7 +333,7 @@ export default function Footer() {
                     window.dispatchEvent(new Event("open_cookie_preferences"));
                   }
                 }}
-                className="hover:text-white transition cursor-pointer text-left bg-transparent border-none p-0 font-mono text-xs text-slate-400 underline-offset-2 hover:underline"
+                className="hover:text-white transition cursor-pointer text-left bg-transparent border-none p-0 font-mono text-xs text-[#CBD5E1] underline-offset-2 hover:underline"
               >
                 {t("cookie.footer.manage_preferences")}
               </button>
