@@ -44,5 +44,7 @@
   "footer.popup.success_title": "Operazione Riuscita!",
   "footer.popup.error_title": "Azione Richiesta",
   "footer.popup.close_btn": "Chiudi",
-  "footer.popup.got_it_btn": "Ho capito"
+  "footer.popup.got_it_btn": "Ho capito",
+  "footer.social.github_label": "GitHub",
+  "footer.newsletter.generic_error": "Richiesta fallita. Riprova più tardi."
 }

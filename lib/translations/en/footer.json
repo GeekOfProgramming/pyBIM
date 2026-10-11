@@ -44,5 +44,7 @@
   "footer.popup.success_title": "Success!",
   "footer.popup.error_title": "Action Required",
   "footer.popup.close_btn": "Close",
-  "footer.popup.got_it_btn": "Got it"
+  "footer.popup.got_it_btn": "Got it",
+  "footer.social.github_label": "GitHub",
+  "footer.newsletter.generic_error": "Request failed. Please try again."
 }

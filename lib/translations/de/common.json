@@ -33,5 +33,10 @@
   "theme.switch_light": "Zum hellen Modus wechseln",
   "theme.switch_dark": "Zum dunklen Modus wechseln",
   "common.coming_soon": "Demnächst verfügbar",
-  "common.date_unavailable": "Datum nicht verfügbar"
+  "common.date_unavailable": "Datum nicht verfügbar",
+  "nav.more": "Mehr",
+  "common.go_to_top": "Nach oben scrollen",
+  "common.previous": "Vorherige",
+  "common.next": "Nächste",
+  "common.close_modal": "Modal schließen"
 }

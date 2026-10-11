@@ -33,5 +33,10 @@
   "theme.switch_light": "Passa alla Modalità Chiara",
   "theme.switch_dark": "Passa alla Modalità Scura",
   "common.coming_soon": "Prossimamente",
-  "common.date_unavailable": "Data non disponibile"
+  "common.date_unavailable": "Data non disponibile",
+  "nav.more": "Altro",
+  "common.go_to_top": "Torna all'inizio",
+  "common.previous": "Precedente",
+  "common.next": "Successivo",
+  "common.close_modal": "Chiudi modale"
 }
