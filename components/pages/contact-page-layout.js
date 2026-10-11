@@ -1,16 +1,48 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { ArrowRight, Mail, Phone, Linkedin, CheckCircle2, AlertCircle } from "lucide-react";
+import { ArrowRight, Mail, Phone, Linkedin, CheckCircle2, AlertCircle, Check } from "lucide-react";
 import { emailAddress, phoneDisplay, phoneHref } from "@/lib/site-copy";
 import FAQSection from "@/components/sections/faq-section";
 import { useLanguage } from "@/lib/LanguageContext";
 import BimCalculatorCta from "@/components/sections/bim-calculator-cta";
 import PriorityQueueSection from "@/components/sections/priority-queue-section";
 
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
+
+const serviceOptions = [
+  { id: "bim_modeling", labelKey: "contact.form.service_opt1" },
+  { id: "bim_coordination", labelKey: "contact.form.service_opt2" },
+  { id: "bim_qa", labelKey: "contact.form.service_opt3" },
+  { id: "revit_automation", labelKey: "contact.form.service_opt4" },
+  { id: "computational_design", labelKey: "contact.form.service_opt5" },
+  { id: "software_integrations", labelKey: "contact.form.service_opt6" },
+  { id: "other", labelKey: "contact.form.service_opt7" },
+];
+
+const companySizeOptions = [
+  { id: "size_1_5", labelKey: "contact.form.scale_opt1" },
+  { id: "size_6_20", labelKey: "contact.form.scale_opt2" },
+  { id: "size_21_50", labelKey: "contact.form.scale_opt3" },
+  { id: "size_51_200", labelKey: "contact.form.scale_opt4" },
+  { id: "size_201_plus", labelKey: "contact.form.scale_opt5" },
+];
+
+const engineeringDisciplines = [
+  { id: "architecture", labelKey: "contact.form.discipline_arch" },
+  { id: "structural", labelKey: "contact.form.discipline_struct" },
+  { id: "mep", labelKey: "contact.form.discipline_mep" },
+  { id: "infrastructure", labelKey: "contact.form.discipline_infra" },
+];
+
 export default function ContactPageLayout() {
   const { t } = useLanguage();
   const [form, setForm] = useState({ name: "", companyName: "", email: "", phone: "", service: "", teamScale: "", message: "" });
+  const [selectedServiceId, setSelectedServiceId] = useState("");
+  const [selectedDisciplines, setSelectedDisciplines] = useState([]);
+  const [disciplineError, setDisciplineError] = useState(false);
+  const [otherScope, setOtherScope] = useState("");
+  const [otherScopeError, setOtherScopeError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [popup, setPopup] = useState(null);
 
@@ -39,8 +71,48 @@ export default function ContactPageLayout() {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
+  const handleServiceChange = (serviceId) => {
+    setSelectedServiceId(serviceId);
+    const opt = serviceOptions.find((o) => o.id === serviceId);
+    updateField("service", opt ? t(opt.labelKey) : serviceId);
+
+    if (serviceId !== "bim_modeling") {
+      setSelectedDisciplines([]);
+      setDisciplineError(false);
+    }
+    if (serviceId !== "other") {
+      setOtherScope("");
+      setOtherScopeError(false);
+    }
+  };
+
+  const toggleDiscipline = (discId) => {
+    setSelectedDisciplines((prev) => {
+      const next = prev.includes(discId)
+        ? prev.filter((id) => id !== discId)
+        : [...prev, discId];
+      if (next.length > 0) setDisciplineError(false);
+      return next;
+    });
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!form.name.trim() || !form.companyName.trim() || !form.email.trim() || !form.phone.trim() || !selectedServiceId || !form.teamScale || !form.message.trim()) {
+      return;
+    }
+
+    if (selectedServiceId === "bim_modeling" && selectedDisciplines.length === 0) {
+      setDisciplineError(true);
+      return;
+    }
+
+    if (selectedServiceId === "other" && !otherScope.trim()) {
+      setOtherScopeError(true);
+      return;
+    }
+
     setLoading(true);
     try {
       const res = await fetch("/api/contact", {
@@ -52,6 +124,11 @@ export default function ContactPageLayout() {
       if (!res.ok || !data.ok) throw new Error(data.error || t("contact.form.error"));
       setPopup({ type: "success", message: t("contact.form.success") });
       setForm({ name: "", companyName: "", email: "", phone: "", service: "", teamScale: "", message: "" });
+      setSelectedServiceId("");
+      setSelectedDisciplines([]);
+      setDisciplineError(false);
+      setOtherScope("");
+      setOtherScopeError(false);
     } catch (err) {
       setPopup({ type: "error", message: err.message });
     } finally {
@@ -61,172 +138,280 @@ export default function ContactPageLayout() {
 
   return (
     <div className="w-full bg-brand-base">
-      {/* COMBINED HERO & FORM SECTION */}
-      <section id="audit" className="scroll-mt-24 relative overflow-hidden py-24 lg:py-32 px-6 lg:px-8 border-b border-brand-border">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src="/Pictures/Contact/contact-002.jpg"
-            alt={t("contact.hero.img_alt")}
-            className="h-full w-full object-cover object-center opacity-10"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-base via-brand-base/90 to-brand-surface/70" />
-        </div>
-        
-        <div className="mx-auto max-w-7xl relative z-10">
-          <div className="grid gap-16 lg:grid-cols-12 items-center">
+      {/* S01 HERO & PROJECT ENQUIRY FORM SECTION */}
+      <section
+        id="audit"
+        className="relative w-full py-20 md:py-28 lg:py-32 bg-brand-base border-b border-brand-border overflow-hidden scroll-mt-28"
+        aria-labelledby="contact-hero-heading"
+      >
+        {/* Family A Background */}
+        <EngineeringBackdrop variant="base" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-16 items-start">
             
-            {/* LEFT COLUMN (40% Width) */}
+            {/* LEFT COLUMN (5 Columns) */}
             <div className="lg:col-span-5 flex flex-col justify-center text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-6 shadow-sm self-start">
-                {t("contact.hero.tag")}
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-caption font-mono font-bold tracking-widest text-brand-primary mb-6 shadow-xs self-start uppercase">
+                <span>CONTACT <span className="normal-case">pyBIM</span> · PROJECT ENQUIRIES</span>
               </div>
-              <h1 className="text-4xl font-bold uppercase tracking-tight md:text-5xl lg:text-6xl text-brand-textPrimary mb-6 leading-tight">
-                {t("contact.hero.title")}
+
+              <h1 id="contact-hero-heading" className="text-display font-extrabold font-sans text-brand-textPrimary tracking-tight mb-6 leading-tight">
+                {t("contact.hero.title") || "Let's Discuss Your Next BIM Project."}
               </h1>
-              <p className="text-lg font-bold text-brand-primary md:text-xl mb-12">
-                {t("contact.hero.subtitle")}
+
+              <p className="text-lead font-sans text-brand-textSecondary leading-relaxed mb-4">
+                {t("contact.hero.subtitle") || "From BIM modeling and project delivery to engineering automation, start with a focused technical conversation."}
               </p>
 
-              <div className="border-t border-brand-border pt-8">
-                <div className="space-y-6 text-base leading-relaxed text-brand-textSecondary font-medium">
-                  <p>{t("contact.section.desc1")}</p>
-                  <p className="font-bold text-brand-textPrimary">{t("contact.section.next")}</p>
-                  <ul className="space-y-3 list-disc pl-5">
-                    <li><strong className="text-brand-textPrimary">{t("contact.section.list1_title")}</strong>{t("contact.section.list1_desc")}</li>
-                    <li><strong className="text-brand-textPrimary">{t("contact.section.list2_title")}</strong>{t("contact.section.list2_desc")}</li>
-                    <li><strong className="text-brand-textPrimary">{t("contact.section.list3_title")}</strong>{t("contact.section.list3_desc")}</li>
-                  </ul>
+              <p className="text-body font-sans text-brand-textSecondary leading-relaxed mb-8">
+                {t("contact.section.desc1") || "Tell us about your project requirements, engineering disciplines, expected deliverables or software workflow challenges. We can review the scope and explore a suitable approach to collaboration."}
+              </p>
+
+              {/* Three Compact Engineering Capability Statements */}
+              <div className="border-t border-brand-border/70 pt-6">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 text-body-sm font-sans font-medium text-brand-textPrimary">
+                    <span className="w-2 h-2 rounded-full bg-brand-primary shrink-0" aria-hidden="true" />
+                    <span>{t("contact.hero.capability1") || "BIM Modeling & Engineering Delivery"}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-body-sm font-sans font-medium text-brand-textPrimary">
+                    <span className="w-2 h-2 rounded-full bg-brand-primary shrink-0" aria-hidden="true" />
+                    <span>{t("contact.hero.capability2") || "Revit Automation & Computational Design"}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-body-sm font-sans font-medium text-brand-textPrimary">
+                    <span className="w-2 h-2 rounded-full bg-brand-primary shrink-0" aria-hidden="true" />
+                    <span>{t("contact.hero.capability3") || "Engineering Software & BIM Integrations"}</span>
+                  </div>
                 </div>
               </div>
             </div>
 
+            {/* RIGHT COLUMN (7 Columns) - Elevated Project Enquiry Form */}
             <div className="lg:col-span-7">
-              <div className="relative rounded-[2.5rem] bg-white dark:bg-slate-900 p-8 md:p-12 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-brand-border/60 dark:border-slate-800 overflow-hidden transition-colors">
-                {/* Decorative background gradients */}
-                <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-brand-primary/5 blur-3xl pointer-events-none" />
-                <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-brand-accent/5 blur-3xl pointer-events-none" />
-                
+              <div className="relative rounded-3xl bg-brand-cardElevated p-6 sm:p-8 lg:p-10 shadow-xl shadow-brand-base/5 dark:shadow-black/20 border border-brand-border/80 transition-colors">
                 <div className="relative z-10">
-                  <div className="mb-10">
-                    <h3 className="text-3xl font-bold text-brand-textPrimary mb-3">{t("contact.form.title")}</h3>
-                    <p className="text-brand-textSecondary font-medium">{t("contact.form.desc")}</p>
+                  <div className="mb-8">
+                    <h2 className="text-card-title sm:text-2xl font-bold font-sans text-brand-textPrimary tracking-tight mb-2">
+                      {t("contact.form.title") || "Project Enquiry Form"}
+                    </h2>
+                    <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed">
+                      {t("contact.form.desc") || "Tell us about your project and our engineering team will get back to you with an initial technical assessment."}
+                    </p>
                   </div>
-                  
-                  <form className="group grid gap-4" onSubmit={handleSubmit}>
-                    
-                    {/* Row 1: Name & Company */}
+
+                  <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+                    {/* Row 1: Full Name & Company Name */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-brand-textPrimary tracking-wide">{t("contact.form.name")}</label>
+                        <label htmlFor="contact-name" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                          {t("contact.form.name") || "Full Name"} <span className="text-brand-primary">*</span>
+                        </label>
                         <input
+                          id="contact-name"
                           type="text"
                           value={form.name}
                           onChange={(e) => updateField("name", e.target.value)}
-                          placeholder={t("contact.form.name_ph")}
+                          placeholder={t("contact.form.name_ph") || "e.g. John Doe"}
                           required
-                          className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
+                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-brand-textPrimary tracking-wide">{t("contact.form.companyName")}</label>
+                        <label htmlFor="contact-company" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                          {t("contact.form.companyName") || "Company Name"} <span className="text-brand-primary">*</span>
+                        </label>
                         <input
+                          id="contact-company"
                           type="text"
                           value={form.companyName}
                           onChange={(e) => updateField("companyName", e.target.value)}
-                          placeholder={t("contact.form.companyName_ph")}
+                          placeholder={t("contact.form.companyName_ph") || "e.g. Acme Engineering"}
                           required
-                          className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
+                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
                     </div>
 
-                    {/* Row 2: Email & Phone */}
+                    {/* Row 2: Corporate Email & Phone Number */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-brand-textPrimary tracking-wide">{t("contact.form.email")}</label>
+                        <label htmlFor="contact-email" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                          {t("contact.form.email") || "Corporate Email Address"} <span className="text-brand-primary">*</span>
+                        </label>
                         <input
+                          id="contact-email"
                           type="email"
                           value={form.email}
                           onChange={(e) => updateField("email", e.target.value)}
-                          placeholder={t("contact.form.email_ph")}
+                          placeholder={t("contact.form.email_ph") || "name@company.com"}
                           required
-                          className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
+                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
-                        <p className="text-[10.5px] text-brand-textSecondary mt-1 font-medium pl-1">
-                          {t("contact.form.email_help")}
+                        <p className="text-xs font-sans text-brand-textSecondary pl-1">
+                          {t("contact.form.email_help") || "*Corporate domains only."}
                         </p>
                       </div>
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-brand-textPrimary tracking-wide">{t("contact.form.phone")}</label>
+                        <label htmlFor="contact-phone" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                          {t("contact.form.phone") || "Phone Number"} <span className="text-brand-primary">*</span>
+                        </label>
                         <input
+                          id="contact-phone"
                           type="tel"
                           value={form.phone}
                           onChange={(e) => updateField("phone", e.target.value)}
-                          placeholder={t("contact.form.phone_ph")}
-                          className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800"
+                          placeholder={t("contact.form.phone_ph") || "+39 049 123 4567"}
+                          required
+                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
                     </div>
 
-                    {/* Row 3: Service of Interest & Team Scale */}
+                    {/* Row 3: Service of Interest & Company Size */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-brand-textPrimary tracking-wide">{t("contact.form.service")}</label>
-                        <select
-                          value={form.service}
-                          onChange={(e) => updateField("service", e.target.value)}
-                          required
-                          className={`w-full appearance-none rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800 ${form.service ? '' : 'text-brand-textSecondary'}`}
-                        >
-                          <option value="" disabled hidden className="dark:bg-slate-800">{t("contact.form.service_ph")}</option>
-                          {["service_opt1", "service_opt2", "service_opt3", "service_opt4", "service_opt5", "service_opt6"].map((key) => (
-                            <option key={key} value={t(`contact.form.${key}`)} className="text-brand-textPrimary dark:bg-slate-800">
-                              {t(`contact.form.${key}`)}
-                            </option>
-                          ))}
-                        </select>
+                        <label htmlFor="contact-service" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                          {t("contact.form.service") || "Service or Project Scope"} <span className="text-brand-primary">*</span>
+                        </label>
+                        <div className="relative">
+                          <select
+                            id="contact-service"
+                            value={selectedServiceId}
+                            onChange={(e) => handleServiceChange(e.target.value)}
+                            required
+                            className={`w-full appearance-none rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 pr-10 text-body-sm font-sans text-brand-textPrimary outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary ${selectedServiceId ? '' : 'text-brand-textSecondary/70'}`}
+                          >
+                            <option value="" disabled hidden>{t("contact.form.service_ph") || "Select primary service or project scope..."}</option>
+                            {serviceOptions.map((opt) => (
+                              <option key={opt.id} value={opt.id} className="text-brand-textPrimary bg-brand-surface">
+                                {t(opt.labelKey)}
+                              </option>
+                            ))}
+                          </select>
+                          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-brand-textSecondary">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                          </div>
+                        </div>
                       </div>
 
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-brand-textPrimary tracking-wide">{t("contact.form.teamScale")}</label>
-                        <select
-                          value={form.teamScale}
-                          onChange={(e) => updateField("teamScale", e.target.value)}
-                          required
-                          className={`w-full appearance-none rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800 ${form.teamScale ? '' : 'text-brand-textSecondary'}`}
-                        >
-                          <option value="" disabled hidden className="dark:bg-slate-800">{t("contact.form.teamScale_ph")}</option>
-                          {["scale_opt1", "scale_opt2", "scale_opt3", "scale_opt4"].map((key) => (
-                            <option key={key} value={t(`contact.form.${key}`)} className="text-brand-textPrimary dark:bg-slate-800">
-                              {t(`contact.form.${key}`)}
-                            </option>
-                          ))}
-                        </select>
+                        <label htmlFor="contact-size" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                          {t("contact.form.teamScale") || "Company Size"} <span className="text-brand-primary">*</span>
+                        </label>
+                        <div className="relative">
+                          <select
+                            id="contact-size"
+                            value={form.teamScale}
+                            onChange={(e) => updateField("teamScale", e.target.value)}
+                            required
+                            className={`w-full appearance-none rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 pr-10 text-body-sm font-sans text-brand-textPrimary outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary ${form.teamScale ? '' : 'text-brand-textSecondary/70'}`}
+                          >
+                            <option value="" disabled hidden>{t("contact.form.teamScale_ph") || "Select company size..."}</option>
+                            {companySizeOptions.map((opt) => (
+                              <option key={opt.id} value={t(opt.labelKey)} className="text-brand-textPrimary bg-brand-surface">
+                                {t(opt.labelKey)}
+                              </option>
+                            ))}
+                          </select>
+                          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-brand-textSecondary">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
-                    {/* Row 4: Message / Project Description */}
+                    {/* CONDITIONAL ROW A: Engineering Discipline (Only when BIM Modeling selected) */}
+                    {selectedServiceId === "bim_modeling" && (
+                      <div className="p-4 sm:p-5 rounded-2xl bg-brand-surface/70 border border-brand-border transition-all">
+                        <div className="mb-3">
+                          <label className="text-body-sm font-semibold font-sans text-brand-textPrimary block">
+                            {t("contact.form.disciplines_label") || "Engineering Discipline"} <span className="text-brand-primary">*</span>
+                          </label>
+                          <p className="text-xs font-sans text-brand-textSecondary">
+                            {t("contact.form.disciplines_desc") || "Select one or more disciplines relevant to your project."}
+                          </p>
+                        </div>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                          {engineeringDisciplines.map((disc) => {
+                            const isSelected = selectedDisciplines.includes(disc.id);
+                            return (
+                              <button
+                                key={disc.id}
+                                type="button"
+                                role="checkbox"
+                                aria-checked={isSelected}
+                                onClick={() => toggleDiscipline(disc.id)}
+                                className={`flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl border text-body-sm font-medium transition-all text-center select-none ${
+                                  isSelected
+                                    ? "bg-brand-primary/10 border-brand-primary text-brand-primary font-semibold shadow-xs"
+                                    : "bg-brand-surface border-brand-border text-brand-textSecondary hover:border-brand-primary/40 hover:text-brand-textPrimary"
+                                }`}
+                              >
+                                {isSelected && <Check className="w-3.5 h-3.5 text-brand-primary shrink-0" />}
+                                <span>{t(disc.labelKey)}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                        {disciplineError && (
+                          <p className="text-xs text-rose-500 font-medium font-sans mt-2">
+                            {t("contact.form.discipline_error") || "Please select at least one engineering discipline."}
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    {/* CONDITIONAL ROW B: Other / Multidisciplinary Scope (Only when Other selected) */}
+                    {selectedServiceId === "other" && (
+                      <div className="p-4 sm:p-5 rounded-2xl bg-brand-surface/70 border border-brand-border transition-all space-y-1.5">
+                        <label htmlFor="contact-other-scope" className="text-body-sm font-semibold font-sans text-brand-textPrimary block">
+                          {t("contact.form.other_label") || "Please Specify Your Project Scope"} <span className="text-brand-primary">*</span>
+                        </label>
+                        <textarea
+                          id="contact-other-scope"
+                          rows={2}
+                          value={otherScope}
+                          onChange={(e) => {
+                            setOtherScope(e.target.value);
+                            if (otherScopeError && e.target.value.trim()) setOtherScopeError(false);
+                          }}
+                          placeholder={t("contact.form.other_ph") || "Describe the service, engineering discipline or combination of activities you need..."}
+                          className="w-full rounded-xl border border-brand-border bg-brand-surface px-4 py-2.5 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary resize-y"
+                        />
+                        {otherScopeError && (
+                          <p className="text-xs text-rose-500 font-medium font-sans mt-1">
+                            {t("contact.form.other_error") || "Please specify your project scope."}
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Row 4: Project Scope & Requirements */}
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-brand-textPrimary tracking-wide">{t("contact.form.message_label")}</label>
+                      <label htmlFor="contact-message" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                        {t("contact.form.message_label") || "Project Scope & Requirements"} <span className="text-brand-primary">*</span>
+                      </label>
                       <textarea
+                        id="contact-message"
                         rows={4}
                         value={form.message}
                         onChange={(e) => updateField("message", e.target.value)}
-                        placeholder={t("contact.form.message_ph")}
+                        placeholder={t("contact.form.message_ph") || "Briefly describe your project, relevant disciplines, expected deliverables, approximate scale and any relevant deadline."}
                         required
-                        className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-brand-primary focus:bg-white dark:focus:bg-slate-800 resize-y"
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary resize-y min-h-[100px]"
                       />
                     </div>
 
-                    {/* Row 5: Privacy */}
-                    <div className="flex items-start gap-3 mt-2">
+                    {/* Row 5: Privacy Checkbox & Legal Links */}
+                    <div className="flex items-start gap-3 pt-1">
                       <input
                         type="checkbox"
                         id="privacy-contact"
                         required
-                        className="mt-1 w-4 h-4 rounded border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800 text-brand-primary focus:ring-brand-primary cursor-pointer"
+                        className="mt-1 w-4 h-4 rounded border-brand-border bg-brand-surface text-brand-primary focus:ring-brand-primary cursor-pointer"
                       />
-                      <label htmlFor="privacy-contact" className="text-xs text-brand-textSecondary font-medium leading-normal">
+                      <label htmlFor="privacy-contact" className="text-xs text-brand-textSecondary font-sans font-medium leading-normal cursor-pointer select-none">
                         {t("forms.accept.part1")}{" "}
                         <Link href="/privacy-policy" className="text-brand-primary font-bold hover:underline">
                           {t("forms.accept.privacy")}
@@ -240,23 +425,16 @@ export default function ContactPageLayout() {
                     </div>
 
                     {/* Row 6: Submit Button */}
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="group/btn relative w-full mt-2 flex items-center justify-center gap-2 rounded-2xl px-6 py-4 font-bold transition-all duration-300 disabled:opacity-60 overflow-hidden bg-brand-accent text-white shadow-[0_10px_20px_-10px_rgba(249,115,22,0.4)] hover:bg-brand-accentHover hover:-translate-y-1 hover:shadow-[0_15px_25px_-10px_rgba(249,115,22,0.5)] group-invalid:bg-orange-200 group-invalid:text-black group-invalid:shadow-none group-invalid:pointer-events-none group-invalid:transform-none"
-                    >
-                      <div className="absolute inset-0 bg-white/20 translate-y-full transition-transform duration-300 group-hover/btn:translate-y-0 group-invalid:hidden" />
-                      <span className="relative z-10 flex items-center gap-2">
-                        {loading ? t("contact.form.sending") : t("contact.form.button")}
-                        <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1 group-invalid:opacity-50" />
-                      </span>
-                    </button>
-                    
-                    {t("contact.form.microcopy") && (
-                      <p className="text-left w-full text-xs text-brand-textSecondary font-medium mt-2 italic">
-                        {t("contact.form.microcopy")}
-                      </p>
-                    )}
+                    <div className="pt-2">
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full min-h-[48px] sm:min-h-[52px] px-6 py-3.5 rounded-full bg-brand-actionPrimary hover:bg-brand-actionPrimaryHover text-brand-actionOnPrimary text-body-sm font-semibold tracking-normal shadow-md shadow-brand-actionPrimary/20 hover:shadow-lg hover:shadow-brand-actionPrimary/30 transition-all active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-actionPrimary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-brand-base"
+                      >
+                        <span>{loading ? (t("contact.form.sending") || "Sending...") : (t("contact.form.button") || "Send Project Enquiry")}</span>
+                        <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                      </button>
+                    </div>
                   </form>
 
                   {popup && (
