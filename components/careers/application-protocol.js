@@ -98,13 +98,13 @@ ${getBodyText(code)}`;
 
         <p className="text-body font-sans text-brand-textSecondary max-w-3xl leading-relaxed mb-8">
           {t("careers.protocol.desc") ||
-            "To ensure your application is promptly categorized and reviewed by our engineering leads, please format your submission using our standardized structure below."}
+            "Use the structured subject and the guidance below to help us identify your area of expertise and evaluate relevant applications. Submission does not guarantee a response or engagement."}
         </p>
 
         {/* Role Code Selector Pills */}
         <div className="mb-6">
           <span className="block text-caption font-mono font-bold text-brand-textSecondary uppercase tracking-wider mb-2.5">
-            // Select Target Role Code
+            // {t("careers.protocol.select_role") || "Select Target Role Code"}
           </span>
           <div className="flex flex-wrap gap-2">
             {roleCodes.map((rc) => {
@@ -144,7 +144,7 @@ ${getBodyText(code)}`;
               type="button"
               onClick={handleCopy}
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-brand-cardElevated hover:bg-brand-surface text-brand-textPrimary border border-brand-border text-caption font-mono transition-all min-h-[36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
-              aria-label="Copy application template syntax"
+              aria-label={t("careers.protocol.copy_aria") || "Copy application template syntax"}
             >
               {copyStatus === "copied" ? (
                 <>
@@ -195,41 +195,41 @@ ${getBodyText(code)}`;
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 sm:p-5 rounded-2xl bg-brand-surface/50 border border-brand-border/60">
               <span className="font-mono text-caption font-bold text-brand-primary block mb-1.5">
-                [01] Categorized Subject
+                [01] {t("careers.protocol.rule1_title") || "Categorized Subject"}
               </span>
               <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed">
                 {t("careers.protocol.rule1") ||
-                  "Consistent Subject Line: Use the exact format with your role code (e.g. BIM-MOD, SW-DEV) to ensure accurate technical routing."}
+                  "Use the specified subject format and role code to make the area of your application easier to identify."}
               </p>
             </div>
 
             <div className="p-4 sm:p-5 rounded-2xl bg-brand-surface/50 border border-brand-border/60">
               <span className="font-mono text-caption font-bold text-brand-primary block mb-1.5">
-                [02] Discipline-Tailored Evidence
+                [02] {t("careers.protocol.rule2_title") || "Discipline-Tailored Evidence"}
               </span>
               <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed">
                 {t("careers.protocol.rule2") ||
-                  "Discipline-Tailored Evidence: BIM modelers may provide drawings or model screenshots (GitHub is not required); developers are encouraged to include code or repositories."}
+                  "BIM modelers may provide drawings or model screenshots (GitHub is not required); developers are encouraged to include code or repositories."}
               </p>
             </div>
 
             <div className="p-4 sm:p-5 rounded-2xl bg-brand-surface/50 border border-brand-border/60">
               <span className="font-mono text-caption font-bold text-brand-primary block mb-1.5">
-                [03] Confidentiality Respected
+                [03] {t("careers.protocol.rule3_title") || "Confidentiality Respected"}
               </span>
               <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed">
                 {t("careers.protocol.rule3") ||
-                  "Confidentiality Respected: Feel free to anonymize client details or proprietary parameters when referencing past project work."}
+                  "Feel free to anonymize client details or proprietary parameters when referencing past project work."}
               </p>
             </div>
 
             <div className="p-4 sm:p-5 rounded-2xl bg-brand-surface/50 border border-brand-border/60">
               <span className="font-mono text-caption font-bold text-brand-primary block mb-1.5">
-                [04] Transparent Review
+                [04] {t("careers.protocol.rule4_title") || "Transparent Review"}
               </span>
               <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed">
                 {t("careers.protocol.rule4") ||
-                  "Transparent Review: Submissions are reviewed individually by engineering leads. Incomplete materials may require follow-up clarification before evaluation."}
+                  "Applications may be considered according to current opportunities and available review capacity. Additional information may be requested when relevant."}
               </p>
             </div>
           </div>
