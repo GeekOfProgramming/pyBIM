@@ -298,42 +298,64 @@ export default function DeploymentModels() {
                 </motion.article>
               </div>
 
-              {/* BRANCHED CONNECTOR: Center Hub to Lower Two Cards */}
+              {/* BRANCHED CONNECTOR: Lower Two Capabilities Supporting Upward to pyBIM Hub */}
               <div className="w-full flex justify-center py-2 h-12 select-none relative" aria-hidden="true">
                 <svg className="w-full max-w-md h-12 overflow-visible" viewBox="0 0 200 48">
-                  {/* Stem and Branches */}
+                  {/* Stem and Branches flowing upward */}
                   <path
-                    d="M 100,0 L 100,22 L 50,22 L 50,40 M 100,22 L 150,22 L 150,40"
+                    d="M 50,44 L 50,22 L 100,22 L 100,8 M 150,44 L 150,22 L 100,22"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.5"
                     className="text-slate-300 dark:text-slate-700"
                   />
-                  {/* Branch Arrowheads */}
-                  <path d="M 46 36 L 50 44 L 54 36 Z" fill="currentColor" className="text-cyan-500" />
-                  <path d="M 146 36 L 150 44 L 154 36 Z" fill="currentColor" className="text-emerald-500" />
+                  {/* Central Upward Arrowhead pointing directly into pyBIM Hub */}
+                  <path d="M 95 10 L 100 2 L 105 10 Z" fill="currentColor" className="text-brand-primary" />
 
-                  {/* Synchronized Simultaneous Illuminated Ribbon: 2.1s to 3.7s */}
+                  {/* Synchronized Simultaneous Illuminated Ribbons Traveling Upward to Hub: 2.1s to 3.7s */}
                   {!shouldReduceMotion && (
-                    <motion.path
-                      d="M 100,0 L 100,22 L 50,22 L 50,40 M 100,22 L 150,22 L 150,40"
-                      fill="none"
-                      stroke="#22D3EE"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeDasharray="20 120"
-                      initial={{ strokeDashoffset: 120, opacity: 0 }}
-                      animate={{
-                        strokeDashoffset: [120, -20, -20, 120],
-                        opacity: [0, 0.85, 0, 0],
-                      }}
-                      transition={{
-                        duration: 6,
-                        repeat: Infinity,
-                        times: [0.35, 0.65, 0.72, 1],
-                        ease: "easeInOut",
-                      }}
-                    />
+                    <>
+                      {/* Left branch: Automation (50,44) -> Hub (100,8) */}
+                      <motion.path
+                        d="M 50,44 L 50,22 L 100,22 L 100,8"
+                        fill="none"
+                        stroke="#22D3EE"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeDasharray="20 120"
+                        initial={{ strokeDashoffset: 120, opacity: 0 }}
+                        animate={{
+                          strokeDashoffset: [120, -20, -20, 120],
+                          opacity: [0, 0.9, 0, 0],
+                        }}
+                        transition={{
+                          duration: 6,
+                          repeat: Infinity,
+                          times: [0.35, 0.65, 0.72, 1],
+                          ease: "easeInOut",
+                        }}
+                      />
+                      {/* Right branch: Quality Review (150,44) -> Hub (100,8) */}
+                      <motion.path
+                        d="M 150,44 L 150,22 L 100,22 L 100,8"
+                        fill="none"
+                        stroke="#10B981"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeDasharray="20 120"
+                        initial={{ strokeDashoffset: 120, opacity: 0 }}
+                        animate={{
+                          strokeDashoffset: [120, -20, -20, 120],
+                          opacity: [0, 0.9, 0, 0],
+                        }}
+                        transition={{
+                          duration: 6,
+                          repeat: Infinity,
+                          times: [0.35, 0.65, 0.72, 1],
+                          ease: "easeInOut",
+                        }}
+                      />
+                    </>
                   )}
                 </svg>
               </div>
