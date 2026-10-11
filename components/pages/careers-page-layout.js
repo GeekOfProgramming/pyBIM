@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { useLanguage } from "@/lib/LanguageContext";
 import WorkWithUsHero from "@/components/careers/work-with-us-hero";
+import HowWeWorkSection from "@/components/careers/how-we-work-section";
 import {
   ChevronRight,
   CheckCircle2,
@@ -13,11 +14,7 @@ import {
   Briefcase,
   ArrowRight,
   Copy,
-  Check,
-  ShieldCheck,
-  FileCheck2,
-  Workflow,
-  Sparkles
+  Check
 } from "lucide-react";
 
 export default function CareersPageLayout({ jobs }) {
@@ -63,78 +60,7 @@ export default function CareersPageLayout({ jobs }) {
       <WorkWithUsHero />
 
       {/* S02: How We Work (Extracted Culture Section) */}
-      <section id="culture" className="scroll-mt-24 py-20 lg:py-28 border-b border-brand-border bg-brand-surface">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-
-          {/* Section Introduction */}
-          <div className="max-w-3xl mb-12 lg:mb-16">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="h-px bg-brand-primary w-8 sm:w-12" aria-hidden="true" />
-              <span className="text-xs font-mono font-bold text-brand-primary tracking-widest uppercase">
-                {t("careers.culture.eyebrow")}
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-4">
-              {t("careers.culture.title")}
-            </h2>
-            <p className="text-base sm:text-lg font-sans text-brand-textSecondary leading-relaxed">
-              {t("careers.culture.desc")}
-            </p>
-          </div>
-
-          {/* Four Principles Grid */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
-            <div className="bg-brand-cardElevated border border-brand-border rounded-3xl p-7 sm:p-8 shadow-xs hover:shadow-md transition-all hover:border-brand-primary/40">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
-                <ShieldCheck className="w-5 h-5" aria-hidden="true" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-brand-textPrimary mb-2.5">
-                {t("careers.culture.box1_title")}
-              </h3>
-              <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed">
-                {t("careers.culture.box1_desc")}
-              </p>
-            </div>
-
-            <div className="bg-brand-cardElevated border border-brand-border rounded-3xl p-7 sm:p-8 shadow-xs hover:shadow-md transition-all hover:border-brand-primary/40">
-              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center mb-4">
-                <FileCheck2 className="w-5 h-5" aria-hidden="true" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-brand-textPrimary mb-2.5">
-                {t("careers.culture.box2_title")}
-              </h3>
-              <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed">
-                {t("careers.culture.box2_desc")}
-              </p>
-            </div>
-
-            <div className="bg-brand-cardElevated border border-brand-border rounded-3xl p-7 sm:p-8 shadow-xs hover:shadow-md transition-all hover:border-brand-primary/40">
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4">
-                <Cpu className="w-5 h-5" aria-hidden="true" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-brand-textPrimary mb-2.5">
-                {t("careers.culture.box3_title")}
-              </h3>
-              <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed">
-                {t("careers.culture.box3_desc")}
-              </p>
-            </div>
-
-            <div className="bg-brand-cardElevated border border-brand-border rounded-3xl p-7 sm:p-8 shadow-xs hover:shadow-md transition-all hover:border-brand-primary/40">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
-                <Workflow className="w-5 h-5" aria-hidden="true" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-brand-textPrimary mb-2.5">
-                {t("careers.culture.box4_title")}
-              </h3>
-              <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed">
-                {t("careers.culture.box4_desc")}
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </section>
+      <HowWeWorkSection />
 
       {/* S04: Open Positions Section (Preserved Target) */}
       <section id="positions" className="scroll-mt-24 py-24 relative border-b border-brand-border bg-brand-base">
