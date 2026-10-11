@@ -157,29 +157,47 @@
       ]
     },
     "systemBenchmarks": {
-      "section_title": "System Benchmarks",
-      "section_subtitle": "Real-world execution metrics. We measure throughput in milliseconds and precision in zero decimals, not marketing claims.",
-      "terminal_header": "pybim-core-engine v2.4 (x86_64-linux-sovereign)",
-      "command": "pybim-benchmark --target Revit2024 --mode sovereign",
-      "tests": [
+      "eyebrow": "YOUR PROJECT, OUR PROCESS",
+      "heading": "From Your Brief to BIM Delivery.",
+      "description": "A structured approach to defining your project scope, coordinating engineering work, reviewing outputs, and preparing BIM deliverables around your requirements.",
+      "process_note": "A typical engagement framework — adapted to each project's scope and requirements.",
+      "output_label": "TYPICAL OUTPUT",
+      "stages": [
         {
-          "name": "[OK] Model Parsing: 1.2GB Multidisciplinary RVT/IFC4",
-          "result": "< 420ms"
+          "id": "discuss",
+          "label": "DISCUSS",
+          "title": "Start with your brief.",
+          "description": "Share your project objectives, available models or drawings, technical requirements, and the type of BIM support you need.",
+          "output": "Project enquiry and initial requirements"
         },
         {
-          "name": "[OK] Spatial Clash Matrix: 124,000 Intersections",
-          "result": "1.8s (100% Resolved)"
+          "id": "define",
+          "label": "DEFINE",
+          "title": "Agree on the scope.",
+          "description": "Clarify the required disciplines, project responsibilities, model expectations, deliverables, and review criteria before execution.",
+          "output": "Defined scope and deliverables"
         },
         {
-          "name": "[OK] Parameter Injection: 48,000 Element Instances",
-          "result": "640ms"
+          "id": "develop",
+          "label": "DEVELOP",
+          "title": "Build and coordinate.",
+          "description": "Our engineering team undertakes the agreed BIM modeling, coordination, and information-management activities, supported by internal tools where appropriate.",
+          "output": "Developed models and coordinated outputs"
         },
         {
-          "name": "[OK] ISO 19650-5 Air-Gap Security Audit",
-          "result": "PASSED (0 Telemetry Leaks)"
+          "id": "handover",
+          "label": "HANDOVER",
+          "title": "Review and deliver.",
+          "description": "Review the agreed outputs against project requirements and prepare the model files, supporting documentation, and delivery package.",
+          "output": "Reviewed BIM deliverables"
         }
       ],
-      "status": "STATUS: ALL SYSTEMS VERIFIED & COMPLIANT // READY FOR DEPLOYMENT"
+      "closing_statement": "Your requirements define the workflow.",
+      "cta": {
+        "label": "Discuss Your BIM Project",
+        "href": "/contact#audit"
+      },
+      "blueprint_aria_label": "Project Delivery Blueprint: Four-stage engagement process from project brief to BIM delivery."
     },
     "coreArchitects": {
       "section_title": "Core Engineering Unit",
@@ -424,29 +442,47 @@
       ]
     },
     "systemBenchmarks": {
-      "section_title": "Benchmark di Sistema",
-      "section_subtitle": "Metriche di esecuzione sul campo. Misuriamo la velocità in millisecondi e la precisione a zero decimali, non con promesse di marketing.",
-      "terminal_header": "pybim-core-engine v2.4 (x86_64-linux-sovereign)",
-      "command": "pybim-benchmark --target Revit2024 --mode sovereign",
-      "tests": [
+      "eyebrow": "IL TUO PROGETTO, IL NOSTRO PROCESSO",
+      "heading": "Dal Tuo Brief alla Consegna BIM.",
+      "description": "Un approccio strutturato per definire l'ambito del progetto, coordinare le attività ingegneristiche, revisionare gli output e predisporre i deliverable BIM attorno alle tue esigenze.",
+      "process_note": "Un quadro operativo tipico — adattato all'ambito e ai requisiti di ciascun progetto.",
+      "output_label": "OUTPUT TIPICO",
+      "stages": [
         {
-          "name": "[OK] Parsing Modello: 1.2GB RVT/IFC4 Multidisciplinare",
-          "result": "< 420ms"
+          "id": "discuss",
+          "label": "DISCUSSIONE",
+          "title": "Iniziamo dal tuo brief.",
+          "description": "Condividi gli obiettivi di progetto, i modelli o gli elaborati disponibili, i requisiti tecnici e la tipologia di supporto BIM richiesta.",
+          "output": "Richiesta di progetto e requisiti iniziali"
         },
         {
-          "name": "[OK] Matrice Spaziale Clash: 124.000 Intersezioni",
-          "result": "1.8s (100% Risolto)"
+          "id": "define",
+          "label": "DEFINIZIONE",
+          "title": "Concordiamo l'ambito.",
+          "description": "Definiamo le discipline richieste, le responsabilità di progetto, i requisiti dei modelli, i deliverable e i criteri di revisione prima dell'esecuzione.",
+          "output": "Ambito e deliverable definiti"
         },
         {
-          "name": "[OK] Iniezione Parametri: 48.000 Istanze Sincronizzate",
-          "result": "640ms"
+          "id": "develop",
+          "label": "SVILUPPO",
+          "title": "Modellazione e coordinamento.",
+          "description": "Il nostro team di ingegneri svolge le attività concordate di modellazione BIM, coordinamento e gestione informativa, supportato da strumenti interni ove opportuno.",
+          "output": "Modelli sviluppati e output coordinati"
         },
         {
-          "name": "[OK] Audit di Sicurezza Air-Gap ISO 19650-5",
-          "result": "SUPERATO (0 Fughe Dati)"
+          "id": "handover",
+          "label": "CONSEGNA",
+          "title": "Revisione e rilascio.",
+          "description": "Revisioniamo gli output concordati rispetto ai requisiti di progetto e predisponiamo i file di modello, la documentazione a supporto e il pacchetto finale di consegna.",
+          "output": "Deliverable BIM verificati"
         }
       ],
-      "status": "STATO: SISTEMA VERIFICATO & CONFORME // PRONTO PER LA PRODUZIONE"
+      "closing_statement": "I tuoi requisiti definiscono il flusso di lavoro.",
+      "cta": {
+        "label": "Discuti il Tuo Progetto BIM",
+        "href": "/contact#audit"
+      },
+      "blueprint_aria_label": "Project Delivery Blueprint: Processo di collaborazione in quattro fasi, dal brief di progetto alla consegna BIM."
     },
     "coreArchitects": {
       "section_title": "Unità Ingegneristica Principale",
@@ -691,29 +727,47 @@
       ]
     },
     "systemBenchmarks": {
-      "section_title": "System-Benchmarks",
-      "section_subtitle": "Reale Ausführungsmetriken. Wir messen Durchsatz in Millisekunden und Präzision in null Dezimalstellen, nicht in Marketing-Versprechen.",
-      "terminal_header": "pybim-core-engine v2.4 (x86_64-linux-sovereign)",
-      "command": "pybim-benchmark --target Revit2024 --mode sovereign",
-      "tests": [
+      "eyebrow": "IHR PROJEKT, UNSER PROZESS",
+      "heading": "Von Ihrem Briefing zur BIM-Lieferung.",
+      "description": "Ein strukturierter Ansatz zur Festlegung des Leistungsumfangs, zur Koordination der Ingenieurleistungen, zur Prüfung der Arbeitsstände und zur Bereitstellung passgenauer BIM-Lieferergebnisse.",
+      "process_note": "Ein typischer Projektablauf — abgestimmt auf den Umfang und die Anforderungen jedes Projekts.",
+      "output_label": "TYPISCHES ERGEBNIS",
+      "stages": [
         {
-          "name": "[OK] Modell-Parsing: 1.2GB multidisziplinäres RVT/IFC4",
-          "result": "< 420ms"
+          "id": "discuss",
+          "label": "ABSTIMMUNG",
+          "title": "Ausgangspunkt ist Ihr Briefing.",
+          "description": "Teilen Sie Ihre Projektziele, vorhandene Modelle oder Planunterlagen, technische Vorgaben und den gewünschten Umfang der BIM-Unterstützung mit uns.",
+          "output": "Projektanfrage und grundlegende Anforderungen"
         },
         {
-          "name": "[OK] Räumliche Kollisionsmatrix: 124.000 Schnittpunkte",
-          "result": "1.8s (100 % Behoben)"
+          "id": "define",
+          "label": "DEFINITION",
+          "title": "Leistungsumfang vereinbaren.",
+          "description": "Festlegung der beteiligten Fachdisziplinen, Verantwortlichkeiten, Modellerwartungen, Lieferergebnisse und Prüfkriterien vor Beginn der Bearbeitung.",
+          "output": "Definierter Leistungsumfang und Lieferobjekte"
         },
         {
-          "name": "[OK] Parameter-Injektion: 48.000 Instanzen synchronisiert",
-          "result": "640ms"
+          "id": "develop",
+          "label": "ENTWICKLUNG",
+          "title": "Modellierung und Koordination.",
+          "description": "Unser Ingenieurteam übernimmt die vereinbarte BIM-Modellierung, Koordination und das Informationsmanagement, bei Bedarf unterstützt durch interne Werkzeuge.",
+          "output": "Ausgearbeitete Fachmodelle und koordinierte Ergebnisse"
         },
         {
-          "name": "[OK] ISO 19650-5 Air-Gap Sicherheitsprüfung",
-          "result": "BESTANDEN (0 Datenlecks)"
+          "id": "handover",
+          "label": "ÜBERGABE",
+          "title": "Prüfung und Bereitstellung.",
+          "description": "Abgleich der Ergebnisse mit den Projektanforderungen, Aufbereitung der Modelldateien, Begleitdokumentation und Zusammenstellung des Lieferpakets.",
+          "output": "Geprüfte BIM-Lieferergebnisse"
         }
       ],
-      "status": "STATUS: ALLE SYSTEME GEPRÜFT & KONFORM // BEREIT FÜR DEN PRODUKTIONSEINSATZ"
+      "closing_statement": "Ihre Anforderungen bestimmen den Projektablauf.",
+      "cta": {
+        "label": "Besprechen Sie Ihr BIM-Projekt",
+        "href": "/contact#audit"
+      },
+      "blueprint_aria_label": "Project Delivery Blueprint: Vierstufiger Projektablauf vom Briefing bis zur BIM-Übergabe."
     },
     "coreArchitects": {
       "section_title": "Kern-Engineering-Einheit",
