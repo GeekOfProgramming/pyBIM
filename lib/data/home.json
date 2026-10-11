@@ -131,30 +131,86 @@
       ]
     },
     "executionPipeline": {
-      "section_title": "Deterministic Algorithmic Pipeline.",
-      "section_subtitle": "How our platform translates complex project specifications and multidisciplinary models into verified code and zero-clash deliverables.",
-      "steps": [
-        {
-          "step": "01",
-          "title": "Multidisciplinary Ingestion",
-          "desc": "Native Revit models, IFC open standards, and client requirements (EIR/BEP) are programmatically ingested and mapped into a secure spatial graph database."
-        },
-        {
-          "step": "02",
-          "title": "Rule Engine & Logic Synthesis",
-          "desc": "Combining deterministic geometric constraints with isolated AI to generate collision arbitration matrices and parametric rules with zero statistical hallucinations."
-        },
-        {
-          "step": "03",
-          "title": "Direct CDE & API Execution",
-          "desc": "Compiled C# add-ins and Python pipelines execute directly inside your Revit model and cloud CDE, performing automated clash isolation and metadata sync in seconds."
-        },
-        {
-          "step": "04",
-          "title": "ISO 19650 Quality Commit",
-          "desc": "Algorithmic validation against ISO 19650-2 and ISO 19650-5 protocols. Models are committed to production only after 100% automated compliance verification."
+      "eyebrow": "ENGINEERING OUTPUTS",
+      "heading": "Inside a BIM Deliverable.",
+      "description": "Explore a conceptual BIM model to see how geometry, coordination review, and structured model information come together during engineering delivery.",
+      "viewer": {
+        "header": "BIM Evidence Studio",
+        "status": "Illustrative Engineering Demonstration",
+        "disclosure": "Conceptual BIM illustration — not a client project or an actual Revit model.",
+        "datums_label": "ISO 19650 ELEVATION DATUMS",
+        "quick_inspect_label": "SELECT INSPECTION FOCUS",
+        "check_prefix": "CHECK",
+        "annotations": {
+          "level_roof": "ROOF LEVEL",
+          "level_mid": "MID LEVEL",
+          "level_base": "BASE LEVEL",
+          "interface_tag": "INTERFACE 01",
+          "clearance_check": "CLEARANCE CHECK",
+          "qa_verified": "QA VERIFIED"
         }
-      ]
+      },
+      "cta": {
+        "label": "Discuss Your BIM Project",
+        "href": "/contact#audit"
+      },
+      "visual": {
+        "mode": "schematic",
+        "image": null,
+        "image_alt": "Conceptual isometric BIM model schematic showing levels, columns, MEP routing, and QA data callouts",
+        "source_note": "pyBIM Conceptual Architecture Engine v1"
+      },
+      "topics": [
+        {
+          "id": "geometry",
+          "title": "Model Geometry",
+          "tag": "LEVELS & STRUCTURE",
+          "callout": "Floor Slabs · Structural Grid · Spatial Volumes",
+          "description": "Explore the spatial organization of structural elements, levels, and model geometry in a conceptual BIM representation.",
+          "details": [
+            "Multi-level floor slab plates at defined elevations (L01–L03)",
+            "Extruded structural column grid maintaining load alignment",
+            "Spatial building envelope volume with isometric coordinate fidelity"
+          ],
+          "hotspot": {
+            "x": 33,
+            "y": 58
+          }
+        },
+        {
+          "id": "coordination",
+          "title": "Coordination Review",
+          "tag": "INTERFACE INSPECTION",
+          "callout": "MEP Routing · Multidisciplinary Interface Marker",
+          "description": "Inspect an illustrative interface between building elements and engineering systems, highlighting an example issue for multidisciplinary review.",
+          "details": [
+            "Mechanical conduit routing traversing structural bays",
+            "Illustrative clearance inspection marker at service interface",
+            "Multi-discipline coordination review point for engineering oversight"
+          ],
+          "hotspot": {
+            "x": 48,
+            "y": 46
+          }
+        },
+        {
+          "id": "information",
+          "title": "Information QA",
+          "tag": "DATA VERIFICATION",
+          "callout": "Classification Schema · Property Sets · QA Audit",
+          "description": "See how model properties, classifications, and information checks contribute to structured BIM deliverables.",
+          "details": [
+            "Semantic IFC property classification schema (IfcColumn / IfcSlab)",
+            "Structured material specifications and performance parameters",
+            "Engineering deliverable verification prior to release"
+          ],
+          "hotspot": {
+            "x": 67,
+            "y": 28
+          }
+        }
+      ],
+      "diagram_aria_label": "Interactive BIM Evidence Studio: Isometric multi-level conceptual building model demonstrating geometry, coordination review, and information QA."
     },
     "systemBenchmarks": {
       "section_title": "System Benchmarks",
@@ -398,30 +454,86 @@
       ]
     },
     "executionPipeline": {
-      "section_title": "Pipeline Algoritmica Deterministica.",
-      "section_subtitle": "Come la nostra piattaforma trasforma specifiche complesse e modelli multidisciplinari in codice verificato e modelli esenti da clash.",
-      "steps": [
-        {
-          "step": "01",
-          "title": "Ingestione Multidisciplinare",
-          "desc": "Modelli nativi Revit, standard aperti IFC e requisiti di commessa (EIR/BEP) vengono acquisiti e mappati in un database a grafo spaziale sicuro."
-        },
-        {
-          "step": "02",
-          "title": "Motore di Regole e Sintesi Logica",
-          "desc": "Integrazione di vincoli geometrici deterministici con IA isolata per generare matrici di risoluzione interferenze senza allucinazioni statistiche."
-        },
-        {
-          "step": "03",
-          "title": "Esecuzione Diretta CDE & API",
-          "desc": "Add-in C# compilati e script Python operano direttamente nel modello Revit e nel CDE cloud, isolando clash e sincronizzando metadati in pochi secondi."
-        },
-        {
-          "step": "04",
-          "title": "Convalida di Qualità ISO 19650",
-          "desc": "Validazione algoritmica secondo i protocolli ISO 19650-2 e ISO 19650-5. I modelli vengono rilasciati solo dopo la piena conformità automatica."
+      "eyebrow": "OUTPUT INGEGNERISTICI",
+      "heading": "All'Interno di un Deliverable BIM.",
+      "description": "Esplora un modello BIM concettuale per osservare come geometria, revisione del coordinamento e informazioni strutturate del modello convergono durante la consegna ingegneristica.",
+      "viewer": {
+        "header": "BIM Evidence Studio",
+        "status": "Dimostrazione Ingegneristica Illustrativa",
+        "disclosure": "Illustrazione BIM concettuale — non costituisce un progetto cliente né un modello Revit effettivo.",
+        "datums_label": "QUOTE DI ELEVAZIONE ISO 19650",
+        "quick_inspect_label": "SELEZIONA FOCUS DI ISPEZIONE",
+        "check_prefix": "VERIFICA",
+        "annotations": {
+          "level_roof": "LIVELLO COPERTURA",
+          "level_mid": "LIVELLO INTERMEDIO",
+          "level_base": "LIVELLO BASE",
+          "interface_tag": "INTERFACCIA 01",
+          "clearance_check": "VERIFICA INTERFERENZA",
+          "qa_verified": "QA VERIFICATO"
         }
-      ]
+      },
+      "cta": {
+        "label": "Discuti il Tuo Progetto BIM",
+        "href": "/contact#audit"
+      },
+      "visual": {
+        "mode": "schematic",
+        "image": null,
+        "image_alt": "Schema concettuale isometrico di modello BIM che illustra livelli, pilastri, percorsi MEP e callout dati di QA",
+        "source_note": "pyBIM Conceptual Architecture Engine v1"
+      },
+      "topics": [
+        {
+          "id": "geometry",
+          "title": "Geometria del Modello",
+          "tag": "LIVELLI E STRUTTURE",
+          "callout": "Solai di Piano · Griglia Strutturale · Volumi Spaziali",
+          "description": "Esplora l'organizzazione spaziale di elementi strutturali, livelli e geometria del modello in una rappresentazione BIM concettuale.",
+          "details": [
+            "Solai di piano multilivello a quote definite (L01–L03)",
+            "Griglia pilastri strutturali per l'allineamento dei carichi",
+            "Volume dell'involucro edilizio con fedeltà di coordinate isometriche"
+          ],
+          "hotspot": {
+            "x": 33,
+            "y": 58
+          }
+        },
+        {
+          "id": "coordination",
+          "title": "Revisione del Coordinamento",
+          "tag": "ISPEZIONE INTERFACCIA",
+          "callout": "Percorso MEP · Marker Interfaccia Multidisciplinare",
+          "description": "Esamina un'interfaccia illustrativa tra elementi costruttivi e impianti, evidenziando un esempio per la revisione multidisciplinare.",
+          "details": [
+            "Tracciato impiantistico MEP che attraversa le campate strutturali",
+            "Marker illustrativo di verifica interferenza all'interfaccia impiantistica",
+            "Punto di revisione del coordinamento per la supervisione ingegneristica"
+          ],
+          "hotspot": {
+            "x": 48,
+            "y": 46
+          }
+        },
+        {
+          "id": "information",
+          "title": "QA delle Informazioni",
+          "tag": "VERIFICA DATI",
+          "callout": "Schema Classificazione · Property Set · Audit QA",
+          "description": "Scopri come proprietà del modello, classificazioni e verifiche informative contribuiscono a deliverable BIM strutturati.",
+          "details": [
+            "Schema di classificazione semantica IFC (IfcColumn / IfcSlab)",
+            "Specifiche dei materiali strutturati e parametri prestazionali",
+            "Verifica dei deliverable ingegneristici prima del rilascio"
+          ],
+          "hotspot": {
+            "x": 67,
+            "y": 28
+          }
+        }
+      ],
+      "diagram_aria_label": "BIM Evidence Studio Interattivo: Modello concettuale isometrico multilivello che dimostra geometria, revisione del coordinamento e QA delle informazioni."
     },
     "systemBenchmarks": {
       "section_title": "Benchmark di Sistema",
@@ -665,30 +777,86 @@
       ]
     },
     "executionPipeline": {
-      "section_title": "Deterministische algorithmische Pipeline.",
-      "section_subtitle": "Wie unsere Plattform komplexe Projektspezifikationen und multidisziplinäre Modelle in verifizierten Code und kollisionsfreie Ergebnisse überführt.",
-      "steps": [
-        {
-          "step": "01",
-          "title": "Multidisziplinäre Erfassung",
-          "desc": "Native Revit-Modelle, offene IFC-Standards und Auftraggeber-Vorgaben (AIA/BAP) werden automatisiert erfasst und in einer sicheren räumlichen Graphdatenbank abgebildet."
-        },
-        {
-          "step": "02",
-          "title": "Regel-Engine & Logiksynthese",
-          "desc": "Verbindung deterministischer geometrischer Restriktionen mit isolierter KI zur Erstellung kollisionsfreier Matrizen ohne statistische Halluzinationen."
-        },
-        {
-          "step": "03",
-          "title": "Direkte CDE- & API-Ausführung",
-          "desc": "Kompilierte C#-Plugins und Python-Pipelines operieren direkt im Revit-Modell und der Cloud-CDE, isolieren Kollisionen und synchronisieren Metadaten in Sekunden."
-        },
-        {
-          "step": "04",
-          "title": "ISO 19650 Qualitätsfreigabe",
-          "desc": "Algorithmische Validierung nach ISO 19650-2 und ISO 19650-5. Modelle werden erst nach 100 % automatisierter Konformitätsprüfung freigegeben."
+      "eyebrow": "ENGINEERING-LIEFERERGEBNISSE",
+      "heading": "Einblick in ein BIM-Lieferergebnis.",
+      "description": "Erkunden Sie ein konzeptionelles BIM-Modell und erleben Sie, wie Geometrie, Koordinationsprüfung und strukturierte Modellinformationen in der Projektabwicklung zusammenwirken.",
+      "viewer": {
+        "header": "BIM Evidence Studio",
+        "status": "Illustrative Engineering-Demonstration",
+        "disclosure": "Konzeptionelle BIM-Illustration — kein reales Kundenprojekt oder tatsächliches Revit-Modell.",
+        "datums_label": "ISO 19650 HÖHENKOTEN",
+        "quick_inspect_label": "PRÜFFOKUS AUSWÄHLEN",
+        "check_prefix": "PRÜFUNG",
+        "annotations": {
+          "level_roof": "DACHEBENE",
+          "level_mid": "ZWISCHENEBENE",
+          "level_base": "BASISEBENE",
+          "interface_tag": "SCHNITTSTELLE 01",
+          "clearance_check": "KOLLISIONSPRÜFUNG",
+          "qa_verified": "QA VERIFIZIERT"
         }
-      ]
+      },
+      "cta": {
+        "label": "Besprechen Sie Ihr BIM-Projekt",
+        "href": "/contact#audit"
+      },
+      "visual": {
+        "mode": "schematic",
+        "image": null,
+        "image_alt": "Konzeptionelles isometrisches BIM-Modellschema mit Geschossebenen, Stützen, TGA-Trassenführung und QA-Datenabrufen",
+        "source_note": "pyBIM Conceptual Architecture Engine v1"
+      },
+      "topics": [
+        {
+          "id": "geometry",
+          "title": "Modellgeometrie",
+          "tag": "EBENEN & TRAGWERK",
+          "callout": "Geschossdecken · Tragwerksraster · Raumvolumen",
+          "description": "Erkunden Sie die räumliche Gliederung von Strukturelementen, Ebenen und Modellgeometrie in einer konzeptionellen BIM-Darstellung.",
+          "details": [
+            "Mehrgeschossige Deckenebenen auf definierten Höhenkoten (L01–L03)",
+            "Tragendes Stützenraster zur durchgängigen Lastabtragung",
+            "Räumliches Gebäudehüllenvolumen mit isometrischer Koordinatenpräzision"
+          ],
+          "hotspot": {
+            "x": 33,
+            "y": 58
+          }
+        },
+        {
+          "id": "coordination",
+          "title": "Koordinationsprüfung",
+          "tag": "SCHNITTSTELLENPRÜFUNG",
+          "callout": "TGA-Trasse · Multidisziplinärer Schnittstellenmarker",
+          "description": "Prüfen Sie eine illustrative Schnittstelle zwischen Bauelementen und Gebäudetechnik als Beispiel für die multidisziplinäre Abstimmung.",
+          "details": [
+            "TGA-Leitungstrasse durch strukturelle Deckenfelder",
+            "Illustrativer Kollisionsprüfmarker an der Systemschnittstelle",
+            "Multidisziplinärer Prüfpunkt zur ingenieurmäßigen Qualitätssicherung"
+          ],
+          "hotspot": {
+            "x": 48,
+            "y": 46
+          }
+        },
+        {
+          "id": "information",
+          "title": "Informations-QA",
+          "tag": "DATENVERIFIKATION",
+          "callout": "Klassifikationsschema · Property Sets · QA-Audit",
+          "description": "Erfahren Sie, wie Modelleigenschaften, Klassifikationen und Datenprüfungen zu strukturierten BIM-Lieferergebnissen beitragen.",
+          "details": [
+            "Semantisches IFC-Klassifikationsschema (IfcColumn / IfcSlab)",
+            "Strukturierte Materialkennwerte und Leistungsparameter",
+            "Verifikation der Engineering-Lieferergebnisse vor Freigabe"
+          ],
+          "hotspot": {
+            "x": 67,
+            "y": 28
+          }
+        }
+      ],
+      "diagram_aria_label": "Interaktives BIM Evidence Studio: Isometrisches mehrgeschossiges BIM-Modell zur Veranschaulichung von Geometrie, Koordinationsprüfung und Informations-QA."
     },
     "systemBenchmarks": {
       "section_title": "System-Benchmarks",
