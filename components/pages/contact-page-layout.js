@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { ArrowRight, Mail, Phone, Linkedin, CheckCircle2, AlertCircle, Check } from "lucide-react";
-import { emailAddress, phoneDisplay, phoneHref } from "@/lib/site-copy";
+import { ArrowRight, CheckCircle2, AlertCircle, Check } from "lucide-react";
+import DirectChannelsSection from "@/components/contact/direct-channels-section";
 import FAQSection from "@/components/sections/faq-section";
 import { useLanguage } from "@/lib/LanguageContext";
 import BimCalculatorCta from "@/components/sections/bim-calculator-cta";
@@ -469,55 +469,8 @@ export default function ContactPageLayout() {
         </div>
       </section>
 
-      {/* COMBINED CONTACT INFO & SOCIALS SECTION */}
-      <section id="direct-channels" className="scroll-mt-24 bg-brand-surface py-20 border-b border-brand-border">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm mx-auto">
-              {t("contact.channels.badge")}
-            </div>
-            <h3 className="text-3xl md:text-5xl font-bold text-brand-textPrimary tracking-tight">
-              {t("contact.channels.title")}
-            </h3>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto items-stretch">
-            
-            {/* TELEFONO FISSO */}
-            <a href={phoneHref} className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(37,99,235,0.15)] hover:-translate-y-1 hover:border-brand-primary/30">
-              <div className="w-14 h-14 rounded-2xl bg-brand-primary/5 text-brand-primary group-hover:bg-brand-primary/15 flex items-center justify-center mb-6 transition-colors">
-                <Phone className="h-7 w-7" />
-              </div>
-              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.phone_fixed")}</h4>
-              <span className="text-lg font-bold text-brand-textPrimary group-hover:text-brand-primary transition-colors">
-                +39 {phoneDisplay}
-              </span>
-            </a>
-
-            {/* E-MAIL GENERAL */}
-            <a href={`mailto:${emailAddress}`} className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(37,99,235,0.15)] hover:-translate-y-1 hover:border-brand-primary/30">
-              <div className="w-14 h-14 rounded-2xl bg-brand-primary/5 text-brand-primary group-hover:bg-brand-primary/15 flex items-center justify-center mb-6 transition-colors">
-                <Mail className="h-7 w-7" />
-              </div>
-              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.email_general")}</h4>
-              <span className="text-lg font-bold text-brand-textPrimary group-hover:text-brand-primary transition-colors">
-                {emailAddress}
-              </span>
-            </a>
-
-            {/* LINKEDIN */}
-            <a href="https://www.linkedin.com/company/pybim" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center rounded-3xl border border-brand-border dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 text-center transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(10,102,194,0.15)] hover:-translate-y-1 hover:border-[#0A66C2]/30">
-              <div className="w-14 h-14 rounded-2xl bg-brand-primary/5 text-brand-primary group-hover:bg-[#0A66C2]/10 group-hover:text-[#0A66C2] flex items-center justify-center mb-6 transition-colors">
-                <Linkedin className="h-7 w-7" />
-              </div>
-              <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-textSecondary">{t("contact.info.linkedin")}</h4>
-              <span className="text-lg font-bold text-brand-textPrimary group-hover:text-[#0A66C2] transition-colors">
-                {t("contact.info.linkedin_handle")}
-              </span>
-            </a>
-
-          </div>
-        </div>
-      </section>
+      {/* S02 — CONNECT WITH pyBIM (Direct Channels) */}
+      <DirectChannelsSection />
 
       {/* BIM ROI CALCULATOR CTA */}
       <BimCalculatorCta />
