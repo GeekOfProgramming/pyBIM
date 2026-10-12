@@ -80,12 +80,12 @@ Delete the remote branch via GitHub or `git push origin --delete <branch-name>`.
 
 ---
 
-## 3. Deployment Architecture & Staging Retirement
+## 3. Production Deployment Architecture
 
-1. **Direct Production Deployment from `main` (Post-STEP B)**:
-   - Once STEP B deployment automation is active, merging into `main` serves as the authorized production release trigger, directly deploying to the Cloudflare Worker `pybim`.
-   - The legacy `release/pybim-public-v1` staging-only branch is being phased out in favor of this direct GitHub-first release model.
+1. **Direct Production Deployment from `main`**:
+   - Merging an approved PR into `main` automatically triggers production building and deployment via Cloudflare Builds, deploying directly to Worker `pybim`.
+   - The legacy `release/pybim-public-v1` staging-only branch and staging deployment workflows have been completely retired.
 
 2. **Non-Deploying PR Validation**:
-   - Pull Requests to `main` run thorough compilation, security, OpenNext bundling, and Wrangler production dry-runs.
+   - Pull Requests to `main` run thorough compilation, security, OpenNext bundling, and Wrangler production dry-runs via `.github/workflows/pr-validation.yml`.
    - PR validation is strictly non-deploying and does not require Cloudflare production credentials.
