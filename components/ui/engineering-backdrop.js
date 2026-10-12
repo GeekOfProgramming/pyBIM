@@ -36,60 +36,69 @@ export default function EngineeringBackdrop({ variant = "base", className = "" }
         className={`pointer-events-none absolute inset-0 overflow-hidden select-none z-0 ${className}`} 
         aria-hidden="true"
       >
-        {/* Ambient Off-Canvas Edge Lighting Sources */}
-        {/* Top-Left off-canvas glow */}
+        {/* Layer 4: Ambient Off-Canvas Edge Lighting Sources */}
+        {/* Primary Upper-Right off-canvas cool blue illumination */}
         <div 
-          className="absolute -top-36 -left-36 w-[640px] h-[580px] bg-gradient-to-br from-blue-500/[0.12] via-indigo-500/[0.06] to-transparent dark:from-blue-500/[0.14] dark:via-indigo-500/[0.06] dark:to-transparent rounded-full blur-[130px]" 
+          className="absolute -top-36 -right-36 w-[700px] h-[600px] bg-gradient-to-bl from-blue-500/[0.12] via-sky-400/[0.05] to-transparent dark:from-blue-500/[0.14] dark:via-sky-400/[0.06] dark:to-transparent rounded-full blur-[130px]" 
         />
-        {/* Top-Right off-canvas glow */}
+        {/* Subtle Upper-Left edge illumination */}
         <div 
-          className="absolute -top-28 -right-28 w-[680px] h-[520px] bg-gradient-to-bl from-sky-400/[0.11] via-blue-500/[0.05] to-transparent dark:from-sky-400/[0.12] dark:via-blue-600/[0.05] dark:to-transparent rounded-full blur-[120px]" 
+          className="absolute -top-28 -left-28 w-[620px] h-[520px] bg-gradient-to-br from-indigo-500/[0.09] via-blue-500/[0.04] to-transparent dark:from-indigo-500/[0.10] dark:via-blue-500/[0.04] dark:to-transparent rounded-full blur-[125px]" 
         />
-        {/* Subtle Bottom-Right glow entering viewport */}
+        {/* Bottom edge ambient illumination entry */}
         <div 
-          className="absolute -bottom-40 right-1/4 w-[520px] h-[460px] bg-gradient-to-tl from-cyan-400/[0.08] via-blue-400/[0.03] to-transparent dark:from-cyan-400/[0.08] dark:via-blue-500/[0.03] dark:to-transparent rounded-full blur-[120px]" 
+          className="absolute -bottom-40 right-1/4 w-[540px] h-[460px] bg-gradient-to-tl from-cyan-400/[0.07] via-blue-400/[0.03] to-transparent dark:from-cyan-400/[0.08] dark:via-blue-500/[0.03] dark:to-transparent rounded-full blur-[120px]" 
         />
 
-        {/* Home Hero Geometry Layer with Balanced Mask */}
+        {/* Content Protection Mask (Layer 5): Protects central headline, description, and primary CTAs */}
         <div 
           className="absolute inset-0 text-slate-700 dark:text-blue-100"
           style={{
-            maskImage: "radial-gradient(ellipse 95% 85% at 50% 35%, black 45%, transparent 95%)",
-            WebkitMaskImage: "radial-gradient(ellipse 95% 85% at 50% 35%, black 45%, transparent 95%)",
+            maskImage: "radial-gradient(ellipse 94% 84% at 50% 38%, black 44%, transparent 95%)",
+            WebkitMaskImage: "radial-gradient(ellipse 94% 84% at 50% 38%, black 44%, transparent 95%)",
           }}
         >
-          {/* Primary Technical Coordinate Pattern */}
+          {/* Layer 2: Architectural Reference Grid & Dimension Coordinate Pattern */}
           <svg className="w-full h-full opacity-[0.14] dark:opacity-[0.14]" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id={`${baseId}-hero-grid`} width="96" height="96" patternUnits="userSpaceOnUse">
-                {/* Architectural Coordinate Lines */}
+                {/* Orthogonal Reference Grid */}
                 <path d="M 96 0 L 0 0 0 96" fill="none" stroke="currentColor" strokeWidth="0.65" strokeOpacity="0.55" />
-                <path d="M 0 48 L 96 48 M 48 0 L 48 96" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 9" strokeOpacity="0.4" />
+                <path d="M 0 48 L 96 48 M 48 0 L 48 96" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 9" strokeOpacity="0.38" />
+                {/* Architectural Dimension Tick Crosshairs at Intersections */}
+                <path d="M 44 48 L 52 48 M 48 44 L 48 52" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.6" />
                 {/* Structural Node Dots */}
                 <circle cx="0" cy="0" r="1.5" fill="currentColor" opacity="0.75" />
                 <circle cx="96" cy="0" r="1.5" fill="currentColor" opacity="0.75" />
                 <circle cx="0" cy="96" r="1.5" fill="currentColor" opacity="0.75" />
                 <circle cx="96" cy="96" r="1.5" fill="currentColor" opacity="0.75" />
-                {/* Secondary Center Point */}
-                <circle cx="48" cy="48" r="1" fill="currentColor" opacity="0.5" />
+                {/* Digital Node Center Coordinate */}
+                <circle cx="48" cy="48" r="1" fill="currentColor" opacity="0.55" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill={`url(#${baseId}-hero-grid)`} />
           </svg>
 
-          {/* Hero Heroic Architectural Linework (Vector Accents in Periphery) */}
-          <svg className="absolute inset-0 w-full h-full opacity-[0.16] dark:opacity-[0.16]" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            {/* Top-Right to Center-Right Drafting Guide Lines */}
-            <line x1="85%" y1="0%" x2="100%" y2="45%" stroke="currentColor" strokeWidth="0.85" strokeDasharray="4 8" strokeOpacity="0.65" />
-            <line x1="70%" y1="0%" x2="95%" y2="70%" stroke="currentColor" strokeWidth="0.65" strokeOpacity="0.5" />
-            <circle cx="85%" cy="30%" r="3.5" fill="none" stroke="currentColor" strokeWidth="0.85" opacity="0.7" />
+          {/* Layer 2 & 3: Heroic Deterministic Architectural Linework & Digital Intelligence Elements */}
+          <svg className="absolute inset-0 w-full h-full opacity-[0.17] dark:opacity-[0.16]" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            {/* Top-Right Architectural Drafting Guide Vectors Framing the Schematic Card */}
+            <line x1="84%" y1="0%" x2="100%" y2="46%" stroke="currentColor" strokeWidth="0.85" strokeDasharray="4 8" strokeOpacity="0.65" />
+            <line x1="72%" y1="0%" x2="96%" y2="68%" stroke="currentColor" strokeWidth="0.65" strokeOpacity="0.5" />
+            
+            {/* Sparse Drafting Arc / Radius Guide Fragment in Upper Periphery */}
+            <path d="M 880 0 A 280 280 0 0 0 600 280" fill="none" stroke="currentColor" strokeWidth="0.65" strokeDasharray="3 7" strokeOpacity="0.4" />
+            <circle cx="85%" cy="30%" r="4" fill="none" stroke="currentColor" strokeWidth="0.85" opacity="0.7" />
             <circle cx="85%" cy="30%" r="1.5" fill="currentColor" opacity="0.75" />
             
-            {/* Left Edge Drafting Guide Lines */}
-            <line x1="0%" y1="20%" x2="18%" y2="55%" stroke="currentColor" strokeWidth="0.65" strokeOpacity="0.5" />
-            <line x1="5%" y1="10%" x2="25%" y2="80%" stroke="currentColor" strokeWidth="0.65" strokeDasharray="6 10" strokeOpacity="0.45" />
-            <circle cx="18%" cy="55%" r="3" fill="none" stroke="currentColor" strokeWidth="0.85" opacity="0.65" />
-            <circle cx="18%" cy="55%" r="1.5" fill="currentColor" opacity="0.7" />
+            {/* Left Edge Architectural Datum Line & Elevation Lead Fragment */}
+            <line x1="0%" y1="22%" x2="18%" y2="54%" stroke="currentColor" strokeWidth="0.7" strokeOpacity="0.5" />
+            <line x1="4%" y1="12%" x2="24%" y2="80%" stroke="currentColor" strokeWidth="0.65" strokeDasharray="6 10" strokeOpacity="0.45" />
+            <circle cx="18%" cy="54%" r="3.5" fill="none" stroke="currentColor" strokeWidth="0.85" opacity="0.65" />
+            <circle cx="18%" cy="54%" r="1.5" fill="currentColor" opacity="0.7" />
+
+            {/* Subtle Horizon Level Datum Line across Lower Viewport Edge */}
+            <line x1="12%" y1="88%" x2="48%" y2="88%" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 12" strokeOpacity="0.35" />
+            <line x1="75%" y1="92%" x2="98%" y2="92%" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 12" strokeOpacity="0.35" />
           </svg>
         </div>
       </div>

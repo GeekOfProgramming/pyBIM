@@ -45,7 +45,7 @@ export default function FinalProjectCtaBanner() {
 
           {/* RIGHT COLUMN: The High-Conversion Intake Card directing to /contact#audit */}
           <div className="lg:col-span-6">
-            <div className="rounded-3xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-8 md:p-10 shadow-xl dark:shadow-2xl text-left backdrop-blur-md relative overflow-hidden">
+            <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-8 md:p-10 shadow-xl shadow-slate-200/50 dark:shadow-2xl dark:shadow-slate-950/40 text-left backdrop-blur-md relative overflow-hidden transition-colors">
               {/* Top Accent Line */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-brand-accent to-emerald-500" />
 
