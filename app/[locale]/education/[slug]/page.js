@@ -1,12 +1,12 @@
 import { redirect, notFound } from "next/navigation";
-import { allEducationData } from "@/lib/data/education-data";
+import { legacyEducationSlugs } from "@/lib/data/legacy-slugs";
 
 export function generateStaticParams() {
   const locales = ["en", "it", "de"];
   return locales.flatMap((locale) =>
-    allEducationData.map((post) => ({
+    legacyEducationSlugs.map((slug) => ({
       locale,
-      slug: post.slug
+      slug
     }))
   );
 }
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
 export default function EducationPostPage({ params }) {
   const locale = params?.locale || "en";
   const slug = params?.slug;
-  const isKnownPlaceholder = allEducationData.some((item) => item.slug === slug);
+  const isKnownPlaceholder = legacyEducationSlugs.includes(slug);
 
   if (isKnownPlaceholder) {
     redirect(`/${locale}/education`);
@@ -31,3 +31,4 @@ export default function EducationPostPage({ params }) {
 
   notFound();
 }
+

@@ -97,8 +97,8 @@ c:\bim\
 ├── lib/
 │   ├── data/                         # Data-driven JSON & JS sources
 │   │   ├── home.json                 # Complete 8-section content across en, it, de
-│   │   ├── education-data.js         # Technical tutorials & article datasets
-│   │   ├── projects-data.js          # Case studies & portfolio projects
+│   │   ├── legacy-slugs.js           # Lightweight compatibility manifest for legacy URLs
+│   │   ├── portfolio-public-data.js  # Curated portfolio & R&D workstreams
 │   │   ├── servicesPageData.js       # Services capabilities data
 │   │   ├── team-data.json            # Leadership & engineering profiles
 │   │   └── testimonials-data.json    # Enterprise client testimonials
