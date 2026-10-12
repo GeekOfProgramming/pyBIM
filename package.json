@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "build:worker": "opennextjs-cloudflare build",
-    "preview:worker": "opennextjs-cloudflare preview"
+    "preview:worker": "opennextjs-cloudflare preview",
+    "test:security": "node scripts/test-security.mjs"
   },
   "dependencies": {
     "cloudinary": "^2.10.0",
@@ -17,7 +18,7 @@
     "jose": "^6.2.3",
     "lucide-react": "^0.468.0",
     "next": "14.2.35",
-    "nodemailer": "^6.9.16",
+    "nodemailer": "^10.1.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-markdown": "^10.1.0",

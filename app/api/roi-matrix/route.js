@@ -1,6 +1,8 @@
 import nodemailer from "nodemailer";
 import dns from "dns/promises";
 import { buildHybridRoiWorkbook } from "@/lib/roiExcelGenerator";
+import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
+import { escapeHtml, isValidEmail } from "@/lib/security";
 
 const FREE_EMAIL_PROVIDERS = [
   "gmail.com", "yahoo.com", "yahoo.it", "hotmail.com", "hotmail.it", 
@@ -11,6 +13,25 @@ const FREE_EMAIL_PROVIDERS = [
 
 export async function POST(req) {
   try {
+    const clientIp = getClientIp(req);
+
+    // Rate Limiting: Max 5 ROI calculations per 60 seconds per IP
+    const rateCheck = checkRateLimit(clientIp, 'roi-matrix', 5, 60 * 1000);
+    if (!rateCheck.allowed) {
+      console.warn(`[SECURITY ALERT - RATE LIMIT EXCEEDED] IP: ${clientIp} exceeded ROI matrix limit.`);
+      return Response.json(
+        { ok: false, error: `Too many calculation requests. Please wait ${rateCheck.retryAfterSeconds} seconds before trying again.` },
+        { 
+          status: 429, 
+          headers: { 
+            'Retry-After': String(rateCheck.retryAfterSeconds),
+            'X-RateLimit-Limit': '5',
+            'X-RateLimit-Remaining': '0',
+          } 
+        }
+      );
+    }
+
     const body = await req.json();
     const { name, companyName, email, modelerCount, hourlyRate, language = 'en' } = body;
 
@@ -26,6 +47,10 @@ export async function POST(req) {
       return Response.json({ ok: false, error: "Missing required calculation parameters." }, { status: 400 });
     }
 
+    if (!isValidEmail(email)) {
+      return Response.json({ ok: false, error: "Invalid email format." }, { status: 400 });
+    }
+
     const numModelers = parseInt(modelerCount, 10);
     const rateHourly = parseFloat(hourlyRate);
 
@@ -39,9 +64,6 @@ export async function POST(req) {
 
     // Corporate domain validation
     const emailParts = email.toLowerCase().trim().split("@");
-    if (emailParts.length !== 2) {
-      return Response.json({ ok: false, error: "Invalid email format." }, { status: 400 });
-    }
     const domain = emailParts[1];
 
     const isDev = process.env.NODE_ENV !== "production";
@@ -104,16 +126,21 @@ export async function POST(req) {
           },
         });
 
+        const safeName = escapeHtml(name);
+        const safeCompany = escapeHtml(companyName);
+        const safeEmail = escapeHtml(email);
+        const safeLanguage = escapeHtml(language.toUpperCase());
+
         transporter.sendMail({
           from: `pyBIM Portal <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
           to: process.env.CONTACT_TO,
-          subject: `[Protected ROI Matrix - 3-Tab Hybrid (${language.toUpperCase()})] ${companyName} (${numModelers} modelers @ €${rateHourly}/hr)`,
+          subject: `[Protected ROI Matrix - 3-Tab Hybrid (${safeLanguage})] ${companyName.replace(/[\r\n]/g, ' ')} (${numModelers} modelers @ €${rateHourly}/hr)`,
           html: `
             <h3>Protected 3-Tab Hybrid ROI Matrix Downloaded</h3>
-            <p><strong>Language Selected:</strong> ${language.toUpperCase()}</p>
-            <p><strong>Lead Name:</strong> ${name}</p>
-            <p><strong>Company:</strong> ${companyName}</p>
-            <p><strong>Corporate Email:</strong> ${email}</p>
+            <p><strong>Language Selected:</strong> ${safeLanguage}</p>
+            <p><strong>Lead Name:</strong> ${safeName}</p>
+            <p><strong>Company:</strong> ${safeCompany}</p>
+            <p><strong>Corporate Email:</strong> ${safeEmail}</p>
             <p><strong>BIM Modelers Count:</strong> ${numModelers}</p>
             <p><strong>Hourly Rate:</strong> €${rateHourly}/hr</p>
             <p><strong>Working Weeks:</strong> ${workingWeeks} wks</p>

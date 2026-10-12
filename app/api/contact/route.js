@@ -1,5 +1,7 @@
 import nodemailer from "nodemailer";
 import dns from "dns/promises";
+import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
+import { escapeHtml, isValidEmail } from "@/lib/security";
 
 const FREE_EMAIL_PROVIDERS = [
   "gmail.com", "yahoo.com", "yahoo.it", "hotmail.com", "hotmail.it", 
@@ -10,6 +12,25 @@ const FREE_EMAIL_PROVIDERS = [
 
 export async function POST(req) {
   try {
+    const clientIp = getClientIp(req);
+
+    // Rate Limiting: Max 5 submissions per 60 seconds per IP
+    const rateCheck = checkRateLimit(clientIp, 'contact', 5, 60 * 1000);
+    if (!rateCheck.allowed) {
+      console.warn(`[SECURITY ALERT - RATE LIMIT EXCEEDED] IP: ${clientIp} exceeded contact form limit.`);
+      return Response.json(
+        { ok: false, error: `Too many submissions. Please wait ${rateCheck.retryAfterSeconds} seconds before trying again.` },
+        { 
+          status: 429, 
+          headers: { 
+            'Retry-After': String(rateCheck.retryAfterSeconds),
+            'X-RateLimit-Limit': '5',
+            'X-RateLimit-Remaining': '0',
+          } 
+        }
+      );
+    }
+
     const body = await req.json();
     const { name, companyName, email, phone, service, teamScale, architecture, fileSize, message } = body;
 
@@ -20,11 +41,12 @@ export async function POST(req) {
       return Response.json({ ok: false, error: "Missing required fields" }, { status: 400 });
     }
 
-    // Extract domain from email
-    const emailParts = email.toLowerCase().trim().split("@");
-    if (emailParts.length !== 2) {
+    if (!isValidEmail(email)) {
       return Response.json({ ok: false, error: "Invalid email format." }, { status: 400 });
     }
+
+    // Extract domain from email
+    const emailParts = email.toLowerCase().trim().split("@");
     const domain = emailParts[1];
 
     const isDev = process.env.NODE_ENV !== "production";
@@ -33,7 +55,7 @@ export async function POST(req) {
     // Check if free email provider
     if (!isDev && !isPybimInternal && FREE_EMAIL_PROVIDERS.includes(domain)) {
       return Response.json(
-        { ok: false, error: "ثبت درخواست انحصارا از طریق آدرس ایمیل شرکتی معتبر امکانپذیر است." },
+        { ok: false, error: "A valid corporate email address is required. Public email providers are not permitted." },
         { status: 400 }
       );
     }
@@ -47,7 +69,7 @@ export async function POST(req) {
         }
       } catch (mxError) {
         return Response.json(
-          { ok: false, error: "ثبت درخواست انحصارا از طریق آدرس ایمیل شرکتی معتبر امکانپذیر است." },
+          { ok: false, error: "A valid corporate email address is required. Public email providers are not permitted." },
           { status: 400 }
         );
       }
@@ -62,7 +84,7 @@ export async function POST(req) {
       );
     }
 
-    // Send Email
+    // Send Email with HTML escaping to prevent injection/stored XSS
     try {
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
@@ -74,23 +96,31 @@ export async function POST(req) {
         }
       });
 
+      const safeName = escapeHtml(name);
+      const safeCompany = escapeHtml(companyName);
+      const safeEmail = escapeHtml(email);
+      const safePhone = escapeHtml(phone || "-");
+      const safeService = escapeHtml(selectedService);
+      const safeTeamScale = escapeHtml(selectedTeamScale);
+      const safeMessage = escapeHtml(message);
+
       await transporter.sendMail({
         from: `pyBIM Website <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
         to: process.env.CONTACT_TO,
-        subject: `New Technical Audit Request: ${companyName}`,
+        subject: `New Technical Audit Request: ${companyName.replace(/[\r\n]/g, ' ')}`,
         replyTo: email,
         html: `
           <h2>New Technical Audit Request</h2>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Name:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${name}</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Company:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${companyName}</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Email:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${email}</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Phone:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${phone || "-"}</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Service of Interest:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${selectedService}</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Team / Practice Scale:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${selectedTeamScale}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Name:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safeName}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Company:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safeCompany}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Email:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safeEmail}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Phone:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safePhone}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Service of Interest:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safeService}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Team / Practice Scale:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safeTeamScale}</td></tr>
           </table>
           <p><strong>Message / Project Description:</strong></p>
-          <p style="white-space: pre-wrap; padding: 12px; background: #f5f5f5; border-radius: 4px;">${message}</p>
+          <p style="white-space: pre-wrap; padding: 12px; background: #f5f5f5; border-radius: 4px;">${safeMessage}</p>
         `
       });
 

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose/jwt/verify";
+import { applySecurityHeaders } from "@/lib/security";
 
 const locales = ['en', 'it', 'de'];
 const defaultLocale = 'en';
@@ -10,11 +11,8 @@ export async function middleware(req) {
   const hostname = req.nextUrl.hostname || '';
   const isStagingPreview = hostname.includes('workers.dev') || process.env.ENVIRONMENT === 'staging';
 
-  function applyStagingHeaders(response) {
-    if (isStagingPreview) {
-      response.headers.set('X-Robots-Tag', 'noindex, nofollow');
-    }
-    return response;
+  function attachHeaders(response) {
+    return applySecurityHeaders(response, isStagingPreview);
   }
 
   // Protect Portal Routes (Fail-closed: requires valid token and configured secret)
@@ -27,7 +25,7 @@ export async function middleware(req) {
     if (!token || !secretKey) {
       const url = req.nextUrl.clone();
       url.pathname = `/${currentLocale}/login`;
-      return applyStagingHeaders(NextResponse.redirect(url));
+      return attachHeaders(NextResponse.redirect(url));
     }
     
     try {
@@ -35,7 +33,7 @@ export async function middleware(req) {
     } catch (err) {
       const url = req.nextUrl.clone();
       url.pathname = `/${currentLocale}/login`;
-      return applyStagingHeaders(NextResponse.redirect(url));
+      return attachHeaders(NextResponse.redirect(url));
     }
   }
 
@@ -45,13 +43,13 @@ export async function middleware(req) {
   );
 
   if (pathnameHasLocale) {
-    return applyStagingHeaders(NextResponse.next());
+    return attachHeaders(NextResponse.next());
   }
 
   // Redirect if there is no locale (and it's not an excluded path)
   const url = req.nextUrl.clone();
   url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
-  return applyStagingHeaders(NextResponse.redirect(url));
+  return attachHeaders(NextResponse.redirect(url));
 }
 
 export const config = {

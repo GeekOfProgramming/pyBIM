@@ -1,7 +1,28 @@
 import { NextResponse } from "next/server";
+import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
+import { isValidEmail } from "@/lib/security";
 
 export async function POST(req) {
   try {
+    const clientIp = getClientIp(req);
+
+    // Rate Limiting: Max 5 applications per 60 seconds per IP
+    const rateCheck = checkRateLimit(clientIp, 'careers', 5, 60 * 1000);
+    if (!rateCheck.allowed) {
+      console.warn(`[SECURITY ALERT - RATE LIMIT EXCEEDED] IP: ${clientIp} exceeded careers application limit.`);
+      return NextResponse.json(
+        { ok: false, error: `Too many submissions. Please wait ${rateCheck.retryAfterSeconds} seconds before trying again.` },
+        { 
+          status: 429, 
+          headers: { 
+            'Retry-After': String(rateCheck.retryAfterSeconds),
+            'X-RateLimit-Limit': '5',
+            'X-RateLimit-Remaining': '0',
+          } 
+        }
+      );
+    }
+
     const body = await req.json();
     const { name, email, githubUrl } = body;
 
@@ -13,8 +34,7 @@ export async function POST(req) {
       );
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!isValidEmail(email)) {
       return NextResponse.json(
         { ok: false, error: "Invalid email format." },
         { status: 400 }

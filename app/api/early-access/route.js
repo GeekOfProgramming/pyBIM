@@ -1,5 +1,7 @@
 import nodemailer from "nodemailer";
 import dns from "dns/promises";
+import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
+import { escapeHtml, isValidEmail } from "@/lib/security";
 
 const FREE_EMAIL_PROVIDERS = [
   "gmail.com", "yahoo.com", "yahoo.it", "hotmail.com", "hotmail.it", 
@@ -10,6 +12,25 @@ const FREE_EMAIL_PROVIDERS = [
 
 export async function POST(req) {
   try {
+    const clientIp = getClientIp(req);
+
+    // Rate Limiting: Max 5 submissions per 60 seconds per IP
+    const rateCheck = checkRateLimit(clientIp, 'early-access', 5, 60 * 1000);
+    if (!rateCheck.allowed) {
+      console.warn(`[SECURITY ALERT - RATE LIMIT EXCEEDED] IP: ${clientIp} exceeded early-access limit.`);
+      return Response.json(
+        { ok: false, error: `Too many submissions. Please wait ${rateCheck.retryAfterSeconds} seconds before trying again.` },
+        { 
+          status: 429, 
+          headers: { 
+            'Retry-After': String(rateCheck.retryAfterSeconds),
+            'X-RateLimit-Limit': '5',
+            'X-RateLimit-Remaining': '0',
+          } 
+        }
+      );
+    }
+
     const body = await req.json();
     const { 
       name, 
@@ -27,11 +48,12 @@ export async function POST(req) {
       return Response.json({ ok: false, error: "Missing required fields" }, { status: 400 });
     }
 
-    // Extract domain from email
-    const emailParts = email.toLowerCase().trim().split("@");
-    if (emailParts.length !== 2) {
+    if (!isValidEmail(email)) {
       return Response.json({ ok: false, error: "Invalid email format." }, { status: 400 });
     }
+
+    // Extract domain from email
+    const emailParts = email.toLowerCase().trim().split("@");
     const domain = emailParts[1];
 
     const isDev = process.env.NODE_ENV !== "production";
@@ -84,12 +106,22 @@ export async function POST(req) {
       }
     });
 
+    const safeName = escapeHtml(name);
+    const safeCompany = escapeHtml(companyName);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone || "Not specified");
+    const safeArchitecture = escapeHtml(architecture);
+    const safeTeamScale = escapeHtml(teamScale);
+    const safeEcosystem = escapeHtml(ecosystem);
+    const safeSecurityLevel = escapeHtml(securityLevel);
+    const safeNotes = escapeHtml(notes || "None provided");
+
     // 1. Send Internal Notification Email to pyBIM Engineering / Admin
     try {
       await transporter.sendMail({
         from: `pyBIM Priority Queue <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
         to: process.env.CONTACT_TO,
-        subject: `[Early Access Application] ${companyName} (${queueReference})`,
+        subject: `[Early Access Application] ${companyName.replace(/[\r\n]/g, ' ')} (${queueReference})`,
         replyTo: email,
         html: `
           <div style="font-family: Arial, sans-serif; color: #1e293b; max-width: 650px; margin: auto; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; background: #ffffff;">
@@ -100,19 +132,19 @@ export async function POST(req) {
             </div>
 
             <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 20px;">
-              <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; width: 35%;"><strong>Applicant Name:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${name}</td></tr>
-              <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Company:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${companyName}</td></tr>
-              <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Corporate Email:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;"><a href="mailto:${email}" style="color: #2563eb;">${email}</a></td></tr>
-              <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Phone:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${phone || "Not specified"}</td></tr>
-              <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Target Architecture:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0; color: #2563eb; font-weight: bold;">${architecture}</td></tr>
-              <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Practice Scale:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${teamScale}</td></tr>
-              <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Software Ecosystem:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${ecosystem}</td></tr>
-              <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Security Level:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold; color: #dc2626;">${securityLevel}</td></tr>
+              <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; width: 35%;"><strong>Applicant Name:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${safeName}</td></tr>
+              <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Company:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${safeCompany}</td></tr>
+              <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Corporate Email:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${safeEmail}</td></tr>
+              <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Phone:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${safePhone}</td></tr>
+              <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Target Architecture:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0; color: #2563eb; font-weight: bold;">${safeArchitecture}</td></tr>
+              <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Practice Scale:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${safeTeamScale}</td></tr>
+              <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Software Ecosystem:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${safeEcosystem}</td></tr>
+              <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Security Level:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold; color: #dc2626;">${safeSecurityLevel}</td></tr>
             </table>
 
             <div style="background: #f1f5f9; padding: 14px; border-radius: 8px; font-size: 13px; line-height: 1.6;">
               <strong style="display: block; margin-bottom: 4px; color: #334155;">Workflow Bottlenecks & Notes:</strong>
-              <div style="white-space: pre-wrap; color: #475569;">${notes || "None provided"}</div>
+              <div style="white-space: pre-wrap; color: #475569;">${safeNotes}</div>
             </div>
           </div>
         `
