@@ -12,7 +12,7 @@ export default function HeroSection() {
   const schematic = data.schematic || (homeData.en).hero.schematic;
 
   return (
-    <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-40 lg:pb-32 px-6 lg:px-8 w-full bg-brand-base text-brand-textPrimary overflow-hidden border-b border-brand-border">
+    <section id="hero" className="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-40 lg:pb-32 px-6 lg:px-8 w-full bg-brand-base text-brand-textPrimary overflow-hidden border-b border-brand-border">
       {/* Custom Home Hero — Parametric BIM × Digital Intelligence */}
       <EngineeringBackdrop variant="home-hero" />
 
