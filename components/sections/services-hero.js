@@ -193,8 +193,8 @@ export default function ServicesHero({ data }) {
       aria-label="Services Hero"
       className="scroll-mt-28 relative w-full overflow-hidden bg-brand-base pt-16 pb-16 md:pt-24 md:pb-24 lg:pt-28 lg:pb-32 border-b border-brand-border/60 transition-colors"
     >
-      {/* Family A (Base) Architectural Background */}
-      <ServicesSectionBackdrop variant="base" />
+      {/* Custom Services Hero — Engineering Signal Flow */}
+      <ServicesSectionBackdrop variant="services-hero" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 xl:gap-16 items-center">
@@ -551,30 +551,30 @@ export default function ServicesHero({ data }) {
                 id="pipeline-phase-spec-panel"
                 role="tabpanel"
                 aria-labelledby={`pipeline-phase-tab-${activeNode.id || "revit"}`}
-                className="px-4 sm:px-5 py-4 bg-slate-950 text-slate-300 border-t border-brand-border/80 font-mono text-caption leading-relaxed"
+                className="px-4 sm:px-5 py-4 bg-slate-900/90 dark:bg-slate-950 text-slate-200 dark:text-slate-300 border-t border-brand-border/80 font-mono text-caption leading-relaxed"
               >
-                <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 text-slate-400 text-caption mb-2.5 pb-2 border-b border-slate-800">
-                  <div className="flex items-center gap-1.5 font-semibold text-cyan-400">
+                <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 text-slate-300 dark:text-slate-400 text-caption mb-2.5 pb-2 border-b border-slate-700/80 dark:border-slate-800">
+                  <div className="flex items-center gap-1.5 font-semibold text-blue-400 dark:text-cyan-400">
                     <Info className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                     <span>{labels.specOverview}</span>
                   </div>
-                  <span className="text-slate-400 font-medium shrink-0">
+                  <span className="text-slate-300 dark:text-slate-400 font-medium shrink-0">
                     {labels.pipelineMode}
                   </span>
                 </div>
 
                 {/* Factual Phase Engineering Overview */}
-                <div className="text-slate-200 text-caption leading-relaxed">
+                <div className="text-white dark:text-slate-200 text-caption leading-relaxed">
                   {logs[activeNodeIndex] || logs[0]}
                 </div>
 
                 {/* Technical Verification Discipline Metadata */}
-                <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 pt-2.5 mt-2.5 border-t border-slate-800/80 text-caption text-slate-400">
+                <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 pt-2.5 mt-2.5 border-t border-slate-700/80 dark:border-slate-800/80 text-caption text-slate-300 dark:text-slate-400">
                   <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-cyan-400 shrink-0" />
                     <span>{activeNode.meta}</span>
                   </span>
-                  <span className="text-cyan-400 font-semibold shrink-0">
+                  <span className="text-blue-400 dark:text-cyan-400 font-semibold shrink-0">
                     [{labels.activePhase}: {activeNode.step}]
                   </span>
                 </div>

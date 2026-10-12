@@ -169,7 +169,179 @@ export default function EngineeringBackdrop({ variant = "base", className = "" }
   }
 
   // =========================================================================
-  // 2. HOME FAMILY A: Architectural BIM Canvas (base / white / #080C14)
+  // 2. SERVICES HERO: Engineering Signal Flow Composition
+  // =========================================================================
+  if (variant === "services-hero") {
+    return (
+      <div 
+        className={`pointer-events-none absolute inset-0 overflow-hidden select-none z-0 ${className}`} 
+        aria-hidden="true"
+      >
+        {/* Layer 4: Ambient Off-Canvas Edge Lighting Sources */}
+        {/* Primary Upper-Right off-canvas cool blue illumination */}
+        <div 
+          className="absolute -top-32 -right-32 w-[720px] h-[620px] bg-gradient-to-bl from-blue-500/[0.15] via-sky-400/[0.07] to-transparent dark:from-blue-500/[0.17] dark:via-sky-400/[0.07] dark:to-transparent rounded-full blur-[125px]" 
+        />
+        {/* Secondary Upper-Left off-canvas indigo/blue illumination */}
+        <div 
+          className="absolute -top-24 -left-24 w-[620px] h-[520px] bg-gradient-to-br from-indigo-500/[0.11] via-blue-500/[0.05] to-transparent dark:from-indigo-500/[0.12] dark:via-blue-500/[0.05] dark:to-transparent rounded-full blur-[120px]" 
+        />
+        {/* Subtle Lower-Right edge cyan illumination */}
+        <div 
+          className="absolute -bottom-36 right-1/4 w-[540px] h-[460px] bg-gradient-to-tl from-cyan-400/[0.09] via-blue-400/[0.04] to-transparent dark:from-cyan-400/[0.10] dark:via-blue-500/[0.04] dark:to-transparent rounded-full blur-[120px]" 
+        />
+
+        {/* Content Protection & Vignette Mask: Protects central headline, copy & primary CTAs */}
+        <div 
+          className="absolute inset-0 text-slate-800 dark:text-cyan-100"
+          style={{
+            maskImage: "radial-gradient(ellipse 96% 88% at 48% 36%, black 40%, transparent 95%)",
+            WebkitMaskImage: "radial-gradient(ellipse 96% 88% at 48% 36%, black 40%, transparent 95%)",
+          }}
+        >
+          {/* Layer 2: Architectural Reference Grid & Dimension Coordinate Pattern (Family A base) */}
+          <svg className="w-full h-full opacity-[0.16] dark:opacity-[0.14]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id={`${baseId}-services-hero-grid`} width="96" height="96" patternUnits="userSpaceOnUse">
+                {/* Major Orthogonal Reference Lines */}
+                <path d="M 96 0 L 0 0 0 96" fill="none" stroke="currentColor" strokeWidth="0.7" strokeOpacity="0.6" />
+                {/* Secondary Drafting Subdivisions */}
+                <path d="M 0 48 L 96 48 M 48 0 L 48 96" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 9" strokeOpacity="0.4" />
+                {/* Intersection Crosshairs */}
+                <path d="M 44 48 L 52 48 M 48 44 L 48 52" stroke="currentColor" strokeWidth="0.8" strokeOpacity="0.7" />
+                {/* Structural Node Dots */}
+                <circle cx="0" cy="0" r="1.5" fill="currentColor" opacity="0.8" />
+                <circle cx="96" cy="0" r="1.5" fill="currentColor" opacity="0.8" />
+                <circle cx="0" cy="96" r="1.5" fill="currentColor" opacity="0.8" />
+                <circle cx="96" cy="96" r="1.5" fill="currentColor" opacity="0.8" />
+                <circle cx="48" cy="48" r="1.1" fill="currentColor" opacity="0.55" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill={`url(#${baseId}-services-hero-grid)`} />
+          </svg>
+
+          {/* Layer 2 & 3: Engineering Signal Flow Paths & Workflow Coordination Geometry */}
+          {/* ViewBox coordinate system 1440x800 for precision routing and framing */}
+          <svg 
+            className="absolute inset-0 w-full h-full opacity-[0.24] dark:opacity-[0.20]" 
+            viewBox="0 0 1440 800" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice"
+          >
+            {/* --- SIGNAL PATH ROUTE 1: PRIMARY TOP-RIGHT PIPELINE BUS (Framing right technical panel) --- */}
+            {/* Stepped 90-degree orthogonal bus line */}
+            <polyline 
+              points="820,50 820,110 870,110 870,70 1420,70" 
+              stroke="currentColor" 
+              strokeWidth="0.85" 
+              strokeOpacity="0.65" 
+            />
+            {/* Bus Branch Drop into Right Schematic Container */}
+            <line x1="870" y1="110" x2="870" y2="660" stroke="currentColor" strokeWidth="0.8" strokeDasharray="6 8" strokeOpacity="0.5" />
+            <line x1="1410" y1="70" x2="1410" y2="660" stroke="currentColor" strokeWidth="0.8" strokeDasharray="6 8" strokeOpacity="0.5" />
+            
+            {/* Channel Route Indicators & Node Taps */}
+            <circle cx="820" cy="50" r="3" fill="currentColor" opacity="0.85" />
+            <circle cx="870" cy="110" r="2.5" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.8" />
+            <circle cx="1060" cy="70" r="2.5" fill="currentColor" opacity="0.8" />
+            <circle cx="1240" cy="70" r="2.5" fill="currentColor" opacity="0.8" />
+            <circle cx="1410" cy="70" r="3" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.8" />
+
+            {/* --- SIGNAL PATH ROUTE 2: TRANS-PIPELINE STEPPED INTERCONNECTS --- */}
+            {/* Horizontal data rail leading across upper-right periphery */}
+            <line x1="900" y1="150" x2="1380" y2="150" stroke="currentColor" strokeWidth="0.65" strokeDasharray="4 10" strokeOpacity="0.45" />
+            {/* 90-degree stepped signal tap */}
+            <polyline 
+              points="1020,150 1020,185 1160,185 1160,220" 
+              stroke="currentColor" 
+              strokeWidth="0.75" 
+              strokeOpacity="0.6" 
+            />
+            <circle cx="1020" cy="150" r="2" fill="currentColor" opacity="0.75" />
+            <circle cx="1160" cy="185" r="2" fill="currentColor" opacity="0.75" />
+            <circle cx="1160" cy="220" r="2" fill="currentColor" opacity="0.75" />
+
+            {/* Signal Flow Branch 3: Lower-Right Handover Route */}
+            <polyline 
+              points="870,660 870,695 1200,695 1200,735 1420,735" 
+              stroke="currentColor" 
+              strokeWidth="0.85" 
+              strokeOpacity="0.65" 
+            />
+            <circle cx="870" cy="660" r="3" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.8" />
+            <circle cx="1200" cy="695" r="2.5" fill="currentColor" opacity="0.8" />
+            <circle cx="1420" cy="735" r="3" fill="currentColor" opacity="0.85" />
+
+            {/* --- ENGINEERING DRAFTING COORDINATE LABELS & CALIBRATION TICKS --- */}
+            {/* Signal Bus Labels along top rail */}
+            <text x="890" y="64" fill="currentColor" fontSize="8.5" fontFamily="monospace" fontWeight="600" opacity="0.75">CH_01 // INGEST</text>
+            <text x="1080" y="64" fill="currentColor" fontSize="8.5" fontFamily="monospace" fontWeight="600" opacity="0.75">CH_02 // VALIDATE</text>
+            <text x="1260" y="64" fill="currentColor" fontSize="8.5" fontFamily="monospace" fontWeight="600" opacity="0.75">CH_03 // EXECUTE</text>
+
+            {/* Corner Alignment Ticks framing the Workflow Ledger */}
+            <path d="M 855 95 L 855 80 L 870 80" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.75" />
+            <path d="M 1410 80 L 1425 80 L 1425 95" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.75" />
+            <path d="M 1425 645 L 1425 660 L 1410 660" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.75" />
+            <path d="M 870 660 L 855 660 L 855 645" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.75" />
+
+            {/* --- LEFT FLANK ORTHOGONAL FEED ROUTING (Framing primary headline copy) --- */}
+            {/* Vertical Signal Spine on far left */}
+            <line x1="38" y1="120" x2="38" y2="700" stroke="currentColor" strokeWidth="0.8" strokeOpacity="0.55" />
+            {/* Orthogonal branches tapping into editorial hierarchy */}
+            <polyline points="38,200 78,200 78,235" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.65" />
+            <circle cx="38" cy="200" r="2.5" fill="currentColor" opacity="0.8" />
+            <circle cx="78" cy="235" r="2" fill="currentColor" opacity="0.75" />
+            <text x="86" y="204" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.75">FEED // .RVT</text>
+
+            <polyline points="38,400 88,400 88,435" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.65" />
+            <circle cx="38" cy="400" r="2.5" fill="currentColor" opacity="0.8" />
+            <circle cx="88" cy="435" r="2" fill="currentColor" opacity="0.75" />
+            <text x="96" y="404" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.75">PROC // API</text>
+
+            <polyline points="38,600 78,600 78,635" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.65" />
+            <circle cx="38" cy="600" r="2.5" fill="currentColor" opacity="0.8" />
+            <circle cx="78" cy="635" r="2" fill="currentColor" opacity="0.75" />
+            <text x="86" y="604" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.75">DISP // IFC4</text>
+
+            {/* Diagonal Engineering Calibration Guide across bottom left */}
+            <line x1="38" y1="720" x2="320" y2="720" stroke="currentColor" strokeWidth="0.6" strokeDasharray="5 11" strokeOpacity="0.4" />
+            <circle cx="320" cy="720" r="2" fill="currentColor" opacity="0.6" />
+
+            {/* --- DIGITAL TEXTURE: CLUSTERED NODE MATRICES IN PERIPHERY --- */}
+            {/* Discrete 3x2 micro dot clusters near signal junctions */}
+            {[0, 1].map((row) =>
+              [0, 1, 2].map((col) => (
+                <circle 
+                  key={`dot-${row}-${col}`} 
+                  cx={770 + col * 12} 
+                  cy={130 + row * 12} 
+                  r="1.2" 
+                  fill="currentColor" 
+                  opacity="0.6" 
+                />
+              ))
+            )}
+            {[0, 1].map((row) =>
+              [0, 1, 2].map((col) => (
+                <circle 
+                  key={`dot-b-${row}-${col}`} 
+                  cx={1340 + col * 12} 
+                  cy={680 + row * 12} 
+                  r="1.2" 
+                  fill="currentColor" 
+                  opacity="0.6" 
+                />
+              ))
+            )}
+          </svg>
+        </div>
+      </div>
+    );
+  }
+
+  // =========================================================================
+  // 3. HOME FAMILY A: Architectural BIM Canvas (base / white / #080C14)
   // =========================================================================
   if (variant === "home-base") {
     return (
@@ -223,9 +395,9 @@ export default function EngineeringBackdrop({ variant = "base", className = "" }
   }
 
   // =========================================================================
-  // 3. HOME FAMILY B: Digital Intelligence Canvas (surface / #F1F5F9 / #0F172A)
+  // 4. FAMILY B (Surface / Digital Intelligence Canvas): Reusable across all pages
   // =========================================================================
-  if (variant === "home-surface") {
+  if (variant === "surface" || variant === "home-surface") {
     return (
       <div 
         className={`pointer-events-none absolute inset-0 overflow-hidden select-none z-0 ${className}`} 
@@ -270,65 +442,52 @@ export default function EngineeringBackdrop({ variant = "base", className = "" }
   }
 
   // =========================================================================
-  // 4. LEGACY SURFACE: Backward-compatible rendering for other pages
-  // =========================================================================
-  if (variant === "surface") {
-    return (
-      <div 
-        className={`pointer-events-none absolute inset-0 overflow-hidden select-none z-0 ${className}`} 
-        aria-hidden="true"
-      >
-        <div 
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[400px] bg-gradient-to-b from-brand-primary/[0.04] via-sky-500/[0.02] to-transparent dark:from-brand-primary/[0.09] dark:via-sky-500/[0.03] dark:to-transparent rounded-full blur-[110px]" 
-        />
-        <div 
-          className="absolute inset-0 text-slate-800 dark:text-blue-200"
-          style={{
-            maskImage: "radial-gradient(ellipse 75% 60% at 50% 35%, black 20%, transparent 80%)",
-            WebkitMaskImage: "radial-gradient(ellipse 75% 60% at 50% 35%, black 20%, transparent 80%)",
-          }}
-        >
-          <svg className="w-full h-full opacity-[0.035] dark:opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id={`${baseId}-eng-surface-pat`} width="64" height="64" patternUnits="userSpaceOnUse">
-                <path d="M 64 0 L 0 0 0 64" fill="none" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.4" />
-                <circle cx="0" cy="0" r="1" fill="currentColor" opacity="0.5" />
-                <circle cx="64" cy="64" r="1" fill="currentColor" opacity="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill={`url(#${baseId}-eng-surface-pat)`} />
-          </svg>
-        </div>
-      </div>
-    );
-  }
-
-  // =========================================================================
-  // 5. LEGACY BASE: Backward-compatible rendering for other pages
+  // 5. FAMILY A (Base / Architectural BIM Canvas): Reusable across all pages
   // =========================================================================
   return (
     <div 
       className={`pointer-events-none absolute inset-0 overflow-hidden select-none z-0 ${className}`} 
       aria-hidden="true"
     >
+      {/* Soft Ambient Off-Canvas Edge Illumination */}
       <div 
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[380px] bg-gradient-to-b from-blue-500/[0.035] via-cyan-500/[0.015] to-transparent dark:from-blue-500/[0.07] dark:via-cyan-500/[0.025] dark:to-transparent rounded-full blur-[120px]" 
+        className="absolute -top-36 left-8 w-[580px] h-[420px] bg-gradient-to-br from-blue-500/[0.09] via-indigo-500/[0.04] to-transparent dark:from-blue-500/[0.10] dark:via-indigo-500/[0.04] dark:to-transparent rounded-full blur-[130px]" 
       />
       <div 
-        className="absolute inset-0 text-slate-700 dark:text-slate-300"
+        className="absolute -bottom-36 right-8 w-[580px] h-[420px] bg-gradient-to-tl from-sky-400/[0.08] via-blue-400/[0.03] to-transparent dark:from-sky-400/[0.09] dark:via-blue-500/[0.03] dark:to-transparent rounded-full blur-[130px]" 
+      />
+
+      {/* Architectural Drafting Geometry (Orthogonal Grid, Guide Dashes & Tick Marks) */}
+      <div 
+        className="absolute inset-0 text-slate-700 dark:text-slate-200"
         style={{
-          maskImage: "radial-gradient(ellipse 80% 65% at 50% 40%, black 25%, transparent 85%)",
-          WebkitMaskImage: "radial-gradient(ellipse 80% 65% at 50% 40%, black 25%, transparent 85%)",
+          maskImage: "radial-gradient(ellipse 90% 80% at 50% 45%, black 40%, transparent 94%)",
+          WebkitMaskImage: "radial-gradient(ellipse 90% 80% at 50% 45%, black 40%, transparent 94%)",
         }}
       >
-        <svg className="w-full h-full opacity-[0.025] dark:opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-full h-full opacity-[0.13] dark:opacity-[0.11]" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id={`${baseId}-eng-base-pat`} width="128" height="128" patternUnits="userSpaceOnUse">
-              <path d="M 0 64 L 128 64 M 64 0 L 64 128" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.3" />
-              <circle cx="64" cy="64" r="1.5" fill="currentColor" opacity="0.4" />
+            <pattern id={`${baseId}-arch-base-pat`} width="112" height="112" patternUnits="userSpaceOnUse">
+              {/* Thin Orthogonal Drafting Lines */}
+              <line x1="0" y1="56" x2="112" y2="56" stroke="currentColor" strokeWidth="0.65" strokeOpacity="0.5" />
+              <line x1="56" y1="0" x2="56" y2="112" stroke="currentColor" strokeWidth="0.65" strokeOpacity="0.5" />
+              
+              {/* Faint Intermediate Subdivisions */}
+              <line x1="0" y1="0" x2="112" y2="0" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 11" strokeOpacity="0.35" />
+              <line x1="0" y1="112" x2="112" y2="112" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 11" strokeOpacity="0.35" />
+              
+              {/* Architectural Intersection Markers / Dimension Crosshairs */}
+              <path d="M 52 56 L 60 56 M 56 52 L 56 60" stroke="currentColor" strokeWidth="0.85" strokeOpacity="0.75" />
+              
+              {/* Subtle Discrete Node Dots */}
+              <circle cx="56" cy="56" r="1.5" fill="currentColor" opacity="0.65" />
+              <circle cx="0" cy="0" r="1.2" fill="currentColor" opacity="0.45" />
+              <circle cx="112" cy="0" r="1.2" fill="currentColor" opacity="0.45" />
+              <circle cx="0" cy="112" r="1.2" fill="currentColor" opacity="0.45" />
+              <circle cx="112" cy="112" r="1.2" fill="currentColor" opacity="0.45" />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill={`url(#${baseId}-eng-base-pat)`} />
+          <rect width="100%" height="100%" fill={`url(#${baseId}-arch-base-pat)`} />
         </svg>
       </div>
     </div>
