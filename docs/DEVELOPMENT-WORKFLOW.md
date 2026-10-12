@@ -84,8 +84,14 @@ Delete the remote branch via GitHub or `git push origin --delete <branch-name>`.
 
 1. **Direct Production Deployment from `main`**:
    - Merging an approved PR into `main` automatically triggers production building and deployment via Cloudflare Builds, deploying directly to Worker `pybim`.
-   - The legacy `release/pybim-public-v1` staging-only branch and staging deployment workflows have been completely retired.
+   - The repository's staging deployment workflows have been retired. The remote staging Worker (`pybim-staging`), staging token, staging environment, and release branch will be decommissioned in a separate administrative step following verified production operations.
 
-2. **Non-Deploying PR Validation**:
+2. **Wrangler Configuration Consolidation**:
+   - Both `wrangler.jsonc` (default) and `wrangler.production.jsonc` are consolidated to target the production Worker `pybim` identically with zero drift.
+   - The Cloudflare Builds Deploy Command explicitly references `wrangler.production.jsonc`:
+     `npx wrangler deploy --config wrangler.production.jsonc`
+   - Maintaining both files ensures consistent behavior whether commands are executed with or without the `--config` flag.
+
+3. **Non-Deploying PR Validation**:
    - Pull Requests to `main` run thorough compilation, security, OpenNext bundling, and Wrangler production dry-runs via `.github/workflows/pr-validation.yml`.
    - PR validation is strictly non-deploying and does not require Cloudflare production credentials.
