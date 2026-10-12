@@ -6,32 +6,30 @@
 .pnp.js
 .yarn/install-state.gz
 
-# testing
+# testing & coverage
 /coverage
 
-# next.js
+# next.js build output
 /.next/
 /out/
 
-# production
+# production output
 /build
 
-# misc
+# misc & OS
 .DS_Store
+Thumbs.db
 *.pem
 
-# debug
+# debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
+# local environment & secrets
 .env*.local
 .env
-
-# vercel
-.vercel
 
 # typescript
 *.tsbuildinfo
@@ -45,10 +43,16 @@ GitHub Files/
 .vscode/
 config.toml
 
-# temporary audit artifacts
+# temporary audit artifacts & caches
 .qa-audit/
+.qa_audit/
 artifacts/
 
 # cloudflare & opennext build artifacts
 .open-next/
 .wrangler/
+wrangler-types.d.ts
+
+# legacy provider local cache
+.vercel
+
