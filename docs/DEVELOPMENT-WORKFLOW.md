@@ -59,12 +59,12 @@ git push origin <branch-name>
 
 ### Step 5: Open a Pull Request into `main`
 - Open a PR on GitHub targeting the `main` branch.
-- Automated CI on GitHub Actions will run:
+- Automated CI on GitHub Actions runs (or can be validated locally via `npm run test:security && npm run build`):
   - `npm ci --include=dev`
   - `npm run test:security`
   - `npm run build:worker`
   - `npx wrangler deploy --dry-run --config wrangler.production.jsonc`
-- Verify all automated CI checks pass.
+- Verify all test and build checks pass cleanly without deploying to production.
 
 ### Step 6: Merge Using Linear History
 - Merge the PR into `main` using a linear-history-compatible method (Squash & Merge or Rebase & Merge).

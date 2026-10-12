@@ -11,8 +11,6 @@
     "test:security": "node scripts/test-security.mjs"
   },
   "dependencies": {
-    "cloudinary": "^2.10.0",
-    "embla-carousel-react": "^8.6.0",
     "exceljs": "^4.4.0",
     "framer-motion": "^12.43.0",
     "jose": "^6.2.3",
@@ -20,9 +18,7 @@
     "next": "14.2.35",
     "nodemailer": "^10.1.0",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-markdown": "^10.1.0",
-    "remark-gfm": "^4.0.1"
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@opennextjs/cloudflare": "1.15.1",

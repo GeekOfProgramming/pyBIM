@@ -18,7 +18,7 @@ pyBIM is a specialized engineering and software development lab for the Architec
   - **ROI Excel Generator (`lib/roiExcelGenerator.js`)**: Generates ISO 19650 audited, multi-sheet Excel workbooks dynamically.
 - 🌓 **Dual Theme Engine**: Native Dark and Light mode toggle with zero hydration flash (`ThemeContext.js`).
 - 🌐 **Trilingual Native Routing**: Complete localization across English (`en`), Italian (`it`), and German (`de`).
-- ⚡ **High-Performance Next.js 14 App Router**: 165 static pre-rendered routes (SSG/SSR) with optimal first-load JS.
+- ⚡ **High-Performance Next.js 14 App Router**: 127 static pre-rendered routes (SSG/SSR) with optimal first-load JS.
 - 🔍 **Enterprise SEO & Structured Data**: JSON-LD schemas (`Organization`, `ProfessionalService`, `FAQPage`), dynamic sitemaps, and localized `hreflang` tags.
 
 ---
@@ -27,7 +27,7 @@ pyBIM is a specialized engineering and software development lab for the Architec
 
 ### Web & Cloud Platform
 - **Framework**: [Next.js 14 (App Router)](https://nextjs.org/)
-- **UI & Styling**: React 18, [Tailwind CSS](https://tailwindcss.com/), Lucide Icons, Embla Carousel
+- **UI & Styling**: React 18, [Tailwind CSS](https://tailwindcss.com/), Lucide Icons
 - **Security & Auth**: JWT (`jose`), Sliding Window In-Memory Rate Limiting, Middleware Protection
 - **Spreadsheet Generation**: ExcelJS (Dynamic ISO 19650 ROI Matrix)
 - **Deployment**: Cloudflare Workers + OpenNext / European Cloud / Air-Gapped Local Appliance
@@ -90,7 +90,6 @@ c:\bim\
 │   │   │   ├── CoreArchitects.js     # Practicing Engineers & AI Architects
 │   │   │   ├── StrategicEcosystem.js # Autodesk API & OpenBIM Integration
 │   │   │   └── ValidationProtocol.js # Proof of Concept (PoC) Audit CTA
-│   │   ├── bim-calculator-cta.js     # Standalone ROI modal & CTA
 │   │   ├── faq-section.js            # Technical FAQ Accordion
 │   │   └── team-partners-section.js  # Core Team & Ecosystem Showcase
 │   └── ui/                           # Reusable UI (ThemeToggle, CookieConsent, Modals)
@@ -100,8 +99,7 @@ c:\bim\
 │   │   ├── legacy-slugs.js           # Lightweight compatibility manifest for legacy URLs
 │   │   ├── portfolio-public-data.js  # Curated portfolio & R&D workstreams
 │   │   ├── servicesPageData.js       # Services capabilities data
-│   │   ├── team-data.json            # Leadership & engineering profiles
-│   │   └── testimonials-data.json    # Enterprise client testimonials
+│   │   └── team-data.json            # Leadership & engineering profiles
 │   ├── translations/                 # i18n Translation Dictionaries (en, it, de)
 │   │   ├── en/                       # English dictionaries (15 domain files)
 │   │   ├── it/                       # Italian dictionaries (15 domain files)
