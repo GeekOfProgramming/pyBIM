@@ -13,8 +13,8 @@ export default function HeroSection() {
 
   return (
     <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-40 lg:pb-32 px-6 lg:px-8 w-full bg-brand-base text-brand-textPrimary overflow-hidden border-b border-brand-border">
-      {/* Family A — Base Background */}
-      <EngineeringBackdrop variant="base" />
+      {/* Custom Home Hero — Parametric BIM × Digital Intelligence */}
+      <EngineeringBackdrop variant="home-hero" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-16 items-center">

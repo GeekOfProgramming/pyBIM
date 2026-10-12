@@ -39,8 +39,8 @@ export default function ParadigmShift() {
 
   return (
     <section className="relative py-20 md:py-28 lg:py-32 px-6 lg:px-8 w-full bg-brand-surface text-brand-textPrimary border-b border-brand-border overflow-hidden">
-      {/* Family B — Surface Background */}
-      <EngineeringBackdrop variant="surface" />
+      {/* Family B — Digital Intelligence Surface Background */}
+      <EngineeringBackdrop variant="home-surface" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header (Left-aligned editorial layout) */}

@@ -17,8 +17,8 @@ export default function SystemBenchmarks() {
       className="relative py-16 md:py-24 lg:py-28 px-6 lg:px-8 w-full bg-brand-base text-brand-textPrimary border-b border-brand-border overflow-hidden transition-colors"
       aria-labelledby={`${sectionId}-heading`}
     >
-      {/* Family A — Base Architectural Background */}
-      <EngineeringBackdrop variant="base" />
+      {/* Family A — Architectural BIM Canvas Background */}
+      <EngineeringBackdrop variant="home-base" />
 
       <div className="max-w-6xl mx-auto relative z-10">
 
