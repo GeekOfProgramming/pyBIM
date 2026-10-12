@@ -85,6 +85,7 @@ applySecurityHeaders(mockResponse, true);
 assert.strictEqual(mockResponse.headers.get('X-Content-Type-Options'), 'nosniff');
 assert.strictEqual(mockResponse.headers.get('X-Frame-Options'), 'SAMEORIGIN');
 assert.strictEqual(mockResponse.headers.get('Referrer-Policy'), 'strict-origin-when-cross-origin');
+assert.strictEqual(mockResponse.headers.get('X-XSS-Protection'), '0');
 assert.strictEqual(mockResponse.headers.get('X-Robots-Tag'), 'noindex, nofollow');
 console.log('   ✓ Security headers applied correctly');
 
