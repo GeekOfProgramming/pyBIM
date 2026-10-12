@@ -6,49 +6,47 @@
 .pnp.js
 .yarn/install-state.gz
 
-# testing
+# testing & coverage
 /coverage
 
-# next.js
+# next.js build output
 /.next/
 /out/
 
-# production
+# production output
 /build
 
-# misc
+# misc & OS
 .DS_Store
+Thumbs.db
 *.pem
 
-# debug
+# debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
-.env*.local
+# local environment & secrets
 .env
-
-# vercel
-.vercel
+.env.*
+!.env.example
+.dev.vars*
 
 # typescript
 *.tsbuildinfo
 
-# local storage, worktrees & reference archives
-.worktrees/
-GitHub Files/
-*.zip
-.claude/
+# editor & local workspace state
 .idea/
 .vscode/
-config.toml
+.worktrees/
+GitHub Files/
 
-# temporary audit artifacts
-.qa-audit/
+# temporary audit artifacts & caches
+.qa_audit/
 artifacts/
 
 # cloudflare & opennext build artifacts
 .open-next/
 .wrangler/
+wrangler-types.d.ts

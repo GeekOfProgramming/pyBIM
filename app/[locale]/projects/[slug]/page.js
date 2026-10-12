@@ -1,15 +1,8 @@
 import { notFound, redirect } from "next/navigation";
-import { allProjectsData } from "@/lib/data/projects-data";
-import projectsDataJson from "@/lib/data/projects-data.json";
+import { legacyProjectSlugs } from "@/lib/data/legacy-slugs";
 
 // Set of known legacy placeholder slugs from bundled mock datasets
-const legacyPlaceholderSlugs = new Set([
-  ...(Array.isArray(allProjectsData) ? allProjectsData.map((p) => p.slug) : []),
-  ...(Array.isArray(projectsDataJson) ? projectsDataJson.map((p) => p.slug) : []),
-  "automated-clash-detection",
-  "commercial-tower-clash-detection",
-  "hospital-mep-coordination"
-]);
+const legacyPlaceholderSlugs = new Set(legacyProjectSlugs);
 
 export async function generateStaticParams() {
   // During the holding period, do not pre-render unverified project detail pages
@@ -40,3 +33,4 @@ export default async function ProjectDetailPage({ params }) {
   // Unknown slugs return standard 404
   notFound();
 }
+

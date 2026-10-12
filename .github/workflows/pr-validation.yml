@@ -1,0 +1,75 @@
+name: Pull Request Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: pr-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate-pr:
+    name: Validate Pull Request (Linux)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: |
+          npm ci --include=dev
+
+      - name: Print Toolchain Versions
+        run: |
+          echo "=== Node & NPM ==="
+          node --version
+          npm --version
+          echo "=== Next.js ==="
+          npx next --version
+          echo "=== Wrangler ==="
+          npx wrangler --version
+          echo "=== OpenNext Cloudflare ==="
+          npm ls @opennextjs/cloudflare --depth=0
+
+      - name: Run Security Tests
+        run: |
+          npm run test:security
+
+      - name: Build Next.js & OpenNext Cloudflare Worker
+        run: |
+          npm run build:worker
+
+      - name: Verify Worker Artifacts
+        run: |
+          echo "=== Checking .open-next/worker.js ==="
+          if [ ! -f ".open-next/worker.js" ]; then
+            echo "ERROR: .open-next/worker.js was not generated!"
+            exit 1
+          fi
+          ls -lh .open-next/worker.js
+
+          echo "=== Checking .open-next/assets ==="
+          if [ ! -d ".open-next/assets" ]; then
+            echo "ERROR: .open-next/assets directory was not generated!"
+            exit 1
+          fi
+          echo "Asset count: $(find .open-next/assets -type f | wc -l)"
+          du -sh .open-next/assets
+
+      - name: Wrangler Production Dry-Run Check
+        run: |
+          echo "=== Running Wrangler Dry-Run for Production Config ==="
+          npx wrangler deploy --dry-run --config wrangler.production.jsonc
+          echo "SUCCESS: Non-deploying PR validation completed successfully."

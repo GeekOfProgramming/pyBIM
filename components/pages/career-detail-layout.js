@@ -2,6 +2,7 @@
 import Link from "@/components/layout/LocalizedLink";
 import { ChevronLeft, ChevronRight, Briefcase, Mail } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
 export default function CareerDetailLayout({ job }) {
   const { language, t } = useLanguage();
@@ -12,14 +13,7 @@ export default function CareerDetailLayout({ job }) {
     <div className="bg-brand-base min-h-screen pt-24 text-brand-textPrimary">
       {/* Hero Content */}
       <section className="relative overflow-hidden pt-24 pb-12 border-b border-brand-border bg-brand-surface">
-        <div className="absolute inset-0 -z-10">
-          <img 
-            src="/Pictures/General/hvac-industrial.jpg" 
-            alt="Hero Background" 
-            className="w-full h-full object-cover opacity-10 mix-blend-overlay grayscale" 
-          />
-          <div className="absolute inset-0 bg-brand-surface" />
-        </div>
+        <EngineeringBackdrop variant="surface" />
         <div className="mx-auto max-w-4xl px-6 lg:px-8 relative z-10">
           <Link href="/careers" className="inline-flex items-center text-sm font-bold text-brand-accent uppercase tracking-widest hover:text-brand-primary transition-colors mb-6">
             <ChevronLeft className="w-4 h-4 mr-1" />
