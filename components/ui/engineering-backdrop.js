@@ -22,7 +22,12 @@ import { useId } from "react";
  *      sparse concentric construction arcs, delicate orthogonal reference lines,
  *      BIM reference points and computational dots, framing the Manifesto & Progression Rail.
  * 
- * 4. variant="home-base" / variant="base" (Family A — Architectural BIM Canvas)
+ * 4. variant="education-hero" (Knowledge Lattice × BIM Learning × Digital Intelligence — Education Hero)
+ *    - Structured curriculum nodes, sparse diagonal and orthogonal lattice links,
+ *      delicate knowledge matrix micro-dots, off-canvas pale blue / cyan ambient illumination,
+ *      and architectural framing complementing the isometric ArchitecturalCanvas.
+ * 
+ * 5. variant="home-base" / variant="base" (Family A — Architectural BIM Canvas)
  *    - Orthogonal drafting geometry, Revit-inspired construction lines, dimension ticks,
  *      clean drawing-paper aesthetic, and soft diffuse ambient lighting.
  * 
@@ -32,6 +37,198 @@ import { useId } from "react";
  */
 export default function EngineeringBackdrop({ variant = "base", className = "" }) {
   const baseId = useId();
+
+  // =========================================================================
+  // EDUCATION HERO: Knowledge Lattice × BIM Learning × Digital Intelligence
+  // =========================================================================
+  if (variant === "education-hero") {
+    return (
+      <div 
+        className={`pointer-events-none absolute inset-0 overflow-hidden select-none z-0 ${className}`} 
+        aria-hidden="true"
+      >
+        {/* Layer 4: Ambient Off-Canvas Edge Lighting Sources */}
+        {/* Upper-Right: Soft Pale Blue / Cyan Illumination entering from outside the page */}
+        <div 
+          className="absolute -top-32 -right-32 w-[720px] h-[640px] bg-gradient-to-bl from-blue-500/[0.15] via-sky-400/[0.07] to-transparent dark:from-blue-500/[0.17] dark:via-cyan-400/[0.07] dark:to-transparent rounded-full blur-[130px]" 
+        />
+        {/* Upper-Left: Subtle Cool Indigo / Slate-Blue Edge Tint */}
+        <div 
+          className="absolute -top-24 -left-24 w-[600px] h-[520px] bg-gradient-to-br from-indigo-500/[0.10] via-blue-500/[0.05] to-transparent dark:from-indigo-500/[0.12] dark:via-blue-500/[0.05] dark:to-transparent rounded-full blur-[120px]" 
+        />
+        {/* Lower Periphery: Calm Peripheral Blue Falloff */}
+        <div 
+          className="absolute -bottom-36 left-1/3 w-[600px] h-[460px] bg-gradient-to-t from-blue-500/[0.07] via-sky-400/[0.03] to-transparent dark:from-blue-500/[0.08] dark:via-sky-500/[0.03] dark:to-transparent rounded-full blur-[125px]" 
+        />
+
+        {/* Content Protection & Vignette Mask: Protects headline, description and CTA buttons */}
+        <div 
+          className="absolute inset-0 text-slate-700 dark:text-cyan-200"
+          style={{
+            maskImage: "radial-gradient(ellipse 96% 88% at 48% 36%, black 40%, transparent 95%)",
+            WebkitMaskImage: "radial-gradient(ellipse 96% 88% at 48% 36%, black 40%, transparent 95%)",
+          }}
+        >
+          {/* Layer 2: Subtle Underlying Knowledge Matrix Grid (Sparse computational lattice foundation) */}
+          <svg className="w-full h-full opacity-[0.14] dark:opacity-[0.12]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id={`${baseId}-edu-hero-grid`} width="112" height="112" patternUnits="userSpaceOnUse">
+                {/* Thin Orthogonal Reference Lines */}
+                <line x1="0" y1="56" x2="112" y2="56" stroke="currentColor" strokeWidth="0.6" strokeOpacity="0.45" />
+                <line x1="56" y1="0" x2="56" y2="112" stroke="currentColor" strokeWidth="0.6" strokeOpacity="0.45" />
+                {/* Coordinate Crosshairs */}
+                <path d="M 52 56 L 60 56 M 56 52 L 56 60" stroke="currentColor" strokeWidth="0.8" strokeOpacity="0.65" />
+                {/* Corner Knowledge Matrix Micro-Dots */}
+                <circle cx="0" cy="0" r="1.1" fill="currentColor" opacity="0.45" />
+                <circle cx="112" cy="0" r="1.1" fill="currentColor" opacity="0.45" />
+                <circle cx="0" cy="112" r="1.1" fill="currentColor" opacity="0.45" />
+                <circle cx="112" cy="112" r="1.1" fill="currentColor" opacity="0.45" />
+                <circle cx="56" cy="56" r="1.4" fill="currentColor" opacity="0.6" />
+                {/* Subtle Lattice Interconnect Points */}
+                <circle cx="28" cy="28" r="0.8" fill="currentColor" opacity="0.35" />
+                <circle cx="84" cy="84" r="0.8" fill="currentColor" opacity="0.35" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill={`url(#${baseId}-edu-hero-grid)`} />
+          </svg>
+
+          {/* Layer 3: Knowledge Lattice × BIM Learning × Digital Intelligence Vector System */}
+          {/* ViewBox coordinate system 1440x800 for precision framing */}
+          <svg 
+            className="absolute inset-0 w-full h-full opacity-[0.25] dark:opacity-[0.22]" 
+            viewBox="0 0 1440 800" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice"
+          >
+            {/* --- TOP ARCHITECTURAL HORIZONTAL DATUM & SYSTEM COORDINATION --- */}
+            <line x1="60" y1="44" x2="1380" y2="44" stroke="currentColor" strokeWidth="0.65" strokeDasharray="5 10" strokeOpacity="0.4" />
+            
+            {/* Datum Calibration Tag (Left) */}
+            <circle cx="60" cy="44" r="3" fill="currentColor" opacity="0.75" />
+            <text x="74" y="48" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.7">KL // DATUM-01</text>
+            
+            {/* Datum Coordinate Stamp (Right) */}
+            <circle cx="1380" cy="44" r="3" fill="none" stroke="currentColor" strokeWidth="0.9" strokeOpacity="0.75" />
+            <text x="1275" y="48" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.7">REF // 1440.800</text>
+
+            {/* --- LEFT FLANK: STRUCTURED CURRICULUM NODES & ORTHOGONAL GUIDES --- */}
+            {/* Framing the editorial title and status badges */}
+            <line x1="36" y1="120" x2="36" y2="720" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.45" />
+            
+            {/* Node Cluster 1: Learning Initiation */}
+            <circle cx="36" cy="180" r="3.5" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.8" />
+            <circle cx="36" cy="180" r="1.5" fill="currentColor" opacity="0.85" />
+            <line x1="36" y1="180" x2="90" y2="180" stroke="currentColor" strokeWidth="0.7" strokeOpacity="0.6" />
+            <text x="96" y="183" fill="currentColor" fontSize="7.5" fontFamily="monospace" fontWeight="600" opacity="0.75">MOD.01 // CORE BIM</text>
+
+            {/* Node Cluster 2: Computational Synthesis */}
+            <circle cx="36" cy="380" r="3.5" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.8" />
+            <circle cx="36" cy="380" r="1.5" fill="currentColor" opacity="0.85" />
+            <line x1="36" y1="380" x2="90" y2="380" stroke="currentColor" strokeWidth="0.7" strokeOpacity="0.6" />
+            <text x="96" y="383" fill="currentColor" fontSize="7.5" fontFamily="monospace" fontWeight="600" opacity="0.75">MOD.02 // AUTOMATION</text>
+
+            {/* Node Cluster 3: Engineering Integration */}
+            <circle cx="36" cy="580" r="3.5" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.8" />
+            <circle cx="36" cy="580" r="1.5" fill="currentColor" opacity="0.85" />
+            <line x1="36" y1="580" x2="90" y2="580" stroke="currentColor" strokeWidth="0.7" strokeOpacity="0.6" />
+            <text x="96" y="583" fill="currentColor" fontSize="7.5" fontFamily="monospace" fontWeight="600" opacity="0.75">MOD.03 // INTELLIGENCE</text>
+
+            {/* Sparse Diagonal Link between vertical nodes (learning progression) */}
+            <line x1="36" y1="180" x2="96" y2="280" stroke="currentColor" strokeWidth="0.6" strokeDasharray="3 6" strokeOpacity="0.4" />
+            <line x1="96" y1="280" x2="36" y2="380" stroke="currentColor" strokeWidth="0.6" strokeDasharray="3 6" strokeOpacity="0.4" />
+            <circle cx="96" cy="280" r="2" fill="currentColor" opacity="0.6" />
+
+            {/* --- CENTRAL TRANSITION LATTICE: SPARSE NODES & STRUCTURED LINKS --- */}
+            {/* Subtle diagonal and orthogonal links connecting pedagogical domains */}
+            <path 
+              d="M 520 120 L 590 120 L 640 170 L 720 170" 
+              stroke="currentColor" 
+              strokeWidth="0.7" 
+              strokeDasharray="4 6" 
+              strokeOpacity="0.5" 
+              fill="none" 
+            />
+            <circle cx="520" cy="120" r="2.5" fill="currentColor" opacity="0.7" />
+            <circle cx="640" cy="170" r="2" fill="none" stroke="currentColor" strokeWidth="0.8" strokeOpacity="0.7" />
+            <circle cx="720" cy="170" r="2.5" fill="currentColor" opacity="0.75" />
+
+            {/* Sub-node cluster bridging left description to right visual column */}
+            <line x1="720" y1="170" x2="720" y2="240" stroke="currentColor" strokeWidth="0.6" strokeDasharray="2 5" strokeOpacity="0.4" />
+            <line x1="720" y1="240" x2="780" y2="300" stroke="currentColor" strokeWidth="0.6" strokeDasharray="3 6" strokeOpacity="0.4" />
+            <circle cx="720" cy="240" r="1.5" fill="currentColor" opacity="0.5" />
+            <circle cx="780" cy="300" r="2" fill="currentColor" opacity="0.6" />
+
+            {/* --- RIGHT COLUMN FRAMING: SURROUNDING ARCHITECTURAL CANVAS & KNOWLEDGE PANEL --- */}
+            {/* Upper Geometric Framing (Above ArchitecturalCanvas) */}
+            <line x1="840" y1="65" x2="1400" y2="65" stroke="currentColor" strokeWidth="0.7" strokeDasharray="6 8" strokeOpacity="0.5" />
+            <line x1="860" y1="55" x2="860" y2="760" stroke="currentColor" strokeWidth="0.55" strokeDasharray="4 12" strokeOpacity="0.35" />
+            <line x1="1410" y1="55" x2="1410" y2="760" stroke="currentColor" strokeWidth="0.55" strokeDasharray="4 12" strokeOpacity="0.35" />
+
+            {/* Architectural Grid Bubble Marker for Education Knowledge Zone */}
+            <circle cx="840" cy="65" r="10" stroke="currentColor" strokeWidth="0.85" strokeOpacity="0.75" fill="none" />
+            <text x="840" y="69" textAnchor="middle" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.85">E1</text>
+
+            <circle cx="1400" cy="65" r="10" stroke="currentColor" strokeWidth="0.85" strokeOpacity="0.75" fill="none" />
+            <text x="1400" y="69" textAnchor="middle" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.85">E2</text>
+
+            {/* Precision Corner Brackets around Knowledge System */}
+            <path d="M 870 95 L 855 95 L 855 110" stroke="currentColor" strokeWidth="1.1" strokeOpacity="0.7" fill="none" />
+            <path d="M 1395 95 L 1410 95 L 1410 110" stroke="currentColor" strokeWidth="1.1" strokeOpacity="0.7" fill="none" />
+            <path d="M 855 725 L 855 740 L 870 740" stroke="currentColor" strokeWidth="1.1" strokeOpacity="0.7" fill="none" />
+            <path d="M 1410 725 L 1410 740 L 1395 740" stroke="currentColor" strokeWidth="1.1" strokeOpacity="0.7" fill="none" />
+
+            {/* Right Periphery Knowledge Lattice Triangular Sub-Mesh */}
+            {/* Located safely to the right outside the canvas bounds */}
+            <line x1="1390" y1="200" x2="1430" y2="240" stroke="currentColor" strokeWidth="0.65" strokeOpacity="0.55" />
+            <line x1="1430" y1="240" x2="1390" y2="280" stroke="currentColor" strokeWidth="0.65" strokeOpacity="0.55" />
+            <line x1="1390" y1="200" x2="1390" y2="280" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" strokeOpacity="0.4" />
+            <circle cx="1390" cy="200" r="2" fill="currentColor" opacity="0.7" />
+            <circle cx="1430" cy="240" r="2.5" fill="none" stroke="currentColor" strokeWidth="0.9" strokeOpacity="0.8" />
+            <circle cx="1390" cy="280" r="2" fill="currentColor" opacity="0.7" />
+
+            {/* --- COMPUTATIONAL DOT MATRICES & KNOWLEDGE ACCUMULATION FIELDS --- */}
+            {/* Selective Peripheral Dot Field near bottom left (computational training) */}
+            {[0, 1, 2].map((rIdx) =>
+              [0, 1, 2, 3].map((cIdx) => (
+                <circle 
+                  key={`edu-dot-l-${rIdx}-${cIdx}`} 
+                  cx={120 + cIdx * 16} 
+                  cy={640 + rIdx * 16} 
+                  r="1.1" 
+                  fill="currentColor" 
+                  opacity="0.4" 
+                />
+              ))
+            )}
+
+            {/* Micro Dot Matrix near top center (structured synthesis) */}
+            {[0, 1].map((rIdx) =>
+              [0, 1, 2].map((cIdx) => (
+                <circle 
+                  key={`edu-dot-t-${rIdx}-${cIdx}`} 
+                  cx={680 + cIdx * 14} 
+                  cy={80 + rIdx * 14} 
+                  r="1.1" 
+                  fill="currentColor" 
+                  opacity="0.45" 
+                />
+              ))
+            )}
+
+            {/* --- LOWER AXIS & STRATIFICATION DATUM --- */}
+            <line x1="70" y1="765" x2="680" y2="765" stroke="currentColor" strokeWidth="0.6" strokeDasharray="5 12" strokeOpacity="0.35" />
+            <line x1="840" y1="765" x2="1370" y2="765" stroke="currentColor" strokeWidth="0.6" strokeDasharray="5 12" strokeOpacity="0.35" />
+            <circle cx="70" cy="765" r="2" fill="currentColor" opacity="0.6" />
+            <circle cx="1370" cy="765" r="2" fill="currentColor" opacity="0.6" />
+            <text x="700" y="768" fill="currentColor" fontSize="7.5" fontFamily="monospace" fontWeight="600" opacity="0.65" textAnchor="middle">
+              // KNOWLEDGE STRATUM L-00 //
+            </text>
+          </svg>
+        </div>
+      </div>
+    );
+  }
 
   // =========================================================================
   // ABOUT HERO: Architectural Contours × Engineering Evolution Composition

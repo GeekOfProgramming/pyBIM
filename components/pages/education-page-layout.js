@@ -71,8 +71,8 @@ export default function EducationPageLayout() {
   return (
     <div id="education-intro" className="scroll-mt-28 relative w-full bg-brand-base overflow-hidden">
       
-      {/* Family A (Base) Unified Architectural Backdrop */}
-      <EngineeringBackdrop variant="base" />
+      {/* Dedicated Education Hero: Knowledge Lattice × BIM Learning × Digital Intelligence */}
+      <EngineeringBackdrop variant="education-hero" />
 
       {/* ================= MAIN CONTENT LAYER ================= */}
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-12 pb-20 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 w-full z-10">
