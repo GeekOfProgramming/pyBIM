@@ -25,18 +25,18 @@ export default function FAQSection() {
     <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
       {/* Left Column: Heading, Eyebrow, Supporting Description & Contact Prompt */}
       <div className="lg:col-span-5 flex flex-col items-start text-left">
-        <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-xs font-mono font-semibold text-brand-primary mb-6 shadow-xs">
+        <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-xs font-mono font-semibold text-brand-primary tracking-wider mb-6 shadow-xs">
           {t("faq.badge")}
         </div>
 
         <h2
           id={headingId}
-          className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-5"
+          className="text-3xl sm:text-[34px] lg:text-section font-extrabold tracking-tight text-brand-textPrimary leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-5"
         >
           {t("faq.title")}
         </h2>
 
-        <p className="text-body sm:text-lead font-sans text-brand-textSecondary font-medium leading-relaxed mb-8">
+        <p className="text-[17px] sm:text-lead text-brand-textSecondary leading-relaxed mb-8">
           {t("faq.desc")}
         </p>
 
