@@ -29,7 +29,7 @@ export default function FinalProjectCtaBanner() {
               {t.headline}
             </h2>
 
-            <p className="text-gray-600 dark:text-slate-400 text-base md:text-lg leading-relaxed mb-8 font-normal">
+            <p className="text-gray-600 dark:text-slate-400 text-[17px] sm:text-lead leading-relaxed mb-8 font-normal">
               {t.desc}
             </p>
 
@@ -67,7 +67,7 @@ export default function FinalProjectCtaBanner() {
               <div className="mb-6">
                 <Link
                   href="/contact#audit"
-                  className="w-full flex items-center justify-center gap-3 bg-brand-accent hover:bg-brand-accentHover text-white py-4 px-6 rounded-xl font-mono font-bold text-caption tracking-wider transition-all duration-300 shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 uppercase text-center group"
+                  className="w-full flex items-center justify-center gap-3 bg-brand-accent hover:bg-brand-accentHover text-white py-4 px-6 rounded-xl font-mono font-bold text-body-sm tracking-wider transition-all duration-300 shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 uppercase text-center group"
                 >
                   <span>{t.cta}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
