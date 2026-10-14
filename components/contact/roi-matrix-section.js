@@ -232,19 +232,19 @@ export default function RoiMatrixSection() {
             {/* Section H2 Headline */}
             <h2
               id={headingId}
-              className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-5"
+              className="text-3xl sm:text-[34px] lg:text-section font-extrabold tracking-tight text-brand-textPrimary leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-5"
             >
               {t("roi.section.title") || "Estimate the Impact of BIM Automation."}
             </h2>
 
             {/* Introductory Lead */}
-            <p className="text-body sm:text-lead font-sans text-brand-textSecondary font-medium leading-relaxed mb-6">
+            <p className="text-[17px] sm:text-lead text-brand-textSecondary leading-relaxed mb-6">
               {t("roi.section.desc") ||
                 "Explore how repetitive BIM workflows affect engineering capacity and operational costs, and assess the potential value of targeted automation."}
             </p>
 
             {/* Editorial Narrative (Inline lead-ins without box cards) */}
-            <div className="space-y-4 mb-8 text-body-sm font-sans text-brand-textSecondary leading-relaxed">
+            <div className="space-y-4 mb-8 text-body-sm text-brand-textSecondary leading-relaxed">
               <p>
                 <strong className="text-brand-textPrimary font-semibold">
                   {t("roi.narrative.problem_lead") || "The Problem:"}{" "}
@@ -275,7 +275,7 @@ export default function RoiMatrixSection() {
               <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary mb-4">
                 {t("roi.deliverables.title") || "What the Matrix Delivers"}
               </h3>
-              <ul className="space-y-3.5 text-body-sm font-sans text-brand-textSecondary">
+              <ul className="space-y-3.5 text-body-sm text-brand-textSecondary">
                 <li className="flex items-start gap-3">
                   <span
                     className="shrink-0 w-2 h-2 mt-2 rounded-full bg-brand-primary"
@@ -351,7 +351,7 @@ export default function RoiMatrixSection() {
                     <div className="space-y-1.5">
                       <label
                         htmlFor="roi-modeler-count"
-                        className="text-body-sm font-medium font-sans text-brand-textPrimary"
+                        className="text-body-sm font-medium text-brand-textPrimary"
                       >
                         {t("roi.inputs.modeler_count") || "Number of BIM Modelers"}{" "}
                         <span className="text-brand-primary">*</span>
@@ -365,7 +365,7 @@ export default function RoiMatrixSection() {
                         value={modelerCount}
                         onChange={(e) => setModelerCount(e.target.value)}
                         placeholder="e.g. 1"
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
                     </div>
 
@@ -373,7 +373,7 @@ export default function RoiMatrixSection() {
                     <div className="space-y-1.5">
                       <label
                         htmlFor="roi-hourly-rate"
-                        className="text-body-sm font-medium font-sans text-brand-textPrimary"
+                        className="text-body-sm font-medium text-brand-textPrimary"
                       >
                         {t("roi.inputs.hourly_rate") || "Hourly Labor Cost (€)"}{" "}
                         <span className="text-brand-primary">*</span>
@@ -387,7 +387,7 @@ export default function RoiMatrixSection() {
                         value={hourlyRate}
                         onChange={(e) => setHourlyRate(e.target.value)}
                         placeholder="e.g. 85"
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
                     </div>
 
@@ -395,7 +395,7 @@ export default function RoiMatrixSection() {
                     <div className="space-y-1.5">
                       <label
                         htmlFor="roi-hours-wasted"
-                        className="text-body-sm font-medium font-sans text-brand-textPrimary"
+                        className="text-body-sm font-medium text-brand-textPrimary"
                       >
                         {t("roi.inputs.hours_wasted") || "Manual Hours / Week (per modeler)"}{" "}
                         <span className="text-brand-primary">*</span>
@@ -409,7 +409,7 @@ export default function RoiMatrixSection() {
                         value={hoursWasted}
                         onChange={(e) => setHoursWasted(e.target.value)}
                         placeholder="e.g. 12"
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
                     </div>
 
@@ -417,7 +417,7 @@ export default function RoiMatrixSection() {
                     <div className="space-y-1.5">
                       <label
                         htmlFor="roi-working-weeks"
-                        className="text-body-sm font-medium font-sans text-brand-textPrimary"
+                        className="text-body-sm font-medium text-brand-textPrimary"
                       >
                         {t("roi.inputs.working_weeks") || "Working Weeks / Year"}{" "}
                         <span className="text-brand-primary">*</span>
@@ -432,7 +432,7 @@ export default function RoiMatrixSection() {
                         value={workingWeeks}
                         onChange={(e) => setWorkingWeeks(e.target.value)}
                         placeholder="e.g. 48"
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
                     </div>
                   </div>
@@ -457,7 +457,7 @@ export default function RoiMatrixSection() {
                       <span className="text-caption font-mono font-bold text-brand-primary block">
                         50%
                       </span>
-                      <span className="text-[11px] font-sans text-brand-textSecondary block">
+                      <span className="text-[11px] text-brand-textSecondary block">
                         {t("roi.results.conservative") || "Conservative"}
                       </span>
                     </div>
@@ -466,7 +466,7 @@ export default function RoiMatrixSection() {
                       <span className="text-caption font-mono font-bold text-brand-primary block">
                         75%
                       </span>
-                      <span className="text-[11px] font-sans text-brand-textSecondary block">
+                      <span className="text-[11px] text-brand-textSecondary block">
                         {t("roi.results.expected") || "Expected"}
                       </span>
                     </div>
@@ -475,13 +475,13 @@ export default function RoiMatrixSection() {
                       <span className="text-caption font-mono font-bold text-brand-primary block">
                         100%
                       </span>
-                      <span className="text-[11px] font-sans text-brand-textSecondary block">
+                      <span className="text-[11px] text-brand-textSecondary block">
                         {t("roi.results.optimized") || "Optimized"}
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-caption font-sans text-brand-textSecondary leading-relaxed pt-0.5">
+                  <p className="text-caption text-brand-textSecondary leading-relaxed pt-0.5">
                     {t("roi.results.summary_notice") ||
                       "Detailed financial estimates and recovered capacity projections are provided in the full ROI Matrix workbook."}
                   </p>
@@ -503,7 +503,7 @@ export default function RoiMatrixSection() {
                       <div className="space-y-1.5">
                         <label
                           htmlFor="roi-client-name"
-                          className="text-body-sm font-medium font-sans text-brand-textPrimary"
+                          className="text-body-sm font-medium text-brand-textPrimary"
                         >
                           {t("roi.access.name") || "Full Name"} <span className="text-brand-primary">*</span>
                         </label>
@@ -514,7 +514,7 @@ export default function RoiMatrixSection() {
                           value={businessIdentity.name}
                           onChange={(e) => updateIdentity("name", e.target.value)}
                           placeholder={t("roi.access.name_ph") || "Your full name"}
-                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
 
@@ -522,7 +522,7 @@ export default function RoiMatrixSection() {
                       <div className="space-y-1.5">
                         <label
                           htmlFor="roi-client-company"
-                          className="text-body-sm font-medium font-sans text-brand-textPrimary"
+                          className="text-body-sm font-medium text-brand-textPrimary"
                         >
                           {t("roi.access.company") || "Company Name"} <span className="text-brand-primary">*</span>
                         </label>
@@ -533,7 +533,7 @@ export default function RoiMatrixSection() {
                           value={businessIdentity.companyName}
                           onChange={(e) => updateIdentity("companyName", e.target.value)}
                           placeholder={t("roi.access.company_ph") || "Your company name"}
-                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
                     </div>
@@ -542,7 +542,7 @@ export default function RoiMatrixSection() {
                     <div className="space-y-1.5">
                       <label
                         htmlFor="roi-client-email"
-                        className="text-body-sm font-medium font-sans text-brand-textPrimary"
+                        className="text-body-sm font-medium text-brand-textPrimary"
                       >
                         {t("roi.access.email") || "Corporate Email Address"} <span className="text-brand-primary">*</span>
                       </label>
@@ -553,9 +553,9 @@ export default function RoiMatrixSection() {
                         value={businessIdentity.email}
                         onChange={(e) => updateIdentity("email", e.target.value)}
                         placeholder={t("roi.access.email_ph") || "name@company.com"}
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
-                      <p className="text-caption font-sans text-brand-textSecondary pt-0.5">
+                      <p className="text-caption text-brand-textSecondary pt-0.5">
                         {t("roi.access.email_guidance") ||
                           "Corporate domains only. Public providers automatically rejected."}
                       </p>
@@ -572,7 +572,7 @@ export default function RoiMatrixSection() {
                       />
                       <label
                         htmlFor="roi-privacy-consent"
-                        className="text-caption font-sans text-brand-textSecondary leading-normal cursor-pointer select-none"
+                        className="text-caption text-brand-textSecondary leading-normal cursor-pointer select-none"
                       >
                         {t("forms.accept.part1") || "I agree to the"}{" "}
                         <Link
@@ -595,7 +595,7 @@ export default function RoiMatrixSection() {
                     {/* Inline Notice State (Error or In-Preparation) */}
                     {accessNotice && (
                       <div
-                        className={`p-3.5 rounded-xl border flex items-start gap-2.5 text-body-sm font-sans ${
+                        className={`p-3.5 rounded-xl border flex items-start gap-2.5 text-body-sm ${
                           accessNotice.type === "error"
                             ? "bg-red-500/10 border-red-500/25 text-red-700 dark:text-red-400"
                             : "bg-blue-500/10 border-blue-500/25 text-brand-textPrimary"
