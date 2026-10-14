@@ -110,7 +110,7 @@ export default function EngineeringImpact() {
           {/* Eyebrow with blue architectural guide line */}
           <motion.div variants={itemVariants} className="flex items-center gap-3 mb-4">
             <span className="h-px w-8 bg-brand-primary" aria-hidden="true" />
-            <span className="text-xs font-mono font-bold tracking-widest text-brand-primary uppercase">
+            <span className="text-caption font-mono font-bold tracking-wider text-brand-primary uppercase">
               {t("about.impact.v2.eyebrow")}
             </span>
           </motion.div>
@@ -119,7 +119,7 @@ export default function EngineeringImpact() {
           <motion.h2
             id={`${sectionId}-heading`}
             variants={itemVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-brand-textPrimary leading-[1.15]"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold tracking-tight text-brand-textPrimary leading-[1.2] sm:leading-[1.2] lg:leading-[1.2]"
           >
             {t("about.impact.v2.title")}
           </motion.h2>
@@ -127,7 +127,7 @@ export default function EngineeringImpact() {
           {/* Supporting Paragraph */}
           <motion.p
             variants={itemVariants}
-            className="mt-6 text-base sm:text-lg text-brand-textSecondary leading-relaxed"
+            className="mt-6 text-[17px] sm:text-lead text-brand-textSecondary leading-relaxed"
           >
             {t("about.impact.v2.subtitle")}
           </motion.p>
@@ -164,7 +164,7 @@ export default function EngineeringImpact() {
                   }`}
                 >
                   <div className="flex items-center justify-between gap-4 mb-3">
-                    <h3 className="text-base sm:text-lg font-bold text-brand-textPrimary tracking-tight break-words min-w-0">
+                    <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25] break-words min-w-0">
                       {t(item.titleKey)}
                     </h3>
                     <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 ${item.iconBoxStyle}`}>
@@ -172,7 +172,7 @@ export default function EngineeringImpact() {
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-brand-textSecondary leading-relaxed break-words">
+                  <p className="text-body-sm text-brand-textSecondary leading-relaxed break-words">
                     {t(item.descKey)}
                   </p>
                 </button>
@@ -216,7 +216,7 @@ export default function EngineeringImpact() {
                   role="region"
                   aria-label={t("about.impact.v2.inspector.diagram_label")}
                 >
-                  <div className="flex items-center text-xs font-mono text-brand-textSecondary/80 mb-4 px-1">
+                  <div className="flex items-center text-caption font-mono text-brand-textSecondary/80 mb-4 px-1">
                     <span className={`uppercase tracking-wider font-semibold ${
                       currentOutcome.id === "outcome1" 
                         ? "text-brand-primary" 
@@ -240,13 +240,13 @@ export default function EngineeringImpact() {
                         {/* Upper row: Status dot + Full process title */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0" />
-                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                          <h4 className="text-body-sm font-semibold text-brand-textPrimary leading-snug break-words">
                             {t("about.impact.v2.outcome1.diag_step1_title")}
                           </h4>
                         </div>
                         {/* Lower row: Full process description */}
                         <div className="pt-1 border-t border-brand-border/30">
-                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                          <p className="text-caption text-brand-textSecondary leading-relaxed break-words">
                             {t("about.impact.v2.outcome1.diag_step1_sub")}
                           </p>
                         </div>
@@ -262,16 +262,16 @@ export default function EngineeringImpact() {
                         {/* Upper row */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-cyan-500 shrink-0" />
-                          <h4 className="text-sm sm:text-base font-semibold text-cyan-700 dark:text-cyan-300 break-words">
+                          <h4 className="text-body-sm font-semibold text-cyan-700 dark:text-cyan-300 leading-snug break-words">
                             {t("about.impact.v2.outcome1.diag_step2_title")}
                           </h4>
                         </div>
                         {/* Lower row */}
                         <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-cyan-500/20">
-                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                          <p className="text-caption text-brand-textSecondary leading-relaxed break-words">
                             {t("about.impact.v2.outcome1.diag_step2_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 shrink-0 border border-cyan-500/20 font-medium">
+                          <span className="text-technical font-mono px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 shrink-0 border border-cyan-500/20 font-semibold tracking-wider">
                             {t("about.impact.v2.diag.automated")}
                           </span>
                         </div>
@@ -287,16 +287,16 @@ export default function EngineeringImpact() {
                         {/* Upper row */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-brand-primary shrink-0" />
-                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                          <h4 className="text-body-sm font-semibold text-brand-textPrimary leading-snug break-words">
                             {t("about.impact.v2.outcome1.diag_step3_title")}
                           </h4>
                         </div>
                         {/* Lower row */}
                         <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-blue-500/20">
-                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                          <p className="text-caption text-brand-textSecondary leading-relaxed break-words">
                             {t("about.impact.v2.outcome1.diag_step3_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-blue-500/20 text-brand-primary font-medium shrink-0 border border-blue-500/30">
+                          <span className="text-technical font-mono px-2.5 py-0.5 rounded bg-blue-500/20 text-brand-primary font-semibold tracking-wider shrink-0 border border-blue-500/30">
                             {t("about.impact.v2.diag.expert_gate")}
                           </span>
                         </div>
@@ -312,13 +312,13 @@ export default function EngineeringImpact() {
                         {/* Upper row */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0" />
-                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                          <h4 className="text-body-sm font-semibold text-brand-textPrimary leading-snug break-words">
                             {t("about.impact.v2.outcome2.diag_step1_title")}
                           </h4>
                         </div>
                         {/* Lower row */}
                         <div className="pt-1 border-t border-brand-border/30">
-                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                          <p className="text-caption text-brand-textSecondary leading-relaxed break-words">
                             {t("about.impact.v2.outcome2.diag_step1_sub")}
                           </p>
                         </div>
@@ -334,16 +334,16 @@ export default function EngineeringImpact() {
                         {/* Upper row */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-brand-primary shrink-0" />
-                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                          <h4 className="text-body-sm font-semibold text-brand-textPrimary leading-snug break-words">
                             {t("about.impact.v2.outcome2.diag_step2_title")}
                           </h4>
                         </div>
                         {/* Lower row */}
                         <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-blue-500/20">
-                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                          <p className="text-caption text-brand-textSecondary leading-relaxed break-words">
                             {t("about.impact.v2.outcome2.diag_step2_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-blue-500/10 text-brand-primary shrink-0 border border-blue-500/20 font-medium">
+                          <span className="text-technical font-mono px-2.5 py-0.5 rounded bg-blue-500/10 text-brand-primary shrink-0 border border-blue-500/20 font-semibold tracking-wider">
                             {t("about.impact.v2.diag.rule_matrix")}
                           </span>
                         </div>
@@ -359,16 +359,16 @@ export default function EngineeringImpact() {
                         {/* Upper row */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0" />
-                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                          <h4 className="text-body-sm font-semibold text-brand-textPrimary leading-snug break-words">
                             {t("about.impact.v2.outcome2.diag_step3_title")}
                           </h4>
                         </div>
                         {/* Lower row */}
                         <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-amber-500/20">
-                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                          <p className="text-caption text-brand-textSecondary leading-relaxed break-words">
                             {t("about.impact.v2.outcome2.diag_step3_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-700 dark:text-amber-300 shrink-0 border border-amber-500/20 font-medium">
+                          <span className="text-technical font-mono px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-700 dark:text-amber-300 shrink-0 border border-amber-500/20 font-semibold tracking-wider">
                             {t("about.impact.v2.diag.flagged_action")}
                           </span>
                         </div>
@@ -384,13 +384,13 @@ export default function EngineeringImpact() {
                         {/* Upper row */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0" />
-                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                          <h4 className="text-body-sm font-semibold text-brand-textPrimary leading-snug break-words">
                             {t("about.impact.v2.outcome3.diag_step1_title")}
                           </h4>
                         </div>
                         {/* Lower row */}
                         <div className="pt-1 border-t border-brand-border/30">
-                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                          <p className="text-caption text-brand-textSecondary leading-relaxed break-words">
                             {t("about.impact.v2.outcome3.diag_step1_sub")}
                           </p>
                         </div>
@@ -406,16 +406,16 @@ export default function EngineeringImpact() {
                         {/* Upper row */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-indigo-500 shrink-0" />
-                          <h4 className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-300 break-words">
+                          <h4 className="text-body-sm font-semibold text-indigo-700 dark:text-indigo-300 leading-snug break-words">
                             {t("about.impact.v2.outcome3.diag_step2_title")}
                           </h4>
                         </div>
                         {/* Lower row */}
                         <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-indigo-500/20">
-                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                          <p className="text-caption text-brand-textSecondary leading-relaxed break-words">
                             {t("about.impact.v2.outcome3.diag_step2_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 shrink-0 border border-indigo-500/20 font-medium">
+                          <span className="text-technical font-mono px-2.5 py-0.5 rounded bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 shrink-0 border border-indigo-500/20 font-semibold tracking-wider">
                             {t("about.impact.v2.diag.ifc_bcf")}
                           </span>
                         </div>
@@ -431,16 +431,16 @@ export default function EngineeringImpact() {
                         {/* Upper row */}
                         <div className="flex items-center gap-2.5">
                           <div className="w-2.5 h-2.5 rounded-full bg-brand-primary shrink-0" />
-                          <h4 className="text-sm sm:text-base font-semibold text-brand-textPrimary break-words">
+                          <h4 className="text-body-sm font-semibold text-brand-textPrimary leading-snug break-words">
                             {t("about.impact.v2.outcome3.diag_step3_title")}
                           </h4>
                         </div>
                         {/* Lower row */}
                         <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-blue-500/20">
-                          <p className="text-xs sm:text-sm text-brand-textSecondary leading-snug break-words">
+                          <p className="text-caption text-brand-textSecondary leading-relaxed break-words">
                             {t("about.impact.v2.outcome3.diag_step3_sub")}
                           </p>
-                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-blue-500/20 text-brand-primary font-medium shrink-0 border border-blue-500/30">
+                          <span className="text-technical font-mono px-2.5 py-0.5 rounded bg-blue-500/20 text-brand-primary font-semibold tracking-wider shrink-0 border border-blue-500/30">
                             {t("about.impact.v2.diag.coordinated")}
                           </span>
                         </div>
@@ -470,16 +470,16 @@ export default function EngineeringImpact() {
             {/* Zone A: Applied Automation / Internal Development */}
             <div className="space-y-3">
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="text-xs font-mono font-bold tracking-widest text-brand-primary uppercase">
+                <span className="text-caption font-mono font-bold tracking-wider text-brand-primary uppercase">
                   {t("about.impact.v2.automation.label")}
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-blue-500/10 text-brand-primary border border-blue-500/20">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-technical font-mono font-semibold bg-blue-500/10 text-brand-primary border border-blue-500/20">
                   {/* Clean static status dot (no infinite pulse) */}
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" aria-hidden="true" />
                   {t("about.impact.v2.automation.status")}
                 </span>
               </div>
-              <p className="text-sm sm:text-base text-brand-textSecondary leading-relaxed">
+              <p className="text-body-sm sm:text-body text-brand-textSecondary leading-relaxed">
                 {t("about.impact.v2.automation.text")}
               </p>
             </div>
@@ -488,11 +488,11 @@ export default function EngineeringImpact() {
             <div className="space-y-3 lg:border-l lg:border-brand-border/70 lg:pl-12 pt-6 lg:pt-0 border-t lg:border-t-0 border-brand-border/50">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-brand-primary" aria-hidden="true" />
-                <span className="text-xs font-mono font-bold tracking-widest text-brand-textPrimary uppercase">
+                <span className="text-caption font-mono font-bold tracking-wider text-brand-textPrimary uppercase">
                   {t("about.impact.v2.standards.label")}
                 </span>
               </div>
-              <p className="text-sm sm:text-base text-brand-textSecondary leading-relaxed">
+              <p className="text-body-sm sm:text-body text-brand-textSecondary leading-relaxed">
                 {t("about.impact.v2.standards.text")}
               </p>
             </div>
