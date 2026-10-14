@@ -53,7 +53,7 @@ export default function ServicesEngineeringEvaluation({ data }) {
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px bg-brand-primary w-10 md:w-14" aria-hidden="true" />
-            <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
+            <span className="text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
               {evaluation.tag}
             </span>
           </div>
@@ -61,13 +61,13 @@ export default function ServicesEngineeringEvaluation({ data }) {
           {/* Headline */}
           <h2 
             id={`${baseId}-title`}
-            className="text-section-sm lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-[1.2] sm:leading-[1.2] lg:leading-[1.2]"
           >
             {evaluation.headline}
           </h2>
 
           {/* Subtitle */}
-          <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed mb-6 max-w-3xl">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary font-medium leading-relaxed mb-6 max-w-3xl">
             {evaluation.subtitle}
           </p>
 
@@ -151,7 +151,7 @@ export default function ServicesEngineeringEvaluation({ data }) {
 
                       <h3 
                         id={`${baseId}-track-title-${idx}`}
-                        className="text-card-title sm:text-xl font-bold text-brand-textPrimary tracking-tight mb-2 leading-snug"
+                        className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight mb-2 leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]"
                       >
                         {item.title}
                       </h3>
