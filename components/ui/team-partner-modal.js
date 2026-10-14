@@ -133,8 +133,8 @@ export default function TeamPartnerModal({ person, onClose }) {
             </div>
             
             <div className="text-center md:text-left mb-6">
-              <h3 id={nameId} className="text-2xl font-bold text-brand-textPrimary">{data.name}</h3>
-              <p className="text-sm font-semibold text-brand-primary mt-1">{data.role}</p>
+              <h3 id={nameId} className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary leading-[1.25] sm:leading-[1.25] lg:leading-[1.25] tracking-tight">{data.name}</h3>
+              <p className="text-body-sm font-semibold text-brand-primary mt-1.5 leading-snug">{data.role}</p>
             </div>
           </div>
           
@@ -181,10 +181,10 @@ export default function TeamPartnerModal({ person, onClose }) {
           
           {/* PROFILE SUMMARY */}
           <div className="mb-10">
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-brand-textSecondary">
+            <h3 className="text-caption font-mono font-bold uppercase tracking-wider mb-4 text-brand-textSecondary">
               // {t("about.modal.profile_summary_title")}
             </h3>
-            <p className="text-brand-textPrimary leading-relaxed font-medium text-base sm:text-lg">
+            <p className="text-brand-textPrimary leading-relaxed font-medium text-[17px] sm:text-lead">
               {data.bio}
             </p>
           </div>
@@ -192,14 +192,14 @@ export default function TeamPartnerModal({ person, onClose }) {
           {/* CORE STACK */}
           {data.core_stack && data.core_stack.length > 0 && (
             <div className="mb-10">
-              <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-brand-textSecondary">
+              <h3 className="text-caption font-mono font-bold uppercase tracking-wider mb-4 text-brand-textSecondary">
                 // {t("about.modal.core_stack_title")}
               </h3>
               <ul className="space-y-4">
                 {data.core_stack.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-primary mt-2 shrink-0" />
-                    <span className="text-brand-textSecondary font-medium text-sm sm:text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: item }} />
+                    <span className="text-brand-textSecondary font-normal text-body-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: item }} />
                   </li>
                 ))}
               </ul>
@@ -209,14 +209,14 @@ export default function TeamPartnerModal({ person, onClose }) {
           {/* OPERATIONAL FOCUS */}
           {data.operational_focus && data.operational_focus.length > 0 && (
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-brand-textSecondary">
+              <h3 className="text-caption font-mono font-bold uppercase tracking-wider mb-4 text-brand-textSecondary">
                 // {t("about.modal.operational_focus_title")}
               </h3>
               <ul className="space-y-4">
                 {data.operational_focus.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-primary mt-2 shrink-0" />
-                    <span className="text-brand-textSecondary font-medium text-sm sm:text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: item }} />
+                    <span className="text-brand-textSecondary font-normal text-body-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: item }} />
                   </li>
                 ))}
               </ul>

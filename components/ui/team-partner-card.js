@@ -54,8 +54,8 @@ export default function TeamPartnerCard({ person, onClick }) {
 
       {/* Content */}
       <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col items-center justify-end">
-        <h4 className="text-2xl font-bold text-white mb-1 text-center">{data.name}</h4>
-        <p className="text-sm text-white/80 font-medium mb-2 text-center">{data.role}</p>
+        <h4 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-white leading-[1.25] sm:leading-[1.25] lg:leading-[1.25] mb-1 text-center tracking-tight">{data.name}</h4>
+        <p className="text-body-sm text-white/80 font-medium mb-2 text-center leading-snug">{data.role}</p>
       </div>
     </div>
   );
