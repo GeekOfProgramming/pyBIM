@@ -160,19 +160,19 @@ export default function TechnologyCapabilities() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px bg-brand-primary w-8 sm:w-12" aria-hidden="true" />
-            <span className="text-xs font-mono font-bold text-brand-primary tracking-widest uppercase">
+            <span className="text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
               {t("about.tech.section_eyebrow")}
             </span>
           </div>
 
           <h2
             id={`${sectionId}-heading`}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-textPrimary leading-tight mb-5"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold tracking-tight text-brand-textPrimary leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-5"
           >
             {t("about.tech.section_title")}
           </h2>
 
-          <p className="text-base sm:text-lg text-brand-textSecondary leading-relaxed">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary leading-relaxed">
             {t("about.tech.section_subtitle")}
           </p>
         </motion.div>
@@ -218,13 +218,13 @@ export default function TechnologyCapabilities() {
                         {pillarIcons[pillar.icon]}
                       </div>
 
-                      <span className={`inline-flex items-center text-center px-2.5 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-mono font-bold tracking-wide uppercase border shrink-0 ${colors.badge}`}>
+                      <span className={`inline-flex items-center text-center px-2.5 py-0.5 sm:py-1 rounded-full text-technical font-mono font-bold tracking-wider uppercase border shrink-0 ${colors.badge}`}>
                         {t(pillar.statusKey)}
                       </span>
                     </div>
 
                     {/* Main Pillar Title */}
-                    <h3 className={`text-base sm:text-lg lg:text-[20px] font-bold tracking-tight leading-snug transition-colors break-words ${
+                    <h3 className={`text-xl sm:text-[22px] lg:text-card-title font-bold tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25] transition-colors break-words ${
                       isPillarSelected ? "text-brand-textPrimary" : "text-brand-textPrimary/90 group-hover:text-brand-textPrimary"
                     }`}>
                       {t(pillar.titleKey)}
@@ -233,7 +233,7 @@ export default function TechnologyCapabilities() {
 
                   {/* Tablet Right Area / Mobile & Desktop Bottom: Introductory Description */}
                   <div className="w-full md:w-1/2 lg:w-full md:border-l md:border-slate-200/60 md:dark:border-slate-800/60 md:pl-6 lg:border-l-0 lg:pl-0">
-                    <p className="text-xs sm:text-sm text-brand-textSecondary leading-relaxed break-words">
+                    <p className="text-body-sm text-brand-textSecondary leading-relaxed break-words">
                       {t(pillar.subKey)}
                     </p>
                   </div>
@@ -264,7 +264,7 @@ export default function TechnologyCapabilities() {
                   }`}
                   aria-pressed={isFamilyActive}
                 >
-                  <span className="text-sm sm:text-base font-sans font-semibold text-brand-textPrimary leading-snug break-words">
+                  <span className="text-body-sm sm:text-body font-sans font-semibold text-brand-textPrimary leading-snug break-words">
                     {t(family.titleKey)}
                   </span>
                 </button>
@@ -293,13 +293,13 @@ export default function TechnologyCapabilities() {
           >
             {/* Header: Family Title */}
             <div className="pb-3.5 mb-4 border-b border-slate-200/70 dark:border-slate-800/70">
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-brand-textPrimary tracking-tight">
+              <h3 className="text-xl sm:text-[22px] lg:text-card-title font-extrabold text-brand-textPrimary tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]">
                 {t(activeFamily.titleKey)}
               </h3>
             </div>
 
             {/* Context Narrative */}
-            <p className="text-sm text-brand-textSecondary leading-relaxed max-w-4xl mb-6">
+            <p className="text-body-sm sm:text-body text-brand-textSecondary leading-relaxed max-w-4xl mb-6">
               {t(activeFamily.descKey)}
             </p>
 
@@ -314,7 +314,7 @@ export default function TechnologyCapabilities() {
                     {renderItemIcon(activePillar.id)}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <span className="text-xs sm:text-sm font-semibold text-brand-textPrimary leading-snug block break-words">
+                    <span className="text-caption sm:text-body-sm font-semibold text-brand-textPrimary leading-snug block break-words">
                       {itemTitle}
                     </span>
                   </div>
@@ -323,7 +323,7 @@ export default function TechnologyCapabilities() {
             </div>
 
             {/* Factual Operational Notice Footer */}
-            <div className={`flex items-start sm:items-center gap-2.5 text-xs font-mono rounded-xl p-3 border ${activeColorClasses.noticeBorder}`}>
+            <div className={`flex items-start sm:items-center gap-2.5 text-caption font-mono rounded-xl p-3 border ${activeColorClasses.noticeBorder}`}>
               <Info className="w-4 h-4 shrink-0 opacity-80 mt-0.5 sm:mt-0" aria-hidden="true" />
               <p className="leading-relaxed">
                 {activePillar.id === "bim-delivery" && t("about.tech.detail_notice_p1")}
