@@ -75,16 +75,16 @@ export default function PriorityQueueSection() {
         
         {/* Header & Cohort Status Banner */}
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-6 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
             {t("queue.badge")}
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-extrabold text-brand-textPrimary tracking-tight mb-6">
+          <h2 className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-6">
             {t("queue.title")}
           </h2>
 
-          <p className="text-base md:text-lg text-brand-textSecondary font-medium leading-relaxed mb-8 max-w-3xl mx-auto">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary leading-relaxed mb-8 max-w-3xl mx-auto">
             {t("queue.subtitle")}
           </p>
 
@@ -111,7 +111,7 @@ export default function PriorityQueueSection() {
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-extrabold text-brand-textPrimary mb-3">
+                <h3 className="text-xl sm:text-[22px] lg:text-card-title font-extrabold text-brand-textPrimary tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25] mb-3">
                   {t("queue.success.title")}
                 </h3>
 
@@ -124,7 +124,7 @@ export default function PriorityQueueSection() {
                   </span>
                 </div>
 
-                <p className="text-base text-brand-textSecondary font-medium leading-relaxed max-w-xl mx-auto mb-8">
+                <p className="text-body text-brand-textSecondary leading-relaxed max-w-xl mx-auto mb-8">
                   {t("queue.success.desc")}
                 </p>
 
@@ -142,7 +142,7 @@ export default function PriorityQueueSection() {
                 {/* Row 1: Name & Company */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-brand-textPrimary tracking-wide">
+                    <label className="text-caption font-bold text-brand-textPrimary tracking-wide">
                       {t("queue.form.name")} <span className="text-brand-primary">*</span>
                     </label>
                     <input
@@ -151,12 +151,12 @@ export default function PriorityQueueSection() {
                       placeholder={t("queue.form.name_ph")}
                       value={form.name}
                       onChange={(e) => updateField("name", e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800"
+                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-brand-textPrimary tracking-wide">
+                    <label className="text-caption font-bold text-brand-textPrimary tracking-wide">
                       {t("queue.form.company")} <span className="text-brand-primary">*</span>
                     </label>
                     <input
@@ -165,7 +165,7 @@ export default function PriorityQueueSection() {
                       placeholder={t("queue.form.company_ph")}
                       value={form.companyName}
                       onChange={(e) => updateField("companyName", e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800"
+                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800"
                     />
                   </div>
                 </div>
@@ -173,7 +173,7 @@ export default function PriorityQueueSection() {
                 {/* Row 2: Corporate Email & Phone */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-brand-textPrimary tracking-wide">
+                    <label className="text-caption font-bold text-brand-textPrimary tracking-wide">
                       {t("queue.form.email")} <span className="text-brand-primary">*</span>
                     </label>
                     <input
@@ -182,15 +182,15 @@ export default function PriorityQueueSection() {
                       placeholder={t("queue.form.email_ph")}
                       value={form.email}
                       onChange={(e) => updateField("email", e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800"
+                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800"
                     />
-                    <p className="text-[11px] text-brand-textSecondary font-medium pl-1">
+                    <p className="text-caption text-brand-textSecondary pl-1">
                       {t("queue.form.email_help")}
                     </p>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-brand-textPrimary tracking-wide">
+                    <label className="text-caption font-bold text-brand-textPrimary tracking-wide">
                       {t("queue.form.phone")}
                     </label>
                     <input
@@ -198,7 +198,7 @@ export default function PriorityQueueSection() {
                       placeholder={t("queue.form.phone_ph")}
                       value={form.phone}
                       onChange={(e) => updateField("phone", e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800"
+                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800"
                     />
                   </div>
                 </div>
@@ -206,14 +206,14 @@ export default function PriorityQueueSection() {
                 {/* Row 3: Target Architecture & Firm Scale */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-brand-textPrimary tracking-wide">
+                    <label className="text-caption font-bold text-brand-textPrimary tracking-wide">
                       {t("queue.form.architecture")} <span className="text-brand-primary">*</span>
                     </label>
                     <select
                       required
                       value={form.architecture}
                       onChange={(e) => updateField("architecture", e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-sm text-brand-textPrimary outline-none transition focus:border-emerald-500"
+                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-body-sm text-brand-textPrimary outline-none transition focus:border-emerald-500"
                     >
                       <option value="">{t("queue.form.architecture_ph")}</option>
                       <option value="pyBIM Cloud Connect (Autodesk Revit Ribbon Add-in)">{t("queue.form.arch_opt1")}</option>
@@ -223,14 +223,14 @@ export default function PriorityQueueSection() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-brand-textPrimary tracking-wide">
+                    <label className="text-caption font-bold text-brand-textPrimary tracking-wide">
                       {t("queue.form.scale")} <span className="text-brand-primary">*</span>
                     </label>
                     <select
                       required
                       value={form.teamScale}
                       onChange={(e) => updateField("teamScale", e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-sm text-brand-textPrimary outline-none transition focus:border-emerald-500"
+                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-body-sm text-brand-textPrimary outline-none transition focus:border-emerald-500"
                     >
                       <option value="">{t("queue.form.scale_ph")}</option>
                       <option value="1 – 10 BIM Modelers / Engineers">{t("queue.form.scale_opt1")}</option>
@@ -244,14 +244,14 @@ export default function PriorityQueueSection() {
                 {/* Row 4: Primary Ecosystem & Security Level */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-brand-textPrimary tracking-wide">
+                    <label className="text-caption font-bold text-brand-textPrimary tracking-wide">
                       {t("queue.form.ecosystem")} <span className="text-brand-primary">*</span>
                     </label>
                     <select
                       required
                       value={form.ecosystem}
                       onChange={(e) => updateField("ecosystem", e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-sm text-brand-textPrimary outline-none transition focus:border-emerald-500"
+                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-body-sm text-brand-textPrimary outline-none transition focus:border-emerald-500"
                     >
                       <option value="">{t("queue.form.ecosystem_ph")}</option>
                       <option value="Autodesk Revit (v2023 - 2026)">{t("queue.form.eco_opt1")}</option>
@@ -262,14 +262,14 @@ export default function PriorityQueueSection() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-brand-textPrimary tracking-wide">
+                    <label className="text-caption font-bold text-brand-textPrimary tracking-wide">
                       {t("queue.form.security")} <span className="text-brand-primary">*</span>
                     </label>
                     <select
                       required
                       value={form.securityLevel}
                       onChange={(e) => updateField("securityLevel", e.target.value)}
-                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-sm text-brand-textPrimary outline-none transition focus:border-emerald-500"
+                      className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-body-sm text-brand-textPrimary outline-none transition focus:border-emerald-500"
                     >
                       <option value="">{t("queue.form.security_ph")}</option>
                       <option value="Standard Corporate NDA (Commercial Projects)">{t("queue.form.sec_opt1")}</option>
@@ -281,7 +281,7 @@ export default function PriorityQueueSection() {
 
                 {/* Row 5: Notes & Specific Bottlenecks */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-brand-textPrimary tracking-wide">
+                  <label className="text-caption font-bold text-brand-textPrimary tracking-wide">
                     {t("queue.form.notes")}
                   </label>
                   <textarea
@@ -289,7 +289,7 @@ export default function PriorityQueueSection() {
                     placeholder={t("queue.form.notes_ph")}
                     value={form.notes}
                     onChange={(e) => updateField("notes", e.target.value)}
-                    className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800 resize-y"
+                    className="w-full rounded-2xl border border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800/90 px-4 py-3.5 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary outline-none transition focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800 resize-y"
                   />
                 </div>
 
@@ -301,7 +301,7 @@ export default function PriorityQueueSection() {
                     required
                     className="mt-1 w-4 h-4 rounded border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
                   />
-                  <label htmlFor="privacy-queue" className="text-xs text-brand-textSecondary font-medium leading-relaxed">
+                  <label htmlFor="privacy-queue" className="text-caption text-brand-textSecondary leading-relaxed cursor-pointer select-none">
                     {t("forms.accept.part1")}{" "}
                     <Link href="/privacy-policy" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
                       {t("forms.accept.privacy")}
@@ -319,7 +319,7 @@ export default function PriorityQueueSection() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full relative flex items-center justify-center gap-3 rounded-2xl px-8 py-4 font-bold text-sm uppercase tracking-wider text-white transition-all duration-300 disabled:opacity-60 bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-600/30 hover:-translate-y-0.5 hover:shadow-emerald-600/40"
+                    className="w-full relative flex items-center justify-center gap-3 rounded-2xl px-8 py-4 font-semibold text-body-sm text-white transition-all duration-300 disabled:opacity-60 bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-600/30 hover:-translate-y-0.5 hover:shadow-emerald-600/40"
                   >
                     <span>
                       {loading ? t("queue.form.button_loading") : t("queue.form.button")}
@@ -327,7 +327,7 @@ export default function PriorityQueueSection() {
                     <ArrowRight className="w-4 h-4" />
                   </button>
                   
-                  <p className="text-center text-xs text-brand-textSecondary font-medium mt-3 italic">
+                  <p className="text-center text-caption text-brand-textSecondary mt-3 italic">
                     {t("queue.form.microcopy")}
                   </p>
                 </div>
@@ -342,18 +342,18 @@ export default function PriorityQueueSection() {
                     <AlertCircle className="h-8 w-8" />
                   </div>
                   
-                  <h3 className="mb-2 text-2xl font-bold text-brand-textPrimary">
+                  <h3 className="mb-2 text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight leading-[1.25]">
                     {t("contact.form.error_title")}
                   </h3>
                   
-                  <p className="mb-8 text-base font-medium leading-relaxed text-brand-textSecondary text-center">
+                  <p className="mb-8 text-body text-brand-textSecondary leading-relaxed text-center">
                     {popup.message}
                   </p>
                   
                   <button
                     type="button"
                     onClick={() => setPopup(null)}
-                    className="w-full rounded-2xl px-6 py-4 font-bold text-white shadow-md transition-all hover:-translate-y-0.5 bg-brand-primary hover:bg-brand-primaryHover"
+                    className="w-full rounded-2xl px-6 py-4 font-bold text-body-sm text-white shadow-md transition-all hover:-translate-y-0.5 bg-brand-primary hover:bg-brand-primaryHover"
                   >
                     {t("contact.form.got_it_btn")}
                   </button>
