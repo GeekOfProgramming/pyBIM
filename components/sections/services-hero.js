@@ -232,7 +232,7 @@ export default function ServicesHero({ data }) {
             {/* Dominant H1 Title */}
             <motion.h1 
               variants={itemVariants} 
-              className="text-section-sm sm:text-section lg:text-display font-extrabold tracking-tight text-brand-textPrimary leading-[1.08] mb-5"
+              className="text-4xl sm:text-[44px] lg:text-display font-extrabold tracking-tight text-brand-textPrimary leading-[1.12] sm:leading-[1.12] lg:leading-[1.14] mb-5"
             >
               <span>{hero.headline1}</span>{" "}
               <br className="hidden sm:inline" />
@@ -244,7 +244,7 @@ export default function ServicesHero({ data }) {
             {/* Supporting Editorial Description */}
             <motion.p 
               variants={itemVariants}
-              className="text-body sm:text-lead text-brand-textSecondary max-w-2xl font-normal leading-relaxed mb-8"
+              className="text-[17px] sm:text-lead text-brand-textSecondary max-w-2xl font-normal leading-relaxed mb-8"
             >
               {hero.subheadline}
             </motion.p>
