@@ -20,7 +20,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "pyBIM",
   url: siteUrl,
-  logo: `${siteUrl}/logo_black_transparent.png`,
+  logo: `${siteUrl}/images/shared/brand/logo_black_transparent.png`,
   email: "info@pybim.com",
   description: siteMetadata.organizationDescription
 };
