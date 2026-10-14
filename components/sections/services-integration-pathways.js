@@ -47,19 +47,19 @@ export default function ServicesIntegrationPathways({ data }) {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px bg-brand-primary w-10 md:w-14" aria-hidden="true" />
-            <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
+            <span className="text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
               {pathways.tag}
             </span>
           </div>
 
           <h2 
             id={`${baseId}-title`}
-            className="text-section-sm lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-[1.2] sm:leading-[1.2] lg:leading-[1.2]"
           >
             {pathways.headline}
           </h2>
 
-          <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed max-w-3xl">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary font-medium leading-relaxed max-w-3xl">
             {pathways.subtitle}
           </p>
         </motion.div>
@@ -321,7 +321,7 @@ export default function ServicesIntegrationPathways({ data }) {
                   {/* Title */}
                   <h3 
                     id={`${baseId}-pathway-title-${actualIdx}`}
-                    className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-2.5 leading-snug"
+                    className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight mb-2.5 leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]"
                   >
                     {pathway.title}
                   </h3>
