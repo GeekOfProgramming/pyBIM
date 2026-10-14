@@ -189,7 +189,7 @@ export default function ContactPageLayout() {
 
             {/* RIGHT COLUMN (7 Columns) - Elevated Project Enquiry Form */}
             <div className="lg:col-span-7">
-              <div className="relative rounded-3xl bg-brand-cardElevated p-6 sm:p-8 lg:p-10 shadow-xl shadow-brand-base/5 dark:shadow-black/20 border border-brand-border/80 transition-colors">
+              <div id="project-enquiry" className="relative rounded-3xl bg-brand-cardElevated p-6 sm:p-8 lg:p-10 shadow-xl shadow-brand-base/5 dark:shadow-black/20 border border-brand-border/80 transition-colors scroll-mt-28">
                 <div className="relative z-10">
                   <div className="mb-8">
                     <h2 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25] mb-2">
@@ -204,7 +204,7 @@ export default function ContactPageLayout() {
                     {/* Row 1: Full Name & Company Name */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
-                        <label htmlFor="contact-name" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                        <label htmlFor="contact-name" className="text-body-sm font-medium text-brand-textPrimary">
                           {t("contact.form.name") || "Full Name"} <span className="text-brand-primary">*</span>
                         </label>
                         <input
@@ -214,11 +214,11 @@ export default function ContactPageLayout() {
                           onChange={(e) => updateField("name", e.target.value)}
                           placeholder={t("contact.form.name_ph") || "e.g. John Doe"}
                           required
-                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
                       <div className="space-y-1.5">
-                        <label htmlFor="contact-company" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                        <label htmlFor="contact-company" className="text-body-sm font-medium text-brand-textPrimary">
                           {t("contact.form.companyName") || "Company Name"} <span className="text-brand-primary">*</span>
                         </label>
                         <input
@@ -228,7 +228,7 @@ export default function ContactPageLayout() {
                           onChange={(e) => updateField("companyName", e.target.value)}
                           placeholder={t("contact.form.companyName_ph") || "e.g. Acme Engineering"}
                           required
-                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
                     </div>
@@ -236,7 +236,7 @@ export default function ContactPageLayout() {
                     {/* Row 2: Corporate Email & Phone Number */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
-                        <label htmlFor="contact-email" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                        <label htmlFor="contact-email" className="text-body-sm font-medium text-brand-textPrimary">
                           {t("contact.form.email") || "Corporate Email Address"} <span className="text-brand-primary">*</span>
                         </label>
                         <input
@@ -246,14 +246,14 @@ export default function ContactPageLayout() {
                           onChange={(e) => updateField("email", e.target.value)}
                           placeholder={t("contact.form.email_ph") || "name@company.com"}
                           required
-                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
-                        <p className="text-xs font-sans text-brand-textSecondary pl-1">
+                        <p className="text-xs text-brand-textSecondary pl-1">
                           {t("contact.form.email_help") || "*Corporate domains only."}
                         </p>
                       </div>
                       <div className="space-y-1.5">
-                        <label htmlFor="contact-phone" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                        <label htmlFor="contact-phone" className="text-body-sm font-medium text-brand-textPrimary">
                           {t("contact.form.phone") || "Phone Number"} <span className="text-brand-primary">*</span>
                         </label>
                         <input
@@ -263,7 +263,7 @@ export default function ContactPageLayout() {
                           onChange={(e) => updateField("phone", e.target.value)}
                           placeholder={t("contact.form.phone_ph") || "+39 049 123 4567"}
                           required
-                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
                     </div>
@@ -271,7 +271,7 @@ export default function ContactPageLayout() {
                     {/* Row 3: Service of Interest & Company Size */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
-                        <label htmlFor="contact-service" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                        <label htmlFor="contact-service" className="text-body-sm font-medium text-brand-textPrimary">
                           {t("contact.form.service") || "Service or Project Scope"} <span className="text-brand-primary">*</span>
                         </label>
                         <div className="relative">
@@ -280,7 +280,7 @@ export default function ContactPageLayout() {
                             value={selectedServiceId}
                             onChange={(e) => handleServiceChange(e.target.value)}
                             required
-                            className={`w-full appearance-none rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 pr-10 text-body-sm font-sans text-brand-textPrimary outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary ${selectedServiceId ? '' : 'text-brand-textSecondary/70'}`}
+                            className={`w-full appearance-none rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 pr-10 text-body-sm text-brand-textPrimary outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary ${selectedServiceId ? '' : 'text-brand-textSecondary/70'}`}
                           >
                             <option value="" disabled hidden>{t("contact.form.service_ph") || "Select primary service or project scope..."}</option>
                             {serviceOptions.map((opt) => (
@@ -296,7 +296,7 @@ export default function ContactPageLayout() {
                       </div>
 
                       <div className="space-y-1.5">
-                        <label htmlFor="contact-size" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                        <label htmlFor="contact-size" className="text-body-sm font-medium text-brand-textPrimary">
                           {t("contact.form.teamScale") || "Company Size"} <span className="text-brand-primary">*</span>
                         </label>
                         <div className="relative">
@@ -305,7 +305,7 @@ export default function ContactPageLayout() {
                             value={form.teamScale}
                             onChange={(e) => updateField("teamScale", e.target.value)}
                             required
-                            className={`w-full appearance-none rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 pr-10 text-body-sm font-sans text-brand-textPrimary outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary ${form.teamScale ? '' : 'text-brand-textSecondary/70'}`}
+                            className={`w-full appearance-none rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 pr-10 text-body-sm text-brand-textPrimary outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary ${form.teamScale ? '' : 'text-brand-textSecondary/70'}`}
                           >
                             <option value="" disabled hidden>{t("contact.form.teamScale_ph") || "Select company size..."}</option>
                             {companySizeOptions.map((opt) => (
@@ -325,10 +325,10 @@ export default function ContactPageLayout() {
                     {selectedServiceId === "bim_modeling" && (
                       <div className="p-4 sm:p-5 rounded-2xl bg-brand-surface/70 border border-brand-border transition-all">
                         <div className="mb-3">
-                          <label className="text-body-sm font-semibold font-sans text-brand-textPrimary block">
+                          <label className="text-body-sm font-semibold text-brand-textPrimary block">
                             {t("contact.form.disciplines_label") || "Engineering Discipline"} <span className="text-brand-primary">*</span>
                           </label>
-                          <p className="text-xs font-sans text-brand-textSecondary">
+                          <p className="text-xs text-brand-textSecondary">
                             {t("contact.form.disciplines_desc") || "Select one or more disciplines relevant to your project."}
                           </p>
                         </div>
@@ -355,7 +355,7 @@ export default function ContactPageLayout() {
                           })}
                         </div>
                         {disciplineError && (
-                          <p className="text-xs text-rose-500 font-medium font-sans mt-2">
+                          <p className="text-xs text-rose-500 font-medium mt-2">
                             {t("contact.form.discipline_error") || "Please select at least one engineering discipline."}
                           </p>
                         )}
@@ -365,7 +365,7 @@ export default function ContactPageLayout() {
                     {/* CONDITIONAL ROW B: Other / Multidisciplinary Scope (Only when Other selected) */}
                     {selectedServiceId === "other" && (
                       <div className="p-4 sm:p-5 rounded-2xl bg-brand-surface/70 border border-brand-border transition-all space-y-1.5">
-                        <label htmlFor="contact-other-scope" className="text-body-sm font-semibold font-sans text-brand-textPrimary block">
+                        <label htmlFor="contact-other-scope" className="text-body-sm font-semibold text-brand-textPrimary block">
                           {t("contact.form.other_label") || "Please Specify Your Project Scope"} <span className="text-brand-primary">*</span>
                         </label>
                         <textarea
@@ -377,10 +377,10 @@ export default function ContactPageLayout() {
                             if (otherScopeError && e.target.value.trim()) setOtherScopeError(false);
                           }}
                           placeholder={t("contact.form.other_ph") || "Describe the service, engineering discipline or combination of activities you need..."}
-                          className="w-full rounded-xl border border-brand-border bg-brand-surface px-4 py-2.5 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary resize-y"
+                          className="w-full rounded-xl border border-brand-border bg-brand-surface px-4 py-2.5 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary resize-y"
                         />
                         {otherScopeError && (
-                          <p className="text-xs text-rose-500 font-medium font-sans mt-1">
+                          <p className="text-xs text-rose-500 font-medium mt-1">
                             {t("contact.form.other_error") || "Please specify your project scope."}
                           </p>
                         )}
@@ -389,7 +389,7 @@ export default function ContactPageLayout() {
 
                     {/* Row 4: Project Scope & Requirements */}
                     <div className="space-y-1.5">
-                      <label htmlFor="contact-message" className="text-body-sm font-medium font-sans text-brand-textPrimary">
+                      <label htmlFor="contact-message" className="text-body-sm font-medium text-brand-textPrimary">
                         {t("contact.form.message_label") || "Project Scope & Requirements"} <span className="text-brand-primary">*</span>
                       </label>
                       <textarea
@@ -399,7 +399,7 @@ export default function ContactPageLayout() {
                         onChange={(e) => updateField("message", e.target.value)}
                         placeholder={t("contact.form.message_ph") || "Briefly describe your project, relevant disciplines, expected deliverables, approximate scale and any relevant deadline."}
                         required
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm font-sans text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary resize-y min-h-[100px]"
+                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary resize-y min-h-[100px]"
                       />
                     </div>
 
@@ -411,7 +411,7 @@ export default function ContactPageLayout() {
                         required
                         className="mt-1 w-4 h-4 rounded border-brand-border bg-brand-surface text-brand-primary focus:ring-brand-primary cursor-pointer"
                       />
-                      <label htmlFor="privacy-contact" className="text-xs text-brand-textSecondary font-sans font-medium leading-normal cursor-pointer select-none">
+                      <label htmlFor="privacy-contact" className="text-xs text-brand-textSecondary font-medium leading-normal cursor-pointer select-none">
                         {t("forms.accept.part1")}{" "}
                         <Link href="/privacy-policy" className="text-brand-primary font-bold hover:underline">
                           {t("forms.accept.privacy")}
