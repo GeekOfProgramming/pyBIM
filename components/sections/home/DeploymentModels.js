@@ -64,13 +64,13 @@ export default function DeploymentModels() {
           {/* Semantic Single H2 Heading */}
           <h2
             id={`${sectionId}-heading`}
-            className="text-section font-extrabold text-brand-textPrimary tracking-tight mb-5"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-5"
           >
             {data.heading}
           </h2>
 
           {/* Editorial Introduction */}
-          <p className="text-lead text-brand-textSecondary font-normal leading-relaxed">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary font-normal leading-relaxed">
             {data.description}
           </p>
         </div>
@@ -197,7 +197,7 @@ export default function DeploymentModels() {
                 className="w-full max-w-lg rounded-2xl bg-brand-card/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-5 shadow-sm transition-all duration-200 hover:shadow-md hover:ring-1 hover:ring-brand-primary/40 text-center relative group cursor-default"
                 aria-labelledby={`${sectionId}-flex-title`}
               >
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-[11px] font-bold tracking-wider mb-2 uppercase">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-caption font-bold tracking-wider mb-2 uppercase">
                   <span>{flexibleCap.tag}</span>
                 </div>
 
@@ -372,7 +372,7 @@ export default function DeploymentModels() {
                   className="rounded-xl bg-brand-card/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-4 shadow-sm transition-all duration-200 hover:shadow-md hover:ring-1 hover:ring-cyan-500/30 text-left relative group cursor-default flex flex-col justify-start min-h-[160px]"
                   aria-labelledby={`${sectionId}-auto-title`}
                 >
-                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-mono text-[10px] font-bold tracking-wider mb-2 uppercase self-start">
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-mono text-caption font-bold tracking-wider mb-2 uppercase self-start">
                     <span>{automationCap.tag}</span>
                   </div>
 
@@ -400,7 +400,7 @@ export default function DeploymentModels() {
                   className="rounded-xl bg-brand-card/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-4 shadow-sm transition-all duration-200 hover:shadow-md hover:ring-1 hover:ring-emerald-500/30 text-left relative group cursor-default flex flex-col justify-start min-h-[160px]"
                   aria-labelledby={`${sectionId}-qual-title`}
                 >
-                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-mono text-[10px] font-bold tracking-wider mb-2 uppercase self-start">
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-mono text-caption font-bold tracking-wider mb-2 uppercase self-start">
                     <span>{qualityCap.tag}</span>
                   </div>
 
@@ -522,12 +522,12 @@ export default function DeploymentModels() {
             {/* M1: Project Input */}
             <div className="rounded-2xl bg-brand-card border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-sm">
               <div className="flex items-center justify-between gap-3 mb-3">
-                <span className="font-mono text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                <span className="font-mono text-caption font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                   {data.input.label}
                 </span>
                 <FileText className="w-4 h-4 text-slate-500" aria-hidden="true" />
               </div>
-              <h3 className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-1">
+              <h3 className="text-xl sm:text-card-title font-bold text-brand-textPrimary tracking-tight mb-1">
                 {data.input.title}
               </h3>
               <p className="font-mono text-caption font-semibold text-brand-primary mb-2">
@@ -548,7 +548,7 @@ export default function DeploymentModels() {
               {/* Top Card: Flexible Engineering */}
               <div className="rounded-xl border border-brand-border/80 bg-brand-card p-4">
                 <div className="flex items-center justify-between gap-2 mb-1">
-                  <span className="font-mono text-[10px] font-bold text-brand-primary uppercase">
+                  <span className="font-mono text-caption font-bold text-brand-primary uppercase tracking-wider">
                     {flexibleCap.tag}
                   </span>
                   <FlexIcon className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
@@ -556,20 +556,20 @@ export default function DeploymentModels() {
                 <h4 className="text-body-sm font-bold text-brand-textPrimary mb-1">
                   {flexibleCap.title}
                 </h4>
-                <p className="text-caption text-brand-textSecondary leading-relaxed">
+                <p className="text-body-sm text-brand-textSecondary leading-relaxed">
                   {flexibleCap.description}
                 </p>
               </div>
 
               {/* pyBIM Hub Card */}
               <div className="rounded-xl border border-brand-primary/50 bg-brand-cardElevated p-5 shadow-sm text-center">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-primary/10 border border-brand-primary/25 text-brand-primary font-mono text-[11px] font-bold tracking-wider mb-2 uppercase">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-primary/10 border border-brand-primary/25 text-brand-primary font-mono text-caption font-bold tracking-wider mb-2 uppercase">
                   <span>{data.center.label}</span>
                 </div>
-                <h3 className="text-card-title font-extrabold text-brand-textPrimary tracking-tight mb-1">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-brand-textPrimary tracking-tight mb-1">
                   {data.center.title}
                 </h3>
-                <p className="font-mono text-caption text-brand-primary font-medium mb-2">
+                <p className="font-mono text-caption text-brand-primary font-semibold tracking-wide mb-2">
                   {data.center.supporting}
                 </p>
                 <p className="text-body-sm text-brand-textSecondary leading-relaxed">
@@ -581,7 +581,7 @@ export default function DeploymentModels() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="rounded-xl border border-brand-border/80 bg-brand-card p-4">
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="font-mono text-[10px] font-bold text-cyan-600 dark:text-cyan-400 uppercase">
+                    <span className="font-mono text-caption font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">
                       {automationCap.tag}
                     </span>
                     <AutoIcon className="w-3.5 h-3.5 text-cyan-500" aria-hidden="true" />
@@ -589,14 +589,14 @@ export default function DeploymentModels() {
                   <h4 className="text-body-sm font-bold text-brand-textPrimary mb-1">
                     {automationCap.title}
                   </h4>
-                  <p className="text-caption text-brand-textSecondary leading-relaxed">
+                  <p className="text-body-sm text-brand-textSecondary leading-relaxed">
                     {automationCap.description}
                   </p>
                 </div>
 
                 <div className="rounded-xl border border-brand-border/80 bg-brand-card p-4">
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="font-mono text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase">
+                    <span className="font-mono text-caption font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
                       {qualityCap.tag}
                     </span>
                     <QualIcon className="w-3.5 h-3.5 text-emerald-500" aria-hidden="true" />
@@ -604,7 +604,7 @@ export default function DeploymentModels() {
                   <h4 className="text-body-sm font-bold text-brand-textPrimary mb-1">
                     {qualityCap.title}
                   </h4>
-                  <p className="text-caption text-brand-textSecondary leading-relaxed">
+                  <p className="text-body-sm text-brand-textSecondary leading-relaxed">
                     {qualityCap.description}
                   </p>
                 </div>
@@ -619,12 +619,12 @@ export default function DeploymentModels() {
             {/* M3: Reviewed BIM Deliverables */}
             <div className="rounded-2xl border border-emerald-500/35 bg-emerald-50/15 dark:bg-emerald-950/15 p-5 sm:p-6 shadow-sm">
               <div className="flex items-center justify-between gap-3 mb-3">
-                <span className="font-mono text-[11px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                <span className="font-mono text-caption font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
                   {data.output.label}
                 </span>
                 <FileCheck2 className="w-4 h-4 text-emerald-500" aria-hidden="true" />
               </div>
-              <h3 className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-1">
+              <h3 className="text-xl sm:text-card-title font-bold text-brand-textPrimary tracking-tight mb-1">
                 {data.output.title}
               </h3>
               <p className="font-mono text-caption font-semibold text-emerald-600 dark:text-emerald-400 mb-2">
