@@ -48,7 +48,7 @@ export default function ExecutionPipeline() {
             ========================================================================= */}
         <div className="max-w-3xl mb-12 lg:mb-16">
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-caption font-bold tracking-widest uppercase mb-5 select-none shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-caption font-bold tracking-wider uppercase mb-5 select-none shadow-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" aria-hidden="true" />
             <span>{data.eyebrow}</span>
           </div>
@@ -56,13 +56,13 @@ export default function ExecutionPipeline() {
           {/* Semantic H2 Heading */}
           <h2
             id={`${sectionId}-heading`}
-            className="text-section font-extrabold text-brand-textPrimary tracking-tight mb-5"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-5"
           >
             {data.heading}
           </h2>
 
           {/* Editorial Description */}
-          <p className="text-lead text-brand-textSecondary font-normal leading-relaxed">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary font-normal leading-relaxed">
             {data.description}
           </p>
         </div>
@@ -87,7 +87,7 @@ export default function ExecutionPipeline() {
                   <span className="text-body-sm font-bold text-slate-900 dark:text-white tracking-tight">
                     {data.viewer.header}
                   </span>
-                  <span className="font-mono text-[10px] font-semibold text-blue-700 dark:text-cyan-300 px-2 py-0.5 rounded-md bg-blue-50 dark:bg-cyan-950/60 border border-blue-200 dark:border-cyan-800/50 uppercase tracking-wider">
+                  <span className="font-mono text-caption font-semibold text-blue-700 dark:text-cyan-300 px-2 py-0.5 rounded-md bg-blue-50 dark:bg-cyan-950/60 border border-blue-200 dark:border-cyan-800/50 uppercase tracking-wider">
                     {data.viewer.status}
                   </span>
                 </div>
@@ -112,13 +112,13 @@ export default function ExecutionPipeline() {
                     aria-selected={isSelected}
                     aria-controls={`${sectionId}-panel-${topic.id}`}
                     onClick={() => setActiveTopicId(topic.id)}
-                    className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold tracking-tight transition-all duration-200 select-none cursor-pointer shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-actionPrimary dark:focus-visible:ring-cyan-400 ${
+                    className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs sm:text-body-sm font-semibold tracking-tight transition-all duration-200 select-none cursor-pointer shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-actionPrimary dark:focus-visible:ring-cyan-400 ${
                       isSelected
                         ? "bg-brand-actionPrimary text-white shadow-sm"
                         : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-white/80 dark:hover:bg-slate-800/60"
                     }`}
                   >
-                    <span className="font-mono text-[10px] opacity-75">{`0${idx + 1}`}</span>
+                    <span className="font-mono text-caption font-semibold opacity-75">{`0${idx + 1}`}</span>
                     <TabIcon className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                     <span>{topic.title}</span>
                   </button>
@@ -465,7 +465,7 @@ export default function ExecutionPipeline() {
                     </span>
 
                     {/* Tooltip on Hover/Focus */}
-                    <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 pointer-events-none opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity bg-slate-900/95 dark:bg-slate-950/95 border border-slate-700 text-white text-[11px] font-sans font-medium px-2.5 py-1 rounded-md whitespace-nowrap shadow-xl z-30">
+                    <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 pointer-events-none opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity bg-slate-900/95 dark:bg-slate-950/95 border border-slate-700 text-white text-caption font-sans font-medium px-2.5 py-1 rounded-md whitespace-nowrap shadow-xl z-30">
                       {topic.title}
                     </span>
                   </button>
@@ -494,22 +494,22 @@ export default function ExecutionPipeline() {
                 {/* Left 5 Cols: Topic Overview */}
                 <div className="lg:col-span-5">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="font-mono text-[11px] font-bold text-blue-700 dark:text-cyan-400 tracking-wider uppercase px-2 py-0.5 rounded bg-blue-100/70 dark:bg-cyan-950/60 border border-blue-200 dark:border-cyan-800/60">
+                    <span className="font-mono text-caption font-bold text-blue-700 dark:text-cyan-400 tracking-wider uppercase px-2 py-0.5 rounded bg-blue-100/70 dark:bg-cyan-950/60 border border-blue-200 dark:border-cyan-800/60">
                       {activeTopic.tag}
                     </span>
-                    <span className="font-mono text-[11px] text-slate-500 dark:text-slate-400">
+                    <span className="font-mono text-caption text-slate-500 dark:text-slate-400">
                       {activeTopic.callout}
                     </span>
                   </div>
 
                   <div className="flex items-center gap-2.5 mb-2.5">
                     <ActiveIcon className="w-5 h-5 text-blue-600 dark:text-cyan-400 shrink-0" aria-hidden="true" />
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
+                    <h3 className="text-xl lg:text-[22px] font-bold text-slate-900 dark:text-white tracking-tight">
                       {activeTopic.title}
                     </h3>
                   </div>
 
-                  <p className="text-body-sm text-slate-600 dark:text-slate-300 font-normal leading-relaxed">
+                  <p className="text-body-sm sm:text-body text-slate-600 dark:text-slate-300 font-normal leading-relaxed">
                     {activeTopic.description}
                   </p>
                 </div>
@@ -524,11 +524,11 @@ export default function ExecutionPipeline() {
                       >
                         <div className="flex items-center gap-1.5 text-blue-600 dark:text-cyan-400 mb-1.5">
                           <CheckCircle2 className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                          <span className="font-mono text-caption font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                             {data.viewer.check_prefix || "CHECK"} {idx + 1}
                           </span>
                         </div>
-                        <p className="text-[12px] text-slate-700 dark:text-slate-300 font-sans leading-snug">
+                        <p className="text-caption text-slate-700 dark:text-slate-300 font-sans leading-snug">
                           {detail}
                         </p>
                       </div>
@@ -538,7 +538,7 @@ export default function ExecutionPipeline() {
                   {/* Explicit Mandatory Disclosure */}
                   <div className="pt-3 border-t border-slate-200/80 dark:border-slate-800/60 flex items-center gap-2 text-slate-500 dark:text-slate-400">
                     <Info className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" aria-hidden="true" />
-                    <p className="font-mono text-[11px] text-slate-500 dark:text-slate-400 tracking-wide">
+                    <p className="font-mono text-caption text-slate-500 dark:text-slate-400 tracking-wide">
                       {data.viewer.disclosure}
                     </p>
                   </div>
