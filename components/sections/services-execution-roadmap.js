@@ -112,19 +112,19 @@ export default function ServicesExecutionRoadmap({ data }) {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px bg-brand-primary w-10 md:w-14" aria-hidden="true" />
-            <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
+            <span className="text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
               {roadmap.tag}
             </span>
           </div>
 
           <h2 
             id={`${baseId}-headline`}
-            className="text-section-sm sm:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-[1.2] sm:leading-[1.2] lg:leading-[1.2]"
           >
             {roadmap.headline}
           </h2>
 
-          <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary font-medium leading-relaxed">
             {roadmap.subtitle}
           </p>
         </motion.div>
@@ -214,7 +214,7 @@ export default function ServicesExecutionRoadmap({ data }) {
                 {/* Row 2: Single Phase Title (H3) */}
                 <h3 
                   id={`${baseId}-card-title-${idx}`}
-                  className="text-card-title font-bold text-brand-textPrimary tracking-tight"
+                  className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]"
                 >
                   {card.title}
                 </h3>
