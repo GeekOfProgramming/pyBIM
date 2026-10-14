@@ -18,7 +18,7 @@ export const accounts = [
     website: "https://www.pybim.com",
     websiteDisplay: "www.pybim.com",
     companyLinkedIn: "https://www.linkedin.com/company/pybim",
-    companyLinkedInDisplay: "pybim",
+    companyLinkedInDisplay: "Linkedin",
     personalLinkedIn: null,
     labels: {
       email: "Email",
@@ -37,7 +37,7 @@ export const accounts = [
     website: "https://www.pybim.it",
     websiteDisplay: "www.pybim.it",
     companyLinkedIn: "https://www.linkedin.com/company/pybim",
-    companyLinkedInDisplay: "pybim",
+    companyLinkedInDisplay: "Linkedin",
     personalLinkedIn: null,
     labels: {
       email: "Email",
@@ -56,7 +56,7 @@ export const accounts = [
     website: "https://www.pybim.com",
     websiteDisplay: "www.pybim.com",
     companyLinkedIn: "https://www.linkedin.com/company/pybim",
-    companyLinkedInDisplay: "pybim",
+    companyLinkedInDisplay: "Linkedin",
     personalLinkedIn: null,
     labels: {
       email: "Email",
@@ -75,7 +75,7 @@ export const accounts = [
     website: "https://www.pybim.com",
     websiteDisplay: "www.pybim.com",
     companyLinkedIn: "https://www.linkedin.com/company/pybim",
-    companyLinkedInDisplay: "pybim",
+    companyLinkedInDisplay: "Linkedin",
     personalLinkedIn: null,
     labels: {
       email: "Email",
@@ -94,9 +94,9 @@ export const accounts = [
     website: "https://www.pybim.it",
     websiteDisplay: "www.pybim.it",
     companyLinkedIn: "https://www.linkedin.com/company/pybim",
-    companyLinkedInDisplay: "pybim",
+    companyLinkedInDisplay: "Linkedin",
     personalLinkedIn: "https://www.linkedin.com/in/hamedsharifi/",
-    personalLinkedInDisplay: "hamedsharifi",
+    personalLinkedInDisplay: "Linkedin",
     labels: {
       email: "Email",
       website: "Sito web",
@@ -114,9 +114,9 @@ export const accounts = [
     website: "https://www.pybim.it",
     websiteDisplay: "www.pybim.it",
     companyLinkedIn: "https://www.linkedin.com/company/pybim",
-    companyLinkedInDisplay: "pybim",
+    companyLinkedInDisplay: "Linkedin",
     personalLinkedIn: "https://www.linkedin.com/in/hamid-lotfalian",
-    personalLinkedInDisplay: "hamid-lotfalian",
+    personalLinkedInDisplay: "Linkedin",
     labels: {
       email: "Email",
       website: "Sito web",
