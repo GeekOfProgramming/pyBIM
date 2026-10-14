@@ -117,9 +117,10 @@ export function generateFullHtmlDocument(account, config) {
   <title>pyBIM Email Signature - ${account.name} (${account.account})</title>
   <style>
     body {
-      margin: 24px;
+      margin: 32px 24px;
       padding: 0;
-      background-color: #F8FAFC;
+      background-color: ${config.colors.brandBase};
+      color: ${config.colors.textPrimary};
       font-family: Arial, Helvetica, sans-serif;
     }
     .wrapper {

@@ -36,7 +36,7 @@ email-signatures/
     support-com.html            # Signature 04 — support@pybim.com (English)
     hamed-sharifi-it.html       # Signature 05 — hamed.sharifi@pybim.it (Italian)
     hamid-lotfalian-it.html     # Signature 06 — hamid.lotfalian@pybim.it (Italian)
-  preview.html                  # Interactive comparison & one-click copy preview page
+  preview.html                  # Interactive Dark-Only verification & one-click copy suite
   README.md                     # Installation & architectural documentation
   BRAND-TOKENS.md               # Design tokens reference
 ```

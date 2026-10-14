@@ -1,8 +1,8 @@
 /**
  * Generator script for pyBIM email signatures.
  * Generates:
- * - dist/*.html (6 standalone HTML signature files)
- * - preview.html (interactive comparison and copy preview page)
+ * - dist/*.html (6 standalone Dark-Only HTML signature files)
+ * - preview.html (interactive Dark-Only verification & copy suite)
  */
 
 import fs from "fs";
@@ -20,9 +20,9 @@ if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir, { recursive: true });
 }
 
-console.log("Generating 6 pyBIM email signatures...");
+console.log("Generating 6 pyBIM email signatures (Dark-Only)...");
 
-// 1. Generate individual HTML files in dist/
+// 1. Generate individual standalone HTML files in dist/
 for (const acc of accounts) {
   const fullHtml = generateFullHtmlDocument(acc, signatureConfig);
   const outPath = path.join(distDir, acc.filename);
@@ -30,7 +30,7 @@ for (const acc of accounts) {
   console.log(` ✓ Generated ${acc.filename} (${acc.name} - ${acc.account})`);
 }
 
-// 2. Generate interactive preview.html
+// 2. Generate interactive Dark-Only preview.html
 function generatePreviewHtml() {
   const cards = accounts.map((acc, index) => {
     const fragment = generateSignatureFragment(acc, signatureConfig);
@@ -55,28 +55,10 @@ function generatePreviewHtml() {
         </div>
       </div>
 
-      <div class="sig-views">
-        <!-- Light Email Background View -->
-        <div class="sig-view-box">
-          <div class="sig-view-label">
-            <span class="dot light-dot"></span> Light Email Client Environment (#FFFFFF)
-          </div>
-          <div class="sig-preview-canvas light-canvas" id="canvas-light-${acc.id}">
-            <div class="sig-content-wrapper" id="content-${acc.id}">
-              ${fragment}
-            </div>
-          </div>
-        </div>
-
-        <!-- Dark Email Background View -->
-        <div class="sig-view-box">
-          <div class="sig-view-label">
-            <span class="dot dark-dot"></span> Dark Email Client Environment (#1E293B)
-          </div>
-          <div class="sig-preview-canvas dark-canvas">
-            <div class="sig-content-wrapper">
-              ${fragment}
-            </div>
+      <div class="sig-view-box">
+        <div class="sig-preview-canvas dark-canvas" id="canvas-${acc.id}">
+          <div class="sig-content-wrapper" id="content-${acc.id}">
+            ${fragment}
           </div>
         </div>
       </div>
@@ -89,16 +71,18 @@ function generatePreviewHtml() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pyBIM Email Signatures — Verification & Installation Suite</title>
+  <title>pyBIM Email Signatures — Dark-Only Suite</title>
   <style>
     :root {
-      --bg: #0B0F19;
-      --card-bg: #111827;
-      --border: #1F2937;
-      --text: #F3F4F6;
-      --text-muted: #9CA3AF;
+      --bg: #080C14;
+      --surface: #0F172A;
+      --card-bg: #152237;
+      --border: #1E293B;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
       --primary: #3B82F6;
       --primary-hover: #2563EB;
+      --link: #60A5FA;
       --success: #10B981;
     }
     * { box-sizing: border-box; }
@@ -111,7 +95,7 @@ function generatePreviewHtml() {
       line-height: 1.5;
     }
     .container {
-      max-width: 1140px;
+      max-width: 860px;
       margin: 0 auto;
     }
     header {
@@ -137,6 +121,7 @@ function generatePreviewHtml() {
       font-weight: 700;
       margin: 0 0 8px 0;
       letter-spacing: -0.5px;
+      color: var(--text);
     }
     .subtitle {
       color: var(--text-muted);
@@ -154,10 +139,10 @@ function generatePreviewHtml() {
     }
     .notice-box strong { color: #EFF6FF; }
     .sig-card {
-      background: var(--card-bg);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       overflow: hidden;
     }
     .sig-card-header {
@@ -165,7 +150,7 @@ function generatePreviewHtml() {
       justify-content: space-between;
       align-items: center;
       padding: 16px 24px;
-      background: #161F30;
+      background: #0B111E;
       border-bottom: 1px solid var(--border);
       flex-wrap: wrap;
       gap: 12px;
@@ -182,11 +167,11 @@ function generatePreviewHtml() {
       width: 28px;
       height: 28px;
       border-radius: 6px;
-      background: #1E293B;
+      background: var(--bg);
       color: var(--primary);
       font-weight: bold;
       font-size: 13px;
-      border: 1px solid #334155;
+      border: 1px solid var(--border);
     }
     .sig-title {
       font-size: 17px;
@@ -232,43 +217,21 @@ function generatePreviewHtml() {
       background: var(--primary-hover);
     }
     .btn-secondary {
-      background: #1E293B;
+      background: #152237;
       color: #E2E8F0;
-      border: 1px solid #334155;
+      border: 1px solid var(--border);
     }
     .btn-secondary:hover {
-      background: #334155;
-    }
-    .sig-views {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      padding: 24px;
-    }
-    @media (max-width: 1060px) {
-      .sig-views { grid-template-columns: 1fr; }
+      background: #1E293B;
     }
     .sig-view-box {
+      padding: 24px;
       display: flex;
       flex-direction: column;
-    }
-    .sig-view-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      background: var(--surface);
     }
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-    .light-dot { background: #E2E8F0; border: 1px solid #94A3B8; }
-    .dark-dot { background: #334155; border: 1px solid #64748B; }
     .sig-preview-canvas {
       padding: 24px;
       border-radius: 6px;
@@ -277,12 +240,10 @@ function generatePreviewHtml() {
       align-items: center;
       justify-content: center;
       overflow-x: auto;
-    }
-    .light-canvas {
-      background: #FFFFFF;
+      max-width: 100%;
     }
     .dark-canvas {
-      background: #1E293B;
+      background: var(--bg);
     }
     .toast {
       position: fixed;
@@ -299,8 +260,8 @@ function generatePreviewHtml() {
       z-index: 9999;
     }
     .instructions-card {
-      background: #111827;
-      border: 1px solid #1F2937;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 24px;
       margin-top: 48px;
@@ -323,7 +284,7 @@ function generatePreviewHtml() {
     <header>
       <div class="header-tag">pyBIM Design System</div>
       <h1>Branded Gmail-Compatible Email Signatures</h1>
-      <p class="subtitle">Complete verification suite for pyBIM's six corporate email accounts. Derived from <code>app/globals.css</code> and the official white transparent logo.</p>
+      <p class="subtitle">Strictly Dark-Only corporate email signature suite for pyBIM's six accounts. Built with approved tokens (Base <code>#080C14</code>, Surface <code>#0F172A</code>, Border <code>#1E293B</code>, Text <code>#F8FAFC</code> / <code>#94A3B8</code>).</p>
       
       <div class="notice-box">
         <strong>Verified Logo Production CDN:</strong> <code>${signatureConfig.logoUrl}</code> (HTTP 200, image/png, SHA256 verified identical to repository asset).
@@ -337,10 +298,10 @@ function generatePreviewHtml() {
     <div class="instructions-card">
       <h3>Gmail Installation Instructions</h3>
       <ol>
-        <li>Click <strong>Copy Signature</strong> above next to the desired account (or select and copy the rendered signature box on the light canvas).</li>
+        <li>Click <strong>Copy Signature</strong> above next to your account (or select and copy the rendered signature box directly).</li>
         <li>Open <strong>Gmail</strong> and click the <strong>Gear icon</strong> (top right) &rarr; <strong>See all settings</strong>.</li>
         <li>Under the <strong>General</strong> tab, scroll down to the <strong>Signature</strong> section.</li>
-        <li>Click <strong>Create new</strong>, enter a name (e.g. <code>pyBIM Official</code>), and click in the signature editor.</li>
+        <li>Click <strong>Create new</strong>, enter a name (e.g. <code>pyBIM Official</code>), and click into the signature editor.</li>
         <li>Press <strong>Ctrl+V</strong> (Windows) or <strong>Cmd+V</strong> (Mac) to paste the rendered signature.</li>
         <li>Under <strong>Signature defaults</strong>, select your newly created signature for <em>For new emails use</em> and <em>On reply/forward use</em>.</li>
         <li>Scroll to the bottom of the page and click <strong>Save Changes</strong>.</li>
@@ -401,6 +362,6 @@ function generatePreviewHtml() {
 const previewHtml = generatePreviewHtml();
 const previewPath = path.join(__dirname, "preview.html");
 fs.writeFileSync(previewPath, previewHtml, "utf-8");
-console.log(" ✓ Generated preview.html (interactive comparison suite)");
+console.log(" ✓ Generated preview.html (Dark-Only verification suite)");
 
 console.log("All pyBIM email signatures generated successfully.");
