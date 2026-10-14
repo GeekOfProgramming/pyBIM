@@ -83,19 +83,19 @@ export default function CorePhilosophy() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px bg-brand-primary w-8 sm:w-12" aria-hidden="true" />
-            <span className="text-xs font-mono font-bold text-brand-primary tracking-widest uppercase">
+            <span className="text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
               {t("about.philosophy.eyebrow")}
             </span>
           </div>
 
           <h2 
             id={`${sectionId}-heading`}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-textPrimary leading-tight mb-5"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold tracking-tight text-brand-textPrimary leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-5"
           >
             {t("about.philosophy.title")}
           </h2>
 
-          <p className="text-base sm:text-lg text-brand-textSecondary leading-relaxed">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary leading-relaxed">
             {t("about.philosophy.subtitle")}
           </p>
         </motion.div>
@@ -123,7 +123,7 @@ export default function CorePhilosophy() {
             >
               <div>
                 <div className="flex items-center justify-between gap-3 mb-4">
-                  <span className="text-xs font-mono font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase">
+                  <span className="text-caption font-mono font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase">
                     {t("about.philosophy.col1_label")}
                   </span>
                   <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 flex items-center justify-center text-slate-600 dark:text-slate-300">
@@ -131,15 +131,15 @@ export default function CorePhilosophy() {
                   </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-brand-textPrimary mb-2 leading-snug">
+                <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary mb-2 leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]">
                   {t("about.philosophy.col1_title")}
                 </h3>
 
-                <p className="text-sm text-brand-textSecondary leading-relaxed mb-3">
+                <p className="text-body-sm text-brand-textSecondary leading-relaxed mb-3">
                   {t("about.philosophy.col1_primary")}
                 </p>
 
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                <p className="text-caption text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
                   {t("about.philosophy.col1_supporting")}
                 </p>
 
@@ -157,7 +157,7 @@ export default function CorePhilosophy() {
                 </div>
               </div>
 
-              <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800/70 text-xs font-mono text-slate-500 dark:text-slate-400">
+              <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800/70 text-caption font-mono text-slate-500 dark:text-slate-400">
                 {t("about.philosophy.col1_tag")}
               </div>
             </motion.div>
@@ -169,7 +169,7 @@ export default function CorePhilosophy() {
             >
               <div>
                 <div className="flex items-center justify-between gap-3 mb-4">
-                  <span className="text-xs font-mono font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase">
+                  <span className="text-caption font-mono font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase">
                     {t("about.philosophy.col3_label")}
                   </span>
                   <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 flex items-center justify-center text-slate-600 dark:text-slate-300">
@@ -177,15 +177,15 @@ export default function CorePhilosophy() {
                   </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-brand-textPrimary mb-2 leading-snug">
+                <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary mb-2 leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]">
                   {t("about.philosophy.col3_title")}
                 </h3>
 
-                <p className="text-sm text-brand-textSecondary leading-relaxed mb-3">
+                <p className="text-body-sm text-brand-textSecondary leading-relaxed mb-3">
                   {t("about.philosophy.col3_primary")}
                 </p>
 
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                <p className="text-caption text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
                   {t("about.philosophy.col3_supporting")}
                 </p>
 
@@ -203,7 +203,7 @@ export default function CorePhilosophy() {
                 </div>
               </div>
 
-              <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800/70 text-xs font-mono text-slate-500 dark:text-slate-400">
+              <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800/70 text-caption font-mono text-slate-500 dark:text-slate-400">
                 {t("about.philosophy.col3_tag")}
               </div>
             </motion.div>
@@ -233,7 +233,7 @@ export default function CorePhilosophy() {
                     <span className="font-sans font-extrabold text-[22px] sm:text-[26px] tracking-tight text-brand-textPrimary leading-none select-none">
                       pyBIM
                     </span>
-                    <span className="text-xs font-mono font-semibold tracking-wider text-brand-primary">
+                    <span className="text-caption font-mono font-semibold tracking-wider text-brand-primary">
                       {t("about.philosophy.col2_label")}
                     </span>
                   </div>
@@ -243,15 +243,15 @@ export default function CorePhilosophy() {
                 </div>
 
                 {/* Primary Narrative */}
-                <h3 className="text-xl sm:text-2xl font-bold text-brand-textPrimary mb-3 leading-snug">
+                <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary mb-3 leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]">
                   {t("about.philosophy.col2_title")}
                 </h3>
 
-                <p className="text-base text-brand-textPrimary font-medium leading-relaxed mb-3">
+                <p className="text-body text-brand-textPrimary font-medium leading-relaxed mb-3">
                   {t("about.philosophy.col2_primary")}
                 </p>
 
-                <p className="text-sm text-brand-textSecondary leading-relaxed mb-6">
+                <p className="text-body-sm text-brand-textSecondary leading-relaxed mb-6">
                   {t("about.philosophy.col2_supporting")}
                 </p>
 
@@ -261,9 +261,9 @@ export default function CorePhilosophy() {
                 {/* ================================================= */}
                 <div className="rounded-xl border border-brand-primary/25 bg-brand-primary/[0.03] dark:bg-blue-950/25 p-4 sm:p-5 mb-6">
                   {/* Schematic Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-brand-primary mb-5 pb-2 border-b border-brand-primary/15">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-caption font-mono text-brand-primary mb-5 pb-2 border-b border-brand-primary/15">
                     <span className="font-bold tracking-wider">{t("about.philosophy.col2_diagram_header")}</span>
-                    <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-brand-primary/10 text-brand-primary border border-brand-primary/25">
+                    <span className="self-start sm:self-auto inline-flex items-center px-2 py-0.5 rounded-full text-technical font-semibold bg-brand-primary/10 text-brand-primary border border-brand-primary/25">
                       {t("about.philosophy.col2_diagram_badge")}
                     </span>
                   </div>
@@ -286,7 +286,7 @@ export default function CorePhilosophy() {
                         <span className="text-sm font-mono font-bold text-brand-textPrimary leading-snug">
                           {t("about.philosophy.col2_node_info")}
                         </span>
-                        <span className="text-xs font-mono text-brand-textSecondary mt-1">
+                        <span className="text-caption font-mono text-brand-textSecondary mt-1">
                           {t("about.philosophy.col2_node_info_sub")}
                         </span>
                       </motion.div>
@@ -310,7 +310,7 @@ export default function CorePhilosophy() {
                         <span className="text-sm font-mono font-bold text-brand-primary leading-snug">
                           {t("about.philosophy.col2_node_process")}
                         </span>
-                        <span className="text-xs font-mono text-brand-textSecondary mt-1">
+                        <span className="text-caption font-mono text-brand-textSecondary mt-1">
                           {t("about.philosophy.col2_node_process_sub")}
                         </span>
                       </motion.div>
@@ -334,7 +334,7 @@ export default function CorePhilosophy() {
                         <span className="text-sm font-mono font-bold text-emerald-700 dark:text-emerald-400 leading-snug">
                           {t("about.philosophy.col2_node_review")}
                         </span>
-                        <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 mt-1">
+                        <span className="text-caption font-mono text-emerald-600 dark:text-emerald-400 mt-1">
                           {t("about.philosophy.col2_node_review_sub")}
                         </span>
                       </motion.div>
@@ -366,10 +366,10 @@ export default function CorePhilosophy() {
                     >
                       {/* Secondary Node 01: Internal Software R&D */}
                       <div className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 p-3 shadow-sm flex flex-col justify-center min-h-[72px]">
-                        <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 leading-snug">
+                        <span className="text-caption font-mono font-bold text-slate-700 dark:text-slate-300 leading-snug">
                           {t("about.philosophy.col2_branch_title")}
                         </span>
-                        <span className="text-xs font-mono text-brand-primary mt-0.5">
+                        <span className="text-caption font-mono text-brand-primary mt-0.5">
                           {t("about.philosophy.col2_branch_step1")}
                         </span>
                       </div>
@@ -384,10 +384,10 @@ export default function CorePhilosophy() {
 
                       {/* Secondary Node 02: Future Connected Automation */}
                       <div className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/50 p-3 shadow-sm flex flex-col justify-center min-h-[72px]">
-                        <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 leading-snug">
+                        <span className="text-caption font-mono font-bold text-slate-700 dark:text-slate-300 leading-snug">
                           {t("about.philosophy.col2_branch_step2")}
                         </span>
-                        <span className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5">
+                        <span className="text-caption font-mono text-slate-500 dark:text-slate-400 mt-0.5">
                           {t("about.philosophy.col2_branch_step2_sub")}
                         </span>
                       </div>
@@ -401,7 +401,7 @@ export default function CorePhilosophy() {
                     {/* Primary Branch Label */}
                     <div className="flex items-center gap-2 pt-1 pb-1">
                       <div className="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true" />
-                      <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 uppercase">
+                      <span className="text-caption font-mono font-bold text-emerald-700 dark:text-emerald-400 uppercase">
                         {t("about.philosophy.col2_status_services")}
                       </span>
                     </div>
@@ -411,7 +411,7 @@ export default function CorePhilosophy() {
                       <span className="text-sm font-mono font-bold text-brand-textPrimary block">
                         {t("about.philosophy.col2_node_info")}
                       </span>
-                      <span className="text-xs font-mono text-brand-textSecondary block mt-0.5">
+                      <span className="text-caption font-mono text-brand-textSecondary block mt-0.5">
                         {t("about.philosophy.col2_node_info_sub")}
                       </span>
                     </div>
@@ -425,7 +425,7 @@ export default function CorePhilosophy() {
                       <span className="text-sm font-mono font-bold text-brand-primary block">
                         {t("about.philosophy.col2_node_process")}
                       </span>
-                      <span className="text-xs font-mono text-brand-textSecondary block mt-0.5">
+                      <span className="text-caption font-mono text-brand-textSecondary block mt-0.5">
                         {t("about.philosophy.col2_node_process_sub")}
                       </span>
                     </div>
@@ -439,7 +439,7 @@ export default function CorePhilosophy() {
                       <span className="text-sm font-mono font-bold text-emerald-700 dark:text-emerald-400 block">
                         {t("about.philosophy.col2_node_review")}
                       </span>
-                      <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 block mt-0.5">
+                      <span className="text-caption font-mono text-emerald-600 dark:text-emerald-400 block mt-0.5">
                         {t("about.philosophy.col2_node_review_sub")}
                       </span>
                     </div>
@@ -448,26 +448,26 @@ export default function CorePhilosophy() {
                     <div className="pt-4 pb-1 border-t border-brand-primary/15">
                       <div className="flex items-center gap-2 mb-2.5">
                         <GitBranch className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
-                        <span className="text-xs font-mono font-bold text-brand-primary uppercase">
+                        <span className="text-caption font-mono font-bold text-brand-primary uppercase">
                           {t("about.philosophy.col2_status_rd")}
                         </span>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                         <div className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-3 shadow-sm">
-                          <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 block">
+                          <span className="text-caption font-mono font-bold text-slate-700 dark:text-slate-300 block">
                             {t("about.philosophy.col2_branch_title")}
                           </span>
-                          <span className="text-xs font-mono text-brand-primary block mt-0.5">
+                          <span className="text-caption font-mono text-brand-primary block mt-0.5">
                             {t("about.philosophy.col2_branch_step1")}
                           </span>
                         </div>
 
                         <div className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/50 p-3 shadow-sm">
-                          <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 block">
+                          <span className="text-caption font-mono font-bold text-slate-700 dark:text-slate-300 block">
                             {t("about.philosophy.col2_branch_step2")}
                           </span>
-                          <span className="text-xs font-mono text-slate-500 dark:text-slate-400 block mt-0.5">
+                          <span className="text-caption font-mono text-slate-500 dark:text-slate-400 block mt-0.5">
                             {t("about.philosophy.col2_branch_step2_sub")}
                           </span>
                         </div>
@@ -478,7 +478,7 @@ export default function CorePhilosophy() {
 
                 {/* Compact Availability Status Strip: 2 Balanced Responsive Rows */}
                 <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/50 p-4 space-y-2.5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-caption">
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" aria-hidden="true" />
                       <span className="font-semibold text-brand-textPrimary leading-tight">
@@ -493,7 +493,7 @@ export default function CorePhilosophy() {
                     </div>
                   </div>
                   
-                  <p className="text-[11px] font-mono text-brand-textSecondary pt-2 border-t border-slate-200/60 dark:border-slate-800/60 leading-normal">
+                  <p className="text-technical font-mono text-brand-textSecondary pt-2 border-t border-slate-200/60 dark:border-slate-800/60 leading-normal">
                     {t("about.philosophy.col2_status_note")}
                   </p>
                 </div>
