@@ -30,7 +30,7 @@ export default function CoreArchitects() {
             ========================================================================= */}
         <div className="max-w-3xl mb-14 lg:mb-18">
           {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-caption font-bold tracking-widest uppercase mb-5 select-none shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-caption font-bold tracking-wider uppercase mb-5 select-none shadow-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" aria-hidden="true" />
             <span>{data.eyebrow}</span>
           </div>
@@ -38,13 +38,13 @@ export default function CoreArchitects() {
           {/* Semantic Single H2 Heading */}
           <h2
             id={`${sectionId}-heading`}
-            className="text-section font-extrabold text-brand-textPrimary tracking-tight mb-5"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-5"
           >
             {data.heading}
           </h2>
 
           {/* Editorial Introduction */}
-          <p className="text-lead text-brand-textSecondary font-normal leading-relaxed">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary font-normal leading-relaxed">
             {data.description}
           </p>
         </div>
@@ -84,13 +84,13 @@ export default function CoreArchitects() {
                   className="w-2.5 h-0.5 bg-blue-600 dark:bg-cyan-400 rounded-full shrink-0"
                   aria-hidden="true"
                 />
-                <span className="font-mono text-caption font-bold text-blue-700 dark:text-cyan-400 tracking-widest uppercase">
+                <span className="font-mono text-caption font-bold text-blue-700 dark:text-cyan-400 tracking-wider uppercase">
                   {data.phase2.label}
                 </span>
               </div>
 
               {/* Status Pill: Controlled Private Testing */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-mono text-[11px] font-semibold tracking-wider uppercase select-none shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-mono text-caption font-semibold tracking-wider uppercase select-none shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-cyan-400 animate-pulse" aria-hidden="true" />
                 <span>{data.phase2.status}</span>
               </div>
@@ -126,7 +126,7 @@ export default function CoreArchitects() {
                         key={index}
                         className="p-3.5 rounded-xl bg-white/90 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs"
                       >
-                        <span className="font-mono text-[11px] font-bold text-slate-500 dark:text-slate-400 tracking-wider uppercase block mb-1">
+                        <span className="font-mono text-caption font-bold text-slate-500 dark:text-slate-400 tracking-wider uppercase block mb-1">
                           {meta.label}
                         </span>
                         <span className="font-mono text-caption font-bold text-slate-900 dark:text-slate-100 tracking-wide">
@@ -136,7 +136,7 @@ export default function CoreArchitects() {
                     ))}
                   </div>
 
-                  <p className="font-mono text-[11px] text-slate-500 dark:text-slate-400/90 leading-relaxed">
+                  <p className="font-mono text-caption text-slate-500 dark:text-slate-400/90 leading-relaxed">
                     {data.phase2.timing_note}
                   </p>
                 </div>
@@ -146,7 +146,7 @@ export default function CoreArchitects() {
                   <CtaLink href={data.phase2.cta.href} variant="primary">
                     {data.phase2.cta.label}
                   </CtaLink>
-                  <p className="font-mono text-[11px] text-slate-500 dark:text-slate-400 max-w-sm leading-snug">
+                  <p className="font-mono text-caption text-slate-500 dark:text-slate-400 max-w-sm leading-snug">
                     {data.phase2.qualification}
                   </p>
                 </div>
@@ -174,16 +174,16 @@ export default function CoreArchitects() {
             {/* Left Column: Identifiers & Badges */}
             <div className="lg:col-span-4 flex flex-col items-start space-y-2.5">
               <div className="flex items-center gap-2">
-                <span className="font-mono text-[11px] font-bold text-brand-primary tracking-widest uppercase">
+                <span className="font-mono text-caption font-bold text-brand-primary tracking-wider uppercase">
                   {data.phase3.label}
                 </span>
                 <span className="text-brand-border font-mono" aria-hidden="true">/</span>
-                <span className="font-mono text-[11px] font-semibold text-brand-textSecondary tracking-widest uppercase">
+                <span className="font-mono text-caption font-semibold text-brand-textSecondary tracking-wider uppercase">
                   {data.phase3.eyebrow}
                 </span>
               </div>
 
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-textSecondary font-mono text-[11px] font-semibold tracking-wider uppercase select-none">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-textSecondary font-mono text-caption font-semibold tracking-wider uppercase select-none">
                 <Sparkles className="w-3 h-3 text-brand-primary" aria-hidden="true" />
                 <span>{data.phase3.status}</span>
               </div>
@@ -193,7 +193,7 @@ export default function CoreArchitects() {
             <div className="lg:col-span-8 space-y-2.5">
               <h3
                 id={`${sectionId}-phase3-title`}
-                className="text-card-title font-bold text-brand-textPrimary tracking-tight"
+                className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]"
               >
                 {data.phase3.title}
               </h3>
