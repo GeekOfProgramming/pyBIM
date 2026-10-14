@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, CheckCircle2, AlertCircle, ShieldAlert, Cpu, Lock, Sparkles, Server } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
 export default function PriorityQueueSection() {
   const { t } = useLanguage();
@@ -63,6 +64,9 @@ export default function PriorityQueueSection() {
 
   return (
     <section id="priority-queue" className="scroll-mt-24 bg-brand-surface py-24 border-b border-brand-border relative overflow-hidden">
+      {/* Family B Background */}
+      <EngineeringBackdrop variant="surface" />
+
       {/* Background Glows */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-primary/5 rounded-full blur-3xl pointer-events-none" />
