@@ -91,7 +91,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
             <div className="lg:col-span-7 flex flex-col justify-between">
               <div>
                 {/* Status Eyebrow Badge */}
-                <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-500/10 px-3.5 py-1 text-caption font-mono font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-5">
+                <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-500/10 px-3.5 py-1 text-caption font-mono font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider mb-5">
                   <span 
                     className={`w-2 h-2 rounded-full bg-sky-500 ${!shouldReduceMotion ? "animate-pulse" : ""}`} 
                     aria-hidden="true" 
@@ -102,13 +102,13 @@ export default function ServicesEarlyAccessBanner({ data }) {
                 {/* Primary Headline (h2 for correct document heading hierarchy) */}
                 <h2 
                   id={`${baseId}-title`}
-                  className="text-section-sm lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
+                  className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-[1.2] sm:leading-[1.2] lg:leading-[1.2]"
                 >
                   {banner.headline}
                 </h2>
 
                 {/* Descriptive Copy */}
-                <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed mb-8 max-w-2xl">
+                <p className="text-[17px] sm:text-lead text-brand-textSecondary font-medium leading-relaxed mb-8 max-w-2xl">
                   {banner.description || banner.subtitle}
                 </p>
               </div>
@@ -126,7 +126,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
 
                 {/* Supporting Microcopy */}
                 {banner.microcopy && (
-                  <p className="text-caption text-brand-textSecondary/80 font-medium leading-relaxed tracking-wide mt-3 max-w-xl">
+                  <p className="text-caption text-brand-textSecondary/80 font-medium leading-relaxed mt-3 max-w-xl">
                     {banner.microcopy}
                   </p>
                 )}
@@ -149,7 +149,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
                       {diagram.conceptualArchitecture}
                     </span>
                   </div>
-                  <span className="text-technical font-mono uppercase tracking-widest text-brand-textSecondary/70 px-2 py-0.5 rounded bg-brand-surface border border-brand-border/60">
+                  <span className="text-technical font-mono uppercase tracking-wider text-brand-textSecondary/70 px-2 py-0.5 rounded bg-brand-surface border border-brand-border/60">
                     {diagram.plannedInfrastructure}
                   </span>
                 </div>
