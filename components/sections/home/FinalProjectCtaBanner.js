@@ -4,16 +4,16 @@ import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, ShieldCheck, Lock, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import homeData from "@/lib/data/home.json";
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
 export default function FinalProjectCtaBanner() {
   const { language } = useLanguage();
   const t = (homeData[language] || homeData.en).finalProjectCta || (homeData.en).finalProjectCta;
 
   return (
-    <section className="py-24 md:py-32 px-6 lg:px-8 bg-gray-50 dark:bg-brand-surface text-gray-900 dark:text-white relative overflow-hidden border-b border-gray-200 dark:border-slate-800 transition-colors">
-      {/* Background Lighting Gradients */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/5 dark:bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 dark:bg-indigo-700/15 rounded-full blur-3xl pointer-events-none" />
+    <section className="py-24 md:py-32 px-6 lg:px-8 bg-brand-surface text-brand-textPrimary relative overflow-hidden border-b border-brand-border transition-colors">
+      {/* Family B — Digital Intelligence Surface Background */}
+      <EngineeringBackdrop variant="home-surface" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -45,7 +45,7 @@ export default function FinalProjectCtaBanner() {
 
           {/* RIGHT COLUMN: The High-Conversion Intake Card directing to /contact#audit */}
           <div className="lg:col-span-6">
-            <div className="rounded-3xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-8 md:p-10 shadow-xl dark:shadow-2xl text-left backdrop-blur-md relative overflow-hidden">
+            <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-8 md:p-10 shadow-xl shadow-slate-200/50 dark:shadow-2xl dark:shadow-slate-950/40 text-left backdrop-blur-md relative overflow-hidden transition-colors">
               {/* Top Accent Line */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-brand-accent to-emerald-500" />
 

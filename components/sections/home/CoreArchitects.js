@@ -20,8 +20,8 @@ export default function CoreArchitects() {
       className="relative py-20 md:py-28 lg:py-32 px-6 lg:px-8 w-full bg-brand-surface text-brand-textPrimary border-b border-brand-border overflow-hidden transition-colors"
       aria-labelledby={`${sectionId}-heading`}
     >
-      {/* Family B — Surface Technical Background */}
-      <EngineeringBackdrop variant="surface" />
+      {/* Family B — Digital Intelligence Surface Background */}
+      <EngineeringBackdrop variant="home-surface" />
 
       <div className="max-w-7xl mx-auto relative z-10">
 
@@ -51,25 +51,25 @@ export default function CoreArchitects() {
 
         {/* =========================================================================
             PRIMARY SHOWCASE: PHASE II — pyBIM Cloud Connect (75–80% visual emphasis)
-            Deep Navy Architectural Engineering Surface with Subtle Roman Numeral 'II'
+            Architectural Product Studio in Light Mode / Deep Navy CAD Surface in Dark Mode
             ========================================================================= */}
         <motion.article
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.45 }}
-          className="relative w-full rounded-2xl lg:rounded-3xl bg-[#0F172A] text-slate-100 border border-slate-700/80 shadow-2xl overflow-hidden p-8 sm:p-10 lg:p-14 mb-10 lg:mb-12 group"
+          className="relative w-full rounded-2xl lg:rounded-3xl bg-gradient-to-br from-white via-slate-50 to-sky-50/40 dark:from-[#0F172A] dark:via-[#0F172A] dark:to-[#0B132B] text-slate-900 dark:text-slate-100 border border-slate-200/90 dark:border-slate-700/80 shadow-2xl shadow-slate-200/50 dark:shadow-slate-950/40 overflow-hidden p-8 sm:p-10 lg:p-14 mb-10 lg:mb-12 group transition-colors"
           aria-labelledby={`${sectionId}-phase2-title`}
         >
           {/* Blueprint-inspired subtle ambient glow */}
           <div
-            className="absolute top-0 right-0 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"
+            className="absolute top-0 right-0 w-96 h-96 bg-blue-500/[0.08] dark:bg-brand-primary/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"
             aria-hidden="true"
           />
 
           {/* Decorative Oversized Roman Numeral 'II' in Background */}
           <div
-            className="absolute right-6 sm:right-12 bottom-6 sm:bottom-10 pointer-events-none select-none font-mono font-black text-slate-800/40 text-[120px] sm:text-[180px] lg:text-[240px] leading-none tracking-tighter"
+            className="absolute right-6 sm:right-12 bottom-6 sm:bottom-10 pointer-events-none select-none font-mono font-black text-slate-200/70 dark:text-slate-800/40 text-[120px] sm:text-[180px] lg:text-[240px] leading-none tracking-tighter"
             aria-hidden="true"
           >
             II
@@ -81,17 +81,17 @@ export default function CoreArchitects() {
             <div className="flex flex-wrap items-center justify-between gap-3 mb-8 sm:mb-10">
               <div className="flex items-center gap-2.5">
                 <span
-                  className="w-2.5 h-0.5 bg-cyan-400 rounded-full shrink-0"
+                  className="w-2.5 h-0.5 bg-blue-600 dark:bg-cyan-400 rounded-full shrink-0"
                   aria-hidden="true"
                 />
-                <span className="font-mono text-caption font-bold text-cyan-400 tracking-widest uppercase">
+                <span className="font-mono text-caption font-bold text-blue-700 dark:text-cyan-400 tracking-widest uppercase">
                   {data.phase2.label}
                 </span>
               </div>
 
               {/* Status Pill: Controlled Private Testing */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/90 border border-slate-700 text-slate-300 font-mono text-[11px] font-semibold tracking-wider uppercase select-none">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" aria-hidden="true" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-mono text-[11px] font-semibold tracking-wider uppercase select-none shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-cyan-400 animate-pulse" aria-hidden="true" />
                 <span>{data.phase2.status}</span>
               </div>
             </div>
@@ -100,22 +100,22 @@ export default function CoreArchitects() {
             <div className="max-w-3xl mb-10 sm:mb-12">
               <h3
                 id={`${sectionId}-phase2-title`}
-                className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-3"
+                className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3"
               >
                 {data.phase2.title}
               </h3>
 
-              <p className="text-lg sm:text-xl font-semibold text-cyan-200/90 tracking-tight mb-4">
+              <p className="text-lg sm:text-xl font-semibold text-blue-700 dark:text-cyan-200/90 tracking-tight mb-4">
                 {data.phase2.positioning}
               </p>
 
-              <p className="text-body-sm sm:text-body text-slate-300 font-normal leading-relaxed">
+              <p className="text-body-sm sm:text-body text-slate-600 dark:text-slate-300 font-normal leading-relaxed">
                 {data.phase2.description}
               </p>
             </div>
 
             {/* Lower Area: Metadata Rail, Timing Note & Single Clear Action */}
-            <div className="pt-8 border-t border-slate-800/90">
+            <div className="pt-8 border-t border-slate-200/90 dark:border-slate-800/90">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
 
                 {/* Metadata Rails (Col span 7) */}
@@ -124,19 +124,19 @@ export default function CoreArchitects() {
                     {data.phase2.metadata.map((meta, index) => (
                       <div
                         key={index}
-                        className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800"
+                        className="p-3.5 rounded-xl bg-white/90 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs"
                       >
-                        <span className="font-mono text-[11px] font-bold text-slate-400 tracking-wider uppercase block mb-1">
+                        <span className="font-mono text-[11px] font-bold text-slate-500 dark:text-slate-400 tracking-wider uppercase block mb-1">
                           {meta.label}
                         </span>
-                        <span className="font-mono text-caption font-bold text-slate-100 tracking-wide">
+                        <span className="font-mono text-caption font-bold text-slate-900 dark:text-slate-100 tracking-wide">
                           {meta.value}
                         </span>
                       </div>
                     ))}
                   </div>
 
-                  <p className="font-mono text-[11px] text-slate-400/90 leading-relaxed">
+                  <p className="font-mono text-[11px] text-slate-500 dark:text-slate-400/90 leading-relaxed">
                     {data.phase2.timing_note}
                   </p>
                 </div>
@@ -146,7 +146,7 @@ export default function CoreArchitects() {
                   <CtaLink href={data.phase2.cta.href} variant="primary">
                     {data.phase2.cta.label}
                   </CtaLink>
-                  <p className="font-mono text-[11px] text-slate-400 max-w-sm leading-snug">
+                  <p className="font-mono text-[11px] text-slate-500 dark:text-slate-400 max-w-sm leading-snug">
                     {data.phase2.qualification}
                   </p>
                 </div>

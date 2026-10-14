@@ -478,9 +478,12 @@ export default function ContactPageLayout() {
       {/* SOVEREIGN AI PRIORITY QUEUE / EARLY ACCESS FORM */}
       <PriorityQueueSection />
 
-      {/* FAQ SECTION - Technical Support */}
-      <section id="support" className="scroll-mt-24 bg-brand-surface pt-20 pb-32 border-b border-brand-border">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      {/* S05 — FAQ SECTION - Technical Support (Family A Base) */}
+      <section id="support" className="scroll-mt-24 relative w-full bg-brand-base pt-20 pb-32 border-b border-brand-border overflow-hidden">
+        {/* Family A Background */}
+        <EngineeringBackdrop variant="base" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <FAQSection />
         </div>
       </section>

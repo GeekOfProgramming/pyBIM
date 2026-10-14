@@ -3,13 +3,17 @@
 import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, Briefcase, Code2 } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
 export default function B2BCollaborationCTA() {
   const { t } = useLanguage();
 
   return (
-    <section id="collaboration" className="scroll-mt-24 bg-brand-base w-full py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section id="collaboration" className="scroll-mt-24 relative bg-brand-base w-full py-24 lg:py-32 border-b border-brand-border overflow-hidden">
+      {/* Background Family A (Base / Architectural) */}
+      <EngineeringBackdrop variant="base" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-10 sm:mb-12">
           <div className="flex items-center gap-3 mb-4">

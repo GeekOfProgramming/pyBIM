@@ -12,9 +12,9 @@ export default function HeroSection() {
   const schematic = data.schematic || (homeData.en).hero.schematic;
 
   return (
-    <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-40 lg:pb-32 px-6 lg:px-8 w-full bg-brand-base text-brand-textPrimary overflow-hidden border-b border-brand-border">
-      {/* Family A — Base Background */}
-      <EngineeringBackdrop variant="base" />
+    <section id="hero" className="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-40 lg:pb-32 px-6 lg:px-8 w-full bg-brand-base text-brand-textPrimary overflow-hidden border-b border-brand-border">
+      {/* Custom Home Hero — Parametric BIM × Digital Intelligence */}
+      <EngineeringBackdrop variant="home-hero" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-16 items-center">
@@ -63,17 +63,17 @@ export default function HeroSection() {
 
           {/* Right Column: 5/12 — Abstract BIM Engineering Schematic */}
           <div className="lg:col-span-5 w-full">
-            <div className="relative rounded-2xl lg:rounded-3xl border border-brand-border/80 bg-brand-cardElevated/80 dark:bg-slate-900/70 p-6 sm:p-7 shadow-xl backdrop-blur-sm overflow-hidden">
+            <div className="relative rounded-2xl lg:rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 p-6 sm:p-7 shadow-xl shadow-slate-200/50 dark:shadow-slate-950/40 backdrop-blur-md overflow-hidden transition-colors">
 
               {/* Card Header & Technical Identifier */}
-              <div className="flex items-center justify-between pb-4 mb-5 border-b border-brand-border/70">
+              <div className="flex items-center justify-between pb-4 mb-5 border-b border-slate-200/90 dark:border-slate-800/80">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true" />
-                  <span className="font-mono text-caption font-bold text-brand-textPrimary tracking-wider uppercase">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
+                  <span className="font-mono text-caption font-bold text-slate-900 dark:text-white tracking-wider uppercase">
                     {schematic.badge}
                   </span>
                 </div>
-                <span className="font-mono text-[11px] text-brand-textSecondary tracking-widest uppercase">
+                <span className="font-mono text-[11px] text-slate-500 dark:text-slate-400 tracking-widest uppercase">
                   {schematic.tag}
                 </span>
               </div>
@@ -81,33 +81,33 @@ export default function HeroSection() {
               {/* Schematic Workflow Nodes */}
               <div className="space-y-3.5">
                 {/* Node 1: Modeling & Parameter Development */}
-                <div className="rounded-xl border border-brand-border/60 bg-brand-surface/60 dark:bg-slate-950/50 p-4 transition-colors">
+                <div className="rounded-xl border border-slate-200/90 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/60 p-4 transition-colors">
                   <div className="flex items-center justify-between mb-1.5">
                     <div className="flex items-center gap-2.5">
-                      <div className="p-1.5 rounded-lg bg-blue-500/10 text-brand-primary">
+                      <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400">
                         <Layers className="w-4 h-4" />
                       </div>
-                      <span className="font-sans font-bold text-body-sm text-brand-textPrimary">
+                      <span className="font-sans font-bold text-body-sm text-slate-900 dark:text-white">
                         {schematic.node1_title}
                       </span>
                     </div>
-                    <span className="font-mono text-[11px] text-brand-primary font-semibold">
+                    <span className="font-mono text-[11px] text-blue-600 dark:text-blue-400 font-semibold">
                       {schematic.node1_badge}
                     </span>
                   </div>
-                  <p className="text-body-sm text-brand-textSecondary pl-9 text-xs leading-relaxed">
+                  <p className="text-body-sm text-slate-600 dark:text-slate-400 pl-9 text-xs leading-relaxed">
                     {schematic.node1_desc}
                   </p>
                 </div>
 
                 {/* Node 2: Multi-Model Coordination & Clash Mitigation */}
-                <div className="rounded-xl border border-brand-border/60 bg-brand-surface/60 dark:bg-slate-950/50 p-4 transition-colors">
+                <div className="rounded-xl border border-slate-200/90 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/60 p-4 transition-colors">
                   <div className="flex items-center justify-between mb-1.5">
                     <div className="flex items-center gap-2.5">
                       <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
                         <GitMerge className="w-4 h-4" />
                       </div>
-                      <span className="font-sans font-bold text-body-sm text-brand-textPrimary">
+                      <span className="font-sans font-bold text-body-sm text-slate-900 dark:text-white">
                         {schematic.node2_title}
                       </span>
                     </div>
@@ -115,19 +115,19 @@ export default function HeroSection() {
                       {schematic.node2_badge}
                     </span>
                   </div>
-                  <p className="text-body-sm text-brand-textSecondary pl-9 text-xs leading-relaxed">
+                  <p className="text-body-sm text-slate-600 dark:text-slate-400 pl-9 text-xs leading-relaxed">
                     {schematic.node2_desc}
                   </p>
                 </div>
 
                 {/* Node 3: Quality Assurance & Digital Delivery */}
-                <div className="rounded-xl border border-brand-border/60 bg-brand-surface/60 dark:bg-slate-950/50 p-4 transition-colors">
+                <div className="rounded-xl border border-slate-200/90 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/60 p-4 transition-colors">
                   <div className="flex items-center justify-between mb-1.5">
                     <div className="flex items-center gap-2.5">
                       <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                         <ShieldCheck className="w-4 h-4" />
                       </div>
-                      <span className="font-sans font-bold text-body-sm text-brand-textPrimary">
+                      <span className="font-sans font-bold text-body-sm text-slate-900 dark:text-white">
                         {schematic.node3_title}
                       </span>
                     </div>
@@ -135,19 +135,19 @@ export default function HeroSection() {
                       {schematic.node3_badge}
                     </span>
                   </div>
-                  <p className="text-body-sm text-brand-textSecondary pl-9 text-xs leading-relaxed">
+                  <p className="text-body-sm text-slate-600 dark:text-slate-400 pl-9 text-xs leading-relaxed">
                     {schematic.node3_desc}
                   </p>
                 </div>
               </div>
 
               {/* Schematic Footer / Status Bar */}
-              <div className="mt-4 pt-3.5 border-t border-brand-border/70 flex items-center justify-between text-[11px] font-mono text-brand-textSecondary">
+              <div className="mt-4 pt-3.5 border-t border-slate-200/90 dark:border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
                 <span className="flex items-center gap-1.5">
-                  <FileCheck className="w-3.5 h-3.5 text-brand-primary" />
+                  <FileCheck className="w-3.5 h-3.5 text-blue-600 dark:text-brand-primary" />
                   <span>{schematic.footer_label}</span>
                 </span>
-                <span className="text-brand-textPrimary font-semibold">
+                <span className="text-slate-900 dark:text-slate-200 font-semibold">
                   {schematic.footer_val}
                 </span>
               </div>

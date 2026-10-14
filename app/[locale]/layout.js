@@ -69,7 +69,7 @@ export async function generateMetadata({ params }) {
       type: "website",
       images: [
         {
-          url: "/logo_black_transparent.png",
+          url: "/images/shared/brand/logo_black_transparent.png",
           alt: "pyBIM - BIM Engineering & Revit Automation Services"
         }
       ]
@@ -78,12 +78,12 @@ export async function generateMetadata({ params }) {
       card: "summary",
       title: titles[locale] || titles.en,
       description: ogDescriptions[locale] || ogDescriptions.en,
-      images: ["/logo_black_transparent.png"]
+      images: ["/images/shared/brand/logo_black_transparent.png"]
     },
     icons: {
       icon: [
-        { url: "/logo_black_transparent.png", media: "(prefers-color-scheme: light)" },
-        { url: "/logo_white_transparent.png", media: "(prefers-color-scheme: dark)" }
+        { url: "/images/shared/brand/logo_black_transparent.png", media: "(prefers-color-scheme: light)" },
+        { url: "/images/shared/brand/logo_white_transparent.png", media: "(prefers-color-scheme: dark)" }
       ]
     }
   };

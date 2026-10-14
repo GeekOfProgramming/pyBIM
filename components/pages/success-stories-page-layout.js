@@ -78,8 +78,9 @@ export default function SuccessStoriesPageLayout() {
       <section 
         id="success-stories"
         aria-label={t("projects.hero.aria_label") || "Success Stories Hero"}
-        className="relative w-full border-b border-brand-border/60 pt-16 pb-16 md:pt-24 md:pb-20 lg:pt-28 lg:pb-24 overflow-hidden scroll-mt-28"
-      >        {/* Family A (Base) Unified Architectural Backdrop */}
+        className="relative w-full bg-brand-base border-b border-brand-border/60 pt-16 pb-16 md:pt-24 md:pb-20 lg:pt-28 lg:pb-24 overflow-hidden scroll-mt-28"
+      >
+        {/* Family A (Base) Unified Architectural Backdrop */}
         <EngineeringBackdrop variant="base" />
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">

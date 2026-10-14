@@ -99,8 +99,8 @@ export default function Header() {
   if (pathname?.startsWith("/admin")) return null;
 
   const logoSrc = (mounted && theme === "dark")
-    ? "/logo_white_transparent.png"
-    : "/logo_black_transparent.png";
+    ? "/images/shared/brand/logo_white_transparent.png"
+    : "/images/shared/brand/logo_black_transparent.png";
 
   return (
     <header className={`sticky top-0 z-[1000] border-b border-brand-border bg-white/95 dark:bg-brand-base/90 dark:border-white/10 backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-sm" : "py-4"}`}>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import TeamPartnerCard from "@/components/ui/team-partner-card";
 import TeamPartnerModal from "@/components/ui/team-partner-modal";
 import { useLanguage } from "@/lib/LanguageContext";
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 import { Users, Compass, ClipboardCheck } from "lucide-react";
 
 export default function TeamPartnersSection({ teamData }) {
@@ -23,8 +24,11 @@ export default function TeamPartnersSection({ teamData }) {
     <>
       {/* 1. CORE TEAM SECTION */}
       {teamMembers.length > 0 && (
-        <section id="team" className="bg-brand-surface w-full border-t border-brand-border py-24 lg:py-32 overflow-hidden">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <section id="team" className="relative bg-brand-surface w-full border-b border-brand-border py-24 lg:py-32 overflow-hidden">
+          {/* Background Family B (Surface / Technical) */}
+          <EngineeringBackdrop variant="surface" />
+
+          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
             <div className="text-center mb-16 max-w-3xl mx-auto">
               <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-2 text-sm font-semibold text-brand-primary mb-4 shadow-sm">
                 <Users className="w-4 h-4" /> {t("about.team.sec1.badge")}

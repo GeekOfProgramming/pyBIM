@@ -72,8 +72,8 @@ export default function ManifestoHero() {
       className="relative w-full py-20 md:py-28 lg:py-32 bg-brand-surface border-b border-brand-border overflow-hidden"
       aria-labelledby={titleId}
     >
-      {/* Background Family B (Surface / Technical) */}
-      <EngineeringBackdrop variant="surface" />
+      {/* Background: Custom About Hero (Architectural Contours × Engineering Evolution) */}
+      <EngineeringBackdrop variant="about-hero" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div 
