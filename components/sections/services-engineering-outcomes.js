@@ -168,19 +168,19 @@ export default function ServicesEngineeringOutcomes({ data }) {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px bg-brand-primary w-10 md:w-14" aria-hidden="true" />
-            <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
+            <span className="text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
               {outcomes.tag}
             </span>
           </div>
 
           <h2 
             id={`${baseId}-title`}
-            className="text-section-sm lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-[1.2] sm:leading-[1.2] lg:leading-[1.2]"
           >
             {outcomes.headline}
           </h2>
 
-          <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed max-w-3xl">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary font-medium leading-relaxed max-w-3xl">
             {outcomes.subtitle}
           </p>
         </motion.div>
@@ -249,7 +249,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
                     {/* Full Title (H3) */}
                     <h3 
                       id={`${baseId}-outcome-heading-${idx}`}
-                      className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-2.5"
+                      className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight mb-2.5 leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]"
                     >
                       {col.title}
                     </h3>
@@ -686,7 +686,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-card-title font-bold text-brand-textPrimary tracking-tight">
+                <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]">
                   {col.title}
                 </h3>
 
