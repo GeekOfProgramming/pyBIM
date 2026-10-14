@@ -86,19 +86,19 @@ export default function DirectChannelsSection() {
         <div className="max-w-3xl mb-12 lg:mb-16 text-left">
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px bg-brand-primary w-8 sm:w-12" aria-hidden="true" />
-            <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
+            <span className="text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
               {t("contact.channels.eyebrow")}
             </span>
           </div>
 
           <h2
             id={headingId}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-section-sm xl:text-section font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-4"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold tracking-tight text-brand-textPrimary leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-4"
           >
             {t("contact.channels.title")}
           </h2>
 
-          <p className="text-body sm:text-lead font-sans text-brand-textSecondary font-medium leading-relaxed">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary leading-relaxed">
             {t("contact.channels.desc")}
           </p>
         </div>
@@ -125,19 +125,19 @@ export default function DirectChannelsSection() {
                   </div>
 
                   {/* Card Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold font-sans text-brand-textPrimary tracking-tight mb-2.5">
+                  <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25] mb-2.5">
                     {card.title}
                   </h3>
 
                   {/* Short Description */}
-                  <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed mb-4">
+                  <p className="text-body-sm text-brand-textSecondary leading-relaxed mb-4">
                     {card.description}
                   </p>
 
                   {/* Destination Detail (prominent email address) */}
                   {card.destinationDisplay && (
                     <div className="mb-4 pt-1">
-                      <span className="font-mono text-body-sm font-semibold text-brand-textPrimary select-all">
+                      <span className="font-mono text-body-sm font-semibold text-brand-textPrimary select-all break-all sm:break-normal">
                         {card.destinationDisplay}
                       </span>
                     </div>
@@ -150,7 +150,7 @@ export default function DirectChannelsSection() {
                     href={card.destinationHref}
                     target={card.isExternal ? "_blank" : undefined}
                     rel={card.isExternal ? "noopener noreferrer" : undefined}
-                    className={`group/cta inline-flex items-center justify-between w-full px-4 py-3 rounded-xl font-sans text-body-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-brand-surface ${
+                    className={`group/cta inline-flex items-center justify-between w-full px-4 py-3 rounded-xl text-body-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-brand-surface ${
                       card.isPrimary
                         ? "bg-brand-primary text-white shadow-sm shadow-brand-primary/20 hover:bg-brand-primaryHover"
                         : "bg-brand-surface hover:bg-brand-border/40 text-brand-textPrimary border border-brand-border hover:border-brand-primary/30"
