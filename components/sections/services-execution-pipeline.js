@@ -108,7 +108,7 @@ export default function ServicesExecutionPipeline({ data }) {
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             <div className="flex items-center gap-3">
               <span className="h-px bg-brand-primary w-10 md:w-14" aria-hidden="true" />
-              <span className="text-caption font-mono font-bold text-brand-primary tracking-widest uppercase">
+              <span className="text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
                 {pipeline.tag}
               </span>
             </div>
@@ -126,12 +126,12 @@ export default function ServicesExecutionPipeline({ data }) {
 
           <h2 
             id={`${baseId}-title`}
-            className="text-section-sm lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-tight"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight mb-5 leading-[1.2] sm:leading-[1.2] lg:leading-[1.2]"
           >
             {pipeline.headline}
           </h2>
 
-          <p className="text-body sm:text-lead text-brand-textSecondary font-medium leading-relaxed max-w-3xl">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary font-medium leading-relaxed max-w-3xl">
             {pipeline.subtitle}
           </p>
         </motion.div>
@@ -248,7 +248,7 @@ export default function ServicesExecutionPipeline({ data }) {
                     {/* Left Narrative Area (5 cols) */}
                     <div className="lg:col-span-5 flex flex-col justify-between">
                       <div>
-                        <h3 className="text-card-title font-bold text-brand-textPrimary mb-3 tracking-tight leading-snug">
+                        <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary mb-3 tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]">
                           {step.title}
                         </h3>
 
@@ -267,7 +267,7 @@ export default function ServicesExecutionPipeline({ data }) {
                             <span className="text-technical font-mono font-bold text-brand-textSecondary block uppercase tracking-wider mb-1">
                               {labels.outputLabel}
                             </span>
-                            <span className="text-caption sm:text-body-sm font-semibold text-brand-textPrimary block break-words leading-relaxed">
+                            <span className="text-body-sm font-semibold text-brand-textPrimary block break-words leading-relaxed">
                               {step.output}
                             </span>
                           </div>
@@ -306,7 +306,7 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-brand-card p-3 rounded-lg border border-brand-border/70 shadow-sm text-technical font-mono">
                                 <div className="flex items-center gap-1.5 text-brand-textSecondary mb-1 font-semibold">
                                   <FileSpreadsheet className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
-                                  <span className="truncate">{diagram.sourceBadge || "CLIENT EIR / BEP"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.sourceBadge || "CLIENT EIR / BEP"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
                                   {diagram.sourceLabel || "Project Requirements"}
@@ -336,7 +336,7 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-brand-primary/10 dark:bg-brand-primary/15 p-3 rounded-lg border border-brand-primary/30 text-technical font-mono shadow-sm">
                                 <div className="flex items-center gap-1.5 text-brand-primary mb-1 font-bold">
                                   <FileCheck2 className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-                                  <span className="truncate">{diagram.targetBadge || "TECHNICAL SCOPE"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.targetBadge || "TECHNICAL SCOPE"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
                                   {diagram.targetLabel || "Defined Acceptance Criteria"}
@@ -458,7 +458,7 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-brand-card p-3 rounded-lg border border-brand-border/70 shadow-sm text-technical font-mono">
                                 <div className="flex items-center gap-1.5 text-brand-textSecondary mb-1 font-semibold">
                                   <Boxes className="w-3.5 h-3.5 text-indigo-500 shrink-0" aria-hidden="true" />
-                                  <span className="truncate">{diagram.sourceBadge || "MODEL HOST"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.sourceBadge || "MODEL HOST"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
                                   {diagram.sourceLabel || "Revit API Execution"}
@@ -488,7 +488,7 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-indigo-500/10 dark:bg-indigo-950/40 p-3 rounded-lg border border-indigo-500/35 text-technical font-mono shadow-sm">
                                 <div className="flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 mb-1 font-bold">
                                   <Layers className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-                                  <span className="truncate">{diagram.targetBadge || "COORDINATION"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.targetBadge || "COORDINATION"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
                                   {diagram.targetLabel || "Synchronized Outputs"}
@@ -506,7 +506,7 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-brand-card p-3 rounded-lg border border-brand-border/70 shadow-sm text-technical font-mono">
                                 <div className="flex items-center gap-1.5 text-brand-textSecondary mb-1 font-semibold">
                                   <ShieldAlert className="w-3.5 h-3.5 text-emerald-500 shrink-0" aria-hidden="true" />
-                                  <span className="truncate">{diagram.sourceBadge || "AUDIT DOSSIER"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.sourceBadge || "AUDIT DOSSIER"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
                                   {diagram.sourceLabel || "BCF Issue Tracking"}
@@ -536,7 +536,7 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-emerald-500/10 dark:bg-emerald-950/40 p-3 rounded-lg border border-emerald-500/35 text-technical font-mono shadow-sm">
                                 <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 mb-1 font-bold">
                                   <ClipboardCheck className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-                                  <span className="truncate">{diagram.targetBadge || "HANDOVER PACKAGE"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.targetBadge || "HANDOVER PACKAGE"}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
                                   {diagram.targetLabel || "Reviewed Deliverables"}
