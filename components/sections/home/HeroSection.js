@@ -27,16 +27,16 @@ export default function HeroSection() {
               <span>{data.badge}</span>
             </div>
 
-            {/* Semantic Single H1 */}
-            <h1 className="text-display font-extrabold text-brand-textPrimary tracking-tight mb-6">
+            {/* Semantic Single H1: Responsive 36px (mobile) -> 44px (tablet) -> 56px (desktop) with proportional line-height */}
+            <h1 className="text-4xl sm:text-[44px] lg:text-display font-extrabold text-brand-textPrimary tracking-tight leading-[1.12] sm:leading-[1.12] lg:leading-[1.14] mb-6">
               {data.title_main}{" "}
               <span className="text-brand-primary block sm:inline">
                 {data.title_highlight}
               </span>
             </h1>
 
-            {/* Supporting Description */}
-            <p className="text-brand-textSecondary text-lead font-normal leading-relaxed max-w-2xl mb-8">
+            {/* Supporting Description: Responsive 17px (mobile) -> 18px (desktop) */}
+            <p className="text-brand-textSecondary text-[17px] sm:text-lead font-normal leading-relaxed max-w-2xl mb-8">
               {data.description}
             </p>
 
@@ -54,7 +54,7 @@ export default function HeroSection() {
             {/* Restrained Capability Line */}
             {data.capability_line && (
               <div className="pt-4 border-t border-brand-border/70 w-full max-w-xl">
-                <p className="font-mono text-technical text-brand-textSecondary/80 tracking-wide uppercase">
+                <p className="font-mono text-caption text-brand-textSecondary/80 tracking-wide uppercase">
                   {data.capability_line}
                 </p>
               </div>
@@ -73,7 +73,7 @@ export default function HeroSection() {
                     {schematic.badge}
                   </span>
                 </div>
-                <span className="font-mono text-[11px] text-slate-500 dark:text-slate-400 tracking-widest uppercase">
+                <span className="font-mono text-caption text-slate-500 dark:text-slate-400 tracking-wider uppercase">
                   {schematic.tag}
                 </span>
               </div>
@@ -91,11 +91,11 @@ export default function HeroSection() {
                         {schematic.node1_title}
                       </span>
                     </div>
-                    <span className="font-mono text-[11px] text-blue-600 dark:text-blue-400 font-semibold">
+                    <span className="font-mono text-caption text-blue-600 dark:text-blue-400 font-semibold tracking-wide">
                       {schematic.node1_badge}
                     </span>
                   </div>
-                  <p className="text-body-sm text-slate-600 dark:text-slate-400 pl-9 text-xs leading-relaxed">
+                  <p className="font-sans text-xs text-slate-600 dark:text-slate-400 pl-9 leading-relaxed">
                     {schematic.node1_desc}
                   </p>
                 </div>
@@ -111,11 +111,11 @@ export default function HeroSection() {
                         {schematic.node2_title}
                       </span>
                     </div>
-                    <span className="font-mono text-[11px] text-cyan-600 dark:text-cyan-400 font-semibold">
+                    <span className="font-mono text-caption text-cyan-600 dark:text-cyan-400 font-semibold tracking-wide">
                       {schematic.node2_badge}
                     </span>
                   </div>
-                  <p className="text-body-sm text-slate-600 dark:text-slate-400 pl-9 text-xs leading-relaxed">
+                  <p className="font-sans text-xs text-slate-600 dark:text-slate-400 pl-9 leading-relaxed">
                     {schematic.node2_desc}
                   </p>
                 </div>
@@ -131,18 +131,18 @@ export default function HeroSection() {
                         {schematic.node3_title}
                       </span>
                     </div>
-                    <span className="font-mono text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
+                    <span className="font-mono text-caption text-emerald-600 dark:text-emerald-400 font-semibold tracking-wide">
                       {schematic.node3_badge}
                     </span>
                   </div>
-                  <p className="text-body-sm text-slate-600 dark:text-slate-400 pl-9 text-xs leading-relaxed">
+                  <p className="font-sans text-xs text-slate-600 dark:text-slate-400 pl-9 leading-relaxed">
                     {schematic.node3_desc}
                   </p>
                 </div>
               </div>
 
               {/* Schematic Footer / Status Bar */}
-              <div className="mt-4 pt-3.5 border-t border-slate-200/90 dark:border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <div className="mt-4 pt-3.5 border-t border-slate-200/90 dark:border-slate-800/80 flex items-center justify-between text-caption font-mono text-slate-500 dark:text-slate-400">
                 <span className="flex items-center gap-1.5">
                   <FileCheck className="w-3.5 h-3.5 text-blue-600 dark:text-brand-primary" />
                   <span>{schematic.footer_label}</span>
