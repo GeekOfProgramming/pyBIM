@@ -152,34 +152,34 @@ export default function ContactPageLayout() {
             
             {/* LEFT COLUMN (5 Columns) */}
             <div className="lg:col-span-5 flex flex-col justify-center text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-caption font-mono font-bold tracking-widest text-brand-primary mb-6 shadow-xs self-start uppercase">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-4 py-1.5 text-caption font-mono font-bold tracking-wider text-brand-primary mb-6 shadow-xs self-start uppercase">
                 <span>CONTACT <span className="normal-case">pyBIM</span> · PROJECT ENQUIRIES</span>
               </div>
 
-              <h1 id="contact-hero-heading" className="text-display font-extrabold font-sans text-brand-textPrimary tracking-tight mb-6 leading-tight">
+              <h1 id="contact-hero-heading" className="text-4xl sm:text-[44px] lg:text-display font-extrabold text-brand-textPrimary tracking-tight mb-6 leading-[1.12] lg:leading-[1.14]">
                 {t("contact.hero.title") || "Let's Discuss Your Next BIM Project."}
               </h1>
 
-              <p className="text-lead font-sans text-brand-textSecondary leading-relaxed mb-4">
+              <p className="text-[17px] sm:text-lead text-brand-textSecondary leading-relaxed mb-4">
                 {t("contact.hero.subtitle") || "From BIM modeling and project delivery to engineering automation, start with a focused technical conversation."}
               </p>
 
-              <p className="text-body font-sans text-brand-textSecondary leading-relaxed mb-8">
+              <p className="text-body text-brand-textSecondary leading-relaxed mb-8">
                 {t("contact.section.desc1") || "Tell us about your project requirements, engineering disciplines, expected deliverables or software workflow challenges. We can review the scope and explore a suitable approach to collaboration."}
               </p>
 
               {/* Three Compact Engineering Capability Statements */}
               <div className="border-t border-brand-border/70 pt-6">
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-body-sm font-sans font-medium text-brand-textPrimary">
+                  <div className="flex items-center gap-3 text-body-sm font-medium text-brand-textPrimary">
                     <span className="w-2 h-2 rounded-full bg-brand-primary shrink-0" aria-hidden="true" />
                     <span>{t("contact.hero.capability1") || "BIM Modeling & Engineering Delivery"}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-body-sm font-sans font-medium text-brand-textPrimary">
+                  <div className="flex items-center gap-3 text-body-sm font-medium text-brand-textPrimary">
                     <span className="w-2 h-2 rounded-full bg-brand-primary shrink-0" aria-hidden="true" />
                     <span>{t("contact.hero.capability2") || "Revit Automation & Computational Design"}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-body-sm font-sans font-medium text-brand-textPrimary">
+                  <div className="flex items-center gap-3 text-body-sm font-medium text-brand-textPrimary">
                     <span className="w-2 h-2 rounded-full bg-brand-primary shrink-0" aria-hidden="true" />
                     <span>{t("contact.hero.capability3") || "Engineering Software & BIM Integrations"}</span>
                   </div>
@@ -192,10 +192,10 @@ export default function ContactPageLayout() {
               <div className="relative rounded-3xl bg-brand-cardElevated p-6 sm:p-8 lg:p-10 shadow-xl shadow-brand-base/5 dark:shadow-black/20 border border-brand-border/80 transition-colors">
                 <div className="relative z-10">
                   <div className="mb-8">
-                    <h2 className="text-card-title sm:text-2xl font-bold font-sans text-brand-textPrimary tracking-tight mb-2">
+                    <h2 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25] mb-2">
                       {t("contact.form.title") || "Project Enquiry Form"}
                     </h2>
-                    <p className="text-body-sm font-sans text-brand-textSecondary leading-relaxed">
+                    <p className="text-body-sm text-brand-textSecondary leading-relaxed">
                       {t("contact.form.desc") || "Tell us about your project and our engineering team will get back to you with an initial technical assessment."}
                     </p>
                   </div>
@@ -444,17 +444,17 @@ export default function ContactPageLayout() {
                           {popup.type === 'success' ? <CheckCircle2 className="h-8 w-8" /> : <AlertCircle className="h-8 w-8" />}
                         </div>
                         
-                        <h3 className="mb-2 text-2xl font-bold text-brand-textPrimary">
+                        <h3 className="mb-2 text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight leading-[1.25]">
                           {popup.type === 'success' ? t("contact.form.success_title") : t("contact.form.error_title")}
                         </h3>
                         
-                        <p className="mb-8 text-base font-medium leading-relaxed text-brand-textSecondary" dir="auto">
+                        <p className="mb-8 text-body text-brand-textSecondary leading-relaxed font-normal" dir="auto">
                           {popup.message}
                         </p>
                         
                         <button
                           onClick={() => setPopup(null)}
-                          className={`w-full rounded-2xl px-6 py-4 font-bold text-white shadow-md transition-all hover:-translate-y-0.5 ${popup.type === 'success' ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-brand-primary hover:bg-brand-primaryHover'}`}
+                          className={`w-full rounded-2xl px-6 py-4 font-bold text-body-sm text-white shadow-md transition-all hover:-translate-y-0.5 ${popup.type === 'success' ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-brand-primary hover:bg-brand-primaryHover'}`}
                         >
                           {popup.type === 'success' ? t("contact.form.close_btn") : t("contact.form.got_it_btn")}
                         </button>
