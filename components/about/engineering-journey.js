@@ -94,7 +94,7 @@ export default function EngineeringJourney() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px bg-brand-primary w-8 sm:w-12" aria-hidden="true" />
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-3 py-1 text-xs font-mono font-bold text-brand-primary uppercase tracking-widest shadow-sm">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-3 py-1 text-caption font-mono font-bold text-brand-primary uppercase tracking-wider shadow-sm">
               <Activity className="w-3.5 h-3.5" aria-hidden="true" />
               <span>{t("about.journey.tag")}</span>
             </div>
@@ -102,12 +102,12 @@ export default function EngineeringJourney() {
 
           <h2 
             id={headingId}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-textPrimary leading-tight mb-5"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold tracking-tight text-brand-textPrimary leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-5"
           >
             {t("about.journey.title")}
           </h2>
 
-          <p className="text-base sm:text-lg text-brand-textSecondary leading-relaxed">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary leading-relaxed">
             {t("about.journey.subtitle")}
           </p>
         </motion.div>        {/* ========================================================= */}
@@ -180,43 +180,43 @@ export default function EngineeringJourney() {
                         <div className="w-7 h-7 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                           <CheckCircle2 className="w-4 h-4" />
                         </div>
-                        <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 tracking-wider uppercase">
+                        <span className="text-caption font-mono font-bold text-emerald-700 dark:text-emerald-400 tracking-wider uppercase">
                           {t("about.journey.p1_stage")}
                         </span>
                       </div>
 
                       <div className="flex flex-wrap items-center gap-3 mb-3">
-                        <span className="hidden md:inline-block text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 tracking-wider uppercase">
+                        <span className="hidden md:inline-block text-caption font-mono font-bold text-emerald-700 dark:text-emerald-400 tracking-wider uppercase">
                           {t("about.journey.p1_stage")}
                         </span>
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-caption font-mono font-bold tracking-wide bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
                           {t("about.journey.p1_status")}
                         </span>
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl font-bold text-brand-textPrimary mb-4">
+                      <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary mb-4 leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]">
                         {t("about.journey.p1_title")}
                       </h3>
 
-                      <p className="text-base text-brand-textPrimary font-medium leading-relaxed mb-3">
+                      <p className="text-body text-brand-textPrimary font-medium leading-relaxed mb-3">
                         {t("about.journey.p1_primary")}
                       </p>
 
-                      <p className="text-sm text-brand-textSecondary leading-relaxed">
+                      <p className="text-body-sm text-brand-textSecondary leading-relaxed">
                         {t("about.journey.p1_supporting")}
                       </p>
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-emerald-500/20 text-xs font-mono text-slate-500 dark:text-slate-400">
+                    <div className="mt-6 pt-4 border-t border-emerald-500/20 text-caption font-mono text-slate-500 dark:text-slate-400">
                       {t("about.journey.p1_focus")}
                     </div>
                   </div>
 
                   {/* Right Column: Simplified Readable Engineering Diagram */}
                   <div className="lg:col-span-5 rounded-xl border border-emerald-500/25 bg-emerald-50/40 dark:bg-emerald-950/20 p-5">
-                    <div className="flex items-center justify-between text-xs font-mono text-emerald-700 dark:text-emerald-400 mb-4 pb-2 border-b border-emerald-500/20">
+                    <div className="flex items-center justify-between text-caption font-mono text-emerald-700 dark:text-emerald-400 mb-4 pb-2 border-b border-emerald-500/20">
                       <span className="font-bold tracking-wider">{t("about.journey.p1_diag_header")}</span>
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-technical font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
                         {t("about.journey.p1_diag_status")}
                       </span>
                     </div>
@@ -226,10 +226,10 @@ export default function EngineeringJourney() {
                       {/* Station 1: BIM Data */}
                       <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
-                          <span className="text-[15px] font-mono font-bold text-brand-textPrimary">
+                          <span className="text-body-sm font-mono font-bold text-brand-textPrimary">
                             {t("about.journey.p1_diag_step1")}
                           </span>
-                          <span className="text-[13px] font-mono text-brand-textSecondary">
+                          <span className="text-caption font-mono text-brand-textSecondary">
                             {t("about.journey.p1_diag_step1_sub")}
                           </span>
                         </div>
@@ -237,16 +237,16 @@ export default function EngineeringJourney() {
 
                       {/* Directional Connector 1 -> 2 */}
                       <div className="flex justify-center -my-1" aria-hidden="true">
-                        <span className="text-emerald-600 dark:text-emerald-400 font-mono text-xs">↓</span>
+                        <span className="text-emerald-600 dark:text-emerald-400 font-mono text-caption">↓</span>
                       </div>
 
                       {/* Station 2: Engineering Review */}
                       <div className="rounded-xl border-2 border-emerald-500/50 bg-emerald-50/60 dark:bg-emerald-950/30 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
-                          <span className="text-[15px] font-mono font-bold text-emerald-700 dark:text-emerald-400">
+                          <span className="text-body-sm font-mono font-bold text-emerald-700 dark:text-emerald-400">
                             {t("about.journey.p1_diag_step2")}
                           </span>
-                          <span className="text-[13px] font-mono text-emerald-600 dark:text-emerald-300">
+                          <span className="text-caption font-mono text-emerald-600 dark:text-emerald-300">
                             {t("about.journey.p1_diag_step2_sub")}
                           </span>
                         </div>
@@ -254,16 +254,16 @@ export default function EngineeringJourney() {
 
                       {/* Directional Connector 2 -> 3 */}
                       <div className="flex justify-center -my-1" aria-hidden="true">
-                        <span className="text-emerald-600 dark:text-emerald-400 font-mono text-xs">↓</span>
+                        <span className="text-emerald-600 dark:text-emerald-400 font-mono text-caption">↓</span>
                       </div>
 
                       {/* Station 3: Project Delivery */}
                       <div className="rounded-xl border-2 border-emerald-500 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
-                          <span className="text-[15px] font-mono font-bold text-brand-textPrimary">
+                          <span className="text-body-sm font-mono font-bold text-brand-textPrimary">
                             {t("about.journey.p1_diag_step3")}
                           </span>
-                          <span className="text-[13px] font-mono text-emerald-600 dark:text-emerald-400 font-medium">
+                          <span className="text-caption font-mono text-emerald-600 dark:text-emerald-400 font-medium">
                             {t("about.journey.p1_diag_step3_sub")}
                           </span>
                         </div>
@@ -302,43 +302,43 @@ export default function EngineeringJourney() {
                         <div className="w-7 h-7 rounded-lg bg-brand-primary/15 border border-brand-primary/30 flex items-center justify-center text-brand-primary">
                           <Network className="w-4 h-4" />
                         </div>
-                        <span className="text-xs font-mono font-bold text-brand-primary tracking-wider uppercase">
+                        <span className="text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
                           {t("about.journey.p2_stage")}
                         </span>
                       </div>
 
                       <div className="flex flex-wrap items-center gap-3 mb-3">
-                        <span className="hidden md:inline-block text-xs font-mono font-bold text-brand-primary tracking-wider uppercase">
+                        <span className="hidden md:inline-block text-caption font-mono font-bold text-brand-primary tracking-wider uppercase">
                           {t("about.journey.p2_stage")}
                         </span>
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-brand-primary/15 text-brand-primary dark:text-blue-300 border border-brand-primary/30">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-caption font-mono font-bold tracking-wide bg-brand-primary/15 text-brand-primary dark:text-blue-300 border border-brand-primary/30">
                           {t("about.journey.p2_status")}
                         </span>
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl font-bold text-brand-textPrimary mb-4">
+                      <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary mb-4 leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]">
                         {t("about.journey.p2_title")}
                       </h3>
 
-                      <p className="text-base text-brand-textPrimary font-medium leading-relaxed mb-3">
+                      <p className="text-body text-brand-textPrimary font-medium leading-relaxed mb-3">
                         {t("about.journey.p2_primary")}
                       </p>
 
-                      <p className="text-sm text-brand-textSecondary leading-relaxed">
+                      <p className="text-body-sm text-brand-textSecondary leading-relaxed">
                         {t("about.journey.p2_supporting")}
                       </p>
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-brand-primary/20 text-xs font-mono text-brand-primary">
+                    <div className="mt-6 pt-4 border-t border-brand-primary/20 text-caption font-mono text-brand-primary">
                       {t("about.journey.p2_focus")}
                     </div>
                   </div>
 
                   {/* Right Column: Simplified Readable Internal Automation Diagram */}
                   <div className="lg:col-span-5 rounded-xl border border-brand-primary/25 bg-brand-primary/[0.04] dark:bg-blue-950/20 p-5">
-                    <div className="flex items-center justify-between text-xs font-mono text-brand-primary mb-4 pb-2 border-b border-brand-primary/20">
+                    <div className="flex items-center justify-between text-caption font-mono text-brand-primary mb-4 pb-2 border-b border-brand-primary/20">
                       <span className="font-bold tracking-wider">{t("about.journey.p2_diag_header")}</span>
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-brand-primary/15 text-brand-primary dark:text-blue-300 border border-brand-primary/25">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-technical font-semibold bg-brand-primary/15 text-brand-primary dark:text-blue-300 border border-brand-primary/25">
                         {t("about.journey.p2_diag_status")}
                       </span>
                     </div>
@@ -348,10 +348,10 @@ export default function EngineeringJourney() {
                       {/* Station 1: BIM Delivery */}
                       <div className="rounded-xl border border-emerald-500/40 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
-                          <span className="text-[15px] font-mono font-bold text-emerald-700 dark:text-emerald-400">
+                          <span className="text-body-sm font-mono font-bold text-emerald-700 dark:text-emerald-400">
                             {t("about.journey.p2_diag_step1")}
                           </span>
-                          <span className="text-[13px] font-mono text-brand-textSecondary">
+                          <span className="text-caption font-mono text-brand-textSecondary">
                             {t("about.journey.p2_diag_step1_sub")}
                           </span>
                         </div>
@@ -359,16 +359,16 @@ export default function EngineeringJourney() {
 
                       {/* Bi-directional Loop Indicator */}
                       <div className="flex justify-center -my-1" aria-hidden="true">
-                        <span className="text-brand-primary font-mono text-xs">↕</span>
+                        <span className="text-brand-primary font-mono text-caption">↕</span>
                       </div>
 
                       {/* Station 2: Internal Automation (Center Stage) */}
                       <div className="rounded-xl border-2 border-brand-primary bg-brand-primary/15 dark:bg-brand-primary/20 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
-                          <span className="text-[15px] font-mono font-bold text-brand-primary">
+                          <span className="text-body-sm font-mono font-bold text-brand-primary">
                             {t("about.journey.p2_diag_step2")}
                           </span>
-                          <span className="text-[13px] font-mono text-brand-primary font-medium">
+                          <span className="text-caption font-mono text-brand-primary font-medium">
                             {t("about.journey.p2_diag_step2_sub")}
                           </span>
                         </div>
@@ -376,16 +376,16 @@ export default function EngineeringJourney() {
 
                       {/* Directional Connector -> Feedback */}
                       <div className="flex justify-center -my-1" aria-hidden="true">
-                        <span className="text-brand-primary font-mono text-xs">↓</span>
+                        <span className="text-brand-primary font-mono text-caption">↓</span>
                       </div>
 
                       {/* Station 3: Engineering Feedback */}
                       <div className="rounded-xl border border-brand-primary/40 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
-                          <span className="text-[15px] font-mono font-bold text-brand-textPrimary">
+                          <span className="text-body-sm font-mono font-bold text-brand-textPrimary">
                             {t("about.journey.p2_diag_step3")}
                           </span>
-                          <span className="text-[13px] font-mono text-brand-textSecondary">
+                          <span className="text-caption font-mono text-brand-textSecondary">
                             {t("about.journey.p2_diag_step3_sub")}
                           </span>
                         </div>
@@ -424,43 +424,43 @@ export default function EngineeringJourney() {
                         <div className="w-7 h-7 rounded-lg bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300">
                           <FlaskConical className="w-4 h-4" />
                         </div>
-                        <span className="text-xs font-mono font-bold text-slate-500 dark:text-slate-400 tracking-wider uppercase">
+                        <span className="text-caption font-mono font-bold text-slate-500 dark:text-slate-400 tracking-wider uppercase">
                           {t("about.journey.p3_stage")}
                         </span>
                       </div>
 
                       <div className="flex flex-wrap items-center gap-3 mb-3">
-                        <span className="hidden md:inline-block text-xs font-mono font-bold text-slate-500 dark:text-slate-400 tracking-wider uppercase">
+                        <span className="hidden md:inline-block text-caption font-mono font-bold text-slate-500 dark:text-slate-400 tracking-wider uppercase">
                           {t("about.journey.p3_stage")}
                         </span>
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-bold tracking-wide bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-caption font-mono font-bold tracking-wide bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
                           {t("about.journey.p3_status")}
                         </span>
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl font-bold text-brand-textPrimary mb-4">
+                      <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary mb-4 leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]">
                         {t("about.journey.p3_title")}
                       </h3>
 
-                      <p className="text-base text-brand-textPrimary font-medium leading-relaxed mb-3">
+                      <p className="text-body text-brand-textPrimary font-medium leading-relaxed mb-3">
                         {t("about.journey.p3_primary")}
                       </p>
 
-                      <p className="text-sm text-brand-textSecondary leading-relaxed">
+                      <p className="text-body-sm text-brand-textSecondary leading-relaxed">
                         {t("about.journey.p3_supporting")}
                       </p>
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-500 dark:text-slate-400">
+                    <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 text-caption font-mono text-slate-500 dark:text-slate-400">
                       {t("about.journey.p3_focus")}
                     </div>
                   </div>
 
                   {/* Right Column: Simplified Readable Research Diagram */}
                   <div className="lg:col-span-5 rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/50 p-5">
-                    <div className="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400 mb-4 pb-2 border-b border-slate-200/60 dark:border-slate-800/60">
+                    <div className="flex items-center justify-between text-caption font-mono text-slate-500 dark:text-slate-400 mb-4 pb-2 border-b border-slate-200/60 dark:border-slate-800/60">
                       <span className="font-bold tracking-wider">{t("about.journey.p3_diag_header")}</span>
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-technical font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
                         {t("about.journey.p3_diag_status")}
                       </span>
                     </div>
@@ -470,10 +470,10 @@ export default function EngineeringJourney() {
                       {/* Station 1: Engineering Data */}
                       <div className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
-                          <span className="text-[15px] font-mono font-bold text-slate-700 dark:text-slate-300">
+                          <span className="text-body-sm font-mono font-bold text-slate-700 dark:text-slate-300">
                             {t("about.journey.p3_diag_step1")}
                           </span>
-                          <span className="text-[13px] font-mono text-slate-500 dark:text-slate-400">
+                          <span className="text-caption font-mono text-slate-500 dark:text-slate-400">
                             {t("about.journey.p3_diag_step1_sub")}
                           </span>
                         </div>
@@ -481,16 +481,16 @@ export default function EngineeringJourney() {
 
                       {/* Directional Connector 1 -> 2 */}
                       <div className="flex justify-center -my-1" aria-hidden="true">
-                        <span className="text-slate-400 dark:text-slate-600 font-mono text-xs">↓</span>
+                        <span className="text-slate-400 dark:text-slate-600 font-mono text-caption">↓</span>
                       </div>
 
                       {/* Station 2: AI Research (Conceptual) */}
                       <div className="rounded-xl border border-dashed border-slate-400 dark:border-slate-600 bg-slate-100/70 dark:bg-slate-800/60 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
-                          <span className="text-[15px] font-mono font-bold text-slate-700 dark:text-slate-300">
+                          <span className="text-body-sm font-mono font-bold text-slate-700 dark:text-slate-300">
                             {t("about.journey.p3_diag_step2")}
                           </span>
-                          <span className="text-[13px] font-mono text-slate-500 dark:text-slate-400">
+                          <span className="text-caption font-mono text-slate-500 dark:text-slate-400">
                             {t("about.journey.p3_diag_step2_sub")}
                           </span>
                         </div>
@@ -498,16 +498,16 @@ export default function EngineeringJourney() {
 
                       {/* Directional Connector 2 -> 3 */}
                       <div className="flex justify-center -my-1" aria-hidden="true">
-                        <span className="text-slate-400 dark:text-slate-600 font-mono text-xs">↓</span>
+                        <span className="text-slate-400 dark:text-slate-600 font-mono text-caption">↓</span>
                       </div>
 
                       {/* Station 3: Human Review */}
                       <div className="rounded-xl border border-brand-primary/40 bg-white dark:bg-slate-900 p-3.5 shadow-sm">
                         <div className="flex items-baseline justify-between gap-2">
-                          <span className="text-[15px] font-mono font-bold text-brand-primary">
+                          <span className="text-body-sm font-mono font-bold text-brand-primary">
                             {t("about.journey.p3_diag_step3")}
                           </span>
-                          <span className="text-[13px] font-mono text-slate-500 dark:text-slate-400">
+                          <span className="text-caption font-mono text-slate-500 dark:text-slate-400">
                             {t("about.journey.p3_diag_step3_sub")}
                           </span>
                         </div>
@@ -539,10 +539,10 @@ export default function EngineeringJourney() {
                 <Compass className="w-4 h-4" aria-hidden="true" />
               </div>
               <div className="space-y-1.5">
-                <h4 className="text-base sm:text-lg font-bold text-brand-textPrimary">
+                <h4 className="text-base sm:text-lg font-bold text-brand-textPrimary leading-snug">
                   {t("about.journey.beyond_title")}
                 </h4>
-                <p className="text-sm sm:text-base text-brand-textSecondary leading-relaxed max-w-3xl">
+                <p className="text-body-sm sm:text-body text-brand-textSecondary leading-relaxed max-w-3xl">
                   {t("about.journey.beyond_desc")}
                 </p>
               </div>
