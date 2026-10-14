@@ -29,7 +29,7 @@ export default function SystemBenchmarks() {
         <div className="max-w-3xl mb-10 lg:mb-12">
 
           {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-caption font-bold tracking-widest uppercase mb-4 select-none shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary font-mono text-caption font-bold tracking-wider uppercase mb-4 select-none shadow-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" aria-hidden="true" />
             <span>{data.eyebrow}</span>
           </div>
@@ -37,13 +37,13 @@ export default function SystemBenchmarks() {
           {/* Semantic Single H2 Heading */}
           <h2
             id={`${sectionId}-heading`}
-            className="text-section font-extrabold text-brand-textPrimary tracking-tight mb-4"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-4"
           >
             {data.heading}
           </h2>
 
           {/* Editorial Introduction */}
-          <p className="text-lead text-brand-textSecondary font-normal leading-relaxed mb-3">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary font-normal leading-relaxed mb-3">
             {data.description}
           </p>
 
@@ -87,7 +87,7 @@ export default function SystemBenchmarks() {
                       className="w-2.5 h-0.5 bg-brand-primary/70 rounded-full shrink-0 group-hover:w-4 group-hover:bg-brand-primary transition-all duration-200"
                       aria-hidden="true"
                     />
-                    <span className="font-mono text-caption font-bold text-brand-primary tracking-widest uppercase">
+                    <span className="font-mono text-caption font-bold text-brand-primary tracking-wider uppercase">
                       {stage.label}
                     </span>
                   </div>
@@ -95,20 +95,20 @@ export default function SystemBenchmarks() {
 
                 {/* Column B: Narrative Title & Description (~57.1% width on desktop) */}
                 <div className="min-w-0 pr-0 lg:pr-4">
-                  <h3 className="text-card-title font-bold text-brand-textPrimary tracking-tight mb-2 leading-snug">
+                  <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight mb-2 leading-snug">
                     {stage.title}
                   </h3>
-                  <p className="text-lead text-brand-textSecondary font-normal leading-relaxed">
+                  <p className="text-[17px] sm:text-lead text-brand-textSecondary font-normal leading-relaxed">
                     {stage.description}
                   </p>
                 </div>
 
                 {/* Column C: Typical Output (~28.6% width on desktop) */}
                 <div className="lg:pl-6 lg:border-l lg:border-brand-border/40">
-                  <span className="font-mono text-[11px] font-bold text-brand-textSecondary/70 tracking-wider uppercase block mb-1.5">
+                  <span className="font-mono text-caption font-bold text-brand-textSecondary/70 tracking-wider uppercase block mb-1.5">
                     {data.output_label}
                   </span>
-                  <p className="font-sans text-lead font-medium text-brand-textPrimary leading-relaxed">
+                  <p className="font-sans text-[17px] sm:text-lead font-medium text-brand-textPrimary leading-relaxed">
                     {stage.output}
                   </p>
                 </div>
