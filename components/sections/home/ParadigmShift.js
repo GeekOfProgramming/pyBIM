@@ -50,11 +50,11 @@ export default function ParadigmShift() {
             <span>{data.badge}</span>
           </div>
 
-          <h2 className="text-section font-extrabold text-brand-textPrimary tracking-tight mb-5">
+          <h2 className="text-3xl sm:text-[34px] lg:text-section font-extrabold text-brand-textPrimary tracking-tight leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] mb-5">
             {data.section_title}
           </h2>
 
-          <p className="text-brand-textSecondary text-lead font-normal leading-relaxed mb-4">
+          <p className="text-brand-textSecondary text-[17px] sm:text-lead font-normal leading-relaxed mb-4">
             {data.section_subtitle}
           </p>
 
@@ -148,7 +148,7 @@ export default function ParadigmShift() {
                   <ActiveIcon className="w-6 h-6" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-card-title font-extrabold text-brand-textPrimary tracking-tight mb-2">
+                  <h3 className="text-[22px] lg:text-card-title font-extrabold text-brand-textPrimary tracking-tight mb-2">
                     {activeService.title}
                   </h3>
                   <p className="text-body text-brand-textSecondary leading-relaxed">
@@ -274,8 +274,8 @@ export default function ParadigmShift() {
                         </div>
                         <ul className="space-y-2">
                           {service.scope.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2 text-xs text-brand-textSecondary leading-relaxed">
-                              <span className="w-1.5 h-1.5 rounded-full bg-brand-primary/70 shrink-0 mt-1.5" aria-hidden="true" />
+                            <li key={idx} className="flex items-start gap-2 text-body-sm text-brand-textSecondary leading-normal">
+                              <span className="w-1.5 h-1.5 rounded-full bg-brand-primary/70 shrink-0 mt-2" aria-hidden="true" />
                               <span>{item}</span>
                             </li>
                           ))}
@@ -292,8 +292,8 @@ export default function ParadigmShift() {
                         </div>
                         <ul className="space-y-2">
                           {service.deliverables.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2 text-xs text-brand-textSecondary leading-relaxed">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/70 shrink-0 mt-1.5" aria-hidden="true" />
+                            <li key={idx} className="flex items-start gap-2 text-body-sm text-brand-textSecondary leading-normal">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/70 shrink-0 mt-2" aria-hidden="true" />
                               <span>{item}</span>
                             </li>
                           ))}
