@@ -13,19 +13,220 @@ import { useId } from "react";
  *    - Architectural coordinate framework, sparse parametric guidance lines,
  *      and soft off-canvas ambient blue lighting tuned for both Light and Dark themes.
  * 
- * 2. variant="home-base" (Family A — Architectural BIM Canvas for Home)
+ * 2. variant="services-hero" (Engineering Signal Flow — Services Hero)
+ *    - Orthogonal signal buses, 90-degree trace conduits, stepped interconnects,
+ *      and channel tap indicators framing services workflow.
+ * 
+ * 3. variant="about-hero" (Architectural Contours × Engineering Evolution — About Hero)
+ *    - Continuous architectural drafting curves, subtle section contours,
+ *      sparse concentric construction arcs, delicate orthogonal reference lines,
+ *      BIM reference points and computational dots, framing the Manifesto & Progression Rail.
+ * 
+ * 4. variant="home-base" / variant="base" (Family A — Architectural BIM Canvas)
  *    - Orthogonal drafting geometry, Revit-inspired construction lines, dimension ticks,
  *      clean drawing-paper aesthetic, and soft diffuse ambient lighting.
  * 
- * 3. variant="home-surface" (Family B — Digital Intelligence Canvas for Home)
+ * 5. variant="surface" / variant="home-surface" (Family B — Digital Intelligence Canvas)
  *    - Distinct technical dot matrix, micro-nodes, and network connection vectors,
  *      imparting a digital intelligence / computational feel.
- * 
- * 4. variant="base" / variant="surface" (Default legacy fallback)
- *    - Backward-compatible standard rendering for Services, About, Education, Contact, etc.
  */
 export default function EngineeringBackdrop({ variant = "base", className = "" }) {
   const baseId = useId();
+
+  // =========================================================================
+  // ABOUT HERO: Architectural Contours × Engineering Evolution Composition
+  // =========================================================================
+  if (variant === "about-hero") {
+    return (
+      <div 
+        className={`pointer-events-none absolute inset-0 overflow-hidden select-none z-0 ${className}`} 
+        aria-hidden="true"
+      >
+        {/* Layer 4: Ambient Off-Canvas Edge Lighting Sources */}
+        {/* Upper-Left: Diffuse Blue Ambient Light */}
+        <div 
+          className="absolute -top-32 -left-32 w-[720px] h-[640px] bg-gradient-to-br from-blue-500/[0.14] via-sky-400/[0.07] to-transparent dark:from-blue-500/[0.16] dark:via-sky-400/[0.07] dark:to-transparent rounded-full blur-[125px]" 
+        />
+        {/* Outer-Right: Restrained Cyan Illumination behind technical schematic */}
+        <div 
+          className="absolute -top-20 -right-28 w-[680px] h-[600px] bg-gradient-to-bl from-cyan-400/[0.12] via-blue-500/[0.06] to-transparent dark:from-cyan-400/[0.13] dark:via-blue-500/[0.06] dark:to-transparent rounded-full blur-[125px]" 
+        />
+        {/* Lower Periphery: Subtle Cool-Blue Falloff */}
+        <div 
+          className="absolute -bottom-36 left-1/3 w-[620px] h-[480px] bg-gradient-to-t from-blue-500/[0.08] via-sky-400/[0.03] to-transparent dark:from-blue-500/[0.09] dark:via-sky-500/[0.03] dark:to-transparent rounded-full blur-[125px]" 
+        />
+
+        {/* Content Protection & Vignette Mask: Protects central headline, copy & progression rail */}
+        <div 
+          className="absolute inset-0 text-slate-700 dark:text-cyan-200"
+          style={{
+            maskImage: "radial-gradient(ellipse 96% 88% at 48% 36%, black 40%, transparent 95%)",
+            WebkitMaskImage: "radial-gradient(ellipse 96% 88% at 48% 36%, black 40%, transparent 95%)",
+          }}
+        >
+          {/* Layer 2: Subtle Underlying Construction Coordinate Pattern (Family B surface foundation) */}
+          <svg className="w-full h-full opacity-[0.14] dark:opacity-[0.12]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id={`${baseId}-about-hero-grid`} width="112" height="112" patternUnits="userSpaceOnUse">
+                {/* Thin Orthogonal Drafting Reference Lines */}
+                <line x1="0" y1="56" x2="112" y2="56" stroke="currentColor" strokeWidth="0.6" strokeOpacity="0.45" />
+                <line x1="56" y1="0" x2="56" y2="112" stroke="currentColor" strokeWidth="0.6" strokeOpacity="0.45" />
+                {/* Dimension Crosshairs */}
+                <path d="M 52 56 L 60 56 M 56 52 L 56 60" stroke="currentColor" strokeWidth="0.8" strokeOpacity="0.65" />
+                {/* Micro Corner Dots */}
+                <circle cx="0" cy="0" r="1.2" fill="currentColor" opacity="0.5" />
+                <circle cx="112" cy="0" r="1.2" fill="currentColor" opacity="0.5" />
+                <circle cx="0" cy="112" r="1.2" fill="currentColor" opacity="0.5" />
+                <circle cx="112" cy="112" r="1.2" fill="currentColor" opacity="0.5" />
+                <circle cx="56" cy="56" r="1.5" fill="currentColor" opacity="0.6" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill={`url(#${baseId}-about-hero-grid)`} />
+          </svg>
+
+          {/* Layer 3: Heroic Architectural Contours & Engineering Evolution Composition */}
+          {/* ViewBox coordinate system 1440x800 for structural scale fidelity */}
+          <svg 
+            className="absolute inset-0 w-full h-full opacity-[0.27] dark:opacity-[0.23]" 
+            viewBox="0 0 1440 800" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice"
+          >
+            {/* --- PRIMARY ARCHITECTURAL DRAFTING CURVES & SECTION CONTOURS --- */}
+            {/* Major Contour Curve 1: Sweeping structural section arc across top & right framing */}
+            <path 
+              d="M -40 260 C 220 220, 480 320, 720 240 C 960 160, 1180 80, 1480 90" 
+              stroke="currentColor" 
+              strokeWidth="1.2" 
+              strokeOpacity="0.75" 
+            />
+            {/* Parallel Section Profile Contour (Elevation offset with dashed interval) */}
+            <path 
+              d="M -40 320 C 240 280, 490 380, 740 300 C 990 220, 1200 140, 1480 150" 
+              stroke="currentColor" 
+              strokeWidth="0.85" 
+              strokeDasharray="8 6" 
+              strokeOpacity="0.55" 
+            />
+            {/* Section Contour 3: Deep architectural foundation curve */}
+            <path 
+              d="M -40 400 C 260 360, 520 460, 780 380 C 1040 300, 1240 220, 1480 230" 
+              stroke="currentColor" 
+              strokeWidth="0.7" 
+              strokeOpacity="0.45" 
+            />
+
+            {/* --- RIGHT FLANK CONCENTRIC ARCHITECTURAL CONSTRUCTION ARCS --- */}
+            {/* Radius Origin Anchor at (1440, 480) framing the Engineering Progression Rail */}
+            <path 
+              d="M 1440 160 A 320 320 0 0 0 1120 480" 
+              stroke="currentColor" 
+              strokeWidth="0.85" 
+              strokeDasharray="6 8" 
+              strokeOpacity="0.6" 
+            />
+            <path 
+              d="M 1440 80 A 400 400 0 0 0 1040 480" 
+              stroke="currentColor" 
+              strokeWidth="0.7" 
+              strokeOpacity="0.45" 
+            />
+            <path 
+              d="M 1440 0 A 480 480 0 0 0 960 480" 
+              stroke="currentColor" 
+              strokeWidth="0.6" 
+              strokeDasharray="4 10" 
+              strokeOpacity="0.35" 
+            />
+
+            {/* Arc Origin Radial Datum & Calibration */}
+            <circle cx="1440" cy="480" r="3.5" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.7" />
+            <circle cx="1440" cy="480" r="1.5" fill="currentColor" opacity="0.8" />
+            <line x1="1440" y1="480" x2="1120" y2="480" stroke="currentColor" strokeWidth="0.65" strokeDasharray="3 7" strokeOpacity="0.4" />
+            <line x1="1440" y1="480" x2="1213" y2="253" stroke="currentColor" strokeWidth="0.65" strokeDasharray="3 7" strokeOpacity="0.4" />
+
+            {/* Radial Calibration Label */}
+            <text x="1230" y="245" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.75">R=320.0 // RADIAL DATUM</text>
+
+            {/* --- EVOLUTION & RESTRAINT: DELICATE ORTHOGONAL REFERENCE LINES & FRAMING --- */}
+            {/* Top Structural Axis Guides framing Progression Rail */}
+            <line x1="840" y1="40" x2="1400" y2="40" stroke="currentColor" strokeWidth="0.75" strokeDasharray="6 8" strokeOpacity="0.5" />
+            <line x1="880" y1="30" x2="880" y2="760" stroke="currentColor" strokeWidth="0.6" strokeDasharray="4 12" strokeOpacity="0.35" />
+            <line x1="1410" y1="30" x2="1410" y2="760" stroke="currentColor" strokeWidth="0.6" strokeDasharray="4 12" strokeOpacity="0.35" />
+
+            {/* Architectural Grid Bubble Datum Marker */}
+            <circle cx="840" cy="40" r="11" stroke="currentColor" strokeWidth="0.85" strokeOpacity="0.75" fill="none" />
+            <text x="840" y="44" textAnchor="middle" fill="currentColor" fontSize="8.5" fontFamily="monospace" fontWeight="600" opacity="0.85">S1</text>
+
+            {/* Architectural Section Plane Symbol Indicator */}
+            <path d="M 880 70 L 910 70 L 910 80" stroke="currentColor" strokeWidth="1" strokeOpacity="0.7" fill="none" />
+            <polygon points="910,80 906,75 914,75" fill="currentColor" opacity="0.8" />
+            <text x="920" y="74" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.75">SEC A-A // CONTINUITY</text>
+
+            {/* Corner Alignment Ticks framing the Progression Rail Card */}
+            <path d="M 855 85 L 855 70 L 870 70" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.75" />
+            <path d="M 1410 70 L 1425 70 L 1425 85" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.75" />
+            <path d="M 1425 655 L 1425 670 L 1410 670" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.75" />
+            <path d="M 870 670 L 855 670 L 855 655" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.75" />
+
+            {/* --- RESTRAINED BIM-INSPIRED REFERENCE POINTS & COMPUTATIONAL NODES --- */}
+            {/* Tangent intersection markers along major contour */}
+            <circle cx="720" cy="240" r="3.5" fill="none" stroke="currentColor" strokeWidth="0.9" strokeOpacity="0.8" />
+            <circle cx="720" cy="240" r="1.5" fill="currentColor" opacity="0.85" />
+            <line x1="720" y1="210" x2="720" y2="270" stroke="currentColor" strokeWidth="0.6" strokeDasharray="2 4" strokeOpacity="0.5" />
+
+            <circle cx="960" cy="160" r="3" fill="none" stroke="currentColor" strokeWidth="0.8" strokeOpacity="0.75" />
+            <circle cx="960" cy="160" r="1.2" fill="currentColor" opacity="0.8" />
+
+            {/* Micro Computational Dot Cluster in Periphery (suggesting technical evolution) */}
+            {[0, 1].map((row) =>
+              [0, 1, 2].map((col) => (
+                <circle 
+                  key={`about-dot-${row}-${col}`} 
+                  cx={780 + col * 14} 
+                  cy={110 + row * 14} 
+                  r="1.2" 
+                  fill="currentColor" 
+                  opacity="0.55" 
+                />
+              ))
+            )}
+
+            {/* --- LEFT FLANK ARCHITECTURAL ELEVATION & CONTOUR DATUMS (Framing Headline) --- */}
+            {/* Vertical Elevation Guide on far left */}
+            <line x1="42" y1="140" x2="42" y2="700" stroke="currentColor" strokeWidth="0.8" strokeOpacity="0.5" />
+            
+            {/* Contour Level 03 Datum */}
+            <path d="M 42 210 L 72 210 M 42 204 L 52 210 L 42 216" stroke="currentColor" strokeWidth="0.85" strokeOpacity="0.7" fill="none" />
+            <text x="78" y="213" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.75">ARC // CT-03</text>
+
+            {/* Contour Level 02 Datum */}
+            <path d="M 42 410 L 72 410 M 42 404 L 52 410 L 42 416" stroke="currentColor" strokeWidth="0.85" strokeOpacity="0.7" fill="none" />
+            <text x="78" y="413" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.75">ARC // CT-02</text>
+
+            {/* Contour Level 01 Datum */}
+            <path d="M 42 610 L 72 610 M 42 604 L 52 610 L 42 616" stroke="currentColor" strokeWidth="0.85" strokeOpacity="0.7" fill="none" />
+            <text x="78" y="613" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="600" opacity="0.75">ARC // CT-01</text>
+
+            {/* Interrupted Lower Drafting Contours */}
+            <path 
+              d="M 60 710 C 220 680, 420 740, 620 700" 
+              stroke="currentColor" 
+              strokeWidth="0.75" 
+              strokeDasharray="7 9" 
+              strokeOpacity="0.45" 
+            />
+            <circle cx="620" cy="700" r="2.5" fill="currentColor" opacity="0.65" />
+
+            {/* Lower Periphery Horizontal Base Axis */}
+            <line x1="80" y1="755" x2="680" y2="755" stroke="currentColor" strokeWidth="0.6" strokeDasharray="4 14" strokeOpacity="0.35" />
+            <line x1="860" y1="755" x2="1400" y2="755" stroke="currentColor" strokeWidth="0.6" strokeDasharray="4 14" strokeOpacity="0.35" />
+          </svg>
+        </div>
+      </div>
+    );
+  }
 
   // =========================================================================
   // 1. HOME HERO: Parametric BIM × Digital Intelligence Composition
