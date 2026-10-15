@@ -115,13 +115,13 @@ export default function HowWeWorkSection() {
             {/* Section Headline (H2) */}
             <h2
               id={titleId}
-              className="text-2xl sm:text-3xl lg:text-section-sm xl:text-section font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-5"
+              className="text-3xl sm:text-[34px] lg:text-section font-extrabold tracking-tight text-brand-textPrimary leading-[1.2] mb-5"
             >
               {t("careers.culture.title")}
             </h2>
 
             {/* Concise Editorial Paragraph */}
-            <p className="text-body sm:text-lead font-sans text-brand-textSecondary font-medium leading-relaxed mb-6">
+            <p className="text-[17px] sm:text-lead text-brand-textSecondary font-medium leading-relaxed mb-6">
               {t("careers.culture.desc")}
             </p>
 
@@ -161,7 +161,7 @@ export default function HowWeWorkSection() {
                       </div>
 
                       {/* Principle Title (H3) */}
-                      <h3 className="text-lg sm:text-xl font-bold font-sans text-brand-textPrimary tracking-tight mb-2.5">
+                      <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight mb-2.5 leading-[1.25]">
                         {principle.title}
                       </h3>
 
