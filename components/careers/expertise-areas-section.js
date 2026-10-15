@@ -204,12 +204,12 @@ export default function ExpertiseAreasSection() {
 
           <h2
             id={titleId}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-section-sm xl:text-section font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-4"
+            className="text-3xl sm:text-[34px] lg:text-section font-extrabold tracking-tight text-brand-textPrimary leading-[1.2] mb-4"
           >
             {t("careers.expertise.title")}
           </h2>
 
-          <p className="text-body sm:text-lead font-sans text-brand-textSecondary font-medium leading-relaxed mb-4">
+          <p className="text-[17px] sm:text-lead text-brand-textSecondary font-medium leading-relaxed mb-4">
             {t("careers.expertise.desc")}
           </p>
 
@@ -330,7 +330,7 @@ export default function ExpertiseAreasSection() {
                     </div>
 
                     {/* Headline & Description */}
-                    <h3 className="text-2xl sm:text-3xl font-extrabold font-sans text-brand-textPrimary tracking-tight mb-3">
+                    <h3 className="text-xl sm:text-[22px] lg:text-card-title font-extrabold text-brand-textPrimary tracking-tight mb-3 leading-[1.25]">
                       {activeItem.title}
                     </h3>
                     <p className="text-body sm:text-lead font-sans text-brand-textSecondary font-medium leading-relaxed mb-6">
