@@ -338,12 +338,12 @@ export default function SuccessStoriesPageLayout() {
               
               <h2 
                 id={`${baseId}-completed-heading`}
-                className="text-section-sm sm:text-section font-bold text-brand-textPrimary tracking-tight mb-3"
+                className="text-3xl sm:text-[34px] lg:text-section font-bold text-brand-textPrimary tracking-tight mb-3 leading-[1.2]"
               >
                 {t("projects.completed.title") || "Completed Projects"}
               </h2>
 
-              <p className="text-body sm:text-lead text-brand-textSecondary font-normal leading-relaxed">
+              <p className="text-[17px] sm:text-lead text-brand-textSecondary font-normal leading-relaxed">
                 {t("projects.completed.subtitle") || 
                   "Delivered BIM coordination, Revit automation, and model information structures."}
               </p>
@@ -390,7 +390,7 @@ export default function SuccessStoriesPageLayout() {
                     <span>{t("projects.completed.badge") || "Curated References // In Preparation"}</span>
                   </div>
 
-                  <h3 className="text-card-title sm:text-section-sm font-bold text-brand-textPrimary mb-3 tracking-tight">
+                  <h3 className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary mb-3 tracking-tight leading-[1.25]">
                     {t("projects.completed.empty_title") || "Portfolio References in Preparation"}
                   </h3>
 
