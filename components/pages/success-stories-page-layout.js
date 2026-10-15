@@ -452,12 +452,12 @@ export default function SuccessStoriesPageLayout() {
               
               <h2 
                 id={`${baseId}-dev-heading`}
-                className="text-section-sm sm:text-section font-bold text-brand-textPrimary tracking-tight mb-3"
+                className="text-3xl sm:text-[34px] lg:text-section font-bold text-brand-textPrimary tracking-tight mb-3 leading-[1.2]"
               >
                 {t("projects.dev.title") || "AI & LLM Development"}
               </h2>
 
-              <p className="text-body sm:text-lead text-brand-textSecondary font-normal leading-relaxed">
+              <p className="text-[17px] sm:text-lead text-brand-textSecondary font-normal leading-relaxed">
                 {t("projects.dev.subtitle") || 
                   "Applied research in semantic BIM querying, retrieval-augmented technical workflows, and code automation."}
               </p>
@@ -671,7 +671,7 @@ export default function SuccessStoriesPageLayout() {
                       </span>
                     </div>
 
-                    <h4 className="text-card-title text-base sm:text-lg font-bold text-brand-textPrimary tracking-tight mb-2.5 leading-snug">
+                    <h4 className="text-lg sm:text-card-title font-bold text-brand-textPrimary tracking-tight mb-2.5 leading-snug">
                       {t(ws.titleKey)}
                     </h4>
 
@@ -746,13 +746,13 @@ export default function SuccessStoriesPageLayout() {
               {/* Single Dominant Section Heading */}
               <h2 
                 id={`${baseId}-testimonials-heading`}
-                className="text-section-sm sm:text-section font-bold text-brand-textPrimary tracking-tight mb-4"
+                className="text-3xl sm:text-[34px] lg:text-section font-bold text-brand-textPrimary tracking-tight mb-4 leading-[1.2]"
               >
                 {t("projects.testimonials.title") || "Client Testimonials"}
               </h2>
 
               {/* Single Concise Description */}
-              <p className="text-body sm:text-lead text-brand-textSecondary font-normal leading-relaxed mb-6 max-w-2xl">
+              <p className="text-[17px] sm:text-lead text-brand-textSecondary font-normal leading-relaxed mb-6 max-w-2xl">
                 {t("projects.testimonials.empty_desc") || 
                   "We are preparing authentic client perspectives. Verified feedback and collaboration reviews will be published here as projects conclude and formal authorization is received."}
               </p>
