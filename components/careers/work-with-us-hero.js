@@ -146,7 +146,7 @@ export default function WorkWithUsHero() {
             <motion.h1
               id={titleId}
               variants={itemVariants}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-brand-textPrimary leading-[1.12] mb-6"
+              className="text-4xl sm:text-[44px] lg:text-display font-extrabold tracking-tight text-brand-textPrimary leading-[1.12] lg:leading-[1.14] mb-6"
             >
               {t("careers.hero.title")}
             </motion.h1>
@@ -154,7 +154,7 @@ export default function WorkWithUsHero() {
             {/* Lead Paragraph */}
             <motion.p
               variants={itemVariants}
-              className="text-lg sm:text-xl text-brand-textPrimary font-medium leading-relaxed mb-4 max-w-2xl"
+              className="text-[17px] sm:text-lead text-brand-textPrimary font-medium leading-relaxed mb-4 max-w-2xl"
             >
               {t("careers.hero.lead")}
             </motion.p>
