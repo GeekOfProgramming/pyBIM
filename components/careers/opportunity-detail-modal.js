@@ -155,12 +155,12 @@ export default function OpportunityDetailModal({ role, onClose, onApplyRole }) {
                 <span className="font-mono text-caption font-bold text-brand-primary tracking-wider uppercase block">
                   // {role.num} · {role.code}
                 </span>
-                <h3 id={titleId} className="text-card-title sm:text-section-sm font-extrabold font-sans text-brand-textPrimary tracking-tight">
+                <h3 id={titleId} className="text-xl sm:text-[22px] lg:text-card-title font-extrabold text-brand-textPrimary tracking-tight leading-[1.25]">
                   {role.title}
                 </h3>
               </div>
             </div>
-            <p id={descId} className="text-body sm:text-lead font-sans text-brand-textSecondary leading-relaxed mt-3">
+            <p id={descId} className="text-[17px] sm:text-lead text-brand-textSecondary font-medium leading-relaxed mt-3">
               {role.overview}
             </p>
           </div>
