@@ -114,7 +114,7 @@ export default function SuccessStoriesPageLayout() {
               {/* H1 Title */}
               <motion.h1 
                 variants={fadeInVariants} 
-                className="text-section-sm sm:text-section lg:text-display font-extrabold text-brand-textPrimary tracking-tight mb-4 leading-[1.08]"
+                className="text-4xl sm:text-[44px] lg:text-display font-extrabold text-brand-textPrimary tracking-tight mb-4 leading-[1.12] lg:leading-[1.14]"
               >
                 {t("projects.hero.title") || "Success Stories"}
               </motion.h1>
@@ -130,7 +130,7 @@ export default function SuccessStoriesPageLayout() {
               {/* Factual Description */}
               <motion.p 
                 variants={fadeInVariants} 
-                className="text-body sm:text-lead text-brand-textSecondary font-normal leading-relaxed mb-8 max-w-2xl"
+                className="text-[17px] sm:text-lead text-brand-textSecondary font-normal leading-relaxed mb-8 max-w-2xl"
               >
                 {t("projects.hero.description") || 
                   "Explore the structure of our engineering portfolio, from completed BIM work to ongoing research in AI-assisted engineering and LLM-based workflows."}
