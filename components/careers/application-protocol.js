@@ -92,7 +92,7 @@ ${getBodyText(code)}`;
         </div>
 
         {/* Section Heading & Overview */}
-        <h3 id="protocol-heading" className="text-2xl sm:text-3xl lg:text-card-title font-extrabold font-sans text-brand-textPrimary tracking-tight mb-3">
+        <h3 id="protocol-heading" className="text-xl sm:text-[22px] lg:text-card-title font-extrabold text-brand-textPrimary tracking-tight mb-3 leading-[1.25]">
           {t("careers.protocol.title") || "Structured Application Protocol"}
         </h3>
 

@@ -52,12 +52,12 @@ export default function StartAConversationSection({
 
             <h2
               id={titleId}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-section-sm xl:text-section font-extrabold font-sans tracking-tight text-brand-textPrimary leading-tight mb-4"
+              className="text-3xl sm:text-[34px] lg:text-section font-extrabold tracking-tight text-brand-textPrimary leading-[1.2] mb-4"
             >
               {t("careers.conversation.title") || "Introduce Your Expertise."}
             </h2>
 
-            <p className="text-body sm:text-lead font-sans text-brand-textSecondary font-medium leading-relaxed mb-4">
+            <p className="text-[17px] sm:text-lead text-brand-textSecondary font-medium leading-relaxed mb-4">
               {t("careers.conversation.desc") ||
                 "Interested in contributing to pyBIM? Select the area that best matches your experience and share a concise technical introduction using the application guide below."}
             </p>
