@@ -114,7 +114,7 @@ git push origin --delete <completed-branch-name>
 
 1. **Automatic Production Deployment from `main`**:
    - Merging an approved PR into `main` automatically triggers production building and deployment via Cloudflare Builds, deploying directly to Worker `pybim` serving `https://www.pybim.com` and `https://www.pybim.it`.
-   - The remote staging Worker (`pybim-staging`), staging token, staging environment, and release branch have been retired.
+   - The remote staging Worker (`pybim-staging`), staging token, and staging environment have been retired. The historical release branch (`release/pybim-public-v2`) remains preserved in the remote repository as an audited release reference.
 
 2. **Wrangler Configuration Alignment**:
    - Both `wrangler.jsonc` (default) and `wrangler.production.jsonc` target the production Worker `pybim` identically with zero drift.
@@ -124,12 +124,17 @@ git push origin --delete <completed-branch-name>
      ```
 
 3. **Production Deployment Verification**:
-   - Immediately following any merge to `main`, verify production health:
+   - Immediately following any merge to `main`, verify production health across both domains, following redirects to inspect the final response:
      ```bash
-     curl -I https://www.pybim.com
-     curl -I https://www.pybim.it
+     curl -ILs -o /dev/null -w "%{http_code} %{url_effective}\n" https://www.pybim.com
+     curl -ILs -o /dev/null -w "%{http_code} %{url_effective}\n" https://www.pybim.it
      ```
-   - Confirm HTTP 200 responses, valid security headers (`Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`), and absence of 5xx errors.
+   - Check headers on the effective endpoints:
+     ```bash
+     curl -IL https://www.pybim.com
+     curl -IL https://www.pybim.it
+     ```
+   - Confirm final HTTP 200 responses, verified security headers (`X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`), and absence of 5xx errors. (Note: HSTS is scheduled for deployment in a dedicated security hardening task and is not yet active).
 
 ---
 
@@ -137,19 +142,19 @@ git push origin --delete <completed-branch-name>
 
 In the event of an active production incident, pyBIM maintains two distinct, auditable recovery tracks:
 
-### Track 1: Edge Runtime Rollback (Immediate Mitigation — T < 2 minutes)
+### Track 1: Edge Runtime Rollback (Immediate Mitigation)
 When a newly deployed Worker build introduces runtime exceptions or breaks critical user journeys:
 1. **Do not wait for a full CI build and Git push cycle.**
-2. Use Cloudflare Workers Deployments rollback via Wrangler CLI or Cloudflare Dashboard:
+2. Use Cloudflare Workers rollback via Wrangler CLI or Cloudflare Dashboard:
    ```bash
-   # List recent production deployment IDs:
-   npx wrangler deployments list --config wrangler.production.jsonc
+   # List recent production worker versions:
+   npx wrangler versions list --config wrangler.production.jsonc
 
-   # Roll back instantly to the prior known-good deployment:
-   npx wrangler rollback [DEPLOYMENT-ID] --config wrangler.production.jsonc
+   # Roll back to the prior known-good version ID:
+   npx wrangler rollback [VERSION_ID] --config wrangler.production.jsonc
    ```
-3. Cloudflare switches 100% of global traffic back to the prior deployment version within seconds without rebuilding assets.
-4. **Follow-Up**: After traffic is stabilized, proceed immediately to Track 2 to ensure the Git source code matches production state.
+3. Cloudflare shifts traffic back to the designated Worker version without rebuilding assets.
+4. **Follow-Up**: After edge traffic is stabilized, proceed immediately to Track 2 to ensure the Git source code matches the active production state.
 
 ### Track 2: Git Source Revert & Hotfix (Root-Cause Remediation)
 To synchronize Git repository history with the active rollback or apply an emergency hotfix:
@@ -163,10 +168,11 @@ To synchronize Git repository history with the active rollback or apply an emerg
      git revert <bad-commit-sha>
      ```
    - For an emergency patch: implement the minimal fix, ensuring `npm run test:security` passes.
-3. **Emergency Bypass Policy**:
-   - In catastrophic scenarios where GitHub Actions CI is offline or degraded, the designated repository administrator (`GeekOfProgramming`) possesses emergency bypass authorization on Ruleset `24924121`.
-   - **Audit Requirement**: Any administrative bypass of branch protection rules must be documented in a post-incident retrospective with rationale, timestamp, and commit SHA.
-   - Standard hotfixes should still traverse the Pull Request path whenever CI is operational to ensure automated verification.
+3. **Emergency Bypass & Protection Policy**:
+   - Production protection rules on `main` do not configure any standing bypass actors. Direct unvalidated pushes are consistently blocked.
+   - In catastrophic scenarios where GitHub Actions CI is degraded or offline, the repository owner (`GeekOfProgramming`) can temporarily adjust ruleset enforcement or configure a documented, temporary bypass in repository settings to merge critical recovery fixes.
+   - **Audit Requirement**: Any temporary administrative override must be documented in a post-incident retrospective with rationale, timestamp, and commit SHA.
+   - Standard hotfixes should always traverse the Pull Request path whenever CI is operational to ensure automated verification.
 4. **Deploy Verification**:
    - Monitor the Cloudflare Builds log for the resulting commit on `main`.
-   - Execute production endpoint verification on both apex and localized domains.
+   - Execute production endpoint verification on both apex and localized domains following redirects.
