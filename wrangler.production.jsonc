@@ -9,5 +9,11 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
+  },
+  "vars": {
+    "CONTACT_TO": "support@pybim.com",
+    "EMAIL_FROM": "pyBIM Support <support@pybim.com>",
+    "EMAIL_TRANSPORT": "resend",
+    "SUPPORT_REPLY_TO": "support@pybim.com"
   }
 }
