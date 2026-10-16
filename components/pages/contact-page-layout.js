@@ -126,6 +126,7 @@ export default function ContactPageLayout() {
     try {
       const payload = {
         ...form,
+        serviceId: selectedServiceId,
         disciplines: selectedDisciplines,
         otherScope: otherScope.trim(),
         turnstileToken

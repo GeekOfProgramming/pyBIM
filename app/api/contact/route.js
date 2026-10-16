@@ -44,6 +44,7 @@ export async function POST(req) {
       email,
       phone,
       service,
+      serviceId,
       teamScale,
       architecture,
       fileSize,
@@ -53,6 +54,44 @@ export async function POST(req) {
       otherScope,
       turnstileToken
     } = body;
+
+    // Canonical service map covering EN, IT, DE and IDs
+    const CANONICAL_SERVICES = {
+      bim_modeling: "BIM Modeling & Engineering Delivery",
+      bim_coordination: "BIM Coordination & Clash Resolution",
+      bim_qa: "BIM Model Quality Assurance & Audits",
+      revit_automation: "Revit Automation & Computational Design",
+      computational_design: "Computational Engineering & Algorithmic Geometry",
+      software_integrations: "Custom Software & BIM API Integrations",
+      other: "Other / Custom Project Scope"
+    };
+
+    // Determine canonical service key
+    let resolvedServiceId = serviceId;
+    if (!resolvedServiceId && (service || architecture)) {
+      const raw = String(service || architecture).toLowerCase().trim();
+      if (raw.includes("model") || raw.includes("modellazione") || raw.includes("modellierung")) {
+        resolvedServiceId = "bim_modeling";
+      } else if (raw.includes("coordin") || raw.includes("koordination")) {
+        resolvedServiceId = "bim_coordination";
+      } else if (raw.includes("qa") || raw.includes("qualit") || raw.includes("audit") || raw.includes("prüfung")) {
+        resolvedServiceId = "bim_qa";
+      } else if (raw.includes("revit") || raw.includes("dynamo") || raw.includes("automazi") || raw.includes("automatisierung")) {
+        resolvedServiceId = "revit_automation";
+      } else if (raw.includes("computat") || raw.includes("algorit") || raw.includes("geometrie")) {
+        resolvedServiceId = "computational_design";
+      } else if (raw.includes("integrat") || raw.includes("software") || raw.includes("api")) {
+        resolvedServiceId = "software_integrations";
+      } else if (raw.includes("other") || raw.includes("altro") || raw.includes("sonst") || raw.includes("custom")) {
+        resolvedServiceId = "other";
+      }
+    }
+
+    if (!resolvedServiceId || !CANONICAL_SERVICES[resolvedServiceId]) {
+      return Response.json({ ok: false, error: "Please select a valid service or project scope." }, { status: 400 });
+    }
+
+    const humanReadableService = CANONICAL_SERVICES[resolvedServiceId];
 
     // 1. Validate Required Text Fields and Bounds
     const nameCheck = validateTextField(name, "Full Name", 100, true);
@@ -64,10 +103,6 @@ export async function POST(req) {
     const phoneCheck = validateTextField(phone, "Phone Number", 40, true);
     if (!phoneCheck.valid) return Response.json({ ok: false, error: phoneCheck.error }, { status: 400 });
 
-    const selectedService = service || architecture;
-    const serviceCheck = validateTextField(selectedService, "Service", 80, true);
-    if (!serviceCheck.valid) return Response.json({ ok: false, error: serviceCheck.error }, { status: 400 });
-
     const selectedTeamScale = teamScale || fileSize;
     const scaleCheck = validateTextField(selectedTeamScale, "Company Size", 80, true);
     if (!scaleCheck.valid) return Response.json({ ok: false, error: scaleCheck.error }, { status: 400 });
@@ -75,9 +110,9 @@ export async function POST(req) {
     const messageCheck = validateTextField(message, "Project Requirements", 5000, true);
     if (!messageCheck.valid) return Response.json({ ok: false, error: messageCheck.error }, { status: 400 });
 
-    // 2. Conditional Field Validation
+    // 2. Conditional Field Validation Across Locales (Strictly Enforced by canonical ID)
     let formattedDisciplines = "-";
-    if (selectedService === "BIM Modeling & Coordination" || selectedService === "bim_modeling") {
+    if (resolvedServiceId === "bim_modeling") {
       if (!Array.isArray(disciplines) || disciplines.length === 0) {
         return Response.json({ ok: false, error: "Please select at least one engineering discipline." }, { status: 400 });
       }
@@ -85,7 +120,7 @@ export async function POST(req) {
     }
 
     let customScope = "-";
-    if (selectedService === "Other / Custom Scope" || selectedService === "other") {
+    if (resolvedServiceId === "other") {
       const otherCheck = validateTextField(otherScope, "Custom Scope Specification", 500, true);
       if (!otherCheck.valid) return Response.json({ ok: false, error: otherCheck.error }, { status: 400 });
       customScope = otherCheck.sanitized;
@@ -132,7 +167,7 @@ export async function POST(req) {
       const safeCompany = escapeHtml(companyCheck.sanitized);
       const safeEmail = escapeHtml(email.trim());
       const safePhone = escapeHtml(phoneCheck.sanitized);
-      const safeService = escapeHtml(serviceCheck.sanitized);
+      const safeService = escapeHtml(humanReadableService);
       const safeTeamScale = escapeHtml(scaleCheck.sanitized);
       const safeDisciplines = escapeHtml(formattedDisciplines);
       const safeCustomScope = escapeHtml(customScope);
