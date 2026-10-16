@@ -134,7 +134,7 @@ git push origin --delete <completed-branch-name>
      curl -IL https://www.pybim.com
      curl -IL https://www.pybim.it
      ```
-   - Confirm final HTTP 200 responses, verified security headers (`X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`), and absence of 5xx errors. (Note: HSTS is scheduled for deployment in a dedicated security hardening task and is not yet active).
+   - Confirm final HTTP 200 responses, verified security headers (`X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`), and absence of 5xx errors. (Note: HSTS is scheduled for deployment in a dedicated security hardening task and is not yet active).
 
 ---
 
