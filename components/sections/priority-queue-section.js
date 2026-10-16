@@ -1,13 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, CheckCircle2, AlertCircle, ShieldAlert, Cpu, Lock, Sparkles, Server } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
+import TurnstileWidget from "@/components/common/turnstile-widget";
 
 export default function PriorityQueueSection() {
   const { t } = useLanguage();
+  const turnstileRef = useRef(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [form, setForm] = useState({
     name: "",
     companyName: "",
@@ -43,7 +46,10 @@ export default function PriorityQueueSection() {
       const res = await fetch("/api/early-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form)
+        body: JSON.stringify({
+          ...form,
+          turnstileToken
+        })
       });
 
       const data = await res.json();
@@ -65,8 +71,11 @@ export default function PriorityQueueSection() {
         privacyAccepted: false
       });
       setPrivacyError(false);
+      setTurnstileToken("");
+      if (turnstileRef.current) turnstileRef.current.reset();
     } catch (err) {
       setPopup({ type: "error", message: err.message });
+      if (turnstileRef.current) turnstileRef.current.reset();
     } finally {
       setLoading(false);
     }
@@ -336,7 +345,19 @@ export default function PriorityQueueSection() {
                   )}
                 </div>
 
-                {/* Row 7: Submit Button */}
+                {/* Row 6.5: Cloudflare Turnstile Verification */}
+                  <div className="py-1">
+                    <TurnstileWidget
+                      ref={turnstileRef}
+                      action="early-access"
+                      theme="dark"
+                      onVerify={(token) => setTurnstileToken(token)}
+                      onExpire={() => setTurnstileToken("")}
+                      onError={() => setTurnstileToken("")}
+                    />
+                  </div>
+
+                  {/* Row 7: Submit Button */}
                 <div className="pt-2">
                   <button
                     type="submit"

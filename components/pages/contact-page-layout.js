@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, CheckCircle2, AlertCircle, Check } from "lucide-react";
 import DirectChannelsSection from "@/components/contact/direct-channels-section";
@@ -7,6 +7,7 @@ import FAQSection from "@/components/sections/faq-section";
 import { useLanguage } from "@/lib/LanguageContext";
 import RoiMatrixSection from "@/components/contact/roi-matrix-section";
 import PriorityQueueSection from "@/components/sections/priority-queue-section";
+import TurnstileWidget from "@/components/common/turnstile-widget";
 
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
@@ -37,6 +38,8 @@ const engineeringDisciplines = [
 
 export default function ContactPageLayout() {
   const { t } = useLanguage();
+  const turnstileRef = useRef(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [form, setForm] = useState({ name: "", companyName: "", email: "", phone: "", service: "", teamScale: "", message: "", privacyAccepted: false });
   const [selectedServiceId, setSelectedServiceId] = useState("");
   const [selectedDisciplines, setSelectedDisciplines] = useState([]);
@@ -124,7 +127,8 @@ export default function ContactPageLayout() {
       const payload = {
         ...form,
         disciplines: selectedDisciplines,
-        otherScope: otherScope.trim()
+        otherScope: otherScope.trim(),
+        turnstileToken
       };
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -141,8 +145,11 @@ export default function ContactPageLayout() {
       setOtherScope("");
       setOtherScopeError(false);
       setPrivacyError(false);
+      setTurnstileToken("");
+      if (turnstileRef.current) turnstileRef.current.reset();
     } catch (err) {
       setPopup({ type: "error", message: err.message });
+      if (turnstileRef.current) turnstileRef.current.reset();
     } finally {
       setLoading(false);
     }
@@ -446,6 +453,17 @@ export default function ContactPageLayout() {
                           {t("forms.error.privacy_required") || "You must accept the Privacy Policy and Terms to proceed."}
                         </p>
                       )}
+                    </div>
+
+                    {/* Row 5.5: Cloudflare Turnstile Verification */}
+                    <div className="py-1">
+                      <TurnstileWidget
+                        ref={turnstileRef}
+                        action="contact"
+                        onVerify={(token) => setTurnstileToken(token)}
+                        onExpire={() => setTurnstileToken("")}
+                        onError={() => setTurnstileToken("")}
+                      />
                     </div>
 
                     {/* Row 6: Submit Button */}

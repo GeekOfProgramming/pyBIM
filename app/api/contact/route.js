@@ -1,6 +1,5 @@
-import nodemailer from "nodemailer";
-import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
-import { escapeHtml } from "@/lib/security";
+import { checkRateLimit, getClientIp } from "../../../lib/rateLimit.js";
+import { escapeHtml } from "../../../lib/security.js";
 import {
   parseBoundedJson,
   validateTextField,
@@ -8,8 +7,8 @@ import {
   verifyDomainMx,
   validatePrivacyAcknowledgment,
   verifyTurnstileToken
-} from "@/lib/formValidation";
-import { getEmailConfig, checkEmailConfiguration, buildEmailPayload } from "@/lib/emailDelivery";
+} from "../../../lib/formValidation.js";
+import { getEmailConfig, checkEmailConfiguration, buildEmailPayload, sendEmail } from "../../../lib/emailDelivery.js";
 
 export async function POST(req) {
   try {
@@ -99,19 +98,22 @@ export async function POST(req) {
     }
 
     // 4. Anti-Bot Turnstile Verification
-    const turnstileCheck = await verifyTurnstileToken(turnstileToken, clientIp);
+    const turnstileCheck = await verifyTurnstileToken(turnstileToken, clientIp, "contact");
     if (!turnstileCheck.ok) {
-      return Response.json({ ok: false, error: turnstileCheck.error }, { status: turnstileCheck.status });
+      return Response.json(
+        { ok: false, code: turnstileCheck.code || "TURNSTILE_FAILED", error: turnstileCheck.error },
+        { status: turnstileCheck.status }
+      );
     }
 
     // 5. Corporate Email Eligibility
-    const isDev = process.env.NODE_ENV !== "production";
-    const emailPolicy = validateCorporateEmail(email, isDev);
+    const emailPolicy = validateCorporateEmail(email);
     if (!emailPolicy.valid) {
       return Response.json({ ok: false, error: emailPolicy.error }, { status: 400 });
     }
 
     // 6. Server-Side DNS/MX Capability Verification
+    const isDev = process.env.NODE_ENV !== "production";
     const mxCheck = await verifyDomainMx(emailPolicy.domain, isDev);
     if (!mxCheck.valid) {
       return Response.json({ ok: false, error: mxCheck.error }, { status: mxCheck.status });
@@ -124,19 +126,8 @@ export async function POST(req) {
       return Response.json({ ok: false, error: configCheck.error }, { status: configCheck.statusCode });
     }
 
-    // 8. Dispatch Email via Configured Transport
+    // 8. Dispatch Email via Configured Delivery Transport
     try {
-      const emailConfig = getEmailConfig();
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT || 587),
-        secure: false,
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS
-        }
-      });
-
       const safeName = escapeHtml(nameCheck.sanitized);
       const safeCompany = escapeHtml(companyCheck.sanitized);
       const safeEmail = escapeHtml(email.trim());
@@ -170,13 +161,13 @@ export async function POST(req) {
         `
       });
 
-      await transporter.sendMail(payload);
+      await sendEmail(payload);
       return Response.json({ ok: true });
     } catch (emailError) {
-      console.error("Failed to dispatch email:", emailError);
+      console.error("Failed to dispatch email:", emailError.message || emailError);
       return Response.json(
         { ok: false, error: "Failed to dispatch email. Please try again later." },
-        { status: 502 }
+        { status: emailError.statusCode || 502 }
       );
     }
   } catch (error) {

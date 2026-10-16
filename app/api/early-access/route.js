@@ -1,6 +1,5 @@
-import nodemailer from "nodemailer";
-import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
-import { escapeHtml } from "@/lib/security";
+import { checkRateLimit, getClientIp } from "../../../lib/rateLimit.js";
+import { escapeHtml } from "../../../lib/security.js";
 import {
   parseBoundedJson,
   validateTextField,
@@ -8,8 +7,8 @@ import {
   verifyDomainMx,
   validatePrivacyAcknowledgment,
   verifyTurnstileToken
-} from "@/lib/formValidation";
-import { getEmailConfig, checkEmailConfiguration, buildEmailPayload } from "@/lib/emailDelivery";
+} from "../../../lib/formValidation.js";
+import { getEmailConfig, checkEmailConfiguration, buildEmailPayload, sendEmail } from "../../../lib/emailDelivery.js";
 
 export async function POST(req) {
   try {
@@ -85,19 +84,22 @@ export async function POST(req) {
     }
 
     // 3. Anti-Bot Turnstile Verification
-    const turnstileCheck = await verifyTurnstileToken(turnstileToken, clientIp);
+    const turnstileCheck = await verifyTurnstileToken(turnstileToken, clientIp, "early-access");
     if (!turnstileCheck.ok) {
-      return Response.json({ ok: false, error: turnstileCheck.error }, { status: turnstileCheck.status });
+      return Response.json(
+        { ok: false, code: turnstileCheck.code || "TURNSTILE_FAILED", error: turnstileCheck.error },
+        { status: turnstileCheck.status }
+      );
     }
 
     // 4. Corporate Email Eligibility
-    const isDev = process.env.NODE_ENV !== "production";
-    const emailPolicy = validateCorporateEmail(email, isDev);
+    const emailPolicy = validateCorporateEmail(email);
     if (!emailPolicy.valid) {
       return Response.json({ ok: false, error: emailPolicy.error }, { status: 400 });
     }
 
     // 5. Server-Side DNS/MX Capability Verification
+    const isDev = process.env.NODE_ENV !== "production";
     const mxCheck = await verifyDomainMx(emailPolicy.domain, isDev);
     if (!mxCheck.valid) {
       return Response.json({ ok: false, error: mxCheck.error }, { status: mxCheck.status });
@@ -114,19 +116,8 @@ export async function POST(req) {
       return Response.json({ ok: false, error: configCheck.error }, { status: configCheck.statusCode });
     }
 
-    // 7. Dispatch Emails
+    // 7. Dispatch Emails via Configured Delivery Transport
     try {
-      const emailConfig = getEmailConfig();
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT || 587),
-        secure: false,
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS
-        }
-      });
-
       const safeName = escapeHtml(nameCheck.sanitized);
       const safeCompany = escapeHtml(companyCheck.sanitized);
       const safeEmail = escapeHtml(email.trim());
@@ -171,9 +162,9 @@ export async function POST(req) {
         `
       });
 
-      await transporter.sendMail(internalPayload);
+      await sendEmail(internalPayload);
 
-      // B. Auto-Responder Email to Applicant
+      // B. Auto-Responder Email to Applicant (separate delivery outcome)
       try {
         const autoPayload = buildEmailPayload({
           type: "applicant_autoresponder",
@@ -209,18 +200,18 @@ export async function POST(req) {
             </div>
           `
         });
-        await transporter.sendMail(autoPayload);
+        await sendEmail(autoPayload);
       } catch (autoErr) {
-        console.error("Auto-responder dispatch error:", autoErr);
-        // Non-fatal: internal notification already dispatched
+        console.error("Auto-responder dispatch error (non-fatal):", autoErr.message || autoErr);
+        // Non-fatal: internal notification already dispatched and verified
       }
 
       return Response.json({ ok: true, queueReference });
     } catch (emailError) {
-      console.error("Failed to dispatch early access notification:", emailError);
+      console.error("Failed to dispatch early access notification:", emailError.message || emailError);
       return Response.json(
         { ok: false, error: "Failed to dispatch application. Please try again later." },
-        { status: 502 }
+        { status: emailError.statusCode || 502 }
       );
     }
   } catch (error) {
@@ -228,3 +219,4 @@ export async function POST(req) {
     return Response.json({ ok: false, error: "Failed to process application" }, { status: 500 });
   }
 }
+
