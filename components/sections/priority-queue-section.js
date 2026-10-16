@@ -17,8 +17,10 @@ export default function PriorityQueueSection() {
     teamScale: "",
     ecosystem: "",
     securityLevel: "",
-    notes: ""
+    notes: "",
+    privacyAccepted: false
   });
+  const [privacyError, setPrivacyError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [successData, setSuccessData] = useState(null);
   const [popup, setPopup] = useState(null);
@@ -29,6 +31,12 @@ export default function PriorityQueueSection() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!form.privacyAccepted) {
+      setPrivacyError(true);
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -53,8 +61,10 @@ export default function PriorityQueueSection() {
         teamScale: "",
         ecosystem: "",
         securityLevel: "",
-        notes: ""
+        notes: "",
+        privacyAccepted: false
       });
+      setPrivacyError(false);
     } catch (err) {
       setPopup({ type: "error", message: err.message });
     } finally {
@@ -294,24 +304,36 @@ export default function PriorityQueueSection() {
                 </div>
 
                 {/* Row 6: Privacy Policy */}
-                <div className="flex items-start gap-3 pt-2">
-                  <input
-                    type="checkbox"
-                    id="privacy-queue"
-                    required
-                    className="mt-1 w-4 h-4 rounded border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
-                  />
-                  <label htmlFor="privacy-queue" className="text-caption text-brand-textSecondary leading-relaxed cursor-pointer select-none">
-                    {t("forms.accept.part1")}{" "}
-                    <Link href="/privacy-policy" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
-                      {t("forms.accept.privacy")}
-                    </Link>{" "}
-                    {t("forms.accept.part2")}{" "}
-                    <Link href="/terms-and-conditions" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
-                      {t("forms.accept.terms")}
-                    </Link>{" "}
-                    {t("forms.accept.part3")}
-                  </label>
+                <div className="flex flex-col gap-1 pt-2">
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="privacy-queue"
+                      checked={form.privacyAccepted}
+                      onChange={(e) => {
+                        updateField("privacyAccepted", e.target.checked);
+                        if (e.target.checked) setPrivacyError(false);
+                      }}
+                      required
+                      className="mt-1 w-4 h-4 rounded border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                    />
+                    <label htmlFor="privacy-queue" className="text-caption text-brand-textSecondary leading-relaxed cursor-pointer select-none">
+                      {t("forms.accept.part1")}{" "}
+                      <Link href="/privacy-policy" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
+                        {t("forms.accept.privacy")}
+                      </Link>{" "}
+                      {t("forms.accept.part2")}{" "}
+                      <Link href="/terms-and-conditions" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
+                        {t("forms.accept.terms")}
+                      </Link>{" "}
+                      {t("forms.accept.part3")}
+                    </label>
+                  </div>
+                  {privacyError && (
+                    <p className="text-xs text-rose-500 font-medium pl-7">
+                      {t("forms.error.privacy_required") || "You must accept the Privacy Policy and Terms to proceed."}
+                    </p>
+                  )}
                 </div>
 
                 {/* Row 7: Submit Button */}

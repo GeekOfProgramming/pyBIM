@@ -37,12 +37,13 @@ const engineeringDisciplines = [
 
 export default function ContactPageLayout() {
   const { t } = useLanguage();
-  const [form, setForm] = useState({ name: "", companyName: "", email: "", phone: "", service: "", teamScale: "", message: "" });
+  const [form, setForm] = useState({ name: "", companyName: "", email: "", phone: "", service: "", teamScale: "", message: "", privacyAccepted: false });
   const [selectedServiceId, setSelectedServiceId] = useState("");
   const [selectedDisciplines, setSelectedDisciplines] = useState([]);
   const [disciplineError, setDisciplineError] = useState(false);
   const [otherScope, setOtherScope] = useState("");
   const [otherScopeError, setOtherScopeError] = useState(false);
+  const [privacyError, setPrivacyError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [popup, setPopup] = useState(null);
 
@@ -103,6 +104,11 @@ export default function ContactPageLayout() {
       return;
     }
 
+    if (!form.privacyAccepted) {
+      setPrivacyError(true);
+      return;
+    }
+
     if (selectedServiceId === "bim_modeling" && selectedDisciplines.length === 0) {
       setDisciplineError(true);
       return;
@@ -115,20 +121,26 @@ export default function ContactPageLayout() {
 
     setLoading(true);
     try {
+      const payload = {
+        ...form,
+        disciplines: selectedDisciplines,
+        otherScope: otherScope.trim()
+      };
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form)
+        body: JSON.stringify(payload)
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.error || t("contact.form.error"));
       setPopup({ type: "success", message: t("contact.form.success") });
-      setForm({ name: "", companyName: "", email: "", phone: "", service: "", teamScale: "", message: "" });
+      setForm({ name: "", companyName: "", email: "", phone: "", service: "", teamScale: "", message: "", privacyAccepted: false });
       setSelectedServiceId("");
       setSelectedDisciplines([]);
       setDisciplineError(false);
       setOtherScope("");
       setOtherScopeError(false);
+      setPrivacyError(false);
     } catch (err) {
       setPopup({ type: "error", message: err.message });
     } finally {
@@ -404,24 +416,36 @@ export default function ContactPageLayout() {
                     </div>
 
                     {/* Row 5: Privacy Checkbox & Legal Links */}
-                    <div className="flex items-start gap-3 pt-1">
-                      <input
-                        type="checkbox"
-                        id="privacy-contact"
-                        required
-                        className="mt-1 w-4 h-4 rounded border-brand-border bg-brand-surface text-brand-primary focus:ring-brand-primary cursor-pointer"
-                      />
-                      <label htmlFor="privacy-contact" className="text-xs text-brand-textSecondary font-medium leading-normal cursor-pointer select-none">
-                        {t("forms.accept.part1")}{" "}
-                        <Link href="/privacy-policy" className="text-brand-primary font-bold hover:underline">
-                          {t("forms.accept.privacy")}
-                        </Link>{" "}
-                        {t("forms.accept.part2")}{" "}
-                        <Link href="/terms-and-conditions" className="text-brand-primary font-bold hover:underline">
-                          {t("forms.accept.terms")}
-                        </Link>{" "}
-                        {t("forms.accept.part3")}
-                      </label>
+                    <div className="flex flex-col gap-1 pt-1">
+                      <div className="flex items-start gap-3">
+                        <input
+                          type="checkbox"
+                          id="privacy-contact"
+                          checked={form.privacyAccepted}
+                          onChange={(e) => {
+                            updateField("privacyAccepted", e.target.checked);
+                            if (e.target.checked) setPrivacyError(false);
+                          }}
+                          required
+                          className="mt-1 w-4 h-4 rounded border-brand-border bg-brand-surface text-brand-primary focus:ring-brand-primary cursor-pointer"
+                        />
+                        <label htmlFor="privacy-contact" className="text-xs text-brand-textSecondary font-medium leading-normal cursor-pointer select-none">
+                          {t("forms.accept.part1")}{" "}
+                          <Link href="/privacy-policy" className="text-brand-primary font-bold hover:underline">
+                            {t("forms.accept.privacy")}
+                          </Link>{" "}
+                          {t("forms.accept.part2")}{" "}
+                          <Link href="/terms-and-conditions" className="text-brand-primary font-bold hover:underline">
+                            {t("forms.accept.terms")}
+                          </Link>{" "}
+                          {t("forms.accept.part3")}
+                        </label>
+                      </div>
+                      {privacyError && (
+                        <p className="text-xs text-rose-500 font-medium pl-7">
+                          {t("forms.error.privacy_required") || "You must accept the Privacy Policy and Terms to proceed."}
+                        </p>
+                      )}
                     </div>
 
                     {/* Row 6: Submit Button */}
