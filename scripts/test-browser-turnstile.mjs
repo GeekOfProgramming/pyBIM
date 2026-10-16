@@ -50,7 +50,7 @@ const chromePath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
     await page.type('#contact-company', 'Studio Ingegneria Benetti');
     await page.type('#contact-email', 'r.benetti@studio-benetti.it');
     await page.type('#contact-phone', '+39 049 827 0000');
-    
+
     // Select service
     await page.select('#contact-service', 'bim_modeling');
 
