@@ -1,13 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { ArrowRight, CheckCircle2, AlertCircle, ShieldAlert, Cpu, Lock, Sparkles, Server } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
+import TurnstileWidget from "@/components/common/turnstile-widget";
 
 export default function PriorityQueueSection() {
   const { t } = useLanguage();
+  const turnstileRef = useRef(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [form, setForm] = useState({
     name: "",
     companyName: "",
@@ -17,8 +20,10 @@ export default function PriorityQueueSection() {
     teamScale: "",
     ecosystem: "",
     securityLevel: "",
-    notes: ""
+    notes: "",
+    privacyAccepted: false
   });
+  const [privacyError, setPrivacyError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [successData, setSuccessData] = useState(null);
   const [popup, setPopup] = useState(null);
@@ -29,13 +34,22 @@ export default function PriorityQueueSection() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!form.privacyAccepted) {
+      setPrivacyError(true);
+      return;
+    }
+
     setLoading(true);
 
     try {
       const res = await fetch("/api/early-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form)
+        body: JSON.stringify({
+          ...form,
+          turnstileToken
+        })
       });
 
       const data = await res.json();
@@ -53,10 +67,15 @@ export default function PriorityQueueSection() {
         teamScale: "",
         ecosystem: "",
         securityLevel: "",
-        notes: ""
+        notes: "",
+        privacyAccepted: false
       });
+      setPrivacyError(false);
+      setTurnstileToken("");
+      if (turnstileRef.current) turnstileRef.current.reset();
     } catch (err) {
       setPopup({ type: "error", message: err.message });
+      if (turnstileRef.current) turnstileRef.current.reset();
     } finally {
       setLoading(false);
     }
@@ -294,27 +313,51 @@ export default function PriorityQueueSection() {
                 </div>
 
                 {/* Row 6: Privacy Policy */}
-                <div className="flex items-start gap-3 pt-2">
-                  <input
-                    type="checkbox"
-                    id="privacy-queue"
-                    required
-                    className="mt-1 w-4 h-4 rounded border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
-                  />
-                  <label htmlFor="privacy-queue" className="text-caption text-brand-textSecondary leading-relaxed cursor-pointer select-none">
-                    {t("forms.accept.part1")}{" "}
-                    <Link href="/privacy-policy" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
-                      {t("forms.accept.privacy")}
-                    </Link>{" "}
-                    {t("forms.accept.part2")}{" "}
-                    <Link href="/terms-and-conditions" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
-                      {t("forms.accept.terms")}
-                    </Link>{" "}
-                    {t("forms.accept.part3")}
-                  </label>
+                <div className="flex flex-col gap-1 pt-2">
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="privacy-queue"
+                      checked={form.privacyAccepted}
+                      onChange={(e) => {
+                        updateField("privacyAccepted", e.target.checked);
+                        if (e.target.checked) setPrivacyError(false);
+                      }}
+                      required
+                      className="mt-1 w-4 h-4 rounded border-brand-border dark:border-slate-700 bg-brand-surface dark:bg-slate-800 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                    />
+                    <label htmlFor="privacy-queue" className="text-caption text-brand-textSecondary leading-relaxed cursor-pointer select-none">
+                      {t("forms.accept.part1")}{" "}
+                      <Link href="/privacy-policy" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
+                        {t("forms.accept.privacy")}
+                      </Link>{" "}
+                      {t("forms.accept.part2")}{" "}
+                      <Link href="/terms-and-conditions" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
+                        {t("forms.accept.terms")}
+                      </Link>{" "}
+                      {t("forms.accept.part3")}
+                    </label>
+                  </div>
+                  {privacyError && (
+                    <p className="text-xs text-rose-500 font-medium pl-7">
+                      {t("forms.error.privacy_required") || "You must accept the Privacy Policy and Terms to proceed."}
+                    </p>
+                  )}
                 </div>
 
-                {/* Row 7: Submit Button */}
+                {/* Row 6.5: Cloudflare Turnstile Verification */}
+                  <div className="py-1">
+                    <TurnstileWidget
+                      ref={turnstileRef}
+                      action="early-access"
+                      theme="dark"
+                      onVerify={(token) => setTurnstileToken(token)}
+                      onExpire={() => setTurnstileToken("")}
+                      onError={() => setTurnstileToken("")}
+                    />
+                  </div>
+
+                  {/* Row 7: Submit Button */}
                 <div className="pt-2">
                   <button
                     type="submit"

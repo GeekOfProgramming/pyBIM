@@ -130,4 +130,13 @@ assert.strictEqual(mockResponse.headers.get('X-XSS-Protection'), '0');
 assert.strictEqual(mockResponse.headers.get('X-Robots-Tag'), 'noindex, nofollow');
 console.log('   ✓ Security headers applied correctly');
 
-console.log('\n=== ALL TARGETED SECURITY TESTS PASSED SUCCESSFULLY ===\n');
+// 7. FORM-01 Form Validation & Corporate Eligibility Suite
+console.log('7. Integrating FORM-01 Form Validation & Corporate Eligibility Suite...');
+await import('./test-form-validation.mjs');
+
+// 8. FORM-01 Full Connection Chain Integration Suite
+console.log('8. Integrating FORM-01 Full Connection Chain Integration Suite...');
+await import('./test-form-e2e.mjs');
+
+console.log('\n=== ALL TARGETED SECURITY & FORM-01 TESTS PASSED SUCCESSFULLY ===\n');
+

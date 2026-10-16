@@ -1,14 +1,14 @@
-import nodemailer from "nodemailer";
-import dns from "dns/promises";
-import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
-import { escapeHtml, isValidEmail } from "@/lib/security";
-
-const FREE_EMAIL_PROVIDERS = [
-  "gmail.com", "yahoo.com", "yahoo.it", "hotmail.com", "hotmail.it", 
-  "outlook.com", "outlook.it", "live.com", "live.it", "icloud.com", 
-  "msn.com", "aol.com", "libero.it", "virgilio.it", "alice.it", "tin.it",
-  "fastwebnet.it", "tiscali.it", "ymail.com", "mail.com", "gmx.com", "proton.me", "protonmail.com"
-];
+import { checkRateLimit, getClientIp } from "../../../lib/rateLimit.js";
+import { escapeHtml } from "../../../lib/security.js";
+import {
+  parseBoundedJson,
+  validateTextField,
+  validateCorporateEmail,
+  verifyDomainMx,
+  validatePrivacyAcknowledgment,
+  verifyTurnstileToken
+} from "../../../lib/formValidation.js";
+import { getEmailConfig, checkEmailConfiguration, buildEmailPayload, sendEmail } from "../../../lib/emailDelivery.js";
 
 export async function POST(req) {
   try {
@@ -31,84 +31,153 @@ export async function POST(req) {
       );
     }
 
-    const body = await req.json();
-    const { name, companyName, email, phone, service, teamScale, architecture, fileSize, message } = body;
-
-    const selectedService = service || architecture;
-    const selectedTeamScale = teamScale || fileSize;
-
-    if (!name || !companyName || !email || !selectedService || !selectedTeamScale || !message) {
-      return Response.json({ ok: false, error: "Missing required fields" }, { status: 400 });
+    // Safely parse bounded JSON payload (64KB stream limit)
+    const jsonResult = await parseBoundedJson(req, 64 * 1024);
+    if (!jsonResult.ok) {
+      return Response.json({ ok: false, error: jsonResult.error }, { status: jsonResult.status });
     }
+    const body = jsonResult.body || {};
 
-    if (!isValidEmail(email)) {
-      return Response.json({ ok: false, error: "Invalid email format." }, { status: 400 });
-    }
+    const {
+      name,
+      companyName,
+      email,
+      phone,
+      service,
+      serviceId,
+      teamScale,
+      architecture,
+      fileSize,
+      message,
+      privacyAccepted,
+      disciplines,
+      otherScope,
+      turnstileToken
+    } = body;
 
-    // Extract domain from email
-    const emailParts = email.toLowerCase().trim().split("@");
-    const domain = emailParts[1];
+    // Canonical service map covering EN, IT, DE and IDs
+    const CANONICAL_SERVICES = {
+      bim_modeling: "BIM Modeling & Engineering Delivery",
+      bim_coordination: "BIM Coordination & Clash Resolution",
+      bim_qa: "BIM Model Quality Assurance & Audits",
+      revit_automation: "Revit Automation & Computational Design",
+      computational_design: "Computational Engineering & Algorithmic Geometry",
+      software_integrations: "Custom Software & BIM API Integrations",
+      other: "Other / Custom Project Scope"
+    };
 
-    const isDev = process.env.NODE_ENV !== "production";
-    const isPybimInternal = domain.includes("pybim");
-
-    // Check if free email provider
-    if (!isDev && !isPybimInternal && FREE_EMAIL_PROVIDERS.includes(domain)) {
-      return Response.json(
-        { ok: false, error: "A valid corporate email address is required. Public email providers are not permitted." },
-        { status: 400 }
-      );
-    }
-
-    // MX Record Lookup
-    if (!isDev && !isPybimInternal) {
-      try {
-        const records = await dns.resolveMx(domain);
-        if (!records || records.length === 0) {
-          throw new Error("No MX records found");
-        }
-      } catch (mxError) {
-        return Response.json(
-          { ok: false, error: "A valid corporate email address is required. Public email providers are not permitted." },
-          { status: 400 }
-        );
+    // Determine canonical service key
+    let resolvedServiceId = serviceId;
+    if (!resolvedServiceId && (service || architecture)) {
+      const raw = String(service || architecture).toLowerCase().trim();
+      if (raw.includes("model") || raw.includes("modellazione") || raw.includes("modellierung")) {
+        resolvedServiceId = "bim_modeling";
+      } else if (raw.includes("coordin") || raw.includes("koordination")) {
+        resolvedServiceId = "bim_coordination";
+      } else if (raw.includes("qa") || raw.includes("qualit") || raw.includes("audit") || raw.includes("prüfung")) {
+        resolvedServiceId = "bim_qa";
+      } else if (raw.includes("revit") || raw.includes("dynamo") || raw.includes("automazi") || raw.includes("automatisierung")) {
+        resolvedServiceId = "revit_automation";
+      } else if (raw.includes("computat") || raw.includes("algorit") || raw.includes("geometrie")) {
+        resolvedServiceId = "computational_design";
+      } else if (raw.includes("integrat") || raw.includes("software") || raw.includes("api")) {
+        resolvedServiceId = "software_integrations";
+      } else if (raw.includes("other") || raw.includes("altro") || raw.includes("sonst") || raw.includes("custom")) {
+        resolvedServiceId = "other";
       }
     }
 
-    // Check SMTP configuration (fail-closed if unconfigured)
-    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.CONTACT_TO) {
-      console.warn("[STAGING NOTICE] Outbound email service is not configured on staging.");
+    if (!resolvedServiceId || !CANONICAL_SERVICES[resolvedServiceId]) {
+      return Response.json({ ok: false, error: "Please select a valid service or project scope." }, { status: 400 });
+    }
+
+    const humanReadableService = CANONICAL_SERVICES[resolvedServiceId];
+
+    // 1. Validate Required Text Fields and Bounds
+    const nameCheck = validateTextField(name, "Full Name", 100, true);
+    if (!nameCheck.valid) return Response.json({ ok: false, error: nameCheck.error }, { status: 400 });
+
+    const companyCheck = validateTextField(companyName, "Company Name", 120, true);
+    if (!companyCheck.valid) return Response.json({ ok: false, error: companyCheck.error }, { status: 400 });
+
+    const phoneCheck = validateTextField(phone, "Phone Number", 40, true);
+    if (!phoneCheck.valid) return Response.json({ ok: false, error: phoneCheck.error }, { status: 400 });
+
+    const selectedTeamScale = teamScale || fileSize;
+    const scaleCheck = validateTextField(selectedTeamScale, "Company Size", 80, true);
+    if (!scaleCheck.valid) return Response.json({ ok: false, error: scaleCheck.error }, { status: 400 });
+
+    const messageCheck = validateTextField(message, "Project Requirements", 5000, true);
+    if (!messageCheck.valid) return Response.json({ ok: false, error: messageCheck.error }, { status: 400 });
+
+    // 2. Conditional Field Validation Across Locales (Strictly Enforced by canonical ID)
+    let formattedDisciplines = "-";
+    if (resolvedServiceId === "bim_modeling") {
+      if (!Array.isArray(disciplines) || disciplines.length === 0) {
+        return Response.json({ ok: false, error: "Please select at least one engineering discipline." }, { status: 400 });
+      }
+      formattedDisciplines = disciplines.map(d => String(d).trim()).slice(0, 10).join(", ");
+    }
+
+    let customScope = "-";
+    if (resolvedServiceId === "other") {
+      const otherCheck = validateTextField(otherScope, "Custom Scope Specification", 500, true);
+      if (!otherCheck.valid) return Response.json({ ok: false, error: otherCheck.error }, { status: 400 });
+      customScope = otherCheck.sanitized;
+    }
+
+    // 3. Mandatory Explicit Privacy Acknowledgment
+    const privacyCheck = validatePrivacyAcknowledgment(privacyAccepted);
+    if (!privacyCheck.valid) {
+      return Response.json({ ok: false, error: privacyCheck.error }, { status: 400 });
+    }
+
+    // 4. Anti-Bot Turnstile Verification
+    const turnstileCheck = await verifyTurnstileToken(turnstileToken, clientIp, "contact");
+    if (!turnstileCheck.ok) {
       return Response.json(
-        { ok: false, error: "Email delivery service is not configured on this environment." },
-        { status: 503 }
+        { ok: false, code: turnstileCheck.code || "TURNSTILE_FAILED", error: turnstileCheck.error },
+        { status: turnstileCheck.status }
       );
     }
 
-    // Send Email with HTML escaping to prevent injection/stored XSS
+    // 5. Corporate Email Eligibility
+    const emailPolicy = validateCorporateEmail(email);
+    if (!emailPolicy.valid) {
+      return Response.json({ ok: false, error: emailPolicy.error }, { status: 400 });
+    }
+
+    // 6. Server-Side DNS/MX Capability Verification
+    const isDev = process.env.NODE_ENV !== "production";
+    const mxCheck = await verifyDomainMx(emailPolicy.domain, isDev);
+    if (!mxCheck.valid) {
+      return Response.json({ ok: false, error: mxCheck.error }, { status: mxCheck.status });
+    }
+
+    // 7. Check Outbound Delivery Configuration (Fail-Closed)
+    const configCheck = checkEmailConfiguration();
+    if (!configCheck.ok) {
+      console.warn(`[FORM NOTICE] Outbound email service unconfigured. Inquiry from ${emailPolicy.domain} rejected fail-closed.`);
+      return Response.json({ ok: false, error: configCheck.error }, { status: configCheck.statusCode });
+    }
+
+    // 8. Dispatch Email via Configured Delivery Transport
     try {
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT || 587),
-        secure: false,
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS
-        }
-      });
+      const safeName = escapeHtml(nameCheck.sanitized);
+      const safeCompany = escapeHtml(companyCheck.sanitized);
+      const safeEmail = escapeHtml(email.trim());
+      const safePhone = escapeHtml(phoneCheck.sanitized);
+      const safeService = escapeHtml(humanReadableService);
+      const safeTeamScale = escapeHtml(scaleCheck.sanitized);
+      const safeDisciplines = escapeHtml(formattedDisciplines);
+      const safeCustomScope = escapeHtml(customScope);
+      const safeMessage = escapeHtml(messageCheck.sanitized);
+      const safeTimestamp = escapeHtml(privacyCheck.timestamp);
 
-      const safeName = escapeHtml(name);
-      const safeCompany = escapeHtml(companyName);
-      const safeEmail = escapeHtml(email);
-      const safePhone = escapeHtml(phone || "-");
-      const safeService = escapeHtml(selectedService);
-      const safeTeamScale = escapeHtml(selectedTeamScale);
-      const safeMessage = escapeHtml(message);
-
-      await transporter.sendMail({
-        from: `pyBIM Website <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
-        to: process.env.CONTACT_TO,
-        subject: `New Technical Audit Request: ${companyName.replace(/[\r\n]/g, ' ')}`,
-        replyTo: email,
+      const payload = buildEmailPayload({
+        type: "internal_notification",
+        customerEmail: safeEmail,
+        subject: `New Technical Audit Request: ${companyCheck.sanitized}`,
         html: `
           <h2>New Technical Audit Request</h2>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
@@ -117,23 +186,27 @@ export async function POST(req) {
             <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Email:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safeEmail}</td></tr>
             <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Phone:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safePhone}</td></tr>
             <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Service of Interest:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safeService}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Engineering Disciplines:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safeDisciplines}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Custom Scope:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safeCustomScope}</td></tr>
             <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Team / Practice Scale:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${safeTeamScale}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Consent Verified:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">Privacy Policy & Terms Accepted (${safeTimestamp})</td></tr>
           </table>
           <p><strong>Message / Project Description:</strong></p>
           <p style="white-space: pre-wrap; padding: 12px; background: #f5f5f5; border-radius: 4px;">${safeMessage}</p>
         `
       });
 
+      await sendEmail(payload);
       return Response.json({ ok: true });
     } catch (emailError) {
-      console.error("Failed to send email:", emailError);
+      console.error("Failed to dispatch email:", emailError.message || emailError);
       return Response.json(
         { ok: false, error: "Failed to dispatch email. Please try again later." },
-        { status: 502 }
+        { status: emailError.statusCode || 502 }
       );
     }
   } catch (error) {
     console.error("API Error:", error);
-    return Response.json({ ok: false, error: "Failed to save message" }, { status: 500 });
+    return Response.json({ ok: false, error: "Failed to process request" }, { status: 500 });
   }
 }
