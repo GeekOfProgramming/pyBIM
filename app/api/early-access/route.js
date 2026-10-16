@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import { checkRateLimit, getClientIp } from "../../../lib/rateLimit.js";
 import { escapeHtml } from "../../../lib/security.js";
 import {
@@ -105,10 +106,10 @@ export async function POST(req) {
       return Response.json({ ok: false, error: mxCheck.error }, { status: mxCheck.status });
     }
 
-    // Generate collision-resistant application receipt reference
+    // Generate cryptographically collision-resistant application receipt reference
+    const uuidSuffix = (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2, 10)).split('-')[0].toUpperCase();
     const timestampPart = Date.now().toString(36).toUpperCase();
-    const entropyPart = Math.random().toString(36).substring(2, 6).toUpperCase();
-    const applicationReference = `PYBIM-APP-${timestampPart}-${entropyPart}`;
+    const applicationReference = `PYBIM-APP-${timestampPart}-${uuidSuffix}`;
     const queueReference = applicationReference; // maintain compatibility for UI ticket slot
 
     // 6. Check Outbound Delivery Configuration (Fail-Closed)
