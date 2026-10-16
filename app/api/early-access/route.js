@@ -107,9 +107,7 @@ export async function POST(req) {
     }
 
     // Generate cryptographically collision-resistant application receipt reference
-    const uuidSuffix = (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2, 10)).split('-')[0].toUpperCase();
-    const timestampPart = Date.now().toString(36).toUpperCase();
-    const applicationReference = `PYBIM-APP-${timestampPart}-${uuidSuffix}`;
+    const applicationReference = `PYBIM-APP-${crypto.randomUUID().toUpperCase()}`;
     const queueReference = applicationReference; // maintain compatibility for UI ticket slot
 
     // 6. Check Outbound Delivery Configuration (Fail-Closed)
