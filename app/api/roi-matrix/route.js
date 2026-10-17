@@ -1,3 +1,12 @@
+/**
+ * LEGACY ENDPOINT: app/api/roi-matrix/route.js
+ *
+ * NOTE (ROI-01 / ROI-02):
+ * This server-side spreadsheet generator is deprecated and retained for backward compatibility only.
+ * Production downloads transition to browser-side lazy-loaded ExcelJS generation (ROI-02).
+ * Enterprise eligibility checks are handled via /api/roi-matrix/eligibility.
+ */
+
 import nodemailer from "nodemailer";
 import dns from "dns/promises";
 import { buildHybridRoiWorkbook } from "@/lib/roiExcelGenerator";
