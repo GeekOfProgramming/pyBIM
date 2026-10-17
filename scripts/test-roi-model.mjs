@@ -132,7 +132,55 @@ console.log("   ✓ Advanced assessment cleanly calculates repetitive total and 
 // 5. Calculation Engine Preview & Scenario Consistency
 console.log("5. Testing Preview Calculations & Realistic Scenarios...");
 {
-  // Quick Estimate Calculation
+  // 5a. Reference Case (Owner Decision & Review Standard):
+  // 5 modelers, €85/h, 13 weekly hours, 48 working weeks, 35% hypothetical recovery
+  const referenceInputs = {
+    modelerCount: 5,
+    hourlyRate: 85,
+    searchHours: 13,
+    workingWeeks: 48,
+    rateType: "consulting",
+    region: "global"
+  };
+  const refPreview = calculateRoiPreview({ quickEstimate: referenceInputs });
+
+  // Baseline team repetitive hours: 5 * 13 * 48 = 3,120 hrs/yr
+  assert.strictEqual(refPreview.baseline.annualRepetitiveHoursTeam, 3120);
+  assert.strictEqual(refPreview.baseline.annualAllocatedValue, 3120 * 85); // €265,200
+
+  // Expected Scenario (35% hypothetical recovery):
+  // Full-precision intermediate: 3,120 * 0.35 = exactly 1,092.0 hours/year
+  // Full-precision value: 1,092 * 85 = exactly €92,820/year
+  assert.strictEqual(refPreview.scenarios.expected.annualRecoveredHours, 1092, "Reference case must equal exactly 1,092 hrs/yr");
+  assert.strictEqual(refPreview.scenarios.expected.annualIllustrativeValue, 92820, "Reference case must equal exactly €92,820/yr");
+  // Regression test: must detect and prevent the previous 1,104-hour premature rounding defect
+  assert.notStrictEqual(refPreview.scenarios.expected.annualRecoveredHours, 1104, "Must not suffer from previous 1,104-hour premature rounding defect");
+  assert.strictEqual(refPreview.scenarios.expected.isHypotheticalPlaceholder, true, "Scenario rates must be marked hypothetical placeholders");
+  assert.strictEqual(refPreview.scenarios.expected.status, "unapproved_placeholder");
+
+  // Conservative Scenario (20%): 3,120 * 0.20 = exactly 624.0 hours/year -> €53,040
+  assert.strictEqual(refPreview.scenarios.conservative.annualRecoveredHours, 624);
+  assert.strictEqual(refPreview.scenarios.conservative.annualIllustrativeValue, 624 * 85);
+
+  // Optimized Scenario (50%): 3,120 * 0.50 = exactly 1,560.0 hours/year -> €132,600
+  assert.strictEqual(refPreview.scenarios.optimized.annualRecoveredHours, 1560);
+  assert.strictEqual(refPreview.scenarios.optimized.annualIllustrativeValue, 1560 * 85);
+
+  // 5b. Rate-Type Integrity & Distinction
+  console.log("   Testing Rate-Type Integrity & Output Metric Disambiguation...");
+  const internalLaborInputs = {
+    ...referenceInputs,
+    rateType: "internal_labor",
+    hourlyRate: 55 // Customer entered their own internal loaded rate
+  };
+  const internalPreview = calculateRoiPreview({ quickEstimate: internalLaborInputs });
+  assert.strictEqual(internalPreview.scenarios.expected.valuationTypeLabel, "Hypothetical Internal Labor Capacity Value (€)");
+  assert.strictEqual(refPreview.scenarios.expected.valuationTypeLabel, "Hypothetical Consulting Billing Capacity Value (€)");
+  assert.strictEqual(internalPreview.scenarios.expected.annualIllustrativeValue, 1092 * 55);
+  // Ensure no aggregation of billing capacity and internal labor savings
+  assert.strictEqual(internalPreview.aggregatedSavingsAndBilling, undefined, "Must never aggregate billing capacity with cash cost savings");
+
+  // 5c. 2-Modeler Standard Case Verification (with full precision intermediate math)
   const qInputs = {
     modelerCount: 2,
     hourlyRate: 85,
@@ -145,23 +193,19 @@ console.log("5. Testing Preview Calculations & Realistic Scenarios...");
 
   // Baseline repetitive hours = 13 * 48 * 2 = 1248 hrs/yr
   assert.strictEqual(preview.baseline.annualRepetitiveHoursTeam, 1248);
-  // Annual allocated value = 1248 * 85 = €106,080
   assert.strictEqual(preview.baseline.annualAllocatedValue, 106080);
 
-  // Conservative (20%): 13 * 0.20 = 2.6 hrs/wk/person -> 2.6 * 48 * 2 = 249.6 ~ 250 hrs
-  assert.strictEqual(preview.scenarios.conservative.weeklyRecoveredHoursPerPerson, 2.6);
+  // Conservative (20%): 1248 * 0.20 = 249.6 -> round to 250 hrs. Value: 249.6 * 85 = 21216 -> 21216
   assert.strictEqual(preview.scenarios.conservative.annualRecoveredHours, 250);
-  assert.strictEqual(preview.scenarios.conservative.annualIllustrativeValue, 250 * 85);
+  assert.strictEqual(preview.scenarios.conservative.annualIllustrativeValue, 21216);
 
-  // Expected (35%): 13 * 0.35 = 4.55 ~ 4.6 hrs/wk/person -> 4.6 * 48 * 2 = 441.6 ~ 442 hrs
-  assert.strictEqual(preview.scenarios.expected.weeklyRecoveredHoursPerPerson, 4.6);
-  assert.strictEqual(preview.scenarios.expected.annualRecoveredHours, 442);
-  assert.strictEqual(preview.scenarios.expected.annualIllustrativeValue, 442 * 85);
+  // Expected (35%): 1248 * 0.35 = 436.8 -> round to 437 hrs. Value: 436.8 * 85 = 37128 -> 37128
+  assert.strictEqual(preview.scenarios.expected.annualRecoveredHours, 437);
+  assert.strictEqual(preview.scenarios.expected.annualIllustrativeValue, 37128);
 
-  // Optimized (50%): 13 * 0.50 = 6.5 hrs/wk/person -> 6.5 * 48 * 2 = 624 hrs
-  assert.strictEqual(preview.scenarios.optimized.weeklyRecoveredHoursPerPerson, 6.5);
+  // Optimized (50%): 1248 * 0.50 = 624.0 -> round to 624 hrs. Value: 624 * 85 = 53040
   assert.strictEqual(preview.scenarios.optimized.annualRecoveredHours, 624);
-  assert.strictEqual(preview.scenarios.optimized.annualIllustrativeValue, 624 * 85);
+  assert.strictEqual(preview.scenarios.optimized.annualIllustrativeValue, 53040);
 
   // Check that no arbitrary 85% or 100% fantasy scenario exists
   assert.strictEqual(preview.scenarios["100%"], undefined);
@@ -187,8 +231,9 @@ console.log("5. Testing Preview Calculations & Realistic Scenarios...");
   assert.strictEqual(advPreview.baseline.annualRepetitiveHoursTeam, 1920);
   // Protected judgment hours = 15 * 48 * 2 = 1440 hrs/yr
   assert.strictEqual(advPreview.baseline.annualJudgmentHoursTeam, 1440);
-  // Conservative (20%): 20 * 0.20 = 4.0 hrs/wk/person -> 4.0 * 48 * 2 = 384 hrs
+  // Conservative (20%): 1920 * 0.20 = 384 hrs -> 384 * 85 = 32640
   assert.strictEqual(advPreview.scenarios.conservative.annualRecoveredHours, 384);
+  assert.strictEqual(advPreview.scenarios.conservative.annualIllustrativeValue, 384 * 85);
 }
 console.log("   ✓ Preview calculations generate accurate, realistic scenarios without hardcoded prices");
 

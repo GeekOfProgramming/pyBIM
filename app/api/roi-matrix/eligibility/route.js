@@ -172,17 +172,22 @@ export async function POST(req) {
       advancedAssessment: sanitizedAdvanced
     });
 
-    // 10. Generate Audit Reference ID
-    const timestamp = Date.now();
-    const randomHex = Math.random().toString(16).substring(2, 8).toUpperCase();
-    const referenceId = `ROI-${new Date().getFullYear()}-${randomHex}`;
+    // 10. Generate Non-Persistent Random Verification Identifier (Stateless)
+    let randomToken;
+    try {
+      const { randomUUID } = await import("node:crypto");
+      randomToken = randomUUID().substring(0, 8).toUpperCase();
+    } catch {
+      randomToken = Date.now().toString(36).toUpperCase();
+    }
+    const referenceId = `ROI-SESS-${new Date().getFullYear()}-${randomToken}`;
 
     return Response.json({
       ok: true,
       eligible: true,
       schemaVersion: ROI_SCHEMA_VERSION,
       referenceId,
-      verifiedAt: new Date(timestamp).toISOString(),
+      verifiedAt: new Date().toISOString(),
       clientSummary: {
         name: nameCheck.sanitized,
         companyName: companyCheck.sanitized,
@@ -194,7 +199,7 @@ export async function POST(req) {
         status: "eligible_for_browser_export",
         targetEngine: "browser_exceljs",
         targetLocale: "en",
-        note: "Verified corporate identity. Client-side XLSX generation contract approved for ROI-02 release."
+        disclaimer: "Stateless verification receipt for browser-side export guidance. Submissions are NOT durably stored or emailed. Client-side download gating does not constitute an access-controlled security barrier."
       }
     });
   } catch (error) {

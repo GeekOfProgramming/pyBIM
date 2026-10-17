@@ -2,7 +2,7 @@
 
 import { useState, useId, useMemo, useRef } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { ArrowRight, CheckCircle2, AlertCircle, ExternalLink, ChevronDown, ChevronUp, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2, AlertCircle, ExternalLink, ChevronDown, ChevronUp, ShieldCheck, Info } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 import TurnstileWidget from "@/components/common/turnstile-widget";
@@ -19,52 +19,55 @@ import {
  * RoiMatrixSection Component (Section 03 — BIM Automation ROI Matrix)
  *
  * pyBIM Design System v2 — Engineering Precision
- * Task ROI-01: Approved Benchmark Decisions & Form Redesign
+ * Task ROI-01 (Review Corrections Before ROI-02)
  *
- * Core Principles & Owner-Approved Invariants:
- * 1. Hourly Rate:
- *    - €85/hour initial editable example.
- *    - Labeled "Illustrative Consulting Rate".
- *    - Clearly distinguishes consulting/billing rate from fully loaded employee labor cost.
- *    - Customers can freely enter their custom rate.
- *    - Regional context provides contextual guidance only; never overwrites user rate.
+ * Core Governance & Invariants:
+ * 1. Hourly Rate & Rate-Type Integrity:
+ *    - €85/h is an illustrative consulting rate example ONLY.
+ *    - Toggling to Internal Loaded Labor Cost requires customer-entered labor cost (does NOT silently reuse €85).
+ *    - Valuation metrics clearly distinguish billing capacity potential from internal loaded labor valuation.
+ *    - Billing capacity value and internal cash cost savings are NEVER aggregated.
  * 2. Autodesk Industry Reference:
- *    - 13 hours/person/week editable industry reference for time spent finding project data.
- *    - Visible, clickable citations to primary report and blog spotlight.
- *    - Not presented as verified BIM modeler waste; not assumed 100% recoverable; no arbitrary 85% multiplier.
+ *    - 13 hours/person/week editable reference for finding project data across construction roles.
+ *    - Cites Autodesk 2025 State of Design & Make: Spotlight on Construction.
+ *    - Not presented as verified modeler waste, not 100% recoverable, no arbitrary 85% multiplier.
  * 3. Working Weeks:
- *    - 48 effective working weeks/year as an editable initial planning assumption.
+ *    - 48 effective working weeks/year initial planning assumption.
  * 4. Advanced Workflow Assessment:
- *    - Optional detailed breakdown across 4 categories:
- *      (1) Information Search, (2) Manual Data Entry, (3) Discipline Workflows, (4) Non-Automatable Judgment.
- *    - Strict reconciliation: zero double-counting, category 4 protected.
- * 5. Preview Calculations:
- *    - Real-time dynamic calculations for Conservative (20%), Expected (35%), Optimized (50%).
- *    - Zero hardcoded software implementation prices or guaranteed financial savings claims.
- * 6. Download Architecture & Corporate Eligibility:
- *    - Calls lightweight server-side eligibility route (/api/roi-matrix/eligibility).
- *    - Verifies Turnstile, corporate email, and DNS MX records.
- *    - Prepares the contract for ROI-02 browser-side ExcelJS export (no server XLSX generation).
+ *    - Additional categories initialize to 0 (no silent unverified 4h/5h assumptions).
+ *    - Initial search hours sync from Quick Estimate.
+ *    - Clarifies that 60h cap is a structural sanity check, NOT a proof of semantic independence.
+ * 5. Scenario Governance & Precision:
+ *    - 20%, 35%, 50% recovery rates are explicitly hypothetical placeholders pending owner decision.
+ *    - 35% is NOT an empirical baseline or verified expected pyBIM performance.
+ *    - Full-precision intermediate math; reference case yields exactly 1,092 hrs and €92,820.
+ *    - Invalid Quick Estimate inputs pause preview (no silent fallback results).
+ * 6. Eligibility & Privacy:
+ *    - Stateless non-persistent verification identifier (via crypto.randomUUID on server).
+ *    - No claims of durable storage or saved lead records.
+ *    - Modifying inputs invalidates verification state immediately.
+ *    - Clear notice that workbook download is not yet available while ROI-02 is in development.
  */
 export default function RoiMatrixSection() {
   const { t } = useLanguage();
   const headingId = useId();
   const turnstileRef = useRef(null);
 
-  // Group 01: Quick Estimate Operational Inputs (initialized with approved benchmark defaults)
+  // Group 01: Quick Estimate Operational Inputs
   const [modelerCount, setModelerCount] = useState(String(BENCHMARK_DEFAULTS.MODELER_COUNT));
-  const [hourlyRate, setHourlyRate] = useState(String(BENCHMARK_DEFAULTS.HOURLY_RATE));
   const [rateType, setRateType] = useState(BENCHMARK_DEFAULTS.RATE_TYPE_DEFAULT); // 'consulting' | 'internal_labor'
+  const [consultingRate, setConsultingRate] = useState(String(BENCHMARK_DEFAULTS.CONSULTING_RATE));
+  const [internalLaborRate, setInternalLaborRate] = useState(""); // Explicit customer-entered internal cost
   const [searchHours, setSearchHours] = useState(String(BENCHMARK_DEFAULTS.SEARCH_HOURS_WEEK));
   const [workingWeeks, setWorkingWeeks] = useState(String(BENCHMARK_DEFAULTS.WORKING_WEEKS_YEAR));
   const [region, setRegion] = useState(BENCHMARK_DEFAULTS.REGION_DEFAULT);
 
-  // Optional Advanced Workflow Assessment state
+  // Optional Advanced Workflow Assessment state (initialized cleanly without silent assumptions)
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [advSearchHours, setAdvSearchHours] = useState(String(BENCHMARK_DEFAULTS.SEARCH_HOURS_WEEK));
-  const [advManualEntryHours, setAdvManualEntryHours] = useState("4");
-  const [advDisciplineHours, setAdvDisciplineHours] = useState("5");
-  const [advJudgmentHours, setAdvJudgmentHours] = useState("18");
+  const [advManualEntryHours, setAdvManualEntryHours] = useState("0");
+  const [advDisciplineHours, setAdvDisciplineHours] = useState("0");
+  const [advJudgmentHours, setAdvJudgmentHours] = useState("0");
 
   // Group 03: Business Identity & Verification Fields
   const [businessIdentity, setBusinessIdentity] = useState({
@@ -79,15 +82,47 @@ export default function RoiMatrixSection() {
   const [loading, setLoading] = useState(false);
   const [verificationResult, setVerificationResult] = useState(null); // null | { ok: boolean, data?: object, error?: string }
 
+  // Invalidate verification state when any relevant input changes
+  const handleInputChange = (setter) => (val) => {
+    setter(val);
+    if (verificationResult) {
+      setVerificationResult(null);
+    }
+  };
+
   const updateIdentity = (field, value) => {
     setBusinessIdentity((prev) => ({ ...prev, [field]: value }));
+    if (verificationResult) {
+      setVerificationResult(null);
+    }
   };
+
+  const handleRateTypeChange = (newType) => {
+    setRateType(newType);
+    if (verificationResult) {
+      setVerificationResult(null);
+    }
+  };
+
+  const handleQuickSearchChange = (val) => {
+    setSearchHours(val);
+    if (!showAdvanced || advSearchHours === searchHours) {
+      setAdvSearchHours(val);
+    }
+    if (verificationResult) {
+      setVerificationResult(null);
+    }
+  };
+
+  // Resolve current active hourly rate based on rateType
+  const activeRateStr = rateType === "consulting" ? consultingRate : internalLaborRate;
+  const activeRateNum = Number(activeRateStr) || 0;
 
   // Real-time Preview Calculation using shared schema engine
   const previewData = useMemo(() => {
     const quickInputs = {
       modelerCount: Number(modelerCount) || 0,
-      hourlyRate: Number(hourlyRate) || 0,
+      hourlyRate: activeRateNum,
       searchHours: Number(searchHours) || 0,
       workingWeeks: Number(workingWeeks) || 0,
       rateType,
@@ -104,7 +139,20 @@ export default function RoiMatrixSection() {
       : null;
 
     const quickValidated = validateQuickEstimate(quickInputs);
+    if (!quickValidated.valid) {
+      return {
+        isValid: false,
+        errors: quickValidated.errors,
+      };
+    }
+
     const advValidated = showAdvanced ? validateAdvancedAssessment(advancedInputs) : null;
+    if (showAdvanced && advValidated && !advValidated.valid) {
+      return {
+        isValid: false,
+        errors: advValidated.errors,
+      };
+    }
 
     return calculateRoiPreview({
       quickEstimate: quickValidated.sanitized,
@@ -113,7 +161,7 @@ export default function RoiMatrixSection() {
     });
   }, [
     modelerCount,
-    hourlyRate,
+    activeRateNum,
     rateType,
     searchHours,
     workingWeeks,
@@ -132,7 +180,7 @@ export default function RoiMatrixSection() {
     // 1. Client-side Quick Estimate validation
     const quickValidation = validateQuickEstimate({
       modelerCount,
-      hourlyRate,
+      hourlyRate: activeRateNum,
       searchHours,
       workingWeeks,
       rateType,
@@ -456,7 +504,7 @@ export default function RoiMatrixSection() {
                         max="500"
                         step="1"
                         value={modelerCount}
-                        onChange={(e) => setModelerCount(e.target.value)}
+                        onChange={(e) => handleInputChange(setModelerCount)(e.target.value)}
                         placeholder="e.g. 1"
                         className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
@@ -471,7 +519,7 @@ export default function RoiMatrixSection() {
                         >
                           {rateType === "consulting"
                             ? (t("roi.inputs.hourly_rate_consulting_label") || "Illustrative Consulting Rate (€ / hour)")
-                            : (t("roi.inputs.hourly_rate") || "Hourly Rate (€ / hour)")}{" "}
+                            : (t("roi.inputs.hourly_rate_internal_label") || "Internal Loaded Labor Cost (€ / hour)")}{" "}
                           <span className="text-brand-primary">*</span>
                         </label>
                       </div>
@@ -482,15 +530,22 @@ export default function RoiMatrixSection() {
                         min="1"
                         max="2000"
                         step="any"
-                        value={hourlyRate}
-                        onChange={(e) => setHourlyRate(e.target.value)}
-                        placeholder="85"
+                        value={rateType === "consulting" ? consultingRate : internalLaborRate}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          if (rateType === "consulting") {
+                            handleInputChange(setConsultingRate)(val);
+                          } else {
+                            handleInputChange(setInternalLaborRate)(val);
+                          }
+                        }}
+                        placeholder={rateType === "consulting" ? "85" : "e.g. 45"}
                         className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
                     </div>
 
                     {/* Rate Type Selector & Distinction */}
-                    <div className="sm:col-span-2 space-y-1.5 p-3 rounded-2xl bg-brand-surface/60 border border-brand-border/60">
+                    <div className="sm:col-span-2 space-y-1.5 p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <span className="text-xs font-mono font-medium text-brand-textPrimary">
                           {t("roi.inputs.rate_type_label") || "Rate Classification:"}
@@ -498,7 +553,7 @@ export default function RoiMatrixSection() {
                         <div className="inline-flex rounded-xl p-1 bg-brand-base border border-brand-border/80">
                           <button
                             type="button"
-                            onClick={() => setRateType("consulting")}
+                            onClick={() => handleRateTypeChange("consulting")}
                             className={`px-3 py-1 rounded-lg text-xs font-medium transition ${
                               rateType === "consulting"
                                 ? "bg-brand-primary text-white shadow-xs"
@@ -509,7 +564,7 @@ export default function RoiMatrixSection() {
                           </button>
                           <button
                             type="button"
-                            onClick={() => setRateType("internal_labor")}
+                            onClick={() => handleRateTypeChange("internal_labor")}
                             className={`px-3 py-1 rounded-lg text-xs font-medium transition ${
                               rateType === "internal_labor"
                                 ? "bg-brand-primary text-white shadow-xs"
@@ -521,8 +576,11 @@ export default function RoiMatrixSection() {
                         </div>
                       </div>
                       <p className="text-[11px] text-brand-textSecondary leading-relaxed pt-1">
-                        {t("roi.inputs.hourly_rate_help") ||
-                          "Illustrative consulting baseline (€85/h initial example). Distinguish from internal fully loaded employee labor cost (gross salary + payroll taxes + benefits + overhead). You can enter your custom rate."}
+                        {rateType === "consulting"
+                          ? (t("roi.inputs.hourly_rate_help") ||
+                            "Illustrative consulting baseline (€85/h initial example). Valuates capacity at external market billing potential. Customers may enter custom consulting rates.")
+                          : (t("roi.inputs.hourly_rate_internal_help") ||
+                            "Internal employee labor cost (gross salary + employer taxes + pensions + overheads). Please supply your actual internal loaded labor cost. Billing capacity potential and internal payroll savings are not aggregated.")}
                       </p>
                     </div>
 
@@ -543,13 +601,13 @@ export default function RoiMatrixSection() {
                         max="40"
                         step="0.5"
                         value={searchHours}
-                        onChange={(e) => setSearchHours(e.target.value)}
+                        onChange={(e) => handleQuickSearchChange(e.target.value)}
                         placeholder="13"
                         className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
                       <p className="text-[11px] text-brand-textSecondary leading-snug">
                         {t("roi.inputs.hours_search_help") ||
-                          "Editable 13 hrs/wk reference based on Autodesk's 2025 study. Adjust to your team's reality."}
+                          "Editable 13 hrs/wk reference based on Autodesk's 2025 study across construction roles. Adjust to your team's reality."}
                       </p>
                     </div>
 
@@ -570,13 +628,13 @@ export default function RoiMatrixSection() {
                         max="52"
                         step="1"
                         value={workingWeeks}
-                        onChange={(e) => setWorkingWeeks(e.target.value)}
+                        onChange={(e) => handleInputChange(setWorkingWeeks)(e.target.value)}
                         placeholder="48"
                         className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       />
                       <p className="text-[11px] text-brand-textSecondary leading-snug">
                         {t("roi.inputs.working_weeks_help") ||
-                          "Editable initial planning assumption, not a statutory standard."}
+                          "Editable initial planning assumption (excluding leave and holidays), not a statutory standard."}
                       </p>
                     </div>
 
@@ -594,7 +652,7 @@ export default function RoiMatrixSection() {
                       <select
                         id="roi-region"
                         value={region}
-                        onChange={(e) => setRegion(e.target.value)}
+                        onChange={(e) => handleInputChange(setRegion)(e.target.value)}
                         className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-2.5 text-body-sm text-brand-textPrimary outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                       >
                         <option value="global">{t("roi.inputs.region_global") || "European / Global Baseline (Default)"}</option>
@@ -616,7 +674,16 @@ export default function RoiMatrixSection() {
                 <div className="rounded-2xl border border-brand-border bg-brand-surface/40 overflow-hidden">
                   <button
                     type="button"
-                    onClick={() => setShowAdvanced((prev) => !prev)}
+                    onClick={() => {
+                      setShowAdvanced((prev) => {
+                        const next = !prev;
+                        if (next && advSearchHours === "0") {
+                          setAdvSearchHours(searchHours);
+                        }
+                        return next;
+                      });
+                      if (verificationResult) setVerificationResult(null);
+                    }}
                     className="w-full px-5 py-3.5 flex items-center justify-between text-left hover:bg-brand-surface transition"
                     aria-expanded={showAdvanced}
                   >
@@ -661,11 +728,11 @@ export default function RoiMatrixSection() {
                             max="35"
                             step="0.5"
                             value={advSearchHours}
-                            onChange={(e) => setAdvSearchHours(e.target.value)}
+                            onChange={(e) => handleInputChange(setAdvSearchHours)(e.target.value)}
                             className="w-full rounded-xl border border-brand-border bg-brand-base px-3 py-2 text-xs text-brand-textPrimary outline-none focus:border-brand-primary"
                           />
                           <p className="text-[10px] text-brand-textSecondary">
-                            {t("roi.advanced.cat_search_desc") || "Drawings, revisions, querying models across CDEs."}
+                            {t("roi.advanced.cat_search_desc") || "Locating drawings, querying models, verifying revisions across CDEs."}
                           </p>
                         </div>
 
@@ -684,11 +751,11 @@ export default function RoiMatrixSection() {
                             max="35"
                             step="0.5"
                             value={advManualEntryHours}
-                            onChange={(e) => setAdvManualEntryHours(e.target.value)}
+                            onChange={(e) => handleInputChange(setAdvManualEntryHours)(e.target.value)}
                             className="w-full rounded-xl border border-brand-border bg-brand-base px-3 py-2 text-xs text-brand-textPrimary outline-none focus:border-brand-primary"
                           />
                           <p className="text-[10px] text-brand-textSecondary">
-                            {t("roi.advanced.cat_entry_desc") || "Parameter input, title blocks, re-typing schedules."}
+                            {t("roi.advanced.cat_entry_desc") || "Parameter population, schedule editing, manual title block and sheet updates."}
                           </p>
                         </div>
 
@@ -707,11 +774,11 @@ export default function RoiMatrixSection() {
                             max="35"
                             step="0.5"
                             value={advDisciplineHours}
-                            onChange={(e) => setAdvDisciplineHours(e.target.value)}
+                            onChange={(e) => handleInputChange(setAdvDisciplineHours)(e.target.value)}
                             className="w-full rounded-xl border border-brand-border bg-brand-base px-3 py-2 text-xs text-brand-textPrimary outline-none focus:border-brand-primary"
                           />
                           <p className="text-[10px] text-brand-textSecondary">
-                            {t("roi.advanced.cat_discipline_desc") || "Clash grouping, QTO exports, IFC property sets."}
+                            {t("roi.advanced.cat_discipline_desc") || "Clash grouping and triage, QTO exports, IFC property audits."}
                           </p>
                         </div>
 
@@ -735,7 +802,7 @@ export default function RoiMatrixSection() {
                             max="40"
                             step="0.5"
                             value={advJudgmentHours}
-                            onChange={(e) => setAdvJudgmentHours(e.target.value)}
+                            onChange={(e) => handleInputChange(setAdvJudgmentHours)(e.target.value)}
                             className="w-full rounded-xl border border-blue-500/30 bg-brand-base px-3 py-2 text-xs text-brand-textPrimary outline-none focus:border-brand-primary"
                           />
                           <p className="text-[10px] text-brand-textSecondary">
@@ -747,10 +814,16 @@ export default function RoiMatrixSection() {
 
                       <div className="p-3 rounded-xl bg-brand-base border border-brand-border/70 text-[11px] text-brand-textSecondary flex items-start gap-2">
                         <ShieldCheck className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
-                        <span>
-                          {t("roi.advanced.reconciliation_note") ||
-                            "Reconciliation Active: Weekly repetitive hours for automation preview are calculated as (1 + 2 + 3). Category 4 is protected."}
-                        </span>
+                        <div>
+                          <span>
+                            {t("roi.advanced.reconciliation_note") ||
+                              "Reconciliation Active: Weekly repetitive hours for automation preview are calculated as (1 + 2 + 3). Category 4 is protected."}
+                          </span>
+                          <span className="block text-[10px] text-brand-textSecondary/80 mt-1">
+                            {t("roi.advanced.overlap_warning") ||
+                              "Note: The 60-hour/week cap acts as a structural sanity check against impossible individual weekly totals, but does not by itself guarantee absence of semantic overlap. Please ensure tasks are distinctly categorized."}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -759,91 +832,137 @@ export default function RoiMatrixSection() {
                 {/* --------------------------------------------------- */}
                 {/* GROUP 02: Dynamic Interactive Results Preview       */}
                 {/* --------------------------------------------------- */}
-                <div className="rounded-2xl bg-brand-surface/70 border border-brand-border/80 p-5 space-y-4">
-                  <div className="flex items-center justify-between gap-2">
-                    <div>
+                {previewData.isValid ? (
+                  <div className="rounded-2xl bg-brand-surface/70 border border-brand-border/80 p-5 space-y-4">
+                    <div className="flex items-center justify-between gap-2">
+                      <div>
+                        <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
+                          {t("roi.preview.group_title") || "Interactive Capacity & Value Preview"}
+                        </h3>
+                        <p className="text-xs text-brand-textSecondary">
+                          {t("roi.preview.status_note") || "Hypothetical scenario modeling (unapproved placeholders pending owner review)"}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-xs font-mono font-bold text-brand-textPrimary block">
+                          {previewData.baseline.annualRepetitiveHoursTeam.toLocaleString()} {t("roi.preview.hours_unit") || "hrs/yr"}
+                        </span>
+                        <span className="text-[10px] text-brand-textSecondary block">
+                          {t("roi.preview.annual_repetitive_title") || "Repetitive Allocation"}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* 3 Hypothetical Scenarios (Placeholder percentages: 20%, 35%, 50%) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {/* Scenario A (20%) */}
+                      <div className="p-3.5 rounded-2xl bg-brand-cardElevated border border-brand-border/80 text-center flex flex-col justify-between">
+                        <div>
+                          <span className="text-[11px] font-mono font-bold text-brand-textSecondary uppercase tracking-wider block mb-0.5">
+                            {t("roi.preview.scenario_conservative") || "Hypothetical A (20%)"}
+                          </span>
+                          <span className="text-[10px] text-brand-textSecondary block">
+                            {t("roi.preview.placeholder_badge") || "Illustrative Placeholder"}
+                          </span>
+                        </div>
+                        <div className="my-2">
+                          <span className="text-lg font-bold font-mono text-brand-textPrimary block leading-tight">
+                            +{previewData.scenarios.conservative.annualRecoveredHours.toLocaleString()} hrs
+                          </span>
+                          <span className="text-xs font-semibold text-brand-primary block pt-0.5">
+                            ~€{previewData.scenarios.conservative.annualIllustrativeValue.toLocaleString()} / yr
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-brand-textSecondary block">
+                          {t("roi.preview.liberated_hours") || "Capacity Liberated"}
+                        </span>
+                      </div>
+
+                      {/* Scenario B (35%) */}
+                      <div className="p-3.5 rounded-2xl bg-brand-cardElevated border border-brand-primary/50 text-center relative flex flex-col justify-between shadow-xs">
+                        <div>
+                          <span className="text-[11px] font-mono font-bold text-brand-primary uppercase tracking-wider block mb-0.5">
+                            {t("roi.preview.scenario_expected") || "Hypothetical B (35%)"}
+                          </span>
+                          <span className="text-[10px] text-brand-textSecondary block">
+                            {t("roi.preview.placeholder_badge") || "Illustrative Placeholder"}
+                          </span>
+                        </div>
+                        <div className="my-2">
+                          <span className="text-lg font-bold font-mono text-brand-textPrimary block leading-tight">
+                            +{previewData.scenarios.expected.annualRecoveredHours.toLocaleString()} hrs
+                          </span>
+                          <span className="text-xs font-bold text-brand-primary block pt-0.5">
+                            ~€{previewData.scenarios.expected.annualIllustrativeValue.toLocaleString()} / yr
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-brand-textSecondary block">
+                          {t("roi.preview.liberated_hours") || "Capacity Liberated"}
+                        </span>
+                      </div>
+
+                      {/* Scenario C (50%) */}
+                      <div className="p-3.5 rounded-2xl bg-brand-cardElevated border border-brand-border/80 text-center flex flex-col justify-between">
+                        <div>
+                          <span className="text-[11px] font-mono font-bold text-brand-textSecondary uppercase tracking-wider block mb-0.5">
+                            {t("roi.preview.scenario_optimized") || "Hypothetical C (50%)"}
+                          </span>
+                          <span className="text-[10px] text-brand-textSecondary block">
+                            {t("roi.preview.placeholder_badge") || "Illustrative Placeholder"}
+                          </span>
+                        </div>
+                        <div className="my-2">
+                          <span className="text-lg font-bold font-mono text-brand-textPrimary block leading-tight">
+                            +{previewData.scenarios.optimized.annualRecoveredHours.toLocaleString()} hrs
+                          </span>
+                          <span className="text-xs font-semibold text-brand-primary block pt-0.5">
+                            ~€{previewData.scenarios.optimized.annualIllustrativeValue.toLocaleString()} / yr
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-brand-textSecondary block">
+                          {t("roi.preview.liberated_hours") || "Capacity Liberated"}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1.5 pt-1 border-t border-brand-border/60">
+                      <div className="flex items-center gap-1.5 text-[11px] font-mono text-brand-primary font-semibold">
+                        <Info className="w-3.5 h-3.5 shrink-0" />
+                        <span>
+                          {previewData.baseline.valuationTypeLabel}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-brand-textSecondary leading-relaxed">
+                        {t("roi.preview.disclaimer") ||
+                          "All scenario recovery percentages (20%, 35%, 50%) are unapproved hypothetical placeholders pending owner decision. Figures represent an illustrative capacity valuation, NOT guaranteed cash savings, direct payroll cost reductions, or software sales warranties."}
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="rounded-2xl bg-brand-surface/70 border border-brand-border/80 p-5 space-y-3">
+                    <div className="flex items-center justify-between pb-2 border-b border-brand-border/60">
                       <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
                         {t("roi.preview.group_title") || "Interactive Capacity & Value Preview"}
                       </h3>
-                      <p className="text-xs text-brand-textSecondary">
-                        {t("roi.preview.status_note") || "Real-time illustrative model based on your inputs"}
-                      </p>
+                      <span className="text-xs font-mono text-amber-600 dark:text-amber-400">
+                        {t("roi.preview.status_paused") || "Inputs Required"}
+                      </span>
                     </div>
-                    <div className="text-right">
-                      <span className="text-xs font-mono font-bold text-brand-textPrimary block">
-                        {previewData.baseline.annualRepetitiveHoursTeam.toLocaleString()} {t("roi.preview.hours_unit") || "hrs/yr"}
-                      </span>
-                      <span className="text-[10px] text-brand-textSecondary block">
-                        {t("roi.preview.annual_repetitive_title") || "Repetitive Allocation"}
-                      </span>
+                    <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/25 text-body-sm text-brand-textPrimary flex items-start gap-2.5">
+                      <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="block font-semibold">
+                          {t("roi.preview.paused_title") || "Calculation Preview Paused"}
+                        </strong>
+                        <p className="text-xs text-brand-textSecondary mt-1 leading-relaxed">
+                          {rateType === "internal_labor" && !activeRateNum
+                            ? (t("roi.preview.paused_internal_rate") || "Please enter your internal loaded labor cost (€ / hour) to calculate scenario estimates.")
+                            : (t("roi.preview.paused_desc") || "Please provide valid operational inputs above (at least 1 modeler, positive hourly rate, valid working weeks) to calculate illustrative scenarios.")}
+                        </p>
+                      </div>
                     </div>
                   </div>
-
-                  {/* 3 Realistic Scenarios (Conservative 20%, Expected 35%, Optimized 50%) */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {/* Conservative Scenario (20%) */}
-                    <div className="p-3.5 rounded-2xl bg-brand-cardElevated border border-brand-border/80 text-center flex flex-col justify-between">
-                      <span className="text-[11px] font-mono font-bold text-brand-textSecondary uppercase tracking-wider block mb-1">
-                        {t("roi.preview.scenario_conservative") || "Conservative (20%)"}
-                      </span>
-                      <div className="my-1.5">
-                        <span className="text-lg font-bold font-mono text-brand-textPrimary block leading-tight">
-                          +{previewData.scenarios.conservative.annualRecoveredHours.toLocaleString()} hrs
-                        </span>
-                        <span className="text-xs font-semibold text-brand-primary block pt-0.5">
-                          ~€{previewData.scenarios.conservative.annualIllustrativeValue.toLocaleString()} / yr
-                        </span>
-                      </div>
-                      <span className="text-[10px] text-brand-textSecondary block">
-                        {t("roi.preview.liberated_hours") || "Capacity Liberated"}
-                      </span>
-                    </div>
-
-                    {/* Expected Scenario (35%) */}
-                    <div className="p-3.5 rounded-2xl bg-brand-cardElevated border-2 border-brand-primary/50 text-center relative flex flex-col justify-between shadow-xs">
-                      <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-brand-primary text-white text-[9px] font-mono font-bold uppercase tracking-wider">
-                        Baseline
-                      </div>
-                      <span className="text-[11px] font-mono font-bold text-brand-primary uppercase tracking-wider block mb-1 mt-0.5">
-                        {t("roi.preview.scenario_expected") || "Expected (35%)"}
-                      </span>
-                      <div className="my-1.5">
-                        <span className="text-lg font-bold font-mono text-brand-textPrimary block leading-tight">
-                          +{previewData.scenarios.expected.annualRecoveredHours.toLocaleString()} hrs
-                        </span>
-                        <span className="text-xs font-bold text-brand-primary block pt-0.5">
-                          ~€{previewData.scenarios.expected.annualIllustrativeValue.toLocaleString()} / yr
-                        </span>
-                      </div>
-                      <span className="text-[10px] text-brand-textSecondary block">
-                        {t("roi.preview.liberated_hours") || "Capacity Liberated"}
-                      </span>
-                    </div>
-
-                    {/* Optimized Scenario (50%) */}
-                    <div className="p-3.5 rounded-2xl bg-brand-cardElevated border border-brand-border/80 text-center flex flex-col justify-between">
-                      <span className="text-[11px] font-mono font-bold text-brand-textSecondary uppercase tracking-wider block mb-1">
-                        {t("roi.preview.scenario_optimized") || "Optimized (50%)"}
-                      </span>
-                      <div className="my-1.5">
-                        <span className="text-lg font-bold font-mono text-brand-textPrimary block leading-tight">
-                          +{previewData.scenarios.optimized.annualRecoveredHours.toLocaleString()} hrs
-                        </span>
-                        <span className="text-xs font-semibold text-brand-primary block pt-0.5">
-                          ~€{previewData.scenarios.optimized.annualIllustrativeValue.toLocaleString()} / yr
-                        </span>
-                      </div>
-                      <span className="text-[10px] text-brand-textSecondary block">
-                        {t("roi.preview.liberated_hours") || "Capacity Liberated"}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="text-[11px] text-brand-textSecondary leading-relaxed pt-1 border-t border-brand-border/60">
-                    {t("roi.preview.disclaimer") ||
-                      "Illustrative capacity value based on user-entered rate. Zero hardcoded software fees or assumed 85% automation rates. Excludes guaranteed savings claims."}
-                  </p>
-                </div>
+                )}
 
                 {/* --------------------------------------------------- */}
                 {/* GROUP 03: Enterprise Eligibility & Verification     */}
@@ -990,24 +1109,29 @@ export default function RoiMatrixSection() {
                             <p className="text-xs text-brand-textSecondary mt-1 leading-relaxed">
                               {verificationResult.ok
                                 ? (t("roi.access.eligible_desc") ||
-                                  "Your enterprise domain and calculation parameters have been successfully verified. In ROI-02, verified corporate leads will generate the customized ISO 19650 executive workbook directly in your browser without waiting for email delivery.")
+                                  "Your enterprise domain and calculation parameters have been successfully verified. In ROI-02, verified corporate leads will generate the customized executive workbook directly in your browser without waiting for email delivery.")
                                 : verificationResult.error}
                             </p>
                           </div>
                         </div>
 
                         {verificationResult.ok && verificationResult.data && (
-                          <div className="mt-2 pt-2 border-t border-emerald-500/20 text-xs font-mono space-y-1">
+                          <div className="mt-2 pt-2 border-t border-emerald-500/20 text-xs font-mono space-y-1.5">
                             <div className="flex items-center justify-between text-brand-textSecondary">
-                              <span>{t("roi.access.reference_id") || "Audit Reference ID"}:</span>
+                              <span>{t("roi.access.reference_id") || "Session Verification Reference (Non-Persistent)"}:</span>
                               <span className="font-bold text-brand-primary">
                                 {verificationResult.data.referenceId}
                               </span>
                             </div>
-                            <p className="text-[11px] font-sans text-brand-textSecondary leading-snug pt-1">
-                              {t("roi.access.contract_notice") ||
-                                "ROI-02 Browser-Download Contract Active: Validated inputs are stored for direct client-side spreadsheet generation."}
+                            <p className="text-[11px] font-sans text-brand-textSecondary leading-snug">
+                              {t("roi.access.stateless_notice") ||
+                                "Stateless verification receipt: Submissions are NOT durably stored or emailed. Client-side gating is for UX guidance only and does not represent an access-controlled security barrier."}
                             </p>
+                            <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[11px] font-sans text-amber-900 dark:text-amber-200">
+                              <strong>{t("roi.access.download_pending_title") || "ROI-02 Workbook Notice"}:</strong>{" "}
+                              {t("roi.access.download_pending_notice") ||
+                                "Downloadable spreadsheet generation is currently under engineering development for ROI-02 and is not yet active."}
+                            </div>
                           </div>
                         )}
                       </div>

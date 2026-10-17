@@ -123,7 +123,7 @@ console.log("5. Testing Successful Corporate Eligibility & Reference Receipt..."
   const json = await res.json();
   assert.strictEqual(json.ok, true);
   assert.strictEqual(json.eligible, true);
-  assert.ok(json.referenceId.startsWith("ROI-202"), "Must return valid ROI reference ID");
+  assert.ok(json.referenceId.startsWith("ROI-SESS-"), "Must return stateless non-persistent ROI reference ID");
   assert.strictEqual(json.clientSummary.domain, "pybim.com");
   assert.strictEqual(json.downloadContract.targetEngine, "browser_exceljs");
   assert.strictEqual(json.downloadContract.targetLocale, "en");
