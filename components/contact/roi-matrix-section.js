@@ -464,32 +464,41 @@ export default function RoiMatrixSection() {
                   <div className="w-full overflow-hidden">
                     <table className="w-full table-fixed border-collapse">
                       <thead>
-                        <tr className="h-10 border-b border-brand-border/80 text-caption font-mono uppercase tracking-wider text-brand-textSecondary">
-                          <th scope="col" className="w-[22%] py-2 text-left font-semibold">
-                            {t("roi.preview.col_coverage") || "AI Coverage"}
+                        <tr className="h-10 border-b border-brand-border/80 text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-brand-textSecondary">
+                          <th scope="col" className="w-[20%] py-2 px-2 text-left font-semibold">
+                            {t("roi.preview.col_coverage") || "AI Use"}
                           </th>
-                          <th scope="col" className="w-[33%] py-2 text-right font-semibold">
-                            {t("roi.preview.col_hours") || "Hours Freed / Year"}
+                          <th scope="col" className="w-[35%] py-2 px-2 text-right font-semibold">
+                            {t("roi.preview.col_hours") || "Hours / Year"}
                           </th>
-                          <th scope="col" className="w-[45%] py-2 text-right font-semibold">
-                            {t("roi.preview.col_value") || "Potential Value / Year"}
+                          <th scope="col" className="w-[45%] py-2 px-2 text-right font-semibold">
+                            {t("roi.preview.col_value") || "Value / Year"}
                           </th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-brand-border/40">
-                        {Object.values(previewData.scenarios).map((scenario) => (
-                          <tr key={scenario.id} className="h-12 text-body-sm transition-colors hover:bg-brand-surface/40">
-                            <td className="py-2.5 text-left font-mono font-bold text-brand-textPrimary">
-                              {scenario.percentageLabel}
-                            </td>
-                            <td className="py-2.5 text-right font-mono tabular-nums text-brand-textPrimary">
-                              {scenario.annualRecoveredHours.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} hrs
-                            </td>
-                            <td className="py-2.5 text-right font-mono tabular-nums font-semibold text-brand-primary">
-                              €{scenario.annualIllustrativeValue.toLocaleString()}
-                            </td>
-                          </tr>
-                        ))}
+                        {Object.values(previewData.scenarios).map((scenario) => {
+                          const formattedHours = scenario.annualRecoveredHours.toLocaleString(undefined, {
+                            minimumFractionDigits: 1,
+                            maximumFractionDigits: 1,
+                          });
+                          const formattedValue = `€${scenario.annualIllustrativeValue.toLocaleString(undefined, {
+                            maximumFractionDigits: 0,
+                          })}`;
+                          return (
+                            <tr key={scenario.id} className="h-[52px] transition-colors hover:bg-brand-surface/40">
+                              <td className="py-2 px-2 text-left font-mono font-semibold text-sm text-brand-textPrimary">
+                                {scenario.percentageLabel}
+                              </td>
+                              <td className="py-2 px-2 text-right font-mono tabular-nums font-medium text-sm text-brand-textPrimary">
+                                {formattedHours}
+                              </td>
+                              <td className="py-2 px-2 text-right font-mono tabular-nums font-bold text-[15px] text-brand-primary">
+                                {formattedValue}
+                              </td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </table>
                   </div>
@@ -775,7 +784,7 @@ export default function RoiMatrixSection() {
                           value={modelerCount}
                           onChange={(e) => handleInputChange(setModelerCount)(e.target.value)}
                           placeholder="e.g. 1"
-                          className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-left sm:text-right"
+                          className="w-full h-11 rounded-xl border border-brand-border bg-brand-base px-3.5 text-sm font-semibold text-right tabular-nums text-brand-textPrimary placeholder:text-brand-textSecondary/70 placeholder:font-normal outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         />
                       </div>
                     </div>
@@ -816,7 +825,7 @@ export default function RoiMatrixSection() {
                             }
                           }}
                           placeholder={rateType === "consulting" ? "85" : "e.g. 45"}
-                          className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-left sm:text-right"
+                          className="w-full h-11 rounded-xl border border-brand-border bg-brand-base px-3.5 text-sm font-semibold text-right tabular-nums text-brand-textPrimary placeholder:text-brand-textSecondary/70 placeholder:font-normal outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         />
                       </div>
                     </div>
@@ -847,7 +856,7 @@ export default function RoiMatrixSection() {
                           value={workingWeeks}
                           onChange={(e) => handleInputChange(setWorkingWeeks)(e.target.value)}
                           placeholder="48"
-                          className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-left sm:text-right"
+                          className="w-full h-11 rounded-xl border border-brand-border bg-brand-base px-3.5 text-sm font-semibold text-right tabular-nums text-brand-textPrimary placeholder:text-brand-textSecondary/70 placeholder:font-normal outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         />
                       </div>
                     </div>
