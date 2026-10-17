@@ -57,6 +57,7 @@ export default function RoiMatrixSection() {
 
   // Optional Advanced Workflow Assessment state (diagnostic assessment)
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [showHowCalculated, setShowHowCalculated] = useState(false);
   const [advSearchHours, setAdvSearchHours] = useState(String(AUTODESK_REFERENCE_HOURS_PER_WEEK));
   const [advManualEntryHours, setAdvManualEntryHours] = useState("0");
   const [advDisciplineHours, setAdvDisciplineHours] = useState("0");
@@ -445,91 +446,129 @@ export default function RoiMatrixSection() {
               </p>
             </div>
 
-            {/* Interactive Capacity & Value Preview (Key Outcome Preview) */}
+            {/* Potential Time & Value with AI (Compact Comparison Table) */}
             <div className="w-full mb-8">
               {previewData.isValid ? (
-                <div className="rounded-2xl bg-brand-base border border-brand-border/90 p-5 space-y-4 shadow-xs">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <div>
-                      <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
-                        {t("roi.preview.group_title") || "Interactive Capacity & Value Preview"}
-                      </h3>
-                      <p className="text-xs text-brand-textSecondary">
-                        {t("roi.preview.status_note") || "Hypothetical scenario modeling (unapproved placeholders pending owner review)"}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-xs font-mono font-bold text-brand-textPrimary block">
-                        {previewData.baseline.annualRepetitiveHoursTeam.toLocaleString()} {t("roi.preview.hours_unit") || "hrs/yr"}
-                      </span>
-                      <span className="text-[10px] text-brand-textSecondary block">
-                        {t("roi.preview.annual_repetitive_title") || "Repetitive Allocation"}
-                      </span>
-                    </div>
+                <div className="w-full p-4 rounded-2xl bg-brand-base border border-brand-border space-y-4">
+                  {/* Panel Header */}
+                  <div>
+                    <h3 className="text-base font-bold text-brand-textPrimary leading-snug">
+                      {t("roi.preview.group_title") || "Potential Time & Value with AI"}
+                    </h3>
+                    <p className="text-caption text-brand-textSecondary mt-0.5 leading-normal">
+                      {t("roi.preview.subtitle") || "Compare five illustrative levels of AI-assisted workflow coverage."}
+                    </p>
                   </div>
 
-                  {/* Five Fixed AI Adoption Scenarios (20%, 40%, 60%, 80%, 100%) - Vertical Stack */}
-                  <div className="flex flex-col gap-2.5">
-                    {Object.values(previewData.scenarios).map((scenario) => {
-                      const isHighest = scenario.adoptionRate === 1.0;
-                      return (
-                        <div
-                          key={scenario.id}
-                          className={`p-3.5 rounded-2xl bg-brand-surface/80 border flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition ${
-                            isHighest
-                              ? "border-brand-primary/60 shadow-xs"
-                              : "border-brand-border/80"
-                          }`}
-                        >
-                          <div>
-                            <span className="text-xs font-mono font-bold text-brand-textPrimary uppercase tracking-wider block mb-0.5">
-                              {scenario.percentageLabel} {t("roi.preview.adoption_suffix") || "AI Adoption"}
-                            </span>
-                            <span className="text-[10px] font-mono text-brand-primary/90 font-medium block">
-                              {t("roi.preview.verification_retained") || "10% Verification Retained"}
-                            </span>
-                          </div>
-                          <div className="flex items-baseline sm:items-end justify-between sm:justify-end gap-4 text-right">
-                            <div>
-                              <span className="text-base font-bold font-mono text-brand-textPrimary block leading-tight">
-                                +{scenario.annualRecoveredHours.toLocaleString()} hrs
-                              </span>
-                              <span className="text-[10px] text-brand-textSecondary block pt-0.5">
-                                ~{scenario.weeklyRecoveredHoursPerPerson} hrs/wk/person
-                              </span>
-                            </div>
-                            <div className="sm:min-w-[120px] text-right">
-                              <span className="text-sm sm:text-base font-bold text-brand-primary block">
-                                €{scenario.annualIllustrativeValue.toLocaleString()} / yr
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
+                  {/* 5-Row Comparison Table */}
+                  <div className="w-full overflow-hidden">
+                    <table className="w-full table-fixed border-collapse">
+                      <thead>
+                        <tr className="h-10 border-b border-brand-border/80 text-caption font-mono uppercase tracking-wider text-brand-textSecondary">
+                          <th scope="col" className="w-[22%] py-2 text-left font-semibold">
+                            {t("roi.preview.col_coverage") || "AI Coverage"}
+                          </th>
+                          <th scope="col" className="w-[33%] py-2 text-right font-semibold">
+                            {t("roi.preview.col_hours") || "Hours Freed / Year"}
+                          </th>
+                          <th scope="col" className="w-[45%] py-2 text-right font-semibold">
+                            {t("roi.preview.col_value") || "Potential Value / Year"}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-brand-border/40">
+                        {Object.values(previewData.scenarios).map((scenario) => (
+                          <tr key={scenario.id} className="h-12 text-body-sm transition-colors hover:bg-brand-surface/40">
+                            <td className="py-2.5 text-left font-mono font-bold text-brand-textPrimary">
+                              {scenario.percentageLabel}
+                            </td>
+                            <td className="py-2.5 text-right font-mono tabular-nums text-brand-textPrimary">
+                              {scenario.annualRecoveredHours.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} hrs
+                            </td>
+                            <td className="py-2.5 text-right font-mono tabular-nums font-semibold text-brand-primary">
+                              €{scenario.annualIllustrativeValue.toLocaleString()}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
 
-                  <div className="space-y-2 pt-2 border-t border-brand-border/60">
-                    <div className="flex items-center gap-1.5 text-[11px] font-mono text-brand-primary font-semibold">
-                      <Info className="w-3.5 h-3.5 shrink-0" />
+                  {/* Valuation indicator and always-visible disclaimer note */}
+                  <div className="pt-2 border-t border-brand-border/60 space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-technical font-mono text-brand-textSecondary font-medium">
+                      <Info className="w-3.5 h-3.5 shrink-0 text-brand-primary" aria-hidden="true" />
                       <span>{previewData.baseline.valuationTypeLabel}</span>
                     </div>
-                    <p className="text-[11px] text-brand-textSecondary leading-relaxed">
-                      <strong>{t("roi.preview.verification_note_title") || "Engineering Verification Allowance (10%)"}:</strong>{" "}
-                      {previewData.verificationAllowanceNotice}
+                    <p className="text-caption text-brand-textSecondary leading-relaxed">
+                      {t("roi.preview.disclaimer_short") || "Illustrative estimates only. Actual results and financial benefits may vary."}
                     </p>
-                    <p className="text-[11px] text-brand-textSecondary leading-relaxed">
-                      {previewData.disclaimer}
-                    </p>
+                  </div>
+
+                  {/* Collapsible Calculation Explanation */}
+                  <div className="pt-1 border-t border-brand-border/50">
+                    <button
+                      type="button"
+                      onClick={() => setShowHowCalculated((prev) => !prev)}
+                      aria-expanded={showHowCalculated}
+                      aria-controls="roi-how-calculated-panel"
+                      className="w-full flex items-center justify-between py-2 text-caption font-mono font-semibold text-brand-textPrimary hover:text-brand-primary transition focus:outline-none focus-visible:ring-1 focus-visible:ring-brand-primary rounded"
+                    >
+                      <span>{t("roi.preview.how_calculated_btn") || "How is this calculated?"}</span>
+                      {showHowCalculated ? (
+                        <ChevronUp className="w-4 h-4 text-brand-textSecondary shrink-0" aria-hidden="true" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4 text-brand-textSecondary shrink-0" aria-hidden="true" />
+                      )}
+                    </button>
+
+                    {showHowCalculated && (
+                      <div
+                        id="roi-how-calculated-panel"
+                        className="mt-2 p-3.5 rounded-xl bg-brand-surface/70 border border-brand-border/80 text-caption text-brand-textSecondary space-y-2.5 leading-relaxed"
+                      >
+                        <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-brand-border/60 text-technical font-mono">
+                          <span className="text-brand-textPrimary font-semibold">
+                            {t("roi.preview.calc_annual_search_hours") || "Annual reference information-search hours:"}
+                          </span>
+                          <span className="text-brand-primary font-bold tabular-nums">
+                            {previewData.baseline.annualRepetitiveHoursTeam.toLocaleString()} hrs/yr
+                          </span>
+                        </div>
+                        <p>
+                          • {t("roi.preview.calc_benchmark") ||
+                            "Based on Autodesk's 2025 industry reference of 13 hours per week spent finding information required for work across surveyed construction roles."}
+                        </p>
+                        <p>
+                          • {t("roi.preview.calc_scenarios") ||
+                            "Evaluates five fixed AI workflow coverage levels (20%, 40%, 60%, 80%, and 100%) applied to addressable information-search workflow time."}
+                        </p>
+                        <p>
+                          • {t("roi.preview.calc_verification") ||
+                            "Includes a fixed 10% engineering verification allowance retained for professional review, quality control, and human oversight. 100% workflow coverage does not imply 100% time elimination."}
+                        </p>
+                        <p>
+                          • {t("roi.preview.calc_capacity_nature") ||
+                            "Monetary figures reflect an illustrative capacity value (€) at your selected rate. They do not constitute guaranteed revenue, net profit, direct payroll reduction, or cash savings."}
+                        </p>
+                        <p>
+                          • {t("roi.preview.calc_implementation") ||
+                            "Implementation effort, software integration, learning curves, and residual manual processes will influence real-world outcomes."}
+                        </p>
+                        <p className="pt-1 text-[11px] border-t border-brand-border/50 text-brand-textSecondary/90">
+                          {previewData.disclaimer}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
               ) : (
-                <div className="rounded-2xl bg-brand-base border border-brand-border/90 p-5 space-y-3 shadow-xs">
+                <div className="w-full p-4 rounded-2xl bg-brand-base border border-brand-border space-y-3">
                   <div className="flex items-center justify-between pb-2 border-b border-brand-border/60">
-                    <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
-                      {t("roi.preview.group_title") || "Interactive Capacity & Value Preview"}
+                    <h3 className="text-base font-bold text-brand-textPrimary leading-snug">
+                      {t("roi.preview.group_title") || "Potential Time & Value with AI"}
                     </h3>
-                    <span className="text-xs font-mono text-amber-600 dark:text-amber-400">
+                    <span className="text-caption font-mono text-amber-600 dark:text-amber-400">
                       {t("roi.preview.status_paused") || "Inputs Required"}
                     </span>
                   </div>
@@ -539,7 +578,7 @@ export default function RoiMatrixSection() {
                       <strong className="block font-semibold">
                         {t("roi.preview.paused_title") || "Calculation Preview Paused"}
                       </strong>
-                      <p className="text-xs text-brand-textSecondary mt-1 leading-relaxed">
+                      <p className="text-caption text-brand-textSecondary mt-1 leading-relaxed">
                         {rateType === "internal_labor" && !activeRateStr.trim()
                           ? (t("roi.preview.paused_internal_rate") || "Please enter your internal loaded labor cost (€ / hour) in the form to calculate scenario estimates.")
                           : (t("roi.preview.paused_desc") || "Please provide valid operational inputs in the form (at least 1 modeler, valid positive rate if custom, valid working weeks) to calculate illustrative scenarios.")}
