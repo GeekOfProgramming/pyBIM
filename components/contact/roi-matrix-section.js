@@ -468,38 +468,42 @@ export default function RoiMatrixSection() {
                     </div>
                   </div>
 
-                  {/* Five Fixed AI Adoption Scenarios (20%, 40%, 60%, 80%, 100%) */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
+                  {/* Five Fixed AI Adoption Scenarios (20%, 40%, 60%, 80%, 100%) - Vertical Stack */}
+                  <div className="flex flex-col gap-2.5">
                     {Object.values(previewData.scenarios).map((scenario) => {
                       const isHighest = scenario.adoptionRate === 1.0;
                       return (
                         <div
                           key={scenario.id}
-                          className={`p-3 rounded-2xl bg-brand-surface/80 border text-center flex flex-col justify-between transition ${
+                          className={`p-3.5 rounded-2xl bg-brand-surface/80 border flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition ${
                             isHighest
                               ? "border-brand-primary/60 shadow-xs"
                               : "border-brand-border/80"
                           }`}
                         >
                           <div>
-                            <span className="text-[11px] font-mono font-bold text-brand-textPrimary uppercase tracking-wider block mb-0.5">
+                            <span className="text-xs font-mono font-bold text-brand-textPrimary uppercase tracking-wider block mb-0.5">
                               {scenario.percentageLabel} {t("roi.preview.adoption_suffix") || "AI Adoption"}
                             </span>
-                            <span className="text-[9px] font-mono text-brand-primary/90 font-medium block">
+                            <span className="text-[10px] font-mono text-brand-primary/90 font-medium block">
                               {t("roi.preview.verification_retained") || "10% Verification Retained"}
                             </span>
                           </div>
-                          <div className="my-2">
-                            <span className="text-base font-bold font-mono text-brand-textPrimary block leading-tight">
-                              +{scenario.annualRecoveredHours.toLocaleString()} hrs
-                            </span>
-                            <span className="text-xs font-bold text-brand-primary block pt-0.5">
-                              €{scenario.annualIllustrativeValue.toLocaleString()} / yr
-                            </span>
+                          <div className="flex items-baseline sm:items-end justify-between sm:justify-end gap-4 text-right">
+                            <div>
+                              <span className="text-base font-bold font-mono text-brand-textPrimary block leading-tight">
+                                +{scenario.annualRecoveredHours.toLocaleString()} hrs
+                              </span>
+                              <span className="text-[10px] text-brand-textSecondary block pt-0.5">
+                                ~{scenario.weeklyRecoveredHoursPerPerson} hrs/wk/person
+                              </span>
+                            </div>
+                            <div className="sm:min-w-[120px] text-right">
+                              <span className="text-sm sm:text-base font-bold text-brand-primary block">
+                                €{scenario.annualIllustrativeValue.toLocaleString()} / yr
+                              </span>
+                            </div>
                           </div>
-                          <span className="text-[10px] text-brand-textSecondary block">
-                            ~{scenario.weeklyRecoveredHoursPerPerson} hrs/wk/person
-                          </span>
                         </div>
                       );
                     })}
@@ -707,83 +711,80 @@ export default function RoiMatrixSection() {
                       </p>
                     </div>
 
-                    {/* Items 2 & 3: Modelers and Rate (Desktop side-by-side row, each 60/40 internal split) */}
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                      {/* Item 2: Number of BIM Modelers / Engineers */}
-                      <div className="p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                        <div className="md:w-3/5 space-y-0.5">
-                          <label
-                            htmlFor="roi-modeler-count"
-                            className="text-body-sm font-medium text-brand-textPrimary block"
-                          >
-                            {t("roi.inputs.modeler_count") || "Number of BIM Modelers / Engineers"}{" "}
-                            <span className="text-brand-primary">*</span>
-                          </label>
-                          <p className="text-[11px] text-brand-textSecondary leading-snug">
-                            {t("roi.inputs.modeler_count_unit") || "Full-time BIM modelers and project engineers"}
-                          </p>
-                        </div>
-                        <div className="md:w-2/5 flex justify-end">
-                          <input
-                            id="roi-modeler-count"
-                            type="number"
-                            required
-                            min="1"
-                            max="500"
-                            step="1"
-                            value={modelerCount}
-                            onChange={(e) => handleInputChange(setModelerCount)(e.target.value)}
-                            placeholder="e.g. 1"
-                            className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-left sm:text-right"
-                          />
-                        </div>
+                    {/* Item 2: Number of BIM Modelers / Engineers (70/30 split) */}
+                    <div className="p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                      <div className="md:w-[70%] space-y-0.5">
+                        <label
+                          htmlFor="roi-modeler-count"
+                          className="text-body-sm font-medium text-brand-textPrimary block"
+                        >
+                          {t("roi.inputs.modeler_count") || "Number of BIM Modelers / Engineers"}{" "}
+                          <span className="text-brand-primary">*</span>
+                        </label>
+                        <p className="text-[11px] text-brand-textSecondary leading-snug">
+                          {t("roi.inputs.modeler_count_unit") || "Full-time BIM modelers and project engineers"}
+                        </p>
                       </div>
-
-                      {/* Item 3: Illustrative Consulting Rate (€ / hour) (Optional) */}
-                      <div className="p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                        <div className="md:w-3/5 space-y-0.5">
-                          <label
-                            htmlFor="roi-hourly-rate"
-                            className="text-body-sm font-medium text-brand-textPrimary block"
-                          >
-                            {rateType === "consulting"
-                              ? (t("roi.inputs.hourly_rate_consulting_label") || "Illustrative Consulting Rate (€ / hour) (Optional)")
-                              : (t("roi.inputs.hourly_rate_internal_label") || "Internal Loaded Labor Cost (€ / hour)")}{" "}
-                            {rateType === "internal_labor" && <span className="text-brand-primary">*</span>}
-                          </label>
-                          <p className="text-[11px] text-brand-textSecondary leading-snug">
-                            {rateType === "consulting"
-                              ? "Optional baseline (defaults to €85/h)"
-                              : "Internal labor loaded hourly cost"}
-                          </p>
-                        </div>
-                        <div className="md:w-2/5 flex justify-end">
-                          <input
-                            id="roi-hourly-rate"
-                            type="number"
-                            required={rateType === "internal_labor"}
-                            min="1"
-                            max="2000"
-                            step="any"
-                            value={rateType === "consulting" ? consultingRate : internalLaborRate}
-                            onChange={(e) => {
-                              const val = e.target.value;
-                              if (rateType === "consulting") {
-                                handleInputChange(setConsultingRate)(val);
-                              } else {
-                                handleInputChange(setInternalLaborRate)(val);
-                              }
-                            }}
-                            placeholder={rateType === "consulting" ? "85" : "e.g. 45"}
-                            className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-left sm:text-right"
-                          />
-                        </div>
+                      <div className="md:w-[30%] flex justify-end">
+                        <input
+                          id="roi-modeler-count"
+                          type="number"
+                          required
+                          min="1"
+                          max="500"
+                          step="1"
+                          value={modelerCount}
+                          onChange={(e) => handleInputChange(setModelerCount)(e.target.value)}
+                          placeholder="e.g. 1"
+                          className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-left sm:text-right"
+                        />
                       </div>
                     </div>
 
-                    {/* Item 4: Effective Working Weeks / Year * (60/40 split) */}
+                    {/* Item 3: Illustrative Consulting Rate (€ / hour) (Optional) (70/30 split) */}
                     <div className="p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                      <div className="md:w-3/5 space-y-0.5">
+                      <div className="md:w-[70%] space-y-0.5">
+                        <label
+                          htmlFor="roi-hourly-rate"
+                          className="text-body-sm font-medium text-brand-textPrimary block"
+                        >
+                          {rateType === "consulting"
+                            ? (t("roi.inputs.hourly_rate_consulting_label") || "Illustrative Consulting Rate (€ / hour) (Optional)")
+                            : (t("roi.inputs.hourly_rate_internal_label") || "Internal Loaded Labor Cost (€ / hour)")}{" "}
+                          {rateType === "internal_labor" && <span className="text-brand-primary">*</span>}
+                        </label>
+                        <p className="text-[11px] text-brand-textSecondary leading-snug">
+                          {rateType === "consulting"
+                            ? (t("roi.inputs.hourly_rate_help") || "Optional baseline (€85/h example). Valuates capacity at external market billing potential.")
+                            : "Internal labor loaded hourly cost (salary + taxes + benefits)."}
+                        </p>
+                      </div>
+                      <div className="md:w-[30%] flex justify-end">
+                        <input
+                          id="roi-hourly-rate"
+                          type="number"
+                          required={rateType === "internal_labor"}
+                          min="1"
+                          max="2000"
+                          step="any"
+                          value={rateType === "consulting" ? consultingRate : internalLaborRate}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            if (rateType === "consulting") {
+                              handleInputChange(setConsultingRate)(val);
+                            } else {
+                              handleInputChange(setInternalLaborRate)(val);
+                            }
+                          }}
+                          placeholder={rateType === "consulting" ? "85" : "e.g. 45"}
+                          className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-left sm:text-right"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Item 4: Effective Working Weeks / Year * (70/30 split) */}
+                    <div className="p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                      <div className="md:w-[70%] space-y-0.5">
                         <label
                           htmlFor="roi-working-weeks"
                           className="text-body-sm font-medium text-brand-textPrimary block"
@@ -796,7 +797,7 @@ export default function RoiMatrixSection() {
                             "Editable initial planning assumption (excluding leave and holidays), not a statutory standard."}
                         </p>
                       </div>
-                      <div className="md:w-2/5 flex justify-end">
+                      <div className="md:w-[30%] flex justify-end">
                         <input
                           id="roi-working-weeks"
                           type="number"
@@ -812,9 +813,9 @@ export default function RoiMatrixSection() {
                       </div>
                     </div>
 
-                    {/* Item 5: Regional Market Context (Optional) (60/40 split) */}
+                    {/* Item 5: Regional Market Context (Optional) (70/30 split) */}
                     <div className="p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                      <div className="md:w-3/5 space-y-0.5">
+                      <div className="md:w-[70%] space-y-0.5">
                         <label
                           htmlFor="roi-region"
                           className="text-body-sm font-medium text-brand-textPrimary block"
@@ -826,7 +827,7 @@ export default function RoiMatrixSection() {
                             "Contextual baseline reference only. Selecting a region provides market context and will never overwrite your entered rate."}
                         </p>
                       </div>
-                      <div className="md:w-2/5 flex justify-end">
+                      <div className="md:w-[30%] flex justify-end">
                         <select
                           id="roi-region"
                           value={region}
@@ -888,9 +889,9 @@ export default function RoiMatrixSection() {
                       </p>
 
                       <div className="space-y-3">
-                        {/* Diagnostic Cat 1: Information Search & Retrieval */}
+                        {/* Diagnostic Cat 1: Information Search & Retrieval (70/30 split) */}
                         <div className="p-3.5 rounded-xl bg-brand-base border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                          <div className="md:w-3/5 space-y-0.5">
+                          <div className="md:w-[70%] space-y-0.5">
                             <label
                               htmlFor="roi-adv-search"
                               className="text-xs font-semibold text-brand-textPrimary block"
@@ -901,7 +902,7 @@ export default function RoiMatrixSection() {
                               {t("roi.advanced.cat_search_desc") || "Locating drawings, querying models, verifying revisions across CDEs."}
                             </p>
                           </div>
-                          <div className="md:w-2/5 flex justify-end">
+                          <div className="md:w-[30%] flex justify-end">
                             <input
                               id="roi-adv-search"
                               type="number"
@@ -915,9 +916,9 @@ export default function RoiMatrixSection() {
                           </div>
                         </div>
 
-                        {/* Diagnostic Cat 2: Manual Data Entry & Transfer */}
+                        {/* Diagnostic Cat 2: Manual Data Entry & Transfer (70/30 split) */}
                         <div className="p-3.5 rounded-xl bg-brand-base border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                          <div className="md:w-3/5 space-y-0.5">
+                          <div className="md:w-[70%] space-y-0.5">
                             <label
                               htmlFor="roi-adv-entry"
                               className="text-xs font-semibold text-brand-textPrimary block"
@@ -928,7 +929,7 @@ export default function RoiMatrixSection() {
                               {t("roi.advanced.cat_entry_desc") || "Parameter population, schedule editing, manual title block and sheet updates."}
                             </p>
                           </div>
-                          <div className="md:w-2/5 flex justify-end">
+                          <div className="md:w-[30%] flex justify-end">
                             <input
                               id="roi-adv-entry"
                               type="number"
@@ -942,9 +943,9 @@ export default function RoiMatrixSection() {
                           </div>
                         </div>
 
-                        {/* Diagnostic Cat 3: Discipline-Specific BIM Workflows */}
+                        {/* Diagnostic Cat 3: Discipline-Specific BIM Workflows (70/30 split) */}
                         <div className="p-3.5 rounded-xl bg-brand-base border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                          <div className="md:w-3/5 space-y-0.5">
+                          <div className="md:w-[70%] space-y-0.5">
                             <label
                               htmlFor="roi-adv-discipline"
                               className="text-xs font-semibold text-brand-textPrimary block"
@@ -955,7 +956,7 @@ export default function RoiMatrixSection() {
                               {t("roi.advanced.cat_discipline_desc") || "Clash grouping and triage, QTO exports, IFC property audits."}
                             </p>
                           </div>
-                          <div className="md:w-2/5 flex justify-end">
+                          <div className="md:w-[30%] flex justify-end">
                             <input
                               id="roi-adv-discipline"
                               type="number"
@@ -969,9 +970,9 @@ export default function RoiMatrixSection() {
                           </div>
                         </div>
 
-                        {/* Diagnostic Cat 4: Non-Automatable Engineering Judgment */}
+                        {/* Diagnostic Cat 4: Non-Automatable Engineering Judgment (70/30 split) */}
                         <div className="p-3.5 rounded-xl bg-blue-500/5 border border-blue-500/20 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                          <div className="md:w-3/5 space-y-0.5">
+                          <div className="md:w-[70%] space-y-0.5">
                             <div className="flex items-center gap-1.5">
                               <label
                                 htmlFor="roi-adv-judgment"
@@ -988,7 +989,7 @@ export default function RoiMatrixSection() {
                                 "Design logic, structural review, client advisory. Preserved and excluded from automation recovery."}
                             </p>
                           </div>
-                          <div className="md:w-2/5 flex justify-end">
+                          <div className="md:w-[30%] flex justify-end">
                             <input
                               id="roi-adv-judgment"
                               type="number"
