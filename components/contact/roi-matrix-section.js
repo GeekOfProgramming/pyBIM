@@ -2,7 +2,7 @@
 
 import { useState, useId, useMemo, useRef } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { ArrowRight, CheckCircle2, AlertCircle, ExternalLink, ChevronDown, ChevronUp, ShieldCheck, Info, Lock, Download, FileSpreadsheet } from "lucide-react";
+import { ArrowRight, CheckCircle2, AlertCircle, ExternalLink, ChevronDown, ChevronUp, ShieldCheck, Info, Download, FileSpreadsheet } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 import TurnstileWidget from "@/components/common/turnstile-widget";
@@ -445,6 +445,107 @@ export default function RoiMatrixSection() {
               </p>
             </div>
 
+            {/* Interactive Capacity & Value Preview (Key Outcome Preview) */}
+            <div className="w-full mb-8">
+              {previewData.isValid ? (
+                <div className="rounded-2xl bg-brand-base border border-brand-border/90 p-5 space-y-4 shadow-xs">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
+                        {t("roi.preview.group_title") || "Interactive Capacity & Value Preview"}
+                      </h3>
+                      <p className="text-xs text-brand-textSecondary">
+                        {t("roi.preview.status_note") || "Hypothetical scenario modeling (unapproved placeholders pending owner review)"}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xs font-mono font-bold text-brand-textPrimary block">
+                        {previewData.baseline.annualRepetitiveHoursTeam.toLocaleString()} {t("roi.preview.hours_unit") || "hrs/yr"}
+                      </span>
+                      <span className="text-[10px] text-brand-textSecondary block">
+                        {t("roi.preview.annual_repetitive_title") || "Repetitive Allocation"}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Five Fixed AI Adoption Scenarios (20%, 40%, 60%, 80%, 100%) */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
+                    {Object.values(previewData.scenarios).map((scenario) => {
+                      const isHighest = scenario.adoptionRate === 1.0;
+                      return (
+                        <div
+                          key={scenario.id}
+                          className={`p-3 rounded-2xl bg-brand-surface/80 border text-center flex flex-col justify-between transition ${
+                            isHighest
+                              ? "border-brand-primary/60 shadow-xs"
+                              : "border-brand-border/80"
+                          }`}
+                        >
+                          <div>
+                            <span className="text-[11px] font-mono font-bold text-brand-textPrimary uppercase tracking-wider block mb-0.5">
+                              {scenario.percentageLabel} {t("roi.preview.adoption_suffix") || "AI Adoption"}
+                            </span>
+                            <span className="text-[9px] font-mono text-brand-primary/90 font-medium block">
+                              {t("roi.preview.verification_retained") || "10% Verification Retained"}
+                            </span>
+                          </div>
+                          <div className="my-2">
+                            <span className="text-base font-bold font-mono text-brand-textPrimary block leading-tight">
+                              +{scenario.annualRecoveredHours.toLocaleString()} hrs
+                            </span>
+                            <span className="text-xs font-bold text-brand-primary block pt-0.5">
+                              €{scenario.annualIllustrativeValue.toLocaleString()} / yr
+                            </span>
+                          </div>
+                          <span className="text-[10px] text-brand-textSecondary block">
+                            ~{scenario.weeklyRecoveredHoursPerPerson} hrs/wk/person
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div className="space-y-2 pt-2 border-t border-brand-border/60">
+                    <div className="flex items-center gap-1.5 text-[11px] font-mono text-brand-primary font-semibold">
+                      <Info className="w-3.5 h-3.5 shrink-0" />
+                      <span>{previewData.baseline.valuationTypeLabel}</span>
+                    </div>
+                    <p className="text-[11px] text-brand-textSecondary leading-relaxed">
+                      <strong>{t("roi.preview.verification_note_title") || "Engineering Verification Allowance (10%)"}:</strong>{" "}
+                      {previewData.verificationAllowanceNotice}
+                    </p>
+                    <p className="text-[11px] text-brand-textSecondary leading-relaxed">
+                      {previewData.disclaimer}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="rounded-2xl bg-brand-base border border-brand-border/90 p-5 space-y-3 shadow-xs">
+                  <div className="flex items-center justify-between pb-2 border-b border-brand-border/60">
+                    <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
+                      {t("roi.preview.group_title") || "Interactive Capacity & Value Preview"}
+                    </h3>
+                    <span className="text-xs font-mono text-amber-600 dark:text-amber-400">
+                      {t("roi.preview.status_paused") || "Inputs Required"}
+                    </span>
+                  </div>
+                  <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/25 text-body-sm text-brand-textPrimary flex items-start gap-2.5">
+                    <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="block font-semibold">
+                        {t("roi.preview.paused_title") || "Calculation Preview Paused"}
+                      </strong>
+                      <p className="text-xs text-brand-textSecondary mt-1 leading-relaxed">
+                        {rateType === "internal_labor" && !activeRateStr.trim()
+                          ? (t("roi.preview.paused_internal_rate") || "Please enter your internal loaded labor cost (€ / hour) in the form to calculate scenario estimates.")
+                          : (t("roi.preview.paused_desc") || "Please provide valid operational inputs in the form (at least 1 modeler, valid positive rate if custom, valid working weeks) to calculate illustrative scenarios.")}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* Clickable Autodesk Industry Reference Callout */}
             <div className="w-full p-5 rounded-2xl bg-brand-base border border-brand-border/90 shadow-xs mb-8">
               <div className="flex items-center justify-between gap-2 mb-2">
@@ -565,66 +666,9 @@ export default function RoiMatrixSection() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Field 01: Modeler Count */}
-                    <div className="space-y-1.5">
-                      <label
-                        htmlFor="roi-modeler-count"
-                        className="text-body-sm font-medium text-brand-textPrimary block"
-                      >
-                        {t("roi.inputs.modeler_count") || "Number of BIM Modelers / Engineers"}{" "}
-                        <span className="text-brand-primary">*</span>
-                      </label>
-                      <input
-                        id="roi-modeler-count"
-                        type="number"
-                        required
-                        min="1"
-                        max="500"
-                        step="1"
-                        value={modelerCount}
-                        onChange={(e) => handleInputChange(setModelerCount)(e.target.value)}
-                        placeholder="e.g. 1"
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
-                      />
-                    </div>
-
-                    {/* Field 02: Hourly Rate */}
-                    <div className="space-y-1.5">
-                      <div className="flex items-center justify-between">
-                        <label
-                          htmlFor="roi-hourly-rate"
-                          className="text-body-sm font-medium text-brand-textPrimary"
-                        >
-                          {rateType === "consulting"
-                            ? (t("roi.inputs.hourly_rate_consulting_label") || "Illustrative Consulting Rate (€ / hour) (Optional)")
-                            : (t("roi.inputs.hourly_rate_internal_label") || "Internal Loaded Labor Cost (€ / hour)")}{" "}
-                          {rateType === "internal_labor" && <span className="text-brand-primary">*</span>}
-                        </label>
-                      </div>
-                      <input
-                        id="roi-hourly-rate"
-                        type="number"
-                        required={rateType === "internal_labor"}
-                        min="1"
-                        max="2000"
-                        step="any"
-                        value={rateType === "consulting" ? consultingRate : internalLaborRate}
-                        onChange={(e) => {
-                          const val = e.target.value;
-                          if (rateType === "consulting") {
-                            handleInputChange(setConsultingRate)(val);
-                          } else {
-                            handleInputChange(setInternalLaborRate)(val);
-                          }
-                        }}
-                        placeholder={rateType === "consulting" ? "85" : "e.g. 45"}
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
-                      />
-                    </div>
-
-                    {/* Rate Type Selector & Distinction */}
-                    <div className="sm:col-span-2 space-y-1.5 p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60">
+                  <div className="space-y-4">
+                    {/* Item 1: Rate Classification */}
+                    <div className="space-y-1.5 p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <span className="text-xs font-mono font-medium text-brand-textPrimary">
                           {t("roi.inputs.rate_type_label") || "Rate Classification:"}
@@ -663,93 +707,144 @@ export default function RoiMatrixSection() {
                       </p>
                     </div>
 
-                    {/* Field 03: Fixed Autodesk Search Hours Reference (Read-Only Benchmark) */}
-                    <div className="space-y-1.5">
-                      <div className="flex items-center justify-between">
+                    {/* Items 2 & 3: Modelers and Rate (Desktop side-by-side row, each 60/40 internal split) */}
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                      {/* Item 2: Number of BIM Modelers / Engineers */}
+                      <div className="p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                        <div className="md:w-3/5 space-y-0.5">
+                          <label
+                            htmlFor="roi-modeler-count"
+                            className="text-body-sm font-medium text-brand-textPrimary block"
+                          >
+                            {t("roi.inputs.modeler_count") || "Number of BIM Modelers / Engineers"}{" "}
+                            <span className="text-brand-primary">*</span>
+                          </label>
+                          <p className="text-[11px] text-brand-textSecondary leading-snug">
+                            {t("roi.inputs.modeler_count_unit") || "Full-time BIM modelers and project engineers"}
+                          </p>
+                        </div>
+                        <div className="md:w-2/5 flex justify-end">
+                          <input
+                            id="roi-modeler-count"
+                            type="number"
+                            required
+                            min="1"
+                            max="500"
+                            step="1"
+                            value={modelerCount}
+                            onChange={(e) => handleInputChange(setModelerCount)(e.target.value)}
+                            placeholder="e.g. 1"
+                            className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-left sm:text-right"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Item 3: Illustrative Consulting Rate (€ / hour) (Optional) */}
+                      <div className="p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                        <div className="md:w-3/5 space-y-0.5">
+                          <label
+                            htmlFor="roi-hourly-rate"
+                            className="text-body-sm font-medium text-brand-textPrimary block"
+                          >
+                            {rateType === "consulting"
+                              ? (t("roi.inputs.hourly_rate_consulting_label") || "Illustrative Consulting Rate (€ / hour) (Optional)")
+                              : (t("roi.inputs.hourly_rate_internal_label") || "Internal Loaded Labor Cost (€ / hour)")}{" "}
+                            {rateType === "internal_labor" && <span className="text-brand-primary">*</span>}
+                          </label>
+                          <p className="text-[11px] text-brand-textSecondary leading-snug">
+                            {rateType === "consulting"
+                              ? "Optional baseline (defaults to €85/h)"
+                              : "Internal labor loaded hourly cost"}
+                          </p>
+                        </div>
+                        <div className="md:w-2/5 flex justify-end">
+                          <input
+                            id="roi-hourly-rate"
+                            type="number"
+                            required={rateType === "internal_labor"}
+                            min="1"
+                            max="2000"
+                            step="any"
+                            value={rateType === "consulting" ? consultingRate : internalLaborRate}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              if (rateType === "consulting") {
+                                handleInputChange(setConsultingRate)(val);
+                              } else {
+                                handleInputChange(setInternalLaborRate)(val);
+                              }
+                            }}
+                            placeholder={rateType === "consulting" ? "85" : "e.g. 45"}
+                            className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-left sm:text-right"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Item 4: Effective Working Weeks / Year * (60/40 split) */}
+                    <div className="p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                      <div className="md:w-3/5 space-y-0.5">
                         <label
-                          htmlFor="roi-search-hours-benchmark"
+                          htmlFor="roi-working-weeks"
                           className="text-body-sm font-medium text-brand-textPrimary block"
                         >
-                          {t("roi.inputs.hours_search_benchmark_label") || "Autodesk Reference (Fixed Benchmark)"}
+                          {t("roi.inputs.working_weeks") || "Effective Working Weeks / Year"}{" "}
+                          <span className="text-brand-primary">*</span>
                         </label>
-                        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-brand-primary/10 text-brand-primary inline-flex items-center gap-1">
-                          <Lock className="w-3 h-3" /> {t("roi.inputs.benchmark_locked") || "Fixed Benchmark"}
-                        </span>
+                        <p className="text-[11px] text-brand-textSecondary leading-snug">
+                          {t("roi.inputs.working_weeks_help") ||
+                            "Editable initial planning assumption (excluding leave and holidays), not a statutory standard."}
+                        </p>
                       </div>
-                      <div
-                        id="roi-search-hours-benchmark"
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface/60 px-4 py-3 text-body-sm text-brand-textPrimary flex items-center justify-between cursor-not-allowed select-none"
-                      >
-                        <span className="font-mono font-bold text-brand-textPrimary">13 hrs / person / week</span>
-                        <span className="text-xs text-brand-textSecondary font-sans">
-                          {t("roi.inputs.search_finding_data") || "Locating project data"}
-                        </span>
+                      <div className="md:w-2/5 flex justify-end">
+                        <input
+                          id="roi-working-weeks"
+                          type="number"
+                          required
+                          min="1"
+                          max="52"
+                          step="1"
+                          value={workingWeeks}
+                          onChange={(e) => handleInputChange(setWorkingWeeks)(e.target.value)}
+                          placeholder="48"
+                          className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-left sm:text-right"
+                        />
                       </div>
-                      <p className="text-[11px] text-brand-textSecondary leading-snug">
-                        {t("roi.inputs.search_benchmark_desc") ||
-                          "Autodesk 2025 study observation across construction roles. Fixed standard reference in the ROI scenario model."}
-                      </p>
                     </div>
 
-                    {/* Field 04: Working Weeks */}
-                    <div className="space-y-1.5">
-                      <label
-                        htmlFor="roi-working-weeks"
-                        className="text-body-sm font-medium text-brand-textPrimary block"
-                      >
-                        {t("roi.inputs.working_weeks") || "Effective Working Weeks / Year"}{" "}
-                        <span className="text-brand-primary">*</span>
-                      </label>
-                      <input
-                        id="roi-working-weeks"
-                        type="number"
-                        required
-                        min="1"
-                        max="52"
-                        step="1"
-                        value={workingWeeks}
-                        onChange={(e) => handleInputChange(setWorkingWeeks)(e.target.value)}
-                        placeholder="48"
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
-                      />
-                      <p className="text-[11px] text-brand-textSecondary leading-snug">
-                        {t("roi.inputs.working_weeks_help") ||
-                          "Editable initial planning assumption (excluding leave and holidays), not a statutory standard."}
-                      </p>
-                    </div>
-
-                    {/* Optional Regional Context Benchmark Dropdown */}
-                    <div className="sm:col-span-2 space-y-1.5 pt-1">
-                      <label
-                        htmlFor="roi-region"
-                        className="text-xs font-mono font-medium text-brand-textPrimary flex items-center justify-between"
-                      >
-                        <span>{t("roi.inputs.region_label") || "Regional Market Context (Optional)"}</span>
-                        <span className="text-[11px] font-sans text-brand-textSecondary">
-                          {REGIONAL_CONTEXTS[region]?.name}
-                        </span>
-                      </label>
-                      <select
-                        id="roi-region"
-                        value={region}
-                        onChange={(e) => handleInputChange(setRegion)(e.target.value)}
-                        className="w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-2.5 text-body-sm text-brand-textPrimary outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
-                      >
-                        <option value="global">{t("roi.inputs.region_global") || "European / Global Baseline (Default)"}</option>
-                        <option value="dach">{t("roi.inputs.region_dach") || "DACH (Germany, Austria, Switzerland)"}</option>
-                        <option value="it">{t("roi.inputs.region_it") || "Italy (UNI 11337 / Public Procurement)"}</option>
-                        <option value="uk">{t("roi.inputs.region_uk") || "UK / International Practice"}</option>
-                      </select>
-                      <p className="text-[11px] text-brand-textSecondary leading-snug">
-                        {t("roi.inputs.region_help") ||
-                          "Contextual baseline reference only. Selecting a region provides market context and will never overwrite your entered rate."}
-                      </p>
+                    {/* Item 5: Regional Market Context (Optional) (60/40 split) */}
+                    <div className="p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                      <div className="md:w-3/5 space-y-0.5">
+                        <label
+                          htmlFor="roi-region"
+                          className="text-body-sm font-medium text-brand-textPrimary block"
+                        >
+                          {t("roi.inputs.region_label") || "Regional Market Context (Optional)"}
+                        </label>
+                        <p className="text-[11px] text-brand-textSecondary leading-snug">
+                          {t("roi.inputs.region_help") ||
+                            "Contextual baseline reference only. Selecting a region provides market context and will never overwrite your entered rate."}
+                        </p>
+                      </div>
+                      <div className="md:w-2/5 flex justify-end">
+                        <select
+                          id="roi-region"
+                          value={region}
+                          onChange={(e) => handleInputChange(setRegion)(e.target.value)}
+                          className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                        >
+                          <option value="global">{t("roi.inputs.region_global") || "European / Global Baseline (Default)"}</option>
+                          <option value="dach">{t("roi.inputs.region_dach") || "DACH (Germany, Austria, Switzerland)"}</option>
+                          <option value="it">{t("roi.inputs.region_it") || "Italy (UNI 11337 / Public Procurement)"}</option>
+                          <option value="uk">{t("roi.inputs.region_uk") || "UK / International Practice"}</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* --------------------------------------------------- */}
-                {/* OPTIONAL: Advanced Workflow Assessment Accordion    */}
+                {/* Item 6: Diagnostic Assessment (Collapsible Accordion) */}
                 {/* --------------------------------------------------- */}
                 <div className="rounded-2xl border border-brand-border bg-brand-surface/40 overflow-hidden">
                   <button
@@ -771,12 +866,12 @@ export default function RoiMatrixSection() {
                       {showAdvanced ? (
                         <>
                           <ChevronUp className="w-4 h-4" />
-                          <span>{t("roi.advanced.toggle_close") || "Hide Advanced Workflow Assessment"}</span>
+                          <span>{t("roi.advanced.toggle_close") || "Hide Diagnostic Assessment"}</span>
                         </>
                       ) : (
                         <>
                           <ChevronDown className="w-4 h-4" />
-                          <span>{t("roi.advanced.toggle_open") || "+ Show Advanced Workflow Assessment (Optional)"}</span>
+                          <span>{t("roi.advanced.toggle_open") || "+ Show Diagnostic Assessment (Optional)"}</span>
                         </>
                       )}
                     </span>
@@ -786,109 +881,125 @@ export default function RoiMatrixSection() {
                   </button>
 
                   {showAdvanced && (
-                    <div className="p-5 pt-2 border-t border-brand-border/70 space-y-4 animate-in fade-in duration-200">
+                    <div className="p-5 pt-3 border-t border-brand-border/70 space-y-3.5 animate-in fade-in duration-200">
                       <p className="text-caption text-brand-textSecondary leading-relaxed">
                         {t("roi.advanced.desc") ||
                           "Refine operational time allocation across 4 distinct categories. Categories 1–3 replace the high-level search figure to eliminate double-counting, while Category 4 protects non-automatable engineering judgment."}
                       </p>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                        {/* Cat 1: Information Search & Retrieval */}
-                        <div className="space-y-1">
-                          <label
-                            htmlFor="roi-adv-search"
-                            className="text-xs font-semibold text-brand-textPrimary block"
-                          >
-                            {t("roi.advanced.cat_search_label") || "1. Information Search & Retrieval (hrs/wk)"}
-                          </label>
-                          <input
-                            id="roi-adv-search"
-                            type="number"
-                            min="0"
-                            max="35"
-                            step="0.5"
-                            value={advSearchHours}
-                            onChange={(e) => handleInputChange(setAdvSearchHours)(e.target.value)}
-                            className="w-full rounded-xl border border-brand-border bg-brand-base px-3 py-2 text-xs text-brand-textPrimary outline-none focus:border-brand-primary"
-                          />
-                          <p className="text-[10px] text-brand-textSecondary">
-                            {t("roi.advanced.cat_search_desc") || "Locating drawings, querying models, verifying revisions across CDEs."}
-                          </p>
-                        </div>
-
-                        {/* Cat 2: Manual Data Entry & Transfer */}
-                        <div className="space-y-1">
-                          <label
-                            htmlFor="roi-adv-entry"
-                            className="text-xs font-semibold text-brand-textPrimary block"
-                          >
-                            {t("roi.advanced.cat_entry_label") || "2. Manual Data Entry & Transfer (hrs/wk)"}
-                          </label>
-                          <input
-                            id="roi-adv-entry"
-                            type="number"
-                            min="0"
-                            max="35"
-                            step="0.5"
-                            value={advManualEntryHours}
-                            onChange={(e) => handleInputChange(setAdvManualEntryHours)(e.target.value)}
-                            className="w-full rounded-xl border border-brand-border bg-brand-base px-3 py-2 text-xs text-brand-textPrimary outline-none focus:border-brand-primary"
-                          />
-                          <p className="text-[10px] text-brand-textSecondary">
-                            {t("roi.advanced.cat_entry_desc") || "Parameter population, schedule editing, manual title block and sheet updates."}
-                          </p>
-                        </div>
-
-                        {/* Cat 3: Discipline-Specific BIM Workflows */}
-                        <div className="space-y-1">
-                          <label
-                            htmlFor="roi-adv-discipline"
-                            className="text-xs font-semibold text-brand-textPrimary block"
-                          >
-                            {t("roi.advanced.cat_discipline_label") || "3. Discipline-Specific Workflows (hrs/wk)"}
-                          </label>
-                          <input
-                            id="roi-adv-discipline"
-                            type="number"
-                            min="0"
-                            max="35"
-                            step="0.5"
-                            value={advDisciplineHours}
-                            onChange={(e) => handleInputChange(setAdvDisciplineHours)(e.target.value)}
-                            className="w-full rounded-xl border border-brand-border bg-brand-base px-3 py-2 text-xs text-brand-textPrimary outline-none focus:border-brand-primary"
-                          />
-                          <p className="text-[10px] text-brand-textSecondary">
-                            {t("roi.advanced.cat_discipline_desc") || "Clash grouping and triage, QTO exports, IFC property audits."}
-                          </p>
-                        </div>
-
-                        {/* Cat 4: Non-Automatable Engineering Judgment */}
-                        <div className="space-y-1 p-2.5 rounded-xl bg-blue-500/5 border border-blue-500/20">
-                          <div className="flex items-center justify-between gap-1 mb-0.5">
+                      <div className="space-y-3">
+                        {/* Diagnostic Cat 1: Information Search & Retrieval */}
+                        <div className="p-3.5 rounded-xl bg-brand-base border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                          <div className="md:w-3/5 space-y-0.5">
                             <label
-                              htmlFor="roi-adv-judgment"
+                              htmlFor="roi-adv-search"
                               className="text-xs font-semibold text-brand-textPrimary block"
                             >
-                              {t("roi.advanced.cat_judgment_label") || "4. Engineering Judgment (hrs/wk)"}
+                              {t("roi.advanced.cat_search_label") || "1. Information Search & Retrieval (hrs/wk)"}
                             </label>
-                            <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold uppercase">
-                              Protected
-                            </span>
+                            <p className="text-[10px] text-brand-textSecondary leading-snug">
+                              {t("roi.advanced.cat_search_desc") || "Locating drawings, querying models, verifying revisions across CDEs."}
+                            </p>
                           </div>
-                          <input
-                            id="roi-adv-judgment"
-                            type="number"
-                            min="0"
-                            max="40"
-                            step="0.5"
-                            value={advJudgmentHours}
-                            onChange={(e) => handleInputChange(setAdvJudgmentHours)(e.target.value)}
-                            className="w-full rounded-xl border border-blue-500/30 bg-brand-base px-3 py-2 text-xs text-brand-textPrimary outline-none focus:border-brand-primary"
-                          />
-                          <p className="text-[10px] text-brand-textSecondary">
-                            {t("roi.advanced.cat_judgment_desc") ||
-                              "Design logic, structural review, client advisory. Preserved and excluded from automation recovery."}
-                          </p>
+                          <div className="md:w-2/5 flex justify-end">
+                            <input
+                              id="roi-adv-search"
+                              type="number"
+                              min="0"
+                              max="35"
+                              step="0.5"
+                              value={advSearchHours}
+                              onChange={(e) => handleInputChange(setAdvSearchHours)(e.target.value)}
+                              className="w-full rounded-lg border border-brand-border bg-brand-surface px-3 py-2 text-xs font-medium text-brand-textPrimary outline-none focus:border-brand-primary text-left sm:text-right"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Diagnostic Cat 2: Manual Data Entry & Transfer */}
+                        <div className="p-3.5 rounded-xl bg-brand-base border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                          <div className="md:w-3/5 space-y-0.5">
+                            <label
+                              htmlFor="roi-adv-entry"
+                              className="text-xs font-semibold text-brand-textPrimary block"
+                            >
+                              {t("roi.advanced.cat_entry_label") || "2. Manual Data Entry & Transfer (hrs/wk)"}
+                            </label>
+                            <p className="text-[10px] text-brand-textSecondary leading-snug">
+                              {t("roi.advanced.cat_entry_desc") || "Parameter population, schedule editing, manual title block and sheet updates."}
+                            </p>
+                          </div>
+                          <div className="md:w-2/5 flex justify-end">
+                            <input
+                              id="roi-adv-entry"
+                              type="number"
+                              min="0"
+                              max="35"
+                              step="0.5"
+                              value={advManualEntryHours}
+                              onChange={(e) => handleInputChange(setAdvManualEntryHours)(e.target.value)}
+                              className="w-full rounded-lg border border-brand-border bg-brand-surface px-3 py-2 text-xs font-medium text-brand-textPrimary outline-none focus:border-brand-primary text-left sm:text-right"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Diagnostic Cat 3: Discipline-Specific BIM Workflows */}
+                        <div className="p-3.5 rounded-xl bg-brand-base border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                          <div className="md:w-3/5 space-y-0.5">
+                            <label
+                              htmlFor="roi-adv-discipline"
+                              className="text-xs font-semibold text-brand-textPrimary block"
+                            >
+                              {t("roi.advanced.cat_discipline_label") || "3. Discipline-Specific Workflows (hrs/wk)"}
+                            </label>
+                            <p className="text-[10px] text-brand-textSecondary leading-snug">
+                              {t("roi.advanced.cat_discipline_desc") || "Clash grouping and triage, QTO exports, IFC property audits."}
+                            </p>
+                          </div>
+                          <div className="md:w-2/5 flex justify-end">
+                            <input
+                              id="roi-adv-discipline"
+                              type="number"
+                              min="0"
+                              max="35"
+                              step="0.5"
+                              value={advDisciplineHours}
+                              onChange={(e) => handleInputChange(setAdvDisciplineHours)(e.target.value)}
+                              className="w-full rounded-lg border border-brand-border bg-brand-surface px-3 py-2 text-xs font-medium text-brand-textPrimary outline-none focus:border-brand-primary text-left sm:text-right"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Diagnostic Cat 4: Non-Automatable Engineering Judgment */}
+                        <div className="p-3.5 rounded-xl bg-blue-500/5 border border-blue-500/20 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                          <div className="md:w-3/5 space-y-0.5">
+                            <div className="flex items-center gap-1.5">
+                              <label
+                                htmlFor="roi-adv-judgment"
+                                className="text-xs font-semibold text-brand-textPrimary block"
+                              >
+                                {t("roi.advanced.cat_judgment_label") || "4. Engineering Judgment (hrs/wk)"}
+                              </label>
+                              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold uppercase">
+                                Protected
+                              </span>
+                            </div>
+                            <p className="text-[10px] text-brand-textSecondary leading-snug">
+                              {t("roi.advanced.cat_judgment_desc") ||
+                                "Design logic, structural review, client advisory. Preserved and excluded from automation recovery."}
+                            </p>
+                          </div>
+                          <div className="md:w-2/5 flex justify-end">
+                            <input
+                              id="roi-adv-judgment"
+                              type="number"
+                              min="0"
+                              max="40"
+                              step="0.5"
+                              value={advJudgmentHours}
+                              onChange={(e) => handleInputChange(setAdvJudgmentHours)(e.target.value)}
+                              className="w-full rounded-lg border border-blue-500/30 bg-brand-surface px-3 py-2 text-xs font-medium text-brand-textPrimary outline-none focus:border-brand-primary text-left sm:text-right"
+                            />
+                          </div>
                         </div>
                       </div>
 
@@ -908,107 +1019,6 @@ export default function RoiMatrixSection() {
                     </div>
                   )}
                 </div>
-
-                {/* --------------------------------------------------- */}
-                {/* GROUP 02: Dynamic Interactive Results Preview       */}
-                {/* --------------------------------------------------- */}
-                {previewData.isValid ? (
-                  <div className="rounded-2xl bg-brand-surface/70 border border-brand-border/80 p-5 space-y-4">
-                    <div className="flex items-center justify-between gap-2">
-                      <div>
-                        <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
-                          {t("roi.preview.group_title") || "Interactive Capacity & Value Preview"}
-                        </h3>
-                        <p className="text-xs text-brand-textSecondary">
-                          {t("roi.preview.status_note") || "Hypothetical scenario modeling (unapproved placeholders pending owner review)"}
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-xs font-mono font-bold text-brand-textPrimary block">
-                          {previewData.baseline.annualRepetitiveHoursTeam.toLocaleString()} {t("roi.preview.hours_unit") || "hrs/yr"}
-                        </span>
-                        <span className="text-[10px] text-brand-textSecondary block">
-                          {t("roi.preview.annual_repetitive_title") || "Repetitive Allocation"}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Five Fixed AI Adoption Scenarios (20%, 40%, 60%, 80%, 100%) */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
-                      {Object.values(previewData.scenarios).map((scenario) => {
-                        const isHighest = scenario.adoptionRate === 1.0;
-                        return (
-                          <div
-                            key={scenario.id}
-                            className={`p-3 rounded-2xl bg-brand-cardElevated border text-center flex flex-col justify-between transition ${
-                              isHighest
-                                ? "border-brand-primary/60 shadow-xs"
-                                : "border-brand-border/80"
-                            }`}
-                          >
-                            <div>
-                              <span className="text-[11px] font-mono font-bold text-brand-textPrimary uppercase tracking-wider block mb-0.5">
-                                {scenario.percentageLabel} {t("roi.preview.adoption_suffix") || "AI Adoption"}
-                              </span>
-                              <span className="text-[9px] font-mono text-brand-primary/90 font-medium block">
-                                {t("roi.preview.verification_retained") || "10% Verification Retained"}
-                              </span>
-                            </div>
-                            <div className="my-2">
-                              <span className="text-base font-bold font-mono text-brand-textPrimary block leading-tight">
-                                +{scenario.annualRecoveredHours.toLocaleString()} hrs
-                              </span>
-                              <span className="text-xs font-bold text-brand-primary block pt-0.5">
-                                €{scenario.annualIllustrativeValue.toLocaleString()} / yr
-                              </span>
-                            </div>
-                            <span className="text-[10px] text-brand-textSecondary block">
-                              ~{scenario.weeklyRecoveredHoursPerPerson} hrs/wk/person
-                            </span>
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    <div className="space-y-2 pt-2 border-t border-brand-border/60">
-                      <div className="flex items-center gap-1.5 text-[11px] font-mono text-brand-primary font-semibold">
-                        <Info className="w-3.5 h-3.5 shrink-0" />
-                        <span>{previewData.baseline.valuationTypeLabel}</span>
-                      </div>
-                      <p className="text-[11px] text-brand-textSecondary leading-relaxed">
-                        <strong>{t("roi.preview.verification_note_title") || "Engineering Verification Allowance (10%)"}:</strong>{" "}
-                        {previewData.verificationAllowanceNotice}
-                      </p>
-                      <p className="text-[11px] text-brand-textSecondary leading-relaxed">
-                        {previewData.disclaimer}
-                      </p>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="rounded-2xl bg-brand-surface/70 border border-brand-border/80 p-5 space-y-3">
-                    <div className="flex items-center justify-between pb-2 border-b border-brand-border/60">
-                      <h3 className="text-caption font-mono font-bold tracking-wider uppercase text-brand-textPrimary">
-                        {t("roi.preview.group_title") || "Interactive Capacity & Value Preview"}
-                      </h3>
-                      <span className="text-xs font-mono text-amber-600 dark:text-amber-400">
-                        {t("roi.preview.status_paused") || "Inputs Required"}
-                      </span>
-                    </div>
-                    <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/25 text-body-sm text-brand-textPrimary flex items-start gap-2.5">
-                      <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                      <div>
-                        <strong className="block font-semibold">
-                          {t("roi.preview.paused_title") || "Calculation Preview Paused"}
-                        </strong>
-                        <p className="text-xs text-brand-textSecondary mt-1 leading-relaxed">
-                          {rateType === "internal_labor" && !activeRateStr.trim()
-                            ? (t("roi.preview.paused_internal_rate") || "Please enter your internal loaded labor cost (€ / hour) to calculate scenario estimates.")
-                            : (t("roi.preview.paused_desc") || "Please provide valid operational inputs above (at least 1 modeler, valid positive rate if custom, valid working weeks) to calculate illustrative scenarios.")}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
 
                 {/* --------------------------------------------------- */}
                 {/* GROUP 03: Enterprise Eligibility & Verification     */}
