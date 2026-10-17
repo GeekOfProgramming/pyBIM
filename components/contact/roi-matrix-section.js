@@ -2,7 +2,7 @@
 
 import { useState, useId, useMemo, useRef } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { ArrowRight, CheckCircle2, AlertCircle, ExternalLink, ChevronDown, ChevronUp, ShieldCheck, Info, Lock } from "lucide-react";
+import { ArrowRight, CheckCircle2, AlertCircle, ExternalLink, ChevronDown, ChevronUp, ShieldCheck, Info, Lock, Download, FileSpreadsheet } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 import TurnstileWidget from "@/components/common/turnstile-widget";
@@ -230,6 +230,16 @@ export default function RoiMatrixSection() {
     setLoading(true);
 
     try {
+      // 1. Generate client idempotency key to prevent duplicate email alerts on double clicks
+      let clientToken;
+      try {
+        clientToken = crypto.randomUUID().substring(0, 8).toUpperCase();
+      } catch {
+        clientToken = Date.now().toString(36).toUpperCase();
+      }
+      const idempotencyKey = `roi-export-${businessIdentity.email.trim().toLowerCase().split("@")[1] || "client"}-${clientToken}`;
+
+      // 2. Server-side verification and Resend notification dispatch
       const response = await fetch("/api/roi-matrix/eligibility", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -239,6 +249,7 @@ export default function RoiMatrixSection() {
           email: businessIdentity.email.trim(),
           privacyAccepted: businessIdentity.privacyAccepted,
           turnstileToken,
+          idempotencyKey,
           quickEstimate: quickValidation.sanitized,
           useAdvanced: showAdvanced,
           advancedAssessment: advancedValidation ? advancedValidation.sanitized : null,
@@ -255,10 +266,57 @@ export default function RoiMatrixSection() {
         if (turnstileRef.current?.reset) turnstileRef.current.reset();
         setTurnstileToken("");
       } else {
-        setVerificationResult({
-          ok: true,
-          data,
-        });
+        // 3. Client-side lazy load ExcelJS and build the English protected 4-worksheet workbook
+        try {
+          const ExcelJSModule = await import("exceljs");
+          const ExcelJS = ExcelJSModule.default || ExcelJSModule;
+          const { buildRoiWorkbook } = await import("@/lib/roi/roiWorkbookBuilder");
+
+          const workbook = await buildRoiWorkbook(ExcelJS, {
+            userName: businessIdentity.name.trim(),
+            companyName: businessIdentity.companyName.trim(),
+            referenceId: data.referenceId,
+            modelerCount: data.sanitizedInputs?.modelerCount || quickValidation.sanitized.modelerCount,
+            hourlyRate: data.sanitizedInputs?.hourlyRate || quickValidation.sanitized.hourlyRate,
+            isRateCustom: data.sanitizedInputs?.isRateCustom || quickValidation.sanitized.isRateCustom,
+            rateType: data.sanitizedInputs?.rateType || quickValidation.sanitized.rateType,
+            workingWeeks: data.sanitizedInputs?.workingWeeks || quickValidation.sanitized.workingWeeks,
+            useAdvanced: showAdvanced,
+            advancedAssessment: advancedValidation ? advancedValidation.sanitized : null
+          });
+
+          // 4. Generate in-memory buffer and trigger direct browser download
+          const buffer = await workbook.xlsx.writeBuffer();
+          const blob = new Blob([buffer], {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          });
+          const url = window.URL.createObjectURL(blob);
+          const safeCompanyFile = (businessIdentity.companyName.trim() || "pyBIM")
+            .replace(/[^a-zA-Z0-9_-]/g, "_")
+            .substring(0, 30);
+          const fileName = `pyBIM-ROI-Matrix-${safeCompanyFile}.xlsx`;
+
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          setTimeout(() => window.URL.revokeObjectURL(url), 2000);
+
+          setVerificationResult({
+            ok: true,
+            downloadTriggered: true,
+            fileName,
+            data,
+          });
+        } catch (wbError) {
+          console.error("[ROI WORKBOOK GENERATION FAILED]:", wbError);
+          setVerificationResult({
+            ok: false,
+            error: "Eligibility verified, but browser spreadsheet construction failed. Please try again or contact support.",
+          });
+        }
       }
     } catch (_err) {
       setVerificationResult({
@@ -1033,6 +1091,12 @@ export default function RoiMatrixSection() {
                       </label>
                     </div>
 
+                    {/* In-Form Privacy & Data Processing Disclosure */}
+                    <p className="text-[11px] text-brand-textSecondary leading-relaxed px-1">
+                      {t("roi.access.privacy_disclosure") ||
+                        "Corporate verification notice: Submitted business contact details are processed to verify corporate eligibility and dispatch an internal lead notification to pyBIM Support (support@pybim.com). Domain MX checks verify mail-exchange routing but do not prove mailbox ownership. Submissions are not added to marketing lists and imply no unsolicited marketing opt-in."}
+                    </p>
+
                     {/* Verification Result Display */}
                     {verificationResult && (
                       <div
@@ -1051,13 +1115,13 @@ export default function RoiMatrixSection() {
                           <div>
                             <strong className="block font-semibold">
                               {verificationResult.ok
-                                ? (t("roi.access.eligible_title") || "Corporate Domain Verified for ROI Matrix")
+                                ? (t("roi.access.eligible_title") || "ROI Matrix (.xlsx) Generated Successfully")
                                 : "Verification Notice"}
                             </strong>
                             <p className="text-xs text-brand-textSecondary mt-1 leading-relaxed">
                               {verificationResult.ok
                                 ? (t("roi.access.eligible_desc") ||
-                                  "Your enterprise domain and calculation parameters have been successfully verified. In ROI-02, verified corporate leads will generate the customized executive workbook directly in your browser without waiting for email delivery.")
+                                  "Your browser download has been initiated. If the file did not appear automatically, please check your browser download manager. Unlocked cells can be edited in Microsoft Excel or compatible spreadsheet software to recalculate outputs dynamically.")
                                 : verificationResult.error}
                             </p>
                           </div>
@@ -1073,13 +1137,19 @@ export default function RoiMatrixSection() {
                             </div>
                             <p className="text-[11px] font-sans text-brand-textSecondary leading-snug">
                               {t("roi.access.stateless_notice") ||
-                                "Stateless verification receipt: Submissions are NOT durably stored or emailed. Client-side gating is for UX guidance only and does not represent an access-controlled security barrier."}
+                                "Stateless verification receipt: Submissions are NOT durably stored or emailed to recipients. Client-side download gating is for UX guidance only and does not represent an access-controlled security barrier. File creation does not prove local filesystem save."}
                             </p>
-                            <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[11px] font-sans text-amber-900 dark:text-amber-200">
-                              <strong>{t("roi.access.download_pending_title") || "ROI-02 Workbook Notice"}:</strong>{" "}
-                              {t("roi.access.download_pending_notice") ||
-                                "Downloadable spreadsheet generation is currently under engineering development for ROI-02 and is not yet active."}
-                            </div>
+                            {verificationResult.downloadTriggered && (
+                              <div className="p-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-[11px] font-sans text-emerald-900 dark:text-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <span className="flex items-center gap-1.5">
+                                  <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                                  <strong>Export Initiated:</strong> {verificationResult.fileName}
+                                </span>
+                                <span className="text-[10px] text-emerald-700 dark:text-emerald-300 font-mono">
+                                  4 Worksheets • Protected English Contract
+                                </span>
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>
@@ -1094,13 +1164,17 @@ export default function RoiMatrixSection() {
                       >
                         <span>
                           {loading
-                            ? (t("roi.access.loading") || "Verifying Domain & Human Security...")
-                            : (t("roi.access.cta") || "Verify Corporate Eligibility")}
+                            ? (t("roi.access.loading") || "Verifying Eligibility & Generating Workbook...")
+                            : (t("roi.access.cta") || "Verify & Download ROI Matrix (.xlsx)")}
                         </span>
-                        <ArrowRight
-                          className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                          aria-hidden="true"
-                        />
+                        {loading ? (
+                          <div className="w-4 h-4 ml-2 border-2 border-brand-actionOnPrimary/30 border-t-brand-actionOnPrimary rounded-full animate-spin shrink-0" />
+                        ) : (
+                          <Download
+                            className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-y-0.5 shrink-0"
+                            aria-hidden="true"
+                          />
+                        )}
                       </button>
                     </div>
                   </div>

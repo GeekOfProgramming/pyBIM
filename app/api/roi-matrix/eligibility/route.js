@@ -6,13 +6,22 @@ import {
   verifyDomainMx,
   verifyTurnstileToken,
   validatePrivacyAcknowledgment,
+  sanitizeHeader,
 } from "../../../../lib/formValidation.js";
 import {
   validateQuickEstimate,
   validateAdvancedAssessment,
   calculateRoiPreview,
   ROI_SCHEMA_VERSION,
+  AUTODESK_REFERENCE_HOURS_PER_WEEK,
+  HUMAN_VERIFICATION_RATE,
 } from "../../../../lib/roi/roiSchema.js";
+import {
+  checkEmailConfiguration,
+  buildEmailPayload,
+  sendEmail,
+} from "../../../../lib/emailDelivery.js";
+import { escapeHtml } from "../../../../lib/security.js";
 
 /**
  * POST /api/roi-matrix/eligibility
@@ -181,13 +190,152 @@ export async function POST(req) {
       randomToken = Date.now().toString(36).toUpperCase();
     }
     const referenceId = `ROI-SESS-${new Date().getFullYear()}-${randomToken}`;
+    const timestamp = new Date().toISOString();
+
+    // 11. Support Lead Notification via Resend (support@pybim.com)
+    // Every legitimate export initiation must notify support@pybim.com
+    const emailConfigCheck = checkEmailConfiguration();
+    let notificationDispatched = false;
+
+    if (process.env.NODE_ENV === "production" && !emailConfigCheck.ok) {
+      console.error("[ROI ELIGIBILITY ERROR] Outbound email service unconfigured in production. Failing closed.");
+      return Response.json(
+        { ok: false, error: "Outbound notification service is not configured. Export cannot proceed." },
+        { status: 503 }
+      );
+    }
+
+    if (emailConfigCheck.ok) {
+      const safeName = escapeHtml(nameCheck.sanitized);
+      const safeCompany = escapeHtml(companyCheck.sanitized);
+      const safeEmail = escapeHtml(emailCheck.sanitized);
+      const safeRateType = quickEstimateResult.sanitized.rateType === "internal_labor"
+        ? "Internal Loaded Labor Cost"
+        : "Illustrative Consulting Rate";
+      const safeRateOrigin = quickEstimateResult.sanitized.isRateCustom
+        ? "Customer-Supplied Custom Rate"
+        : "Default Illustrative Baseline (€85/h)";
+      const safeEffectiveRate = quickEstimateResult.sanitized.hourlyRate;
+      const safeModelers = quickEstimateResult.sanitized.modelerCount;
+      const safeWeeks = quickEstimateResult.sanitized.workingWeeks;
+
+      const stableIdempotencyKey = body.idempotencyKey
+        ? sanitizeHeader(String(body.idempotencyKey).trim())
+        : `roi-export-${emailCheck.domain}-${referenceId}`;
+
+      const textBody = `
+=== PYBIM ROI MATRIX — EXPORT INITIATED ===
+Event: EXPORT_INITIATED
+Timestamp (UTC): ${timestamp}
+Reference ID: ${referenceId}
+
+CLIENT INFORMATION:
+- Name: ${nameCheck.sanitized}
+- Company: ${companyCheck.sanitized}
+- Corporate Email: ${emailCheck.sanitized}
+- Corporate Domain: ${emailCheck.domain}
+
+MODEL OPERATIONAL INPUTS:
+- Rate Type: ${safeRateType}
+- Effective Hourly Rate: €${safeEffectiveRate}/h
+- Rate Origin: ${safeRateOrigin}
+- BIM Professionals (Team Size): ${safeModelers}
+- Effective Working Weeks / Year: ${safeWeeks}
+- Autodesk Weekly Benchmark: ${AUTODESK_REFERENCE_HOURS_PER_WEEK} hrs/week/person (Fixed)
+- Human Verification Allowance: ${HUMAN_VERIFICATION_RATE * 100}% (0.10, Fixed)
+
+FIVE AI ADOPTION SCENARIO ESTIMATES:
+- 20% Adoption: ${preview.scenarios.scenario_20.annualRecoveredHours} hrs/yr | €${preview.scenarios.scenario_20.annualIllustrativeValue.toLocaleString()}
+- 40% Adoption: ${preview.scenarios.scenario_40.annualRecoveredHours} hrs/yr | €${preview.scenarios.scenario_40.annualIllustrativeValue.toLocaleString()}
+- 60% Adoption: ${preview.scenarios.scenario_60.annualRecoveredHours} hrs/yr | €${preview.scenarios.scenario_60.annualIllustrativeValue.toLocaleString()}
+- 80% Adoption: ${preview.scenarios.scenario_80.annualRecoveredHours} hrs/yr | €${preview.scenarios.scenario_80.annualIllustrativeValue.toLocaleString()}
+- 100% Adoption: ${preview.scenarios.scenario_100.annualRecoveredHours} hrs/yr | €${preview.scenarios.scenario_100.annualIllustrativeValue.toLocaleString()}
+${useAdvanced && sanitizedAdvanced ? `
+DIAGNOSTIC WORKFLOW BREAKDOWN:
+- Information Search: ${sanitizedAdvanced.searchHours} hrs/wk
+- Manual Data Entry: ${sanitizedAdvanced.manualDataEntryHours} hrs/wk
+- Discipline BIM Workflows: ${sanitizedAdvanced.disciplineWorkflowsHours} hrs/wk
+- Protected Engineering Judgment: ${sanitizedAdvanced.nonAutomatableJudgmentHours} hrs/wk
+- Repetitive Total: ${sanitizedAdvanced.repetitiveWeeklyHours} hrs/wk
+- Total Assessed: ${sanitizedAdvanced.totalAssessedHours} hrs/wk` : ""}
+
+Notice: Browser download initiated by client. Does not guarantee file saved to local disk.
+`;
+
+      const htmlBody = `
+        <div style="font-family: Arial, sans-serif; color: #1e293b; max-width: 600px; margin: 0 auto; line-height: 1.5;">
+          <h2 style="color: #0f172a; border-bottom: 2px solid #3b82f6; padding-bottom: 8px;">pyBIM ROI Matrix — Lead Export Initiated</h2>
+          <p><strong>Status:</strong> <span style="display: inline-block; padding: 2px 8px; background: #dbeafe; color: #1e40af; border-radius: 4px; font-weight: bold;">EXPORT_INITIATED</span></p>
+          <p><strong>Timestamp (UTC):</strong> ${timestamp}<br><strong>Session Reference:</strong> <code>${referenceId}</code></p>
+
+          <h3 style="color: #1e3a8a; margin-top: 20px;">Client Information</h3>
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Name:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${safeName}</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Company:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${safeCompany}</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Corporate Email:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${safeEmail}</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Domain:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${escapeHtml(emailCheck.domain)}</td></tr>
+          </table>
+
+          <h3 style="color: #1e3a8a; margin-top: 20px;">Operational Model Parameters</h3>
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Rate Type:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${safeRateType}</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Effective Rate:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">&euro;${safeEffectiveRate}/h (${safeRateOrigin})</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">BIM Professionals:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${safeModelers}</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Working Weeks / Year:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${safeWeeks}</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Autodesk Benchmark:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">13 hrs/wk/person (Fixed)</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Verification Allowance:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">10% Retained (Fixed)</td></tr>
+          </table>
+
+          <h3 style="color: #1e3a8a; margin-top: 20px;">Five AI Adoption Scenario Estimates</h3>
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: left;">
+            <tr style="background: #f1f5f9;">
+              <th style="padding: 6px; border: 1px solid #e2e8f0;">Scenario</th>
+              <th style="padding: 6px; border: 1px solid #e2e8f0;">Annual Team Hours</th>
+              <th style="padding: 6px; border: 1px solid #e2e8f0;">Illustrative Capacity Value</th>
+            </tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0;">20% Adoption</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${preview.scenarios.scenario_20.annualRecoveredHours} hrs/yr</td><td style="padding: 6px; border: 1px solid #e2e8f0;">&euro;${preview.scenarios.scenario_20.annualIllustrativeValue.toLocaleString()}</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0;">40% Adoption</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${preview.scenarios.scenario_40.annualRecoveredHours} hrs/yr</td><td style="padding: 6px; border: 1px solid #e2e8f0;">&euro;${preview.scenarios.scenario_40.annualIllustrativeValue.toLocaleString()}</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0;">60% Adoption</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${preview.scenarios.scenario_60.annualRecoveredHours} hrs/yr</td><td style="padding: 6px; border: 1px solid #e2e8f0;">&euro;${preview.scenarios.scenario_60.annualIllustrativeValue.toLocaleString()}</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0;">80% Adoption</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${preview.scenarios.scenario_80.annualRecoveredHours} hrs/yr</td><td style="padding: 6px; border: 1px solid #e2e8f0;">&euro;${preview.scenarios.scenario_80.annualIllustrativeValue.toLocaleString()}</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0;">100% Adoption</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${preview.scenarios.scenario_100.annualRecoveredHours} hrs/yr</td><td style="padding: 6px; border: 1px solid #e2e8f0;">&euro;${preview.scenarios.scenario_100.annualIllustrativeValue.toLocaleString()}</td></tr>
+          </table>
+
+          <p style="font-size: 11px; color: #64748b; margin-top: 24px; border-top: 1px solid #e2e8f0; padding-top: 12px;">
+            This email was sent via pyBIM Resend server integration. Browser download triggered client-side; delivery does not verify local filesystem save.
+          </p>
+        </div>
+      `;
+
+      try {
+        const emailPayload = buildEmailPayload({
+          type: "internal_notification",
+          customerEmail: emailCheck.sanitized,
+          subject: `[pyBIM ROI Matrix Export] ${companyCheck.sanitized} - ${nameCheck.sanitized} (${referenceId})`,
+          html: htmlBody,
+          text: textBody,
+          idempotencyKey: stableIdempotencyKey
+        });
+
+        await sendEmail(emailPayload, { idempotencyKey: stableIdempotencyKey });
+        notificationDispatched = true;
+      } catch (dispatchErr) {
+        console.error("[ROI NOTIFICATION ERROR]:", dispatchErr);
+        return Response.json(
+          { ok: false, error: "Failed to dispatch lead notification to support. Please try again." },
+          { status: dispatchErr.statusCode || 502 }
+        );
+      }
+    } else {
+      console.warn("[ROI NOTICE] Outbound email service unconfigured in development. Proceeding with export.");
+    }
 
     return Response.json({
       ok: true,
       eligible: true,
       schemaVersion: ROI_SCHEMA_VERSION,
       referenceId,
-      verifiedAt: new Date().toISOString(),
+      verifiedAt: timestamp,
+      notificationDispatched,
       clientSummary: {
         name: nameCheck.sanitized,
         companyName: companyCheck.sanitized,
@@ -195,6 +343,16 @@ export async function POST(req) {
         isInternal: emailCheck.isInternal || false,
       },
       preview,
+      sanitizedInputs: {
+        modelerCount: quickEstimateResult.sanitized.modelerCount,
+        hourlyRate: quickEstimateResult.sanitized.hourlyRate,
+        isRateCustom: quickEstimateResult.sanitized.isRateCustom,
+        rateType: quickEstimateResult.sanitized.rateType,
+        workingWeeks: quickEstimateResult.sanitized.workingWeeks,
+        searchHours: quickEstimateResult.sanitized.searchHours,
+        useAdvanced,
+        advancedAssessment: sanitizedAdvanced
+      },
       downloadContract: {
         status: "eligible_for_browser_export",
         targetEngine: "browser_exceljs",
@@ -223,7 +381,8 @@ export async function POST(req) {
         },
         supportNotification: {
           recipient: "support@pybim.com",
-          eventStatus: "EXPORT_INITIATED"
+          eventStatus: "EXPORT_INITIATED",
+          dispatched: notificationDispatched
         },
         disclaimer: "Stateless verification receipt for browser-side export guidance. Submissions are NOT durably stored or emailed. Client-side download gating does not constitute an access-controlled security barrier."
       }
