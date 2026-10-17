@@ -813,33 +813,34 @@ export default function RoiMatrixSection() {
                       </div>
                     </div>
 
-                    {/* Item 5: Regional Market Context (Optional) (70/30 split) */}
-                    <div className="p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                      <div className="md:w-[70%] space-y-0.5">
+                    {/* Item 5: Regional Market Context (Optional) - Block Presentation */}
+                    <div className="space-y-2 p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/70">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
                         <label
                           htmlFor="roi-region"
-                          className="text-body-sm font-medium text-brand-textPrimary block"
+                          className="text-xs font-mono font-medium text-brand-textPrimary block"
                         >
                           {t("roi.inputs.region_label") || "Regional Market Context (Optional)"}
                         </label>
-                        <p className="text-[11px] text-brand-textSecondary leading-snug">
-                          {t("roi.inputs.region_help") ||
-                            "Contextual baseline reference only. Selecting a region provides market context and will never overwrite your entered rate."}
-                        </p>
+                        <span className="text-[11px] font-sans text-brand-textSecondary">
+                          {REGIONAL_CONTEXTS[region]?.name}
+                        </span>
                       </div>
-                      <div className="md:w-[30%] flex justify-end">
-                        <select
-                          id="roi-region"
-                          value={region}
-                          onChange={(e) => handleInputChange(setRegion)(e.target.value)}
-                          className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
-                        >
-                          <option value="global">{t("roi.inputs.region_global") || "European / Global Baseline (Default)"}</option>
-                          <option value="dach">{t("roi.inputs.region_dach") || "DACH (Germany, Austria, Switzerland)"}</option>
-                          <option value="it">{t("roi.inputs.region_it") || "Italy (UNI 11337 / Public Procurement)"}</option>
-                          <option value="uk">{t("roi.inputs.region_uk") || "UK / International Practice"}</option>
-                        </select>
-                      </div>
+                      <select
+                        id="roi-region"
+                        value={region}
+                        onChange={(e) => handleInputChange(setRegion)(e.target.value)}
+                        className="w-full rounded-xl border border-brand-border bg-brand-base px-3.5 py-2.5 text-body-sm font-medium text-brand-textPrimary outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                      >
+                        <option value="global">{t("roi.inputs.region_global") || "European / Global Baseline (Default)"}</option>
+                        <option value="dach">{t("roi.inputs.region_dach") || "DACH (Germany, Austria, Switzerland)"}</option>
+                        <option value="it">{t("roi.inputs.region_it") || "Italy (UNI 11337 / Public Procurement)"}</option>
+                        <option value="uk">{t("roi.inputs.region_uk") || "UK / International Practice"}</option>
+                      </select>
+                      <p className="text-[11px] text-brand-textSecondary leading-relaxed pt-0.5">
+                        {t("roi.inputs.region_help") ||
+                          "Contextual baseline reference only. Selecting a region provides market context and will never overwrite your entered rate."}
+                      </p>
                     </div>
                   </div>
                 </div>
