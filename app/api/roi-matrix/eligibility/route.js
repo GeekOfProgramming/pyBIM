@@ -199,6 +199,32 @@ export async function POST(req) {
         status: "eligible_for_browser_export",
         targetEngine: "browser_exceljs",
         targetLocale: "en",
+        worksheets: [
+          "Executive Summary",
+          "Workflow Inputs",
+          "AI Adoption Scenarios",
+          "Assumptions & Sources"
+        ],
+        workbookStructure: {
+          worksheets: [
+            "Executive Summary",
+            "Workflow Inputs",
+            "AI Adoption Scenarios",
+            "Assumptions & Sources"
+          ],
+          editableCells: ["modelerCount", "hourlyRate", "workingWeeks"],
+          protectedCells: [
+            "AUTODESK_REFERENCE_HOURS_PER_WEEK",
+            "AI_ADOPTION_SCENARIOS",
+            "HUMAN_VERIFICATION_RATE",
+            "formulas",
+            "outputs"
+          ]
+        },
+        supportNotification: {
+          recipient: "support@pybim.com",
+          eventStatus: "EXPORT_INITIATED"
+        },
         disclaimer: "Stateless verification receipt for browser-side export guidance. Submissions are NOT durably stored or emailed. Client-side download gating does not constitute an access-controlled security barrier."
       }
     });

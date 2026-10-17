@@ -127,10 +127,28 @@ console.log("5. Testing Successful Corporate Eligibility & Reference Receipt..."
   assert.strictEqual(json.clientSummary.domain, "pybim.com");
   assert.strictEqual(json.downloadContract.targetEngine, "browser_exceljs");
   assert.strictEqual(json.downloadContract.targetLocale, "en");
-  assert.ok(json.preview.scenarios.expected.annualRecoveredHours > 0);
+  assert.strictEqual(json.downloadContract.worksheets.length, 4);
+  assert.deepStrictEqual(json.downloadContract.worksheets, [
+    "Executive Summary",
+    "Workflow Inputs",
+    "AI Adoption Scenarios",
+    "Assumptions & Sources"
+  ]);
+  assert.strictEqual(json.downloadContract.supportNotification.recipient, "support@pybim.com");
+  assert.strictEqual(json.downloadContract.supportNotification.eventStatus, "EXPORT_INITIATED");
+
+  // Check that all five fixed AI adoption scenarios are present
+  assert.ok(json.preview.scenarios.scenario_20);
+  assert.ok(json.preview.scenarios.scenario_40);
+  assert.ok(json.preview.scenarios.scenario_60);
+  assert.ok(json.preview.scenarios.scenario_80);
+  assert.ok(json.preview.scenarios.scenario_100);
+  assert.strictEqual(json.preview.scenarios.scenario_40.adoptionRate, 0.40);
+  assert.strictEqual(json.preview.scenarios.scenario_40.humanVerificationRate, 0.10);
+  assert.ok(json.preview.scenarios.scenario_40.annualRecoveredHours > 0);
   // Ensure NO binary buffer or XLSX file is attached to HTTP response
   assert.strictEqual(res.headers.get("content-type"), "application/json");
 }
-console.log("   ✓ Corporate eligibility generates receipt with zero server-side XLSX overhead");
+console.log("   ✓ Corporate eligibility generates receipt with 4-worksheet contract and 5 scenarios");
 
 console.log("\n=== ALL ROI-01 ELIGIBILITY ENDPOINT TESTS PASSED SUCCESSFULLY ===\n");

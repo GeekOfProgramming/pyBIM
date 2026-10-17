@@ -1,107 +1,272 @@
 import assert from "node:assert";
 import {
   ROI_SCHEMA_VERSION,
+  AUTODESK_REFERENCE_HOURS_PER_WEEK,
+  HUMAN_VERIFICATION_RATE,
+  DEFAULT_CONSULTING_RATE,
+  DEFAULT_WORKING_WEEKS,
   AUTODESK_CITATION,
   BENCHMARK_DEFAULTS,
   REGIONAL_CONTEXTS,
+  AI_ADOPTION_SCENARIOS,
   validateQuickEstimate,
   validateAdvancedAssessment,
   calculateRoiPreview,
 } from "../lib/roi/roiSchema.js";
 
-console.log("=== RUNNING ROI-01 SHARED DATA SCHEMA & CALCULATION ENGINE SUITE ===\n");
+console.log("=== RUNNING ROI-01 FINAL OWNER DECISIONS TEST SUITE ===\n");
 
 // 1. Benchmark Defaults & Autodesk Citation Invariants
 console.log("1. Testing Benchmark Defaults & Autodesk Citation Invariants...");
-assert.strictEqual(BENCHMARK_DEFAULTS.HOURLY_RATE, 85, "Hourly rate default must be €85/hour");
-assert.strictEqual(BENCHMARK_DEFAULTS.SEARCH_HOURS_WEEK, 13, "Autodesk search reference must be 13 hrs/wk");
-assert.strictEqual(BENCHMARK_DEFAULTS.WORKING_WEEKS_YEAR, 48, "Working weeks initial assumption must be 48");
-assert.strictEqual(BENCHMARK_DEFAULTS.RATE_TYPE_DEFAULT, "consulting", "Default rate classification must be consulting");
+assert.strictEqual(AUTODESK_REFERENCE_HOURS_PER_WEEK, 13, "Autodesk benchmark must be immutable 13 hrs/wk");
+assert.strictEqual(HUMAN_VERIFICATION_RATE, 0.10, "Human verification allowance must be exactly 10% (0.10)");
+assert.strictEqual(DEFAULT_CONSULTING_RATE, 85, "Hourly consulting rate default must be €85/hour");
+assert.strictEqual(DEFAULT_WORKING_WEEKS, 48, "Working weeks default must be 48");
+assert.strictEqual(BENCHMARK_DEFAULTS.HOURLY_RATE, 85);
+assert.strictEqual(BENCHMARK_DEFAULTS.SEARCH_HOURS_WEEK, 13);
+assert.strictEqual(BENCHMARK_DEFAULTS.WORKING_WEEKS_YEAR, 48);
+assert.strictEqual(BENCHMARK_DEFAULTS.HUMAN_VERIFICATION_RATE, 0.10);
+assert.strictEqual(BENCHMARK_DEFAULTS.RATE_TYPE_DEFAULT, "consulting");
+
+// Five fixed AI adoption scenarios (20%, 40%, 60%, 80%, 100%)
+const expectedScenarioKeys = ["scenario_20", "scenario_40", "scenario_60", "scenario_80", "scenario_100"];
+const actualScenarioKeys = Object.keys(AI_ADOPTION_SCENARIOS);
+assert.deepStrictEqual(actualScenarioKeys, expectedScenarioKeys, "Must contain exactly the five approved AI adoption scenarios");
+assert.strictEqual(AI_ADOPTION_SCENARIOS.scenario_20.adoptionRate, 0.20);
+assert.strictEqual(AI_ADOPTION_SCENARIOS.scenario_40.adoptionRate, 0.40);
+assert.strictEqual(AI_ADOPTION_SCENARIOS.scenario_60.adoptionRate, 0.60);
+assert.strictEqual(AI_ADOPTION_SCENARIOS.scenario_80.adoptionRate, 0.80);
+assert.strictEqual(AI_ADOPTION_SCENARIOS.scenario_100.adoptionRate, 1.00);
+
+// Citations and disclaimers
 assert.ok(AUTODESK_CITATION.primaryReportUrl.includes("boards.autodesk.com"), "Autodesk citation must include primary report URL");
 assert.ok(AUTODESK_CITATION.blogUrl.includes("blogs/construction"), "Autodesk citation must include blog URL");
-assert.ok(AUTODESK_CITATION.disclaimer.includes("not verified modeler waste"), "Autodesk citation must disclaim modeler waste");
-console.log("   ✓ Approved benchmark constants and citations verified");
+assert.ok(AUTODESK_CITATION.disclaimer.includes("across surveyed construction roles"), "Citation must disclose general search across construction roles");
+assert.ok(AUTODESK_CITATION.disclaimer.includes("not verified modeler waste"), "Citation must disclaim modeler waste");
+assert.ok(AUTODESK_CITATION.disclaimer.includes("does not prove that all 13 hours can be eliminated"), "Citation must state 13h cannot all be eliminated");
+console.log("   ✓ Approved benchmark constants, five scenarios, and Autodesk citations verified");
 
-// 2. Quick Estimate Validation & Boundary Handling
-console.log("2. Testing Quick Estimate Validation & Bounds...");
+// 2. Quick Estimate Validation, Optional Rate Fallback, and Bounds
+console.log("2. Testing Quick Estimate Validation, Optional Rate Fallback & Bounds...");
 {
-  // Valid baseline
-  const res = validateQuickEstimate({
+  // 2a. Blank consulting rate falls back to exactly €85/h
+  const blankRateRes = validateQuickEstimate({
     modelerCount: "5",
-    hourlyRate: "85",
-    searchHours: "13",
+    hourlyRate: "", // User leaves website field blank
     workingWeeks: "48",
     rateType: "consulting",
     region: "global"
   });
-  assert.strictEqual(res.valid, true);
-  assert.strictEqual(res.sanitized.modelerCount, 5);
-  assert.strictEqual(res.sanitized.hourlyRate, 85);
-  assert.strictEqual(res.sanitized.searchHours, 13);
-  assert.strictEqual(res.sanitized.workingWeeks, 48);
-  assert.strictEqual(res.sanitized.rateType, "consulting");
+  assert.strictEqual(blankRateRes.valid, true, "Blank consulting rate must be valid");
+  assert.strictEqual(blankRateRes.sanitized.hourlyRate, 85, "Blank consulting rate must default to exactly €85/h");
+  assert.strictEqual(blankRateRes.sanitized.isRateCustom, false, "Rate must be flagged as non-custom default");
+  assert.strictEqual(blankRateRes.sanitized.searchHours, 13, "Search hours must be locked to 13");
 
-  // Custom rate allowed
+  // 2b. Null or undefined rate also falls back to €85/h
+  const undefinedRateRes = validateQuickEstimate({
+    modelerCount: 5,
+    rateType: "consulting"
+  });
+  assert.strictEqual(undefinedRateRes.valid, true);
+  assert.strictEqual(undefinedRateRes.sanitized.hourlyRate, 85);
+  assert.strictEqual(undefinedRateRes.sanitized.isRateCustom, false);
+
+  // 2c. Custom valid positive rate is strictly preserved
   const customRateRes = validateQuickEstimate({
-    modelerCount: 3,
-    hourlyRate: 145.5,
-    searchHours: 10,
-    workingWeeks: 46,
-    rateType: "internal_labor"
+    modelerCount: 5,
+    hourlyRate: "125.50",
+    rateType: "consulting"
   });
   assert.strictEqual(customRateRes.valid, true);
-  assert.strictEqual(customRateRes.sanitized.hourlyRate, 145.5);
-  assert.strictEqual(customRateRes.sanitized.rateType, "internal_labor");
+  assert.strictEqual(customRateRes.sanitized.hourlyRate, 125.50);
+  assert.strictEqual(customRateRes.sanitized.isRateCustom, true);
 
-  // Invalid modelers
+  // 2d. Reject invalid non-empty consulting entries (zero, negative, non-numeric, > 2000)
+  const zeroRate = validateQuickEstimate({ hourlyRate: "0" });
+  assert.strictEqual(zeroRate.valid, false, "Zero rate must be rejected");
+  assert.ok(zeroRate.errors.hourlyRate);
+
+  const negRate = validateQuickEstimate({ hourlyRate: "-25" });
+  assert.strictEqual(negRate.valid, false, "Negative rate must be rejected");
+  assert.ok(negRate.errors.hourlyRate);
+
+  const nonNumRate = validateQuickEstimate({ hourlyRate: "eighty-five" });
+  assert.strictEqual(nonNumRate.valid, false, "Non-numeric rate must be rejected");
+  assert.ok(nonNumRate.errors.hourlyRate);
+
+  const excessiveRate = validateQuickEstimate({ hourlyRate: "2500" });
+  assert.strictEqual(excessiveRate.valid, false, "Rate over €2,000 must be rejected");
+  assert.ok(excessiveRate.errors.hourlyRate);
+
+  // 2e. Internal Loaded Labor Cost requires an explicitly supplied internal rate
+  const blankInternal = validateQuickEstimate({
+    modelerCount: 5,
+    rateType: "internal_labor",
+    hourlyRate: "" // Blank internal rate
+  });
+  assert.strictEqual(blankInternal.valid, false, "Internal labor cost CANNOT be blank");
+  assert.ok(blankInternal.errors.hourlyRate, "Must require explicitly supplied internal rate");
+
+  const validInternal = validateQuickEstimate({
+    modelerCount: 5,
+    rateType: "internal_labor",
+    hourlyRate: "62.50"
+  });
+  assert.strictEqual(validInternal.valid, true);
+  assert.strictEqual(validInternal.sanitized.hourlyRate, 62.50);
+  assert.strictEqual(validInternal.sanitized.rateType, "internal_labor");
+
+  // 2f. Search hours immutable: any passed value is normalized to 13
+  const tamperedSearch = validateQuickEstimate({
+    modelerCount: 5,
+    searchHours: "25" // Attempting to pass 25
+  });
+  assert.strictEqual(tamperedSearch.sanitized.searchHours, 13, "Search hours must remain locked to 13");
+
+  // 2g. Modeler count and working week bounds
   const invalidModelers = validateQuickEstimate({ modelerCount: "0" });
   assert.strictEqual(invalidModelers.valid, false);
-  assert.ok(invalidModelers.errors.modelerCount);
-
-  // Invalid rate
-  const invalidRate = validateQuickEstimate({ hourlyRate: "-10" });
-  assert.strictEqual(invalidRate.valid, false);
-  assert.ok(invalidRate.errors.hourlyRate);
-
-  // Invalid weeks
   const invalidWeeks = validateQuickEstimate({ workingWeeks: "55" });
   assert.strictEqual(invalidWeeks.valid, false);
-  assert.ok(invalidWeeks.errors.workingWeeks);
 }
-console.log("   ✓ Quick Estimate validation cleanly enforces boundaries");
+console.log("   ✓ Optional rate fallback, validation bounds, and internal rate isolation verified");
 
-// 3. Regional Context Non-Destructive Behavior
-console.log("3. Testing Regional Context Non-Destructive Behavior...");
+// 3. Required Numerical Regression Tests (Owner Reference Case)
+console.log("3. Testing Required Numerical Regression Tests (N=5, R=85, B=13, W=48, V=0.10)...");
+{
+  const refInputs = {
+    modelerCount: 5,
+    hourlyRate: 85,
+    searchHours: 13,
+    workingWeeks: 48,
+    rateType: "consulting",
+    region: "global"
+  };
+  const preview = calculateRoiPreview({ quickEstimate: refInputs });
+
+  // Baseline team repetitive hours: 5 * 13 * 48 = 3,120 hrs/yr
+  assert.strictEqual(preview.baseline.annualRepetitiveHoursTeam, 3120);
+  assert.strictEqual(preview.baseline.annualAllocatedValue, 3120 * 85); // €265,200
+
+  // Expected regression outputs table:
+  // Adoption | Annual Recovered Hours | Illustrative Value
+  // 20%      | 561.6                  | €47,736
+  // 40%      | 1,123.2                | €95,472
+  // 60%      | 1,684.8                | €143,208
+  // 80%      | 2,246.4                | €190,944
+  // 100%     | 2,808.0                | €238,680
+  const expectedTable = [
+    { key: "scenario_20", adoption: 0.20, expectedHours: 561.6, expectedValue: 47736 },
+    { key: "scenario_40", adoption: 0.40, expectedHours: 1123.2, expectedValue: 95472 },
+    { key: "scenario_60", adoption: 0.60, expectedHours: 1684.8, expectedValue: 143208 },
+    { key: "scenario_80", adoption: 0.80, expectedHours: 2246.4, expectedValue: 190944 },
+    { key: "scenario_100", adoption: 1.00, expectedHours: 2808.0, expectedValue: 238680 },
+  ];
+
+  for (const exp of expectedTable) {
+    const sc = preview.scenarios[exp.key];
+    assert.ok(sc, `Scenario ${exp.key} must exist`);
+    assert.strictEqual(sc.adoptionRate, exp.adoption);
+    assert.strictEqual(sc.humanVerificationRate, 0.10);
+
+    // Full-precision assertions
+    assert.strictEqual(
+      sc.annualRecoveredHours,
+      exp.expectedHours,
+      `${exp.key} annualRecoveredHours must equal exactly ${exp.expectedHours}`
+    );
+    assert.strictEqual(
+      sc.annualIllustrativeValue,
+      exp.expectedValue,
+      `${exp.key} annualIllustrativeValue must equal exactly €${exp.expectedValue}`
+    );
+
+    // Weekly per-person intermediate formula assertions
+    const expectedAiCovered = Math.round(13 * exp.adoption * 10) / 10;
+    const expectedVerification = Math.round(13 * exp.adoption * 0.10 * 10) / 10;
+    const expectedNetRecovered = Math.round(13 * exp.adoption * 0.90 * 10) / 10;
+    const expectedRemaining = Math.round((13 - 13 * exp.adoption * 0.90) * 10) / 10;
+
+    assert.strictEqual(sc.aiCoveredHoursPerWeek, expectedAiCovered);
+    assert.strictEqual(sc.verificationHoursPerWeek, expectedVerification);
+    assert.strictEqual(sc.weeklyRecoveredHoursPerPerson, expectedNetRecovered);
+    assert.strictEqual(sc.remainingBaselineHoursPerWeek, expectedRemaining);
+  }
+
+  // Critical Regression Test: 100% adoption must NOT report 100% time elimination (3,120 hrs)
+  assert.notStrictEqual(preview.scenarios.scenario_100.annualRecoveredHours, 3120, "100% adoption must NOT report 3,120 hours");
+  assert.strictEqual(preview.scenarios.scenario_100.annualRecoveredHours, 2808.0, "100% adoption must retain 10% (312 hrs) for verification");
+  assert.strictEqual(preview.baseline.annualRepetitiveHoursTeam - preview.scenarios.scenario_100.annualRecoveredHours, 312.0);
+
+  // 3b. Test blank-rate fallback produces the identical regression outputs
+  const blankValidated = validateQuickEstimate({
+    modelerCount: 5,
+    hourlyRate: "", // blank
+    workingWeeks: 48,
+    rateType: "consulting"
+  });
+  const blankPreview = calculateRoiPreview({ quickEstimate: blankValidated.sanitized });
+  assert.strictEqual(blankPreview.scenarios.scenario_20.annualRecoveredHours, 561.6);
+  assert.strictEqual(blankPreview.scenarios.scenario_20.annualIllustrativeValue, 47736);
+  assert.strictEqual(blankPreview.scenarios.scenario_100.annualRecoveredHours, 2808.0);
+  assert.strictEqual(blankPreview.scenarios.scenario_100.annualIllustrativeValue, 238680);
+
+  // 3c. Test custom rate propagation
+  const customValidated = validateQuickEstimate({
+    modelerCount: 5,
+    hourlyRate: "100.00", // custom €100/h
+    workingWeeks: 48,
+    rateType: "consulting"
+  });
+  const customPreview = calculateRoiPreview({ quickEstimate: customValidated.sanitized });
+  assert.strictEqual(customPreview.scenarios.scenario_20.annualRecoveredHours, 561.6);
+  assert.strictEqual(customPreview.scenarios.scenario_20.annualIllustrativeValue, 56160); // 561.6 * 100
+  assert.strictEqual(customPreview.scenarios.scenario_100.annualIllustrativeValue, 280800); // 2808.0 * 100
+
+  // 3d. Check disclaimers and verification notice
+  assert.ok(preview.verificationAllowanceNotice.includes("fixed 10% engineering verification allowance"));
+  assert.ok(preview.verificationAllowanceNotice.includes("owner-selected planning assumption"));
+  assert.ok(preview.disclaimer.includes("illustrative capacity valuation"));
+  assert.ok(!JSON.stringify(preview).includes("9500"), "Must not contain fabricated €9500 price");
+}
+console.log("   ✓ All five required numerical regression cases asserted with exact precision");
+
+// 4. Regional Context Non-Destructive Behavior
+console.log("4. Testing Regional Context Non-Destructive Behavior...");
 {
   const customRate = 120.0;
-  // User enters custom rate and selects DACH
-  const dachRes = validateQuickEstimate({
-    hourlyRate: customRate,
-    region: "dach"
-  });
+  const dachRes = validateQuickEstimate({ hourlyRate: customRate, region: "dach" });
   assert.strictEqual(dachRes.sanitized.hourlyRate, 120.0, "Selecting DACH must NOT alter customer's custom rate");
   assert.strictEqual(dachRes.sanitized.region, "dach");
 
-  // User selects Italy
-  const itRes = validateQuickEstimate({
-    hourlyRate: customRate,
-    region: "it"
-  });
+  const itRes = validateQuickEstimate({ hourlyRate: customRate, region: "it" });
   assert.strictEqual(itRes.sanitized.hourlyRate, 120.0, "Selecting Italy must NOT alter customer's custom rate");
   assert.strictEqual(itRes.sanitized.region, "it");
 
-  // Unknown region falls back to global
-  const unknownRes = validateQuickEstimate({
-    hourlyRate: customRate,
-    region: "mars"
-  });
+  const unknownRes = validateQuickEstimate({ hourlyRate: customRate, region: "mars" });
   assert.strictEqual(unknownRes.sanitized.region, "global");
-  assert.strictEqual(unknownRes.sanitized.hourlyRate, 120.0);
 }
-console.log("   ✓ Regional context provides market context only and never overwrites user rate");
+console.log("   ✓ Regional context preserves custom rate unconditionally");
 
-// 4. Advanced Workflow Assessment & Double-Counting Safeguards
-console.log("4. Testing Advanced Workflow Assessment & Zero Double-Counting...");
+// 5. Rate-Type Integrity & Distinction
+console.log("5. Testing Rate-Type Integrity & Disambiguation...");
+{
+  const internalLaborInputs = {
+    modelerCount: 5,
+    workingWeeks: 48,
+    rateType: "internal_labor",
+    hourlyRate: 55 // Customer entered their own internal loaded rate
+  };
+  const internalPreview = calculateRoiPreview({ quickEstimate: internalLaborInputs });
+  assert.strictEqual(internalPreview.baseline.valuationTypeLabel, "Hypothetical Internal Labor Capacity Value (€)");
+  assert.strictEqual(internalPreview.scenarios.scenario_20.valuationTypeLabel, "Hypothetical Internal Labor Capacity Value (€)");
+  assert.strictEqual(internalPreview.scenarios.scenario_20.annualIllustrativeValue, Math.round(561.6 * 55));
+  assert.strictEqual(internalPreview.aggregatedSavingsAndBilling, undefined, "Must never aggregate billing capacity with cash cost savings");
+}
+console.log("   ✓ Rate types strictly segregated; no aggregation of capacity and cash savings");
+
+// 6. Advanced Workflow Assessment Diagnostic Safeguards
+console.log("6. Testing Advanced Workflow Assessment Diagnostic Safeguards...");
 {
   const advRes = validateAdvancedAssessment({
     searchHours: "8",
@@ -114,8 +279,22 @@ console.log("4. Testing Advanced Workflow Assessment & Zero Double-Counting...")
   assert.strictEqual(advRes.sanitized.manualDataEntryHours, 4);
   assert.strictEqual(advRes.sanitized.disciplineWorkflowsHours, 6);
   assert.strictEqual(advRes.sanitized.nonAutomatableJudgmentHours, 20);
-  assert.strictEqual(advRes.sanitized.repetitiveWeeklyHours, 18, "Repetitive total must equal 8 + 4 + 6 = 18");
-  assert.strictEqual(advRes.sanitized.totalAssessedHours, 38, "Total assessed hours must equal 18 + 20 = 38");
+  assert.strictEqual(advRes.sanitized.repetitiveWeeklyHours, 18);
+  assert.strictEqual(advRes.sanitized.totalAssessedHours, 38);
+
+  // Standard scenario preview calculation with advanced assessment attached:
+  // Standard scenario model remains locked to 13h benchmark (AUTODESK_REFERENCE_HOURS_PER_WEEK)
+  // to avoid double counting, while advanced numbers serve as diagnostic breakdown.
+  const previewWithAdv = calculateRoiPreview({
+    quickEstimate: { modelerCount: 5, hourlyRate: 85, workingWeeks: 48, rateType: "consulting" },
+    useAdvanced: true,
+    advancedAssessment: advRes.sanitized
+  });
+  // Repetitive annual baseline is still 13 * 5 * 48 = 3,120
+  assert.strictEqual(previewWithAdv.baseline.annualRepetitiveHoursTeam, 3120);
+  assert.strictEqual(previewWithAdv.scenarios.scenario_20.annualRecoveredHours, 561.6);
+  // Protected judgment is computed independently
+  assert.strictEqual(previewWithAdv.baseline.annualJudgmentHoursTeam, 20 * 48 * 5); // 4,800 hrs
 
   // Exceeding weekly max 60 hrs
   const excessive = validateAdvancedAssessment({
@@ -127,114 +306,6 @@ console.log("4. Testing Advanced Workflow Assessment & Zero Double-Counting...")
   assert.strictEqual(excessive.valid, false);
   assert.ok(excessive.errors.grandTotal, "Should error when total hours exceed 60 hrs/wk");
 }
-console.log("   ✓ Advanced assessment cleanly calculates repetitive total and isolates judgment");
+console.log("   ✓ Advanced assessment operates as diagnostic tool without double-counting benchmark");
 
-// 5. Calculation Engine Preview & Scenario Consistency
-console.log("5. Testing Preview Calculations & Realistic Scenarios...");
-{
-  // 5a. Reference Case (Owner Decision & Review Standard):
-  // 5 modelers, €85/h, 13 weekly hours, 48 working weeks, 35% hypothetical recovery
-  const referenceInputs = {
-    modelerCount: 5,
-    hourlyRate: 85,
-    searchHours: 13,
-    workingWeeks: 48,
-    rateType: "consulting",
-    region: "global"
-  };
-  const refPreview = calculateRoiPreview({ quickEstimate: referenceInputs });
-
-  // Baseline team repetitive hours: 5 * 13 * 48 = 3,120 hrs/yr
-  assert.strictEqual(refPreview.baseline.annualRepetitiveHoursTeam, 3120);
-  assert.strictEqual(refPreview.baseline.annualAllocatedValue, 3120 * 85); // €265,200
-
-  // Expected Scenario (35% hypothetical recovery):
-  // Full-precision intermediate: 3,120 * 0.35 = exactly 1,092.0 hours/year
-  // Full-precision value: 1,092 * 85 = exactly €92,820/year
-  assert.strictEqual(refPreview.scenarios.expected.annualRecoveredHours, 1092, "Reference case must equal exactly 1,092 hrs/yr");
-  assert.strictEqual(refPreview.scenarios.expected.annualIllustrativeValue, 92820, "Reference case must equal exactly €92,820/yr");
-  // Regression test: must detect and prevent the previous 1,104-hour premature rounding defect
-  assert.notStrictEqual(refPreview.scenarios.expected.annualRecoveredHours, 1104, "Must not suffer from previous 1,104-hour premature rounding defect");
-  assert.strictEqual(refPreview.scenarios.expected.isHypotheticalPlaceholder, true, "Scenario rates must be marked hypothetical placeholders");
-  assert.strictEqual(refPreview.scenarios.expected.status, "unapproved_placeholder");
-
-  // Conservative Scenario (20%): 3,120 * 0.20 = exactly 624.0 hours/year -> €53,040
-  assert.strictEqual(refPreview.scenarios.conservative.annualRecoveredHours, 624);
-  assert.strictEqual(refPreview.scenarios.conservative.annualIllustrativeValue, 624 * 85);
-
-  // Optimized Scenario (50%): 3,120 * 0.50 = exactly 1,560.0 hours/year -> €132,600
-  assert.strictEqual(refPreview.scenarios.optimized.annualRecoveredHours, 1560);
-  assert.strictEqual(refPreview.scenarios.optimized.annualIllustrativeValue, 1560 * 85);
-
-  // 5b. Rate-Type Integrity & Distinction
-  console.log("   Testing Rate-Type Integrity & Output Metric Disambiguation...");
-  const internalLaborInputs = {
-    ...referenceInputs,
-    rateType: "internal_labor",
-    hourlyRate: 55 // Customer entered their own internal loaded rate
-  };
-  const internalPreview = calculateRoiPreview({ quickEstimate: internalLaborInputs });
-  assert.strictEqual(internalPreview.scenarios.expected.valuationTypeLabel, "Hypothetical Internal Labor Capacity Value (€)");
-  assert.strictEqual(refPreview.scenarios.expected.valuationTypeLabel, "Hypothetical Consulting Billing Capacity Value (€)");
-  assert.strictEqual(internalPreview.scenarios.expected.annualIllustrativeValue, 1092 * 55);
-  // Ensure no aggregation of billing capacity and internal labor savings
-  assert.strictEqual(internalPreview.aggregatedSavingsAndBilling, undefined, "Must never aggregate billing capacity with cash cost savings");
-
-  // 5c. 2-Modeler Standard Case Verification (with full precision intermediate math)
-  const qInputs = {
-    modelerCount: 2,
-    hourlyRate: 85,
-    searchHours: 13,
-    workingWeeks: 48,
-    rateType: "consulting",
-    region: "global"
-  };
-  const preview = calculateRoiPreview({ quickEstimate: qInputs });
-
-  // Baseline repetitive hours = 13 * 48 * 2 = 1248 hrs/yr
-  assert.strictEqual(preview.baseline.annualRepetitiveHoursTeam, 1248);
-  assert.strictEqual(preview.baseline.annualAllocatedValue, 106080);
-
-  // Conservative (20%): 1248 * 0.20 = 249.6 -> round to 250 hrs. Value: 249.6 * 85 = 21216 -> 21216
-  assert.strictEqual(preview.scenarios.conservative.annualRecoveredHours, 250);
-  assert.strictEqual(preview.scenarios.conservative.annualIllustrativeValue, 21216);
-
-  // Expected (35%): 1248 * 0.35 = 436.8 -> round to 437 hrs. Value: 436.8 * 85 = 37128 -> 37128
-  assert.strictEqual(preview.scenarios.expected.annualRecoveredHours, 437);
-  assert.strictEqual(preview.scenarios.expected.annualIllustrativeValue, 37128);
-
-  // Optimized (50%): 1248 * 0.50 = 624.0 -> round to 624 hrs. Value: 624 * 85 = 53040
-  assert.strictEqual(preview.scenarios.optimized.annualRecoveredHours, 624);
-  assert.strictEqual(preview.scenarios.optimized.annualIllustrativeValue, 53040);
-
-  // Check that no arbitrary 85% or 100% fantasy scenario exists
-  assert.strictEqual(preview.scenarios["100%"], undefined);
-  assert.ok(!JSON.stringify(preview).includes("9500"), "Must not include hardcoded €9500 software implementation price");
-  assert.ok(preview.disclaimer.includes("illustrative"), "Must include transparent illustrative disclaimer");
-
-  // Advanced Assessment Calculation
-  const advInputs = {
-    searchHours: 10,
-    manualDataEntryHours: 5,
-    disciplineWorkflowsHours: 5,
-    nonAutomatableJudgmentHours: 15,
-    repetitiveWeeklyHours: 20,
-    totalAssessedHours: 35
-  };
-  const advPreview = calculateRoiPreview({
-    quickEstimate: qInputs,
-    useAdvanced: true,
-    advancedAssessment: advInputs
-  });
-  // Repetitive weekly hours = 20 (replaces 13 from quick search)
-  // Annual repetitive hours = 20 * 48 * 2 = 1920 hrs/yr
-  assert.strictEqual(advPreview.baseline.annualRepetitiveHoursTeam, 1920);
-  // Protected judgment hours = 15 * 48 * 2 = 1440 hrs/yr
-  assert.strictEqual(advPreview.baseline.annualJudgmentHoursTeam, 1440);
-  // Conservative (20%): 1920 * 0.20 = 384 hrs -> 384 * 85 = 32640
-  assert.strictEqual(advPreview.scenarios.conservative.annualRecoveredHours, 384);
-  assert.strictEqual(advPreview.scenarios.conservative.annualIllustrativeValue, 384 * 85);
-}
-console.log("   ✓ Preview calculations generate accurate, realistic scenarios without hardcoded prices");
-
-console.log("\n=== ALL ROI-01 SCHEMA & CALCULATION TESTS PASSED SUCCESSFULLY ===\n");
+console.log("\n=== ALL ROI-01 TESTS PASSED SUCCESSFULLY (100% COMPLIANT WITH OWNER DECISIONS) ===\n");
