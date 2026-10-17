@@ -226,20 +226,89 @@ export default function RoiMatrixSection() {
       return;
     }
 
-    // 4. Server-side eligibility & MX verification check
+    // 4. Client-side XLSX construction & Server-side verification & Resend dispatch sequence
+    // In accordance with ROI-02 Final Corrections:
+    // 1. Lazy-load ExcelJS and construct the XLSX buffer in browser memory first.
+    // 2. Generate stable export attempt identifier & reference ID reused across retries.
+    // 3. Verify Turnstile, corporate email, DNS MX, and Privacy on the server and dispatch notification.
+    // 4. Confirm provider acceptance.
+    // 5. Trigger browser download.
     setLoading(true);
 
     try {
-      // 1. Generate client idempotency key to prevent duplicate email alerts on double clicks
-      let clientToken;
+      // Step A: Derive stable export-attempt identifier & reference ID for this unchanged request
+      const safeEmail = businessIdentity.email.trim().toLowerCase();
+      const domain = safeEmail.split("@")[1] || "client";
+      let attemptHash;
       try {
-        clientToken = crypto.randomUUID().substring(0, 8).toUpperCase();
+        const attemptSig = JSON.stringify({
+          email: safeEmail,
+          name: businessIdentity.name.trim().toLowerCase(),
+          company: businessIdentity.companyName.trim().toLowerCase(),
+          quick: quickValidation.sanitized,
+          useAdvanced: Boolean(showAdvanced),
+          advanced: showAdvanced && advancedValidation ? advancedValidation.sanitized : null,
+        });
+        if (typeof crypto !== "undefined" && crypto.subtle && typeof TextEncoder !== "undefined") {
+          const enc = new TextEncoder();
+          const hashBuf = await crypto.subtle.digest("SHA-256", enc.encode(attemptSig));
+          attemptHash = Array.from(new Uint8Array(hashBuf))
+            .map((b) => b.toString(16).padStart(2, "0"))
+            .join("")
+            .substring(0, 8)
+            .toUpperCase();
+        }
       } catch {
-        clientToken = Date.now().toString(36).toUpperCase();
+        // Fallback if subtle crypto is not available
       }
-      const idempotencyKey = `roi-export-${businessIdentity.email.trim().toLowerCase().split("@")[1] || "client"}-${clientToken}`;
+      if (!attemptHash) {
+        attemptHash = Math.abs(
+          (safeEmail + businessIdentity.name.trim()).split("").reduce((acc, c) => ((acc << 5) - acc + c.charCodeAt(0)) | 0, 0)
+        ).toString(36).substring(0, 8).toUpperCase();
+      }
 
-      // 2. Server-side verification and Resend notification dispatch
+      const stableReferenceId = `ROI-SESS-${new Date().getFullYear()}-${attemptHash}`;
+      const idempotencyKey = `roi-export-${domain}-${attemptHash}`;
+
+      // Step B: Lazy-load ExcelJS and construct & serialize XLSX buffer in browser memory
+      let serializedBuffer;
+      let safeFileName;
+      try {
+        const ExcelJSModule = await import("exceljs");
+        const ExcelJS = ExcelJSModule.default || ExcelJSModule;
+        const { buildRoiWorkbook } = await import("@/lib/roi/roiWorkbookBuilder");
+
+        const workbook = await buildRoiWorkbook(ExcelJS, {
+          userName: businessIdentity.name.trim(),
+          companyName: businessIdentity.companyName.trim(),
+          referenceId: stableReferenceId,
+          modelerCount: quickValidation.sanitized.modelerCount,
+          hourlyRate: quickValidation.sanitized.hourlyRate,
+          isRateCustom: quickValidation.sanitized.isRateCustom,
+          rateType: quickValidation.sanitized.rateType,
+          workingWeeks: quickValidation.sanitized.workingWeeks,
+          useAdvanced: showAdvanced,
+          advancedAssessment: showAdvanced && advancedValidation ? advancedValidation.sanitized : null,
+        });
+
+        serializedBuffer = await workbook.xlsx.writeBuffer();
+        const safeCompanyFile = (businessIdentity.companyName.trim() || "pyBIM")
+          .replace(/[^a-zA-Z0-9_-]/g, "_")
+          .substring(0, 30);
+        safeFileName = `pyBIM-ROI-Matrix-${safeCompanyFile}.xlsx`;
+      } catch (wbError) {
+        console.error("[ROI WORKBOOK CONSTRUCTION FAILED]:", wbError);
+        setVerificationResult({
+          ok: false,
+          error: "Browser spreadsheet construction failed. No notification was sent. Please try again or contact support.",
+        });
+        if (turnstileRef.current?.reset) turnstileRef.current.reset();
+        setTurnstileToken("");
+        return;
+      }
+
+      // Step C: Server-side verification (Turnstile, Corporate Email, DNS MX, Privacy) and Resend notification dispatch
+      const attemptTimestamp = new Date().toISOString();
       const response = await fetch("/api/roi-matrix/eligibility", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -250,6 +319,8 @@ export default function RoiMatrixSection() {
           privacyAccepted: businessIdentity.privacyAccepted,
           turnstileToken,
           idempotencyKey,
+          referenceId: stableReferenceId,
+          attemptTimestamp,
           quickEstimate: quickValidation.sanitized,
           useAdvanced: showAdvanced,
           advancedAssessment: advancedValidation ? advancedValidation.sanitized : null,
@@ -265,59 +336,28 @@ export default function RoiMatrixSection() {
         });
         if (turnstileRef.current?.reset) turnstileRef.current.reset();
         setTurnstileToken("");
-      } else {
-        // 3. Client-side lazy load ExcelJS and build the English protected 4-worksheet workbook
-        try {
-          const ExcelJSModule = await import("exceljs");
-          const ExcelJS = ExcelJSModule.default || ExcelJSModule;
-          const { buildRoiWorkbook } = await import("@/lib/roi/roiWorkbookBuilder");
-
-          const workbook = await buildRoiWorkbook(ExcelJS, {
-            userName: businessIdentity.name.trim(),
-            companyName: businessIdentity.companyName.trim(),
-            referenceId: data.referenceId,
-            modelerCount: data.sanitizedInputs?.modelerCount || quickValidation.sanitized.modelerCount,
-            hourlyRate: data.sanitizedInputs?.hourlyRate || quickValidation.sanitized.hourlyRate,
-            isRateCustom: data.sanitizedInputs?.isRateCustom || quickValidation.sanitized.isRateCustom,
-            rateType: data.sanitizedInputs?.rateType || quickValidation.sanitized.rateType,
-            workingWeeks: data.sanitizedInputs?.workingWeeks || quickValidation.sanitized.workingWeeks,
-            useAdvanced: showAdvanced,
-            advancedAssessment: advancedValidation ? advancedValidation.sanitized : null
-          });
-
-          // 4. Generate in-memory buffer and trigger direct browser download
-          const buffer = await workbook.xlsx.writeBuffer();
-          const blob = new Blob([buffer], {
-            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-          });
-          const url = window.URL.createObjectURL(blob);
-          const safeCompanyFile = (businessIdentity.companyName.trim() || "pyBIM")
-            .replace(/[^a-zA-Z0-9_-]/g, "_")
-            .substring(0, 30);
-          const fileName = `pyBIM-ROI-Matrix-${safeCompanyFile}.xlsx`;
-
-          const link = document.createElement("a");
-          link.href = url;
-          link.download = fileName;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          setTimeout(() => window.URL.revokeObjectURL(url), 2000);
-
-          setVerificationResult({
-            ok: true,
-            downloadTriggered: true,
-            fileName,
-            data,
-          });
-        } catch (wbError) {
-          console.error("[ROI WORKBOOK GENERATION FAILED]:", wbError);
-          setVerificationResult({
-            ok: false,
-            error: "Eligibility verified, but browser spreadsheet construction failed. Please try again or contact support.",
-          });
-        }
+        return;
       }
+
+      // Step D: Confirm provider acceptance and trigger browser download of serialized buffer
+      const blob = new Blob([serializedBuffer], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = safeFileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => window.URL.revokeObjectURL(url), 2000);
+
+      setVerificationResult({
+        ok: true,
+        downloadTriggered: true,
+        fileName: safeFileName,
+        data,
+      });
     } catch (_err) {
       setVerificationResult({
         ok: false,
@@ -1094,7 +1134,7 @@ export default function RoiMatrixSection() {
                     {/* In-Form Privacy & Data Processing Disclosure */}
                     <p className="text-[11px] text-brand-textSecondary leading-relaxed px-1">
                       {t("roi.access.privacy_disclosure") ||
-                        "Corporate verification notice: Submitted business contact details are processed to verify corporate eligibility and dispatch an internal lead notification to pyBIM Support (support@pybim.com). Domain MX checks verify mail-exchange routing but do not prove mailbox ownership. Submissions are not added to marketing lists and imply no unsolicited marketing opt-in."}
+                        "Corporate verification notice: Submitted business contact details and ROI calculation parameters are processed to verify corporate eligibility and dispatch an internal lead notification to pyBIM Support (support@pybim.com) via our transactional email provider. No database or CRM persistence is used. Corporate-domain DNS MX checks verify mail-exchange routing but do not prove mailbox ownership. Submissions are not added to marketing mailing lists and downloading implies no marketing opt-in."}
                     </p>
 
                     {/* Verification Result Display */}
@@ -1137,7 +1177,7 @@ export default function RoiMatrixSection() {
                             </div>
                             <p className="text-[11px] font-sans text-brand-textSecondary leading-snug">
                               {t("roi.access.stateless_notice") ||
-                                "Stateless verification receipt: Submissions are NOT durably stored or emailed to recipients. Client-side download gating is for UX guidance only and does not represent an access-controlled security barrier. File creation does not prove local filesystem save."}
+                                "Stateless verification receipt: Submissions are not durably stored in a database or CRM. When an export is initiated, contact and calculation inputs are transmitted to pyBIM Support (support@pybim.com) and processed by our email delivery provider. Client-side download gating is for UX guidance only. File generation in memory does not prove local filesystem save."}
                             </p>
                             {verificationResult.downloadTriggered && (
                               <div className="p-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-[11px] font-sans text-emerald-900 dark:text-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-1">

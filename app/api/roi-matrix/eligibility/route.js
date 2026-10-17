@@ -181,16 +181,32 @@ export async function POST(req) {
       advancedAssessment: sanitizedAdvanced
     });
 
-    // 10. Generate Non-Persistent Random Verification Identifier (Stateless)
-    let randomToken;
+    // 10. Generate Stable Export-Attempt Identifier & Verification Reference
+    // Reused across legitimate retries of the unchanged request to ensure consistent Reference ID and idempotent notification delivery
+    let attemptHash;
     try {
-      const { randomUUID } = await import("node:crypto");
-      randomToken = randomUUID().substring(0, 8).toUpperCase();
+      const { createHash } = await import("node:crypto");
+      const attemptSignature = JSON.stringify({
+        email: emailCheck.sanitized,
+        name: nameCheck.sanitized,
+        company: companyCheck.sanitized,
+        quick: quickEstimateResult.sanitized,
+        useAdvanced: Boolean(useAdvanced),
+        advanced: useAdvanced && sanitizedAdvanced ? sanitizedAdvanced : null,
+      });
+      attemptHash = createHash("sha256").update(attemptSignature).digest("hex").substring(0, 8).toUpperCase();
     } catch {
-      randomToken = Date.now().toString(36).toUpperCase();
+      attemptHash = Math.abs(
+        (emailCheck.sanitized + nameCheck.sanitized).split("").reduce((acc, c) => ((acc << 5) - acc + c.charCodeAt(0)) | 0, 0)
+      ).toString(36).substring(0, 8).toUpperCase();
     }
-    const referenceId = `ROI-SESS-${new Date().getFullYear()}-${randomToken}`;
-    const timestamp = new Date().toISOString();
+
+    const referenceId = body.referenceId && typeof body.referenceId === "string" && /^ROI-SESS-\d{4}-[A-Z0-9]{6,16}$/.test(body.referenceId.trim())
+      ? body.referenceId.trim()
+      : `ROI-SESS-${new Date().getFullYear()}-${attemptHash}`;
+    const timestamp = body.attemptTimestamp && typeof body.attemptTimestamp === "string" && !isNaN(Date.parse(body.attemptTimestamp))
+      ? new Date(body.attemptTimestamp).toISOString()
+      : new Date().toISOString();
 
     // 11. Support Lead Notification via Resend (support@pybim.com)
     // Every legitimate export initiation must notify support@pybim.com
@@ -221,7 +237,7 @@ export async function POST(req) {
 
       const stableIdempotencyKey = body.idempotencyKey
         ? sanitizeHeader(String(body.idempotencyKey).trim())
-        : `roi-export-${emailCheck.domain}-${referenceId}`;
+        : `roi-export-${emailCheck.domain}-${attemptHash}`;
 
       const textBody = `
 === PYBIM ROI MATRIX — EXPORT INITIATED ===
@@ -384,7 +400,7 @@ Notice: Browser download initiated by client. Does not guarantee file saved to l
           eventStatus: "EXPORT_INITIATED",
           dispatched: notificationDispatched
         },
-        disclaimer: "Stateless verification receipt for browser-side export guidance. Submissions are NOT durably stored or emailed. Client-side download gating does not constitute an access-controlled security barrier."
+        disclaimer: "Stateless verification receipt for browser-side export guidance. Submissions are not durably stored in a database or CRM. On export initiation, lead parameters are transmitted to pyBIM Support (support@pybim.com) via transactional email. Client-side download gating does not constitute an access-controlled security barrier."
       }
     });
   } catch (error) {

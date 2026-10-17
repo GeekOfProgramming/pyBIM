@@ -249,6 +249,58 @@ console.log("7. Testing Idempotency Key Support and Stable Resend Dispatch...");
 }
 console.log("   ✓ Idempotency-Key correctly attached to email delivery options");
 
+// 7b. Stable export-attempt identifier & retry idempotency without duplicate email variations
+console.log("7b. Testing Stable Export-Attempt Identifier & Retry Idempotency...");
+{
+  _clearMockSentEmails();
+  _clearRateLimitMap();
+
+  const attemptTimestamp = new Date().toISOString();
+  const retryPayload = {
+    name: "Elena Rostagno",
+    companyName: "Studio Ingegneria BIM Srl",
+    email: "elena@studio-rostagno.it",
+    privacyAccepted: true,
+    turnstileToken: "1x00000000000000000000AA",
+    attemptTimestamp,
+    quickEstimate: {
+      modelerCount: 5,
+      hourlyRate: 85,
+      searchHours: 13,
+      workingWeeks: 48,
+      rateType: "consulting",
+      region: "eu"
+    }
+  };
+
+  // Attempt 1: First request without explicit idempotency key
+  const req1 = createMockRequest(retryPayload, "198.51.100.62");
+  const res1 = await POST(req1);
+  assert.strictEqual(res1.status, 200);
+  const json1 = await res1.json();
+  const emails1 = _getMockSentEmails();
+  assert.strictEqual(emails1.length, 1);
+  const firstKey = emails1[0].idempotencyKey;
+  assert.ok(firstKey.startsWith("roi-export-studio-rostagno.it-"));
+
+  // Attempt 2: Legitimate retry with identical parameters (re-submission / network recovery)
+  const req2 = createMockRequest(retryPayload, "198.51.100.62");
+  const res2 = await POST(req2);
+  assert.strictEqual(res2.status, 200);
+  const json2 = await res2.json();
+  const emails2 = _getMockSentEmails();
+  assert.strictEqual(emails2.length, 2);
+  const secondKey = emails2[1].idempotencyKey;
+
+  // The generated attempt identifier and reference ID must be stable and consistent across retries
+  assert.strictEqual(json1.referenceId, json2.referenceId, "Reference ID must be identical across retries of unchanged request");
+  assert.strictEqual(firstKey, secondKey, "Idempotency key must be identical across retries of unchanged request");
+  assert.strictEqual(emails1[0].subject, emails2[1].subject, "Email subject and reference must be identical across retries");
+  assert.strictEqual(emails1[0].text, emails2[1].text, "Email body text payload must be identical across retries");
+  assert.strictEqual(emails1[0].html, emails2[1].html, "Email body html payload must be identical across retries");
+}
+console.log("   ✓ Consistent Reference ID, Idempotency-Key, and email payload verified on retries");
+
 // 8. Rejection cases send NO notification
 console.log("8. Testing Absence of Emails for Rejected Requests...");
 {
