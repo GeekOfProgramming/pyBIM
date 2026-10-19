@@ -1,9 +1,17 @@
 {
-  "title": "Enterprise Security & Sovereign Edge AI: CISO Whitepaper",
-  "subtitle": "This technical protocol proves absolute algorithmic containment, zero data egress from the corporate firewall, and strict ISO 19650-5 compliance for outsourced BIM execution.",
+  "title": "Enterprise Security & Architecture Protocol: CISO Whitepaper",
+  "subtitle": "Technical protocol distinguishing Sovereign AI client deployments from public website operations, detailing algorithmic containment, ISO 19650-5 alignment, and edge network protections.",
+  "scope_clarification": {
+    "title": "Architecture Scope & Dual-Zone Model",
+    "badge": "Operational Boundary",
+    "client_zone_title": "Zone 1: Client Sovereign AI & BIM Engineering",
+    "client_zone_desc": "Air-gapped on-premise execution topology. Operates strictly within the client's corporate LAN or isolated private VPC. Local LLMs, zero outbound telemetry, ephemeral RAM vectors, and Revit C# plugins operate with 0 bytes transmitted to public AI APIs.",
+    "web_zone_title": "Zone 2: Public Website & Inbound Services",
+    "web_zone_desc": "Hosted on Cloudflare Workers serverless edge architecture. Public endpoints utilize Cloudflare Turnstile for privacy-preserving bot detection and Resend for transactional email notifications (Contact and ROI results)."
+  },
   "block1": {
-    "title": "1. Network Isolation Architecture",
-    "diagram_caption": "Air-Gapped Execution Topology. Absolute containment of geometry and algorithmic metavariables within the corporate LAN perimeter."
+    "title": "1. Network Isolation Architecture (Zone 1)",
+    "diagram_caption": "Zone 1 Air-Gapped Execution Topology: Absolute containment of BIM geometry and algorithmic metavariables within the client corporate LAN perimeter."
   },
   "diagram_text": {
     "lan": "CLIENT LAN PERIMETER",
@@ -18,71 +26,71 @@
     "zero_data": "ZERO OUTBOUND DATA"
   },
   "block2": {
-    "title": "2. Compliance Mapping Matrix",
-    "headers": ["Mandate / Standard", "Security Requirement", "pyBIM Technical Execution"],
+    "title": "2. Compliance & Standards Alignment Matrix",
+    "headers": ["Mandate / Standard", "Security Requirement", "pyBIM Technical Implementation"],
     "rows": [
       {
-        "mandate": "ISO 19650-5 (Information Security)",
-        "requirement": "Metadata leakage prevention",
-        "execution": "Offline LLM deployment and localized processing exclusively on edge hardware."
+        "mandate": "ISO 19650-5 (Security-Minded BIM)",
+        "requirement": "Metadata leakage prevention & model security",
+        "execution": "Offline LLM deployment and localized execution within customer-controlled infrastructure or encrypted CDE."
       },
       {
-        "mandate": "UNI 11337",
-        "requirement": "Sovereign data management",
-        "execution": "C# function execution directly on the local Revit database with zero geometry extraction."
+        "mandate": "UNI 11337 (Digital Management)",
+        "requirement": "Sovereign BIM data management",
+        "execution": "C# and Python automation executing directly against local Revit files with zero geometry extraction to cloud."
       },
       {
-        "mandate": "GDPR / DPA",
+        "mandate": "GDPR (EU 2016/679)",
         "requirement": "Data minimization & local custody",
-        "execution": "Absolute network severance for processing nodes. Data parsing occurs strictly offline."
+        "execution": "Absolute network severance for AI nodes. Public website collects minimal voluntary inquiry data with strict retention schedules."
       },
       {
-        "mandate": "NDA & Confidentiality (Outsourced BIM)",
-        "requirement": "Strict execution data privacy & CDE integrity",
-        "execution": "All client Revit files and geometry transferred via encrypted CDE. Guaranteed deletion post-execution."
+        "mandate": "Bilateral NDA & Confidentiality",
+        "requirement": "Strict BIM execution data privacy & CDE integrity",
+        "execution": "All client Revit models and federated IFCs handled via encrypted CDE channels with guaranteed post-handover data purge."
       }
     ]
   },
   "block3": {
-    "title": "3. Zero-Telemetry & Data Retention",
-    "notice_title": "DEFINITIVE SECURITY NOTICE",
-    "notice_text": "\"The pyBIM infrastructure contains zero background telemetry daemons. Exactly 0 bytes of algorithmic logic, geometric coordinates, or structural parameters are transmitted to public API endpoints.\"",
-    "purge_title": "RAM DESTRUCTION PROTOCOL",
-    "purge_text": "RAG pipeline tensors and intermediate data vectors are instantaneously destroyed upon script execution. State persists solely in the client's air-gapped Common Data Environment (CDE)."
+    "title": "3. Sovereign AI Data Custody & RAM Destruction",
+    "notice_title": "SOVEREIGN AI CLIENT DEPLOYMENTS NOTICE",
+    "notice_text": "\"In pyBIM sovereign edge AI deployments, our software contains zero background telemetry daemons. Exactly 0 bytes of proprietary BIM geometry, structural parameters, or algorithmic logic egress the client firewall to external public AI endpoints.\"",
+    "purge_title": "RAM DESTRUCTION PROTOCOL (ZONE 1)",
+    "purge_text": "RAG pipeline tensors, embeddings, and intermediate data vectors are instantaneously destroyed in memory upon script completion. Persistent model state resides exclusively within the client's secured Common Data Environment (CDE)."
   },
   "block4": {
     "title": "4. Encryption & Infrastructure Protocols",
-    "sector1_title": "GPU-VPS Sector (Custom Plugins)",
+    "sector1_title": "GPU-VPS Sector (Private Plugins)",
     "sector1_items": [
       {
         "title": "Drive Encryption Protocols",
-        "text": "AES-256-XTS At-Rest Encryption. Secure boot mandates locked firmware states."
+        "text": "AES-256-XTS at-rest encryption on client-dedicated instances. Secure boot mandates locked firmware states."
       },
       {
         "title": "Secure Networking Tunnels",
-        "text": "Network Ingress/Egress strictly limited to authenticated WireGuard/Tailscale tunnels. Unauthenticated packets dropped at kernel level."
+        "text": "Administrative ingress/egress strictly limited to authenticated WireGuard / Tailscale tunnels. Unauthenticated packets dropped at kernel level."
       }
     ],
     "sector2_title": "Edge Appliance Sector (Sovereign AI)",
     "sector2_items": [
       {
         "title": "Hardened OS Architecture",
-        "text": "Kernel-level isolation via hardened Linux OS (AppArmor mandatory enforcement)."
+        "text": "Kernel-level isolation via hardened Linux OS with mandatory AppArmor access enforcement."
       },
       {
         "title": "Hardware Isolation",
-        "text": "Hardware I/O disabled at BIOS level. Headless operation with physical tamper-evident chassis validation."
+        "text": "External hardware I/O disabled at BIOS level for dedicated on-premise appliances. Headless operation with chassis security validation."
       }
     ],
-    "sector3_title": "Execution Sector (Outsourced BIM)",
+    "sector3_title": "Public Web Sector (Cloudflare & Edge)",
     "sector3_items": [
       {
-        "title": "Strict NDA Enforcement",
-        "text": "Every outsourced BIM project is bound by enterprise-grade Non-Disclosure Agreements. Zero third-party sharing."
+        "title": "Edge Delivery & Turnstile",
+        "text": "Public website served globally via Cloudflare Workers serverless edge. Cloudflare Turnstile prevents automated bot abuse without tracking cookies."
       },
       {
-        "title": "ISO 19650-5 File Transfers",
-        "text": "All Revit models and federated IFCs are transmitted via encrypted CDE environments and purged upon project handover."
+        "title": "Transactional Email (Resend)",
+        "text": "Contact submissions and ROI reports dispatched via Resend TLS-encrypted transactional APIs with strict payload verification."
       }
     ]
   }

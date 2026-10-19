@@ -1,9 +1,17 @@
 {
-  "title": "Enterprise-Sicherheit & Sovereign Edge AI: CISO-Whitepaper",
-  "subtitle": "Dieses technische Protokoll belegt die absolute algorithmische Kapselung, null Datenabfluss über die Unternehmens-Firewall hinaus und die strikte ISO 19650-5-Konformität bei ausgelagerten BIM-Ausführungen.",
+  "title": "Enterprise-Sicherheit & Architekturprotokoll: CISO-Whitepaper",
+  "subtitle": "Technisches Protokoll zur klaren Abgrenzung von Sovereign-AI-Kundenbereitstellungen und dem Betrieb der öffentlichen Website, einschließlich algorithmischer Kapselung, ISO 19650-5-Ausrichtung und Edge-Schutzmaßnahmen.",
+  "scope_clarification": {
+    "title": "Architektur-Geltungsbereich & Zwei-Zonen-Modell",
+    "badge": "Betriebsgrenze",
+    "client_zone_title": "Zone 1: Sovereign AI & Kunden-BIM-Engineering",
+    "client_zone_desc": "Air-Gapped On-Premise Ausführungstopologie. Operiert strikt im Unternehmens-LAN oder einer isolierten privaten VPC des Kunden. Lokale LLMs, null ausgehende Telemetrie, flüchtige RAM-Tensoren und Revit C#-Plugins übertragen 0 Byte an öffentliche KI-APIs.",
+    "web_zone_title": "Zone 2: Öffentliche Website & Kontaktinfrastruktur",
+    "web_zone_desc": "Gehostet auf der serverlosen Edge-Architektur von Cloudflare Workers. Öffentliche Endpunkte nutzen Cloudflare Turnstile zur datenschutzfreundlichen Bot-Abwehr und Resend für transaktionale E-Mail-Benachrichtigungen (Kontaktanfragen und ROI-Ergebnisse)."
+  },
   "block1": {
-    "title": "1. Netzwerk-Isolationsarchitektur",
-    "diagram_caption": "Air-Gapped Ausführungs-Topologie. Vollständige Kapselung von Geometrien und algorithmischen Metavariablen innerhalb des Unternehmens-LAN-Perimeters."
+    "title": "1. Netzwerk-Isolationsarchitektur (Zone 1)",
+    "diagram_caption": "Zone 1 Air-Gapped Ausführungstopologie: Vollständige Kapselung von BIM-Geometrien und algorithmischen Metavariablen innerhalb des Kunden-LAN-Perimeters."
   },
   "diagram_text": {
     "lan": "KUNDEN-LAN-PERIMETER",
@@ -18,71 +26,71 @@
     "zero_data": "NULL AUSGEHENDE DATEN"
   },
   "block2": {
-    "title": "2. Compliance-Zuordnungsmatrix",
+    "title": "2. Compliance- & Standard-Abgleichsmatrix",
     "headers": ["Standard / Vorgabe", "Sicherheitsanforderung", "Technische pyBIM-Umsetzung"],
     "rows": [
       {
-        "mandate": "ISO 19650-5 (Informationssicherheit)",
-        "requirement": "Verhinderung von Metadaten-Lecks",
-        "execution": "Offline-LLM-Bereitstellung und lokalisierte Verarbeitung ausschließlich auf Edge-Hardware."
+        "mandate": "ISO 19650-5 (Sicherheitsgerichtetes BIM)",
+        "requirement": "Verhinderung von Metadaten-Lecks & Modellsicherheit",
+        "execution": "Offline-LLM-Bereitstellung und lokalisierte Ausführung auf kundenkontrollierter Infrastruktur oder verschlüsselter CDE."
       },
       {
-        "mandate": "UNI 11337",
-        "requirement": "Souveränes Datenmanagement",
-        "execution": "Ausführung von C#-Funktionen direkt auf der lokalen Revit-Datenbank ohne Geometrie-Extraktion."
+        "mandate": "UNI 11337 (Digitales Management)",
+        "requirement": "Souveränes BIM-Datenmanagement",
+        "execution": "C#- und Python-Automatisierung direkt auf der lokalen Revit-Datei ohne Geometrie-Extraktion in die Cloud."
       },
       {
-        "mandate": "DSGVO / AVV",
+        "mandate": "DSGVO (Verordnung EU 2016/679)",
         "requirement": "Datenminimierung & lokale Datenspeicherung",
-        "execution": "Vollständige Netzwerktrennung der Rechenknoten. Das Daten-Parsing erfolgt strikt offline."
+        "execution": "Vollständige Netztrennung für KI-Knoten. Die öffentliche Website erfasst minimale Daten mit strikten Löschfristen."
       },
       {
-        "mandate": "NDA & Vertraulichkeit (Outsourcing-BIM)",
-        "requirement": "Strikter Datenschutz der Ausführungsdaten & CDE-Integrität",
-        "execution": "Alle Kunden-Revit-Dateien und Geometrien werden über verschlüsselte CDEs übertragen. Garantierte Löschung nach der Ausführung."
+        "mandate": "Bilaterale NDAs & Vertraulichkeit",
+        "requirement": "Strikter Projektdatenschutz & CDE-Integrität",
+        "execution": "Alle Revit-Modelle und IFC-Dateien werden über verschlüsselte CDE-Kanäle mit garantierter Löschung nach Projektabschluss übertragen."
       }
     ]
   },
   "block3": {
-    "title": "3. Zero-Telemetrie & Datenspeicherung",
-    "notice_title": "VERBINDLICHER SICHERHEITSHINWEIS",
-    "notice_text": "\"Die pyBIM-Infrastruktur enthält keinerlei Telemetrie-Hintergrunddienste. Exakt 0 Byte an algorithmischer Logik, geometrischen Koordinaten oder Strukturparametern werden an öffentliche API-Endpunkte übertragen.\"",
-    "purge_title": "RAM-ZERSTÖRUNGS-PROTOKOLL",
-    "purge_text": "Tensoren der RAG-Pipeline und intermediäre Datenvektoren werden unmittelbar nach der Skriptausführung gelöscht. Persistente Daten verbleiben ausschließlich in der Air-Gapped Common Data Environment (CDE) des Kunden."
+    "title": "3. Sovereign-AI-Datenverwahrung & RAM-Löschung",
+    "notice_title": "HINWEIS ZU SOVEREIGN-AI-KUNDENBEREITSTELLUNGEN",
+    "notice_text": "\"In pyBIM Sovereign-Edge-AI-Bereitstellungen enthält unsere Software keinerlei Telemetrie-Dienste. Exakt 0 Byte an proprietärer BIM-Geometrie, Konstruktionsparametern oder algorithmischer Logik verlassen die Kunden-Firewall in Richtung öffentlicher KI-Endpunkte.\"",
+    "purge_title": "RAM-LÖSCHUNGSPROTOKOLL (ZONE 1)",
+    "purge_text": "Tensoren der RAG-Pipeline, Einbettungen und intermediäre Datenvektoren werden unmittelbar nach der Skriptausführung im Arbeitsspeicher gelöscht. Persistente Daten verbleiben ausschließlich in der gesicherten Common Data Environment (CDE) des Kunden."
   },
   "block4": {
     "title": "4. Verschlüsselungs- & Infrastrukturprotokolle",
-    "sector1_title": "GPU-VPS-Bereich (Individuelle Plugins)",
+    "sector1_title": "GPU-VPS-Bereich (Private Plugins)",
     "sector1_items": [
       {
-        "title": "Laufwerks-Verschlüsselungsprotokolle",
-        "text": "AES-256-XTS Ruhedaten-Verschlüsselung (At-Rest). Secure Boot erzwingt gesperrte Firmware-Zustände."
+        "title": "Laufwerks-Verschlüsselung",
+        "text": "AES-256-XTS Ruhedaten-Verschlüsselung auf dedizierten Instanzen. Secure Boot erzwingt gesperrte Firmware-Zustände."
       },
       {
         "title": "Sichere Netzwerktunnel",
-        "text": "Netzwerk-Ingress/Egress strikt auf authentifizierte WireGuard/Tailscale-Tunnel beschränkt. Nicht authentifizierte Pakete werden auf Kernel-Ebene verworfen."
+        "text": "Administrativer Zugriff strikt auf authentifizierte WireGuard / Tailscale Tunnel begrenzt. Unauthentifizierte Pakete werden auf Kernel-Ebene verworfen."
       }
     ],
     "sector2_title": "Edge-Appliance-Bereich (Sovereign AI)",
     "sector2_items": [
       {
         "title": "Gehärtete OS-Architektur",
-        "text": "Kernel-Level-Isolation über gehärtetes Linux-Betriebssystem (verbindliche AppArmor-Durchsetzung)."
+        "text": "Kernel-Level-Isolation über gehärtetes Linux-Betriebssystem mit zwingender Durchsetzung von AppArmor-Richtlinien."
       },
       {
         "title": "Hardware-Isolation",
-        "text": "Hardware-I/O auf BIOS-Ebene deaktiviert. Headless-Betrieb mit physischer Manipulationserkennung (Tamper-Evident) am Gehäuse."
+        "text": "Externe I/O-Schnittstellen auf BIOS-Ebene deaktiviert. Headless-Betrieb mit physischer Chassis-Manipulationsprüfung."
       }
     ],
-    "sector3_title": "Ausführungs-Bereich (Outsourcing-BIM)",
+    "sector3_title": "Öffentlicher Web-Bereich (Cloudflare & Edge)",
     "sector3_items": [
       {
-        "title": "Strikte NDA-Durchsetzung",
-        "text": "Jedes ausgelagerte BIM-Projekt ist an Non-Disclosure Agreements auf Enterprise-Niveau gebunden. Keinerlei Weitergabe an Dritte."
+        "title": "Edge-Bereitstellung & Turnstile",
+        "text": "Öffentliche Website weltweit über Cloudflare Workers bereitgestellt. Cloudflare Turnstile schützt vor Bot-Angriffen ohne Tracking-Cookies."
       },
       {
-        "title": "ISO 19650-5 Dateiübertragungen",
-        "text": "Alle Revit-Modelle und föderierten IFCs werden über verschlüsselte CDE-Umgebungen übertragen und bei Projektübergabe bereinigt."
+        "title": "Transaktionale E-Mails (Resend)",
+        "text": "Kontaktanfragen und ROI-Ergebnisse werden über TLS-verschlüsselte transaktionale Schnittstellen von Resend mit Schema-Validierung versendet."
       }
     ]
   }
