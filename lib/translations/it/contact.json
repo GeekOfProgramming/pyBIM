@@ -155,7 +155,7 @@
   "roi.advanced.cat_judgment_label": "4. Giudizio Ingegneristico Non Automatizzabile (ore/sett/persona)",
   "roi.advanced.cat_judgment_desc": "Progettazione concettuale, calcolo strutturale, risoluzione problemi con il committente. Preservato ed escluso dal recupero tramite automazione.",
   "roi.advanced.judgment_badge": "Decisione Umana Tutelata (Non Automatizzabile)",
-  "roi.advanced.reconciliation_note": "Riconciliazione Attiva: Le ore ripetitive settimanali per l'anteprima sono calcolate come (1 + 2 + 3). La categoria 4 è tutelata.",
+  "roi.advanced.reconciliation_note": "Questi dettagli operativi sono raccolti per una valutazione approfondita. Non modificano la stima rapida. Il giudizio ingegneristico rimane escluso dai potenziali risparmi di automazione.",
   "roi.advanced.overlap_warning": "Nota: Il limite di 60 ore settimanali funge da controllo di integrità strutturale, ma non garantisce di per sé l'assenza di sovrapposizioni semantiche. Assicurati che le attività siano suddivise chiaramente tra ricerca, inserimento dati e modellazione.",
   "roi.preview.group_title": "Potenziale Risparmio di Tempo e Valore con l'IA",
   "roi.preview.subtitle": "Risultati annuali illustrativi basati sui tuoi parametri.",

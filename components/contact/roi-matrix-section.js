@@ -1058,7 +1058,7 @@ export default function RoiMatrixSection() {
                         <div>
                           <span>
                             {t("roi.advanced.reconciliation_note") ||
-                              "Reconciliation Active: Weekly repetitive hours for automation preview are calculated as (1 + 2 + 3). Category 4 is protected."}
+                              "These workflow details are collected for further assessment. They do not affect the quick estimate. Engineering judgment remains excluded from potential automation savings."}
                           </span>
                           <span className="block text-[10px] text-brand-textSecondary/80 mt-1">
                             {t("roi.advanced.overlap_warning") ||

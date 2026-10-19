@@ -155,7 +155,7 @@
   "roi.advanced.cat_judgment_label": "4. Nicht-automatisierbares Ingenieururteil (Std./Woche/Person)",
   "roi.advanced.cat_judgment_desc": "Kreativer Entwurf, Tragwerksberechnung, Beratung des Bauherrn. Geschützt und von der Automatisierungsrückgewinnung ausgeschlossen.",
   "roi.advanced.judgment_badge": "Geschützte menschliche Entscheidungsfindung (Nicht automatisierbar)",
-  "roi.advanced.reconciliation_note": "Abstimmung aktiv: Die wöchentlichen Wiederholungsstunden für die Vorschau berechnen sich aus (1 + 2 + 3). Kategorie 4 bleibt geschützt.",
+  "roi.advanced.reconciliation_note": "Diese Workflow-Details werden für eine weitergehende Bewertung erfasst. Sie verändern die Schnelleinschätzung nicht. Das Ingenieururteil bleibt von potenziellen Automatisierungseinsparungen ausgeschlossen.",
   "roi.advanced.overlap_warning": "Hinweis: Die Obergrenze von 60 Wochenstunden dient als Plausibilitätsprüfung, garantiert jedoch nicht automatisch die vollständige Abgrenzung der Kategorien. Bitte ordnen Sie Aufgaben trennscharf zu.",
   "roi.preview.group_title": "Potenzielle Zeit- & Wertersparnis mit KI",
   "roi.preview.subtitle": "Illustrative jährliche Ergebnisse auf Basis Ihrer Eingaben.",

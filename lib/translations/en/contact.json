@@ -155,7 +155,7 @@
   "roi.advanced.cat_judgment_label": "4. Non-Automatable Engineering Judgment (hrs/wk/person)",
   "roi.advanced.cat_judgment_desc": "Creative design, structural deliberation, client problem-solving, architectural decision-making. Preserved and excluded from automation recovery.",
   "roi.advanced.judgment_badge": "Protected Human Decision-Making (Non-Automatable)",
-  "roi.advanced.reconciliation_note": "Reconciliation Active: Weekly repetitive hours for automation preview are calculated as (1 + 2 + 3). Category 4 is protected.",
+  "roi.advanced.reconciliation_note": "These workflow details are collected for further assessment. They do not affect the quick estimate. Engineering judgment remains excluded from potential automation savings.",
   "roi.advanced.overlap_warning": "Note: The 60-hour/week cap acts as a structural sanity check against impossible individual weekly totals, but does not by itself guarantee absence of semantic overlap. Please ensure tasks are distinctly categorized across search, entry, and modeling.",
   "roi.preview.group_title": "Potential Time & Value with AI",
   "roi.preview.subtitle": "Illustrative annual outcomes based on your inputs.",
