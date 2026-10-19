@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useId } from "react";
 import Link from "@/components/layout/LocalizedLink";
-import { X, Mail, Linkedin, Github, UserRound } from "lucide-react";
+import { X, Mail, Linkedin, Github, Compass, UserCheck } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function TeamPartnerModal({ person, onClose }) {
@@ -87,11 +87,10 @@ export default function TeamPartnerModal({ person, onClose }) {
   if (!person) return null;
   const data = person[language] || person.it;
 
-  // Stock unapproved photos (e.g. Unsplash) or missing images should show neutral placeholder
   const isApprovedPortrait = Boolean(person.image && !person.image.includes("unsplash.com"));
 
   return (
-    <div className="fixed inset-0 z-[1100] flex p-4 sm:p-6 bg-black/60 backdrop-blur-md overflow-y-auto">
+    <div className="fixed inset-0 z-[1100] flex p-4 sm:p-6 bg-black/75 backdrop-blur-md overflow-y-auto">
       {/* Click outside to close */}
       <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
 
@@ -104,7 +103,7 @@ export default function TeamPartnerModal({ person, onClose }) {
         className="relative w-full max-w-5xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row m-auto border border-brand-border dark:border-slate-800 transition-colors focus:outline-none"
       >
         {/* Close Button */}
-        <button 
+        <button
           ref={closeButtonRef}
           onClick={onClose}
           className="absolute top-5 right-5 z-20 w-10 h-10 bg-white/90 dark:bg-slate-800/90 hover:bg-brand-surface dark:hover:bg-slate-700 rounded-full flex items-center justify-center text-brand-textPrimary border border-brand-border dark:border-slate-700 shadow-sm transition-all hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
@@ -116,28 +115,56 @@ export default function TeamPartnerModal({ person, onClose }) {
         {/* LEFT COLUMN: Image & Contact Info */}
         <div className="w-full md:w-5/12 flex flex-col bg-brand-surface dark:bg-slate-950/60 p-6 sm:p-8 border-b md:border-b-0 md:border-r border-brand-border dark:border-slate-800 justify-between">
           <div>
-            <div className="relative rounded-2xl overflow-hidden shadow-md border border-brand-border dark:border-slate-800 aspect-[4/5] w-full mb-6">
+            <div className="relative rounded-2xl overflow-hidden shadow-md border border-brand-border dark:border-slate-800 aspect-[4/5] w-full mb-6 bg-brand-base">
               {isApprovedPortrait ? (
                 <img
                   src={person.image}
                   alt={data.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               ) : (
-                <div className="w-full h-full bg-slate-100 dark:bg-slate-900/90 flex flex-col items-center justify-center">
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-slate-200/70 dark:bg-slate-800/80 border border-brand-border flex items-center justify-center text-brand-textSecondary">
-                    <UserRound className="w-12 h-12 sm:w-14 sm:h-14 stroke-[1.5]" />
+                <div className="w-full h-full relative flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#112240] via-[#0B1528] to-[#070D18]">
+                  {/* Engineering Grid */}
+                  <div
+                    className="absolute inset-0 opacity-20 pointer-events-none"
+                    style={{
+                      backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(59, 130, 246, 0.15) 1px, transparent 1px)",
+                      backgroundSize: "20px 20px"
+                    }}
+                  />
+                  {/* Radial Glow */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(59,130,246,0.25),transparent_70%)] pointer-events-none" />
+
+                  {/* Concentric Circle Accents */}
+                  <div className="absolute w-40 h-40 rounded-full border border-blue-500/15 animate-[spin_60s_linear_infinite] pointer-events-none" />
+
+                  {/* Icon Card Badge */}
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-br from-blue-600/20 to-cyan-500/10 border border-blue-400/30 backdrop-blur-md flex flex-col items-center justify-center text-brand-primary shadow-lg shadow-blue-950/50">
+                      <Compass className="w-10 h-10 sm:w-12 sm:h-12 text-blue-400 stroke-[1.5] mb-1" />
+                      <span className="text-[10px] font-mono tracking-widest font-extrabold text-blue-300/90 uppercase">
+                        BIM ENG
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Tag */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase bg-blue-950/70 text-blue-300 border border-blue-500/30 backdrop-blur-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                      CO-FOUNDER
+                    </span>
                   </div>
                 </div>
               )}
             </div>
-            
+
             <div className="text-center md:text-left mb-6">
               <h3 id={nameId} className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary leading-[1.25] sm:leading-[1.25] lg:leading-[1.25] tracking-tight">{data.name}</h3>
               <p className="text-body-sm font-semibold text-brand-primary mt-1.5 leading-snug">{data.role}</p>
             </div>
           </div>
-          
+
           {/* Contact Links */}
           {Boolean(person.linkedin || person.github || person.email) && (
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 sm:p-5 text-center shadow-sm border border-brand-border dark:border-slate-700 mt-auto flex items-center justify-center gap-6">
@@ -178,7 +205,7 @@ export default function TeamPartnerModal({ person, onClose }) {
 
         {/* RIGHT COLUMN: Details */}
         <div className="w-full md:w-7/12 p-8 lg:p-12 md:overflow-y-auto md:max-h-[85vh] bg-white dark:bg-slate-900">
-          
+
           {/* PROFILE SUMMARY */}
           <div className="mb-10">
             <h3 className="text-caption font-mono font-bold uppercase tracking-wider mb-4 text-brand-textSecondary">
