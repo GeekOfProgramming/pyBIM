@@ -156,6 +156,10 @@ async function main() {
   };
 
   const execSheet = reloaded.getWorksheet("Executive Summary");
+  const execSub = execSheet.getCell("B3").value;
+  assert.ok(execSub.includes("Illustrative ROI Planning Model"), "B3 must include 'Illustrative ROI Planning Model'");
+  assert.ok(!execSub.includes("ISO 19650 Architecture"), "B3 must not contain 'ISO 19650 Architecture'");
+  assert.ok(execSub.includes("Region:"), "B3 must include Regional Market Context metadata");
   assert.strictEqual(execSheet.getCell("B25").value, "• At 100% AI workflow coverage, 10% of covered time remains allocated to engineering verification and quality control.");
   assert.ok(!execSheet.getCell("B25").value.includes("312"), "Must not contain hardcoded 312 number");
   assert.strictEqual(execSheet.views?.[0]?.showGridLines, false, "Executive Summary gridlines must be hidden");

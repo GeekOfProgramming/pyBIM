@@ -75,10 +75,13 @@ export default function RoiMatrixSection() {
   // Verification request UI state
   const [loading, setLoading] = useState(false);
   const [verificationResult, setVerificationResult] = useState(null); // null | { ok: boolean, data?: object, error?: string }
+  // Ref tracking current pending export attempt (reused on retries of the same attempt, cleared upon success)
+  const pendingAttemptRef = useRef(null);
 
-  // Invalidate verification state when any relevant input changes
+  // Invalidate verification state and clear pending attempt when any operational input changes
   const handleInputChange = (setter) => (val) => {
     setter(val);
+    pendingAttemptRef.current = null;
     if (verificationResult) {
       setVerificationResult(null);
     }
@@ -86,6 +89,7 @@ export default function RoiMatrixSection() {
 
   const updateIdentity = (field, value) => {
     setBusinessIdentity((prev) => ({ ...prev, [field]: value }));
+    pendingAttemptRef.current = null;
     if (verificationResult) {
       setVerificationResult(null);
     }
@@ -93,6 +97,7 @@ export default function RoiMatrixSection() {
 
   const handleRateTypeChange = (newType) => {
     setRateType(newType);
+    pendingAttemptRef.current = null;
     if (verificationResult) {
       setVerificationResult(null);
     }
@@ -237,39 +242,38 @@ export default function RoiMatrixSection() {
     setLoading(true);
 
     try {
-      // Step A: Derive stable export-attempt identifier & reference ID for this unchanged request
+      // Step A: Derive or reuse export-attempt identifier & reference ID
+      // If a pending attempt already exists (e.g. user retrying submission without changing inputs),
+      // reuse its attempt identifier to prevent duplicate emails.
+      // If this is a fresh export initiation, allocate a new unique identifier.
       const safeEmail = businessIdentity.email.trim().toLowerCase();
       const domain = safeEmail.split("@")[1] || "client";
-      let attemptHash;
-      try {
-        const attemptSig = JSON.stringify({
-          email: safeEmail,
-          name: businessIdentity.name.trim().toLowerCase(),
-          company: businessIdentity.companyName.trim().toLowerCase(),
-          quick: quickValidation.sanitized,
-          useAdvanced: Boolean(showAdvanced),
-          advanced: showAdvanced && advancedValidation ? advancedValidation.sanitized : null,
-        });
-        if (typeof crypto !== "undefined" && crypto.subtle && typeof TextEncoder !== "undefined") {
-          const enc = new TextEncoder();
-          const hashBuf = await crypto.subtle.digest("SHA-256", enc.encode(attemptSig));
-          attemptHash = Array.from(new Uint8Array(hashBuf))
-            .map((b) => b.toString(16).padStart(2, "0"))
-            .join("")
-            .substring(0, 8)
-            .toUpperCase();
+
+      if (!pendingAttemptRef.current) {
+        let randomSuffix;
+        try {
+          if (typeof crypto !== "undefined" && crypto.getRandomValues) {
+            const arr = new Uint8Array(4);
+            crypto.getRandomValues(arr);
+            randomSuffix = Array.from(arr).map((b) => b.toString(16).padStart(2, "0")).join("").toUpperCase();
+          }
+        } catch {
+          // Fallback if crypto.getRandomValues is unavailable
         }
-      } catch {
-        // Fallback if subtle crypto is not available
-      }
-      if (!attemptHash) {
-        attemptHash = Math.abs(
-          (safeEmail + businessIdentity.name.trim()).split("").reduce((acc, c) => ((acc << 5) - acc + c.charCodeAt(0)) | 0, 0)
-        ).toString(36).substring(0, 8).toUpperCase();
+        if (!randomSuffix) {
+          randomSuffix = Math.floor(Math.random() * 0xffffffff).toString(16).padStart(8, "0").toUpperCase();
+        }
+
+        const stableReferenceId = `ROI-SESS-${new Date().getFullYear()}-${randomSuffix}`;
+        const idempotencyKey = `roi-export-${domain}-${randomSuffix}`;
+        pendingAttemptRef.current = {
+          referenceId: stableReferenceId,
+          idempotencyKey,
+          attemptTimestamp: new Date().toISOString(),
+        };
       }
 
-      const stableReferenceId = `ROI-SESS-${new Date().getFullYear()}-${attemptHash}`;
-      const idempotencyKey = `roi-export-${domain}-${attemptHash}`;
+      const { referenceId: stableReferenceId, idempotencyKey, attemptTimestamp } = pendingAttemptRef.current;
 
       // Step B: Lazy-load ExcelJS and construct & serialize XLSX buffer in browser memory
       let serializedBuffer;
@@ -288,6 +292,7 @@ export default function RoiMatrixSection() {
           isRateCustom: quickValidation.sanitized.isRateCustom,
           rateType: quickValidation.sanitized.rateType,
           workingWeeks: quickValidation.sanitized.workingWeeks,
+          region: quickValidation.sanitized.region,
           useAdvanced: showAdvanced,
           advancedAssessment: showAdvanced && advancedValidation ? advancedValidation.sanitized : null,
         });
@@ -309,7 +314,6 @@ export default function RoiMatrixSection() {
       }
 
       // Step C: Server-side verification (Turnstile, Corporate Email, DNS MX, Privacy) and Resend notification dispatch
-      const attemptTimestamp = new Date().toISOString();
       const response = await fetch("/api/roi-matrix/eligibility", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -352,6 +356,9 @@ export default function RoiMatrixSection() {
       link.click();
       document.body.removeChild(link);
       setTimeout(() => window.URL.revokeObjectURL(url), 2000);
+
+      // Successfully completed export attempt: clear pending attempt so subsequent exports generate new unique events
+      pendingAttemptRef.current = null;
 
       setVerificationResult({
         ok: true,

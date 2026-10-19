@@ -221,6 +221,7 @@ console.log("6. Testing Support Lead Notification to support@pybim.com (14 field
   assert.ok(email.text.includes("Customer-Supplied Custom Rate"), "6. Rate Origin");
   assert.ok(email.text.includes("8"), "7. BIM Professionals");
   assert.ok(email.text.includes("46"), "8. Effective Working Weeks");
+  assert.ok(email.text.includes("Regional Market Context: UK / International Practice (Informational)"), "8b. Regional Context");
   assert.ok(email.text.includes("13 hrs/week/person"), "9. Autodesk Benchmark");
   assert.ok(email.text.includes("10%"), "10. Verification Allowance");
   assert.ok(email.text.includes("20% Adoption"), "11a. Scenario 20");
@@ -314,8 +315,25 @@ console.log("7b. Testing Stable Export-Attempt Identifier & Retry Idempotency...
   assert.strictEqual(emails1[0].subject, emails2[1].subject, "Email subject and reference must be identical across retries");
   assert.strictEqual(emails1[0].text, emails2[1].text, "Email body text payload must be identical across retries");
   assert.strictEqual(emails1[0].html, emails2[1].html, "Email body html payload must be identical across retries");
+
+  // Attempt 3: New subsequent legitimate export with unique attempt identifier (even with same customer inputs)
+  const newAttemptPayload = {
+    ...retryPayload,
+    referenceId: "ROI-SESS-2026-NEWEXP01",
+    idempotencyKey: "roi-export-studio-rostagno.it-NEWEXP01"
+  };
+  const req3 = createMockRequest(newAttemptPayload, "198.51.100.63");
+  const res3 = await POST(req3);
+  assert.strictEqual(res3.status, 200);
+  const json3 = await res3.json();
+  const emails3 = _getMockSentEmails();
+  assert.strictEqual(emails3.length, 3);
+  assert.strictEqual(json3.referenceId, "ROI-SESS-2026-NEWEXP01", "New export event must preserve distinct referenceId");
+  assert.strictEqual(emails3[2].idempotencyKey, "roi-export-studio-rostagno.it-NEWEXP01", "New export event must use distinct idempotencyKey");
+  assert.notStrictEqual(emails3[0].idempotencyKey, emails3[2].idempotencyKey, "Separate downloads must not reuse the same idempotency key");
 }
 console.log("   ✓ Consistent Reference ID, Idempotency-Key, and email payload verified on retries");
+console.log("   ✓ New legitimate exports with distinct identifiers receive separate notifications");
 
 // 8. Rejection cases send NO notification
 console.log("8. Testing Absence of Emails for Rejected Requests...");

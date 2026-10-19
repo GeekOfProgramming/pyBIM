@@ -15,6 +15,7 @@ import {
   ROI_SCHEMA_VERSION,
   AUTODESK_REFERENCE_HOURS_PER_WEEK,
   HUMAN_VERIFICATION_RATE,
+  REGIONAL_CONTEXTS,
 } from "../../../../lib/roi/roiSchema.js";
 import {
   checkEmailConfiguration,
@@ -234,6 +235,8 @@ export async function POST(req) {
       const safeEffectiveRate = quickEstimateResult.sanitized.hourlyRate;
       const safeModelers = quickEstimateResult.sanitized.modelerCount;
       const safeWeeks = quickEstimateResult.sanitized.workingWeeks;
+      const safeRegionKey = quickEstimateResult.sanitized.region || "global";
+      const safeRegionName = REGIONAL_CONTEXTS[safeRegionKey]?.name || REGIONAL_CONTEXTS.global.name;
 
       const stableIdempotencyKey = body.idempotencyKey
         ? sanitizeHeader(String(body.idempotencyKey).trim())
@@ -257,6 +260,7 @@ MODEL OPERATIONAL INPUTS:
 - Rate Origin: ${safeRateOrigin}
 - BIM Professionals (Team Size): ${safeModelers}
 - Effective Working Weeks / Year: ${safeWeeks}
+- Regional Market Context: ${safeRegionName} (Informational)
 - Autodesk Weekly Benchmark: ${AUTODESK_REFERENCE_HOURS_PER_WEEK} hrs/week/person (Fixed)
 - Human Verification Allowance: ${HUMAN_VERIFICATION_RATE * 100}% (0.10, Fixed)
 
@@ -298,6 +302,7 @@ Notice: Browser download initiated by client. Does not guarantee file saved to l
             <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Effective Rate:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">&euro;${safeEffectiveRate}/h (${safeRateOrigin})</td></tr>
             <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">BIM Professionals:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${safeModelers}</td></tr>
             <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Working Weeks / Year:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${safeWeeks}</td></tr>
+            <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Regional Context:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">${escapeHtml(safeRegionName)} (Informational)</td></tr>
             <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Autodesk Benchmark:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">13 hrs/wk/person (Fixed)</td></tr>
             <tr><td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold;">Verification Allowance:</td><td style="padding: 6px; border: 1px solid #e2e8f0;">10% Retained (Fixed)</td></tr>
           </table>
