@@ -1,37 +1,12 @@
 "use client";
-import { useState } from "react";
 import Link from "@/components/layout/LocalizedLink";
 import { usePathname } from "next/navigation";
-import { Linkedin, Github, Mail, MapPin, Send, CheckCircle2, AlertCircle, ArrowUpRight } from "lucide-react";
+import { Linkedin, Github, Mail, MapPin, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Footer() {
   const pathname = usePathname();
   const { t } = useLanguage();
-  const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [popup, setPopup] = useState(null);
-
-  async function handleNewsletter(e) {
-    e.preventDefault();
-    setLoading(true);
-    setPopup(null);
-    try {
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email })
-      });
-      const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.error || t("footer.newsletter.generic_error"));
-      setPopup({ type: "success", message: t("footer.newsletter.success_msg") });
-      setEmail("");
-    } catch (err) {
-      setPopup({ type: "error", message: err.message });
-    } finally {
-      setLoading(false);
-    }
-  }
 
   const isExcluded =
     pathname?.startsWith("/admin") ||
@@ -43,76 +18,18 @@ export default function Footer() {
   return (
     <footer className="relative w-full overflow-hidden">
       {/* =========================================================================
-          TIER A — BRAND BLUE: Brand Message & Newsletter
+          TIER A — BRAND BLUE: Brand Message
           ========================================================================= */}
       <section className="w-full bg-brand-actionPrimary text-white py-12 lg:py-16 border-t border-blue-700/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-11 gap-10 lg:gap-12 items-center">
-
-            {/* Left: 55% (span 6) — Brand Message */}
-            <div className="lg:col-span-6 flex flex-col justify-center">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
-                {t("footer.brand.slogan_line1")}{" "}
-                <span className="text-blue-100">{t("footer.brand.slogan_line2")}</span>
-              </h2>
-              <p className="text-blue-50 text-base sm:text-lg leading-relaxed max-w-xl font-normal opacity-95">
-                {t("footer.brand.description")}
-              </p>
-            </div>
-
-            {/* Right: 45% (span 5) — Newsletter Panel */}
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl border border-slate-800/80 bg-slate-950 p-6 sm:p-7 shadow-xl">
-                <div className="mb-4">
-                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-                    {t("footer.newsletter.title")}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-                    {t("footer.newsletter.subtitle")}
-                  </p>
-                </div>
-
-                <form className="flex flex-col gap-3" onSubmit={handleNewsletter}>
-                  <div className="flex flex-col sm:flex-row gap-2.5">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder={t("footer.newsletter.placeholder")}
-                      required
-                      className="flex-1 rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-white placeholder:text-slate-400 outline-none transition focus:border-blue-500 focus:bg-slate-900 font-sans"
-                    />
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      aria-label={t("footer.newsletter.button_label")}
-                      className="group/btn inline-flex items-center justify-center gap-2 rounded-xl bg-brand-accent px-5 py-3 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-brand-accentHover disabled:opacity-60 shrink-0 cursor-pointer"
-                    >
-                      <span>{t("footer.newsletter.button_label")}</span>
-                      <Send className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                    </button>
-                  </div>
-
-                  <div className="flex items-start gap-2.5 pt-1">
-                    <input
-                      type="checkbox"
-                      id="privacy-footer-tier"
-                      required
-                      className="mt-0.5 w-4 h-4 rounded border-slate-700 bg-slate-900 text-blue-600 focus:ring-blue-500 focus:ring-offset-0 cursor-pointer shrink-0"
-                    />
-                    <label htmlFor="privacy-footer-tier" className="text-xs text-slate-300 leading-normal cursor-pointer select-none">
-                      {t("footer.newsletter.privacy_prefix")}
-                      <Link href="/privacy-policy" className="text-blue-400 font-medium hover:underline">
-                        {t("footer.newsletter.privacy_link")}
-                      </Link>
-                      {t("footer.newsletter.privacy_dot")}{" "}
-                      <span className="text-slate-400 opacity-90">{t("footer.newsletter.privacy_microcopy")}</span>
-                    </label>
-                  </div>
-                </form>
-              </div>
-            </div>
-
+          <div className="max-w-3xl">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+              {t("footer.brand.slogan_line1")}{" "}
+              <span className="text-blue-100">{t("footer.brand.slogan_line2")}</span>
+            </h2>
+            <p className="text-blue-50 text-base sm:text-lg leading-relaxed font-normal opacity-95">
+              {t("footer.brand.description")}
+            </p>
           </div>
         </div>
       </section>
@@ -343,32 +260,6 @@ export default function Footer() {
 
         </div>
       </section>
-
-      {/* Subscription Status Popup Modal */}
-      {popup && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="relative w-full max-w-md rounded-2xl bg-slate-900 p-7 shadow-2xl border border-slate-800 text-center transform animate-in zoom-in-95 duration-200">
-            <div className={`mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full ${popup.type === 'success' ? 'bg-emerald-950/60 text-emerald-400' : 'bg-red-950/60 text-red-400'}`}>
-              {popup.type === 'success' ? <CheckCircle2 className="h-7 w-7" /> : <AlertCircle className="h-7 w-7" />}
-            </div>
-
-            <h3 className="mb-2 text-xl font-bold text-white">
-              {popup.type === 'success' ? t("footer.popup.success_title") : t("footer.popup.error_title")}
-            </h3>
-
-            <p className="mb-6 text-sm font-medium leading-relaxed text-slate-300">
-              {popup.message}
-            </p>
-
-            <button
-              onClick={() => setPopup(null)}
-              className={`w-full rounded-xl px-5 py-3 text-sm font-bold text-white shadow-md transition-all cursor-pointer ${popup.type === 'success' ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-brand-actionPrimary hover:bg-brand-actionPrimaryHover'}`}
-            >
-              {popup.type === 'success' ? t("footer.popup.close_btn") : t("footer.popup.got_it_btn")}
-            </button>
-          </div>
-        </div>
-      )}
     </footer>
   );
 }

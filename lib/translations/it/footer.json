@@ -10,15 +10,6 @@
   "footer.legal.compliance_1": "Flussi di Lavoro OpenBIM & Standard di Settore",
   "footer.legal.compliance_2": "Automazione Strutturata con Revit API & Python",
   "footer.legal.compliance_3": "Ricerca & Sviluppo Applicata nell'Automazione BIM",
-  "footer.newsletter.title": "The AEC Automation Brief",
-  "footer.newsletter.subtitle": "Approfondimenti pratici su flussi di lavoro BIM, API Revit e automazione ingegneristica.",
-  "footer.newsletter.placeholder": "Il tuo indirizzo email aziendale",
-  "footer.newsletter.button_label": "Iscriviti",
-  "footer.newsletter.privacy_prefix": "Accetto l'",
-  "footer.newsletter.privacy_link": "Informativa sulla Privacy",
-  "footer.newsletter.privacy_dot": ".",
-  "footer.newsletter.privacy_microcopy": "(Aggiornamenti tecnici ingegneristici, zero spam. Cancellati in qualsiasi momento.)",
-  "footer.newsletter.success_msg": "Iscrizione completata con successo!",
   "footer.quick_links.title": "Link Rapidi",
   "footer.quick_links.home": "Home",
   "footer.quick_links.projects": "Casi di Successo",
@@ -41,10 +32,5 @@
   "footer.bottom.enterprise_security": "Sicurezza Enterprise",
   "footer.bottom.cookie_policy": "Informativa sui Cookie",
   "footer.bottom.terms_and_conditions": "Termini e Condizioni",
-  "footer.popup.success_title": "Operazione Riuscita!",
-  "footer.popup.error_title": "Azione Richiesta",
-  "footer.popup.close_btn": "Chiudi",
-  "footer.popup.got_it_btn": "Ho capito",
-  "footer.social.github_label": "GitHub",
-  "footer.newsletter.generic_error": "Richiesta fallita. Riprova più tardi."
+  "footer.social.github_label": "GitHub"
 }
