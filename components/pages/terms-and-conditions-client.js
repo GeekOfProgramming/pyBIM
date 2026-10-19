@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/lib/LanguageContext";
-import { ShieldCheck, FileText, Scale, ExternalLink } from "lucide-react";
+import { Info, FileText, Scale, ExternalLink, CheckCircle2 } from "lucide-react";
 import Link from "@/components/layout/LocalizedLink";
 
 export default function TermsAndConditionsClient() {
@@ -22,7 +22,7 @@ export default function TermsAndConditionsClient() {
                 {t("terms.hero.title")}
               </h1>
               <p className="text-sm font-mono text-brand-textSecondary mt-1">
-                pybim.com — Terms of Use & B2B Service Framework
+                pybim.com — Website Terms of Use & B2B Service Framework
               </p>
             </div>
           </div>
@@ -31,21 +31,20 @@ export default function TermsAndConditionsClient() {
           </p>
         </div>
 
-        {/* B2B Framework Clarification Notice */}
-        <div className="rounded-2xl border border-brand-primary/20 bg-brand-primary/5 p-6 md:p-8">
-          <div className="flex items-start gap-4">
-            <div className="p-2.5 rounded-lg bg-brand-primary/10 text-brand-primary shrink-0 mt-0.5">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div className="space-y-2">
-              <h2 className="text-lg font-bold text-brand-textPrimary">
-                {t("terms.notice.title")}
-              </h2>
-              <p className="text-sm text-brand-textSecondary leading-relaxed">
-                {t("terms.notice.desc")}
-              </p>
-            </div>
+        {/* Status & Framework Clarification Notice */}
+        <div className="rounded-2xl border border-brand-primary/20 bg-brand-surface p-6 md:p-8 space-y-3 shadow-sm">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-brand-primary/10 text-brand-primary border border-brand-primary/20">
+              <Info className="w-3.5 h-3.5" />
+              {t("terms.status.badge")}
+            </span>
           </div>
+          <h2 className="text-lg font-bold text-brand-textPrimary pt-1">
+            {t("terms.status.title")}
+          </h2>
+          <p className="text-sm text-brand-textSecondary leading-relaxed">
+            {t("terms.status.desc")}
+          </p>
         </div>
 
         {/* Structured Sections */}
@@ -95,7 +94,7 @@ export default function TermsAndConditionsClient() {
             </ul>
           </section>
 
-          {/* Section 4: Conduct */}
+          {/* Section 4: Separate B2B Agreements */}
           <section className="bg-brand-surface rounded-2xl border border-brand-border p-6 md:p-8 space-y-3">
             <h2 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2">
               <FileText className="w-5 h-5 text-brand-primary" />
@@ -110,7 +109,7 @@ export default function TermsAndConditionsClient() {
             </ul>
           </section>
 
-          {/* Section 5: Liability */}
+          {/* Section 5: Availability & Contact */}
           <section className="bg-brand-surface rounded-2xl border border-brand-border p-6 md:p-8 space-y-3">
             <h2 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2">
               <FileText className="w-5 h-5 text-brand-primary" />
@@ -123,20 +122,6 @@ export default function TermsAndConditionsClient() {
               <li>{t("terms.sec5.item1")}</li>
               <li>{t("terms.sec5.item2")}</li>
             </ul>
-          </section>
-
-          {/* Section 6: Contact & Desks */}
-          <section className="bg-brand-surface rounded-2xl border border-brand-border p-6 md:p-8 space-y-3">
-            <h2 className="text-xl font-bold text-brand-textPrimary flex items-center gap-2">
-              <FileText className="w-5 h-5 text-brand-primary" />
-              {t("terms.sec6.title")}
-            </h2>
-            <p className="text-sm text-brand-textSecondary leading-relaxed">
-              {t("terms.sec6.desc")}
-            </p>
-            <p className="text-sm text-brand-textSecondary">
-              {t("terms.sec6.contact")}
-            </p>
             <div className="pt-2 flex flex-wrap gap-4 text-xs font-mono">
               <Link href="/privacy-policy" className="text-brand-primary hover:underline inline-flex items-center gap-1">
                 <span>Privacy Policy</span>

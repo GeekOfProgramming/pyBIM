@@ -1,17 +1,17 @@
 {
   "title": "Enterprise Security & Architecture Protocol: CISO Whitepaper",
-  "subtitle": "Technical protocol distinguishing Sovereign AI client deployments from public website operations, detailing algorithmic containment, ISO 19650-5 alignment, and edge network protections.",
+  "subtitle": "Technical protocol distinguishing Sovereign AI client deployment capabilities from public website operations, detailing algorithmic containment architectures, standards alignment, and edge protections.",
   "scope_clarification": {
     "title": "Architecture Scope & Dual-Zone Model",
     "badge": "Operational Boundary",
-    "client_zone_title": "Zone 1: Client Sovereign AI & BIM Engineering",
-    "client_zone_desc": "Air-gapped on-premise execution topology. Operates strictly within the client's corporate LAN or isolated private VPC. Local LLMs, zero outbound telemetry, ephemeral RAM vectors, and Revit C# plugins operate with 0 bytes transmitted to public AI APIs.",
-    "web_zone_title": "Zone 2: Public Website & Inbound Services",
-    "web_zone_desc": "Hosted on Cloudflare Workers serverless edge architecture. Public endpoints utilize Cloudflare Turnstile for privacy-preserving bot detection and Resend for transactional email notifications (Contact and ROI results)."
+    "client_zone_title": "Zone 1: Client Sovereign AI & BIM Engineering (Deployment Capability)",
+    "client_zone_desc": "Air-gapped on-premise execution topology designed for enterprise clients. Configurable to operate within client corporate LAN or private VPC environments. Architecture supports local LLMs, localized script execution, and C# Revit integrations designed to operate without transmitting geometry or parameters to public AI APIs.",
+    "web_zone_title": "Zone 2: Public Website & Inbound Services (Current Infrastructure)",
+    "web_zone_desc": "Hosted on Cloudflare Workers edge architecture. Public endpoints utilize Cloudflare Turnstile for privacy-preserving bot detection and Resend for transactional email notifications (Contact and ROI lead notifications)."
   },
   "block1": {
-    "title": "1. Network Isolation Architecture (Zone 1)",
-    "diagram_caption": "Zone 1 Air-Gapped Execution Topology: Absolute containment of BIM geometry and algorithmic metavariables within the client corporate LAN perimeter."
+    "title": "1. Network Isolation Architecture (Zone 1 Capability)",
+    "diagram_caption": "Zone 1 Air-Gapped Execution Topology: Conceptual architecture for client-side containment of BIM geometry and algorithmic workflows within a corporate LAN perimeter."
   },
   "diagram_text": {
     "lan": "CLIENT LAN PERIMETER",
@@ -22,75 +22,75 @@
     "revit": "Revit Database",
     "cde": "Local CDE",
     "public_apis": "Public APIs",
-    "cloud": "(OpenAI, Cloud)",
-    "zero_data": "ZERO OUTBOUND DATA"
+    "cloud": "(External Cloud APIs)",
+    "zero_data": "NO OUTBOUND AI API EGRESS"
   },
   "block2": {
-    "title": "2. Compliance & Standards Alignment Matrix",
-    "headers": ["Mandate / Standard", "Security Requirement", "pyBIM Technical Implementation"],
+    "title": "2. Standards & Technical Alignment Matrix",
+    "headers": ["Framework / Standard", "Security Objective", "pyBIM Technical Implementation Capability"],
     "rows": [
       {
-        "mandate": "ISO 19650-5 (Security-Minded BIM)",
+        "mandate": "ISO 19650-5 (Information Security Principles)",
         "requirement": "Metadata leakage prevention & model security",
-        "execution": "Offline LLM deployment and localized execution within customer-controlled infrastructure or encrypted CDE."
+        "execution": "Designed for offline LLM deployment and localized model execution within customer-controlled environments or encrypted CDEs."
       },
       {
         "mandate": "UNI 11337 (Digital Management)",
         "requirement": "Sovereign BIM data management",
-        "execution": "C# and Python automation executing directly against local Revit files with zero geometry extraction to cloud."
+        "execution": "Automation scripts capable of executing directly against local Revit files without cloud geometry extraction."
       },
       {
-        "mandate": "GDPR (EU 2016/679)",
+        "mandate": "GDPR (EU 2016/679 Principles)",
         "requirement": "Data minimization & local custody",
-        "execution": "Absolute network severance for AI nodes. Public website collects minimal voluntary inquiry data with strict retention schedules."
+        "execution": "Sovereign nodes operate in isolated networks. Public website collects minimal voluntary inquiry data with published retention practices."
       },
       {
         "mandate": "Bilateral NDA & Confidentiality",
-        "requirement": "Strict BIM execution data privacy & CDE integrity",
-        "execution": "All client Revit models and federated IFCs handled via encrypted CDE channels with guaranteed post-handover data purge."
+        "requirement": "BIM project data privacy & CDE integrity",
+        "execution": "Client Revit models and IFC files managed through agreed CDE channels with data handling governed by bilateral contracts."
       }
     ]
   },
   "block3": {
-    "title": "3. Sovereign AI Data Custody & RAM Destruction",
+    "title": "3. Sovereign AI Data Custody Architecture",
     "notice_title": "SOVEREIGN AI CLIENT DEPLOYMENTS NOTICE",
-    "notice_text": "\"In pyBIM sovereign edge AI deployments, our software contains zero background telemetry daemons. Exactly 0 bytes of proprietary BIM geometry, structural parameters, or algorithmic logic egress the client firewall to external public AI endpoints.\"",
-    "purge_title": "RAM DESTRUCTION PROTOCOL (ZONE 1)",
-    "purge_text": "RAG pipeline tensors, embeddings, and intermediate data vectors are instantaneously destroyed in memory upon script completion. Persistent model state resides exclusively within the client's secured Common Data Environment (CDE)."
+    "notice_text": "\"For client sovereign edge AI deployments, pyBIM architectures are engineered to eliminate background telemetry. In this configuration, proprietary BIM geometry, structural parameters, and algorithmic logic are retained within the client firewall rather than transmitted to third-party public AI APIs.\"",
+    "purge_title": "EPHEMERAL RAM LIFECYCLE (ZONE 1 CAPABILITY)",
+    "purge_text": "RAG pipeline embeddings and intermediate calculation vectors are held in ephemeral memory and discarded upon script completion. Persistent model state remains under the custody of the client's Common Data Environment (CDE)."
   },
   "block4": {
-    "title": "4. Encryption & Infrastructure Protocols",
+    "title": "4. Security Engineering & Infrastructure Protocols",
     "sector1_title": "GPU-VPS Sector (Private Plugins)",
     "sector1_items": [
       {
-        "title": "Drive Encryption Protocols",
-        "text": "AES-256-XTS at-rest encryption on client-dedicated instances. Secure boot mandates locked firmware states."
+        "title": "Drive Encryption Support",
+        "text": "Supports AES-256 at-rest disk encryption and secure boot on client-designated private VPS instances."
       },
       {
         "title": "Secure Networking Tunnels",
-        "text": "Administrative ingress/egress strictly limited to authenticated WireGuard / Tailscale tunnels. Unauthenticated packets dropped at kernel level."
+        "text": "Configurable for administrative access via authenticated WireGuard or Tailscale tunnels, dropping unauthenticated traffic."
       }
     ],
     "sector2_title": "Edge Appliance Sector (Sovereign AI)",
     "sector2_items": [
       {
         "title": "Hardened OS Architecture",
-        "text": "Kernel-level isolation via hardened Linux OS with mandatory AppArmor access enforcement."
+        "text": "Supports hardened Linux environments with mandatory access controls such as AppArmor or SELinux."
       },
       {
-        "title": "Hardware Isolation",
-        "text": "External hardware I/O disabled at BIOS level for dedicated on-premise appliances. Headless operation with chassis security validation."
+        "title": "Hardware Isolation Capability",
+        "text": "Can be deployed on headless on-premise hardware with unused physical I/O ports disabled at BIOS level where required."
       }
     ],
     "sector3_title": "Public Web Sector (Cloudflare & Edge)",
     "sector3_items": [
       {
         "title": "Edge Delivery & Turnstile",
-        "text": "Public website served globally via Cloudflare Workers serverless edge. Cloudflare Turnstile prevents automated bot abuse without tracking cookies."
+        "text": "Public website served globally via Cloudflare Workers serverless edge. Cloudflare Turnstile provides bot defense without tracking cookies."
       },
       {
         "title": "Transactional Email (Resend)",
-        "text": "Contact submissions and ROI reports dispatched via Resend TLS-encrypted transactional APIs with strict payload verification."
+        "text": "Contact submissions and ROI lead notifications dispatched via Resend TLS-encrypted transactional APIs with payload validation."
       }
     ]
   }

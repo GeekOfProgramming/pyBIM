@@ -1,17 +1,17 @@
 {
   "title": "Sicurezza Enterprise & Protocollo di Architettura: Whitepaper CISO",
-  "subtitle": "Protocollo tecnico che distingue i deployment Sovereign AI per i clienti dalle operazioni del sito web pubblico, con dettagli su confinamento algoritmico, allineamento ISO 19650-5 e protezioni di rete edge.",
+  "subtitle": "Protocollo tecnico che distingue le capacità di deployment Sovereign AI per i clienti dalle operazioni del sito web pubblico, con dettagli su architetture di confinamento algoritmico, allineamento agli standard e protezioni edge.",
   "scope_clarification": {
     "title": "Perimetro di Architettura e Modello a Due Zone",
     "badge": "Confine Operativo",
-    "client_zone_title": "Zona 1: Sovereign AI e Ingegneria BIM del Cliente",
-    "client_zone_desc": "Topologia di esecuzione on-premise air-gapped. Opera rigorosamente all'interno della rete LAN aziendale o del VPC privato isolato del cliente. LLM locali, zero telemetria in uscita, vettori di memoria RAM effimeri e plugin Revit C# operano con 0 byte trasmessi verso API di intelligenza artificiale pubbliche.",
-    "web_zone_title": "Zona 2: Sito Web Pubblico e Servizi di Contatto",
-    "web_zone_desc": "Ospitato sull'architettura serverless edge di Cloudflare Workers. Gli endpoint pubblici utilizzano Cloudflare Turnstile per la verifica anti-bot a tutela della privacy e Resend per l'invio delle notifiche email transazionali (Contatto e risultati ROI)."
+    "client_zone_title": "Zona 1: Sovereign AI e Ingegneria BIM del Cliente (Capacità di Deployment)",
+    "client_zone_desc": "Topologia di esecuzione on-premise air-gapped progettata per clienti enterprise. Configurabile per operare all'interno della rete LAN aziendale o del VPC privato del cliente. L'architettura supporta LLM locali, esecuzione localizzata di script e plugin Revit C# sviluppati per operare senza trasmettere geometrie o parametri ad API AI pubbliche.",
+    "web_zone_title": "Zona 2: Sito Web Pubblico e Servizi di Contatto (Infrastruttura Attuale)",
+    "web_zone_desc": "Ospitato sull'architettura edge di Cloudflare Workers. Gli endpoint pubblici utilizzano Cloudflare Turnstile per la verifica anti-bot a tutela della privacy e Resend per l'invio delle notifiche email transazionali (Contatto e notifiche lead ROI)."
   },
   "block1": {
-    "title": "1. Architettura di Isolamento di Rete (Zona 1)",
-    "diagram_caption": "Topologia di Esecuzione Air-Gapped Zona 1: Confinamento assoluto di geometrie BIM e metavariabili algoritmiche all'interno del perimetro LAN aziendale del cliente."
+    "title": "1. Architettura di Isolamento di Rete (Capacità Zona 1)",
+    "diagram_caption": "Topologia di Esecuzione Air-Gapped Zona 1: Architettura concettuale per il confinamento lato cliente di geometrie BIM e flussi algoritmici nel perimetro LAN aziendale."
   },
   "diagram_text": {
     "lan": "PERIMETRO LAN CLIENTE",
@@ -22,75 +22,75 @@
     "revit": "Database Revit",
     "cde": "CDE Locale",
     "public_apis": "API Pubbliche",
-    "cloud": "(OpenAI, Cloud)",
-    "zero_data": "ZERO DATI IN USCITA"
+    "cloud": "(API Cloud Esterne)",
+    "zero_data": "NESSUNA TRASMISSIONE AD API AI"
   },
   "block2": {
-    "title": "2. Matrice di Conformità e Allineamento agli Standard",
-    "headers": ["Standard / Mandato", "Requisito di Sicurezza", "Implementazione Tecnica pyBIM"],
+    "title": "2. Matrice di Allineamento Tecnico e Normativo",
+    "headers": ["Framework / Standard", "Obiettivo di Sicurezza", "Capacità di Implementazione Tecnica pyBIM"],
     "rows": [
       {
-        "mandate": "ISO 19650-5 (Sicurezza Informatica BIM)",
+        "mandate": "ISO 19650-5 (Principi di Sicurezza Informatica)",
         "requirement": "Prevenzione della dispersione dei metadati e sicurezza del modello",
-        "execution": "Deployment di LLM offline ed elaborazione localizzata su infrastruttura controllata dal cliente o CDE crittografato."
+        "execution": "Progettato per il deployment offline di LLM e l'esecuzione localizzata all'interno di ambienti controllati dal cliente o CDE crittografati."
       },
       {
         "mandate": "UNI 11337 (Gestione Digitale)",
         "requirement": "Gestione sovrana dei dati BIM",
-        "execution": "Esecuzione di script C# e Python direttamente sul file Revit locale con zero estrazione geometrica verso il cloud."
+        "execution": "Script di automazione capaci di operare direttamente sui file Revit locali senza estrazione di geometria verso il cloud."
       },
       {
-        "mandate": "GDPR (Regolamento UE 2016/679)",
+        "mandate": "GDPR (Principi Regolamento UE 2016/679)",
         "requirement": "Minimizzazione dei dati e custodia locale",
-        "execution": "Isolamento di rete totale per i nodi AI. Il sito web pubblico raccoglie dati minimi con rigide policy di conservazione."
+        "execution": "I nodi sovrani operano su reti isolate. Il sito web pubblico raccoglie dati minimi con pratiche di conservazione dichiarate."
       },
       {
         "mandate": "NDA Bilaterali e Riservatezza",
-        "requirement": "Riservatezza rigorosa dei dati di progetto e integrità CDE",
-        "execution": "Tutti i file Revit e IFC federati gestiti tramite canali CDE crittografati con cancellazione garantita a fine progetto."
+        "requirement": "Riservatezza dei dati di progetto e integrità CDE",
+        "execution": "Modelli Revit e file IFC dei clienti gestiti attraverso canali CDE concordati, con gestione dei dati disciplinata da contratti bilaterali."
       }
     ]
   },
   "block3": {
-    "title": "3. Custodia Dati Sovereign AI e Distruzione in RAM",
+    "title": "3. Architettura di Custodia Dati Sovereign AI",
     "notice_title": "AVVISO SUI DEPLOYMENT SOVEREIGN AI DEI CLIENTI",
-    "notice_text": "\"Nei deployment Sovereign Edge AI pyBIM, i nostri software contengono zero daemon di telemetria. Esattamente 0 byte di geometrie BIM proprietarie, parametri strutturali o logiche algoritmiche escono dal firewall del cliente verso endpoint AI pubblici.\"",
-    "purge_title": "PROTOCOLLO DI DISTRUZIONE IN RAM (ZONA 1)",
-    "purge_text": "I tensori della pipeline RAG, gli embeddings e i vettori di dati intermedi vengono distrutti istantaneamente in memoria al termine dell'esecuzione. Lo stato persistente risiede esclusivamente nell'Ambiente di Condivisione Dati (CDE) protetto del cliente."
+    "notice_text": "\"Nelle configurazioni Sovereign Edge AI per i clienti, le architetture pyBIM sono ingegnerizzate per eliminare la telemetria in background. In questa modalità operativa, geometrie BIM proprietarie, parametri e logiche algoritmiche rimangono all'interno del firewall aziendale del cliente senza essere trasmesse ad API AI pubbliche di terze parti.\"",
+    "purge_title": "CICLO DI VITA DELLA MEMORIA EFFIMERA (CAPACITÀ ZONA 1)",
+    "purge_text": "Gli embedding e i vettori di calcolo intermedi della pipeline RAG sono mantenuti in memoria effimera e rilasciati al termine dell'elaborazione. Lo stato persistente dei modelli rimane sotto la custodia dell'Ambiente di Condivisione Dati (CDE) del cliente."
   },
   "block4": {
-    "title": "4. Protocolli di Crittografia e Infrastruttura",
+    "title": "4. Ingegneria della Sicurezza e Protocolli di Infrastruttura",
     "sector1_title": "Settore GPU-VPS (Plugin Privati)",
     "sector1_items": [
       {
-        "title": "Protocolli di Crittografia dei Dischi",
-        "text": "Crittografia dei dati a riposo AES-256-XTS su istanze dedicate. Il secure boot impone stati di firmware bloccati."
+        "title": "Supporto Crittografia Dischi",
+        "text": "Supporta la crittografia dei dischi a riposo AES-256 e secure boot su istanze VPS dedicate indicate dal cliente."
       },
       {
         "title": "Tunnel di Rete Protetti",
-        "text": "Ingress/egress amministrativo limitato a tunnel autenticati WireGuard / Tailscale. Pacchetti non autenticati scartati a livello kernel."
+        "text": "Configurabile per l'accesso amministrativo tramite tunnel autenticati WireGuard o Tailscale, escludendo il traffico non autenticato."
       }
     ],
     "sector2_title": "Settore Edge Appliance (Sovereign AI)",
     "sector2_items": [
       {
         "title": "Architettura OS Hardened",
-        "text": "Isolamento a livello kernel tramite sistema Linux rinforzato con applicazione obbligatoria dei profili AppArmor."
+        "text": "Supporta distribuzioni Linux rinforzate con controlli di accesso obbligatori quali AppArmor o SELinux."
       },
       {
-        "title": "Isolamento Hardware",
-        "text": "Porte I/O esterne disabilitate a livello BIOS negli appliance dedicati. Funzionamento headless con controllo di antimanomissione dello chassis."
+        "title": "Capacità di Isolamento Hardware",
+        "text": "Può essere distribuito su hardware headless dedicato con porte I/O disabilitate a livello BIOS ove richiesto dal committente."
       }
     ],
     "sector3_title": "Settore Web Pubblico (Cloudflare & Edge)",
     "sector3_items": [
       {
         "title": "Distribuzione Edge e Turnstile",
-        "text": "Sito web pubblico erogato globalmente tramite Cloudflare Workers. Cloudflare Turnstile protegge da bot senza utilizzare cookie di tracciamento."
+        "text": "Sito web pubblico erogato tramite Cloudflare Workers. Cloudflare Turnstile protegge da bot automatizzati senza cookie pubblicitari."
       },
       {
         "title": "Email Transazionali (Resend)",
-        "text": "Moduli di contatto e report ROI inviati tramite API transazionali Resend crittografate con TLS e rigorosa validazione del payload."
+        "text": "Invio dei moduli di contatto e delle notifiche lead ROI gestito tramite API transazionali Resend con crittografia TLS e validazione dei dati."
       }
     ]
   }
