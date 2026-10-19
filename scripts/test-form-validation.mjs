@@ -69,13 +69,50 @@ console.log("   ✓ validateTextField properly enforces required flags and chara
 
 // 5. Corporate email policy validation across diverse TLDs
 console.log("5. Testing validateCorporateEmail policy across diverse TLDs...");
-// Consumer providers must be rejected
-assert.strictEqual(validateCorporateEmail("user@gmail.com", false).valid, false);
-assert.strictEqual(validateCorporateEmail("user@yahoo.it", false).valid, false);
+// Consumer providers must be rejected - asserting all 15 required negative domains
+const requiredNegativeDomains = [
+  "gmail.com",
+  "googlemail.com",
+  "outlook.com",
+  "hotmail.com",
+  "live.com",
+  "yahoo.com",
+  "yahoo.it",
+  "icloud.com",
+  "libero.it",
+  "virgilio.it",
+  "gmx.de",
+  "proton.me",
+  "mailinator.com",
+  "yopmail.com",
+  "tempmail.com"
+];
+
+for (const domain of requiredNegativeDomains) {
+  const result = validateCorporateEmail(`test.user@${domain}`, false);
+  assert.strictEqual(
+    result.valid,
+    false,
+    `Domain ${domain} must be strictly rejected as public/freemail/disposable`
+  );
+  assert.strictEqual(
+    result.domain,
+    domain,
+    `Rejected result must report normalized domain ${domain}`
+  );
+}
+
+// Additional providers already in FREE_EMAIL_PROVIDERS
 assert.strictEqual(validateCorporateEmail("user@hotmail.de", false).valid, false);
-assert.strictEqual(validateCorporateEmail("user@icloud.com", false).valid, false);
 assert.strictEqual(validateCorporateEmail("user@tiscali.it", false).valid, false);
-assert.strictEqual(validateCorporateEmail("user@mailinator.com", false).valid, false);
+assert.strictEqual(validateCorporateEmail("user@web.de", false).valid, false);
+assert.strictEqual(validateCorporateEmail("user@guerrillamail.com", false).valid, false);
+
+// Invalid email syntax tests
+assert.strictEqual(validateCorporateEmail("not-an-email").valid, false);
+assert.strictEqual(validateCorporateEmail("@domain.com").valid, false);
+assert.strictEqual(validateCorporateEmail("user@").valid, false);
+assert.strictEqual(validateCorporateEmail("user @domain.com").valid, false);
 
 // Genuine corporate domains across TLDs (.com, .it, .de, .eu, .org) must be accepted
 assert.strictEqual(validateCorporateEmail("architect@arup.com", false).valid, true);
@@ -83,8 +120,48 @@ assert.strictEqual(validateCorporateEmail("ingegnere@studio-architettura.it", fa
 assert.strictEqual(validateCorporateEmail("bauingenieur@strabag.de", false).valid, true);
 assert.strictEqual(validateCorporateEmail("consultant@bim-europe.eu", false).valid, true);
 assert.strictEqual(validateCorporateEmail("director@atkinsrealis.com", false).valid, true);
+
+// Authorized pybim.com and pybim.it internal test addresses must be accepted
 assert.strictEqual(validateCorporateEmail("support@pybim.com", false).valid, true);
-console.log("   ✓ Corporate email policy accepts valid corporate domains across all TLDs and rejects consumer/disposable providers");
+assert.strictEqual(validateCorporateEmail("support@pybim.it", false).valid, true);
+assert.strictEqual(validateCorporateEmail("dev@corp.pybim.com", false).valid, true);
+
+// Corporate email normalization test
+const normCheck = validateCorporateEmail("  Partner.Lead@Engineering-Firm.COM  ", false);
+assert.strictEqual(normCheck.valid, true);
+assert.strictEqual(normCheck.sanitized, "Partner.Lead@engineering-firm.com");
+assert.strictEqual(normCheck.domain, "engineering-firm.com");
+
+// Verify that ALLOW_FREEMAIL_FOR_TESTING cannot bypass corporate-email restriction in production
+const origNodeEnv = process.env.NODE_ENV;
+const origFreemailEnv = process.env.ALLOW_FREEMAIL_FOR_TESTING;
+try {
+  process.env.NODE_ENV = "production";
+  process.env.ALLOW_FREEMAIL_FOR_TESTING = "true";
+
+  // In production, even with ALLOW_FREEMAIL_FOR_TESTING="true" or allowFreemail=true, it MUST be rejected!
+  const prodBypassAttempt1 = validateCorporateEmail("tester@gmail.com", true);
+  assert.strictEqual(
+    prodBypassAttempt1.valid,
+    false,
+    "Production environment must NEVER allow allowFreemail parameter bypass"
+  );
+
+  const prodBypassAttempt2 = validateCorporateEmail("tester@gmail.com", false);
+  assert.strictEqual(
+    prodBypassAttempt2.valid,
+    false,
+    "Production environment must NEVER allow ALLOW_FREEMAIL_FOR_TESTING env bypass"
+  );
+} finally {
+  process.env.NODE_ENV = origNodeEnv;
+  if (origFreemailEnv !== undefined) {
+    process.env.ALLOW_FREEMAIL_FOR_TESTING = origFreemailEnv;
+  } else {
+    delete process.env.ALLOW_FREEMAIL_FOR_TESTING;
+  }
+}
+console.log("   ✓ Corporate email policy strictly rejects all 15 required consumer/disposable domains, forbids production bypass, and accepts valid corporate domains");
 
 // 6. Privacy Acknowledgment Validation
 console.log("6. Testing validatePrivacyAcknowledgment enforcement...");
