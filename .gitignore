@@ -50,3 +50,7 @@ artifacts/
 .open-next/
 .wrangler/
 wrangler-types.d.ts
+
+# local QA outputs
+qa-output/
+*.xlsx

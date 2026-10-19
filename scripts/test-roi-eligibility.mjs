@@ -37,7 +37,23 @@ console.log("   ✓ Turnstile enforcement verified");
 // 2. Consumer/Public Email Domain Rejection
 console.log("2. Testing Corporate Email Policy (blocking consumer email)...");
 {
-  const consumerDomains = ["gmail.com", "yahoo.it", "hotmail.com", "outlook.de", "proton.me"];
+  const consumerDomains = [
+    "gmail.com",
+    "googlemail.com",
+    "outlook.com",
+    "hotmail.com",
+    "live.com",
+    "yahoo.com",
+    "yahoo.it",
+    "icloud.com",
+    "libero.it",
+    "virgilio.it",
+    "gmx.de",
+    "proton.me",
+    "mailinator.com",
+    "yopmail.com",
+    "tempmail.com"
+  ];
   let ipIndex = 20;
   for (const domain of consumerDomains) {
     const req = createMockRequest({
@@ -49,13 +65,13 @@ console.log("2. Testing Corporate Email Policy (blocking consumer email)...");
       quickEstimate: { modelerCount: 2, hourlyRate: 85 }
     }, `198.51.100.${ipIndex++}`);
     const res = await POST(req);
-    assert.strictEqual(res.status, 400, `Consumer domain ${domain} must be rejected with 400`);
+    assert.strictEqual(res.status, 400, `Consumer/disposable domain ${domain} must be rejected with 400`);
     const json = await res.json();
     assert.strictEqual(json.ok, false);
     assert.ok(json.error.includes("corporate email"), "Error message must mention corporate email");
   }
 }
-console.log("   ✓ Public consumer domains strictly rejected");
+console.log("   ✓ All 15 required public consumer & disposable domains strictly rejected by eligibility route");
 
 // 3. Privacy Policy Mandatory Acknowledgment
 console.log("3. Testing Privacy Policy Enforcement...");
