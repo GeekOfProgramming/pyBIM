@@ -3,36 +3,57 @@
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
 /**
- * LegalPageShell
+ * LegalPageSection
  *
- * Reusable visual presentation wrapper for pyBIM legal and technical policy pages:
- * - Privacy Policy (/privacy-policy)
- * - Cookie Policy (/cookie-policy)
- * - Terms & Conditions (/terms-and-conditions)
- * - Enterprise Security (/security)
+ * Full-width section component that implements pyBIM's approved A/B background architecture:
+ * - family="a": bg-brand-base with EngineeringBackdrop variant="base"
+ * - family="b": bg-brand-surface with EngineeringBackdrop variant="surface"
  *
- * Architecture:
- * - Reuses pyBIM's approved EngineeringBackdrop (variant="base")
- * - Controlled reading column (default ~900-960px max-w-4xl, or max-w-6xl for Enterprise Security)
- * - Standardized typography hierarchy (Inter + JetBrains Mono)
- * - Clean section framing and seamless transition to site footer
- * - Seamless Light and Dark mode behavior using brand semantic tokens
+ * Provides:
+ * - Full-width background container with overflow-hidden
+ * - Reusable EngineeringBackdrop positioned behind the content
+ * - Relative z-10 inner container constrained to the requested reading column (default: max-w-4xl)
+ * - Clear responsive vertical padding and bottom border
  */
-export default function LegalPageShell({
-  children,
+export function LegalPageSection({
+  family = "a",
   maxWidthClass = "max-w-4xl",
   className = "",
-  backdropVariant = "base",
+  children,
+  id,
+  as: Component = "section",
+  ...props
 }) {
+  const isFamilyA = family === "a";
+  const bgClass = isFamilyA ? "bg-brand-base" : "bg-brand-surface";
+  const backdropVariant = isFamilyA ? "base" : "surface";
+
   return (
-    <div className={`relative w-full bg-brand-base min-h-[75vh] py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-b border-brand-border overflow-hidden transition-colors ${className}`}>
-      {/* Approved Existing Website EngineeringBackdrop */}
+    <Component
+      id={id}
+      className={`relative w-full ${bgClass} border-b border-brand-border py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden transition-colors ${className}`}
+      {...props}
+    >
+      {/* Background Architectural Canvas: Family A (base) or Family B (surface) */}
       <EngineeringBackdrop variant={backdropVariant} />
 
-      {/* Main Content Column */}
-      <div className={`relative z-10 mx-auto ${maxWidthClass} space-y-8 sm:space-y-10`}>
+      {/* Foreground Content Container */}
+      <div className={`relative z-10 mx-auto ${maxWidthClass}`}>
         {children}
       </div>
+    </Component>
+  );
+}
+
+/**
+ * LegalPageShell
+ *
+ * Semantic wrapper for pyBIM legal and security pages ensuring proper document flow.
+ */
+export default function LegalPageShell({ children, className = "" }) {
+  return (
+    <div className={`w-full overflow-hidden transition-colors ${className}`}>
+      {children}
     </div>
   );
 }
