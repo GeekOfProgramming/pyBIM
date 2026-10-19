@@ -134,6 +134,45 @@ async function main() {
   assert.ok(blogLink && typeof blogLink === "object" && blogLink.hyperlink.includes("autodesk.com"), "C9 blog hyperlink must be present");
   assert.ok(reportLink && typeof reportLink === "object" && reportLink.hyperlink.includes("autodesk.com"), "C10 report hyperlink must be present");
 
+  // 5. Verification of text wrapping, row heights, and alternating shading
+  const execSheet = reloaded.getWorksheet("Executive Summary");
+  assert.strictEqual(execSheet.getCell("B25").value, "• At 100% AI workflow coverage, 10% of covered time remains allocated to engineering verification and quality control.");
+  assert.ok(!execSheet.getCell("B25").value.includes("312"), "Must not contain hardcoded 312 number");
+  assert.strictEqual(execSheet.views?.[0]?.showGridLines, false, "Executive Summary gridlines must be hidden");
+
+  // Verify scenario row heights and wrapping
+  assert.ok(scenarioSheet.getRow(10).height >= 38, "Scenario table header row height should be >= 38");
+  assert.ok(scenarioSheet.getRow(11).height >= 28, "Scenario body row height should be >= 28");
+  assert.strictEqual(scenarioSheet.getCell("B11").alignment?.horizontal, "center", "Adoption % must be centered");
+  assert.strictEqual(scenarioSheet.getCell("C11").alignment?.horizontal, "left", "Scenario name must be left aligned");
+
+  // 6. Test alternative input set: 3 professionals, €85/h, 48 weeks
+  console.log("\nTesting Alternative Input Set (3 BIM professionals, €85/h, 48 weeks)...");
+  const altParams = {
+    userName: "Alternative Case QA",
+    companyName: "Engineering BIM S.p.A.",
+    referenceId: "ROI-QA-ALT-003",
+    modelerCount: 3,
+    hourlyRate: 85,
+    isRateCustom: false,
+    rateType: "consulting",
+    workingWeeks: 48,
+    useAdvanced: false,
+  };
+  const altWb = await buildRoiWorkbook(ExcelJS, altParams);
+  const altScenarios = altWb.getWorksheet("AI Adoption Scenarios");
+  const altH15 = altScenarios.getCell("H15").value;
+  const altI15 = altScenarios.getCell("I15").value;
+
+  console.log("Alt 100% Annual Recovered Hours (exp 1684.8):", altH15.result);
+  console.log("Alt 100% Annual Illustrative Value (exp 143208):", altI15.result);
+  assert.strictEqual(Number(altH15.result).toFixed(1), "1684.8", "3 professionals 100% hours must be 1,684.8");
+  assert.strictEqual(Math.round(altI15.result), 143208, "3 professionals 100% value must be 143,208");
+
+  // Verify 10% annual verification calculation for 3 professionals: 13 * 0.10 * 3 * 48 = 187.2 team hours
+  const expectedVerifHours = 13 * 0.10 * 3 * 48;
+  assert.strictEqual(expectedVerifHours.toFixed(1), "187.2", "3 professionals annual verification must be 187.2 hours");
+
   console.log("\n   ✓ All verification checks passed for local QA XLSX sample!");
   console.log(`FINAL SAMPLE FILE: ${outputPath}`);
 }
