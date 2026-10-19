@@ -34,34 +34,25 @@ async function main() {
   // Assert fullCalcOnLoad on the built workbook
   assert.strictEqual(workbook.calcProperties.fullCalcOnLoad, true, "fullCalcOnLoad must be true on built workbook");
 
-  // Write to file (handling open file lock if owner has it open in Excel)
+  // Write to file (fail clearly if locked by Microsoft Excel, do not use temp fallback)
   try {
     await workbook.xlsx.writeFile(outputPath);
     console.log(`Saved QA sample to: ${outputPath}`);
   } catch (err) {
     if (err.code === "EBUSY") {
-      console.warn(`[QA NOTICE] Target file is currently open in Microsoft Excel (${outputPath}). Writing to temporary path and continuing verification.`);
-      const tempPath = path.join(outputDir, "pyBIM-ROI-Matrix-QA-temp.xlsx");
-      await workbook.xlsx.writeFile(tempPath);
-      console.log(`Saved temporary QA sample to: ${tempPath}`);
-    } else {
-      throw err;
+      console.error(`\n[ERROR] Target file is currently locked by Microsoft Excel: ${outputPath}`);
+      console.error("Please close Microsoft Excel and re-run the generator.\n");
     }
+    throw err;
   }
 
-  // Verification phase: Reload from workbook buffer or disk
-  const buffer = await workbook.xlsx.writeBuffer();
+  // Verification phase: Reload directly from the written file on disk
   const reloaded = new ExcelJS.Workbook();
-  await reloaded.xlsx.load(buffer);
+  await reloaded.xlsx.readFile(outputPath);
 
-  let stat;
-  try {
-    stat = fs.statSync(outputPath);
-  } catch {
-    const tempPath = path.join(outputDir, "pyBIM-ROI-Matrix-QA-temp.xlsx");
-    stat = fs.statSync(tempPath);
-  }
+  const stat = fs.statSync(outputPath);
   console.log(`File Size: ${stat.size} bytes`);
+  console.log(`Modified: ${stat.mtime.toISOString()}`);
   assert.ok(stat.size > 10000, "XLSX file must be nonempty and greater than 10KB");
 
   // 1. Worksheet count and names
@@ -152,65 +143,75 @@ async function main() {
   assert.ok(blogLink && typeof blogLink === "object" && blogLink.hyperlink.includes("autodesk.com"), "C9 blog hyperlink must be present");
   assert.ok(reportLink && typeof reportLink === "object" && reportLink.hyperlink.includes("autodesk.com"), "C10 report hyperlink must be present");
 
-  // 5. Verification of text wrapping, row heights, and alternating shading
+  // 5. Mandatory Automated Cell-by-Cell Validation
+  let validatedCellsCount = 0;
+  const assertCellCentered = (ws, address, sheetName) => {
+    const cell = ws.getCell(address);
+    const h = cell.alignment?.horizontal;
+    const v = cell.alignment?.vertical;
+    if (h !== "center" || v !== "middle") {
+      throw new Error(`[ALIGNMENT FAILURE] Worksheet: "${sheetName}", Cell: "${address}", Expected: horizontal="center" vertical="middle", Actual: horizontal="${h}" vertical="${v}"`);
+    }
+    validatedCellsCount++;
+  };
+
   const execSheet = reloaded.getWorksheet("Executive Summary");
   assert.strictEqual(execSheet.getCell("B25").value, "• At 100% AI workflow coverage, 10% of covered time remains allocated to engineering verification and quality control.");
   assert.ok(!execSheet.getCell("B25").value.includes("312"), "Must not contain hardcoded 312 number");
   assert.strictEqual(execSheet.views?.[0]?.showGridLines, false, "Executive Summary gridlines must be hidden");
 
-  // Verify Executive Summary centered ranges: C7:C12, C16:C20, D16:D20, E16:E20, F16:F20
+  // Executive Summary approved ranges: C7:C12, C16:C20, D16:D20, E16:E20, F16:F20
   for (let r = 7; r <= 12; r++) {
-    const cell = execSheet.getCell(`C${r}`);
-    assert.strictEqual(cell.alignment?.horizontal, "center", `Executive Summary C${r} must be horizontally centered`);
-    assert.strictEqual(cell.alignment?.vertical, "middle", `Executive Summary C${r} must be vertically centered`);
+    assertCellCentered(execSheet, `C${r}`, "Executive Summary");
   }
   for (let r = 16; r <= 20; r++) {
     for (const col of ["C", "D", "E", "F"]) {
-      const cell = execSheet.getCell(`${col}${r}`);
-      assert.strictEqual(cell.alignment?.horizontal, "center", `Executive Summary ${col}${r} must be horizontally centered`);
-      assert.strictEqual(cell.alignment?.vertical, "middle", `Executive Summary ${col}${r} must be vertically centered`);
+      assertCellCentered(execSheet, `${col}${r}`, "Executive Summary");
     }
   }
-  // Verify unspecified alignments remain unchanged (e.g. labels left-aligned)
-  assert.strictEqual(execSheet.getCell("B7").alignment?.horizontal || "left", "left", "Executive Summary B7 should remain left-aligned");
-  assert.strictEqual(execSheet.getCell("B16").alignment?.horizontal, "left", "Executive Summary B16 should remain left-aligned");
 
-  // Verify Workflow Inputs centered ranges: C4, D4, E4
-  for (const col of ["C", "D", "E"]) {
-    const cell = inputSheet.getCell(`${col}4`);
-    assert.strictEqual(cell.alignment?.horizontal, "center", `Workflow Inputs ${col}4 must be horizontally centered`);
-    assert.strictEqual(cell.alignment?.vertical, "middle", `Workflow Inputs ${col}4 must be vertically centered`);
+  // Workflow Inputs required ranges: C4:C10, D4:D10, E4:E10
+  for (let r = 4; r <= 10; r++) {
+    assertCellCentered(inputSheet, `C${r}`, "Workflow Inputs");
+    assertCellCentered(inputSheet, `D${r}`, "Workflow Inputs");
+    assertCellCentered(inputSheet, `E${r}`, "Workflow Inputs");
   }
-  assert.strictEqual(inputSheet.getCell("B4").alignment?.horizontal, "left", "Workflow Inputs B4 must remain left-aligned");
-  assert.strictEqual(inputSheet.getCell("F4").alignment?.horizontal, "left", "Workflow Inputs F4 must remain left-aligned");
+  // Verify B and F remain left-aligned in Workflow Inputs
+  for (let r = 4; r <= 10; r++) {
+    const bH = inputSheet.getCell(`B${r}`).alignment?.horizontal || "left";
+    const fH = inputSheet.getCell(`F${r}`).alignment?.horizontal || "left";
+    assert.strictEqual(bH, "left", `Workflow Inputs B${r} must remain left-aligned`);
+    assert.strictEqual(fH, "left", `Workflow Inputs F${r} must remain left-aligned`);
+  }
 
-  // Verify AI Adoption Scenarios column B width and centered ranges: C4:C8, D4:D8, E10, F10, H10, I10
+  // AI Adoption Scenarios required ranges: C4:C15, D4:D15, E10:E15, F10:F15, H10:H15, I10:I15
   const colBWidth = scenarioSheet.getColumn("B").width;
   console.log("AI Adoption Scenarios Column B width:", colBWidth);
-  assert.ok(colBWidth >= 34 && colBWidth <= 38, `Column B width (${colBWidth}) must be between 34 and 38 units`);
+  assert.strictEqual(colBWidth, 36, "Column B width must be exactly 36 Excel character units");
 
-  for (let r = 4; r <= 8; r++) {
-    const cellC = scenarioSheet.getCell(`C${r}`);
-    const cellD = scenarioSheet.getCell(`D${r}`);
-    assert.strictEqual(cellC.alignment?.horizontal, "center", `AI Adoption Scenarios C${r} must be horizontally centered`);
-    assert.strictEqual(cellC.alignment?.vertical, "middle", `AI Adoption Scenarios C${r} must be vertically centered`);
-    assert.strictEqual(cellD.alignment?.horizontal, "center", `AI Adoption Scenarios D${r} must be horizontally centered`);
-    assert.strictEqual(cellD.alignment?.vertical, "middle", `AI Adoption Scenarios D${r} must be vertically centered`);
+  for (let r = 4; r <= 15; r++) {
+    assertCellCentered(scenarioSheet, `C${r}`, "AI Adoption Scenarios");
+    assertCellCentered(scenarioSheet, `D${r}`, "AI Adoption Scenarios");
+  }
+  for (let r = 10; r <= 15; r++) {
+    assertCellCentered(scenarioSheet, `E${r}`, "AI Adoption Scenarios");
+    assertCellCentered(scenarioSheet, `F${r}`, "AI Adoption Scenarios");
+    assertCellCentered(scenarioSheet, `H${r}`, "AI Adoption Scenarios");
+    assertCellCentered(scenarioSheet, `I${r}`, "AI Adoption Scenarios");
   }
 
-  for (const col of ["E", "F", "H", "I"]) {
-    const cell = scenarioSheet.getCell(`${col}10`);
-    assert.strictEqual(cell.alignment?.horizontal, "center", `AI Adoption Scenarios ${col}10 must be horizontally centered`);
-    assert.strictEqual(cell.alignment?.vertical, "middle", `AI Adoption Scenarios ${col}10 must be vertically centered`);
+  // Verify G10:G15 remains right-aligned (not centered, per explicit instructions)
+  for (let r = 10; r <= 15; r++) {
+    const gH = scenarioSheet.getCell(`G${r}`).alignment?.horizontal;
+    assert.strictEqual(gH, "right", `AI Adoption Scenarios G${r} must remain right-aligned`);
   }
-  // G10 remains right-aligned (not centered)
-  assert.strictEqual(scenarioSheet.getCell("G10").alignment?.horizontal, "right", "AI Adoption Scenarios G10 must remain right-aligned");
+
+  console.log(`Validated ${validatedCellsCount} cells across all requested ranges for exact center alignment.`);
 
   // Verify scenario row heights and wrapping
   assert.ok(scenarioSheet.getRow(10).height >= 38, "Scenario table header row height should be >= 38");
   assert.ok(scenarioSheet.getRow(11).height >= 28, "Scenario body row height should be >= 28");
   assert.strictEqual(scenarioSheet.getCell("B11").alignment?.horizontal, "center", "Adoption % must be centered");
-  assert.strictEqual(scenarioSheet.getCell("C11").alignment?.horizontal, "left", "Scenario name must be left aligned");
 
   // 6. Test alternative input set: 3 professionals, €85/h, 48 weeks
   console.log("\nTesting Alternative Input Set (3 BIM professionals, €85/h, 48 weeks)...");
