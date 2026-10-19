@@ -72,7 +72,6 @@ c:\bim\
 │   ├── api/                          # Next.js Serverless Route Handlers
 │   │   ├── auth/                     # Login, Logout, Register endpoints
 │   │   ├── contact/                  # Audit dispatch endpoint
-│   │   ├── newsletter/               # Newsletter subscription endpoint
 │   │   └── roi-matrix/               # Dynamic ISO 19650 Excel file generation
 │   ├── robots.js                     # Search Engine Robots Configuration
 │   └── sitemap.js                    # Dynamic Multilingual Sitemap (160+ URLs)
