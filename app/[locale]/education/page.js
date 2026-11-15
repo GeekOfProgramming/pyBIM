@@ -1,23 +1,18 @@
 import EducationPageLayout from "@/components/pages/education-page-layout";
 import { routeMetadata } from "@/lib/site-copy";
+import { getCanonicalUrl, getAlternateLanguages } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const { titles, descriptions } = routeMetadata.education;
-
-  const siteUrl = "https://pybim.com";
-  const currentUrl = `${siteUrl}/${locale}/education`;
+  const canonicalUrl = getCanonicalUrl(locale, "education");
 
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
-      canonical: currentUrl,
-      languages: {
-        en: `${siteUrl}/en/education`,
-        it: `${siteUrl}/it/education`,
-        de: `${siteUrl}/de/education`,
-      },
+      canonical: canonicalUrl,
+      languages: getAlternateLanguages("education"),
     },
     robots: {
       index: false,
@@ -26,7 +21,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${titles[locale] || titles.en} | pyBIM`,
       description: descriptions[locale] || descriptions.en,
-      url: currentUrl,
+      url: canonicalUrl,
       siteName: "pyBIM",
       type: "website",
     },

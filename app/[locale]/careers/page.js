@@ -1,22 +1,21 @@
 import CareersPageLayout from "@/components/pages/careers-page-layout";
 import { db } from "@/lib/db";
 import { routeMetadata } from "@/lib/site-copy";
+import { getCanonicalUrl, getAlternateLanguages } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const titles = routeMetadata.careers.titles;
-  const siteUrl = "https://pybim.com";
-  const currentUrl = `${siteUrl}/${locale}/careers`;
+  const canonicalUrl = getCanonicalUrl(locale, "careers");
   
   return {
     title: titles[locale] || titles.en,
     alternates: {
-      canonical: currentUrl,
-      languages: {
-        en: `${siteUrl}/en/careers`,
-        it: `${siteUrl}/it/careers`,
-        de: `${siteUrl}/de/careers`,
-      },
+      canonical: canonicalUrl,
+      languages: getAlternateLanguages("careers"),
+    },
+    openGraph: {
+      url: canonicalUrl,
     },
   };
 }

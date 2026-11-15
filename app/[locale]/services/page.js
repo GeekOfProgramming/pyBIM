@@ -1,21 +1,20 @@
 import ServicesPageLayout from "@/components/pages/services-page-layout";
 import { routeMetadata } from "@/lib/site-copy";
+import { getCanonicalUrl, getAlternateLanguages } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const titles = routeMetadata.services.titles;
-  const siteUrl = "https://pybim.com";
-  const currentUrl = `${siteUrl}/${locale}/services`;
+  const canonicalUrl = getCanonicalUrl(locale, "services");
   
   return {
     title: titles[locale] || titles.en,
     alternates: {
-      canonical: currentUrl,
-      languages: {
-        en: `${siteUrl}/en/services`,
-        it: `${siteUrl}/it/services`,
-        de: `${siteUrl}/de/services`,
-      },
+      canonical: canonicalUrl,
+      languages: getAlternateLanguages("services"),
+    },
+    openGraph: {
+      url: canonicalUrl,
     },
   };
 }

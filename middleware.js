@@ -1,24 +1,33 @@
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose/jwt/verify";
 import { applySecurityHeaders } from "@/lib/security";
+import { resolveRedirectTarget, isItalianDomain } from "@/lib/seo";
 
 const locales = ['en', 'it', 'de'];
 const defaultLocale = 'en';
 
 export async function middleware(req) {
-  const { pathname } = req.nextUrl;
+  const { pathname, search } = req.nextUrl;
 
-  const hostname = req.nextUrl.hostname || '';
+  const hostHeader = req.headers.get('x-forwarded-host') || req.headers.get('host') || req.nextUrl.hostname || '';
+  const hostname = hostHeader.split(':')[0].toLowerCase();
   const isStagingPreview = hostname.includes('workers.dev') || process.env.ENVIRONMENT === 'staging';
 
   function attachHeaders(response) {
     return applySecurityHeaders(response, isStagingPreview);
   }
 
-  // Protect Portal Routes (Fail-closed: requires valid token and configured secret)
+  // 1. Cross-Domain Canonical Routing (Model B)
+  // Permanent 308 redirect for noncanonical domain/locale combinations on production domains
+  const redirectTarget = resolveRedirectTarget({ hostname, pathname, search });
+  if (redirectTarget) {
+    return attachHeaders(NextResponse.redirect(new URL(redirectTarget), 308));
+  }
+
+  // 2. Protect Portal Routes (Fail-closed: requires valid token and configured secret)
   if (pathname.includes('/portal')) {
     const token = req.cookies.get('auth_token')?.value;
-    const currentLocale = locales.find(locale => pathname.startsWith(`/${locale}/`)) || defaultLocale;
+    const currentLocale = locales.find(locale => pathname.startsWith(`/${locale}/`)) || (isItalianDomain(hostname) ? 'it' : defaultLocale);
 
     const secretKey = process.env.JWT_SECRET ? new TextEncoder().encode(process.env.JWT_SECRET) : null;
 
@@ -37,7 +46,7 @@ export async function middleware(req) {
     }
   }
 
-  // i18n Locale handling
+  // 3. i18n Locale handling for local / preview / non-redirected requests
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
@@ -46,9 +55,10 @@ export async function middleware(req) {
     return attachHeaders(NextResponse.next());
   }
 
-  // Redirect if there is no locale (and it's not an excluded path)
+  // Redirect if there is no locale (e.g. on localhost or preview)
+  const fallbackLocale = isItalianDomain(hostname) ? 'it' : defaultLocale;
   const url = req.nextUrl.clone();
-  url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
+  url.pathname = `/${fallbackLocale}${pathname === "/" ? "" : pathname}`;
   return attachHeaders(NextResponse.redirect(url));
 }
 

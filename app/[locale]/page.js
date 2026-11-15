@@ -1,15 +1,24 @@
 import HomePageLayout from "@/components/pages/home-page-layout";
 import { siteMetadata } from "@/lib/site-copy";
+import { getCanonicalUrl, getAlternateLanguages } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const { titles, descriptions } = siteMetadata;
+  const canonicalUrl = getCanonicalUrl(locale, "");
   
   return {
     title: {
       absolute: titles[locale] || titles.en
     },
-    description: descriptions[locale] || descriptions.en
+    description: descriptions[locale] || descriptions.en,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: getAlternateLanguages(""),
+    },
+    openGraph: {
+      url: canonicalUrl,
+    },
   };
 }
 

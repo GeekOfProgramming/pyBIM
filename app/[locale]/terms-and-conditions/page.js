@@ -1,21 +1,20 @@
 import TermsAndConditionsClient from "@/components/pages/terms-and-conditions-client";
 import { routeMetadata } from "@/lib/site-copy";
+import { getCanonicalUrl, getAlternateLanguages } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const titles = routeMetadata.terms.titles;
-  const siteUrl = "https://pybim.com";
-  const currentUrl = `${siteUrl}/${locale}/terms-and-conditions`;
+  const canonicalUrl = getCanonicalUrl(locale, "terms-and-conditions");
   
   return {
     title: titles[locale] || titles.en,
     alternates: {
-      canonical: currentUrl,
-      languages: {
-        en: `${siteUrl}/en/terms-and-conditions`,
-        it: `${siteUrl}/it/terms-and-conditions`,
-        de: `${siteUrl}/de/terms-and-conditions`,
-      },
+      canonical: canonicalUrl,
+      languages: getAlternateLanguages("terms-and-conditions"),
+    },
+    openGraph: {
+      url: canonicalUrl,
     },
   };
 }

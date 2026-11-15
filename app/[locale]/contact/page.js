@@ -1,21 +1,20 @@
 import ContactPageLayout from "@/components/pages/contact-page-layout";
 import { routeMetadata } from "@/lib/site-copy";
+import { getCanonicalUrl, getAlternateLanguages } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const titles = routeMetadata.contact.titles;
-  const siteUrl = "https://pybim.com";
-  const currentUrl = `${siteUrl}/${locale}/contact`;
+  const canonicalUrl = getCanonicalUrl(locale, "contact");
   
   return {
     title: titles[locale] || titles.en,
     alternates: {
-      canonical: currentUrl,
-      languages: {
-        en: `${siteUrl}/en/contact`,
-        it: `${siteUrl}/it/contact`,
-        de: `${siteUrl}/de/contact`,
-      },
+      canonical: canonicalUrl,
+      languages: getAlternateLanguages("contact"),
+    },
+    openGraph: {
+      url: canonicalUrl,
     },
   };
 }

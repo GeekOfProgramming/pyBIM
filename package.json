@@ -9,6 +9,7 @@
     "build:worker": "opennextjs-cloudflare build",
     "preview:worker": "opennextjs-cloudflare preview",
     "test:security": "node scripts/test-security.mjs",
+    "test:seo": "node scripts/test-seo-multidomain.mjs",
     "test:roi": "node scripts/test-roi-model.mjs && node scripts/test-roi-eligibility.mjs && node scripts/test-roi-workbook.mjs"
   },
   "dependencies": {
