@@ -29,9 +29,10 @@ export default function HomePage({ params }) {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${DOMAIN_COM}/#organization`,
     name: "pyBIM",
     alternateName: "pyBIM Engineering",
-    url: siteUrl,
+    url: DOMAIN_COM,
     logo: `${DOMAIN_COM}/images/shared/brand/logo_black_transparent.png`,
     email: "info@pybim.com",
     description: siteMetadata.organizationDescription,
@@ -44,9 +45,14 @@ export default function HomePage({ params }) {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
     name: "pyBIM",
     url: siteUrl,
-    inLanguage: ["en", "it", "de"]
+    description: siteMetadata.descriptions[locale] || siteMetadata.descriptions.en,
+    inLanguage: locale === "it" ? ["it"] : ["en", "de"],
+    publisher: {
+      "@id": `${DOMAIN_COM}/#organization`
+    }
   };
 
   return (

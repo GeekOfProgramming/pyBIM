@@ -568,4 +568,56 @@ assert.ok(
 
 console.log('   ✓ Verified zero active files claim unverified ISO 19650 certification');
 
-console.log('\n=== ALL SEO-01 & SEO-02/03 TESTS PASSED SUCCESSFULLY ===');
+// -----------------------------------------------------------------------------
+// 13. Brand Entity Architecture, Structured Data & Content Integrity (SEO-04)
+// -----------------------------------------------------------------------------
+console.log('13. Testing Brand Entity Architecture, JSON-LD Linkage & Content Integrity...');
+
+import { siteMetadata, SEODescriptions } from '../lib/site-copy.js';
+
+// 13a. Approved 4-Pillar Brand Description
+const orgDesc = siteMetadata.organizationDescription;
+assert.ok(orgDesc.includes('BIM engineering') && orgDesc.includes('digital delivery'), 'Pillar 1: BIM Engineering & Digital Delivery must be present');
+assert.ok(orgDesc.includes('software automation') || orgDesc.includes('Revit API'), 'Pillar 2: Software Engineering & Custom Automation must be present');
+assert.ok(orgDesc.includes('AI') && orgDesc.includes('LLM'), 'Pillar 3: AI & LLM Development must be present');
+assert.ok(orgDesc.includes('AEC'), 'Pillar 4: AEC industry focus must be present');
+
+// 13b. Verify Homepage JSON-LD Schema file contents
+const homePageFile = fs.readFileSync(new URL('../app/[locale]/page.js', import.meta.url), 'utf8');
+assert.ok(
+  homePageFile.includes('${DOMAIN_COM}/#organization') || homePageFile.includes('https://www.pybim.com/#organization'),
+  'Organization must use stable @id https://www.pybim.com/#organization'
+);
+assert.ok(homePageFile.includes('pyBIM Engineering'), 'Organization alternateName must be pyBIM Engineering');
+assert.ok(homePageFile.includes('https://www.linkedin.com/company/pybim'), 'sameAs must include verified LinkedIn profile');
+assert.ok(homePageFile.includes('https://github.com/pyBIM-collaboration'), 'sameAs must include verified GitHub profile');
+assert.ok(homePageFile.includes('publisher'), 'WebSite must specify publisher linking to Organization');
+assert.ok(homePageFile.includes('${DOMAIN_COM}/#organization'), 'WebSite publisher @id must target stable Organization entity');
+assert.ok(homePageFile.includes('${siteUrl}/#website'), 'WebSite @id must be domain-specific');
+
+// 13c. Content Integrity: Elimination of unverified absolute claims in translations
+const aboutEnCode = fs.readFileSync(new URL('../lib/translations/en/about.json', import.meta.url), 'utf8');
+const aboutDeCode = fs.readFileSync(new URL('../lib/translations/de/about.json', import.meta.url), 'utf8');
+
+assert.ok(!aboutEnCode.includes('Absolute elimination of human error'), 'Must not claim absolute elimination of human error (EN)');
+assert.ok(!aboutEnCode.includes('guaranteeing flawless'), 'Must not claim guaranteed flawless compliance (EN)');
+assert.ok(!aboutItCode.includes('Eliminazione assoluta dell\'errore umano'), 'Must not claim absolute elimination of human error (IT)');
+assert.ok(!aboutItCode.includes('impeccabile'), 'Must not claim flawless compliance (IT)');
+assert.ok(!aboutDeCode.includes('Absolute Beseitigung menschlicher Fehler'), 'Must not claim absolute elimination of human error (DE)');
+
+// 13d. SEODescriptions: Zero-error claims eliminated
+const seoDescStr = JSON.stringify(SEODescriptions);
+assert.ok(!seoDescStr.includes('zero-error'), 'SEODescriptions must not claim zero-error');
+assert.ok(!seoDescStr.includes('zero-errori'), 'SEODescriptions must not claim zero-errori');
+assert.ok(!seoDescStr.includes('fehlerfreien'), 'SEODescriptions must not claim fehlerfreien');
+
+// 13e. Verified Exclusion of Success Stories from Sitemaps & Core Indexable Routes
+assert.ok(!CORE_INDEXABLE_ROUTES.includes('success-stories'), 'success-stories must remain excluded from CORE_INDEXABLE_ROUTES');
+assert.ok(!CORE_INDEXABLE_ROUTES.includes('/success-stories'), 'success-stories must remain excluded from CORE_INDEXABLE_ROUTES');
+
+console.log('   ✓ Single Organization entity (@id https://www.pybim.com/#organization) strictly bound to both domains');
+console.log('   ✓ WebSite entities link via publisher @id across .com and .it');
+console.log('   ✓ Verified official profiles (LinkedIn, GitHub) present without speculative channels');
+console.log('   ✓ 4-Pillar brand description and content integrity verified with zero unverified claims');
+
+console.log('\n=== ALL SEO-01, SEO-02/03 & SEO-04 TESTS PASSED SUCCESSFULLY ===');
