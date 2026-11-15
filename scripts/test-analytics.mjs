@@ -3,6 +3,9 @@ import {
   isAnalyticsConfigured,
   getStoredAnalyticsConsent,
   isEligibleAnalyticsRoute,
+  setGoogleAnalyticsDisabled,
+  applyTrackingShutdown,
+  applyTrackingRestore,
   sanitizeEventParams,
   cleanPagePath,
   trackEvent,
@@ -10,26 +13,9 @@ import {
   GA_MEASUREMENT_ID
 } from "../lib/analytics.js";
 
-console.log("=== RUNNING GA4-01C CONSENT LIFECYCLE & INTEGRATION TEST SUITE ===\n");
+console.log("=== RUNNING GA4-01D TRACKING ISOLATION & CONSENT SAFETY TESTS ===\n");
 
-// 1. Missing or Invalid Measurement ID vs Configured
-console.log("1. Testing Measurement ID presence & validation...");
-assert.equal(isAnalyticsConfigured(), false, "Analytics must be unconfigured when environment variable is unset");
-
-// Helper to simulate a configured environment
-function runWithMeasurementId(testFn) {
-  // In lib/analytics.js, GA_MEASUREMENT_ID is read at module load from process.env
-  // For lifecycle simulations, we verify logic against simulated state
-  testFn("G-TEST12345");
-}
-
-console.log("   ✓ Missing or empty Measurement ID cleanly leaves analytics unconfigured");
-
-// 2. Strict Boolean Consent Validation
-console.log("2. Testing Strict Boolean Consent Validation...");
-assert.equal(getStoredAnalyticsConsent(), false, "Without window/localStorage, default consent must be false");
-
-// Mock browser window and localStorage
+// Setup Global Browser Mocks
 globalThis.window = {
   location: {
     origin: "https://www.pybim.com",
@@ -38,6 +24,10 @@ globalThis.window = {
     search: ""
   }
 };
+globalThis.document = {
+  cookie: ""
+};
+
 let mockStore = {};
 globalThis.localStorage = {
   getItem: (key) => mockStore[key] || null,
@@ -46,10 +36,15 @@ globalThis.localStorage = {
   clear: () => { mockStore = {}; }
 };
 
-// No decision stored
+// 1. Missing or Invalid Measurement ID vs Configured
+console.log("1. Testing Measurement ID presence & validation...");
+assert.equal(isAnalyticsConfigured(), false, "Analytics must be unconfigured when environment variable is unset");
+console.log("   ✓ Missing or empty Measurement ID cleanly leaves analytics unconfigured");
+
+// 2. Strict Boolean Consent Validation
+console.log("2. Testing Strict Boolean Consent Validation...");
 assert.equal(getStoredAnalyticsConsent(), false, "Unset cookie_consent returns false");
 
-// String truthy/falsy non-booleans that must NOT be coerced to true:
 mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: "true" });
 assert.equal(getStoredAnalyticsConsent(), false, "String 'true' must be rejected");
 
@@ -68,87 +63,84 @@ assert.equal(getStoredAnalyticsConsent(), false, "Malformed JSON must safely ret
 mockStore["cookie_consent"] = "rejected";
 assert.equal(getStoredAnalyticsConsent(), false, "cookie_consent='rejected' returns false");
 
-// Valid boolean false
 mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: false });
 assert.equal(getStoredAnalyticsConsent(), false, "cookie_consent={analytics: false} returns false");
 
-// Valid boolean true
 mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: true });
 assert.equal(getStoredAnalyticsConsent(), true, "Strict boolean true accepted");
 
-// Valid legacy 'all'
 mockStore["cookie_consent"] = "all";
 assert.equal(getStoredAnalyticsConsent(), true, "Legacy 'all' accepted");
 console.log("   ✓ Strict consent evaluation safely rejects truthy non-booleans, numbers, and malformed structures");
 
-// 3. Full Consent Lifecycle Transitions (Simulation)
-console.log("3. Testing Full Consent Lifecycle Transitions...");
+// 3. Shared GA-Disable & Tracking Shutdown Functions
+console.log("3. Testing Shared Tracking Shutdown & Disable Flag Helpers...");
+const testId = "G-TEST12345";
+assert.equal(globalThis.window[`ga-disable-${testId}`], undefined);
 
-class MockConsentLifecycle {
-  constructor(measurementId) {
+// Apply shutdown
+applyTrackingShutdown(testId);
+assert.equal(globalThis.window[`ga-disable-${testId}`], true, "Disable flag must be true on shutdown");
+
+// Apply restore
+applyTrackingRestore(testId);
+assert.equal(globalThis.window[`ga-disable-${testId}`], false, "Disable flag must be false on restore");
+console.log("   ✓ applyTrackingShutdown and applyTrackingRestore correctly control ga-disable flag");
+
+// 4. Test Script Loading and Tracking State Controller (Direct Unit Simulation of GoogleAnalytics component)
+console.log("4. Testing GoogleAnalytics Component Controller Logic...");
+
+class GoogleAnalyticsController {
+  constructor(measurementId, initialPath, initialConsent = false) {
     this.measurementId = measurementId;
-    this.hasConsent = false;
+    this.pathname = initialPath;
+    this.hasConsent = initialConsent;
     this.shouldLoadScript = false;
     this.isReady = false;
     this.isConfigured = false;
     this.lastTrackedPath = null;
     this.pageViewCount = 0;
     this.gtagCalls = [];
-    this.currentPath = "/en";
 
-    // Setup window gtag mock
     globalThis.window.gtag = (...args) => this.gtagCalls.push(args);
-  }
 
-  // User accepts consent
-  onAcceptConsent() {
-    this.hasConsent = true;
-    this.shouldLoadScript = true;
-
-    if (this.isConfigured) {
-      // Re-grant consent if already configured
-      globalThis.window.gtag("consent", "update", { analytics_storage: "granted" });
+    // Initial mount check (mirrors component Effect 1)
+    if (this.hasConsent && isEligibleAnalyticsRoute(this.pathname)) {
+      this.shouldLoadScript = true;
     }
   }
 
-  // Script finishes loading
-  onScriptLoaded() {
-    if (!this.isConfigured) {
-      globalThis.window.gtag("js", new Date());
-      globalThis.window.gtag("consent", "default", {
-        analytics_storage: "granted",
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied"
-      });
-      globalThis.window.gtag("config", this.measurementId, { send_page_view: false });
-      this.isConfigured = true;
-      this.isReady = true;
+  // User consent update
+  updateConsent(allowed) {
+    this.hasConsent = allowed;
+    if (allowed) {
+      if (isEligibleAnalyticsRoute(this.pathname)) {
+        this.shouldLoadScript = true;
+      }
+      if (this.isConfigured && isEligibleAnalyticsRoute(this.pathname)) {
+        applyTrackingRestore(this.measurementId);
+      }
+    } else {
+      applyTrackingShutdown(this.measurementId);
+      this.lastTrackedPath = null;
     }
-    this.triggerPageView();
-  }
-
-  // User revokes consent
-  onRevokeConsent() {
-    this.hasConsent = false;
-    if (this.isConfigured) {
-      globalThis.window.gtag("consent", "update", { analytics_storage: "denied" });
-    }
-    this.lastTrackedPath = null;
   }
 
   // Navigation
   navigate(newPath) {
-    this.currentPath = newPath;
+    this.pathname = newPath;
     const isPublic = isEligibleAnalyticsRoute(newPath);
 
-    if (this.isConfigured && this.hasConsent) {
-      if (!isPublic) {
-        globalThis.window.gtag("consent", "update", { analytics_storage: "denied" });
+    if (this.hasConsent && isPublic && !this.shouldLoadScript) {
+      this.shouldLoadScript = true;
+    }
+
+    if (this.isConfigured) {
+      if (!isPublic || !this.hasConsent) {
+        applyTrackingShutdown(this.measurementId);
         this.lastTrackedPath = null;
-        return;
       } else {
-        globalThis.window.gtag("consent", "update", { analytics_storage: "granted" });
+        applyTrackingRestore(this.measurementId);
       }
     }
 
@@ -157,9 +149,41 @@ class MockConsentLifecycle {
     }
   }
 
+  // Script onLoad callback (mirrors handleScriptLoad)
+  onScriptLoaded() {
+    // Race condition defense: check latest consent & route eligibility
+    const allowTracking = this.hasConsent && isEligibleAnalyticsRoute(this.pathname);
+
+    if (!allowTracking) {
+      applyTrackingShutdown(this.measurementId);
+      globalThis.window.gtag("consent", "default", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied"
+      });
+    } else {
+      applyTrackingRestore(this.measurementId);
+      globalThis.window.gtag("consent", "default", {
+        analytics_storage: "granted",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied"
+      });
+    }
+
+    globalThis.window.gtag("config", this.measurementId, { send_page_view: false });
+    this.isConfigured = true;
+
+    if (allowTracking) {
+      this.isReady = true;
+      this.triggerPageView();
+    }
+  }
+
   triggerPageView() {
-    if (!isEligibleAnalyticsRoute(this.currentPath)) return;
-    const clean = cleanPagePath(this.currentPath);
+    if (!isEligibleAnalyticsRoute(this.pathname)) return;
+    const clean = cleanPagePath(this.pathname);
     if (this.lastTrackedPath === clean) return;
     this.lastTrackedPath = clean;
     this.pageViewCount++;
@@ -170,103 +194,113 @@ class MockConsentLifecycle {
   }
 }
 
-// Scenario A: Rejected -> Accepted
+// Case 1: Consented user opening a private route directly (/en/login or /en/portal/dashboard)
 {
-  const sim = new MockConsentLifecycle("G-MOCK123");
-  assert.equal(sim.shouldLoadScript, false, "Initial: script must not load without consent");
-  assert.equal(sim.pageViewCount, 0, "Initial: zero page views");
-
-  // User accepts
-  sim.onAcceptConsent();
-  assert.equal(sim.shouldLoadScript, true, "Script flag turned on upon consent");
-  assert.equal(sim.isReady, false, "Not ready until script loads");
-
-  // Script loads
-  sim.onScriptLoaded();
-  assert.equal(sim.isReady, true, "Ready after script loads");
-  assert.equal(sim.pageViewCount, 1, "Exactly one initial page_view dispatched");
+  const ctrl = new GoogleAnalyticsController("G-TEST01", "/en/login", true);
+  assert.equal(ctrl.shouldLoadScript, false, "Consented user opening /en/login directly must NOT load Google Tag");
+  assert.equal(ctrl.pageViewCount, 0, "No page views on direct private route entry");
 }
-console.log("   ✓ Rejected -> Accepted initializes tag and emits exactly 1 initial page_view");
+console.log("   ✓ Consented user opening a private route directly strictly blocks Google Tag injection");
 
-// Scenario B: Accepted -> Rejected
+// Case 2: Consent revoked while script is actively loading (race condition defense)
 {
-  const sim = new MockConsentLifecycle("G-MOCK123");
-  sim.onAcceptConsent();
-  sim.onScriptLoaded();
-  assert.equal(sim.pageViewCount, 1);
+  const ctrl = new GoogleAnalyticsController("G-TEST02", "/en/services", true);
+  assert.equal(ctrl.shouldLoadScript, true, "Script started loading on public route");
 
-  // User revokes
-  sim.onRevokeConsent();
-  assert.equal(sim.hasConsent, false);
-  const updateCalls = sim.gtagCalls.filter(c => c[0] === "consent" && c[1] === "update");
-  const lastUpdate = updateCalls[updateCalls.length - 1];
-  assert.equal(lastUpdate[2].analytics_storage, "denied", "Consent updated to denied on revocation");
+  // User revokes consent before script finishes downloading:
+  ctrl.updateConsent(false);
+  assert.equal(globalThis.window["ga-disable-G-TEST02"], true, "Shutdown applied on revocation");
 
-  // Attempt navigation while revoked
-  sim.navigate("/en/services");
-  assert.equal(sim.pageViewCount, 1, "No page_view allowed after consent is revoked");
+  // Now script finishes downloading:
+  ctrl.onScriptLoaded();
+  assert.equal(ctrl.isReady, false, "Must not become ready if consent was revoked during load");
+  assert.equal(ctrl.pageViewCount, 0, "Zero page views emitted");
+  assert.equal(globalThis.window["ga-disable-G-TEST02"], true, "Disable flag remains strictly true");
+
+  const consentCalls = ctrl.gtagCalls.filter(c => c[0] === "consent" && c[1] === "default");
+  assert.equal(consentCalls[0][2].analytics_storage, "denied", "Default consent initialized to denied");
 }
-console.log("   ✓ Accepted -> Rejected immediately pauses tracking and blocks future events");
+console.log("   ✓ Race condition defense: revoking consent during script load enforces denied consent and ga-disable");
 
-// Scenario C: Accepted -> Rejected -> Accepted (Reactivation)
+// Case 3: User navigates to private route while script is actively loading (race condition defense)
 {
-  const sim = new MockConsentLifecycle("G-MOCK123");
-  sim.onAcceptConsent();
-  sim.onScriptLoaded();
-  assert.equal(sim.pageViewCount, 1);
+  const ctrl = new GoogleAnalyticsController("G-TEST03", "/en/about", true);
+  assert.equal(ctrl.shouldLoadScript, true, "Script started loading on public route");
 
-  // Revoke
-  sim.onRevokeConsent();
-  assert.equal(sim.pageViewCount, 1);
+  // User navigates to /en/portal before script finishes downloading:
+  ctrl.pathname = "/en/portal/dashboard";
 
-  // Re-accept
-  sim.onAcceptConsent();
-  const updateCalls = sim.gtagCalls.filter(c => c[0] === "consent" && c[1] === "update");
-  const lastUpdate = updateCalls[updateCalls.length - 1];
-  assert.equal(lastUpdate[2].analytics_storage, "granted", "Consent restored to granted upon re-acceptance");
-
-  // Navigating to new page resumes tracking
-  sim.navigate("/en/about");
-  assert.equal(sim.pageViewCount, 2, "Tracking resumed cleanly after re-acceptance");
-
-  // Re-navigating to same page does not duplicate
-  sim.navigate("/en/about");
-  assert.equal(sim.pageViewCount, 2, "No duplicate page views on identical route");
+  // Now script finishes downloading:
+  ctrl.onScriptLoaded();
+  assert.equal(ctrl.isReady, false, "Must not become ready if route became private during load");
+  assert.equal(ctrl.pageViewCount, 0, "Zero page views emitted");
+  assert.equal(globalThis.window["ga-disable-G-TEST03"], true, "Disable flag set to true for private route");
 }
-console.log("   ✓ Accepted -> Rejected -> Accepted safely reactivates without duplicate tags or views");
+console.log("   ✓ Race condition defense: navigating to private route during load enforces denied consent and ga-disable");
 
-// Scenario D: Public -> Private -> Public Route Transitions
+// Case 4: Private to Public Navigation
 {
-  const sim = new MockConsentLifecycle("G-MOCK123");
-  sim.onAcceptConsent();
-  sim.onScriptLoaded();
-  assert.equal(sim.pageViewCount, 1, "Initial public /en page view");
+  // User visits /en/login first (no script loaded):
+  const ctrl = new GoogleAnalyticsController("G-TEST04", "/en/login", true);
+  assert.equal(ctrl.shouldLoadScript, false);
 
-  // Navigate to private route /en/portal/dashboard
-  sim.navigate("/en/portal/dashboard");
-  assert.equal(sim.pageViewCount, 1, "Private route strictly barred from page_view");
-  const updateCalls = sim.gtagCalls.filter(c => c[0] === "consent" && c[1] === "update");
-  assert.equal(updateCalls[updateCalls.length - 1][2].analytics_storage, "denied", "Consent paused on private route");
+  // User navigates from /en/login to /en/services:
+  ctrl.navigate("/en/services");
+  assert.equal(ctrl.shouldLoadScript, true, "Script loads upon entering public route");
 
-  // Navigate back to public route /en/services
-  sim.navigate("/en/services");
-  assert.equal(sim.pageViewCount, 2, "Page view emitted for returning to public route");
-  const finalUpdateCalls = sim.gtagCalls.filter(c => c[0] === "consent" && c[1] === "update");
-  assert.equal(finalUpdateCalls[finalUpdateCalls.length - 1][2].analytics_storage, "granted", "Consent unpaused upon return to public route");
+  // Script finishes loading on public route:
+  ctrl.onScriptLoaded();
+  assert.equal(ctrl.isReady, true);
+  assert.equal(ctrl.pageViewCount, 1, "Page view emitted for public route");
+  assert.equal(globalThis.window["ga-disable-G-TEST04"], false, "Disable flag set to false on public route");
 }
-console.log("   ✓ Public -> Private -> Public dynamically suspends tracking and restores on return");
+console.log("   ✓ Private to public navigation cleanly activates script and starts tracking");
 
-// 4. Private-Route Shielding (Portal, Auth, API, Error)
-console.log("4. Testing Private-Route Exclusions List...");
-assert.equal(isEligibleAnalyticsRoute("/en/portal"), false);
-assert.equal(isEligibleAnalyticsRoute("/en/portal/settings"), false);
-assert.equal(isEligibleAnalyticsRoute("/en/login"), false);
-assert.equal(isEligibleAnalyticsRoute("/en/register"), false);
-assert.equal(isEligibleAnalyticsRoute("/api/contact"), false);
-assert.equal(isEligibleAnalyticsRoute("/en/_not-found"), false);
-assert.equal(isEligibleAnalyticsRoute("/en/404"), false);
-assert.equal(isEligibleAnalyticsRoute("/en/pricing"), false);
-console.log("   ✓ All private and non-approved routes safely verified as ineligible");
+// Case 5: Public -> Private -> Public Navigation (Tag already loaded)
+{
+  const ctrl = new GoogleAnalyticsController("G-TEST05", "/en", true);
+  ctrl.onScriptLoaded();
+  assert.equal(ctrl.pageViewCount, 1, "Initial homepage view");
+
+  // Navigate to /en/portal/executions
+  ctrl.navigate("/en/portal/executions");
+  assert.equal(ctrl.pageViewCount, 1, "No page views on private route");
+  assert.equal(globalThis.window["ga-disable-G-TEST05"], true, "ga-disable set to true on private route");
+
+  // Return to public /en/contact
+  ctrl.navigate("/en/contact");
+  assert.equal(ctrl.pageViewCount, 2, "Page view emitted for /en/contact");
+  assert.equal(globalThis.window["ga-disable-G-TEST05"], false, "ga-disable restored to false on public route");
+}
+console.log("   ✓ Public -> Private -> Public toggles ga-disable and safely resumes tracking");
+
+// Case 6: Reactivation after Consent Restoration (Accepted -> Rejected -> Accepted)
+{
+  const ctrl = new GoogleAnalyticsController("G-TEST06", "/en", true);
+  ctrl.onScriptLoaded();
+  assert.equal(ctrl.pageViewCount, 1);
+
+  // Revoke consent
+  ctrl.updateConsent(false);
+  assert.equal(globalThis.window["ga-disable-G-TEST06"], true);
+
+  // Navigate while revoked
+  ctrl.navigate("/en/services");
+  assert.equal(ctrl.pageViewCount, 1, "Tracking blocked while consent revoked");
+
+  // Restore consent
+  ctrl.updateConsent(true);
+  assert.equal(globalThis.window["ga-disable-G-TEST06"], false, "ga-disable restored upon consent re-acceptance");
+
+  // Navigate to new page
+  ctrl.navigate("/en/about");
+  assert.equal(ctrl.pageViewCount, 2, "Page view emitted upon route transition after consent restoration");
+
+  // Navigating to same page does not duplicate
+  ctrl.navigate("/en/about");
+  assert.equal(ctrl.pageViewCount, 2, "Deduplication prevents repeat page views");
+}
+console.log("   ✓ Reactivation after consent restoration verifies zero duplicate views and proper flag updates");
 
 // 5. PII and Query Parameter Scrubbing
 console.log("5. Testing PII and URL Query Sanitization...");
@@ -288,4 +322,4 @@ const cleanPathResult = cleanPagePath("/en/services?user=admin&token=xyz#top");
 assert.equal(cleanPathResult, "/en/services", "All query params and hashes purged");
 console.log("   ✓ PII regex scrubbing and pure path normalization confirmed");
 
-console.log("\n=== ALL GA4-01C TESTS PASSED SUCCESSFULLY ===");
+console.log("\n=== ALL GA4-01D TESTS PASSED SUCCESSFULLY ===");

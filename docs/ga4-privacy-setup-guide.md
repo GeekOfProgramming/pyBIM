@@ -1,7 +1,7 @@
 # pyBIM — GA4 Privacy-First Setup & Administration Guide
 
-**Document Version:** 1.1.0
-**Phase:** GA4-01B
+**Document Version:** 1.2.0
+**Phase:** GA4-01D
 **Architecture:** Shared Single Property, Basic Consent Mode, Cross-Domain Measurement
 **Target Domains:**
 - `https://www.pybim.com` (English `/en`, German `/de`)
@@ -15,15 +15,23 @@ pyBIM uses a single Google Analytics 4 (GA4) property configured with one Web Da
 
 ### Core Privacy & Consent Safeguards:
 1. **Dormant Configuration:** GA4 remains completely inactive unless a valid Measurement ID (`NEXT_PUBLIC_GA4_MEASUREMENT_ID`) is provided **at Next.js build time**.
-2. **Basic Consent Mode:**
+2. **Basic Consent Mode & Script Isolation:**
    - If user consent is not granted, the `gtag.js` script is **never loaded**, zero network requests are dispatched, and zero Google cookies are created.
+   - Script injection requires **both** explicit user consent (`analytics === true`) AND that the user is visiting an approved public route.
    - Default signals for advertising (`ad_storage`, `ad_user_data`, `ad_personalization`) are permanently denied.
    - Anonymization and restricted data processing flags (`restricted_data_processing: true`, `anonymize_ip: true`, `allow_google_signals: false`) are hardcoded.
 3. **Private-Route Shielding:**
    - Client Portal (`/portal/*`), authentication pages (`/login`, `/register`), API endpoints (`/api/*`), and error pages are strictly excluded from analytics initialization and event tracking.
-4. **Consent Revocation:** When a user revokes analytics consent via the Cookie Preferences modal, future events are blocked, Google tag consent is updated to `denied`, and `_ga*` cookies are expired.
-5. **Zero PII Policy:** Automatic PII scrubbing removes names, emails, phone numbers, form bodies, auth tokens, and session credentials before events are logged.
-6. **Query Parameter Stripping:** Page views are logged with clean pathnames only (e.g. `/en/services`). No search queries or URL tokens are transmitted.
+   - If a returning consented user opens `/en/login` or `/en/portal/*` directly, Google Tag is **not loaded**.
+4. **Complete Tracking Shutdown (`ga-disable-G-XXXX`):**
+   - *Important architectural distinction:* Setting `analytics_storage: denied` alone instructs Google Analytics not to store cookies, but does not guarantee that zero network requests will be dispatched if the script is running.
+   - To ensure a **complete shutdown**, pyBIM implements Google's official opt-out mechanism `window['ga-disable-G-XXXXXXXXXX'] = true` whenever consent is revoked or navigation enters a private route. This halts all data transmission directly at the Google Tag library level.
+   - In addition, `gtag('consent', 'update', { analytics_storage: 'denied' })` is dispatched and all `_ga*` cookies are expired.
+5. **Race Condition Protection:**
+   - If consent is revoked or navigation transitions to a private route while `gtag.js` is still downloading, the loader verifies the latest state on completion and immediately enforces shutdown (`analytics_storage: 'denied'` and `ga-disable: true`).
+6. **Zero PII Policy & Pure Paths:**
+   - Automatic PII scrubbing removes names, emails, phone numbers, form bodies, auth tokens, and session credentials before events are logged.
+   - Page views are logged with clean pathnames only (e.g. `/en/services`). No search queries or URL tokens are transmitted.
 
 ---
 
@@ -116,10 +124,11 @@ Once deployed to production with the build variable set:
      - `page_path`: e.g. `/en/services` (zero query parameters attached)
 4. **Private-Route Navigation Test:**
    - Navigate to `/en/login` or `/en/portal/dashboard`.
+   - Verify that `window['ga-disable-G-XXXX'] === true`.
    - Verify that **no** `page_view` or custom events are fired while on private routes.
 5. **Consent Revocation Test:**
    - Reopen Cookie Preferences from the footer, uncheck Analytics, and save.
-   - Verify `_ga*` cookies are expired and removed from the browser.
+   - Verify `window['ga-disable-G-XXXX'] === true` and `_ga*` cookies are expired and removed from the browser.
 6. **Form Submission Test:**
    - Submit an inquiry via the Contact form.
    - Verify only a generic `contact_form_submit` event is sent with `service_id`. Confirm no email, name, phone, or message body data is attached.
