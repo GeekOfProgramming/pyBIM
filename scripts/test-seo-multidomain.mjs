@@ -4,14 +4,16 @@
  * Validates:
  * 1. Model B Canonical URL generation (EN/DE on pybim.com, IT on pybim.it)
  * 2. Reciprocal Hreflang alternates across all languages and x-default
- * 3. Separate Dynamic Sitemaps (pybim.com: 16 URLs, pybim.it: 8 URLs)
- * 4. Robots.txt dynamic sitemap referencing & security exclusions
- * 5. Middleware cross-domain routing, query preservation & preview isolation
+ * 3. Separate Dynamic Sitemaps (pybim.com: 16 URLs, pybim.it: 8 URLs) with trusted Host routing (no public query override)
+ * 4. Robots.txt dynamic sitemap referencing & security exclusions (no public query override)
+ * 5. Middleware cross-domain routing, query preservation & Cloudflare safety (no www-apex loops)
  * 6. Protection of authenticated sessions & private routes
  * 7. Preservation of existing noindex policies
+ * 8. Dynamic Careers Pages (/careers/[id]) metadata, handling missing IDs, suppression of inherited signals
  */
 
 import assert from 'node:assert';
+import fs from 'node:fs';
 import {
   SUPPORTED_LOCALES,
   CORE_INDEXABLE_ROUTES,
@@ -26,6 +28,7 @@ import {
   isComDomain,
   isProductionDomain,
   resolveRedirectTarget,
+  getCareerDetailMetadata,
 } from '../lib/seo.js';
 
 import { GET as getSitemapResponse } from '../app/sitemap.xml/route.js';
@@ -108,9 +111,9 @@ for (const route of CORE_INDEXABLE_ROUTES) {
 console.log('   ✓ Reciprocal hreflang references verified across EN, IT, DE and x-default');
 
 // -----------------------------------------------------------------------------
-// 3. Separate Dynamic Sitemap Tests
+// 3. Separate Dynamic Sitemap Tests (Host-Based, No Query Override)
 // -----------------------------------------------------------------------------
-console.log('3. Testing Separate Dynamic Sitemaps (.com vs .it)...');
+console.log('3. Testing Separate Dynamic Sitemaps (pybim.com vs pybim.it via Host header)...');
 
 // Helper to extract <loc> URLs from sitemap XML
 function extractSitemapUrls(xml) {
@@ -118,116 +121,118 @@ function extractSitemapUrls(xml) {
   return matches.map((m) => m.replace(/<\/?loc>/g, ''));
 }
 
-// 3a. Sitemap A: pybim.com
-const comReq = new Request('https://pybim.com/sitemap.xml', {
-  headers: { host: 'pybim.com' },
-});
-const comRes = await getSitemapResponse(comReq);
-assert.strictEqual(comRes.status, 200, 'pybim.com sitemap must return HTTP 200');
-assert.strictEqual(comRes.headers.get('content-type'), 'application/xml; charset=utf-8');
-assert.strictEqual(comRes.headers.get('vary'), 'Host', 'Sitemap must specify Vary: Host');
+// 3a. Sitemap A: pybim.com (Host: pybim.com and www.pybim.com)
+for (const host of ['pybim.com', 'www.pybim.com']) {
+  const req = new Request(`https://${host}/sitemap.xml`, { headers: { host } });
+  const res = await getSitemapResponse(req);
+  assert.strictEqual(res.status, 200, `${host} sitemap must return HTTP 200`);
+  assert.strictEqual(res.headers.get('content-type'), 'application/xml; charset=utf-8');
+  assert.strictEqual(res.headers.get('vary'), 'Host', 'Sitemap must specify Vary: Host');
 
-const comXml = await comRes.text();
-assert.ok(comXml.startsWith('<?xml version="1.0" encoding="UTF-8"?>'), 'Valid XML header required');
-assert.ok(comXml.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'));
+  const xml = await res.text();
+  assert.ok(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>'), 'Valid XML header required');
+  assert.ok(xml.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'));
 
-const comUrls = extractSitemapUrls(comXml);
-assert.strictEqual(comUrls.length, 16, `pybim.com sitemap must contain exactly 16 URLs (found ${comUrls.length})`);
+  const urls = extractSitemapUrls(xml);
+  assert.strictEqual(urls.length, 16, `${host} sitemap must contain exactly 16 URLs (found ${urls.length})`);
 
-// Verify all 16 URLs are pybim.com and only en or de
-for (const u of comUrls) {
-  assert.ok(u.startsWith('https://pybim.com/'), `.com sitemap URL must start with https://pybim.com/: ${u}`);
-  assert.ok(u.startsWith('https://pybim.com/en') || u.startsWith('https://pybim.com/de'), `URL must be en or de: ${u}`);
-  assert.ok(!u.includes('pybim.it'), `.com sitemap must never contain pybim.it: ${u}`);
-  assert.ok(!u.includes('/education'), `noindex route /education must be excluded: ${u}`);
-  assert.ok(!u.includes('/success-stories'), `noindex route /success-stories must be excluded: ${u}`);
-  assert.ok(!u.includes('/projects'), `redirecting route /projects must be excluded: ${u}`);
+  for (const u of urls) {
+    assert.ok(u.startsWith('https://pybim.com/'), `.com sitemap URL must start with https://pybim.com/: ${u}`);
+    assert.ok(u.startsWith('https://pybim.com/en') || u.startsWith('https://pybim.com/de'), `URL must be en or de: ${u}`);
+    assert.ok(!u.includes('pybim.it'), `.com sitemap must never contain pybim.it: ${u}`);
+    assert.ok(!u.includes('/education'), `noindex route /education must be excluded: ${u}`);
+    assert.ok(!u.includes('/success-stories'), `noindex route /success-stories must be excluded: ${u}`);
+    assert.ok(!u.includes('/projects'), `redirecting route /projects must be excluded: ${u}`);
+  }
 }
 
-// 3b. Sitemap B: pybim.it
-const itReq = new Request('https://pybim.it/sitemap.xml', {
-  headers: { host: 'pybim.it' },
-});
-const itRes = await getSitemapResponse(itReq);
-assert.strictEqual(itRes.status, 200, 'pybim.it sitemap must return HTTP 200');
-assert.strictEqual(itRes.headers.get('content-type'), 'application/xml; charset=utf-8');
-assert.strictEqual(itRes.headers.get('vary'), 'Host', 'Sitemap must specify Vary: Host');
+// 3b. Sitemap B: pybim.it (Host: pybim.it and www.pybim.it)
+for (const host of ['pybim.it', 'www.pybim.it']) {
+  const req = new Request(`https://${host}/sitemap.xml`, { headers: { host } });
+  const res = await getSitemapResponse(req);
+  assert.strictEqual(res.status, 200, `${host} sitemap must return HTTP 200`);
+  assert.strictEqual(res.headers.get('content-type'), 'application/xml; charset=utf-8');
+  assert.strictEqual(res.headers.get('vary'), 'Host', 'Sitemap must specify Vary: Host');
 
-const itXml = await itRes.text();
-const itUrls = extractSitemapUrls(itXml);
-assert.strictEqual(itUrls.length, 8, `pybim.it sitemap must contain exactly 8 URLs (found ${itUrls.length})`);
+  const xml = await res.text();
+  const urls = extractSitemapUrls(xml);
+  assert.strictEqual(urls.length, 8, `${host} sitemap must contain exactly 8 URLs (found ${urls.length})`);
 
-// Verify all 8 URLs are pybim.it and it only
-for (const u of itUrls) {
-  assert.ok(u.startsWith('https://pybim.it/it'), `.it sitemap URL must start with https://pybim.it/it: ${u}`);
-  assert.ok(!u.includes('pybim.com'), `.it sitemap must never contain pybim.com: ${u}`);
-  assert.ok(!u.includes('/education'), `noindex route /education must be excluded: ${u}`);
-  assert.ok(!u.includes('/success-stories'), `noindex route /success-stories must be excluded: ${u}`);
-  assert.ok(!u.includes('/projects'), `redirecting route /projects must be excluded: ${u}`);
+  for (const u of urls) {
+    assert.ok(u.startsWith('https://pybim.it/it'), `.it sitemap URL must start with https://pybim.it/it: ${u}`);
+    assert.ok(!u.includes('pybim.com'), `.it sitemap must never contain pybim.com: ${u}`);
+    assert.ok(!u.includes('/education'), `noindex route /education must be excluded: ${u}`);
+    assert.ok(!u.includes('/success-stories'), `noindex route /success-stories must be excluded: ${u}`);
+    assert.ok(!u.includes('/projects'), `redirecting route /projects must be excluded: ${u}`);
+  }
 }
 
-// 3c. Test query parameter fallback (?domain=it / ?domain=com)
-const debugItReq = new Request('http://localhost:3000/sitemap.xml?domain=it');
-const debugItRes = await getSitemapResponse(debugItReq);
-const debugItUrls = extractSitemapUrls(await debugItRes.text());
-assert.strictEqual(debugItUrls.length, 8);
+// 3c. Verify that query parameters (?domain=it) are strictly IGNORED
+const ignoredQueryReq = new Request('https://pybim.com/sitemap.xml?domain=it', {
+  headers: { host: 'pybim.com' }
+});
+const ignoredQueryRes = await getSitemapResponse(ignoredQueryReq);
+const ignoredQueryUrls = extractSitemapUrls(await ignoredQueryRes.text());
+assert.strictEqual(ignoredQueryUrls.length, 16, 'Query param ?domain=it must be ignored in favor of Host header');
 
-const debugComReq = new Request('http://localhost:3000/sitemap.xml?domain=com');
-const debugComRes = await getSitemapResponse(debugComReq);
-const debugComUrls = extractSitemapUrls(await debugComRes.text());
-assert.strictEqual(debugComUrls.length, 16);
-
-console.log('   ✓ Dynamic Sitemaps correctly separated: pybim.com (16 URLs) & pybim.it (8 URLs)');
+console.log('   ✓ Dynamic Sitemaps correctly separated by Host (16 URLs on .com, 8 URLs on .it) without query overrides');
 
 // -----------------------------------------------------------------------------
 // 4. Robots.txt Dynamic Sitemap & Security Exclusions Tests
 // -----------------------------------------------------------------------------
 console.log('4. Testing Robots.txt domain referencing and security exclusions...');
 
-// 4a. pybim.com robots.txt
-const robotsComReq = new Request('https://pybim.com/robots.txt', {
-  headers: { host: 'pybim.com' },
-});
-const robotsComRes = await getRobotsResponse(robotsComReq);
-assert.strictEqual(robotsComRes.status, 200);
-assert.strictEqual(robotsComRes.headers.get('content-type'), 'text/plain; charset=utf-8');
-assert.strictEqual(robotsComRes.headers.get('vary'), 'Host');
-const robotsComTxt = await robotsComRes.text();
-assert.ok(robotsComTxt.includes('Sitemap: https://pybim.com/sitemap.xml'), 'Must point to .com sitemap');
-assert.ok(!robotsComTxt.includes('https://pybim.it'), 'Must not reference .it sitemap');
-assert.ok(robotsComTxt.includes('Disallow: /api/'));
-assert.ok(robotsComTxt.includes('Disallow: /test/'));
-assert.ok(robotsComTxt.includes('Disallow: /admin/'));
+// 4a. pybim.com and www.pybim.com robots.txt
+for (const host of ['pybim.com', 'www.pybim.com']) {
+  const req = new Request(`https://${host}/robots.txt`, { headers: { host } });
+  const res = await getRobotsResponse(req);
+  assert.strictEqual(res.status, 200);
+  assert.strictEqual(res.headers.get('content-type'), 'text/plain; charset=utf-8');
+  assert.strictEqual(res.headers.get('vary'), 'Host');
+  const txt = await res.text();
+  assert.ok(txt.includes('Sitemap: https://pybim.com/sitemap.xml'), 'Must point to .com sitemap');
+  assert.ok(!txt.includes('https://pybim.it'), 'Must not reference .it sitemap');
+  assert.ok(txt.includes('Disallow: /api/'));
+  assert.ok(txt.includes('Disallow: /test/'));
+  assert.ok(txt.includes('Disallow: /admin/'));
+}
 
-// 4b. pybim.it robots.txt
-const robotsItReq = new Request('https://pybim.it/robots.txt', {
-  headers: { host: 'pybim.it' },
-});
-const robotsItRes = await getRobotsResponse(robotsItReq);
-assert.strictEqual(robotsItRes.status, 200);
-assert.strictEqual(robotsItRes.headers.get('vary'), 'Host');
-const robotsItTxt = await robotsItRes.text();
-assert.ok(robotsItTxt.includes('Sitemap: https://pybim.it/sitemap.xml'), 'Must point to .it sitemap');
-assert.ok(!robotsItTxt.includes('https://pybim.com'), 'Must not reference .com sitemap');
-assert.ok(robotsItTxt.includes('Disallow: /api/'));
-assert.ok(robotsItTxt.includes('Disallow: /test/'));
-assert.ok(robotsItTxt.includes('Disallow: /admin/'));
+// 4b. pybim.it and www.pybim.it robots.txt
+for (const host of ['pybim.it', 'www.pybim.it']) {
+  const req = new Request(`https://${host}/robots.txt`, { headers: { host } });
+  const res = await getRobotsResponse(req);
+  assert.strictEqual(res.status, 200);
+  assert.strictEqual(res.headers.get('vary'), 'Host');
+  const txt = await res.text();
+  assert.ok(txt.includes('Sitemap: https://pybim.it/sitemap.xml'), 'Must point to .it sitemap');
+  assert.ok(!txt.includes('https://pybim.com'), 'Must not reference .com sitemap');
+  assert.ok(txt.includes('Disallow: /api/'));
+  assert.ok(txt.includes('Disallow: /test/'));
+  assert.ok(txt.includes('Disallow: /admin/'));
+}
 
-console.log('   ✓ Robots.txt correctly references domain-specific sitemaps and preserves security disallows');
+// 4c. Verify that query param ?domain=it is IGNORED on robots.txt
+const ignoredRobotsReq = new Request('https://pybim.com/robots.txt?domain=it', {
+  headers: { host: 'pybim.com' }
+});
+const ignoredRobotsTxt = await (await getRobotsResponse(ignoredRobotsReq)).text();
+assert.ok(ignoredRobotsTxt.includes('Sitemap: https://pybim.com/sitemap.xml'));
+
+console.log('   ✓ Robots.txt correctly references domain-specific sitemaps without query overrides');
 
 // -----------------------------------------------------------------------------
-// 5. Middleware Cross-Domain Routing & Redirect Logic Tests
+// 5. Middleware Cross-Domain Routing & Cloudflare Safety Tests
 // -----------------------------------------------------------------------------
-console.log('5. Testing Cross-Domain Canonical Routing & Redirect Resolutions...');
+console.log('5. Testing Cross-Domain Canonical Routing & Cloudflare Safety (no www loops)...');
 
-// 5a. Root Redirects
+// 5a. Root Redirects (preserves host format)
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/', search: '' }),
   'https://pybim.com/en'
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'www.pybim.com', pathname: '/', search: '' }),
-  'https://pybim.com/en'
+  'https://www.pybim.com/en'
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'pybim.it', pathname: '/', search: '' }),
@@ -235,70 +240,70 @@ assert.strictEqual(
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'www.pybim.it', pathname: '/', search: '' }),
-  'https://pybim.it/it'
+  'https://www.pybim.it/it'
 );
 
-// 5b. Noncanonical domain/locale combinations -> 308 canonical target
+// 5b. Cloudflare Safety: Valid locales on www must NEVER redirect to apex
+// (Cloudflare redirects apex to www; redirecting www to apex would cause infinite loop!)
+assert.strictEqual(
+  resolveRedirectTarget({ hostname: 'www.pybim.com', pathname: '/en/services', search: '' }),
+  null,
+  'www.pybim.com/en/services must return null (200 OK) to prevent loop with Cloudflare'
+);
+assert.strictEqual(
+  resolveRedirectTarget({ hostname: 'www.pybim.com', pathname: '/de/services', search: '' }),
+  null,
+  'www.pybim.com/de/services must return null (200 OK) to prevent loop with Cloudflare'
+);
+assert.strictEqual(
+  resolveRedirectTarget({ hostname: 'www.pybim.it', pathname: '/it/services', search: '' }),
+  null,
+  'www.pybim.it/it/services must return null (200 OK) to prevent loop with Cloudflare'
+);
+
+// 5c. Valid locales on apex also return null (serving directly if reached)
+assert.strictEqual(
+  resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/en/services', search: '' }),
+  null
+);
+assert.strictEqual(
+  resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/de/services', search: '' }),
+  null
+);
+assert.strictEqual(
+  resolveRedirectTarget({ hostname: 'pybim.it', pathname: '/it/services', search: '' }),
+  null
+);
+
+// 5d. Noncanonical combinations -> redirect to counterpart domain
+assert.strictEqual(
+  resolveRedirectTarget({ hostname: 'www.pybim.com', pathname: '/it/services', search: '' }),
+  'https://www.pybim.it/it/services',
+  'www.pybim.com/it/services redirects directly to www.pybim.it in 1 hop'
+);
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/it/services', search: '' }),
   'https://pybim.it/it/services'
 );
 assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'www.pybim.com', pathname: '/it/services', search: '' }),
-  'https://pybim.it/it/services'
-);
-assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'pybim.it', pathname: '/en/services', search: '' }),
-  'https://pybim.com/en/services'
-);
-assert.strictEqual(
   resolveRedirectTarget({ hostname: 'www.pybim.it', pathname: '/en/services', search: '' }),
-  'https://pybim.com/en/services'
-);
-assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'pybim.it', pathname: '/de/services', search: '' }),
-  'https://pybim.com/de/services'
+  'https://www.pybim.com/en/services',
+  'www.pybim.it/en/services redirects directly to www.pybim.com in 1 hop'
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'www.pybim.it', pathname: '/de/services', search: '' }),
-  'https://pybim.com/de/services'
-);
-
-// 5c. www normalization to canonical apex in single hop
-assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'www.pybim.com', pathname: '/en/services', search: '' }),
-  'https://pybim.com/en/services'
-);
-assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'www.pybim.it', pathname: '/it/services', search: '' }),
-  'https://pybim.it/it/services'
-);
-
-// 5d. Canonical combinations that should NOT redirect (return null / 200 OK)
-assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/en/services', search: '' }),
-  null,
-  'pybim.com/en/services must not redirect'
-);
-assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/de/services', search: '' }),
-  null,
-  'pybim.com/de/services must not redirect'
-);
-assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'pybim.it', pathname: '/it/services', search: '' }),
-  null,
-  'pybim.it/it/services must not redirect'
+  'https://www.pybim.com/de/services',
+  'www.pybim.it/de/services redirects directly to www.pybim.com in 1 hop'
 );
 
 // 5e. Query string preservation
 assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/it/services', search: '?source=newsletter&campaign=bim2026' }),
-  'https://pybim.it/it/services?source=newsletter&campaign=bim2026'
+  resolveRedirectTarget({ hostname: 'www.pybim.com', pathname: '/it/services', search: '?source=newsletter&campaign=bim2026' }),
+  'https://www.pybim.it/it/services?source=newsletter&campaign=bim2026'
 );
 assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'pybim.it', pathname: '/', search: '?ref=email' }),
-  'https://pybim.it/it?ref=email'
+  resolveRedirectTarget({ hostname: 'www.pybim.it', pathname: '/', search: '?ref=email' }),
+  'https://www.pybim.it/it?ref=email'
 );
 
 // 5f. Private / Session / Auth Route Exemptions (Cookies are domain-scoped)
@@ -308,22 +313,21 @@ assert.strictEqual(
   'Portal routes must be exempt from cross-domain redirection to protect sessions'
 );
 assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'pybim.it', pathname: '/en/portal/dashboard', search: '' }),
-  null,
-  'Portal routes must be exempt from cross-domain redirection'
+  resolveRedirectTarget({ hostname: 'www.pybim.com', pathname: '/it/portal/dashboard', search: '' }),
+  null
 );
 assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/it/login', search: '' }),
+  resolveRedirectTarget({ hostname: 'www.pybim.it', pathname: '/en/login', search: '' }),
   null,
   'Login routes must be exempt from cross-domain redirection'
 );
 assert.strictEqual(
-  resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/api/contact', search: '' }),
+  resolveRedirectTarget({ hostname: 'www.pybim.com', pathname: '/api/contact', search: '' }),
   null,
   'API routes must be exempt from cross-domain redirection'
 );
 
-// 5g. Local and Preview Environments Isolation
+// 5g. Local, Preview, and Untrusted Host Isolation
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'localhost:3000', pathname: '/it/services', search: '' }),
   null,
@@ -331,23 +335,24 @@ assert.strictEqual(
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: '127.0.0.1:3000', pathname: '/it/services', search: '' }),
-  null,
-  '127.0.0.1 must not trigger cross-domain redirect'
+  null
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'pybim-preview.workers.dev', pathname: '/it/services', search: '' }),
+  null
+);
+assert.strictEqual(
+  resolveRedirectTarget({ hostname: 'evil-attacker.com', pathname: '/it/services', search: '' }),
   null,
-  'workers.dev preview must not trigger cross-domain redirect'
+  'Untrusted host must never trigger redirects'
 );
 
-console.log('   ✓ Canonical domain routing, query preservation, session protection, and preview isolation verified');
+console.log('   ✓ Cloudflare redirect compatibility, query preservation, session protection, and preview isolation verified');
 
 // -----------------------------------------------------------------------------
 // 6. Preservation of Existing Noindex Policies Tests
 // -----------------------------------------------------------------------------
 console.log('6. Testing Preservation of Intentional Noindex Policies...');
-
-import fs from 'node:fs';
 
 const eduContent = fs.readFileSync(new URL('../app/[locale]/education/page.js', import.meta.url), 'utf8');
 assert.ok(eduContent.includes('index: false'), 'Education page must have index: false');
@@ -372,5 +377,60 @@ const registerContent = fs.readFileSync(new URL('../app/[locale]/(auth)/register
 assert.ok(registerContent.includes('index: false'), 'Register page must have index: false');
 
 console.log('   ✓ Intentional noindex policies verified on Education, Success Stories, Portal, and Auth');
+
+// -----------------------------------------------------------------------------
+// 7. Dynamic Careers Pages (/careers/[id]) Metadata Tests
+// -----------------------------------------------------------------------------
+console.log('7. Testing Dynamic Careers Pages (/careers/[id]) metadata and missing ID handling...');
+
+// 7a. Non-existent / Missing Job ID (job is null)
+const missingJobMetaEn = getCareerDetailMetadata({ locale: 'en', id: 'missing-job-xyz', job: null });
+assert.strictEqual(missingJobMetaEn.title, 'Job Not Found | pyBIM', 'Missing job must return Job Not Found title');
+assert.strictEqual(missingJobMetaEn.robots?.index, false, 'Missing job must be noindex');
+assert.strictEqual(missingJobMetaEn.robots?.follow, false, 'Missing job must be nofollow');
+assert.strictEqual(missingJobMetaEn.alternates?.canonical, null, 'Missing job must suppress canonical URL (prevent inheriting root)');
+
+const missingJobMetaIt = getCareerDetailMetadata({ locale: 'it', id: 'missing-job-xyz', job: null });
+assert.strictEqual(missingJobMetaIt.robots?.index, false);
+assert.strictEqual(missingJobMetaIt.robots?.follow, false);
+assert.strictEqual(missingJobMetaIt.alternates?.canonical, null);
+
+// 7b. Inactive Job ID (job.isActive is false)
+const inactiveJob = { id: 'old-role', titleEn: 'Old Role', titleIt: 'Vecchio Ruolo', isActive: false };
+const inactiveJobMeta = getCareerDetailMetadata({ locale: 'en', id: 'old-role', job: inactiveJob });
+assert.strictEqual(inactiveJobMeta.robots?.index, false);
+assert.strictEqual(inactiveJobMeta.alternates?.canonical, null);
+
+// 7c. Active Job ID (job.isActive is true) - Route-specific Model B Canonical & Hreflang
+const activeJob = {
+  id: 'senior-bim-lead',
+  titleEn: 'Senior BIM Lead',
+  titleIt: 'Lead BIM Senior',
+  descriptionEn: 'Lead complex BIM automation projects.',
+  descriptionIt: 'Guida progetti complessi di automazione BIM.',
+  isActive: true,
+};
+const activeJobMetaEn = getCareerDetailMetadata({ locale: 'en', id: 'senior-bim-lead', job: activeJob });
+assert.strictEqual(activeJobMetaEn.title, 'Senior BIM Lead | pyBIM');
+assert.strictEqual(activeJobMetaEn.robots?.index, false);
+assert.strictEqual(activeJobMetaEn.robots?.follow, true);
+assert.strictEqual(activeJobMetaEn.alternates?.canonical, 'https://pybim.com/en/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaEn.alternates?.languages.en, 'https://pybim.com/en/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaEn.alternates?.languages.it, 'https://pybim.it/it/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaEn.alternates?.languages.de, 'https://pybim.com/de/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaEn.alternates?.languages['x-default'], 'https://pybim.com/en/careers/senior-bim-lead');
+
+const activeJobMetaIt = getCareerDetailMetadata({ locale: 'it', id: 'senior-bim-lead', job: activeJob });
+assert.strictEqual(activeJobMetaIt.title, 'Lead BIM Senior | pyBIM');
+assert.strictEqual(activeJobMetaIt.alternates?.canonical, 'https://pybim.it/it/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaIt.alternates?.languages.it, 'https://pybim.it/it/careers/senior-bim-lead');
+
+// 7d. Check source code structure of careers/[id]/page.js
+const careerDetailCode = fs.readFileSync(new URL('../app/[locale]/careers/[id]/page.js', import.meta.url), 'utf8');
+assert.ok(careerDetailCode.includes('getCareerDetailMetadata'), 'Must use getCareerDetailMetadata');
+assert.ok(careerDetailCode.includes('job.isActive === false'), 'Must check isActive status');
+assert.ok(careerDetailCode.includes('notFound()'), 'Must call notFound() for missing or inactive jobs');
+
+console.log('   ✓ Dynamic Careers detail pages properly suppress inherited signals on 404 and enforce Model B mapping');
 
 console.log('\n=== ALL SEO-01 MULTI-DOMAIN & MULTILINGUAL TESTS PASSED SUCCESSFULLY ===');

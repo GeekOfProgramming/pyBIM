@@ -13,11 +13,10 @@ import { isItalianDomain, DOMAIN_COM, DOMAIN_IT } from '../../lib/seo.js';
  * Emits Vary: Host to avoid CDN cache contamination between domains.
  */
 export async function GET(request) {
-  const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || '';
-  const url = new URL(request.url);
-  const domainParam = url.searchParams.get('domain');
+  // Trust standard Host header first, defending against spoofed X-Forwarded-Host
+  const host = request.headers.get('host') || request.headers.get('x-forwarded-host') || '';
 
-  const isIt = domainParam === 'it' || (!domainParam && isItalianDomain(host));
+  const isIt = isItalianDomain(host);
   const sitemapUrl = isIt ? `${DOMAIN_IT}/sitemap.xml` : `${DOMAIN_COM}/sitemap.xml`;
 
   const body = [

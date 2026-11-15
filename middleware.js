@@ -9,7 +9,8 @@ const defaultLocale = 'en';
 export async function middleware(req) {
   const { pathname, search } = req.nextUrl;
 
-  const hostHeader = req.headers.get('x-forwarded-host') || req.headers.get('host') || req.nextUrl.hostname || '';
+  // Prioritize verified Host header over untrusted client headers to defend against Host header spoofing
+  const hostHeader = req.headers.get('host') || req.nextUrl.hostname || req.headers.get('x-forwarded-host') || '';
   const hostname = hostHeader.split(':')[0].toLowerCase();
   const isStagingPreview = hostname.includes('workers.dev') || process.env.ENVIRONMENT === 'staging';
 

@@ -20,11 +20,10 @@ const RELEASE_DATE = '2026-10-11T00:00:00Z';
  * Returns HTTP 200, valid XML, Vary: Host to prevent CDN cross-domain cache contamination.
  */
 export async function GET(request) {
-  const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || '';
-  const url = new URL(request.url);
-  const domainParam = url.searchParams.get('domain');
+  // Trust standard Host header first, defending against spoofed X-Forwarded-Host
+  const host = request.headers.get('host') || request.headers.get('x-forwarded-host') || '';
 
-  const isIt = domainParam === 'it' || (!domainParam && isItalianDomain(host));
+  const isIt = isItalianDomain(host);
   const locales = isIt ? ['it'] : ['en', 'de'];
   const domain = isIt ? DOMAIN_IT : DOMAIN_COM;
 
