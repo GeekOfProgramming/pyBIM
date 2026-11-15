@@ -5,6 +5,7 @@ import { resolveRedirectTarget, isItalianDomain, isProductionDomain } from "./li
 import {
   GEO_COOKIE_NAME,
   extractVisitorCountry,
+  parseLanguagePreference,
   isEligibleGeoRoute,
   resolveGeoDestination,
 } from "./lib/geo.js";
@@ -20,7 +21,18 @@ export async function middleware(req) {
   const hostname = hostHeader.split(':')[0].toLowerCase();
   const isStagingPreview = hostname.includes('workers.dev') || process.env.ENVIRONMENT === 'staging';
 
+  // Cross-domain language preference transfer parameter (strictly validated)
+  const urlPref = parseLanguagePreference(req.nextUrl.searchParams.get('lang_pref'));
+
   function attachHeaders(response) {
+    if (urlPref) {
+      response.cookies.set(GEO_COOKIE_NAME, urlPref, {
+        path: '/',
+        maxAge: 31536000,
+        sameSite: 'lax',
+        secure: req.nextUrl.protocol === 'https:',
+      });
+    }
     return applySecurityHeaders(response, isStagingPreview);
   }
 
@@ -72,7 +84,7 @@ export async function middleware(req) {
   // 3. Generic Public Entry Routes: Evaluate Geographic Routing (GEO-01) with HTTP 307
   // Restricted strictly to approved public entry routes (CORE_INDEXABLE_ROUTES)
   if (isEligibleGeoRoute(pathname)) {
-    const userPreference = req.cookies.get(GEO_COOKIE_NAME)?.value;
+    const userPreference = urlPref || req.cookies.get(GEO_COOKIE_NAME)?.value;
     const country = extractVisitorCountry(req);
 
     const geoResult = resolveGeoDestination({

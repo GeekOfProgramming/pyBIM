@@ -727,31 +727,58 @@ assert.strictEqual(isEligibleGeoRoute('/random-page'), false);
   assert.strictEqual(res.headers.get('location'), 'https://www.pybim.com/en');
 }
 
-// 14i. Middleware Execution: Scenario 6 - Missing country value defaults safely to en
+// 14i. Middleware Execution: Scenario 6 - Missing country value defaults safely per domain
 {
-  const req = new NextRequest('https://www.pybim.com/', {
+  // Missing country on .com defaults to en
+  const reqCom = new NextRequest('https://www.pybim.com/', {
     headers: { host: 'www.pybim.com' },
   });
-  const res = await middleware(req);
-  assert.strictEqual(res.status, 307);
-  assert.strictEqual(res.headers.get('location'), 'https://www.pybim.com/en');
+  const resCom = await middleware(reqCom);
+  assert.strictEqual(resCom.status, 307);
+  assert.strictEqual(resCom.headers.get('location'), 'https://www.pybim.com/en');
+
+  // Missing country on .it defaults safely to it
+  const reqIt = new NextRequest('https://www.pybim.it/', {
+    headers: { host: 'www.pybim.it' },
+  });
+  const resIt = await middleware(reqIt);
+  assert.strictEqual(resIt.status, 307);
+  assert.strictEqual(resIt.headers.get('location'), 'https://www.pybim.it/it');
 }
 
-// 14j. Middleware Execution: Scenario 7 - Unknown country codes (XX, T1) default safely to en
+// 14j. Middleware Execution: Scenario 7 - Unknown country codes (XX, T1) default safely per domain
 {
-  const reqXX = new NextRequest('https://www.pybim.com/', {
+  // XX on .com -> .com/en
+  const reqXXCom = new NextRequest('https://www.pybim.com/', {
     headers: { host: 'www.pybim.com', 'cf-ipcountry': 'XX' },
   });
-  const resXX = await middleware(reqXX);
-  assert.strictEqual(resXX.status, 307);
-  assert.strictEqual(resXX.headers.get('location'), 'https://www.pybim.com/en');
+  const resXXCom = await middleware(reqXXCom);
+  assert.strictEqual(resXXCom.status, 307);
+  assert.strictEqual(resXXCom.headers.get('location'), 'https://www.pybim.com/en');
 
-  const reqT1 = new NextRequest('https://www.pybim.com/', {
+  // XX on .it -> .it/it
+  const reqXXIt = new NextRequest('https://www.pybim.it/', {
+    headers: { host: 'www.pybim.it', 'cf-ipcountry': 'XX' },
+  });
+  const resXXIt = await middleware(reqXXIt);
+  assert.strictEqual(resXXIt.status, 307);
+  assert.strictEqual(resXXIt.headers.get('location'), 'https://www.pybim.it/it');
+
+  // Tor (T1) on .com -> .com/en
+  const reqT1Com = new NextRequest('https://www.pybim.com/', {
     headers: { host: 'www.pybim.com', 'cf-ipcountry': 'T1' },
   });
-  const resT1 = await middleware(reqT1);
-  assert.strictEqual(resT1.status, 307);
-  assert.strictEqual(resT1.headers.get('location'), 'https://www.pybim.com/en');
+  const resT1Com = await middleware(reqT1Com);
+  assert.strictEqual(resT1Com.status, 307);
+  assert.strictEqual(resT1Com.headers.get('location'), 'https://www.pybim.com/en');
+
+  // Tor (T1) on .it -> .it/it
+  const reqT1It = new NextRequest('https://www.pybim.it/', {
+    headers: { host: 'www.pybim.it', 'cf-ipcountry': 'T1' },
+  });
+  const resT1It = await middleware(reqT1It);
+  assert.strictEqual(resT1It.status, 307);
+  assert.strictEqual(resT1It.headers.get('location'), 'https://www.pybim.it/it');
 }
 
 // 14k. Middleware Execution: Scenario 8 - IT visitor requesting explicit /en/services remains on English
@@ -812,6 +839,31 @@ assert.strictEqual(isEligibleGeoRoute('/random-page'), false);
   const resIt = await middleware(reqIt);
   assert.strictEqual(resIt.status, 307);
   assert.strictEqual(resIt.headers.get('location'), 'https://www.pybim.it/it', 'Cookie preference it must override US country');
+
+  // Cross-Domain Preference Bridge: Italian visitor switching from .it to .com/en?lang_pref=en
+  const reqBridgeEn = new NextRequest('https://www.pybim.com/en?lang_pref=en', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  });
+  const resBridgeEn = await middleware(reqBridgeEn);
+  // Middleware should issue Set-Cookie for pybim_lang_pref=en
+  const setCookie = resBridgeEn.headers.get('set-cookie');
+  assert.ok(setCookie && setCookie.includes('pybim_lang_pref=en'), 'Cross-domain bridge must attach Set-Cookie on arrival');
+
+  // Subsequently, Italian visitor visiting generic root https://www.pybim.com/ with this cookie
+  const reqSubsequent = new NextRequest('https://www.pybim.com/', {
+    headers: {
+      host: 'www.pybim.com',
+      'cf-ipcountry': 'IT',
+      cookie: `${GEO_COOKIE_NAME}=en`,
+    },
+  });
+  const resSubsequent = await middleware(reqSubsequent);
+  assert.strictEqual(resSubsequent.status, 307);
+  assert.strictEqual(
+    resSubsequent.headers.get('location'),
+    'https://www.pybim.com/en',
+    'Subsequent visit must remember explicit user choice and NOT unexpectedly revert to Italian'
+  );
 }
 
 // 14n. Middleware Execution: Scenario 11 - Static assets and API are exempt from geo-routing
@@ -920,4 +972,95 @@ console.log('   ✓ Ineligible legacy routes (/pricing) exempt from geo-routing,
 console.log('   ✓ Zero redirect loops verified on repeated navigation');
 console.log('   ✓ Preview & local development environments remain strictly isolated from production domains');
 
-console.log('\n=== ALL SEO-01, SEO-02/03, SEO-04 & GEO-01 TESTS PASSED SUCCESSFULLY ===');
+// -----------------------------------------------------------------------------
+// 15. End-to-End Route Status, Cache Survival & Security Coexistence (Final QA)
+// -----------------------------------------------------------------------------
+console.log('15. Testing End-to-End Route Status, Cache Survival & Security Coexistence...');
+
+// 15a. Verify Cache-Control, Vary, and Defense-in-Depth Security Headers Coexistence
+{
+  const req = new NextRequest('https://www.pybim.com/', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  });
+  const res = await middleware(req);
+
+  // Status & Location
+  assert.strictEqual(res.status, 307, 'Geographic redirect must be HTTP 307');
+  assert.strictEqual(res.headers.get('location'), 'https://www.pybim.it/it');
+
+  // Cache Safety Headers
+  const cacheControl = res.headers.get('cache-control');
+  assert.ok(cacheControl && cacheControl.includes('private'), 'Cache-Control must contain private');
+  assert.ok(cacheControl && cacheControl.includes('no-store'), 'Cache-Control must contain no-store');
+  assert.ok(cacheControl && cacheControl.includes('must-revalidate'), 'Cache-Control must contain must-revalidate');
+
+  const vary = res.headers.get('vary');
+  assert.ok(vary && vary.includes('CF-IPCountry'), 'Vary must contain CF-IPCountry');
+  assert.ok(vary && vary.includes('Accept-Language'), 'Vary must contain Accept-Language');
+  assert.ok(vary && vary.includes('Cookie'), 'Vary must contain Cookie');
+
+  // Security Headers Preservation
+  assert.strictEqual(res.headers.get('x-content-type-options'), 'nosniff');
+  assert.strictEqual(res.headers.get('x-frame-options'), 'SAMEORIGIN');
+  assert.strictEqual(res.headers.get('referrer-policy'), 'strict-origin-when-cross-origin');
+  assert.strictEqual(res.headers.get('permissions-policy'), 'camera=(), microphone=(), geolocation=()');
+  assert.strictEqual(res.headers.get('x-xss-protection'), '0');
+}
+
+// 15b. End-to-End Route Status Contract Validation
+{
+  // 1. Dynamic Sitemap Endpoint: HTTP 200 OK with XML content
+  const sitemapReqCom = new NextRequest('https://www.pybim.com/sitemap.xml', {
+    headers: { host: 'www.pybim.com' },
+  });
+  const sitemapResCom = await getSitemapResponse(sitemapReqCom);
+  assert.strictEqual(sitemapResCom.status, 200, 'Sitemap endpoint must return HTTP 200');
+  assert.ok(sitemapResCom.headers.get('content-type')?.includes('application/xml'), 'Sitemap must have application/xml content-type');
+  const sitemapText = await sitemapResCom.text();
+  assert.ok(sitemapText.includes('<urlset'), 'Sitemap body must contain valid XML urlset');
+
+  // 2. Dynamic Robots.txt Endpoint: HTTP 200 OK with text content
+  const robotsReqCom = new NextRequest('https://www.pybim.com/robots.txt', {
+    headers: { host: 'www.pybim.com' },
+  });
+  const robotsResCom = await getRobotsResponse(robotsReqCom);
+  assert.strictEqual(robotsResCom.status, 200, 'Robots.txt endpoint must return HTTP 200');
+  assert.ok(robotsResCom.headers.get('content-type')?.includes('text/plain'), 'Robots.txt must have text/plain content-type');
+  const robotsText = await robotsResCom.text();
+  assert.ok(robotsText.includes('Sitemap: https://www.pybim.com/sitemap.xml'), 'Robots.txt must reference canonical sitemap');
+
+  // 3. Status distinction: Canonical 308 vs Geographic 307 vs Middleware Pass-Through (200)
+  const canonicalReq = new NextRequest('https://www.pybim.com/it/services', {
+    headers: { host: 'www.pybim.com' },
+  });
+  const canonicalRes = await middleware(canonicalReq);
+  assert.strictEqual(canonicalRes.status, 308, 'Cross-domain canonical route must be permanent 308');
+
+  const geoReq = new NextRequest('https://www.pybim.com/services', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  });
+  const geoRes = await middleware(geoReq);
+  assert.strictEqual(geoRes.status, 307, 'Geographic route must be temporary 307');
+
+  const passThroughReq = new NextRequest('https://www.pybim.com/en/services', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  });
+  const passThroughRes = await middleware(passThroughReq);
+  assert.strictEqual(passThroughRes.status, 200, 'Middleware pass-through signals 200 to route execution');
+  assert.strictEqual(passThroughRes.headers.get('location'), null, 'Pass-through must not have Location header');
+
+  // 4. Ineligible generic route passes through to Next.js 404 (no geo-redirect)
+  const unknownRouteReq = new NextRequest('https://www.pybim.com/pricing', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  });
+  const unknownRouteRes = await middleware(unknownRouteReq);
+  assert.strictEqual(unknownRouteRes.status, 200, 'Ineligible route passes through to Next.js route router');
+  assert.strictEqual(unknownRouteRes.headers.get('location'), null, 'Must NOT be geographically redirected');
+}
+
+console.log('   ✓ Cache-Control: private, no-store survives security header layer with 100% integrity');
+console.log('   ✓ Full security header suite coexists seamlessly with cache protection and Vary');
+console.log('   ✓ Sitemaps and Robots route handlers verified returning HTTP 200 with valid bodies');
+console.log('   ✓ Strict status segregation verified: 308 Canonical vs 307 Geo vs Pass-Through (200) to Route Tree');
+
+console.log('\n=== ALL SEO-01, SEO-02/03, SEO-04 & GEO-01 FINAL QA TESTS PASSED SUCCESSFULLY ===');
