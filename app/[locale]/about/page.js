@@ -6,16 +6,21 @@ import { getCanonicalUrl, getAlternateLanguages } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const titles = routeMetadata.about.titles;
+  const { titles, descriptions } = routeMetadata.about;
   const canonicalUrl = getCanonicalUrl(locale, "about");
+  const title = titles[locale] || titles.en;
+  const description = descriptions[locale] || descriptions.en;
   
   return {
-    title: titles[locale] || titles.en,
+    title,
+    description,
     alternates: {
       canonical: canonicalUrl,
       languages: getAlternateLanguages("about"),
     },
     openGraph: {
+      title: `${title} | pyBIM`,
+      description,
       url: canonicalUrl,
     },
   };

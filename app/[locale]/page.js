@@ -1,6 +1,6 @@
 import HomePageLayout from "@/components/pages/home-page-layout";
 import { siteMetadata } from "@/lib/site-copy";
-import { getCanonicalUrl, getAlternateLanguages, DOMAIN_COM } from "@/lib/seo";
+import { getCanonicalUrl, getAlternateLanguages, getCanonicalDomain, DOMAIN_COM } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
@@ -22,26 +22,33 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const siteUrl = DOMAIN_COM;
+export default function HomePage({ params }) {
+  const locale = params?.locale || "en";
+  const siteUrl = getCanonicalDomain(locale);
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "pyBIM",
-  url: siteUrl,
-  logo: `${siteUrl}/images/shared/brand/logo_black_transparent.png`,
-  email: "info@pybim.com",
-  description: siteMetadata.organizationDescription
-};
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "pyBIM",
+    alternateName: "pyBIM Engineering",
+    url: siteUrl,
+    logo: `${DOMAIN_COM}/images/shared/brand/logo_black_transparent.png`,
+    email: "info@pybim.com",
+    description: siteMetadata.organizationDescription,
+    sameAs: [
+      "https://www.linkedin.com/company/pybim",
+      "https://github.com/pyBIM-collaboration"
+    ]
+  };
 
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "pyBIM",
-  url: siteUrl
-};
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "pyBIM",
+    url: siteUrl,
+    inLanguage: ["en", "it", "de"]
+  };
 
-export default function HomePage() {
   return (
     <>
       <script

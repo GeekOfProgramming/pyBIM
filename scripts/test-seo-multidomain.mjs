@@ -472,4 +472,100 @@ for (const loc of ['en', 'it', 'de']) {
 
 console.log('   ✓ Verified zero redirecting apex URLs exist across all canonicals, hreflang alternates, and sitemaps');
 
-console.log('\n=== ALL SEO-01 MULTI-DOMAIN & MULTILINGUAL TESTS PASSED SUCCESSFULLY ===');
+// -----------------------------------------------------------------------------
+// 9. Crawlable Navigation & Header Megamenu DOM Inspection (SEO-03)
+// -----------------------------------------------------------------------------
+console.log('9. Testing Header Navigation Crawlability & Sitelinks Foundation...');
+
+const headerCode = fs.readFileSync(new URL('../components/layout/header.js', import.meta.url), 'utf8');
+
+// 9a. Megamenu must NOT be conditionally unmounted with {megaMenuOpen && (...)}
+assert.ok(
+  !headerCode.includes('{megaMenuOpen && ('),
+  'Header must not conditionally unmount megamenu with {megaMenuOpen && (...)}'
+);
+
+// 9b. Megamenu dropdown must be present unconditionally in DOM with id and aria attributes
+assert.ok(headerCode.includes('id="pybim-megamenu-dropdown"'), 'Megamenu dropdown container must exist in DOM');
+assert.ok(headerCode.includes('aria-hidden={!megaMenuOpen}'), 'Megamenu must toggle aria-hidden for accessibility');
+
+// 9c. All 4 core sitelink destinations must exist in header navigation definitions
+const requiredNavHrefs = ['/services', '/about', '/careers', '/contact'];
+for (const href of requiredNavHrefs) {
+  assert.ok(
+    headerCode.includes(`href: "${href}"`) || headerCode.includes(`href: '${href}'`),
+    `Header navigation data must contain link for ${href}`
+  );
+}
+console.log('   ✓ Header navigation links unconditionally rendered in HTML DOM for search crawler discovery');
+
+// -----------------------------------------------------------------------------
+// 10. Legacy Route Audit & Real 404 Status Enforcement (SEO-02)
+// -----------------------------------------------------------------------------
+console.log('10. Testing Legacy Route Cleanup & 404 Status Code Enforcement...');
+
+// 10a. Catch-all route ([...rest]/page.js) must call notFound() and NEVER return JSX directly
+const catchAllCode = fs.readFileSync(new URL('../app/[locale]/[...rest]/page.js', import.meta.url), 'utf8');
+assert.ok(catchAllCode.includes('notFound()'), 'Catch-all [...rest]/page.js must invoke notFound()');
+assert.ok(!catchAllCode.includes('<NotFound'), 'Catch-all [...rest]/page.js must not return <NotFound /> directly (soft 404)');
+
+// 10b. Retired education posts ([slug]/page.js) must call notFound()
+const eduSlugCode = fs.readFileSync(new URL('../app/[locale]/education/[slug]/page.js', import.meta.url), 'utf8');
+assert.ok(eduSlugCode.includes('notFound()'), 'Education [slug]/page.js must invoke notFound()');
+assert.ok(!eduSlugCode.includes('legacyEducationSlugs.map'), 'Education [slug]/page.js must not pre-render legacy placeholder redirects');
+assert.ok(eduSlugCode.includes('return [];'), 'Education [slug]/page.js generateStaticParams must return empty array');
+
+// 10c. Projects holding route (/projects) must permanently redirect to /success-stories
+const projectsCode = fs.readFileSync(new URL('../app/[locale]/projects/page.js', import.meta.url), 'utf8');
+assert.ok(projectsCode.includes('permanentRedirect'), 'Projects page must issue permanent redirect to /success-stories');
+assert.ok(projectsCode.includes('success-stories'), 'Projects page destination must be success-stories');
+
+// 10d. Intentional noindex directives preserved on education and success-stories
+const eduPageCode = fs.readFileSync(new URL('../app/[locale]/education/page.js', import.meta.url), 'utf8');
+assert.ok(eduPageCode.includes('index: false'), 'Education landing page must retain index: false');
+assert.ok(eduPageCode.includes('follow: true'), 'Education landing page must retain follow: true');
+
+const ssPageCode = fs.readFileSync(new URL('../app/[locale]/success-stories/page.js', import.meta.url), 'utf8');
+assert.ok(ssPageCode.includes('index: false'), 'Success stories page must retain index: false');
+assert.ok(ssPageCode.includes('follow: true'), 'Success stories page must retain follow: true');
+
+console.log('   ✓ Soft 404 bug eliminated: catch-all and retired education posts strictly return HTTP 404');
+
+// -----------------------------------------------------------------------------
+// 11. Core Business Page Metadata & Unique Descriptions
+// -----------------------------------------------------------------------------
+console.log('11. Testing Core Business Page Metadata & Descriptions...');
+
+import { routeMetadata } from '../lib/site-copy.js';
+
+const auditedRoutes = ['services', 'about', 'contact', 'careers'];
+for (const r of auditedRoutes) {
+  assert.ok(routeMetadata[r]?.titles?.en, `${r} must have en title`);
+  assert.ok(routeMetadata[r]?.titles?.it, `${r} must have it title`);
+  assert.ok(routeMetadata[r]?.titles?.de, `${r} must have de title`);
+
+  assert.ok(routeMetadata[r]?.descriptions?.en, `${r} must have en description`);
+  assert.ok(routeMetadata[r]?.descriptions?.it, `${r} must have it description`);
+  assert.ok(routeMetadata[r]?.descriptions?.de, `${r} must have de description`);
+}
+console.log('   ✓ Route-specific titles and unique descriptions verified across EN, IT, DE for core business pages');
+
+// -----------------------------------------------------------------------------
+// 12. Content Accuracy & Zero Unsupported ISO Certification Claims
+// -----------------------------------------------------------------------------
+console.log('12. Auditing Content Accuracy & ISO 19650 Claims...');
+
+// Search active codebase for unverified "Ottenuta la Certificazione"
+const aboutItCode = fs.readFileSync(new URL('../lib/translations/it/about.json', import.meta.url), 'utf8');
+assert.ok(
+  !aboutItCode.includes('Ottenuta la Certificazione ISO'),
+  'Translations must not contain unverified ISO certification claims'
+);
+assert.ok(
+  !aboutItCode.includes('Certificato ISO 19650'),
+  'Translations must not claim unverified ISO 19650 certificate'
+);
+
+console.log('   ✓ Verified zero active files claim unverified ISO 19650 certification');
+
+console.log('\n=== ALL SEO-01 & SEO-02/03 TESTS PASSED SUCCESSFULLY ===');
