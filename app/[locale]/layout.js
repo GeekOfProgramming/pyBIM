@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/lib/LanguageContext";
 import { ThemeProvider } from "@/lib/ThemeContext";
 import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
 import CookieConsent from "@/components/ui/CookieConsent";
+import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -100,6 +101,7 @@ export default function RootLayout({ children, params }) {
             <Footer />
             <MobileBottomNav />
             <CookieConsent />
+            <GoogleAnalytics locale={params?.locale || "en"} />
           </LanguageProvider>
         </ThemeProvider>
       </body>
