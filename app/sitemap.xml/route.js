@@ -7,17 +7,19 @@ import {
   DOMAIN_IT,
 } from '../../lib/seo.js';
 
-const RELEASE_DATE = '2026-10-11T00:00:00Z';
-
 /**
  * Multi-Domain Dynamic Sitemap Route Handler
  *
  * Implements Model B Sitemap Separation:
- * - pybim.com (and default/previews): Sitemap A with 16 canonical URLs (8 en + 8 de)
- * - pybim.it: Sitemap B with 8 canonical URLs (8 it)
+ * - www.pybim.com (and default/previews): Sitemap A with 16 canonical URLs (8 en + 8 de)
+ * - www.pybim.it: Sitemap B with 8 canonical URLs (8 it)
  *
+ * All listed URLs are final canonical HTTPS URLs on www domains.
  * Excludes noindex holding pages (/education, /success-stories) and redirect routes (/projects).
  * Returns HTTP 200, valid XML, Vary: Host to prevent CDN cross-domain cache contamination.
+ *
+ * Per Google Search Central guidelines and Task 11, static routes without verifiable lastmod
+ * omit the <lastmod> tag to avoid emitting artificial or misleading dates.
  */
 export async function GET(request) {
   // Trust standard Host header first, defending against spoofed X-Forwarded-Host
@@ -35,7 +37,6 @@ export async function GET(request) {
       const priority = route === '' ? '1.0' : '0.8';
       xml += '  <url>\n';
       xml += `    <loc>${domain}/${locale}${route}</loc>\n`;
-      xml += `    <lastmod>${RELEASE_DATE}</lastmod>\n`;
       xml += '    <changefreq>weekly</changefreq>\n';
       xml += `    <priority>${priority}</priority>\n`;
       xml += '  </url>\n';

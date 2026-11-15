@@ -2,14 +2,15 @@
  * pyBIM SEO Multi-Domain & Multilingual Test Suite
  *
  * Validates:
- * 1. Model B Canonical URL generation (EN/DE on pybim.com, IT on pybim.it)
- * 2. Reciprocal Hreflang alternates across all languages and x-default
- * 3. Separate Dynamic Sitemaps (pybim.com: 16 URLs, pybim.it: 8 URLs) with trusted Host routing (no public query override)
+ * 1. Model B Canonical URL generation (EN/DE on www.pybim.com, IT on www.pybim.it)
+ * 2. Reciprocal Hreflang alternates across all languages and x-default on final www hosts
+ * 3. Separate Dynamic Sitemaps (www.pybim.com: 16 URLs, www.pybim.it: 8 URLs) with trusted Host routing (no public query override)
  * 4. Robots.txt dynamic sitemap referencing & security exclusions (no public query override)
  * 5. Middleware cross-domain routing, query preservation & Cloudflare safety (no www-apex loops)
  * 6. Protection of authenticated sessions & private routes
  * 7. Preservation of existing noindex policies
  * 8. Dynamic Careers Pages (/careers/[id]) metadata, handling missing IDs, suppression of inherited signals
+ * 9. Absolute prohibition of redirecting apex URLs in canonicals, sitemaps, and hreflang tags
  */
 
 import assert from 'node:assert';
@@ -42,37 +43,42 @@ console.log('=== RUNNING SEO-01 MULTI-DOMAIN & MULTILINGUAL TEST SUITE ===\n');
 console.log('1. Testing Canonical URL Generation across locales and routes...');
 
 // 1a. Domain mappings
-assert.strictEqual(getCanonicalDomain('en'), DOMAIN_COM, 'en must map to pybim.com');
-assert.strictEqual(getCanonicalDomain('de'), DOMAIN_COM, 'de must map to pybim.com');
-assert.strictEqual(getCanonicalDomain('it'), DOMAIN_IT, 'it must map to pybim.it');
+assert.strictEqual(getCanonicalDomain('en'), DOMAIN_COM, 'en must map to www.pybim.com');
+assert.strictEqual(getCanonicalDomain('de'), DOMAIN_COM, 'de must map to www.pybim.com');
+assert.strictEqual(getCanonicalDomain('it'), DOMAIN_IT, 'it must map to www.pybim.it');
 
 // 1b. Root canonical URLs
-assert.strictEqual(getCanonicalUrl('en', ''), 'https://pybim.com/en');
-assert.strictEqual(getCanonicalUrl('it', ''), 'https://pybim.it/it');
-assert.strictEqual(getCanonicalUrl('de', ''), 'https://pybim.com/de');
+assert.strictEqual(getCanonicalUrl('en', ''), 'https://www.pybim.com/en');
+assert.strictEqual(getCanonicalUrl('it', ''), 'https://www.pybim.it/it');
+assert.strictEqual(getCanonicalUrl('de', ''), 'https://www.pybim.com/de');
 
 // 1c. Subroute canonical URLs
-assert.strictEqual(getCanonicalUrl('en', 'services'), 'https://pybim.com/en/services');
-assert.strictEqual(getCanonicalUrl('it', 'services'), 'https://pybim.it/it/services');
-assert.strictEqual(getCanonicalUrl('de', 'services'), 'https://pybim.com/de/services');
+assert.strictEqual(getCanonicalUrl('en', 'services'), 'https://www.pybim.com/en/services');
+assert.strictEqual(getCanonicalUrl('it', 'services'), 'https://www.pybim.it/it/services');
+assert.strictEqual(getCanonicalUrl('de', 'services'), 'https://www.pybim.com/de/services');
 
-assert.strictEqual(getCanonicalUrl('en', '/about/'), 'https://pybim.com/en/about', 'slashes should be cleanly normalized');
-assert.strictEqual(getCanonicalUrl('it', '/contact'), 'https://pybim.it/it/contact');
-assert.strictEqual(getCanonicalUrl('de', 'privacy-policy'), 'https://pybim.com/de/privacy-policy');
+assert.strictEqual(getCanonicalUrl('en', '/about/'), 'https://www.pybim.com/en/about', 'slashes should be cleanly normalized');
+assert.strictEqual(getCanonicalUrl('it', '/contact'), 'https://www.pybim.it/it/contact');
+assert.strictEqual(getCanonicalUrl('de', 'privacy-policy'), 'https://www.pybim.com/de/privacy-policy');
 
-// 1d. All 8 core routes have HTTPS and correct host per locale
+// 1d. All 8 core routes have HTTPS and correct www host per locale
 for (const route of CORE_INDEXABLE_ROUTES) {
   const enUrl = getCanonicalUrl('en', route);
   const itUrl = getCanonicalUrl('it', route);
   const deUrl = getCanonicalUrl('de', route);
 
-  assert.ok(enUrl.startsWith('https://pybim.com/en'), `en URL must start with https://pybim.com/en: ${enUrl}`);
-  assert.ok(itUrl.startsWith('https://pybim.it/it'), `it URL must start with https://pybim.it/it: ${itUrl}`);
-  assert.ok(deUrl.startsWith('https://pybim.com/de'), `de URL must start with https://pybim.com/de: ${deUrl}`);
+  assert.ok(enUrl.startsWith('https://www.pybim.com/en'), `en URL must start with https://www.pybim.com/en: ${enUrl}`);
+  assert.ok(itUrl.startsWith('https://www.pybim.it/it'), `it URL must start with https://www.pybim.it/it: ${itUrl}`);
+  assert.ok(deUrl.startsWith('https://www.pybim.com/de'), `de URL must start with https://www.pybim.com/de: ${deUrl}`);
   assert.ok(!enUrl.includes('//en') && !enUrl.includes('com//'), `en URL must not have double slashes: ${enUrl}`);
   assert.ok(!itUrl.includes('//it') && !itUrl.includes('it//'), `it URL must not have double slashes: ${itUrl}`);
+
+  // Prohibit apex URLs
+  assert.ok(!enUrl.startsWith('https://pybim.com/'), `Must never emit apex canonical URL: ${enUrl}`);
+  assert.ok(!itUrl.startsWith('https://pybim.it/'), `Must never emit apex canonical URL: ${itUrl}`);
+  assert.ok(!deUrl.startsWith('https://pybim.com/'), `Must never emit apex canonical URL: ${deUrl}`);
 }
-console.log('   ✓ Canonical URLs strictly verified for EN, IT, DE across all routes');
+console.log('   ✓ Canonical URLs strictly verified for EN, IT, DE on final www hosts across all routes');
 
 // -----------------------------------------------------------------------------
 // 2. Hreflang Alternates & Reciprocity Tests
@@ -88,11 +94,16 @@ for (const route of CORE_INDEXABLE_ROUTES) {
   assert.ok('de' in alternates, 'alternates must contain de');
   assert.ok('x-default' in alternates, 'alternates must contain x-default');
 
-  // Verify absolute HTTPS URLs
-  assert.ok(alternates.en.startsWith('https://pybim.com/en'));
-  assert.ok(alternates.it.startsWith('https://pybim.it/it'));
-  assert.ok(alternates.de.startsWith('https://pybim.com/de'));
-  assert.strictEqual(alternates['x-default'], alternates.en, 'x-default must match English version');
+  // Verify absolute HTTPS www URLs
+  assert.ok(alternates.en.startsWith('https://www.pybim.com/en'));
+  assert.ok(alternates.it.startsWith('https://www.pybim.it/it'));
+  assert.ok(alternates.de.startsWith('https://www.pybim.com/de'));
+  assert.strictEqual(alternates['x-default'], alternates.en, 'x-default must match English version on www');
+
+  // Prohibit apex URLs in alternates
+  assert.ok(!alternates.en.startsWith('https://pybim.com/'), 'Hreflang en must not use apex');
+  assert.ok(!alternates.it.startsWith('https://pybim.it/'), 'Hreflang it must not use apex');
+  assert.ok(!alternates.de.startsWith('https://pybim.com/'), 'Hreflang de must not use apex');
 
   // Verify reciprocity:
   // en, it, and de must all produce the exact same alternate mapping for the route
@@ -108,12 +119,12 @@ for (const route of CORE_INDEXABLE_ROUTES) {
   assert.strictEqual(metaIt.canonical, alternates.it);
   assert.strictEqual(metaDe.canonical, alternates.de);
 }
-console.log('   ✓ Reciprocal hreflang references verified across EN, IT, DE and x-default');
+console.log('   ✓ Reciprocal hreflang references verified across EN, IT, DE and x-default on final www hosts');
 
 // -----------------------------------------------------------------------------
-// 3. Separate Dynamic Sitemap Tests (Host-Based, No Query Override)
+// 3. Separate Dynamic Sitemap Tests (Host-Based, Final www URLs, No Query Override)
 // -----------------------------------------------------------------------------
-console.log('3. Testing Separate Dynamic Sitemaps (pybim.com vs pybim.it via Host header)...');
+console.log('3. Testing Separate Dynamic Sitemaps (www.pybim.com vs www.pybim.it via Host header)...');
 
 // Helper to extract <loc> URLs from sitemap XML
 function extractSitemapUrls(xml) {
@@ -137,9 +148,10 @@ for (const host of ['pybim.com', 'www.pybim.com']) {
   assert.strictEqual(urls.length, 16, `${host} sitemap must contain exactly 16 URLs (found ${urls.length})`);
 
   for (const u of urls) {
-    assert.ok(u.startsWith('https://pybim.com/'), `.com sitemap URL must start with https://pybim.com/: ${u}`);
-    assert.ok(u.startsWith('https://pybim.com/en') || u.startsWith('https://pybim.com/de'), `URL must be en or de: ${u}`);
+    assert.ok(u.startsWith('https://www.pybim.com/'), `.com sitemap URL must start with https://www.pybim.com/: ${u}`);
+    assert.ok(u.startsWith('https://www.pybim.com/en') || u.startsWith('https://www.pybim.com/de'), `URL must be en or de: ${u}`);
     assert.ok(!u.includes('pybim.it'), `.com sitemap must never contain pybim.it: ${u}`);
+    assert.ok(!u.startsWith('https://pybim.com/'), `Sitemap must not point to redirecting apex domain: ${u}`);
     assert.ok(!u.includes('/education'), `noindex route /education must be excluded: ${u}`);
     assert.ok(!u.includes('/success-stories'), `noindex route /success-stories must be excluded: ${u}`);
     assert.ok(!u.includes('/projects'), `redirecting route /projects must be excluded: ${u}`);
@@ -159,8 +171,9 @@ for (const host of ['pybim.it', 'www.pybim.it']) {
   assert.strictEqual(urls.length, 8, `${host} sitemap must contain exactly 8 URLs (found ${urls.length})`);
 
   for (const u of urls) {
-    assert.ok(u.startsWith('https://pybim.it/it'), `.it sitemap URL must start with https://pybim.it/it: ${u}`);
+    assert.ok(u.startsWith('https://www.pybim.it/it'), `.it sitemap URL must start with https://www.pybim.it/it: ${u}`);
     assert.ok(!u.includes('pybim.com'), `.it sitemap must never contain pybim.com: ${u}`);
+    assert.ok(!u.startsWith('https://pybim.it/'), `Sitemap must not point to redirecting apex domain: ${u}`);
     assert.ok(!u.includes('/education'), `noindex route /education must be excluded: ${u}`);
     assert.ok(!u.includes('/success-stories'), `noindex route /success-stories must be excluded: ${u}`);
     assert.ok(!u.includes('/projects'), `redirecting route /projects must be excluded: ${u}`);
@@ -168,14 +181,14 @@ for (const host of ['pybim.it', 'www.pybim.it']) {
 }
 
 // 3c. Verify that query parameters (?domain=it) are strictly IGNORED
-const ignoredQueryReq = new Request('https://pybim.com/sitemap.xml?domain=it', {
-  headers: { host: 'pybim.com' }
+const ignoredQueryReq = new Request('https://www.pybim.com/sitemap.xml?domain=it', {
+  headers: { host: 'www.pybim.com' }
 });
 const ignoredQueryRes = await getSitemapResponse(ignoredQueryReq);
 const ignoredQueryUrls = extractSitemapUrls(await ignoredQueryRes.text());
 assert.strictEqual(ignoredQueryUrls.length, 16, 'Query param ?domain=it must be ignored in favor of Host header');
 
-console.log('   ✓ Dynamic Sitemaps correctly separated by Host (16 URLs on .com, 8 URLs on .it) without query overrides');
+console.log('   ✓ Dynamic Sitemaps correctly separated by Host (16 URLs on www.com, 8 URLs on www.it) with final canonical hosts');
 
 // -----------------------------------------------------------------------------
 // 4. Robots.txt Dynamic Sitemap & Security Exclusions Tests
@@ -190,8 +203,9 @@ for (const host of ['pybim.com', 'www.pybim.com']) {
   assert.strictEqual(res.headers.get('content-type'), 'text/plain; charset=utf-8');
   assert.strictEqual(res.headers.get('vary'), 'Host');
   const txt = await res.text();
-  assert.ok(txt.includes('Sitemap: https://pybim.com/sitemap.xml'), 'Must point to .com sitemap');
-  assert.ok(!txt.includes('https://pybim.it'), 'Must not reference .it sitemap');
+  assert.ok(txt.includes('Sitemap: https://www.pybim.com/sitemap.xml'), 'Must point to final www .com sitemap');
+  assert.ok(!txt.includes('https://pybim.com/'), 'Must not reference redirecting apex URL');
+  assert.ok(!txt.includes('pybim.it'), 'Must not reference .it sitemap');
   assert.ok(txt.includes('Disallow: /api/'));
   assert.ok(txt.includes('Disallow: /test/'));
   assert.ok(txt.includes('Disallow: /admin/'));
@@ -204,31 +218,32 @@ for (const host of ['pybim.it', 'www.pybim.it']) {
   assert.strictEqual(res.status, 200);
   assert.strictEqual(res.headers.get('vary'), 'Host');
   const txt = await res.text();
-  assert.ok(txt.includes('Sitemap: https://pybim.it/sitemap.xml'), 'Must point to .it sitemap');
-  assert.ok(!txt.includes('https://pybim.com'), 'Must not reference .com sitemap');
+  assert.ok(txt.includes('Sitemap: https://www.pybim.it/sitemap.xml'), 'Must point to final www .it sitemap');
+  assert.ok(!txt.includes('https://pybim.it/'), 'Must not reference redirecting apex URL');
+  assert.ok(!txt.includes('pybim.com'), 'Must not reference .com sitemap');
   assert.ok(txt.includes('Disallow: /api/'));
   assert.ok(txt.includes('Disallow: /test/'));
   assert.ok(txt.includes('Disallow: /admin/'));
 }
 
 // 4c. Verify that query param ?domain=it is IGNORED on robots.txt
-const ignoredRobotsReq = new Request('https://pybim.com/robots.txt?domain=it', {
-  headers: { host: 'pybim.com' }
+const ignoredRobotsReq = new Request('https://www.pybim.com/robots.txt?domain=it', {
+  headers: { host: 'www.pybim.com' }
 });
 const ignoredRobotsTxt = await (await getRobotsResponse(ignoredRobotsReq)).text();
-assert.ok(ignoredRobotsTxt.includes('Sitemap: https://pybim.com/sitemap.xml'));
+assert.ok(ignoredRobotsTxt.includes('Sitemap: https://www.pybim.com/sitemap.xml'));
 
-console.log('   ✓ Robots.txt correctly references domain-specific sitemaps without query overrides');
+console.log('   ✓ Robots.txt correctly references domain-specific sitemaps with final www hosts');
 
 // -----------------------------------------------------------------------------
 // 5. Middleware Cross-Domain Routing & Cloudflare Safety Tests
 // -----------------------------------------------------------------------------
 console.log('5. Testing Cross-Domain Canonical Routing & Cloudflare Safety (no www loops)...');
 
-// 5a. Root Redirects (preserves host format)
+// 5a. Root Redirects (direct to canonical www)
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/', search: '' }),
-  'https://pybim.com/en'
+  'https://www.pybim.com/en'
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'www.pybim.com', pathname: '/', search: '' }),
@@ -236,7 +251,7 @@ assert.strictEqual(
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'pybim.it', pathname: '/', search: '' }),
-  'https://pybim.it/it'
+  'https://www.pybim.it/it'
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'www.pybim.it', pathname: '/', search: '' }),
@@ -261,21 +276,21 @@ assert.strictEqual(
   'www.pybim.it/it/services must return null (200 OK) to prevent loop with Cloudflare'
 );
 
-// 5c. Valid locales on apex also return null (serving directly if reached)
+// 5c. Valid locales on apex redirect directly to final www (in harmony with Cloudflare edge)
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/en/services', search: '' }),
-  null
+  'https://www.pybim.com/en/services'
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/de/services', search: '' }),
-  null
+  'https://www.pybim.com/de/services'
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'pybim.it', pathname: '/it/services', search: '' }),
-  null
+  'https://www.pybim.it/it/services'
 );
 
-// 5d. Noncanonical combinations -> redirect to counterpart domain
+// 5d. Noncanonical combinations -> redirect directly to counterpart www domain
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'www.pybim.com', pathname: '/it/services', search: '' }),
   'https://www.pybim.it/it/services',
@@ -283,7 +298,8 @@ assert.strictEqual(
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'pybim.com', pathname: '/it/services', search: '' }),
-  'https://pybim.it/it/services'
+  'https://www.pybim.it/it/services',
+  'pybim.com/it/services redirects directly to www.pybim.it in 1 hop'
 );
 assert.strictEqual(
   resolveRedirectTarget({ hostname: 'www.pybim.it', pathname: '/en/services', search: '' }),
@@ -401,7 +417,7 @@ const inactiveJobMeta = getCareerDetailMetadata({ locale: 'en', id: 'old-role', 
 assert.strictEqual(inactiveJobMeta.robots?.index, false);
 assert.strictEqual(inactiveJobMeta.alternates?.canonical, null);
 
-// 7c. Active Job ID (job.isActive is true) - Route-specific Model B Canonical & Hreflang
+// 7c. Active Job ID (job.isActive is true) - Route-specific Model B Canonical & Hreflang on final www
 const activeJob = {
   id: 'senior-bim-lead',
   titleEn: 'Senior BIM Lead',
@@ -414,16 +430,16 @@ const activeJobMetaEn = getCareerDetailMetadata({ locale: 'en', id: 'senior-bim-
 assert.strictEqual(activeJobMetaEn.title, 'Senior BIM Lead | pyBIM');
 assert.strictEqual(activeJobMetaEn.robots?.index, false);
 assert.strictEqual(activeJobMetaEn.robots?.follow, true);
-assert.strictEqual(activeJobMetaEn.alternates?.canonical, 'https://pybim.com/en/careers/senior-bim-lead');
-assert.strictEqual(activeJobMetaEn.alternates?.languages.en, 'https://pybim.com/en/careers/senior-bim-lead');
-assert.strictEqual(activeJobMetaEn.alternates?.languages.it, 'https://pybim.it/it/careers/senior-bim-lead');
-assert.strictEqual(activeJobMetaEn.alternates?.languages.de, 'https://pybim.com/de/careers/senior-bim-lead');
-assert.strictEqual(activeJobMetaEn.alternates?.languages['x-default'], 'https://pybim.com/en/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaEn.alternates?.canonical, 'https://www.pybim.com/en/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaEn.alternates?.languages.en, 'https://www.pybim.com/en/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaEn.alternates?.languages.it, 'https://www.pybim.it/it/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaEn.alternates?.languages.de, 'https://www.pybim.com/de/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaEn.alternates?.languages['x-default'], 'https://www.pybim.com/en/careers/senior-bim-lead');
 
 const activeJobMetaIt = getCareerDetailMetadata({ locale: 'it', id: 'senior-bim-lead', job: activeJob });
 assert.strictEqual(activeJobMetaIt.title, 'Lead BIM Senior | pyBIM');
-assert.strictEqual(activeJobMetaIt.alternates?.canonical, 'https://pybim.it/it/careers/senior-bim-lead');
-assert.strictEqual(activeJobMetaIt.alternates?.languages.it, 'https://pybim.it/it/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaIt.alternates?.canonical, 'https://www.pybim.it/it/careers/senior-bim-lead');
+assert.strictEqual(activeJobMetaIt.alternates?.languages.it, 'https://www.pybim.it/it/careers/senior-bim-lead');
 
 // 7d. Check source code structure of careers/[id]/page.js
 const careerDetailCode = fs.readFileSync(new URL('../app/[locale]/careers/[id]/page.js', import.meta.url), 'utf8');
@@ -431,6 +447,29 @@ assert.ok(careerDetailCode.includes('getCareerDetailMetadata'), 'Must use getCar
 assert.ok(careerDetailCode.includes('job.isActive === false'), 'Must check isActive status');
 assert.ok(careerDetailCode.includes('notFound()'), 'Must call notFound() for missing or inactive jobs');
 
-console.log('   ✓ Dynamic Careers detail pages properly suppress inherited signals on 404 and enforce Model B mapping');
+console.log('   ✓ Dynamic Careers detail pages properly suppress inherited signals on 404 and enforce Model B mapping on www');
+
+// -----------------------------------------------------------------------------
+// 8. Strict Prohibition of Redirecting Apex URLs
+// -----------------------------------------------------------------------------
+console.log('8. Validating Zero Redirecting Apex URLs in SEO metadata & sitemaps...');
+
+for (const loc of ['en', 'it', 'de']) {
+  for (const route of CORE_INDEXABLE_ROUTES) {
+    const c = getCanonicalUrl(loc, route);
+    assert.ok(!c.startsWith('https://pybim.com/'), `Canonical must never use redirecting apex: ${c}`);
+    assert.ok(!c.startsWith('https://pybim.it/'), `Canonical must never use redirecting apex: ${c}`);
+    assert.ok(c.startsWith('https://www.pybim.com/') || c.startsWith('https://www.pybim.it/'), `Canonical must use www: ${c}`);
+
+    const alts = getAlternateLanguages(route);
+    for (const [k, v] of Object.entries(alts)) {
+      assert.ok(!v.startsWith('https://pybim.com/'), `Alternate ${k} must never use redirecting apex: ${v}`);
+      assert.ok(!v.startsWith('https://pybim.it/'), `Alternate ${k} must never use redirecting apex: ${v}`);
+      assert.ok(v.startsWith('https://www.pybim.com/') || v.startsWith('https://www.pybim.it/'), `Alternate ${k} must use www: ${v}`);
+    }
+  }
+}
+
+console.log('   ✓ Verified zero redirecting apex URLs exist across all canonicals, hreflang alternates, and sitemaps');
 
 console.log('\n=== ALL SEO-01 MULTI-DOMAIN & MULTILINGUAL TESTS PASSED SUCCESSFULLY ===');

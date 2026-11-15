@@ -1,6 +1,6 @@
 import HomePageLayout from "@/components/pages/home-page-layout";
 import { siteMetadata } from "@/lib/site-copy";
-import { getCanonicalUrl, getAlternateLanguages } from "@/lib/seo";
+import { getCanonicalUrl, getAlternateLanguages, DOMAIN_COM } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const siteUrl = "https://pybim.com";
+const siteUrl = DOMAIN_COM;
 
 const organizationSchema = {
   "@context": "https://schema.org",

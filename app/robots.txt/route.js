@@ -6,8 +6,8 @@ import { isItalianDomain, DOMAIN_COM, DOMAIN_IT } from '../../lib/seo.js';
  * Multi-Domain Dynamic Robots.txt Route Handler
  *
  * Implements domain-specific sitemap referencing:
- * - pybim.com: Sitemap: https://pybim.com/sitemap.xml
- * - pybim.it:  Sitemap: https://pybim.it/sitemap.xml
+ * - www.pybim.com: Sitemap: https://www.pybim.com/sitemap.xml
+ * - www.pybim.it:  Sitemap: https://www.pybim.it/sitemap.xml
  *
  * Preserves security exclusions (/api/, /test/, /admin/).
  * Emits Vary: Host to avoid CDN cache contamination between domains.
