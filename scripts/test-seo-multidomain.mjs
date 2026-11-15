@@ -620,4 +620,304 @@ console.log('   ✓ WebSite entities link via publisher @id across .com and .it'
 console.log('   ✓ Verified official profiles (LinkedIn, GitHub) present without speculative channels');
 console.log('   ✓ 4-Pillar brand description and content integrity verified with zero unverified claims');
 
-console.log('\n=== ALL SEO-01, SEO-02/03 & SEO-04 TESTS PASSED SUCCESSFULLY ===');
+// -----------------------------------------------------------------------------
+// 14. GEO-01 Geographic Routing, Country Detection & Language Preferences
+// -----------------------------------------------------------------------------
+console.log('14. Testing GEO-01 Geographic Routing, Country Detection & Language Preferences...');
+
+import { NextRequest } from 'next/server.js';
+import { middleware } from '../middleware.js';
+import {
+  GEO_COOKIE_NAME,
+  extractVisitorCountry,
+  sanitizeCountryCode,
+  parseLanguagePreference,
+  isEligibleGeoRoute,
+  resolveGeoDestination,
+} from '../lib/geo.js';
+
+// 14a. Pure country code sanitation
+assert.strictEqual(sanitizeCountryCode('it'), 'IT');
+assert.strictEqual(sanitizeCountryCode('IT'), 'IT');
+assert.strictEqual(sanitizeCountryCode('de'), 'DE');
+assert.strictEqual(sanitizeCountryCode('at'), 'AT');
+assert.strictEqual(sanitizeCountryCode('us'), 'US');
+assert.strictEqual(sanitizeCountryCode('fr'), 'FR');
+assert.strictEqual(sanitizeCountryCode('XX'), null, 'XX is Cloudflare unknown code, must fallback');
+assert.strictEqual(sanitizeCountryCode('T1'), null, 'T1 is Tor code, must fallback');
+assert.strictEqual(sanitizeCountryCode('A1'), null, 'A1 is anonymous proxy, must fallback');
+assert.strictEqual(sanitizeCountryCode('A2'), null, 'A2 is satellite proxy, must fallback');
+assert.strictEqual(sanitizeCountryCode('123'), null, 'numeric codes must be rejected');
+assert.strictEqual(sanitizeCountryCode('ITA'), null, '3-letter codes must be rejected');
+assert.strictEqual(sanitizeCountryCode(''), null);
+assert.strictEqual(sanitizeCountryCode(null), null);
+
+// 14b. Pure language preference cookie parser
+assert.strictEqual(parseLanguagePreference('en'), 'en');
+assert.strictEqual(parseLanguagePreference('it'), 'it');
+assert.strictEqual(parseLanguagePreference('de'), 'de');
+assert.strictEqual(parseLanguagePreference('EN'), 'en');
+assert.strictEqual(parseLanguagePreference('es'), null, 'unsupported languages must be ignored');
+assert.strictEqual(parseLanguagePreference('invalid'), null);
+assert.strictEqual(parseLanguagePreference(null), null);
+
+// 14c. Approved public entry routes for Geo-Routing
+assert.strictEqual(isEligibleGeoRoute('/'), true);
+assert.strictEqual(isEligibleGeoRoute(''), true);
+assert.strictEqual(isEligibleGeoRoute('/services'), true);
+assert.strictEqual(isEligibleGeoRoute('/careers'), true);
+assert.strictEqual(isEligibleGeoRoute('/about'), true);
+assert.strictEqual(isEligibleGeoRoute('/contact'), true);
+assert.strictEqual(isEligibleGeoRoute('/privacy-policy'), true);
+assert.strictEqual(isEligibleGeoRoute('/cookie-policy'), true);
+assert.strictEqual(isEligibleGeoRoute('/terms-and-conditions'), true);
+assert.strictEqual(isEligibleGeoRoute('/pricing'), false, 'invalid legacy route must not be geo-routed');
+assert.strictEqual(isEligibleGeoRoute('/q1-update'), false);
+assert.strictEqual(isEligibleGeoRoute('/random-page'), false);
+
+// 14d. Middleware Execution: Scenario 1 - IT visitor on generic .com root
+{
+  const req = new NextRequest('https://www.pybim.com/', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  });
+  const res = await middleware(req);
+  assert.strictEqual(res.status, 307, 'Must return HTTP 307 Temporary Redirect for geo-routing');
+  assert.strictEqual(res.headers.get('location'), 'https://www.pybim.it/it');
+  assert.ok(res.headers.get('cache-control')?.includes('no-store'), 'Must include private, no-store');
+  assert.ok(res.headers.get('vary')?.includes('CF-IPCountry'), 'Must include CF-IPCountry in Vary');
+}
+
+// 14e. Middleware Execution: Scenario 2 - DE visitor on generic .com root
+{
+  const req = new NextRequest('https://www.pybim.com/', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'DE' },
+  });
+  const res = await middleware(req);
+  assert.strictEqual(res.status, 307);
+  assert.strictEqual(res.headers.get('location'), 'https://www.pybim.com/de');
+}
+
+// 14f. Middleware Execution: Scenario 3 - AT visitor on generic .com root
+{
+  const req = new NextRequest('https://www.pybim.com/', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'AT' },
+  });
+  const res = await middleware(req);
+  assert.strictEqual(res.status, 307);
+  assert.strictEqual(res.headers.get('location'), 'https://www.pybim.com/de');
+}
+
+// 14g. Middleware Execution: Scenario 4 - US visitor on generic .com root
+{
+  const req = new NextRequest('https://www.pybim.com/', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'US' },
+  });
+  const res = await middleware(req);
+  assert.strictEqual(res.status, 307);
+  assert.strictEqual(res.headers.get('location'), 'https://www.pybim.com/en');
+}
+
+// 14h. Middleware Execution: Scenario 5 - FR visitor on generic .com root
+{
+  const req = new NextRequest('https://www.pybim.com/', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'FR' },
+  });
+  const res = await middleware(req);
+  assert.strictEqual(res.status, 307);
+  assert.strictEqual(res.headers.get('location'), 'https://www.pybim.com/en');
+}
+
+// 14i. Middleware Execution: Scenario 6 - Missing country value defaults safely to en
+{
+  const req = new NextRequest('https://www.pybim.com/', {
+    headers: { host: 'www.pybim.com' },
+  });
+  const res = await middleware(req);
+  assert.strictEqual(res.status, 307);
+  assert.strictEqual(res.headers.get('location'), 'https://www.pybim.com/en');
+}
+
+// 14j. Middleware Execution: Scenario 7 - Unknown country codes (XX, T1) default safely to en
+{
+  const reqXX = new NextRequest('https://www.pybim.com/', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'XX' },
+  });
+  const resXX = await middleware(reqXX);
+  assert.strictEqual(resXX.status, 307);
+  assert.strictEqual(resXX.headers.get('location'), 'https://www.pybim.com/en');
+
+  const reqT1 = new NextRequest('https://www.pybim.com/', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'T1' },
+  });
+  const resT1 = await middleware(reqT1);
+  assert.strictEqual(resT1.status, 307);
+  assert.strictEqual(resT1.headers.get('location'), 'https://www.pybim.com/en');
+}
+
+// 14k. Middleware Execution: Scenario 8 - IT visitor requesting explicit /en/services remains on English
+{
+  const req = new NextRequest('https://www.pybim.com/en/services', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  });
+  const res = await middleware(req);
+  // Status 200 from NextResponse.next() (no redirection)
+  assert.strictEqual(res.status, 200, 'Explicit localized URL must not be redirected based on IP');
+  assert.strictEqual(res.headers.get('location'), null);
+}
+
+// 14l. Middleware Execution: Scenario 9 - DE visitor requesting explicit /it/services remains on Italian
+{
+  const req = new NextRequest('https://www.pybim.it/it/services', {
+    headers: { host: 'www.pybim.it', 'cf-ipcountry': 'DE' },
+  });
+  const res = await middleware(req);
+  assert.strictEqual(res.status, 200, 'Explicit localized URL must not be redirected based on IP');
+  assert.strictEqual(res.headers.get('location'), null);
+}
+
+// 14m. Middleware Execution: Scenario 10 - Explicit user language preference overrides geolocation
+{
+  // IT visitor who previously chose English
+  const reqEn = new NextRequest('https://www.pybim.com/', {
+    headers: {
+      host: 'www.pybim.com',
+      'cf-ipcountry': 'IT',
+      cookie: `${GEO_COOKIE_NAME}=en`,
+    },
+  });
+  const resEn = await middleware(reqEn);
+  assert.strictEqual(resEn.status, 307);
+  assert.strictEqual(resEn.headers.get('location'), 'https://www.pybim.com/en', 'Cookie preference en must override IT country');
+
+  // IT visitor who previously chose German
+  const reqDe = new NextRequest('https://www.pybim.com/', {
+    headers: {
+      host: 'www.pybim.com',
+      'cf-ipcountry': 'IT',
+      cookie: `${GEO_COOKIE_NAME}=de`,
+    },
+  });
+  const resDe = await middleware(reqDe);
+  assert.strictEqual(resDe.status, 307);
+  assert.strictEqual(resDe.headers.get('location'), 'https://www.pybim.com/de', 'Cookie preference de must override IT country');
+
+  // US visitor who previously chose Italian
+  const reqIt = new NextRequest('https://www.pybim.com/', {
+    headers: {
+      host: 'www.pybim.com',
+      'cf-ipcountry': 'US',
+      cookie: `${GEO_COOKIE_NAME}=it`,
+    },
+  });
+  const resIt = await middleware(reqIt);
+  assert.strictEqual(resIt.status, 307);
+  assert.strictEqual(resIt.headers.get('location'), 'https://www.pybim.it/it', 'Cookie preference it must override US country');
+}
+
+// 14n. Middleware Execution: Scenario 11 - Static assets and API are exempt from geo-routing
+{
+  const reqApi = new NextRequest('https://www.pybim.com/api/contact', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  });
+  const resApi = await middleware(reqApi);
+  assert.strictEqual(resApi.status, 200, 'API routes must not be geo-redirected');
+}
+
+// 14o. Middleware Execution: Scenario 12 - Client Portal and login are exempt from cross-domain geo redirection
+{
+  const reqLogin = new NextRequest('https://www.pybim.com/en/login', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  });
+  const resLogin = await middleware(reqLogin);
+  assert.strictEqual(resLogin.status, 200, 'Login page must not be geo-redirected');
+}
+
+// 14p. Middleware Execution: Scenario 13 - Generic subpath preserves route and query params
+{
+  const reqServices = new NextRequest('https://www.pybim.com/services?sort=asc&filter=bim', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  });
+  const resServices = await middleware(reqServices);
+  assert.strictEqual(resServices.status, 307);
+  assert.strictEqual(
+    resServices.headers.get('location'),
+    'https://www.pybim.it/it/services?sort=asc&filter=bim',
+    'Route path and query string must be preserved on geo-routing'
+  );
+
+  const reqContactDe = new NextRequest('https://www.pybim.com/contact?ref=partner', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'DE' },
+  });
+  const resContactDe = await middleware(reqContactDe);
+  assert.strictEqual(resContactDe.status, 307);
+  assert.strictEqual(
+    resContactDe.headers.get('location'),
+    'https://www.pybim.com/de/contact?ref=partner'
+  );
+}
+
+// 14q. Middleware Execution: Scenario 14 - Invalid legacy URL does not trigger geo-routing
+{
+  const reqInvalid = new NextRequest('https://www.pybim.com/pricing', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  });
+  const resInvalid = await middleware(reqInvalid);
+  assert.strictEqual(resInvalid.status, 200, 'Invalid legacy route must pass through to Next.js 404');
+  assert.strictEqual(resInvalid.headers.get('location'), null);
+}
+
+// 14r. Middleware Execution: Scenario 15 - Repeated redirect navigation (Zero redirect loop)
+{
+  // First hop: pybim.com/ (from IT) -> 307 to https://www.pybim.it/it
+  const hop1 = await middleware(new NextRequest('https://www.pybim.com/', {
+    headers: { host: 'www.pybim.com', 'cf-ipcountry': 'IT' },
+  }));
+  assert.strictEqual(hop1.status, 307);
+  const destination1 = hop1.headers.get('location');
+  assert.strictEqual(destination1, 'https://www.pybim.it/it');
+
+  // Second hop: visitor loads destination URL https://www.pybim.it/it (from IT)
+  const hop2 = await middleware(new NextRequest(destination1, {
+    headers: { host: 'www.pybim.it', 'cf-ipcountry': 'IT' },
+  }));
+  assert.strictEqual(hop2.status, 200, 'Destination URL has explicit locale; no subsequent redirect or loop');
+  assert.strictEqual(hop2.headers.get('location'), null);
+}
+
+// 14s. Middleware Execution: Scenario 16 - Preview and local development remain local
+{
+  const reqLocal = new NextRequest('http://localhost:3000/', {
+    headers: { host: 'localhost:3000', 'cf-ipcountry': 'IT' },
+  });
+  const resLocal = await middleware(reqLocal);
+  assert.strictEqual(resLocal.status, 307);
+  assert.strictEqual(
+    resLocal.headers.get('location'),
+    'http://localhost:3000/it',
+    'Local requests must redirect to local destination, never to production www.pybim.it'
+  );
+
+  const reqPreview = new NextRequest('https://pybim-preview.workers.dev/', {
+    headers: { host: 'pybim-preview.workers.dev', 'cf-ipcountry': 'DE' },
+  });
+  const resPreview = await middleware(reqPreview);
+  assert.strictEqual(resPreview.status, 307);
+  assert.strictEqual(
+    resPreview.headers.get('location'),
+    'https://pybim-preview.workers.dev/de',
+    'Preview requests must redirect to preview destination, never to production www.pybim.com'
+  );
+}
+
+console.log('   ✓ IT -> https://www.pybim.it/it verified (HTTP 307 with private cache headers)');
+console.log('   ✓ DE & AT -> https://www.pybim.com/de verified (HTTP 307)');
+console.log('   ✓ US, FR & other countries -> https://www.pybim.com/en verified (HTTP 307)');
+console.log('   ✓ Missing & unknown (XX, T1) countries fallback safely to English');
+console.log('   ✓ Explicit localized paths (/en, /it, /de) strictly take precedence over IP');
+console.log('   ✓ User language preference cookie (pybim_lang_pref) strictly overrides geolocation');
+console.log('   ✓ Query parameters and route paths cleanly preserved on geographic redirects');
+console.log('   ✓ Ineligible legacy routes (/pricing) exempt from geo-routing, preserving 404 behavior');
+console.log('   ✓ Zero redirect loops verified on repeated navigation');
+console.log('   ✓ Preview & local development environments remain strictly isolated from production domains');
+
+console.log('\n=== ALL SEO-01, SEO-02/03, SEO-04 & GEO-01 TESTS PASSED SUCCESSFULLY ===');
