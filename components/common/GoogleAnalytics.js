@@ -16,35 +16,53 @@ import {
  * GoogleAnalytics Component
  *
  * Privacy-First, Basic Consent Mode GA4 loader.
- * - Remains completely unrendered if NEXT_PUBLIC_GA4_MEASUREMENT_ID is missing/invalid.
- * - Inactive by default; only loads gtag.js and initializes after user accepts analytics in CookieConsent.
- * - Subscribes to 'cookie_consent_updated' custom events for real-time activation/revocation.
- * - Private-route isolation: Strictly prevents tracking on /portal, /login, /register, or unapproved routes.
- * - Route change deduplication: Emits exactly one manual page_view on eligible public route transitions.
- * - Zero query parameters or PII: page_location and page_path are sanitized pure paths.
- * - Defaults all advertising, ad_storage, ad_user_data, and ad_personalization signals to 'denied'.
+ * Lifecycle Architecture:
+ * 1. Initial State: If user has not consented, zero scripts load (Basic Consent Mode).
+ * 2. First Acceptance: Script is mounted and loads gtag.js. Once loaded, dataLayer & consent default are set.
+ * 3. Consent Revocation: Updates analytics_storage to 'denied', wipes _ga* cookies, pauses tracking.
+ * 4. Consent Reactivation: Updates analytics_storage to 'granted', resumes tracking without remounting or duplicate page views.
+ * 5. Private-Route Shielding:
+ *    - On private routes (/portal/*, /login, /register, api, error), analytics_storage is dynamically paused ('denied').
+ *    - Returning to an approved public route restores analytics_storage to 'granted' (if user consent is active).
+ * 6. Deduplicated page_view: Emits exactly one manual page_view on eligible public route transitions.
  */
 export default function GoogleAnalytics({ locale = "en" }) {
   const pathname = usePathname();
   const [hasConsent, setHasConsent] = useState(false);
-  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+  const [shouldLoadScript, setShouldLoadScript] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
   const lastTrackedPathRef = useRef(null);
-  const isInitializedRef = useRef(false);
+  const isScriptLoadedRef = useRef(false);
+  const isConfiguredRef = useRef(false);
 
   // 1. Synchronize consent state from localStorage and listen for updates
   useEffect(() => {
     if (!isAnalyticsConfigured()) return;
 
     // Read stored consent on mount
-    const consent = getStoredAnalyticsConsent();
-    setHasConsent(consent);
+    const initialConsent = getStoredAnalyticsConsent();
+    setHasConsent(initialConsent);
+    if (initialConsent) {
+      setShouldLoadScript(true);
+    }
 
     const handleConsentUpdate = (e) => {
       const allowed = e?.detail?.analytics === true;
       setHasConsent(allowed);
 
-      if (!allowed) {
-        // Consent revoked: update Google tag consent state and wipe GA cookies
+      if (allowed) {
+        // User accepted consent: ensure script is triggered to load
+        setShouldLoadScript(true);
+
+        // If tag is already loaded in page memory from earlier, explicitly re-grant consent
+        if (typeof window !== "undefined" && typeof window.gtag === "function" && isConfiguredRef.current) {
+          window.gtag("consent", "update", {
+            analytics_storage: "granted",
+          });
+        }
+      } else {
+        // Consent revoked: update Google tag consent state to denied and wipe cookies
         if (typeof window !== "undefined" && typeof window.gtag === "function") {
           window.gtag("consent", "update", {
             analytics_storage: "denied",
@@ -61,9 +79,30 @@ export default function GoogleAnalytics({ locale = "en" }) {
     };
   }, []);
 
-  // 2. Track client-side page views when consent is active, script is loaded, and route is eligible
+  // 2. Handle private-route transitions when Google Tag is already loaded
   useEffect(() => {
-    if (!isAnalyticsConfigured() || !hasConsent || !isScriptLoaded) return;
+    if (!isAnalyticsConfigured() || !hasConsent || !isReady) return;
+    if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+
+    const isPublic = isEligibleAnalyticsRoute(pathname);
+
+    if (!isPublic) {
+      // Navigated into private route: pause analytics storage to prevent automatic event collection
+      window.gtag("consent", "update", {
+        analytics_storage: "denied",
+      });
+      lastTrackedPathRef.current = null;
+    } else {
+      // Navigated back to an approved public route: restore analytics storage
+      window.gtag("consent", "update", {
+        analytics_storage: "granted",
+      });
+    }
+  }, [pathname, hasConsent, isReady]);
+
+  // 3. Track client-side page views on eligible public route transitions
+  useEffect(() => {
+    if (!isAnalyticsConfigured() || !hasConsent || !isReady) return;
     if (typeof window === "undefined" || typeof window.gtag !== "function") return;
 
     // Guard: Prevent tracking on private routes (/portal, /login, /register, error pages)
@@ -89,60 +128,62 @@ export default function GoogleAnalytics({ locale = "en" }) {
     } catch {
       // Fail-safe: analytics logging errors must never affect user experience
     }
-  }, [pathname, hasConsent, isScriptLoaded, locale]);
+  }, [pathname, hasConsent, isReady, locale]);
 
-  // If GA4 is not configured via valid Measurement ID, render nothing
+  // Helper called when external gtag script has finished loading
+  const handleScriptLoad = () => {
+    isScriptLoadedRef.current = true;
+    if (typeof window === "undefined") return;
+
+    // Deterministic initialization sequence:
+    // 1. Initialize dataLayer and gtag function
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    window.gtag = window.gtag || gtag;
+
+    // 2. Set timestamp
+    window.gtag("js", new Date());
+
+    // 3. Set default consent state: advertising always denied, analytics granted
+    window.gtag("consent", "default", {
+      analytics_storage: "granted",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      wait_for_update: 500,
+    });
+
+    // 4. Configure measurement ID with privacy restrictions and disabled auto page views
+    window.gtag("config", GA_MEASUREMENT_ID, {
+      send_page_view: false,
+      anonymize_ip: true,
+      restricted_data_processing: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
+
+    isConfiguredRef.current = true;
+    setIsReady(true);
+  };
+
+  // If GA4 is not configured via valid build-time Measurement ID, render nothing
   if (!isAnalyticsConfigured()) {
     return null;
   }
 
-  // If user has not consented, render nothing (Basic Consent Mode: zero network requests)
-  if (!hasConsent) {
-    return null;
-  }
-
-  // If the initial entry route is private, do not load GA4 script
-  if (!isEligibleAnalyticsRoute(pathname)) {
+  // If user has never consented, do not inject the Script (Basic Consent Mode)
+  if (!shouldLoadScript) {
     return null;
   }
 
   return (
-    <>
-      {/* Load gtag.js library asynchronously once consent is granted on an eligible route */}
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        onLoad={() => {
-          setIsScriptLoaded(true);
-        }}
-      />
-      {/* Initialize dataLayer and default consent state (runs only once per session) */}
-      <Script
-        id="ga4-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('consent', 'default', {
-              'analytics_storage': 'granted',
-              'ad_storage': 'denied',
-              'ad_user_data': 'denied',
-              'ad_personalization': 'denied',
-              'wait_for_update': 500
-            });
-            gtag('config', '${GA_MEASUREMENT_ID}', {
-              'send_page_view': false,
-              'anonymize_ip': true,
-              'restricted_data_processing': true,
-              'allow_google_signals': false,
-              'allow_ad_personalization_signals': false
-            });
-          `,
-        }}
-      />
-    </>
+    <Script
+      id="ga4-tag-script"
+      strategy="afterInteractive"
+      src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+      onLoad={handleScriptLoad}
+    />
   );
 }
