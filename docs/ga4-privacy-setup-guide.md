@@ -1,7 +1,7 @@
 # pyBIM — GA4 Privacy-First Setup & Administration Guide
 
-**Document Version:** 1.0.0
-**Phase:** GA4-01
+**Document Version:** 1.1.0
+**Phase:** GA4-01B
 **Architecture:** Shared Single Property, Basic Consent Mode, Cross-Domain Measurement
 **Target Domains:**
 - `https://www.pybim.com` (English `/en`, German `/de`)
@@ -14,13 +14,16 @@
 pyBIM uses a single Google Analytics 4 (GA4) property configured with one Web Data Stream to measure engagement across both `.com` and `.it` without domain fragmentation or duplicate tags.
 
 ### Core Privacy & Consent Safeguards:
-1. **Dormant Configuration:** GA4 remains completely inactive unless a valid Measurement ID (`NEXT_PUBLIC_GA4_MEASUREMENT_ID`) is provided in the build environment.
+1. **Dormant Configuration:** GA4 remains completely inactive unless a valid Measurement ID (`NEXT_PUBLIC_GA4_MEASUREMENT_ID`) is provided **at Next.js build time**.
 2. **Basic Consent Mode:**
    - If user consent is not granted, the `gtag.js` script is **never loaded**, zero network requests are dispatched, and zero Google cookies are created.
    - Default signals for advertising (`ad_storage`, `ad_user_data`, `ad_personalization`) are permanently denied.
    - Anonymization and restricted data processing flags (`restricted_data_processing: true`, `anonymize_ip: true`, `allow_google_signals: false`) are hardcoded.
-3. **Consent Revocation:** When a user revokes analytics consent via the Cookie Preferences modal, future events are blocked, Google tag consent is updated to `denied`, and `_ga*` cookies are expired.
-4. **Zero PII Policy:** Automatic PII scrubbing removes names, emails, phone numbers, form bodies, auth tokens, and session credentials before events are logged.
+3. **Private-Route Shielding:**
+   - Client Portal (`/portal/*`), authentication pages (`/login`, `/register`), API endpoints (`/api/*`), and error pages are strictly excluded from analytics initialization and event tracking.
+4. **Consent Revocation:** When a user revokes analytics consent via the Cookie Preferences modal, future events are blocked, Google tag consent is updated to `denied`, and `_ga*` cookies are expired.
+5. **Zero PII Policy:** Automatic PII scrubbing removes names, emails, phone numbers, form bodies, auth tokens, and session credentials before events are logged.
+6. **Query Parameter Stripping:** Page views are logged with clean pathnames only (e.g. `/en/services`). No search queries or URL tokens are transmitted.
 
 ---
 
@@ -42,9 +45,12 @@ Follow these exact steps in the Google Analytics Admin console:
 1. Under **Data collection and modification**, click **Data Streams** > **Add stream** > **Web**.
 2. **Website URL:** `https://www.pybim.com` (default primary host).
 3. **Stream name:** `pyBIM Production Web (Multi-Domain)`.
-4. **Enhanced measurement:** Click the gear icon:
-   - Keep Page views enabled.
-   - Ensure "Page changes based on browser history events" is compatible with our client-side `page_view` dispatch (or manage page views exclusively through our component).
+4. **Enhanced Measurement Configuration (CRITICAL):**
+   - Click the gear icon to customize Enhanced Measurement.
+   - Expand the **Page views** section.
+   - Click **Show advanced settings**.
+   - **Uncheck** "Page changes based on browser history events".
+   - *Why this is essential:* pyBIM's `GoogleAnalytics` component manually dispatches deterministic `page_view` events for Next.js App Router client-side navigation. If history-change tracking remains checked in GA4, Enhanced Measurement will fire a second, duplicate `page_view` on every client-side page navigation!
 5. Click **Create stream**.
 6. Copy the generated **Measurement ID** (format: `G-XXXXXXXXXX`).
 
@@ -65,31 +71,34 @@ Because pyBIM operates across two separate Top-Level Domains (`www.pybim.com` an
      - Domain: `pybim.it`
 4. Click **Save**.
 
-> [!NOTE]
+> [!IMPORTANT]
 > **Understanding Cross-Domain Continuity:**
 > - Analytics cookies (`_ga`) and user consent preferences (`cookie_consent` in `localStorage`) are strictly domain-specific. An Italian user accepting cookies on `pybim.it` will see the consent banner again if they visit `pybim.com`.
 > - The language preference bridge (`?lang_pref=...`) transfers user language choices between domains without passing Google Analytics client IDs or user tracking tokens.
 > - GA4's cross-domain linking ensures that when users navigate from `.com` to `.it` (or vice versa), Google Tag links the sessions via an ephemeral `_gl` URL parameter while respecting each domain's separate consent state.
+> - Using one GA4 property for both domains does not by itself guarantee cross-domain visitor identity continuity if the user's consent status differs between domains or if navigation is programmatic.
 
 ---
 
-## 4. Cloudflare Environment Variable Configuration
+## 4. Build-Time Environment Variable Configuration
+
+> [!CAUTION]
+> `NEXT_PUBLIC_GA4_MEASUREMENT_ID` is a **Next.js build-time public environment variable**.
+> Because Next.js inlines `NEXT_PUBLIC_*` variables into client-side JavaScript bundles during compilation, the ID **must be set in the build environment before running `npm run build`**.
+> Adding it solely as a runtime Cloudflare Worker variable after compilation will NOT activate the compiled browser bundles.
 
 When ready to activate analytics for production:
-
-1. Go to the Cloudflare Dashboard > **Workers & Pages**.
-2. Select the `pybim` worker/application.
-3. Navigate to **Settings** > **Variables and Secrets**.
-4. Under **Environment Variables**, add:
+1. In Cloudflare Dashboard > **Workers & Pages** > `pybim` > **Settings** > **Variables and Secrets**.
+2. Add under **Environment Variables** (accessible to Cloudflare Builds):
    - **Variable name:** `NEXT_PUBLIC_GA4_MEASUREMENT_ID`
    - **Value:** `G-XXXXXXXXXX` (your official Measurement ID).
-5. Trigger a new production deployment from `main`.
+3. Trigger a production build and deployment from `main`.
 
 ---
 
 ## 5. Post-Deployment Consent & Verification Checklist
 
-Once deployed to production with the environment variable set:
+Once deployed to production with the build variable set:
 
 1. **Clean Profile Verification (First Visit):**
    - Open a clean browser session (or DevTools with empty cache/storage).
@@ -104,13 +113,16 @@ Once deployed to production with the environment variable set:
    - Verify an initial `page_view` event is sent with:
      - `hostname`: `www.pybim.com` (or `www.pybim.it`)
      - `locale`: `en`, `it`, or `de`
-     - `page_path`: e.g. `/en/services`
-4. **Consent Revocation Test:**
+     - `page_path`: e.g. `/en/services` (zero query parameters attached)
+4. **Private-Route Navigation Test:**
+   - Navigate to `/en/login` or `/en/portal/dashboard`.
+   - Verify that **no** `page_view` or custom events are fired while on private routes.
+5. **Consent Revocation Test:**
    - Reopen Cookie Preferences from the footer, uncheck Analytics, and save.
    - Verify `_ga*` cookies are expired and removed from the browser.
-5. **Form Submission Test:**
+6. **Form Submission Test:**
    - Submit an inquiry via the Contact form.
-   - Verify only a generic `contact_form_submit` event is sent with `service_id`. Confirm no email, name, or message data is attached.
+   - Verify only a generic `contact_form_submit` event is sent with `service_id`. Confirm no email, name, phone, or message body data is attached.
 
 ---
 

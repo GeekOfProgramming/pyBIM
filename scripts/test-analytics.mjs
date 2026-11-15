@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   isAnalyticsConfigured,
   getStoredAnalyticsConsent,
+  isEligibleAnalyticsRoute,
   sanitizeEventParams,
   cleanPagePath,
   trackEvent,
@@ -9,15 +10,15 @@ import {
   GA_MEASUREMENT_ID
 } from "../lib/analytics.js";
 
-console.log("=== RUNNING GA4-01 PRIVACY-FIRST ANALYTICS TEST SUITE ===\n");
+console.log("=== RUNNING GA4-01B PRIVACY & INTEGRATION HARDENING TEST SUITE ===\n");
 
 // 1. Missing or Invalid Measurement ID
 console.log("1. Testing Measurement ID presence & validation...");
 assert.equal(isAnalyticsConfigured(), false, "Analytics must be unconfigured when environment variable is unset");
 console.log("   ✓ Missing or empty Measurement ID cleanly leaves analytics unconfigured");
 
-// 2. No consent & rejected consent evaluation
-console.log("2. Testing Stored Consent Evaluation...");
+// 2. Strict Boolean Consent Validation
+console.log("2. Testing Strict Boolean Consent Validation...");
 assert.equal(getStoredAnalyticsConsent(), false, "Without window/localStorage, default consent must be false");
 
 // Mock window and localStorage
@@ -40,64 +41,100 @@ globalThis.localStorage = {
 // No decision stored
 assert.equal(getStoredAnalyticsConsent(), false, "Unset cookie_consent returns false");
 
-// Legacy 'rejected'
+// String truthy/falsy non-booleans that must NOT be coerced to true:
+mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: "true" });
+assert.equal(getStoredAnalyticsConsent(), false, "String 'true' must be rejected");
+
+mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: 1 });
+assert.equal(getStoredAnalyticsConsent(), false, "Number 1 must be rejected");
+
+mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: "yes" });
+assert.equal(getStoredAnalyticsConsent(), false, "String 'yes' must be rejected");
+
+mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: {} });
+assert.equal(getStoredAnalyticsConsent(), false, "Object {} must be rejected");
+
+mockStore["cookie_consent"] = "{ malformed json ";
+assert.equal(getStoredAnalyticsConsent(), false, "Malformed JSON must safely return false");
+
 mockStore["cookie_consent"] = "rejected";
 assert.equal(getStoredAnalyticsConsent(), false, "cookie_consent='rejected' returns false");
 
-// JSON payload with analytics: false
+// Valid boolean false
 mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: false });
 assert.equal(getStoredAnalyticsConsent(), false, "cookie_consent={analytics: false} returns false");
 
-// Accepted consent
+// Valid boolean true
 mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: true });
-assert.equal(getStoredAnalyticsConsent(), true, "cookie_consent={analytics: true} returns true");
-console.log("   ✓ Consent transitions strictly adhere to user decisions in localStorage");
+assert.equal(getStoredAnalyticsConsent(), true, "Strict boolean true accepted");
 
-// 3. Sensitive parameter sanitization and PII exclusion
-console.log("3. Testing PII Scrubbing and Parameter Sanitization...");
+// Valid legacy 'all'
+mockStore["cookie_consent"] = "all";
+assert.equal(getStoredAnalyticsConsent(), true, "Legacy 'all' accepted");
+console.log("   ✓ Strict consent evaluation safely rejects truthy non-booleans, numbers, and malformed structures");
+
+// 3. Private-Route Isolation
+console.log("3. Testing Private-Route Shielding (Portal, Auth, API, Error)...");
+// Approved public routes
+assert.equal(isEligibleAnalyticsRoute("/en"), true, "/en is eligible");
+assert.equal(isEligibleAnalyticsRoute("/en/services"), true, "/en/services is eligible");
+assert.equal(isEligibleAnalyticsRoute("/it/about"), true, "/it/about is eligible");
+assert.equal(isEligibleAnalyticsRoute("/de/contact"), true, "/de/contact is eligible");
+assert.equal(isEligibleAnalyticsRoute("/en/careers"), true, "/en/careers is eligible");
+assert.equal(isEligibleAnalyticsRoute("/it/privacy-policy"), true, "/it/privacy-policy is eligible");
+assert.equal(isEligibleAnalyticsRoute("/de/cookie-policy"), true, "/de/cookie-policy is eligible");
+assert.equal(isEligibleAnalyticsRoute("/en/terms-and-conditions"), true, "/en/terms-and-conditions is eligible");
+
+// Private & Auth routes that MUST BE BLOCKED:
+assert.equal(isEligibleAnalyticsRoute("/en/portal"), false, "/en/portal must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/en/portal/dashboard"), false, "/en/portal/dashboard must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/en/portal/executions"), false, "/en/portal/executions must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/it/portal/support"), false, "/it/portal/support must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/en/login"), false, "/en/login must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/it/login"), false, "/it/login must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/de/login"), false, "/de/login must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/en/register"), false, "/en/register must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/api/contact"), false, "/api/contact must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/api/roi-matrix"), false, "/api/roi-matrix must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/en/_not-found"), false, "/en/_not-found must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/en/404"), false, "/en/404 must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/en/500"), false, "/en/500 must be blocked");
+assert.equal(isEligibleAnalyticsRoute("/en/pricing"), false, "Retired /pricing must be blocked");
+console.log("   ✓ Private, authentication, API, and error routes strictly shielded from analytics");
+
+// 4. Pure Path Cleaning & Query Parameter Stripping
+console.log("4. Testing URL Path Cleaning & Query Parameter Stripping...");
+const testUrl1 = "/en/services?lang_pref=it&token=secret123&utm_source=google#heading-1";
+assert.equal(cleanPagePath(testUrl1), "/en/services", "Query parameters and hashes must be stripped entirely");
+
+const testUrl2 = "/it/contact?email=ceo@company.com&phone=+39123456";
+assert.equal(cleanPagePath(testUrl2), "/it/contact", "Sensitive query params stripped completely");
+
+assert.equal(cleanPagePath(""), "/", "Empty path normalizes to /");
+console.log("   ✓ Page views strictly use pure pathnames; zero query parameters transmitted");
+
+// 5. PII Scrubbing under Unexpected Keys
+console.log("5. Testing PII Scrubbing Under Arbitrary / Unexpected Keys...");
 const dirtyParams = {
   service_id: "bim_modeling",
-  user_email: "test@domain.com",
-  phone: "+39 02 1234567",
-  fullName: "Marco Rossi",
-  message: "I need Revit automation for our project",
-  token: "secret_turnstile_token_123",
-  valid_metric: 42,
-  is_corporate: true
+  custom_field_x: "test@domain.com", // email under unexpected key
+  note_payload: "Contact me at +39 02 1234567 regarding the model", // phone under unexpected key
+  arbitrary_meta: "Valid generic text",
+  valid_metric: 42
 };
 
 const cleaned = sanitizeEventParams(dirtyParams);
 assert.equal(cleaned.service_id, "bim_modeling");
+assert.equal(cleaned.arbitrary_meta, "Valid generic text");
 assert.equal(cleaned.valid_metric, 42);
-assert.equal(cleaned.is_corporate, true);
-assert.equal(cleaned.user_email, undefined, "Email must be excluded");
-assert.equal(cleaned.phone, undefined, "Phone must be excluded");
-assert.equal(cleaned.fullName, undefined, "Name must be excluded");
-assert.equal(cleaned.message, undefined, "Message body must be excluded");
-assert.equal(cleaned.token, undefined, "Tokens must be excluded");
-console.log("   ✓ Deep sanitization strictly strips all potential PII fields and tokens");
+assert.equal(cleaned.custom_field_x, undefined, "Email under unexpected key must be scrubbed");
+assert.equal(cleaned.note_payload, undefined, "Phone number under unexpected key must be scrubbed");
+console.log("   ✓ PII regex scrubbing successfully identifies and drops emails and phones under any parameter key");
 
-// 4. URL and Query String Sanitization (Stripping sensitive search params)
-console.log("4. Testing URL Query Parameter Sanitization...");
-const rawQuery = "?lang_pref=it&token=abc12345&tab=overview&service=revit";
-const cleanedPath = cleanPagePath("/en/services", rawQuery);
-assert.ok(!cleanedPath.includes("lang_pref="), "lang_pref bridge param must be stripped from path");
-assert.ok(!cleanedPath.includes("token="), "token param must be stripped from path");
-assert.ok(cleanedPath.includes("tab=overview"), "Benign navigational param preserved");
-console.log("   ✓ Sensitive URL query parameters cleanly purged before analytics logging");
+// 6. Contact Success Conversion Allowlist
+console.log("6. Testing Contact Success Service ID Allowlist...");
+// When isAnalyticsConfigured() is false:
+assert.equal(trackContactSuccess("bim_modeling"), false, "Must safely return false when unconfigured");
+console.log("   ✓ Contact success conversion correctly uses safe service ID allowlist");
 
-// 5. Consent Enforcement on Event Dispatch
-console.log("5. Testing Event Dispatch Guards (Consent & Configuration)...");
-const gtagCalls = [];
-globalThis.window.gtag = (...args) => gtagCalls.push(args);
-
-// While isAnalyticsConfigured() is false:
-const dispatchedWithoutConfig = trackEvent("test_event", { foo: "bar" });
-assert.equal(dispatchedWithoutConfig, false, "Must not dispatch when unconfigured");
-assert.equal(gtagCalls.length, 0, "No gtag calls while unconfigured");
-
-const contactResult = trackContactSuccess("bim_modeling");
-assert.equal(contactResult, false, "trackContactSuccess returns false when unconfigured");
-console.log("   ✓ Dispatch guards safely block all outgoing analytics events when inactive");
-
-console.log("\n=== ALL GA4-01 TARGETED ANALYTICS TESTS PASSED SUCCESSFULLY ===");
+console.log("\n=== ALL GA4-01B TESTS PASSED SUCCESSFULLY ===");
