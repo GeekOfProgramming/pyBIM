@@ -80,15 +80,17 @@ export default function GoogleAnalytics({ locale = "en" }) {
           setShouldLoadScript(true);
         }
 
-        // If tag is already loaded in page memory, restore tracking
+        // If tag is already loaded and configured in page memory, restore tracking
         if (typeof window !== "undefined" && isConfiguredRef.current) {
           if (isEligibleAnalyticsRoute(pathnameRef.current)) {
             applyTrackingRestore(GA_MEASUREMENT_ID);
+            setIsReady(true);
           }
         }
       } else {
         // Consent revoked: Apply complete shutdown (disable flag + consent denied + cookie purge)
         applyTrackingShutdown(GA_MEASUREMENT_ID);
+        setIsReady(false);
         lastTrackedPathRef.current = null;
       }
     };
@@ -115,10 +117,12 @@ export default function GoogleAnalytics({ locale = "en" }) {
       if (!isPublic || !hasConsent) {
         // Private route or consent absent: apply tracking shutdown
         applyTrackingShutdown(GA_MEASUREMENT_ID);
+        setIsReady(false);
         lastTrackedPathRef.current = null;
       } else {
         // Public route with active consent: restore tracking
         applyTrackingRestore(GA_MEASUREMENT_ID);
+        setIsReady(true);
       }
     }
   }, [pathname, hasConsent, shouldLoadScript]);

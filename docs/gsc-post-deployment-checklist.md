@@ -12,7 +12,9 @@
 
 > [!IMPORTANT]
 > Do NOT perform these actions until the `feature/seo-multidomain-locales-v1` branch has been officially merged into `main` and successfully deployed to Cloudflare Workers via Cloudflare Builds.
-> Both production properties are verified in Google Search Console.
+> Both production properties are verified in Google Search Console:
+> - `pybim.com` (Domain property, linked to GA4 Property `pyBIM` / Stream `pyBIM Production Web` / `G-BHR1F0E342`)
+> - `pybim.it` (Domain property)
 
 Verify via command-line HTTP requests (`curl -I`) before opening Search Console:
 1. `https://www.pybim.com/sitemap.xml` responds with HTTP 200 and XML containing exactly 16 URLs.
@@ -41,7 +43,8 @@ Verify via command-line HTTP requests (`curl -I`) before opening Search Console:
 4. Click **Submit**.
 5. Confirm "Sitemap submitted successfully".
 6. Status should show **Success** with **Discovered pages: 8** (8 Italian routes).
-7. Note: The historical issue where `.it` reported `.com` URLs in its sitemap is resolved; only `https://www.pybim.it/it/...` canonical URLs are present.
+7. Note: Currently, `pybim.it` has no sitemap submitted in GSC. Submitting `sitemap.xml` must only occur post-deployment once the code is merged to `main` and deployed live to production.
+8. Note: The historical issue where `.it` reported `.com` URLs in its sitemap is resolved; only `https://www.pybim.it/it/...` canonical URLs are present.
 
 ---
 

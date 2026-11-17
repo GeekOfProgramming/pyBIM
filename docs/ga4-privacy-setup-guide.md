@@ -43,24 +43,26 @@ Follow these exact steps in the Google Analytics Admin console:
 1. Log in to [Google Analytics](https://analytics.google.com).
 2. Go to **Admin** (gear icon in lower-left).
 3. Select or create an Account: `pyBIM`.
-4. Create a Property:
-   - **Property Name:** `pyBIM Official Web`
-   - **Reporting Time Zone:** `Italy (Rome)` or your organization's primary time zone.
+4. Property details:
+   - **Property Name:** `pyBIM`
+   - **Property ID:** (Configured under pyBIM account)
+   - **Reporting Time Zone:** `Italy (Rome)`
    - **Currency:** `Euro (EUR €)`.
 5. Click **Next** and complete business details.
 
 ### Step 2: Configure the Single Web Data Stream
-1. Under **Data collection and modification**, click **Data Streams** > **Add stream** > **Web**.
-2. **Website URL:** `https://www.pybim.com` (default primary host).
-3. **Stream name:** `pyBIM Production Web (Multi-Domain)`.
-4. **Enhanced Measurement Configuration (CRITICAL):**
+1. Under **Data collection and modification**, click **Data Streams** > **Web**.
+2. **Website URL:** `https://www.pybim.com` (primary host).
+3. **Stream name:** `pyBIM Production Web`.
+4. **Measurement ID:** `G-BHR1F0E342`.
+5. **Enhanced Measurement Configuration (CRITICAL):**
    - Click the gear icon to customize Enhanced Measurement.
    - Expand the **Page views** section.
    - Click **Show advanced settings**.
    - **Uncheck** "Page changes based on browser history events".
    - *Why this is essential:* pyBIM's `GoogleAnalytics` component manually dispatches deterministic `page_view` events for Next.js App Router client-side navigation. If history-change tracking remains checked in GA4, Enhanced Measurement will fire a second, duplicate `page_view` on every client-side page navigation!
-5. Click **Create stream**.
-6. Copy the generated **Measurement ID** (format: `G-XXXXXXXXXX`).
+6. Click **Save**.
+7. Note: Do NOT install or inject Google Tag Manager (GTM) alongside this direct `gtag.js` implementation without deliberate architectural redesign. Having both GTM and direct `gtag.js` will cause duplicate event tracking and consent race conditions.
 
 ---
 
@@ -99,7 +101,7 @@ When ready to activate analytics for production:
 1. In Cloudflare Dashboard > **Workers & Pages** > `pybim` > **Settings** > **Variables and Secrets**.
 2. Add under **Environment Variables** (accessible to Cloudflare Builds):
    - **Variable name:** `NEXT_PUBLIC_GA4_MEASUREMENT_ID`
-   - **Value:** `G-XXXXXXXXXX` (your official Measurement ID).
+   - **Value:** `G-BHR1F0E342`
 3. Trigger a production build and deployment from `main`.
 
 ---

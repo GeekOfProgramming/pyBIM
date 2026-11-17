@@ -5,6 +5,10 @@ export const metadata = {
     index: false,
     follow: false,
   },
+  alternates: {
+    canonical: null,
+    languages: {},
+  },
 };
 
 export default function PortalLayout({ children }) {

@@ -14,6 +14,10 @@ export async function generateMetadata({ params }) {
       index: false,
       follow: false,
     },
+    alternates: {
+      canonical: null,
+      languages: {},
+    },
   };
 }
 

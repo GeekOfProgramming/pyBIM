@@ -119,9 +119,11 @@ class GoogleAnalyticsController {
       }
       if (this.isConfigured && isEligibleAnalyticsRoute(this.pathname)) {
         applyTrackingRestore(this.measurementId);
+        this.isReady = true;
       }
     } else {
       applyTrackingShutdown(this.measurementId);
+      this.isReady = false;
       this.lastTrackedPath = null;
     }
   }
@@ -138,9 +140,11 @@ class GoogleAnalyticsController {
     if (this.isConfigured) {
       if (!isPublic || !this.hasConsent) {
         applyTrackingShutdown(this.measurementId);
+        this.isReady = false;
         this.lastTrackedPath = null;
       } else {
         applyTrackingRestore(this.measurementId);
+        this.isReady = true;
       }
     }
 
