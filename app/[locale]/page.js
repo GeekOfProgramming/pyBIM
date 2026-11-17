@@ -1,38 +1,60 @@
 import HomePageLayout from "@/components/pages/home-page-layout";
 import { siteMetadata } from "@/lib/site-copy";
+import { getCanonicalUrl, getAlternateLanguages, getCanonicalDomain, DOMAIN_COM } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const { titles, descriptions } = siteMetadata;
+  const canonicalUrl = getCanonicalUrl(locale, "");
   
   return {
     title: {
       absolute: titles[locale] || titles.en
     },
-    description: descriptions[locale] || descriptions.en
+    description: descriptions[locale] || descriptions.en,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: getAlternateLanguages(""),
+    },
+    openGraph: {
+      url: canonicalUrl,
+    },
   };
 }
 
-const siteUrl = "https://pybim.com";
+export default function HomePage({ params }) {
+  const locale = params?.locale || "en";
+  const siteUrl = getCanonicalDomain(locale);
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "pyBIM",
-  url: siteUrl,
-  logo: `${siteUrl}/images/shared/brand/logo_black_transparent.png`,
-  email: "info@pybim.com",
-  description: siteMetadata.organizationDescription
-};
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${DOMAIN_COM}/#organization`,
+    name: "pyBIM",
+    alternateName: "pyBIM Engineering",
+    url: DOMAIN_COM,
+    logo: `${DOMAIN_COM}/images/shared/brand/logo_black_transparent.png`,
+    email: "info@pybim.com",
+    description: siteMetadata.organizationDescription,
+    sameAs: [
+      "https://www.linkedin.com/company/pybim",
+      "https://github.com/pyBIM-collaboration"
+    ]
+  };
 
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "pyBIM",
-  url: siteUrl
-};
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    name: "pyBIM",
+    url: siteUrl,
+    description: siteMetadata.descriptions[locale] || siteMetadata.descriptions.en,
+    inLanguage: locale === "it" ? ["it"] : ["en", "de"],
+    publisher: {
+      "@id": `${DOMAIN_COM}/#organization`
+    }
+  };
 
-export default function HomePage() {
   return (
     <>
       <script

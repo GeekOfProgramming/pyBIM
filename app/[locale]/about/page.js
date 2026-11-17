@@ -2,22 +2,26 @@ import AboutPageLayout from "@/components/pages/about-page-layout";
 import teamData from "@/lib/data/team-data.json";
 import { db } from "@/lib/db";
 import { routeMetadata } from "@/lib/site-copy";
+import { getCanonicalUrl, getAlternateLanguages } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const titles = routeMetadata.about.titles;
-  const siteUrl = "https://pybim.com";
-  const currentUrl = `${siteUrl}/${locale}/about`;
+  const { titles, descriptions } = routeMetadata.about;
+  const canonicalUrl = getCanonicalUrl(locale, "about");
+  const title = titles[locale] || titles.en;
+  const description = descriptions[locale] || descriptions.en;
   
   return {
-    title: titles[locale] || titles.en,
+    title,
+    description,
     alternates: {
-      canonical: currentUrl,
-      languages: {
-        en: `${siteUrl}/en/about`,
-        it: `${siteUrl}/it/about`,
-        de: `${siteUrl}/de/about`,
-      },
+      canonical: canonicalUrl,
+      languages: getAlternateLanguages("about"),
+    },
+    openGraph: {
+      title: `${title} | pyBIM`,
+      description,
+      url: canonicalUrl,
     },
   };
 }

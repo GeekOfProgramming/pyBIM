@@ -149,69 +149,72 @@ export default function Header() {
               {t("header.nav.pybim")} <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${megaMenuOpen ? 'rotate-180' : ''}`} />
             </button>
 
-            {/* Megamenu Dropdown */}
-            {megaMenuOpen && (
-              <div 
-                id="pybim-megamenu-dropdown"
-                role="region"
-                aria-label={t("header.mega.aria_label")}
-                className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-[1000] transition-all duration-200 w-[600px]"
-              >
-                <div className="bg-white dark:bg-slate-900 border border-brand-border dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex ring-1 ring-black/5 dark:ring-white/5">
-                  
-                  {/* Primary Groups Column (Leftmost) */}
-                  <div className="w-[38%] bg-brand-surface dark:bg-slate-950/60 border-r border-brand-border dark:border-slate-800 p-4 flex flex-col gap-1 shrink-0">
-                    {pyBimLeftMenu.map(item => {
-                      const localizedHref = getLocalizedUrl(item.href);
-                      const isCurrentPath = pathname === localizedHref || pathname.startsWith(localizedHref + "/") || pathname.startsWith(localizedHref + "#");
-                      const isSelectedGroup = activeMegaMenuItem === item.id;
+            {/* Megamenu Dropdown - Unconditionally rendered in HTML for crawler discovery, toggled via CSS */}
+            <div
+              id="pybim-megamenu-dropdown"
+              role="region"
+              aria-label={t("header.mega.aria_label")}
+              aria-hidden={!megaMenuOpen}
+              className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 z-[1000] transition-all duration-200 w-[600px] ${
+                megaMenuOpen
+                  ? "opacity-100 visible translate-y-0 pointer-events-auto"
+                  : "opacity-0 invisible -translate-y-2 pointer-events-none"
+              }`}
+            >
+              <div className="bg-white dark:bg-slate-900 border border-brand-border dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex ring-1 ring-black/5 dark:ring-white/5">
+
+                {/* Primary Groups Column (Leftmost) */}
+                <div className="w-[38%] bg-brand-surface dark:bg-slate-950/60 border-r border-brand-border dark:border-slate-800 p-4 flex flex-col gap-1 shrink-0">
+                  {pyBimLeftMenu.map(item => {
+                    const localizedHref = getLocalizedUrl(item.href);
+                    const isCurrentPath = pathname === localizedHref || pathname.startsWith(localizedHref + "/") || pathname.startsWith(localizedHref + "#");
+                    const isSelectedGroup = activeMegaMenuItem === item.id;
+                    return (
+                      <Link
+                        key={item.id}
+                        href={localizedHref}
+                        onMouseEnter={() => setActiveMegaMenuItem(item.id)}
+                        onFocus={() => setActiveMegaMenuItem(item.id)}
+                        onClick={() => setMegaMenuOpen(false)}
+                        className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${
+                          isSelectedGroup
+                            ? 'bg-white dark:bg-slate-800 shadow-sm text-brand-primary font-bold'
+                            : isCurrentPath
+                            ? 'text-brand-primary font-semibold bg-white/50 dark:bg-slate-800/40'
+                            : 'text-brand-textSecondary hover:bg-white dark:hover:bg-slate-800/60 hover:text-brand-primary font-medium'
+                        }`}
+                      >
+                        <span className="text-sm tracking-wide">{t(item.labelKey)}</span>
+                        <ChevronRight className={`w-4 h-4 transition-transform ${isSelectedGroup ? 'translate-x-1 text-brand-primary' : 'text-transparent'}`} />
+                      </Link>
+                    );
+                  })}
+                </div>
+
+                {/* Right Submenu Column for all groups */}
+                <div className="w-[62%] bg-white dark:bg-slate-900 p-4 sm:p-5 flex flex-col justify-start max-h-[min(70vh,520px)] overflow-y-auto">
+                  <div className="flex flex-col gap-1.5">
+                    {pyBimRightMenu[activeMegaMenuItem]?.map((subItem, idx) => {
+                      const Icon = subItem.icon;
                       return (
                         <Link
-                          key={item.id}
-                          href={localizedHref}
-                          onMouseEnter={() => setActiveMegaMenuItem(item.id)}
-                          onFocus={() => setActiveMegaMenuItem(item.id)}
+                          key={idx}
+                          href={getLocalizedUrl(subItem.href)}
                           onClick={() => setMegaMenuOpen(false)}
-                          className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all ${
-                            isSelectedGroup 
-                              ? 'bg-white dark:bg-slate-800 shadow-sm text-brand-primary font-bold' 
-                              : isCurrentPath
-                              ? 'text-brand-primary font-semibold bg-white/50 dark:bg-slate-800/40'
-                              : 'text-brand-textSecondary hover:bg-white dark:hover:bg-slate-800/60 hover:text-brand-primary font-medium'
-                          }`}
+                          className="group flex items-center gap-3.5 p-2 rounded-lg hover:bg-brand-surface dark:hover:bg-slate-800/60 transition min-h-[44px]"
                         >
-                          <span className="text-sm tracking-wide">{t(item.labelKey)}</span>
-                          <ChevronRight className={`w-4 h-4 transition-transform ${isSelectedGroup ? 'translate-x-1 text-brand-primary' : 'text-transparent'}`} />
+                          <div className="shrink-0 w-9 h-9 rounded-full bg-brand-surface dark:bg-slate-800 border border-brand-border dark:border-slate-700 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <span className="font-semibold text-sm text-brand-textPrimary group-hover:text-brand-primary transition-colors leading-snug">{t(subItem.labelKey)}</span>
                         </Link>
                       );
                     })}
                   </div>
-
-                  {/* Right Submenu Column for all groups */}
-                  <div className="w-[62%] bg-white dark:bg-slate-900 p-4 sm:p-5 flex flex-col justify-start max-h-[min(70vh,520px)] overflow-y-auto">
-                    <div className="flex flex-col gap-1.5">
-                      {pyBimRightMenu[activeMegaMenuItem]?.map((subItem, idx) => {
-                        const Icon = subItem.icon;
-                        return (
-                          <Link
-                            key={idx}
-                            href={getLocalizedUrl(subItem.href)}
-                            onClick={() => setMegaMenuOpen(false)}
-                            className="group flex items-center gap-3.5 p-2 rounded-lg hover:bg-brand-surface dark:hover:bg-slate-800/60 transition min-h-[44px]"
-                          >
-                            <div className="shrink-0 w-9 h-9 rounded-full bg-brand-surface dark:bg-slate-800 border border-brand-border dark:border-slate-700 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
-                              <Icon className="w-4 h-4" />
-                            </div>
-                            <span className="font-semibold text-sm text-brand-textPrimary group-hover:text-brand-primary transition-colors leading-snug">{t(subItem.labelKey)}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
-
                 </div>
+
               </div>
-            )}
+            </div>
           </div>
         </nav>
         <div className="flex items-center gap-3">

@@ -1,30 +1,28 @@
 import { notFound } from "next/navigation";
 import CareerDetailLayout from "@/components/pages/career-detail-layout";
 import { db } from "@/lib/db";
+import { getCareerDetailMetadata } from "@/lib/seo";
+
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }) {
-  const { id } = params;
-  let job;
+  const { locale = "en", id } = params;
+  let job = null;
 
   try {
     job = await db.jobPosition.findUnique({
       where: { id }
     });
   } catch (error) {
-    // ignore
+    // Database query failed or unconfigured
   }
 
-  if (!job) return { title: "Job Not Found" };
-
-  return {
-    title: job.titleIt || job.titleEn || "Job Position"
-  };
+  return getCareerDetailMetadata({ locale, id, job });
 }
 
 export default async function CareerDetailPage({ params }) {
   const { id } = params;
-  let job;
+  let job = null;
 
   try {
     job = await db.jobPosition.findUnique({
@@ -34,7 +32,7 @@ export default async function CareerDetailPage({ params }) {
     // ignore
   }
 
-  if (!job) {
+  if (!job || job.isActive === false) {
     notFound();
   }
 

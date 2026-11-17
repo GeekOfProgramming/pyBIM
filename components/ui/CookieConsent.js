@@ -17,11 +17,11 @@ export default function CookieConsent() {
     try {
       if (typeof window === "undefined") return null;
       const raw = localStorage.getItem("cookie_consent");
-      if (!raw) return null;
+      if (!raw || typeof raw !== "string") return null;
       if (raw === "all") return { analytics: true };
       if (raw === "rejected") return { analytics: false };
       const parsed = JSON.parse(raw);
-      if (parsed && typeof parsed.analytics === "boolean") {
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed) && typeof parsed.analytics === "boolean") {
         return parsed;
       }
       return null;
@@ -37,13 +37,13 @@ export default function CookieConsent() {
       setIsBannerVisible(true);
       setAnalyticsEnabled(false);
     } else {
-      setAnalyticsEnabled(Boolean(existing.analytics));
+      setAnalyticsEnabled(existing.analytics === true);
     }
 
     // Global listener to reopen settings from footer or policy links
     const handleReopen = () => {
       const current = getStoredConsent();
-      setAnalyticsEnabled(Boolean(current?.analytics));
+      setAnalyticsEnabled(current?.analytics === true);
       setIsModalOpen(true);
     };
 

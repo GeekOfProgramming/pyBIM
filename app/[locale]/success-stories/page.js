@@ -1,23 +1,18 @@
 import SuccessStoriesPageLayout from "@/components/pages/success-stories-page-layout";
 import { routeMetadata } from "@/lib/site-copy";
+import { getCanonicalUrl, getAlternateLanguages } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
   const { titles, descriptions } = routeMetadata.successStories;
-
-  const siteUrl = "https://pybim.com";
-  const currentUrl = `${siteUrl}/${locale}/success-stories`;
+  const canonicalUrl = getCanonicalUrl(locale, "success-stories");
 
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
-      canonical: currentUrl,
-      languages: {
-        en: `${siteUrl}/en/success-stories`,
-        it: `${siteUrl}/it/success-stories`,
-        de: `${siteUrl}/de/success-stories`,
-      },
+      canonical: canonicalUrl,
+      languages: getAlternateLanguages("success-stories"),
     },
     robots: {
       index: false,
@@ -26,7 +21,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${titles[locale] || titles.en} | pyBIM`,
       description: descriptions[locale] || descriptions.en,
-      url: currentUrl,
+      url: canonicalUrl,
       siteName: "pyBIM",
       type: "website",
     },

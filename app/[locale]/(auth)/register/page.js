@@ -9,7 +9,15 @@ export async function generateMetadata({ params }) {
   };
   
   return {
-    title: titles[locale] || titles.en
+    title: titles[locale] || titles.en,
+    robots: {
+      index: false,
+      follow: false,
+    },
+    alternates: {
+      canonical: null,
+      languages: {},
+    },
   };
 }
 

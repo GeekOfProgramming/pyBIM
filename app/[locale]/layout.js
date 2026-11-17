@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/lib/LanguageContext";
 import { ThemeProvider } from "@/lib/ThemeContext";
 import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
 import CookieConsent from "@/components/ui/CookieConsent";
+import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,16 +24,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 import { siteMetadata } from "@/lib/site-copy";
-
-const siteUrl = "https://pybim.com";
+import { getCanonicalUrl, getAlternateLanguages, DOMAIN_COM } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale || "en";
-  const currentUrl = `${siteUrl}/${locale}`;
+  const canonicalUrl = getCanonicalUrl(locale, "");
   const { titles, descriptions, ogDescriptions } = siteMetadata;
 
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase: new URL(DOMAIN_COM),
     title: {
       default: titles[locale] || titles.en,
       template: "%s | pyBIM"
@@ -41,13 +41,8 @@ export async function generateMetadata({ params }) {
     applicationName: "pyBIM",
     category: "BIM & Software Engineering",
     alternates: {
-      canonical: currentUrl,
-      languages: {
-        "en-US": `${siteUrl}/en`,
-        "it-IT": `${siteUrl}/it`,
-        "de-DE": `${siteUrl}/de`,
-        "x-default": `${siteUrl}/en`
-      }
+      canonical: canonicalUrl,
+      languages: getAlternateLanguages(""),
     },
     keywords: [
       "BIM Engineering",
@@ -63,7 +58,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: titles[locale] || titles.en,
       description: ogDescriptions[locale] || ogDescriptions.en,
-      url: currentUrl,
+      url: canonicalUrl,
       siteName: "pyBIM",
       locale: locale === "it" ? "it_IT" : locale === "de" ? "de_DE" : "en_US",
       type: "website",
@@ -106,6 +101,7 @@ export default function RootLayout({ children, params }) {
             <Footer />
             <MobileBottomNav />
             <CookieConsent />
+            <GoogleAnalytics locale={params?.locale || "en"} />
           </LanguageProvider>
         </ThemeProvider>
       </body>

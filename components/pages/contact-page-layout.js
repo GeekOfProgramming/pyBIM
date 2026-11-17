@@ -8,6 +8,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 import RoiMatrixSection from "@/components/contact/roi-matrix-section";
 import PriorityQueueSection from "@/components/sections/priority-queue-section";
 import TurnstileWidget from "@/components/common/turnstile-widget";
+import { trackContactSuccess } from "@/lib/analytics";
 
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
@@ -138,6 +139,7 @@ export default function ContactPageLayout() {
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.error || t("contact.form.error"));
+      trackContactSuccess(selectedServiceId);
       setPopup({ type: "success", message: t("contact.form.success") });
       setForm({ name: "", companyName: "", email: "", phone: "", service: "", teamScale: "", message: "", privacyAccepted: false });
       setSelectedServiceId("");
