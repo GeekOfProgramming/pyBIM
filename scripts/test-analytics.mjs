@@ -7,6 +7,8 @@ import {
   applyTrackingShutdown,
   applyTrackingRestore,
   initializeGtagConsentDefaults,
+  setAnalyticsReady,
+  isAnalyticsReady,
   sanitizeEventParams,
   cleanPagePath,
   trackEvent,
@@ -110,6 +112,7 @@ class GoogleAnalyticsTestHarness {
 
     // Mirror Component Effect 0: initialize Consent Mode defaults before any script is requested
     initializeGtagConsentDefaults();
+    setAnalyticsReady(this.isReady);
 
     // Mirror Component Effect 1: Initial mount check
     if (this.hasConsent && isEligibleAnalyticsRoute(this.pathname)) {
@@ -132,10 +135,12 @@ class GoogleAnalyticsTestHarness {
       if (this.isConfigured && isEligibleAnalyticsRoute(this.pathname)) {
         applyTrackingRestore(this.measurementId);
         this.isReady = true;
+        setAnalyticsReady(true);
       }
     } else {
       applyTrackingShutdown(this.measurementId);
       this.isReady = false;
+      setAnalyticsReady(false);
       this.lastTrackedPath = null;
     }
   }
@@ -153,10 +158,12 @@ class GoogleAnalyticsTestHarness {
       if (!isPublic || !this.hasConsent) {
         applyTrackingShutdown(this.measurementId);
         this.isReady = false;
+        setAnalyticsReady(false);
         this.lastTrackedPath = null;
       } else {
         applyTrackingRestore(this.measurementId);
         this.isReady = true;
+        setAnalyticsReady(true);
       }
     }
 
@@ -177,6 +184,7 @@ class GoogleAnalyticsTestHarness {
 
     if (!allowTracking) {
       applyTrackingShutdown(this.measurementId);
+      setAnalyticsReady(false);
     } else {
       applyTrackingRestore(this.measurementId);
     }
@@ -194,6 +202,7 @@ class GoogleAnalyticsTestHarness {
 
     if (allowTracking) {
       this.isReady = true;
+      setAnalyticsReady(true);
       this.triggerPageView();
     }
   }
@@ -361,8 +370,63 @@ console.log("   ✓ Public -> Private -> Public toggles ga-disable and safely re
 }
 console.log("   ✓ Reactivation after consent restoration verifies zero duplicate views and proper flag updates");
 
-// 5. PII and Query Parameter Scrubbing
-console.log("5. Testing PII and URL Query Sanitization...");
+// 5. Custom Event Readiness Guard Tests (trackEvent & trackContactSuccess)
+console.log("5. Testing Custom Event Readiness Guard (trackEvent & trackContactSuccess)...");
+{
+  const measurementId = "G-EVENTTEST";
+
+  // Case A: Before consent or tag load, trackContactSuccess must fail closed (return false)
+  const harness = new GoogleAnalyticsTestHarness(measurementId, "/en/contact", false);
+  mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: false });
+  assert.equal(isAnalyticsReady(), false, "Analytics must not be ready initially");
+  assert.equal(trackContactSuccess("bim_modeling"), false, "Must fail closed before consent and tag load");
+
+  // Case B: User accepts consent, but tag script has NOT yet loaded/configured
+  harness.updateConsent(true);
+  mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: true });
+  // window.gtag exists because initializeGtagConsentDefaults created the queue, but tag is NOT ready
+  assert.equal(typeof globalThis.window.gtag, "function", "Command queue exists");
+  assert.equal(isAnalyticsReady(), false, "Analytics must NOT be ready before onScriptLoaded");
+  assert.equal(trackContactSuccess("bim_modeling"), false, "Must fail closed while tag is downloading/unconfigured");
+
+  // Case C: Tag script finishes loading & configures
+  harness.onScriptLoaded();
+  assert.equal(isAnalyticsReady(), true, "Analytics is now ready");
+  assert.equal(trackContactSuccess("bim_modeling", measurementId), true, "Custom event allowed when tag is ready & consented");
+
+  // Verify event payload in dataLayer
+  const events = harness.getDataLayerEvents();
+  const contactEvent = events.find(e => e[0] === "event" && e[1] === "contact_form_submit");
+  assert.ok(contactEvent, "contact_form_submit event recorded");
+  assert.equal(contactEvent[2].service_id, "bim_modeling");
+  assert.equal(contactEvent[2].method, "contact_form");
+
+  // Case D: User revokes consent -> trackEvent must immediately fail closed
+  harness.updateConsent(false);
+  mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: false });
+  assert.equal(isAnalyticsReady(), false, "Analytics must NOT be ready when consent is revoked");
+  assert.equal(trackContactSuccess("bim_modeling", measurementId), false, "Must fail closed after consent revocation");
+
+  // Case E: Consent restored -> trackEvent succeeds again
+  harness.updateConsent(true);
+  mockStore["cookie_consent"] = JSON.stringify({ version: 1, necessary: true, analytics: true });
+  assert.equal(isAnalyticsReady(), true, "Analytics is ready again after consent restoration");
+  assert.equal(trackContactSuccess("revit_automation", measurementId), true, "Must succeed after consent restoration");
+
+  // Case F: Private route navigation -> trackEvent fails closed even if consent granted
+  harness.navigate("/en/portal/dashboard");
+  assert.equal(isAnalyticsReady(), false, "Analytics must NOT be ready on private route");
+  assert.equal(trackContactSuccess("bim_modeling", measurementId), false, "Must fail closed on private route");
+
+  // Return to public route -> trackEvent succeeds
+  harness.navigate("/en/contact");
+  assert.equal(isAnalyticsReady(), true, "Analytics must be ready upon returning to public route");
+  assert.equal(trackContactSuccess("other", measurementId), true, "Must succeed on return to public route");
+}
+console.log("   ✓ trackContactSuccess and trackEvent strictly fail closed until tag is configured and ready");
+
+// 6. PII and Query Parameter Scrubbing
+console.log("6. Testing PII and URL Query Sanitization...");
 const dirtyParams = {
   service_id: "bim_modeling",
   hidden_email: "client@aeccompany.com",

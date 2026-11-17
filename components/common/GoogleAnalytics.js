@@ -11,6 +11,7 @@ import {
   applyTrackingShutdown,
   applyTrackingRestore,
   initializeGtagConsentDefaults,
+  setAnalyticsReady,
   GA_MEASUREMENT_ID,
 } from "@/lib/analytics";
 
@@ -59,6 +60,10 @@ export default function GoogleAnalytics({ locale = "en" }) {
   useEffect(() => {
     pathnameRef.current = pathname;
   }, [pathname]);
+
+  useEffect(() => {
+    setAnalyticsReady(isReady);
+  }, [isReady]);
 
   // Establish dataLayer and Consent Mode defaults (all denied) on mount if GA4 is configured.
   // This executes BEFORE any external script is requested or injected.
