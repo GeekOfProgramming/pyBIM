@@ -94,12 +94,17 @@ Because pyBIM operates across two separate Top-Level Domains (`www.pybim.com` an
 
 > [!CAUTION]
 > `NEXT_PUBLIC_GA4_MEASUREMENT_ID` is a **Next.js build-time public environment variable**.
-> Because Next.js inlines `NEXT_PUBLIC_*` variables into client-side JavaScript bundles during compilation, the ID **must be set in the build environment before running `npm run build`**.
+> Because Next.js inlines `NEXT_PUBLIC_*` variables into client-side JavaScript bundles during compilation, the ID **must be set in the build environment before running `npm run build` or `npm run build:worker`**.
 > Adding it solely as a runtime Cloudflare Worker variable after compilation will NOT activate the compiled browser bundles.
 
+### Critical Distinction: Build-Time vs Runtime Variables
+- **Workers Builds Build Variables:** Used by the Cloudflare build container while compiling Next.js and bundling static browser chunks. This is where `NEXT_PUBLIC_GA4_MEASUREMENT_ID` **must** be defined so the Measurement ID is inlined into client JavaScript.
+- **Worker Runtime Variables:** Set under Worker runtime settings or `wrangler.jsonc`. These are available only at request execution time inside the Worker runtime and **cannot** retroactively inject values into already-compiled client static assets.
+
 When ready to activate analytics for production:
-1. In Cloudflare Dashboard > **Workers & Pages** > `pybim` > **Settings** > **Variables and Secrets**.
-2. Add under **Environment Variables** (accessible to Cloudflare Builds):
+1. In Cloudflare Dashboard navigate to:
+   `Workers & Pages` → `pybim` → `Settings` → `Build` → `Build Variables and Secrets`
+2. Add a new Build Variable:
    - **Variable name:** `NEXT_PUBLIC_GA4_MEASUREMENT_ID`
    - **Value:** `G-BHR1F0E342`
 3. Trigger a production build and deployment from `main`.

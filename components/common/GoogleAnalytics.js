@@ -10,6 +10,7 @@ import {
   cleanPagePath,
   applyTrackingShutdown,
   applyTrackingRestore,
+  initializeGtagConsentDefaults,
   GA_MEASUREMENT_ID,
 } from "@/lib/analytics";
 
@@ -17,25 +18,29 @@ import {
  * GoogleAnalytics Component
  *
  * Privacy-First, Complete Tracking Isolation GA4 loader.
- * Lifecycle Architecture:
- * 1. Initial State:
- *    - Unconfigured Measurement ID: renders null.
- *    - No consent OR private initial route: renders null, zero script injection.
- * 2. Script Injection:
- *    - ONLY triggers when BOTH user consent === true AND current route is an eligible public route.
- * 3. Race Condition Defense during Script Loading:
- *    - Before executing gtag initialization in onLoad, re-verifies the latest consent and route state.
- *    - If consent was revoked or route became private while the script downloaded, initializes with
- *      analytics_storage: 'denied' and window['ga-disable-G-XXXX'] = true.
- * 4. Tracking Shutdown:
- *    - When consent is revoked OR route is private:
- *      a) window['ga-disable-G-XXXX'] = true
- *      b) gtag('consent', 'update', { analytics_storage: 'denied' })
- *      c) Cookies wiped
- * 5. Tracking Restore:
- *    - When consent is valid AND route is public:
- *      a) window['ga-disable-G-XXXX'] = false
- *      b) gtag('consent', 'update', { analytics_storage: 'granted' })
+ * Google documented Consent Mode initialization sequence:
+ * 1. Step 1 (Prior to Script Injection):
+ *    - Global dataLayer and gtag command queue are initialized.
+ *    - Consent Mode defaults are established:
+ *      analytics_storage: 'denied'
+ *      ad_storage: 'denied'
+ *      ad_user_data: 'denied'
+ *      ad_personalization: 'denied'
+ * 2. Step 2 (Script Injection):
+ *    - ONLY occurs when BOTH explicit user consent === true AND current route is an eligible public route.
+ *    - If user has not consented or is on a private route, external script is NEVER injected into the DOM.
+ * 3. Step 3 (External Script Loaded):
+ *    - Verifies the latest in-flight consent and route eligibility.
+ *    - If eligible and consent is granted:
+ *      a) applyTrackingRestore(GA_MEASUREMENT_ID) -> updates analytics_storage to 'granted'
+ *      b) gtag('config', GA_MEASUREMENT_ID, { send_page_view: false, ...privacy flags... })
+ *      c) marks ready to track client-side page transitions
+ *    - If revoked during script loading:
+ *      a) applyTrackingShutdown(GA_MEASUREMENT_ID) -> updates analytics_storage to 'denied' & sets ga-disable
+ * 4. Step 4 (Consent Revocation & Private Routes):
+ *    - Enforces window['ga-disable-G-XXXX'] = true, updates consent to 'denied', and purges cookies.
+ * 5. Step 5 (Consent Reactivation):
+ *    - Enforces window['ga-disable-G-XXXX'] = false, updates consent to 'granted', and restores tracking readiness.
  * 6. Page View Deduplication: Exactly one manual page_view per distinct public route transition.
  */
 export default function GoogleAnalytics({ locale = "en" }) {
@@ -54,6 +59,13 @@ export default function GoogleAnalytics({ locale = "en" }) {
   useEffect(() => {
     pathnameRef.current = pathname;
   }, [pathname]);
+
+  // Establish dataLayer and Consent Mode defaults (all denied) on mount if GA4 is configured.
+  // This executes BEFORE any external script is requested or injected.
+  useEffect(() => {
+    if (!isAnalyticsConfigured()) return;
+    initializeGtagConsentDefaults();
+  }, []);
 
   // 1. Synchronize consent state from localStorage and listen for updates
   useEffect(() => {
@@ -161,17 +173,10 @@ export default function GoogleAnalytics({ locale = "en" }) {
   const handleScriptLoad = () => {
     if (typeof window === "undefined") return;
 
-    // 1. Initialize dataLayer and gtag function
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
-    }
-    window.gtag = window.gtag || gtag;
+    // Ensure dataLayer & gtag are ready (defensive in case not yet created)
+    initializeGtagConsentDefaults();
 
-    // 2. Set timestamp
-    window.gtag("js", new Date());
-
-    // 3. RACE CONDITION DEFENSE: Check latest state before configuring granted consent
+    // 1. RACE CONDITION DEFENSE: Check latest state before configuring granted consent
     const latestConsent = hasConsentRef.current;
     const latestRouteEligible = isEligibleAnalyticsRoute(pathnameRef.current);
     const allowTracking = latestConsent && latestRouteEligible;
@@ -179,26 +184,12 @@ export default function GoogleAnalytics({ locale = "en" }) {
     if (!allowTracking) {
       // Consent was revoked or user navigated to private route while script was downloading
       applyTrackingShutdown(GA_MEASUREMENT_ID);
-      window.gtag("consent", "default", {
-        analytics_storage: "denied",
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-        wait_for_update: 500,
-      });
     } else {
-      // Safe to initialize tracking
+      // Safe to initialize tracking: update analytics_storage to granted
       applyTrackingRestore(GA_MEASUREMENT_ID);
-      window.gtag("consent", "default", {
-        analytics_storage: "granted",
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-        wait_for_update: 500,
-      });
     }
 
-    // 4. Configure measurement ID with privacy restrictions and disabled auto page views
+    // 2. Configure measurement ID with privacy restrictions and disabled auto page views
     window.gtag("config", GA_MEASUREMENT_ID, {
       send_page_view: false,
       anonymize_ip: true,
