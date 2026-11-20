@@ -377,7 +377,7 @@ export default function ContactPageLayout() {
                           })}
                         </div>
                         {disciplineError && (
-                          <p className="text-xs text-rose-500 font-medium mt-2">
+                          <p id="discipline-error-msg" role="alert" aria-live="polite" className="text-xs text-rose-500 font-medium mt-2">
                             {t("contact.form.discipline_error") || "Please select at least one engineering discipline."}
                           </p>
                         )}
@@ -394,6 +394,8 @@ export default function ContactPageLayout() {
                           id="contact-other-scope"
                           rows={2}
                           value={otherScope}
+                          aria-describedby={otherScopeError ? "other-scope-error-msg" : undefined}
+                          aria-invalid={otherScopeError}
                           onChange={(e) => {
                             setOtherScope(e.target.value);
                             if (otherScopeError && e.target.value.trim()) setOtherScopeError(false);
@@ -402,7 +404,7 @@ export default function ContactPageLayout() {
                           className="w-full rounded-xl border border-brand-border bg-brand-surface px-4 py-2.5 text-body-sm text-brand-textPrimary placeholder:text-brand-textSecondary/70 outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary resize-y"
                         />
                         {otherScopeError && (
-                          <p className="text-xs text-rose-500 font-medium mt-1">
+                          <p id="other-scope-error-msg" role="alert" aria-live="polite" className="text-xs text-rose-500 font-medium mt-1">
                             {t("contact.form.other_error") || "Please specify your project scope."}
                           </p>
                         )}
@@ -432,6 +434,8 @@ export default function ContactPageLayout() {
                           type="checkbox"
                           id="privacy-contact"
                           checked={form.privacyAccepted}
+                          aria-describedby={privacyError ? "privacy-error-msg" : undefined}
+                          aria-invalid={privacyError}
                           onChange={(e) => {
                             updateField("privacyAccepted", e.target.checked);
                             if (e.target.checked) setPrivacyError(false);
@@ -452,7 +456,7 @@ export default function ContactPageLayout() {
                         </label>
                       </div>
                       {privacyError && (
-                        <p className="text-xs text-rose-500 font-medium pl-7">
+                        <p id="privacy-error-msg" role="alert" aria-live="polite" className="text-xs text-rose-500 font-medium pl-7">
                           {t("forms.error.privacy_required") || "You must accept the Privacy Policy and Terms to proceed."}
                         </p>
                       )}

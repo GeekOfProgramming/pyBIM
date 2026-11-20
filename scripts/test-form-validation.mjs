@@ -278,3 +278,56 @@ delete process.env.TURNSTILE_SECRET_KEY;
 console.log("   ✓ Turnstile verification enforces fail-closed token requirements");
 
 console.log("\n=== ALL 11 FORM-01 TEST SUITES PASSED SUCCESSFULLY ===\n");
+
+// 12. Accessibility (A11Y-01) Contact Form DOM & Live Announcement Verification
+console.log("12. Testing Contact Form A11Y-01 ARIA error announcements & descriptions...");
+import fs from "node:fs";
+const contactLayoutSource = fs.readFileSync("components/pages/contact-page-layout.js", "utf-8");
+
+// A. Discipline error element assertions
+assert.ok(
+  contactLayoutSource.includes('id="discipline-error-msg"'),
+  "Discipline error message must define id='discipline-error-msg'"
+);
+assert.ok(
+  contactLayoutSource.includes('role="alert"') && contactLayoutSource.includes('aria-live="polite"'),
+  "Error messages must include role='alert' and aria-live='polite'"
+);
+
+// B. Other scope field and error element assertions
+assert.ok(
+  contactLayoutSource.includes('id="contact-other-scope"'),
+  "Other scope input must exist with id='contact-other-scope'"
+);
+assert.ok(
+  contactLayoutSource.includes('aria-describedby={otherScopeError ? "other-scope-error-msg" : undefined}'),
+  "Other scope textarea must bind aria-describedby to other-scope-error-msg conditionally"
+);
+assert.ok(
+  contactLayoutSource.includes('aria-invalid={otherScopeError}'),
+  "Other scope textarea must bind aria-invalid to otherScopeError"
+);
+assert.ok(
+  contactLayoutSource.includes('id="other-scope-error-msg"'),
+  "Other scope error message must define id='other-scope-error-msg'"
+);
+
+// C. Privacy consent field and error element assertions
+assert.ok(
+  contactLayoutSource.includes('id="privacy-contact"'),
+  "Privacy checkbox must exist with id='privacy-contact'"
+);
+assert.ok(
+  contactLayoutSource.includes('aria-describedby={privacyError ? "privacy-error-msg" : undefined}'),
+  "Privacy checkbox must bind aria-describedby to privacy-error-msg conditionally"
+);
+assert.ok(
+  contactLayoutSource.includes('aria-invalid={privacyError}'),
+  "Privacy checkbox must bind aria-invalid to privacyError"
+);
+assert.ok(
+  contactLayoutSource.includes('id="privacy-error-msg"'),
+  "Privacy error message must define id='privacy-error-msg'"
+);
+
+console.log("   ✓ All A11Y-01 ARIA attributes, live announcements, and descriptors verified successfully\n");
