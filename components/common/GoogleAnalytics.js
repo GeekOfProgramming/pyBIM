@@ -195,8 +195,8 @@ export default function GoogleAnalytics({ locale = "en" }) {
     }
 
     // 2. Configure measurement ID with privacy restrictions and disabled auto page views.
-    // Explicitly configure linker domains for multi-domain canonicals (pybim.com & pybim.it)
-    // so Google Tag decorates cross-domain anchors with _gl and accepts incoming linker parameters.
+    // Cross-domain linker is globally declared via gtag('set', 'linker', ...) in initializeGtagConsentDefaults
+    // per official Google gtag.js documentation; we also retain linker config here for full defense-in-depth.
     window.gtag("config", GA_MEASUREMENT_ID, {
       send_page_view: false,
       anonymize_ip: true,
