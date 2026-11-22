@@ -278,3 +278,220 @@ delete process.env.TURNSTILE_SECRET_KEY;
 console.log("   ✓ Turnstile verification enforces fail-closed token requirements");
 
 console.log("\n=== ALL 11 FORM-01 TEST SUITES PASSED SUCCESSFULLY ===\n");
+
+// 12. Accessibility (A11Y-01) Contact Form DOM & Live Announcement Verification
+console.log("12. Testing Contact Form A11Y-01 ARIA error announcements & descriptions...");
+import fs from "node:fs";
+const contactLayoutSource = fs.readFileSync("components/pages/contact-page-layout.js", "utf-8");
+
+// A. Discipline error element assertions
+assert.ok(
+  contactLayoutSource.includes('id="discipline-error-msg"'),
+  "Discipline error message must define id='discipline-error-msg'"
+);
+assert.ok(
+  contactLayoutSource.includes('role="alert"') && contactLayoutSource.includes('aria-live="polite"'),
+  "Error messages must include role='alert' and aria-live='polite'"
+);
+
+// B. Other scope field and error element assertions
+assert.ok(
+  contactLayoutSource.includes('id="contact-other-scope"'),
+  "Other scope input must exist with id='contact-other-scope'"
+);
+assert.ok(
+  contactLayoutSource.includes('aria-describedby={otherScopeError ? "other-scope-error-msg" : undefined}'),
+  "Other scope textarea must bind aria-describedby to other-scope-error-msg conditionally"
+);
+assert.ok(
+  contactLayoutSource.includes('aria-invalid={otherScopeError}'),
+  "Other scope textarea must bind aria-invalid to otherScopeError"
+);
+assert.ok(
+  contactLayoutSource.includes('id="other-scope-error-msg"'),
+  "Other scope error message must define id='other-scope-error-msg'"
+);
+
+// C. Privacy consent field and error element assertions
+assert.ok(
+  contactLayoutSource.includes('id="privacy-contact"'),
+  "Privacy checkbox must exist with id='privacy-contact'"
+);
+assert.ok(
+  contactLayoutSource.includes('aria-describedby={privacyError ? "privacy-error-msg" : undefined}'),
+  "Privacy checkbox must bind aria-describedby to privacy-error-msg conditionally"
+);
+assert.ok(
+  contactLayoutSource.includes('aria-invalid={privacyError}'),
+  "Privacy checkbox must bind aria-invalid to privacyError"
+);
+assert.ok(
+  contactLayoutSource.includes('id="privacy-error-msg"'),
+  "Privacy error message must define id='privacy-error-msg'"
+);
+
+console.log("   ✓ All A11Y-01 ARIA attributes, live announcements, and descriptors verified successfully\n");
+
+// 13. Testing DEL-01 Submission Lifecycle, Resend Idempotency & API Error Resilience
+console.log("13. Testing DEL-01 Submission Lifecycle, Resend Idempotency & API Error Resilience...");
+import { validateSubmissionId } from "../lib/formValidation.js";
+import { parseApiResponse, getLocalizedErrorMessage, getNetworkErrorMessage } from "../lib/apiResponse.js";
+import { _clearMockSentEmails, _getMockSentEmails, sendEmail, EmailDeliveryError } from "../lib/emailDelivery.js";
+
+// A. SubmissionId format validation and rejection of malformed / PII identifiers
+const validUuid = "123e4567-e89b-42d3-a456-426614174000";
+assert.strictEqual(validateSubmissionId(validUuid).valid, true, "Valid UUID v4 must pass");
+assert.strictEqual(validateSubmissionId(validUuid.toUpperCase()).valid, true, "Uppercase UUID v4 must normalize to lowercase");
+assert.strictEqual(validateSubmissionId(validUuid.toUpperCase()).sanitized, validUuid, "Must return lowercased sanitized UUID");
+assert.strictEqual(validateSubmissionId("").valid, false, "Empty string must be rejected");
+assert.strictEqual(validateSubmissionId(null).valid, false, "Null must be rejected");
+assert.strictEqual(validateSubmissionId("john.doe@company.com").valid, false, "Email PII must be rejected as submissionId");
+assert.strictEqual(validateSubmissionId("John Doe").valid, false, "Name PII must be rejected as submissionId");
+assert.strictEqual(validateSubmissionId("invalid-uuid-format").valid, false, "Non-UUID string must be rejected");
+assert.strictEqual(validateSubmissionId("123e4567-e89b-12d3-a456-426614174000").valid, false, "Non-v4 UUID must be rejected");
+console.log("   ✓ validateSubmissionId strictly accepts UUID v4 and rejects PII or malformed strings");
+
+// B. Idempotency Key Namespacing in Mock Transport
+_clearMockSentEmails();
+process.env.MOCK_EMAIL_DELIVERY = "true";
+
+// Simulate Contact form submission dispatch
+const contactSubmissionId = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
+const contactKey = `contact-${contactSubmissionId}-internal`;
+const contactPayload = buildEmailPayload({
+  type: "internal_notification",
+  customerEmail: "client@engineering-firm.com",
+  subject: "Technical Audit Request",
+  html: "<p>Audit details</p>",
+  idempotencyKey: contactKey
+});
+await sendEmail(contactPayload);
+
+// Simulate Early Access multi-email dispatch (staff notification + applicant autoresponder)
+const earlySubmissionId = "c9a646d3-9c61-4cc9-bc55-e4d6d3d9e248";
+const earlyStaffKey = `early-${earlySubmissionId}-staff`;
+const earlyApplicantKey = `early-${earlySubmissionId}-applicant`;
+
+const earlyStaffPayload = buildEmailPayload({
+  type: "internal_notification",
+  customerEmail: "applicant@firm.com",
+  subject: "Early Access Staff",
+  html: "<p>Staff notification</p>",
+  idempotencyKey: earlyStaffKey
+});
+await sendEmail(earlyStaffPayload);
+
+const earlyApplicantPayload = buildEmailPayload({
+  type: "applicant_autoresponder",
+  customerEmail: "applicant@firm.com",
+  subject: "Early Access Receipt",
+  html: "<p>Applicant receipt</p>",
+  idempotencyKey: earlyApplicantKey
+});
+await sendEmail(earlyApplicantPayload);
+
+const sent = _getMockSentEmails();
+assert.strictEqual(sent.length, 3, "3 emails must be recorded in mock storage");
+assert.strictEqual(sent[0].idempotencyKey, contactKey);
+assert.strictEqual(sent[1].idempotencyKey, earlyStaffKey);
+assert.strictEqual(sent[2].idempotencyKey, earlyApplicantKey);
+assert.notStrictEqual(sent[1].idempotencyKey, sent[2].idempotencyKey, "Staff and applicant keys must never collide");
+console.log("   ✓ Resend idempotency namespacing strictly distinguishes Contact, Early Access Staff, and Early Access Applicant");
+
+// C. Resend 409 Concurrent Requests and Idempotency Mismatch Error Translation
+const concurrentError = new EmailDeliveryError("Concurrent requests", 409, "CONCURRENT_IDEMPOTENT_REQUESTS");
+assert.strictEqual(concurrentError.statusCode, 409);
+assert.strictEqual(concurrentError.code, "CONCURRENT_IDEMPOTENT_REQUESTS");
+
+const mismatchError = new EmailDeliveryError("Payload mismatch", 400, "IDEMPOTENCY_PAYLOAD_MISMATCH");
+assert.strictEqual(mismatchError.statusCode, 400);
+assert.strictEqual(mismatchError.code, "IDEMPOTENCY_PAYLOAD_MISMATCH");
+console.log("   ✓ EmailDeliveryError handles Resend 409 and 400 idempotency conflicts with proper status codes");
+
+// D. parseApiResponse Handling: JSON Success
+const mockOkRes = {
+  ok: true,
+  status: 200,
+  headers: new Headers({ "content-type": "application/json" }),
+  json: async () => ({ ok: true, queueReference: "PYBIM-APP-1234" })
+};
+const parsedOk = await parseApiResponse(mockOkRes, "en");
+assert.strictEqual(parsedOk.ok, true);
+assert.strictEqual(parsedOk.data.queueReference, "PYBIM-APP-1234");
+
+// E. parseApiResponse Handling: HTML 429 from Cloudflare WAF
+const mockWaf429Res = {
+  ok: false,
+  status: 429,
+  headers: new Headers({ "content-type": "text/html; charset=UTF-8" }),
+  json: async () => { throw new SyntaxError("Unexpected token '<'"); }
+};
+const parsedWaf429En = await parseApiResponse(mockWaf429Res, "en");
+assert.strictEqual(parsedWaf429En.ok, false);
+assert.strictEqual(parsedWaf429En.status, 429);
+assert.strictEqual(parsedWaf429En.error, "Too many requests. Please wait a moment before trying again.");
+
+const parsedWaf429It = await parseApiResponse(mockWaf429Res, "it");
+assert.strictEqual(parsedWaf429It.error, "Troppe richieste. Ti preghiamo di attendere un momento prima di riprovare.");
+
+const parsedWaf429De = await parseApiResponse(mockWaf429Res, "de");
+assert.strictEqual(parsedWaf429De.error, "Zu viele Anfragen. Bitte warten Sie einen Moment, bevor Sie es erneut versuchen.");
+
+// F. parseApiResponse Handling: HTML 403 Forbidden
+const mockWaf403Res = {
+  ok: false,
+  status: 403,
+  headers: new Headers({ "content-type": "text/html" }),
+  json: async () => { throw new SyntaxError("Unexpected token '<'"); }
+};
+const parsedWaf403 = await parseApiResponse(mockWaf403Res, "en");
+assert.strictEqual(parsedWaf403.ok, false);
+assert.strictEqual(parsedWaf403.status, 403);
+assert.strictEqual(parsedWaf403.error, "Access denied. Please complete the security check and try again.");
+
+// G. parseApiResponse Handling: 409 Conflict
+const mock409Res = {
+  ok: false,
+  status: 409,
+  headers: new Headers({ "content-type": "application/json" }),
+  json: async () => ({ ok: false, error: "A submission request is already being processed." })
+};
+const parsed409 = await parseApiResponse(mock409Res, "en");
+assert.strictEqual(parsed409.ok, false);
+assert.strictEqual(parsed409.status, 409);
+assert.strictEqual(parsed409.error, "A submission request is already being processed.");
+
+// H. parseApiResponse Handling: 5xx Server Error without leaking internal exceptions
+const mock500Res = {
+  ok: false,
+  status: 500,
+  headers: new Headers({ "content-type": "application/json" }),
+  json: async () => ({ ok: false, error: "Error: DatabaseConnectionException at line 42" })
+};
+const parsed500 = await parseApiResponse(mock500Res, "en");
+assert.strictEqual(parsed500.ok, false);
+assert.strictEqual(parsed500.status, 500);
+assert.strictEqual(parsed500.error, "Service temporarily unavailable. Please try again shortly.", "Raw exception must be masked");
+
+// I. Network Abort & Failure Handling
+const abortErr = new Error("The operation was aborted");
+abortErr.name = "AbortError";
+assert.strictEqual(getNetworkErrorMessage(abortErr, "en"), "Request timed out. Please try again.");
+
+const netErr = new TypeError("Failed to fetch");
+assert.strictEqual(getNetworkErrorMessage(netErr, "en"), "Network connection error. Please check your connection and try again.");
+assert.strictEqual(getNetworkErrorMessage(netErr, "it"), "Errore di connessione di rete. Verifica la tua connessione e riprova.");
+console.log("   ✓ parseApiResponse safely handles HTML 429/403, JSON errors, 5xx masking, timeouts, and network drops");
+
+// J. Static Code Verification for Form Handlers
+const contactSource = fs.readFileSync("components/pages/contact-page-layout.js", "utf-8");
+assert.ok(contactSource.includes("submissionId"), "Contact form must integrate submissionId");
+assert.ok(contactSource.includes("parseApiResponse"), "Contact form must use parseApiResponse");
+assert.ok(contactSource.includes("getNetworkErrorMessage"), "Contact form must use getNetworkErrorMessage");
+
+const queueSource = fs.readFileSync("components/sections/priority-queue-section.js", "utf-8");
+assert.ok(queueSource.includes("submissionId"), "PriorityQueue must integrate submissionId");
+assert.ok(queueSource.includes("parseApiResponse"), "PriorityQueue must use parseApiResponse");
+assert.ok(queueSource.includes("getNetworkErrorMessage"), "PriorityQueue must use getNetworkErrorMessage");
+
+console.log("   ✓ Contact and Early Access components verify submissionId and resilient response parsing\n");

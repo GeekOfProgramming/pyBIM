@@ -59,7 +59,7 @@ export default function Header() {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [activeMegaMenuItem, setActiveMegaMenuItem] = useState("who_we_are");
   
-  const { t, language, changeLanguage, getLocalizedUrl } = useLanguage();
+  const { t, language, changeLanguage, getLanguageHref, getLocalizedUrl } = useLanguage();
   const { theme, mounted } = useTheme();
   const pathname = usePathname();
 
@@ -235,15 +235,45 @@ export default function Header() {
               <>
                 <div className="fixed inset-0 z-40" onClick={() => setLangOpen(false)}></div>
                 <div className="absolute right-0 mt-2 w-24 bg-brand-base border border-brand-border rounded-xl overflow-hidden shadow-lg z-50">
-                  {['en', 'it', 'de'].map(lang => (
-                    <button
-                      key={lang}
-                      onClick={() => { changeLanguage(lang); setLangOpen(false); }}
-                      className={`block w-full text-left px-4 py-3 text-sm font-bold uppercase transition ${language === lang ? 'bg-brand-primary/10 text-brand-primary' : 'text-brand-textSecondary hover:bg-brand-surface'}`}
-                    >
-                      {lang}
-                    </button>
-                  ))}
+                  {['en', 'it', 'de'].map(lang => {
+                    const href = getLanguageHref ? getLanguageHref(lang) : `/${lang}`;
+                    const isExternal = href.startsWith('http');
+                    const className = `block w-full text-left px-4 py-3 text-sm font-bold uppercase transition ${language === lang ? 'bg-brand-primary/10 text-brand-primary' : 'text-brand-textSecondary hover:bg-brand-surface'}`;
+
+                    if (isExternal) {
+                      return (
+                        <a
+                          key={lang}
+                          href={href}
+                          onClick={() => {
+                            if (typeof changeLanguage === 'function') {
+                              changeLanguage(lang);
+                            }
+                            setLangOpen(false);
+                          }}
+                          className={className}
+                        >
+                          {lang}
+                        </a>
+                      );
+                    }
+
+                    return (
+                      <Link
+                        key={lang}
+                        href={href}
+                        onClick={() => {
+                          if (typeof changeLanguage === 'function') {
+                            changeLanguage(lang);
+                          }
+                          setLangOpen(false);
+                        }}
+                        className={className}
+                      >
+                        {lang}
+                      </Link>
+                    );
+                  })}
                 </div>
               </>
             )}

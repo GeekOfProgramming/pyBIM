@@ -6,7 +6,8 @@ import {
   validateCorporateEmail,
   verifyDomainMx,
   validatePrivacyAcknowledgment,
-  verifyTurnstileToken
+  verifyTurnstileToken,
+  validateSubmissionId
 } from "../../../lib/formValidation.js";
 import { getEmailConfig, checkEmailConfiguration, buildEmailPayload, sendEmail } from "../../../lib/emailDelivery.js";
 
@@ -39,6 +40,7 @@ export async function POST(req) {
     const body = jsonResult.body || {};
 
     const {
+      submissionId,
       name,
       companyName,
       email,
@@ -154,7 +156,14 @@ export async function POST(req) {
       return Response.json({ ok: false, error: mxCheck.error }, { status: mxCheck.status });
     }
 
-    // 7. Check Outbound Delivery Configuration (Fail-Closed)
+    // 7. Validate Client Submission Identifier (UUID v4)
+    const submissionIdCheck = validateSubmissionId(submissionId);
+    if (!submissionIdCheck.valid) {
+      return Response.json({ ok: false, error: submissionIdCheck.error }, { status: 400 });
+    }
+    const safeSubmissionId = submissionIdCheck.sanitized;
+
+    // 8. Check Outbound Delivery Configuration (Fail-Closed)
     const configCheck = checkEmailConfiguration();
     if (!configCheck.ok) {
       console.warn(`[FORM NOTICE] Outbound email service unconfigured. Inquiry from ${emailPolicy.domain} rejected fail-closed.`);
@@ -178,6 +187,7 @@ export async function POST(req) {
         type: "internal_notification",
         customerEmail: safeEmail,
         subject: `New Technical Audit Request: ${companyCheck.sanitized}`,
+        idempotencyKey: `contact-${safeSubmissionId}-internal`,
         html: `
           <h2>New Technical Audit Request</h2>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">

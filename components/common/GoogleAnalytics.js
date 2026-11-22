@@ -194,13 +194,19 @@ export default function GoogleAnalytics({ locale = "en" }) {
       applyTrackingRestore(GA_MEASUREMENT_ID);
     }
 
-    // 2. Configure measurement ID with privacy restrictions and disabled auto page views
+    // 2. Configure measurement ID with privacy restrictions and disabled auto page views.
+    // Cross-domain linker is globally declared via gtag('set', 'linker', ...) in initializeGtagConsentDefaults
+    // per official Google gtag.js documentation; we also retain linker config here for full defense-in-depth.
     window.gtag("config", GA_MEASUREMENT_ID, {
       send_page_view: false,
       anonymize_ip: true,
       restricted_data_processing: true,
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
+      linker: {
+        domains: ["pybim.com", "pybim.it", "www.pybim.com", "www.pybim.it"],
+        accept_incoming: true,
+      },
     });
 
     isConfiguredRef.current = true;

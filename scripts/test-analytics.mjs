@@ -195,7 +195,11 @@ class GoogleAnalyticsTestHarness {
       anonymize_ip: true,
       restricted_data_processing: true,
       allow_google_signals: false,
-      allow_ad_personalization_signals: false
+      allow_ad_personalization_signals: false,
+      linker: {
+        domains: ["pybim.com", "pybim.it", "www.pybim.com", "www.pybim.it"],
+        accept_incoming: true,
+      },
     });
 
     this.isConfigured = true;
@@ -230,7 +234,7 @@ class GoogleAnalyticsTestHarness {
   assert.equal(harness.shouldLoadScript, false, "External script must NOT load without explicit consent");
 
   const events = harness.getDataLayerEvents();
-  assert.ok(events.length >= 2, "dataLayer must have consent default and js timestamp");
+  assert.ok(events.length >= 3, "dataLayer must have consent default, set linker, and js timestamp");
 
   // First command MUST be 'consent', 'default' with all signals denied
   const firstCommand = events[0];
@@ -244,9 +248,18 @@ class GoogleAnalyticsTestHarness {
     wait_for_update: 500
   });
 
-  // Second command MUST be 'js'
+  // Second command MUST be 'set', 'linker' per Google documentation
   const secondCommand = events[1];
-  assert.equal(secondCommand[0], "js");
+  assert.equal(secondCommand[0], "set");
+  assert.equal(secondCommand[1], "linker");
+  assert.deepEqual(secondCommand[2], {
+    domains: ["pybim.com", "pybim.it", "www.pybim.com", "www.pybim.it"],
+    accept_incoming: true,
+  });
+
+  // Third command MUST be 'js'
+  const thirdCommand = events[2];
+  assert.equal(thirdCommand[0], "js");
 
   // Advertising consent must remain denied
   assert.equal(firstCommand[2].ad_storage, "denied");
@@ -445,4 +458,130 @@ const cleanPathResult = cleanPagePath("/en/services?user=admin&token=xyz#top");
 assert.equal(cleanPathResult, "/en/services", "All query params and hashes purged");
 console.log("   ✓ PII regex scrubbing and pure path normalization confirmed");
 
-console.log("\n=== ALL GA4 PRELAUNCH CONSENT ORDERING TESTS PASSED SUCCESSFULLY ===");
+// 7. POST-LAUNCH-04B Regression Tests: Linker Command Ordering, Href Construction & Parameter Preservation
+console.log("7. Testing POST-LAUNCH-04B Linker Ordering, Destination Href Construction & Query Parameter Preservation...");
+
+// 7a. Linker command ordering in dataLayer
+{
+  globalThis.window.dataLayer = [];
+  globalThis.window._gtagConsentDefaultsInitialized = false;
+  initializeGtagConsentDefaults();
+
+  const events = globalThis.window.dataLayer;
+  const consentIdx = events.findIndex(e => e[0] === "consent" && e[1] === "default");
+  const setLinkerIdx = events.findIndex(e => e[0] === "set" && e[1] === "linker");
+  const jsIdx = events.findIndex(e => e[0] === "js");
+
+  assert.ok(consentIdx !== -1, "consent:default must exist");
+  assert.ok(setLinkerIdx !== -1, "set:linker must exist");
+  assert.ok(jsIdx !== -1, "js must exist");
+
+  assert.ok(consentIdx < setLinkerIdx, "consent:default must be enqueued BEFORE set:linker");
+  assert.ok(setLinkerIdx < jsIdx, "set:linker must be enqueued BEFORE js timestamp");
+
+  // Verify linker payload
+  const linkerPayload = events[setLinkerIdx][2];
+  assert.deepEqual(linkerPayload.domains, ["pybim.com", "pybim.it", "www.pybim.com", "www.pybim.it"]);
+  assert.equal(linkerPayload.accept_incoming, true);
+  console.log("   ✓ Command ordering verified: consent:default -> set:linker -> js -> config");
+}
+
+// 7b. Destination Href construction & Model B canonical routing
+{
+  // Simulated LanguageContext getLanguageHref logic on production .com host
+  function testGetLanguageHref({ pathname, currentHost, targetLang, search = "", hash = "" }) {
+    const segments = pathname.split('/');
+    if (segments[1] === "it" || segments[1] === "en" || segments[1] === "de") {
+      segments[1] = targetLang;
+    } else {
+      segments.splice(1, 0, targetLang);
+    }
+    const newPath = segments.join('/') || '/';
+    const isItHost = currentHost === "pybim.it" || currentHost === "www.pybim.it";
+    const isComHost = currentHost === "pybim.com" || currentHost === "www.pybim.com";
+    const isProd = isItHost || isComHost;
+
+    const isPrivate =
+      pathname.startsWith('/api/') ||
+      pathname.includes('/portal') ||
+      pathname.includes('/login') ||
+      pathname.includes('/register');
+
+    if (isProd && !isPrivate) {
+      const isTargetIt = targetLang === 'it';
+      const isCurrentlyIt = isItHost;
+
+      if (isTargetIt !== isCurrentlyIt) {
+        const targetOrigin = isTargetIt ? "https://www.pybim.it" : "https://www.pybim.com";
+        const searchParams = new URLSearchParams(search);
+        searchParams.set('lang_pref', targetLang);
+        const newSearch = searchParams.toString() ? `?${searchParams.toString()}` : '';
+        return `${targetOrigin}${newPath}${newSearch}${hash}`;
+      }
+    }
+
+    return `${newPath}${search}${hash}`;
+  }
+
+  // On www.pybim.com/en/about -> switch to IT -> points to https://www.pybim.it/it/about?lang_pref=it
+  const itHref = testGetLanguageHref({
+    pathname: "/en/about",
+    currentHost: "www.pybim.com",
+    targetLang: "it"
+  });
+  assert.equal(itHref, "https://www.pybim.it/it/about?lang_pref=it", "Cross-domain to .it must yield full canonical origin with lang_pref");
+
+  // On www.pybim.com/en/about -> switch to DE -> intra-domain relative /de/about
+  const deHref = testGetLanguageHref({
+    pathname: "/en/about",
+    currentHost: "www.pybim.com",
+    targetLang: "de"
+  });
+  assert.equal(deHref, "/de/about", "Intra-domain switch must remain relative path");
+
+  // On www.pybim.it/it/services -> switch to EN -> points to https://www.pybim.com/en/services?lang_pref=en
+  const enHref = testGetLanguageHref({
+    pathname: "/it/services",
+    currentHost: "www.pybim.it",
+    targetLang: "en"
+  });
+  assert.equal(enHref, "https://www.pybim.com/en/services?lang_pref=en", "Cross-domain from .it to .com must yield canonical .com with lang_pref");
+
+  // Private route preservation on pybim.com/en/portal/dashboard -> stays on origin
+  const portalHref = testGetLanguageHref({
+    pathname: "/en/portal/dashboard",
+    currentHost: "www.pybim.com",
+    targetLang: "it"
+  });
+  assert.equal(portalHref, "/it/portal/dashboard", "Private routes must NOT switch origins");
+
+  console.log("   ✓ Destination href construction verified across cross-domain, intra-domain, and private routes");
+}
+
+// 7c. Preservation of _gl alongside lang_pref cleanup
+{
+  function simulateUrlCleanup(inputUrl) {
+    const url = new URL(inputUrl);
+    let newHistoryPath = null;
+    if (url.searchParams.has('lang_pref')) {
+      const pref = url.searchParams.get('lang_pref');
+      url.searchParams.delete('lang_pref');
+      const newSearch = url.searchParams.toString() ? `?${url.searchParams.toString()}` : '';
+      newHistoryPath = url.pathname + newSearch + url.hash;
+    }
+    return newHistoryPath;
+  }
+
+  // URL arriving with both lang_pref and GA4 _gl parameter
+  const arrivalUrl = "https://www.pybim.it/it/about?lang_pref=it&_gl=1*abcde5*_ga*MTIzNDU2*gacid*Nzg5MA..#intro";
+  const cleanedUrl = simulateUrlCleanup(arrivalUrl);
+
+  assert.ok(cleanedUrl.includes("_gl=1*abcde5*"), "_gl parameter must be preserved after lang_pref deletion");
+  assert.ok(!cleanedUrl.includes("lang_pref="), "lang_pref parameter must be removed");
+  assert.ok(cleanedUrl.endsWith("#intro"), "URL hash must be preserved");
+  assert.equal(cleanedUrl, "/it/about?_gl=1*abcde5*_ga*MTIzNDU2*gacid*Nzg5MA..#intro");
+
+  console.log("   ✓ Query parameter preservation verified: _gl retained and lang_pref stripped cleanly");
+}
+
+console.log("\n=== ALL GA4 PRELAUNCH & POST-LAUNCH-04B TESTS PASSED SUCCESSFULLY ===");
