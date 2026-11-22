@@ -13,10 +13,7 @@ const inter = localFont({
   src: [
     {
       path: "../../public/fonts/inter-latin-wght-normal.woff2",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/inter-latin-ext-wght-normal.woff2",
+      weight: "100 900",
       style: "normal",
     },
   ],
@@ -28,10 +25,7 @@ const jetbrainsMono = localFont({
   src: [
     {
       path: "../../public/fonts/jetbrains-mono-latin-wght-normal.woff2",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/jetbrains-mono-latin-ext-wght-normal.woff2",
+      weight: "100 800",
       style: "normal",
     },
   ],
