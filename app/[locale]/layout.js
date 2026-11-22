@@ -1,5 +1,5 @@
 import "../globals.css";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import GoToTop from "@/components/layout/go-to-top";
@@ -9,18 +9,34 @@ import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
 import CookieConsent from "@/components/ui/CookieConsent";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: [
+    {
+      path: "../../public/fonts/inter-latin-wght-normal.woff2",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/inter-latin-ext-wght-normal.woff2",
+      style: "normal",
+    },
+  ],
   display: "swap",
   variable: "--font-inter",
-  weight: ["400", "500", "600", "700", "800"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const jetbrainsMono = localFont({
+  src: [
+    {
+      path: "../../public/fonts/jetbrains-mono-latin-wght-normal.woff2",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/jetbrains-mono-latin-ext-wght-normal.woff2",
+      style: "normal",
+    },
+  ],
   display: "swap",
   variable: "--font-jetbrains-mono",
-  weight: ["400", "500", "600"],
 });
 
 import { siteMetadata } from "@/lib/site-copy";
