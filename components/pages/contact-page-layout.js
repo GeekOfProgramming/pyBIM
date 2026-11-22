@@ -9,6 +9,7 @@ import RoiMatrixSection from "@/components/contact/roi-matrix-section";
 import PriorityQueueSection from "@/components/sections/priority-queue-section";
 import TurnstileWidget from "@/components/common/turnstile-widget";
 import { trackContactSuccess } from "@/lib/analytics";
+import { parseApiResponse, getNetworkErrorMessage } from "@/lib/apiResponse";
 
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
@@ -38,9 +39,10 @@ const engineeringDisciplines = [
 ];
 
 export default function ContactPageLayout() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const turnstileRef = useRef(null);
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [submissionId, setSubmissionId] = useState(() => (typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : ""));
   const [form, setForm] = useState({ name: "", companyName: "", email: "", phone: "", service: "", teamScale: "", message: "", privacyAccepted: false });
   const [selectedServiceId, setSelectedServiceId] = useState("");
   const [selectedDisciplines, setSelectedDisciplines] = useState([]);
@@ -73,13 +75,20 @@ export default function ContactPageLayout() {
   }, []);
 
   function updateField(key, value) {
-    setForm((prev) => ({ ...prev, [key]: value }));
+    setForm((prev) => {
+      if (prev[key] !== value) {
+        // Material change to submission payload: cycle submissionId to prevent idempotency key conflict
+        setSubmissionId(typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : "");
+      }
+      return { ...prev, [key]: value };
+    });
   }
 
   const handleServiceChange = (serviceId) => {
     setSelectedServiceId(serviceId);
     const opt = serviceOptions.find((o) => o.id === serviceId);
     updateField("service", opt ? t(opt.labelKey) : serviceId);
+    setSubmissionId(typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : "");
 
     if (serviceId !== "bim_modeling") {
       setSelectedDisciplines([]);
@@ -97,6 +106,7 @@ export default function ContactPageLayout() {
         ? prev.filter((id) => id !== discId)
         : [...prev, discId];
       if (next.length > 0) setDisciplineError(false);
+      setSubmissionId(typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : "");
       return next;
     });
   };
@@ -125,8 +135,12 @@ export default function ContactPageLayout() {
 
     setLoading(true);
     try {
+      const activeSubmissionId = submissionId || (typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : "");
+      if (!submissionId) setSubmissionId(activeSubmissionId);
+
       const payload = {
         ...form,
+        submissionId: activeSubmissionId,
         serviceId: selectedServiceId,
         disciplines: selectedDisciplines,
         otherScope: otherScope.trim(),
@@ -137,8 +151,10 @@ export default function ContactPageLayout() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
-      const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.error || t("contact.form.error"));
+      const parsed = await parseApiResponse(res, language);
+      if (!parsed.ok) {
+        throw new Error(parsed.error || t("contact.form.error"));
+      }
       trackContactSuccess(selectedServiceId);
       setPopup({ type: "success", message: t("contact.form.success") });
       setForm({ name: "", companyName: "", email: "", phone: "", service: "", teamScale: "", message: "", privacyAccepted: false });
@@ -149,9 +165,12 @@ export default function ContactPageLayout() {
       setOtherScopeError(false);
       setPrivacyError(false);
       setTurnstileToken("");
+      // Generate new submissionId for fresh future submissions
+      setSubmissionId(typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : "");
       if (turnstileRef.current) turnstileRef.current.reset();
     } catch (err) {
-      setPopup({ type: "error", message: err.message });
+      const userMessage = getNetworkErrorMessage(err, language);
+      setPopup({ type: "error", message: userMessage });
       if (turnstileRef.current) turnstileRef.current.reset();
     } finally {
       setLoading(false);

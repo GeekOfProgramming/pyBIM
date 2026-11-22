@@ -7,7 +7,8 @@ import {
   validateCorporateEmail,
   verifyDomainMx,
   validatePrivacyAcknowledgment,
-  verifyTurnstileToken
+  verifyTurnstileToken,
+  validateSubmissionId
 } from "../../../lib/formValidation.js";
 import { getEmailConfig, checkEmailConfiguration, buildEmailPayload, sendEmail } from "../../../lib/emailDelivery.js";
 
@@ -40,6 +41,7 @@ export async function POST(req) {
     const body = jsonResult.body || {};
 
     const { 
+      submissionId,
       name, 
       companyName, 
       email, 
@@ -106,6 +108,13 @@ export async function POST(req) {
       return Response.json({ ok: false, error: mxCheck.error }, { status: mxCheck.status });
     }
 
+    // 6. Validate Client Submission Identifier (UUID v4)
+    const submissionIdCheck = validateSubmissionId(submissionId);
+    if (!submissionIdCheck.valid) {
+      return Response.json({ ok: false, error: submissionIdCheck.error }, { status: 400 });
+    }
+    const safeSubmissionId = submissionIdCheck.sanitized;
+
     // Generate cryptographically collision-resistant application receipt reference
     const applicationReference = `PYBIM-APP-${crypto.randomUUID().toUpperCase()}`;
     const queueReference = applicationReference; // maintain compatibility for UI ticket slot
@@ -135,6 +144,7 @@ export async function POST(req) {
         type: "internal_notification",
         customerEmail: safeEmail,
         subject: `[Early Access Application] ${companyCheck.sanitized} (${applicationReference})`,
+        idempotencyKey: `early-${safeSubmissionId}-staff`,
         html: `
           <div style="font-family: Arial, sans-serif; color: #1e293b; max-width: 650px; margin: auto; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; background: #ffffff;">
             <div style="border-bottom: 2px solid #2563eb; padding-bottom: 12px; margin-bottom: 20px;">
@@ -172,6 +182,7 @@ export async function POST(req) {
           customerEmail: safeEmail,
           subject: `Receipt: Your pyBIM Early Access Application (${applicationReference})`,
           text: `Thank you for your interest in pyBIM AI infrastructure. Application Reference: ${applicationReference}. Submissions are evaluated individually and do not guarantee acceptance.`,
+          idempotencyKey: `early-${safeSubmissionId}-applicant`,
           html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 32px 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
               <div style="margin-bottom: 24px;">

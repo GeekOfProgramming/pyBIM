@@ -37,13 +37,17 @@ console.log("=== RUNNING DETERMINISTIC FORM-01 SAFETY & INTEGRATION SUITE ===");
 
 // Helper to create mock Request
 function createMockRequest(url, body, ip = "198.51.100.1") {
+  const payload = {
+    submissionId: "a1b2c3d4-e5f6-4a1b-8c2d-3e4f5a6b7c8d",
+    ...body
+  };
   return new Request(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "cf-connecting-ip": ip
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(payload)
   });
 }
 

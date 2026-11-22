@@ -6,11 +6,13 @@ import { ArrowRight, CheckCircle2, AlertCircle, ShieldAlert, Cpu, Lock, Sparkles
 import { useLanguage } from "@/lib/LanguageContext";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 import TurnstileWidget from "@/components/common/turnstile-widget";
+import { parseApiResponse, getNetworkErrorMessage } from "@/lib/apiResponse";
 
 export default function PriorityQueueSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const turnstileRef = useRef(null);
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [submissionId, setSubmissionId] = useState(() => (typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : ""));
   const [form, setForm] = useState({
     name: "",
     companyName: "",
@@ -29,7 +31,13 @@ export default function PriorityQueueSection() {
   const [popup, setPopup] = useState(null);
 
   function updateField(key, value) {
-    setForm((prev) => ({ ...prev, [key]: value }));
+    setForm((prev) => {
+      if (prev[key] !== value) {
+        // Material payload change: cycle submissionId to avoid idempotency payload mismatch
+        setSubmissionId(typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : "");
+      }
+      return { ...prev, [key]: value };
+    });
   }
 
   async function handleSubmit(e) {
@@ -43,20 +51,25 @@ export default function PriorityQueueSection() {
     setLoading(true);
 
     try {
+      const activeSubmissionId = submissionId || (typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : "");
+      if (!submissionId) setSubmissionId(activeSubmissionId);
+
       const res = await fetch("/api/early-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          submissionId: activeSubmissionId,
           turnstileToken
         })
       });
 
-      const data = await res.json();
-      if (!res.ok || !data.ok) {
-        throw new Error(data.error || "Failed to register application.");
+      const parsed = await parseApiResponse(res, language);
+      if (!parsed.ok) {
+        throw new Error(parsed.error || t("queue.form.error") || "Failed to register application.");
       }
 
+      const data = parsed.data || {};
       setSuccessData(data.queueReference || "PYBIM-WAITLIST-CONFIRMED");
       setForm({
         name: "",
@@ -72,9 +85,12 @@ export default function PriorityQueueSection() {
       });
       setPrivacyError(false);
       setTurnstileToken("");
+      // Generate new submissionId for fresh future submissions
+      setSubmissionId(typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : "");
       if (turnstileRef.current) turnstileRef.current.reset();
     } catch (err) {
-      setPopup({ type: "error", message: err.message });
+      const userMessage = getNetworkErrorMessage(err, language);
+      setPopup({ type: "error", message: userMessage });
       if (turnstileRef.current) turnstileRef.current.reset();
     } finally {
       setLoading(false);
