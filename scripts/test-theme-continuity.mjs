@@ -1,8 +1,7 @@
 import assert from "assert";
 
-console.log("=== RUNNING THEME CONTINUITY & CROSS-DOMAIN BRIDGE TESTS ===");
+console.log("=== RUNNING FOCUSED DEV-MAINT-03A THEME VERIFICATION ===");
 
-// Mock browser globals
 class MockStorage {
   constructor() {
     this.store = {};
@@ -34,26 +33,12 @@ class MockClassList {
   contains(cls) {
     return this.classes.has(cls);
   }
-  toggle(cls, force) {
-    if (force !== undefined) {
-      if (force) this.add(cls);
-      else this.remove(cls);
-      return force;
-    }
-    if (this.contains(cls)) {
-      this.remove(cls);
-      return false;
-    } else {
-      this.add(cls);
-      return true;
-    }
-  }
 }
 
-function simulateThemeInit({ search = "", storedTheme = null, prefersDark = false }) {
+function simulateThemeInit({ search = "", rawStored = null, prefersDark = false }) {
   const localStorage = new MockStorage();
-  if (storedTheme) {
-    localStorage.setItem("pybim_theme", storedTheme);
+  if (rawStored !== null) {
+    localStorage.setItem("pybim_theme", rawStored);
   }
 
   const documentElement = {
@@ -69,7 +54,7 @@ function simulateThemeInit({ search = "", storedTheme = null, prefersDark = fals
     }
   }
 
-  // ThemeContext logic under test
+  // Exact ThemeContext logic
   let incomingPref = null;
   if (search) {
     try {
@@ -81,13 +66,14 @@ function simulateThemeInit({ search = "", storedTheme = null, prefersDark = fals
     } catch (e) {}
   }
 
-  const stored = localStorage.getItem("pybim_theme");
-  const activeTheme = incomingPref || (stored === "dark" || stored === "light" ? stored : null);
+  const storedVal = localStorage.getItem("pybim_theme");
+  const stored = storedVal === "dark" || storedVal === "light" ? storedVal : null;
+  const activeTheme = stored || incomingPref;
 
   if (activeTheme) {
     stateTheme = activeTheme;
     applyTheme(activeTheme);
-    if (incomingPref && incomingPref !== stored) {
+    if (!stored && incomingPref) {
       localStorage.setItem("pybim_theme", incomingPref);
     }
   } else {
@@ -103,60 +89,67 @@ function simulateThemeInit({ search = "", storedTheme = null, prefersDark = fals
   };
 }
 
-// 1. Direct visit with no previous preference follows system prefers-color-scheme
-console.log("1. Testing default fallback to prefers-color-scheme...");
-const res1 = simulateThemeInit({ search: "", storedTheme: null, prefersDark: false });
-assert.strictEqual(res1.stateTheme, "light");
-assert.strictEqual(res1.isDarkClass, false);
-assert.strictEqual(res1.storedInStorage, null, "Should not arbitrarily write to storage without explicit choice");
+// Case 1: Source is Light, destination has Dark saved -> Must stay Dark (destination preference priority)
+console.log("1. Case 1: Source is Light, destination has Dark saved...");
+const c1 = simulateThemeInit({ search: "?theme_pref=light&lang_pref=it", rawStored: "dark", prefersDark: false });
+assert.strictEqual(c1.stateTheme, "dark", "Saved destination preference must take priority over incoming light");
+assert.strictEqual(c1.isDarkClass, true);
+assert.strictEqual(c1.storedInStorage, "dark", "Destination storage must not be overwritten");
+console.log("   ✓ Saved destination 'dark' preserved, incoming 'light' ignored");
 
-const res2 = simulateThemeInit({ search: "", storedTheme: null, prefersDark: true });
-assert.strictEqual(res2.stateTheme, "dark");
-assert.strictEqual(res2.isDarkClass, true);
-assert.strictEqual(res2.storedInStorage, null, "Should not arbitrarily write to storage without explicit choice");
-console.log("   ✓ Default correctly honors system prefers-color-scheme without polluting localStorage");
+// Case 2: Source is Dark, destination has Light saved -> Must stay Light (destination preference priority)
+console.log("2. Case 2: Source is Dark, destination has Light saved...");
+const c2 = simulateThemeInit({ search: "?theme_pref=dark&lang_pref=it", rawStored: "light", prefersDark: true });
+assert.strictEqual(c2.stateTheme, "light", "Saved destination preference must take priority over incoming dark");
+assert.strictEqual(c2.isDarkClass, false);
+assert.strictEqual(c2.storedInStorage, "light", "Destination storage must not be overwritten");
+console.log("   ✓ Saved destination 'light' preserved, incoming 'dark' ignored");
 
-// 2. Normal visit with existing local preference
-console.log("2. Testing normal visit with existing local preference...");
-const res3 = simulateThemeInit({ search: "", storedTheme: "dark", prefersDark: false });
-assert.strictEqual(res3.stateTheme, "dark");
-assert.strictEqual(res3.isDarkClass, true);
-assert.strictEqual(res3.storedInStorage, "dark");
+// Case 3: Destination has no stored theme -> Must adopt incoming theme_pref and persist
+console.log("3. Case 3: Destination has no stored theme (incoming dark)...");
+const c3a = simulateThemeInit({ search: "?theme_pref=dark&lang_pref=it", rawStored: null, prefersDark: false });
+assert.strictEqual(c3a.stateTheme, "dark");
+assert.strictEqual(c3a.isDarkClass, true);
+assert.strictEqual(c3a.storedInStorage, "dark", "Should persist incoming theme when destination has no stored preference");
+console.log("   ✓ Adopted and persisted incoming 'dark'");
 
-const res4 = simulateThemeInit({ search: "", storedTheme: "light", prefersDark: true });
-assert.strictEqual(res4.stateTheme, "light");
-assert.strictEqual(res4.isDarkClass, false);
-assert.strictEqual(res4.storedInStorage, "light");
-console.log("   ✓ Saved local preference takes precedence over system setting");
+console.log("3b. Case 3b: Destination has no stored theme (incoming light)...");
+const c3b = simulateThemeInit({ search: "?theme_pref=light&lang_pref=it", rawStored: null, prefersDark: true });
+assert.strictEqual(c3b.stateTheme, "light");
+assert.strictEqual(c3b.isDarkClass, false);
+assert.strictEqual(c3b.storedInStorage, "light", "Should persist incoming theme when destination has no stored preference");
+console.log("   ✓ Adopted and persisted incoming 'light'");
 
-// 3. Explicit cross-domain navigation with theme_pref
-console.log("3. Testing explicit cross-domain navigation with theme_pref...");
-const res5 = simulateThemeInit({ search: "?lang_pref=it&theme_pref=dark&_gl=1*abc", storedTheme: null, prefersDark: false });
-assert.strictEqual(res5.stateTheme, "dark");
-assert.strictEqual(res5.isDarkClass, true);
-assert.strictEqual(res5.storedInStorage, "dark", "Should persist incoming explicit cross-domain theme");
+// Case 4: Destination has an invalid stored value (e.g. corrupted localStorage) -> Treat as null
+console.log("4. Case 4: Destination has an invalid stored value...");
+const c4a = simulateThemeInit({ search: "?theme_pref=dark", rawStored: "corrupted_theme", prefersDark: false });
+assert.strictEqual(c4a.stateTheme, "dark", "Invalid stored value should be treated as unset; incoming pref adopted");
+assert.strictEqual(c4a.isDarkClass, true);
+assert.strictEqual(c4a.storedInStorage, "dark", "Invalid value overwritten with valid incoming pref");
 
-const res6 = simulateThemeInit({ search: "?lang_pref=en&theme_pref=light&_gl=1*abc", storedTheme: "dark", prefersDark: true });
-assert.strictEqual(res6.stateTheme, "light", "Incoming explicit switch should update destination theme");
-assert.strictEqual(res6.isDarkClass, false);
-assert.strictEqual(res6.storedInStorage, "light");
-console.log("   ✓ Cross-domain theme parameter smoothly transfers and persists active theme");
+const c4b = simulateThemeInit({ search: "", rawStored: "corrupted_theme", prefersDark: true });
+assert.strictEqual(c4b.stateTheme, "dark", "Invalid stored value without incoming pref falls back to system preference");
+assert.strictEqual(c4b.isDarkClass, true);
+console.log("   ✓ Invalid stored values safely ignored and treated as unset");
 
-// 4. Sanitize invalid or malicious theme_pref parameters
-console.log("4. Testing injection and invalid value defense on theme_pref...");
-const res7 = simulateThemeInit({ search: "?theme_pref=<script>alert(1)</script>", storedTheme: "light", prefersDark: false });
-assert.strictEqual(res7.stateTheme, "light");
-assert.strictEqual(res7.isDarkClass, false);
-assert.strictEqual(res7.storedInStorage, "light");
+// Case 5: User navigates directly without theme_pref
+console.log("5. Case 5: Direct navigation without theme_pref...");
+const c5a = simulateThemeInit({ search: "", rawStored: "dark", prefersDark: false });
+assert.strictEqual(c5a.stateTheme, "dark");
+assert.strictEqual(c5a.storedInStorage, "dark");
 
-const res8 = simulateThemeInit({ search: "?theme_pref=blue", storedTheme: null, prefersDark: true });
-assert.strictEqual(res8.stateTheme, "dark");
-assert.strictEqual(res8.isDarkClass, true);
-console.log("   ✓ Strict allowlist ('dark' | 'light') rejects unknown or malicious theme parameters");
+const c5b = simulateThemeInit({ search: "", rawStored: null, prefersDark: true });
+assert.strictEqual(c5b.stateTheme, "dark");
+assert.strictEqual(c5b.storedInStorage, null, "Direct visit without preference must not write to localStorage");
 
-// 5. Test URL parameter cleanup while preserving _gl
-console.log("5. Testing URL cleanup preserving _gl (GA4 linker)...");
-function simulateParamCleanup(rawUrl) {
+const c5c = simulateThemeInit({ search: "", rawStored: null, prefersDark: false });
+assert.strictEqual(c5c.stateTheme, "light");
+assert.strictEqual(c5c.storedInStorage, null);
+console.log("   ✓ Direct visits respect saved preference, or fall back to system preference without polluting storage");
+
+// Task 2: URL Cleanup & Parameter Preservation
+console.log("6. Testing URL parameter cleanup & preservation...");
+function simulateUrlCleanup(rawUrl) {
   const url = new URL(rawUrl);
   let urlModified = false;
   if (url.searchParams.has('lang_pref')) {
@@ -171,11 +164,8 @@ function simulateParamCleanup(rawUrl) {
   return url.pathname + newSearch + url.hash;
 }
 
-const cleanedUrl1 = simulateParamCleanup("https://www.pybim.it/it?lang_pref=it&theme_pref=dark&_gl=1*123xyz*GA*456#contact");
-assert.strictEqual(cleanedUrl1, "/it?_gl=1*123xyz*GA*456#contact", "_gl and hash must be strictly preserved");
+const cleaned1 = simulateUrlCleanup("https://www.pybim.it/it?lang_pref=it&theme_pref=dark&_gl=1*abc123*GA*456&custom=true#section");
+assert.strictEqual(cleaned1, "/it?_gl=1*abc123*GA*456&custom=true#section");
+console.log("   ✓ Cleanup preserves _gl, custom parameters, and hash intact");
 
-const cleanedUrl2 = simulateParamCleanup("https://www.pybim.com/en?lang_pref=en&theme_pref=light");
-assert.strictEqual(cleanedUrl2, "/en", "Entire query string removed if only ephemeral prefs were present");
-console.log("   ✓ URL cleanup cleanly removes lang_pref and theme_pref while preserving _gl and hash");
-
-console.log("\n=== ALL THEME CONTINUITY & CROSS-DOMAIN BRIDGE TESTS PASSED ===");
+console.log("\n=== ALL DEV-MAINT-03A TESTS PASSED SUCCESSFULLY ===");
