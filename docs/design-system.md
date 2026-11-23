@@ -50,7 +50,7 @@ The pyBIM Design System v2 communicates:
 
 ## 3. Font Families
 
-The platform standardizes on **exactly two font families** loaded natively via `next/font/google` in `app/[locale]/layout.js`:
+The platform standardizes on **exactly two font families** loaded locally via `next/font/local` in `app/[locale]/layout.js` to ensure zero external network calls, zero GDPR font tracking, and instant offline rendering:
 
 | Font Family | Variable | Tailwind Class | Primary Role |
 | :--- | :--- | :--- | :--- |

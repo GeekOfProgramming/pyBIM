@@ -79,18 +79,18 @@ git push origin <branch-name>
 ```
 
 ### Step 6: Open a Pull Request into `main`
-- Open a PR on GitHub targeting the `main` branch:
+- Open a PR on GitHub targeting `main` or `development/**`:
   ```bash
   gh pr create --title "type: summary" --body "..."
   ```
-- Automated CI on GitHub Actions (`.github/workflows/pr-validation.yml`) triggers on every pull request targeting `main`.
+- Automated CI on GitHub Actions (`.github/workflows/pr-validation.yml`) triggers on every pull request targeting `main` and `development/**`.
 - The required status check is:
   - **`Validate Pull Request (Linux)`**
 - This check executes:
   1. Linux container execution (`ubuntu-latest`) on Node.js 22 LTS
   2. Clean dependency installation: `npm ci --include=dev`
   3. Security suite: `npm run test:security`
-  4. Next.js + OpenNext Worker build: `npm run build:worker`
+  4. Next.js 15 + OpenNext Cloudflare Worker build: `npm run build:worker`
   5. Artifact integrity verification (`.open-next/worker.js` and `.open-next/assets`)
   6. Wrangler dry-run check: `npx wrangler deploy --dry-run --config wrangler.production.jsonc`
 - **Important**: PR validation is strictly non-deploying and does not require or receive Cloudflare production secrets.
