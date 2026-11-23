@@ -22,6 +22,7 @@ import {
   buildEmailPayload,
   sendEmail,
 } from "../../../../lib/emailDelivery.js";
+import { buildRoiConfirmationEmail } from "../../../../lib/customerConfirmationEmails.js";
 import { escapeHtml } from "../../../../lib/security.js";
 
 /**
@@ -83,6 +84,8 @@ export async function POST(req) {
       quickEstimate = {},
       useAdvanced = false,
       advancedAssessment = {},
+      locale,
+      language,
     } = body;
 
     // 3. Validate Turnstile token
@@ -345,6 +348,27 @@ Notice: Browser download initiated by client. Does not guarantee file saved to l
           { ok: false, error: "Failed to dispatch lead notification to support. Please try again." },
           { status: dispatchErr.statusCode || 502 }
         );
+      }
+
+      // Customer Confirmation Email (non-fatal if delivery fails after primary support notification)
+      try {
+        const customerIdempotencyKey = `${stableIdempotencyKey}-customer`;
+        const confirmation = buildRoiConfirmationEmail({
+          name: nameCheck.sanitized,
+          referenceId,
+          locale: locale || language,
+        });
+        const customerPayload = buildEmailPayload({
+          type: "applicant_autoresponder",
+          customerEmail: emailCheck.sanitized,
+          subject: confirmation.subject,
+          html: confirmation.html,
+          text: confirmation.text,
+          idempotencyKey: customerIdempotencyKey,
+        });
+        await sendEmail(customerPayload, { idempotencyKey: customerIdempotencyKey });
+      } catch (autoErr) {
+        console.error("ROI customer confirmation dispatch error (non-fatal):", autoErr.message || autoErr);
       }
     } else {
       console.warn("[ROI NOTICE] Outbound email service unconfigured in development. Proceeding with export.");

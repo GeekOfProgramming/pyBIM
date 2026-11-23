@@ -10,6 +10,7 @@ import {
   validateSubmissionId
 } from "../../../lib/formValidation.js";
 import { getEmailConfig, checkEmailConfiguration, buildEmailPayload, sendEmail } from "../../../lib/emailDelivery.js";
+import { buildContactConfirmationEmail } from "../../../lib/customerConfirmationEmails.js";
 
 export async function POST(req) {
   try {
@@ -54,7 +55,9 @@ export async function POST(req) {
       privacyAccepted,
       disciplines,
       otherScope,
-      turnstileToken
+      turnstileToken,
+      locale,
+      language
     } = body;
 
     // Canonical service map covering EN, IT, DE and IDs
@@ -207,6 +210,26 @@ export async function POST(req) {
       });
 
       await sendEmail(payload);
+
+      // Customer Confirmation Email (non-fatal if delivery fails after primary support notification)
+      try {
+        const confirmation = buildContactConfirmationEmail({
+          name: nameCheck.sanitized,
+          locale: locale || language,
+        });
+        const customerPayload = buildEmailPayload({
+          type: "applicant_autoresponder",
+          customerEmail: emailPolicy.sanitized,
+          subject: confirmation.subject,
+          text: confirmation.text,
+          html: confirmation.html,
+          idempotencyKey: `contact-${safeSubmissionId}-customer`,
+        });
+        await sendEmail(customerPayload);
+      } catch (autoErr) {
+        console.error("Contact customer confirmation dispatch error (non-fatal):", autoErr.message || autoErr);
+      }
+
       return Response.json({ ok: true });
     } catch (emailError) {
       console.error("Failed to dispatch email:", emailError.message || emailError);

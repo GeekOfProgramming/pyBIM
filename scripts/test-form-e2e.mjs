@@ -195,9 +195,16 @@ delete process.env.TURNSTILE_SECRET_KEY; // Allow dev pass for integration tests
   const resPass = await contactHandler(reqPass);
   assert.strictEqual(resPass.status, 200);
   const sent = _getMockSentEmails();
-  assert.strictEqual(sent.length, 1);
-  assert.ok(sent[0].html.includes("BIM Modeling &amp; Engineering Delivery"));
-  assert.ok(sent[0].html.includes("architecture, structural"));
+  assert.strictEqual(sent.length, 2);
+  const staffEmail = sent.find(m => m.to === "support@pybim.com");
+  const custEmail = sent.find(m => m.to === "m.rossi@studio-rossi.it");
+  assert.ok(staffEmail, "Support notification must be sent to support@pybim.com");
+  assert.ok(custEmail, "Customer confirmation must be sent to customer email");
+  assert.ok(staffEmail.html.includes("BIM Modeling &amp; Engineering Delivery"));
+  assert.ok(staffEmail.html.includes("architecture, structural"));
+  assert.strictEqual(custEmail.replyTo, "support@pybim.com");
+  assert.notStrictEqual(staffEmail.idempotencyKey, custEmail.idempotencyKey);
+  assert.ok(!custEmail.html.includes("Descrizione del progetto."), "Customer confirmation must not leak full enquiry message");
   console.log("   ✓ IT: Canonical resolution and discipline enforcement verified");
 }
 
@@ -234,8 +241,12 @@ delete process.env.TURNSTILE_SECRET_KEY; // Allow dev pass for integration tests
   const resPass = await contactHandler(reqPass);
   assert.strictEqual(resPass.status, 200);
   const sent = _getMockSentEmails();
-  assert.strictEqual(sent.length, 1);
-  assert.ok(sent[0].html.includes("IFC schema conversion"));
+  assert.strictEqual(sent.length, 2);
+  const staffEmail = sent.find(m => m.to === "support@pybim.com");
+  const custEmail = sent.find(m => m.to === "h.schmidt@schmidt-ing.de");
+  assert.ok(staffEmail && staffEmail.html.includes("IFC schema conversion"));
+  assert.ok(custEmail && custEmail.replyTo === "support@pybim.com");
+  assert.notStrictEqual(staffEmail.idempotencyKey, custEmail.idempotencyKey);
   console.log("   ✓ DE: Canonical 'other' scope requirement strictly enforced");
 }
 
@@ -278,6 +289,87 @@ console.log("4. Testing Early Access Application Receipt Semantics...");
   assert.ok(auto.html.includes("Application Receipt Confirmed"));
   assert.ok(auto.html.includes("reviewed individually"));
   console.log("   ✓ Early Access generates collision-resistant reference and truthful receipt copy");
+}
+
+// ---------------------------------------------------------
+// 5. Contact Form Customer Confirmation & Non-Fatal Failure
+// ---------------------------------------------------------
+console.log("5. Testing Contact Form Customer Confirmation & Non-Fatal Failure...");
+{
+  _clearMockSentEmails();
+  const req = createMockRequest("https://www.pybim.com/api/contact", {
+    submissionId: "b2c3d4e5-f6a7-4b2c-9d3e-4f5a6b7c8d9e",
+    name: "Alice Cooper",
+    companyName: "AEC Engineering",
+    email: "alice@aec-eng.com",
+    phone: "+44 20 7946 0958",
+    serviceId: "bim_qa",
+    teamScale: "21-50",
+    message: "Confidential Revit QA scope details.",
+    privacyAccepted: true
+  }, "198.51.100.80");
+
+  const res = await contactHandler(req);
+  assert.strictEqual(res.status, 200);
+  const sent = _getMockSentEmails();
+  assert.strictEqual(sent.length, 2);
+
+  const staff = sent.find(m => m.to === "support@pybim.com");
+  const customer = sent.find(m => m.to === "alice@aec-eng.com");
+  assert.ok(staff && customer);
+  assert.strictEqual(customer.subject, "We Received Your Project Enquiry | pyBIM");
+  assert.strictEqual(customer.replyTo, "support@pybim.com");
+  assert.strictEqual(staff.idempotencyKey, "contact-b2c3d4e5-f6a7-4b2c-9d3e-4f5a6b7c8d9e-internal");
+  assert.strictEqual(customer.idempotencyKey, "contact-b2c3d4e5-f6a7-4b2c-9d3e-4f5a6b7c8d9e-customer");
+  assert.ok(customer.html.includes("Hello Alice Cooper"));
+  assert.ok(customer.html.includes("support@pybim.com"));
+  assert.ok(!customer.html.includes("Confidential Revit QA scope details."));
+
+  // Simulate customer confirmation failure via Resend fetch returning 500 on 2nd call
+  const prevMock = process.env.MOCK_EMAIL_DELIVERY;
+  const prevTransport = process.env.EMAIL_TRANSPORT;
+  const prevKey = process.env.RESEND_API_KEY;
+  const origFetch = globalThis.fetch;
+  let fetchCalls = 0;
+  try {
+    delete process.env.MOCK_EMAIL_DELIVERY;
+    process.env.EMAIL_TRANSPORT = "resend";
+    process.env.RESEND_API_KEY = "re_test_1234567890abcdef";
+    globalThis.fetch = async () => {
+      fetchCalls++;
+      if (fetchCalls === 1) {
+        return new Response(JSON.stringify({ id: "staff-ok" }), { status: 200 });
+      }
+      return new Response(JSON.stringify({ message: "Simulated customer email failure" }), { status: 500 });
+    };
+
+    const reqFailCust = createMockRequest("https://www.pybim.com/api/contact", {
+      submissionId: "c3d4e5f6-a7b8-4c3d-9e4f-5a6b7c8d9e0f",
+      name: "Bob Builder",
+      companyName: "BuildCo",
+      email: "bob@buildco.com",
+      phone: "+44 20 7946 0000",
+      serviceId: "bim_qa",
+      teamScale: "6-20",
+      message: "Need QA review.",
+      privacyAccepted: true
+    }, "198.51.100.81");
+
+    const resFailCust = await contactHandler(reqFailCust);
+    assert.strictEqual(resFailCust.status, 200, "Customer confirmation failure must not break successful primary submission");
+    const jsonFailCust = await resFailCust.json();
+    assert.strictEqual(jsonFailCust.ok, true);
+    assert.strictEqual(fetchCalls, 2);
+  } finally {
+    globalThis.fetch = origFetch;
+    if (prevMock !== undefined) process.env.MOCK_EMAIL_DELIVERY = prevMock;
+    else delete process.env.MOCK_EMAIL_DELIVERY;
+    if (prevTransport !== undefined) process.env.EMAIL_TRANSPORT = prevTransport;
+    else delete process.env.EMAIL_TRANSPORT;
+    if (prevKey !== undefined) process.env.RESEND_API_KEY = prevKey;
+    else delete process.env.RESEND_API_KEY;
+  }
+  console.log("   ✓ Contact Form customer confirmation & non-fatal failure verified");
 }
 
 console.log("\n=== ALL DETERMINISTIC FORM-01 SAFETY TESTS PASSED ===\n");

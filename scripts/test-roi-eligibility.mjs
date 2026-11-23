@@ -205,8 +205,17 @@ console.log("6. Testing Support Lead Notification to support@pybim.com (14 field
   assert.strictEqual(notifJson.ok, true);
 
   const sent = _getMockSentEmails();
-  assert.strictEqual(sent.length, 1, "Exactly one notification email must be sent to pyBIM Support");
-  const email = sent[0];
+  assert.strictEqual(sent.length, 2, "Support notification and customer confirmation must both be sent");
+  const email = sent.find(m => m.to === "support@pybim.com");
+  const custEmail = sent.find(m => m.to === "marcus@imperial-arch.com");
+  assert.ok(email, "Support notification must be sent to support@pybim.com");
+  assert.ok(custEmail, "Customer confirmation must be sent to marcus@imperial-arch.com");
+  assert.strictEqual(custEmail.subject, "Your pyBIM ROI Matrix Request Confirmation");
+  assert.strictEqual(custEmail.replyTo, "support@pybim.com");
+  assert.ok(custEmail.html.includes("Hello Marcus Aurelius"));
+  assert.ok(custEmail.html.includes(notifJson.referenceId));
+  assert.ok(custEmail.html.includes("not attached"));
+  assert.notStrictEqual(email.idempotencyKey, custEmail.idempotencyKey);
   assert.strictEqual(email.to, "support@pybim.com");
   assert.ok(email.from.includes("support@pybim.com"));
   assert.strictEqual(email.replyTo, "marcus@imperial-arch.com");
@@ -261,8 +270,11 @@ console.log("7. Testing Idempotency Key Support and Stable Resend Dispatch...");
   const idempRes = await POST(idempReq);
   assert.strictEqual(idempRes.status, 200);
   const sentIdemp = _getMockSentEmails();
-  assert.strictEqual(sentIdemp.length, 1);
-  assert.strictEqual(sentIdemp[0].idempotencyKey, customIdempotencyKey);
+  assert.strictEqual(sentIdemp.length, 2);
+  const staffIdemp = sentIdemp.find(m => m.to === "support@pybim.com");
+  const custIdemp = sentIdemp.find(m => m.to === "marcus@imperial-arch.com");
+  assert.strictEqual(staffIdemp.idempotencyKey, customIdempotencyKey);
+  assert.strictEqual(custIdemp.idempotencyKey, `${customIdempotencyKey}-customer`);
 }
 console.log("   ✓ Idempotency-Key correctly attached to email delivery options");
 
@@ -296,8 +308,9 @@ console.log("7b. Testing Stable Export-Attempt Identifier & Retry Idempotency...
   assert.strictEqual(res1.status, 200);
   const json1 = await res1.json();
   const emails1 = _getMockSentEmails();
-  assert.strictEqual(emails1.length, 1);
-  const firstKey = emails1[0].idempotencyKey;
+  assert.strictEqual(emails1.length, 2);
+  const staff1 = emails1.find(m => m.to === "support@pybim.com");
+  const firstKey = staff1.idempotencyKey;
   assert.ok(firstKey.startsWith("roi-export-studio-rostagno.it-"));
 
   // Attempt 2: Legitimate retry with identical parameters (re-submission / network recovery)
@@ -306,15 +319,16 @@ console.log("7b. Testing Stable Export-Attempt Identifier & Retry Idempotency...
   assert.strictEqual(res2.status, 200);
   const json2 = await res2.json();
   const emails2 = _getMockSentEmails();
-  assert.strictEqual(emails2.length, 2);
-  const secondKey = emails2[1].idempotencyKey;
+  assert.strictEqual(emails2.length, 4);
+  const staff2 = emails2[2];
+  const secondKey = staff2.idempotencyKey;
 
   // The generated attempt identifier and reference ID must be stable and consistent across retries
   assert.strictEqual(json1.referenceId, json2.referenceId, "Reference ID must be identical across retries of unchanged request");
   assert.strictEqual(firstKey, secondKey, "Idempotency key must be identical across retries of unchanged request");
-  assert.strictEqual(emails1[0].subject, emails2[1].subject, "Email subject and reference must be identical across retries");
-  assert.strictEqual(emails1[0].text, emails2[1].text, "Email body text payload must be identical across retries");
-  assert.strictEqual(emails1[0].html, emails2[1].html, "Email body html payload must be identical across retries");
+  assert.strictEqual(staff1.subject, staff2.subject, "Email subject and reference must be identical across retries");
+  assert.strictEqual(staff1.text, staff2.text, "Email body text payload must be identical across retries");
+  assert.strictEqual(staff1.html, staff2.html, "Email body html payload must be identical across retries");
 
   // Attempt 3: New subsequent legitimate export with unique attempt identifier (even with same customer inputs)
   const newAttemptPayload = {
@@ -327,10 +341,13 @@ console.log("7b. Testing Stable Export-Attempt Identifier & Retry Idempotency...
   assert.strictEqual(res3.status, 200);
   const json3 = await res3.json();
   const emails3 = _getMockSentEmails();
-  assert.strictEqual(emails3.length, 3);
+  assert.strictEqual(emails3.length, 6);
+  const staff3 = emails3[4];
+  const cust3 = emails3[5];
   assert.strictEqual(json3.referenceId, "ROI-SESS-2026-NEWEXP01", "New export event must preserve distinct referenceId");
-  assert.strictEqual(emails3[2].idempotencyKey, "roi-export-studio-rostagno.it-NEWEXP01", "New export event must use distinct idempotencyKey");
-  assert.notStrictEqual(emails3[0].idempotencyKey, emails3[2].idempotencyKey, "Separate downloads must not reuse the same idempotency key");
+  assert.strictEqual(staff3.idempotencyKey, "roi-export-studio-rostagno.it-NEWEXP01", "New export event must use distinct idempotencyKey");
+  assert.strictEqual(cust3.idempotencyKey, "roi-export-studio-rostagno.it-NEWEXP01-customer");
+  assert.notStrictEqual(staff1.idempotencyKey, staff3.idempotencyKey, "Separate downloads must not reuse the same idempotency key");
 }
 console.log("   ✓ Consistent Reference ID, Idempotency-Key, and email payload verified on retries");
 console.log("   ✓ New legitimate exports with distinct identifiers receive separate notifications");
@@ -401,5 +418,53 @@ console.log("9. Testing Production Fail-Closed Behavior When Email Service is Un
 }
 console.log("   ✓ Production mode fails closed (HTTP 503) and forbids mock delivery");
 console.log("   ✓ Production mode fails closed (HTTP 503) when email transport is unconfigured");
+
+// 10. Non-Fatal Customer Confirmation Failure on ROI Eligibility
+console.log("10. Testing Non-Fatal Customer Confirmation Failure on ROI Eligibility...");
+{
+  _clearRateLimitMap();
+  const prevMock = process.env.MOCK_EMAIL_DELIVERY;
+  const prevTransport = process.env.EMAIL_TRANSPORT;
+  const prevKey = process.env.RESEND_API_KEY;
+  const origFetch = globalThis.fetch;
+  let fetchCalls = 0;
+  try {
+    delete process.env.MOCK_EMAIL_DELIVERY;
+    process.env.EMAIL_TRANSPORT = "resend";
+    process.env.RESEND_API_KEY = "re_test_1234567890abcdef";
+    globalThis.fetch = async () => {
+      fetchCalls++;
+      if (fetchCalls === 1) {
+        return new Response(JSON.stringify({ id: "staff-roi-ok" }), { status: 200 });
+      }
+      return new Response(JSON.stringify({ message: "Simulated ROI customer email failure" }), { status: 500 });
+    };
+
+    const req = createMockRequest({
+      name: "Clara Oswald",
+      companyName: "BIM Dynamics Ltd",
+      email: "clara@bimdynamics.co.uk",
+      privacyAccepted: true,
+      turnstileToken: "1x00000000000000000000AA",
+      quickEstimate: { modelerCount: 3, hourlyRate: 85 }
+    }, "198.51.100.90");
+
+    const res = await POST(req);
+    assert.strictEqual(res.status, 200, "Customer confirmation failure must not break primary ROI eligibility response");
+    const json = await res.json();
+    assert.strictEqual(json.ok, true);
+    assert.strictEqual(json.notificationDispatched, true);
+    assert.strictEqual(fetchCalls, 2);
+  } finally {
+    globalThis.fetch = origFetch;
+    if (prevMock !== undefined) process.env.MOCK_EMAIL_DELIVERY = prevMock;
+    else delete process.env.MOCK_EMAIL_DELIVERY;
+    if (prevTransport !== undefined) process.env.EMAIL_TRANSPORT = prevTransport;
+    else delete process.env.EMAIL_TRANSPORT;
+    if (prevKey !== undefined) process.env.RESEND_API_KEY = prevKey;
+    else delete process.env.RESEND_API_KEY;
+  }
+}
+console.log("   ✓ Non-fatal ROI customer confirmation failure verified");
 
 console.log("\n=== ALL ROI-02 ELIGIBILITY & LEAD NOTIFICATION TESTS PASSED SUCCESSFULLY ===\n");
