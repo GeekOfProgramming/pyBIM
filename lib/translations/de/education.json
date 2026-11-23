@@ -9,7 +9,6 @@
   "education.primaryCta": "Unsere Leistungen entdecken",
   "education.secondaryCta": "pyBIM kontaktieren",
   "education.previewEyebrow": "THEMENBEREICHE",
-  "education.previewHeading": "Geplante Themenbereiche",
   "education.moduleCount": "3 THEMENBEREICHE",
   "education.previewFooter": "pyBIM · Wissensübersicht",
   "education.area1.title": "BIM-Tutorials und Leitfäden",
@@ -17,7 +16,5 @@
   "education.area2.title": "Technische Einblicke und Notizen",
   "education.area2.desc": "Fachartikel und Aktualisierungen zu relevanten Engineering-Themen.",
   "education.area3.title": "Workflow- und Tool-Leitfäden",
-  "education.area3.desc": "Praxisanleitungen zu Engineering-Workflows und ausgewählten Werkzeugen, sobald diese verfügbar sind.",
-  "education.home": "Home",
-  "education.education": "Bildung"
+  "education.area3.desc": "Praxisanleitungen zu Engineering-Workflows und ausgewählten Werkzeugen, sobald diese verfügbar sind."
 }

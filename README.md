@@ -15,10 +15,10 @@ pyBIM is a specialized engineering and software development lab for the Architec
 - 📈 **Interactive Calculators & ROI Engine**:
   - **Project Execution Calculator**: Calculates timeline compression and financial margins.
   - **Infrastructure Calculator**: Custom GPU/VRAM hardware and deployment topology estimator.
-  - **ROI Excel Generator (`lib/roiExcelGenerator.js`)**: Generates ISO 19650 audited, multi-sheet Excel workbooks dynamically.
+  - **ROI Client-Side Engine (`lib/roi/roiWorkbookBuilder.js`)**: Generates ISO 19650 audited, multi-sheet Excel workbooks client-side via in-browser ExcelJS with automated Resend lead notifications.
 - 🌓 **Dual Theme Engine**: Native Dark and Light mode toggle with zero hydration flash (`ThemeContext.js`).
-- 🌐 **Trilingual Native Routing**: Complete localization across English (`en`), Italian (`it`), and German (`de`).
-- ⚡ **High-Performance Next.js 14 App Router**: 127 static pre-rendered routes (SSG/SSR) with optimal first-load JS.
+- 🌐 **Trilingual Native Multi-Domain Routing**: Complete localization across English (`en`), Italian (`it`), and German (`de`) with cross-domain canonical binding (`pybim.com` & `pybim.it`).
+- ⚡ **High-Performance Next.js 15 App Router**: Modern React 19 architecture compiled for edge execution via OpenNext Cloudflare.
 - 🔍 **Enterprise SEO & Structured Data**: JSON-LD schemas (`Organization`, `ProfessionalService`, `FAQPage`), dynamic sitemaps, and localized `hreflang` tags.
 
 ---
@@ -26,11 +26,14 @@ pyBIM is a specialized engineering and software development lab for the Architec
 ## 🛠️ Technology Stack
 
 ### Web & Cloud Platform
-- **Framework**: [Next.js 14 (App Router)](https://nextjs.org/)
-- **UI & Styling**: React 18, [Tailwind CSS](https://tailwindcss.com/), Lucide Icons
-- **Security & Auth**: JWT (`jose`), Sliding Window In-Memory Rate Limiting, Middleware Protection
-- **Spreadsheet Generation**: ExcelJS (Dynamic ISO 19650 ROI Matrix)
-- **Deployment**: Cloudflare Workers + OpenNext / European Cloud / Air-Gapped Local Appliance
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+- **UI & Styling**: React 19, [Tailwind CSS](https://tailwindcss.com/), Lucide Icons
+- **Typography**: Local Fonts via `next/font/local` (Inter & JetBrains Mono)
+- **Security & Auth**: JWT (`jose`), Sliding Window In-Memory Rate Limiting, Cloudflare Turnstile, Middleware Protection
+- **Communications**: Resend API with SMTP fail-closed fallback
+- **Analytics**: Google Analytics 4 with GDPR Basic Consent Mode
+- **Spreadsheet Generation**: In-browser ExcelJS (`lib/roi/roiWorkbookBuilder.js`)
+- **Deployment**: Cloudflare Workers via OpenNext Cloudflare 1.20 / European Cloud / Air-Gapped Local Appliance
 
 ### BIM & Algorithmic Automation Ecosystem
 - **Core Languages**: C# (.NET 8 / .NET Framework 4.8), Python 3.11+, JavaScript / TypeScript
@@ -72,15 +75,16 @@ c:\bim\
 │   ├── api/                          # Next.js Serverless Route Handlers
 │   │   ├── auth/                     # Login, Logout, Register endpoints
 │   │   ├── contact/                  # Audit dispatch endpoint
-│   │   └── roi-matrix/               # Dynamic ISO 19650 Excel file generation
+│   │   ├── careers/                  # Spontaneous application intake
+│   │   └── roi-matrix/               # Corporate eligibility & lead dispatch (/eligibility)
 │   ├── robots.js                     # Search Engine Robots Configuration
-│   └── sitemap.js                    # Dynamic Multilingual Sitemap (160+ URLs)
+│   └── sitemap.js                    # Dynamic Multilingual Sitemap (Domain-separated)
 ├── components/
 │   ├── layout/                       # Header, Footer, MobileBottomNav, LocalizedLink
 │   ├── pages/                        # Page orchestrators (HomePageLayout, etc.)
 │   ├── portal/                       # Client Portal views (Dashboard, Support, etc.)
 │   ├── sections/
-│   │   ├── home/                     # 8 Modular Homepage Sections:
+│   │   ├── home/                     # Modular Homepage Sections:
 │   │   │   ├── HeroSection.js        # Sovereign AI & Firewalled Infrastructure
 │   │   │   ├── ParadigmShift.js      # Margin Erosion vs Algorithmic Execution
 │   │   │   ├── DeploymentModels.js   # Edge Appliance, Enterprise IT & GPU-VPS
@@ -88,27 +92,29 @@ c:\bim\
 │   │   │   ├── SystemBenchmarks.js   # Execution metrics & ISO compliance
 │   │   │   ├── CoreArchitects.js     # Practicing Engineers & AI Architects
 │   │   │   ├── StrategicEcosystem.js # Autodesk API & OpenBIM Integration
-│   │   │   └── ValidationProtocol.js # Proof of Concept (PoC) Audit CTA
+│   │   │   └── FinalProjectCtaBanner.js # Project Enquiry & Scope Definition CTA
 │   │   ├── faq-section.js            # Technical FAQ Accordion
 │   │   └── team-partners-section.js  # Core Team & Ecosystem Showcase
-│   └── ui/                           # Reusable UI (ThemeToggle, CookieConsent, Modals)
+│   └── ui/                           # Reusable UI (ThemeToggle, CookieConsent, Modals, EngineeringBackdrop)
 ├── lib/
 │   ├── data/                         # Data-driven JSON & JS sources
-│   │   ├── home.json                 # Complete 8-section content across en, it, de
+│   │   ├── home.json                 # Complete section content across en, it, de
 │   │   ├── legacy-slugs.js           # Lightweight compatibility manifest for legacy URLs
 │   │   ├── portfolio-public-data.js  # Curated portfolio & R&D workstreams
 │   │   ├── servicesPageData.js       # Services capabilities data
 │   │   └── team-data.json            # Leadership & engineering profiles
+│   ├── roi/                          # Client-side ROI Excel calculation & workbook engine
+│   │   ├── roiWorkbookBuilder.js     # Browser ExcelJS 4-worksheet builder
+│   │   └── roiSchema.js              # Calculation algorithms & benchmark matrix
 │   ├── translations/                 # i18n Translation Dictionaries (en, it, de)
-│   │   ├── en/                       # English dictionaries (15 domain files)
-│   │   ├── it/                       # Italian dictionaries (15 domain files)
-│   │   ├── de/                       # German dictionaries (15 domain files)
+│   │   ├── en/                       # English dictionaries (14 domain files)
+│   │   ├── it/                       # Italian dictionaries (14 domain files)
+│   │   ├── de/                       # German dictionaries (14 domain files)
 │   │   └── index.js                  # Master dictionary aggregator
 │   ├── auth.js                       # JWT signing/verification & demo user store
 │   ├── LanguageContext.js            # Global i18n routing & translation provider
 │   ├── rateLimit.js                  # In-memory sliding-window request throttling
-│   ├── roiExcelGenerator.js          # ISO 19650 Excel matrix builder
-│   ├── site-copy.js                  # Contact details & global SEO copies
+│   ├── site-copy.js                  # Contact details & global SEO metadata
 │   └── ThemeContext.js               # Dark/Light theme provider with localStorage sync
 ├── middleware.js                     # i18n locale routing & portal route protection
 ├── tailwind.config.js                # Custom brand color tokens & dark-mode utilities

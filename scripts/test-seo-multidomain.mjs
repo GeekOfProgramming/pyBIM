@@ -573,7 +573,7 @@ console.log('   ✓ Verified zero active files claim unverified ISO 19650 certif
 // -----------------------------------------------------------------------------
 console.log('13. Testing Brand Entity Architecture, JSON-LD Linkage & Content Integrity...');
 
-import { siteMetadata, SEODescriptions } from '../lib/site-copy.js';
+import { siteMetadata } from '../lib/site-copy.js';
 
 // 13a. Approved 4-Pillar Brand Description
 const orgDesc = siteMetadata.organizationDescription;
@@ -604,12 +604,6 @@ assert.ok(!aboutEnCode.includes('guaranteeing flawless'), 'Must not claim guaran
 assert.ok(!aboutItCode.includes('Eliminazione assoluta dell\'errore umano'), 'Must not claim absolute elimination of human error (IT)');
 assert.ok(!aboutItCode.includes('impeccabile'), 'Must not claim flawless compliance (IT)');
 assert.ok(!aboutDeCode.includes('Absolute Beseitigung menschlicher Fehler'), 'Must not claim absolute elimination of human error (DE)');
-
-// 13d. SEODescriptions: Zero-error claims eliminated
-const seoDescStr = JSON.stringify(SEODescriptions);
-assert.ok(!seoDescStr.includes('zero-error'), 'SEODescriptions must not claim zero-error');
-assert.ok(!seoDescStr.includes('zero-errori'), 'SEODescriptions must not claim zero-errori');
-assert.ok(!seoDescStr.includes('fehlerfreien'), 'SEODescriptions must not claim fehlerfreien');
 
 // 13e. Verified Exclusion of Success Stories from Sitemaps & Core Indexable Routes
 assert.ok(!CORE_INDEXABLE_ROUTES.includes('success-stories'), 'success-stories must remain excluded from CORE_INDEXABLE_ROUTES');

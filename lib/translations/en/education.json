@@ -9,7 +9,6 @@
   "education.primaryCta": "Explore Our Services",
   "education.secondaryCta": "Contact pyBIM",
   "education.previewEyebrow": "KNOWLEDGE AREAS",
-  "education.previewHeading": "Planned Knowledge Areas",
   "education.moduleCount": "3 CONTENT AREAS",
   "education.previewFooter": "pyBIM · Knowledge Preview",
   "education.area1.title": "BIM Tutorials & Guides",
@@ -17,7 +16,5 @@
   "education.area2.title": "Engineering Notes & Updates",
   "education.area2.desc": "Technical articles and updates focused on relevant engineering topics.",
   "education.area3.title": "Workflow & Tool Guides",
-  "education.area3.desc": "Guidance on engineering workflows and selected tools as material becomes available.",
-  "education.home": "Home",
-  "education.education": "Education"
+  "education.area3.desc": "Guidance on engineering workflows and selected tools as material becomes available."
 }

@@ -335,26 +335,6 @@
       ],
       "closing_statement": "Different project requirements. A collaboration model adapted to your scope."
     },
-    "validationProtocol": {
-      "section_title": "The pyBIM Proof of Concept (PoC) Simulation",
-      "description": "We do not sell theoretical software. We deploy a strict, 48-hour algorithmic simulation to prove mathematical ROI directly on your operational bottlenecks.",
-      "points": [
-        {
-          "title": "Secure Ingestion",
-          "desc": "Submit a sample of your non-classified EIR documents or heaviest Revit models."
-        },
-        {
-          "title": "Algorithmic Execution",
-          "desc": "Experience the exact processing speed of our Local LLMs and Python pipelines extracting data and resolving clashes."
-        },
-        {
-          "title": "Zero Financial Risk",
-          "desc": "Validate our machine precision and strict ISO 19650 compliance before committing to full enterprise deployment."
-        }
-      ],
-      "cta": "REQUEST POC AUDIT",
-      "microcopy": "(100% Free & Secure Data Handling. Validate your heaviest Revit models through our local pipelines. Corporate email domains only. No credit card required.)"
-    },
     "finalProjectCta": {
       "badge": "BIM ENGINEERING · PROJECT DELIVERY",
       "headline": "Ready to Move Your BIM Project Forward?",
@@ -708,26 +688,6 @@
       ],
       "closing_statement": "Requisiti di progetto differenti. Un modello di collaborazione su misura per il vostro ambito operativo."
     },
-    "validationProtocol": {
-      "section_title": "La Simulazione Proof of Concept (PoC) di pyBIM",
-      "description": "Non vendiamo software teorico. Eseguiamo una rigorosa simulazione algoritmica di 48 ore per dimostrare il ROI matematico direttamente sui vostri colli di bottiglia operativi.",
-      "points": [
-        {
-          "title": "Ingestione Sicura",
-          "desc": "Inviaci un estratto dei tuoi capitolati informativi (EIR) non classificati o i tuoi modelli Revit più pesanti."
-        },
-        {
-          "title": "Esecuzione Algoritmica",
-          "desc": "Sperimenta l'esatta velocità di elaborazione dei nostri LLM locali e delle pipeline Python nell'estrazione dati e risoluzione delle interferenze."
-        },
-        {
-          "title": "Zero Rischio Finanziario",
-          "desc": "Valida la nostra precisione automatizzata e la rigorosa conformità ISO 19650 prima di impegnarti nell'adozione aziendale completa."
-        }
-      ],
-      "cta": "RICHIEDI AUDIT POC",
-      "microcopy": "(Gestione dei dati 100% gratuita e sicura. Valida i tuoi modelli Revit più complessi tramite le nostre pipeline locali. Solo domini email aziendali. Nessuna carta di credito richiesta.)"
-    },
     "finalProjectCta": {
       "badge": "INGEGNERIA BIM · CONSEGNA PROGETTUALE",
       "headline": "Pronti a far avanzare il vostro progetto BIM?",
@@ -1080,26 +1040,6 @@
         }
       ],
       "closing_statement": "Unterschiedliche Projektanforderungen. Ein Kooperationsmodell, abgestimmt auf Ihren Leistungsumfang."
-    },
-    "validationProtocol": {
-      "section_title": "Die pyBIM Proof-of-Concept (PoC) Simulation",
-      "description": "Wir verkaufen keine theoretische Software. Wir führen eine rigorose 48-Stunden-Algorithmen-Simulation durch, um den mathematischen ROI direkt an Ihren operativen Engpässen nachzuweisen.",
-      "points": [
-        {
-          "title": "Sichere Datenerfassung",
-          "desc": "Reichen Sie eine Stichprobe Ihrer nicht klassifizierten AIA-Dokumente oder anspruchsvollsten Revit-Modelle ein."
-        },
-        {
-          "title": "Algorithmische Ausführung",
-          "desc": "Erleben Sie die exakte Verarbeitungsgeschwindigkeit unserer lokalen LLMs und Python-Pipelines bei der Datenextraktion und Kollisionsauflösung."
-        },
-        {
-          "title": "Kein finanzielles Risiko",
-          "desc": "Validieren Sie unsere Maschinenpräzision und strikte ISO 19650-Konformität vor der unternehmensweiten Einführung."
-        }
-      ],
-      "cta": "POC-AUDIT ANFORDERN",
-      "microcopy": "(100 % kostenlose & sichere Datenverarbeitung. Testen Sie Ihre komplexesten Revit-Modelle über unsere lokalen Pipelines. Nur geschäftliche E-Mail-Domains. Keine Kreditkarte erforderlich.)"
     },
     "finalProjectCta": {
       "badge": "BIM-ENGINEERING · PROJEKTABWICKLUNG",

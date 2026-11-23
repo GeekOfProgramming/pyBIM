@@ -144,6 +144,7 @@ export default function ContactPageLayout() {
         serviceId: selectedServiceId,
         disciplines: selectedDisciplines,
         otherScope: otherScope.trim(),
+        locale: language,
         turnstileToken
       };
       const res = await fetch("/api/contact", {

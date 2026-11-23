@@ -36,7 +36,7 @@ export async function POST(request) {
 
     if (!process.env.JWT_SECRET) {
       return NextResponse.json(
-        { error: 'Portal authentication service is not configured on this staging environment.' },
+        { error: 'Portal authentication service is temporarily unavailable.' },
         { status: 503 }
       );
     }

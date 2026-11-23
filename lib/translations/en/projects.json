@@ -11,7 +11,6 @@
   "projects.nav.development": "AI & LLM Development",
   "projects.nav.workstreams": "Active Research Workstreams",
   "projects.nav.testimonials": "Client Testimonials",
-
   "projects.completed.eyebrow": "COMPLETED ENGINEERING",
   "projects.completed.title": "Completed Projects",
   "projects.completed.subtitle": "Delivered BIM coordination, Revit automation, and model information structures.",
@@ -20,7 +19,6 @@
   "projects.completed.status": "IN PREPARATION",
   "projects.completed.badge": "Curated References // In Preparation",
   "projects.completed.safeguard": "Strict publication safeguard: No placeholder or unverified client data is published.",
-
   "projects.dev.eyebrow": "APPLIED RESEARCH & DEVELOPMENT",
   "projects.dev.title": "AI & LLM Development",
   "projects.dev.subtitle": "Applied research in semantic BIM querying, retrieval-augmented technical workflows, and code automation.",
@@ -40,20 +38,16 @@
   "projects.nav.index_label": "INDEX:",
   "projects.nav.aria_label": "Success Stories section index",
   "projects.hero.aria_label": "Success Stories Hero",
-
   "projects.dev.pipeline.badge_input": "INPUT",
   "projects.dev.pipeline.badge_context": "CONTEXT",
   "projects.dev.pipeline.badge_synthesis": "SYNTHESIS",
   "projects.dev.pipeline.badge_output": "OUTPUT",
-
   "projects.dev.ws_status.research": "RESEARCH",
   "projects.dev.ws_status.prototype": "PROTOTYPE",
   "projects.dev.ws_status.in_development": "IN DEVELOPMENT",
-
   "projects.dev.ws1_focus": "IFC & RVT Schema",
   "projects.dev.ws2_focus": "Revit API & pyRevit",
   "projects.dev.ws3_focus": "Tender & Model Audit",
-
   "projects.dev.tags.semantic_indexing": "Semantic Indexing",
   "projects.dev.tags.openbim_ifc": "OpenBIM / IFC",
   "projects.dev.tags.natural_language_parsing": "Natural Language Parsing",
@@ -63,7 +57,6 @@
   "projects.dev.tags.tender_spec_parsing": "Tender Spec Parsing",
   "projects.dev.tags.cross_parameter_audit": "Cross-Parameter Audit",
   "projects.dev.tags.verification_reports": "Verification Reports",
-
   "projects.dev.step5_desc": "Audited data tables, pyRevit scripts, parameter verification reports",
   "projects.dev.human_review_notice": "Human Engineering Oversight: All LLM experiments operate under strict engineer-in-the-loop validation. Outputs are never autonomous.",
   "projects.dev.workstreams_heading": "Active Research Workstreams",
@@ -78,17 +71,8 @@
   "projects.dev.ws3_status": "IN DEVELOPMENT",
   "projects.dev.ws3_desc": "Experimenting with automated cross-checking of tender requirements against extracted model parameters.",
   "projects.dev.disclaimer": "Notice: The items above reflect internal research and development prototypes. They are not commercialized software products or automated guarantees.",
-
   "projects.testimonials.eyebrow": "pyBIM / PERSPECTIVES",
   "projects.testimonials.title": "Client Testimonials",
-  "projects.testimonials.subtitle": "Authentic perspectives and feedback from engineering collaborations.",
-  "projects.testimonials.empty_title": "Client Perspectives in Preparation",
   "projects.testimonials.empty_desc": "We are preparing authentic client perspectives. Verified feedback and collaboration reviews will be published here as projects conclude and formal authorization is received.",
-  "projects.testimonials.status": "IN PREPARATION",
-  "projects.testimonials.badge": "AUTHENTICATION // PENDING RELEASE APPROVAL",
-
-  "projects.all.title": "Completed Projects",
-  "projects.featured.title": "AI & LLM Development",
-  "projects.breadcrumb.home": "Home",
-  "projects.breadcrumb.projects": "Success Stories"
+  "projects.testimonials.badge": "AUTHENTICATION // PENDING RELEASE APPROVAL"
 }

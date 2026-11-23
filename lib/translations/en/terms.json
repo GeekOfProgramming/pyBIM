@@ -1,32 +1,25 @@
 {
   "terms.hero.title": "Terms & Conditions",
-  "terms.hero.breadcrumb": "Terms & Conditions",
   "terms.intro": "Welcome to pyBIM. This page provides information regarding public website access, technical inquiries, and the framework governing commercial engineering engagements.",
-
   "terms.status.badge": "Publication Status",
   "terms.status.title": "Website Terms of Use & Legal Notice",
   "terms.status.desc": "General Terms of Use and operational guidelines for pybim.com are currently published for informational and pre-contractual guidance. Substantive commercial conditions for professional engineering services, automation deliverables, and Sovereign AI installations are executed exclusively through separate, bilateral B2B agreements (MSAs, SOWs, and NDAs).",
-
   "terms.sec1.title": "1. Public Website Access & Scope",
   "terms.sec1.desc": "The pyBIM website presents engineering capabilities, computational workflows, and technical software solutions.",
   "terms.sec1.item1": "Public website content, articles, and calculators are provided for preliminary evaluation and informational purposes.",
   "terms.sec1.item2": "Users agree to navigate the site responsibly and refrain from unauthorized testing, scraping, or disruption of site infrastructure.",
-
   "terms.sec2.title": "2. Inquiries, Early Access & ROI Estimates",
   "terms.sec2.desc": "Communications initiated via site forms or interactive estimation tools are non-binding:",
   "terms.sec2.item1": "Calculations produced by the ROI Matrix represent preliminary mathematical estimates based on user-supplied parameters. They do not constitute financial guarantees or commercial commitments.",
   "terms.sec2.item2": "Formal service scopes, deliverables, and performance commitments are established solely through bilateral commercial contracts.",
-
   "terms.sec3.title": "3. Intellectual Property Notice",
   "terms.sec3.desc": "All materials published on pybim.com—including brand marks, technical diagrams, software architecture overviews, and written guides—are the property of pyBIM or respective licensors.",
   "terms.sec3.item1": "Content may not be copied, redistributed, or reverse-engineered for commercial exploitation without prior written consent.",
   "terms.sec3.item2": "All product and company names mentioned are trademarks of their respective holders.",
-
   "terms.sec4.title": "4. Separate B2B Engineering Agreements",
   "terms.sec4.desc": "Professional engineering engagements are delivered under tailored contractual frameworks:",
   "terms.sec4.item1": "BIM execution, computational scripting, and custom plugin development are governed by bilateral Master Service Agreements (MSAs) and Statements of Work (SOWs).",
   "terms.sec4.item2": "Project confidentiality and proprietary model handling are governed by dedicated Non-Disclosure Agreements (NDAs).",
-
   "terms.sec5.title": "5. Website Availability & Inquiries",
   "terms.sec5.desc": "The website is maintained to provide reliable access to technical information.",
   "terms.sec5.item1": "pyBIM strives for continuous availability, but access may be subject to routine maintenance or technical interruptions.",

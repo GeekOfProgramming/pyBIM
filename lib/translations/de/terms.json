@@ -1,32 +1,25 @@
 {
   "terms.hero.title": "Allgemeine Geschäftsbedingungen",
-  "terms.hero.breadcrumb": "Allgemeine Geschäftsbedingungen",
   "terms.intro": "Willkommen bei pyBIM. Diese Seite enthält Informationen zum Zugriff auf die öffentliche Website, zu technischen Anfragen sowie zum vertraglichen Rahmen für geschäftliche Engineering-Kooperationen.",
-
   "terms.status.badge": "Veröffentlichungsstatus",
   "terms.status.title": "Website-Nutzungsbedingungen & Rechtlicher Hinweis",
   "terms.status.desc": "Die allgemeinen Nutzungsbedingungen und Richtlinien für pybim.com dienen der unverbindlichen Orientierung und vorvertraglichen Information. Maßgebliche kommerzielle Bedingungen für Ingenieurdienstleistungen, Automatisierungsergebnisse und Sovereign-AI-Installationen werden ausschließlich im Rahmen gesonderter, bilateraler B2B-Vereinbarungen (MSAs, SOWs und NDAs) geschlossen.",
-
   "terms.sec1.title": "1. Zugriff auf die öffentliche Website & Geltungsbereich",
   "terms.sec1.desc": "Die pyBIM-Website stellt Engineering-Kompetenzen, computergestützte Workflows und Softwarelösungen dar.",
   "terms.sec1.item1": "Inhalte, Fachartikel und Rechner der öffentlichen Website dienen der vorläufigen Prüfung und Informationszwecken.",
   "terms.sec1.item2": "Nutzer verpflichten sich, die Website verantwortungsvoll zu nutzen und unbefugtes Scraping oder Beeinträchtigungen der Infrastruktur zu unterlassen.",
-
   "terms.sec2.title": "2. Anfragen, Early Access & ROI-Schätzungen",
   "terms.sec2.desc": "Über Formulare oder Schätzwerkzeuge initiierte Kommunikationen sind unverbindlich:",
   "terms.sec2.item1": "Die Berechnungen der ROI-Matrix sind vorläufige mathematische Modellrechnungen auf Basis der Nutzereingaben und stellen keine finanziellen Garantien oder Angebote dar.",
   "terms.sec2.item2": "Verbindliche Leistungsumfänge, Deliverables und Leistungszusagen werden ausschließlich über bilaterale Verträge festgelegt.",
-
   "terms.sec3.title": "3. Hinweis zum geistigen Eigentum",
   "terms.sec3.desc": "Sämtliche auf pybim.com veröffentlichten Materialien – einschließlich Marken, technischer Diagramme, Softwarearchitektur-Übersichten und Leitfäden – sind Eigentum von pyBIM oder den jeweiligen Lizenzgebern.",
   "terms.sec3.item1": "Inhalte dürfen ohne vorherige schriftliche Zustimmung nicht zu kommerziellen Zwecken vervielfältigt, weiterverbreitet oder analysiert werden.",
   "terms.sec3.item2": "Alle genannten Produkt- und Unternehmensnamen sind Marken der jeweiligen Inhaber.",
-
   "terms.sec4.title": "4. Gesonderte B2B-Engineering-Vereinbarungen",
   "terms.sec4.desc": "Professionelle Ingenieurleistungen werden unter gesonderten vertraglichen Rahmenbedingungen erbracht:",
   "terms.sec4.item1": "BIM-Ausführung, Automatisierungsskripte und Plugin-Entwicklungen unterliegen bilateralen Rahmenverträgen (MSAs) und Leistungsbeschreibungen (SOWs).",
   "terms.sec4.item2": "Projektvertraulichkeit und der Umgang mit Kundenmodellen werden durch gesonderte Geheimhaltungsvereinbarungen (NDAs) geschützt.",
-
   "terms.sec5.title": "5. Website-Verfügbarkeit & Kontakt",
   "terms.sec5.desc": "Die Website wird gepflegt, um einen verlässlichen Zugang zu technischen Fachinformationen zu bieten.",
   "terms.sec5.item1": "pyBIM bemüht sich um eine kontinuierliche Verfügbarkeit; Wartungsarbeiten oder technische Unterbrechungen sind jedoch möglich.",

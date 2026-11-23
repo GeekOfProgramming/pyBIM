@@ -16,14 +16,14 @@
     "exceljs": "^4.4.0",
     "framer-motion": "^12.43.0",
     "jose": "^6.2.3",
-    "lucide-react": "^0.468.0",
-    "next": "14.2.35",
+    "lucide-react": "^0.478.0",
+    "next": "^15.5.29",
     "nodemailer": "10.1.4",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "1.15.1",
+    "@opennextjs/cloudflare": "^1.20.18",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "puppeteer-core": "^25.13.0",

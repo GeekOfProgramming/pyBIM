@@ -17,7 +17,7 @@ import {
   Compass
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import ServicesSectionBackdrop from "@/components/sections/services-section-backdrop";
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
 export default function ServicesHero({ data }) {
   const shouldReduceMotion = useReducedMotion();
@@ -194,7 +194,7 @@ export default function ServicesHero({ data }) {
       className="scroll-mt-28 relative w-full overflow-hidden bg-brand-base pt-16 pb-16 md:pt-24 md:pb-24 lg:pt-28 lg:pb-32 border-b border-brand-border/60 transition-colors"
     >
       {/* Custom Services Hero — Engineering Signal Flow */}
-      <ServicesSectionBackdrop variant="services-hero" />
+      <EngineeringBackdrop variant="services-hero" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 xl:gap-16 items-center">

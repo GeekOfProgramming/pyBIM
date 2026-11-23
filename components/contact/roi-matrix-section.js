@@ -323,6 +323,7 @@ export default function RoiMatrixSection() {
           email: businessIdentity.email.trim(),
           privacyAccepted: businessIdentity.privacyAccepted,
           turnstileToken,
+          locale: language,
           idempotencyKey,
           referenceId: stableReferenceId,
           attemptTimestamp,

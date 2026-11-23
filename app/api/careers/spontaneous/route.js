@@ -41,11 +41,11 @@ export async function POST(req) {
       );
     }
 
-    // Fail-closed staging check: Application intake is disabled until HR email/DB integration is attached
+    // Fail-closed policy: Spontaneous application intake is temporarily disabled
     if (process.env.CAREERS_INTAKE_ENABLED !== "true") {
-      console.warn(`[STAGING NOTICE] Careers intake is disabled on staging. Submission from ${email} rejected.`);
+      console.warn(`[CAREERS NOTICE] Careers intake is disabled. Submission from ${email} rejected.`);
       return NextResponse.json(
-        { ok: false, error: "Spontaneous applications intake is disabled on this staging environment." },
+        { ok: false, error: "Spontaneous applications intake is currently disabled." },
         { status: 503 }
       );
     }

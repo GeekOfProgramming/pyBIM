@@ -15,7 +15,7 @@ import {
   FileSpreadsheet
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import ServicesSectionBackdrop from "@/components/sections/services-section-backdrop";
+import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 
 export default function ServicesExecutionPipeline({ data }) {
   const shouldReduceMotion = useReducedMotion();
@@ -93,7 +93,7 @@ export default function ServicesExecutionPipeline({ data }) {
       aria-labelledby={`${baseId}-title`}
     >
       {/* Background Architectural Canvas (Family A - Base) */}
-      <ServicesSectionBackdrop variant="base" />
+      <EngineeringBackdrop variant="base" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         

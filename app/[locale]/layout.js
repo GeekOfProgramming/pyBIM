@@ -1,5 +1,5 @@
 import "../globals.css";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import GoToTop from "@/components/layout/go-to-top";
@@ -8,19 +8,30 @@ import { ThemeProvider } from "@/lib/ThemeContext";
 import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
 import CookieConsent from "@/components/ui/CookieConsent";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
+import { THEME_INIT_SCRIPT } from "@/lib/theme-script";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: [
+    {
+      path: "../../public/fonts/inter-latin-wght-normal.woff2",
+      weight: "100 900",
+      style: "normal",
+    },
+  ],
   display: "swap",
   variable: "--font-inter",
-  weight: ["400", "500", "600", "700", "800"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const jetbrainsMono = localFont({
+  src: [
+    {
+      path: "../../public/fonts/jetbrains-mono-latin-wght-normal.woff2",
+      weight: "100 800",
+      style: "normal",
+    },
+  ],
   display: "swap",
   variable: "--font-jetbrains-mono",
-  weight: ["400", "500", "600"],
 });
 
 import { siteMetadata } from "@/lib/site-copy";
@@ -91,6 +102,12 @@ export function generateStaticParams() {
 export default function RootLayout({ children, params }) {
   return (
     <html lang={params?.locale || "en"} className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          id="pybim-theme-init"
+          dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+        />
+      </head>
       <body className="font-sans min-h-screen bg-brand-base text-brand-textPrimary antialiased">
         <ThemeProvider>
           <LanguageProvider>
