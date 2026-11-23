@@ -9,7 +9,6 @@
   "education.primaryCta": "Esplora i Nostri Servizi",
   "education.secondaryCta": "Contatta pyBIM",
   "education.previewEyebrow": "AREE TEMATICHE",
-  "education.previewHeading": "Aree Tematiche Previste",
   "education.moduleCount": "3 AREE TEMATICHE",
   "education.previewFooter": "pyBIM · Anteprima Contenuti",
   "education.area1.title": "Tutorial e Guide BIM",
@@ -17,7 +16,5 @@
   "education.area2.title": "Approfondimenti e Note Tecniche",
   "education.area2.desc": "Articoli tecnici e aggiornamenti focalizzati su tematiche ingegneristiche rilevanti.",
   "education.area3.title": "Guide ai Workflow e agli Strumenti",
-  "education.area3.desc": "Indicazioni operative sui workflow di ingegneria e strumenti selezionati man mano che il materiale sarà pronto.",
-  "education.home": "Home",
-  "education.education": "Formazione"
+  "education.area3.desc": "Indicazioni operative sui workflow di ingegneria e strumenti selezionati man mano che il materiale sarà pronto."
 }

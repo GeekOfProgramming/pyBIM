@@ -1,17 +1,13 @@
 {
   "cookie_policy.hero.title": "Informativa sui Cookie",
-  "cookie_policy.hero.breadcrumb": "Informativa sui Cookie",
   "cookie_policy.intro": "La presente Informativa sui Cookie descrive l'utilizzo di cookie, archiviazione locale del browser e tecnologie correlate su pybim.com. Privilegiamo la riservatezza e la minimizzazione dei dati: il nostro sito opera senza tracker pubblicitari di terze parti o profilazione cross-site.",
-
   "cookie_policy.iubenda.badge": "Registro Iubenda",
   "cookie_policy.iubenda.title": "Cookie Policy Ospitata su Iubenda",
   "cookie_policy.iubenda.desc": "La nostra Cookie Policy standard è registrata e ospitata sulla piattaforma Iubenda. Con l'attuale account gratuito, l'incorporamento del testo integrale via widget non è supportato. Il documento ufficiale ospitato è accessibile direttamente tramite il link seguente:",
   "cookie_policy.iubenda.button": "Visualizza la Cookie Policy su Iubenda",
   "cookie_policy.iubenda.privacy_link": "Visualizza l'Informativa sulla Privacy",
-
   "cookie_policy.sec1.title": "1. Cosa sono i Cookie e l'Archiviazione Locale?",
   "cookie_policy.sec1.desc": "I cookie e l'archiviazione locale del browser (localStorage) sono meccanismi di memorizzazione salvati sul tuo dispositivo durante l'uso del sito web. Consentono di ricordare le preferenze di interfaccia selezionate dall'utente (come il tema) e proteggere i moduli.",
-
   "cookie_policy.sec2.title": "2. Tecnologie di Archiviazione Utilizzate su pybim.com",
   "cookie_policy.sec2.desc": "Il nostro sito web distingue due categorie di archiviazione:",
   "cookie_policy.sec2.item1.title": "Archiviazione Strettamente Necessaria (Sempre Attiva):",
@@ -21,19 +17,16 @@
   "cookie_policy.sec2.item1.bullet3": "Token di sicurezza Cloudflare Turnstile: Token crittografici effimeri generati da Cloudflare per proteggere i moduli da invii automatici di bot.",
   "cookie_policy.sec2.item2.title": "Archiviazione di Analisi Opzionale:",
   "cookie_policy.sec2.item2.desc": "Destinata alla misurazione aggregata del traffico nel rispetto della privacy tramite Google Analytics 4 in Basic Consent Mode. Stato: Attualmente dormiente in produzione fino alla configurazione di un Measurement ID autorizzato. Quando configurata, gli script e i cookie di analisi rimangono rigorosamente disabilitati senza consenso esplicito nelle Preferenze Cookie. L'anonimizzazione IP è sempre attiva e le funzioni pubblicitarie sono disabilitate in modo permanente.",
-
   "cookie_policy.sec3.title": "3. Infrastrutture e Servizi di Terze Parti",
   "cookie_policy.sec3.desc": "Il sito web pubblico interagisce con i seguenti fornitori tecnici:",
   "cookie_policy.sec3.item1": "Cloudflare (Workers e Turnstile): Infrastruttura di rete edge, mitigazione DDoS e protezione anti-bot senza cookie pubblicitari.",
   "cookie_policy.sec3.item2": "Resend: Servizio di email transazionali utilizzato per recapitare le richieste degli utenti e le notifiche lead ROI al supporto pyBIM.",
   "cookie_policy.sec3.item3": "Iubenda: Piattaforma esterna per l'hosting della documentazione privacy e cookie.",
   "cookie_policy.sec3.item4": "Google Analytics 4: Predisposto in Basic Consent Mode dormiente per metriche di traffico aggregate. Attivo solo se esplicitamente configurato tramite variabili di ambiente e previo consenso dell'utente.",
-
   "cookie_policy.sec4.title": "4. Gestione delle Preferenze",
   "cookie_policy.sec4.desc": "È possibile verificare e modificare le proprie preferenze in qualsiasi momento:",
   "cookie_policy.sec4.button": "Apri Preferenze Cookie",
   "cookie_policy.sec4.browser_info": "È inoltre possibile cancellare o bloccare l'archiviazione locale tramite le impostazioni del browser. La cancellazione del localStorage ripristinerà il tema predefinito e la visualizzazione del banner di consenso.",
-
   "cookie.banner.title": "Scelte su Cookie e Privacy",
   "cookie.banner.desc_prefix": "Utilizziamo l'archiviazione strettamente necessaria per il funzionamento del sito e analisi anonime opzionali per misurare le prestazioni. Puoi gestire le tue preferenze o consultare la nostra",
   "cookie.banner.privacy_policy": "Informativa sulla Privacy",
@@ -42,7 +35,6 @@
   "cookie.banner.btn_reject_optional": "Rifiuta opzionali",
   "cookie.banner.btn_customize": "Personalizza",
   "cookie.banner.btn_accept_all": "Accetta tutti",
-
   "cookie.modal.title": "Preferenze Cookie",
   "cookie.modal.desc": "Gestisci quali tecnologie di memorizzazione autorizzare. Le tecnologie strettamente necessarie non possono essere disattivate poiché garantiscono la sicurezza e il funzionamento del sito.",
   "cookie.category.necessary.title": "Strettamente Necessari",

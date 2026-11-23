@@ -1,56 +1,46 @@
 {
   "privacy.hero.title": "Informativa sulla Privacy",
-  "privacy.hero.breadcrumb": "Informativa sulla Privacy",
   "privacy.intro": "pyBIM si impegna a rispettare la privacy degli utenti e a gestire i dati in modo responsabile, in conformità con i principi europei di protezione dei dati (GDPR - Regolamento UE 2016/679). Questo documento descrive le modalità di trattamento delle informazioni sul sito web pubblico, nei moduli di contatto e nello strumento di stima ROI.",
-  
   "privacy.iubenda.badge": "Registro Policy Iubenda",
   "privacy.iubenda.title": "Documento Privacy Ospitato su Iubenda",
   "privacy.iubenda.desc": "La nostra Informativa sulla Privacy standard è registrata e ospitata sulla piattaforma Iubenda. Con l'attuale configurazione con account gratuito, l'incorporamento del testo integrale via widget non è supportato. Il documento ufficiale ospitato è accessibile direttamente tramite il link seguente:",
   "privacy.iubenda.button": "Visualizza la Privacy Policy su Iubenda",
   "privacy.iubenda.cookie_link": "Visualizza la Cookie Policy su Iubenda",
-
   "privacy.sec1.title": "1. Titolare del Trattamento e Contatti",
   "privacy.sec1.desc": "Per qualsiasi informazione relativa al trattamento dei dati su questo sito web:",
   "privacy.sec1.list1": "Organizzazione: pyBIM (Engineering & Automation Lab)",
   "privacy.sec1.list2": "Desk di Contatto: info@pybim.com",
   "privacy.sec1.list3": "Sito Web: https://pybim.com",
   "privacy.sec1.list4": "Richieste Privacy: Contattaci a info@pybim.com per chiarimenti o richieste sui dati.",
-
   "privacy.sec2.title": "2. Categorie di Dati Raccolti",
   "privacy.sec2.desc": "Raccogliamo e gestiamo le informazioni nei seguenti contesti:",
   "privacy.sec2.item1.title": "Dati Forniti Volontariamente dall'Utente:",
   "privacy.sec2.item1.desc": "Nome, indirizzo email, ruolo aziendale, requisiti di progetto e specifiche tecniche fornite volontariamente tramite i moduli di Contatto, Early Access o ROI Matrix.",
   "privacy.sec2.item2.title": "Dati Tecnici e di Sicurezza della Navigazione:",
   "privacy.sec2.item2.desc": "Parametri tecnici della richiesta inclusi indirizzo IP, caratteristiche del browser/dispositivo, data/ora e token di verifica Cloudflare Turnstile impiegati per difendere gli endpoint web da abusi automatizzati.",
-
   "privacy.sec3.title": "3. Finalità del Trattamento e Funzionamento dello Strumento ROI",
   "privacy.sec3.desc": "I dati sono trattati per specifiche finalità operative:",
   "privacy.sec3.item1": "Rispondere alle richieste tecniche, valutazioni preliminari di progetto e richieste di offerta.",
   "privacy.sec3.item2": "Funzionamento dello strumento ROI: Il calcolo ROI e la generazione del file Excel (.xlsx) avvengono lato client direttamente nel browser dell'utente. Quando si richiede il download, una notifica automatica con i parametri di stima viene recapitata al team di supporto pyBIM per agevolare le successive comunicazioni.",
   "privacy.sec3.item3": "Tutelare l'integrità del sito web, prevenire invii automatici da parte di bot e mitigare tentativi di attacchi denial-of-service (Cloudflare Turnstile).",
   "privacy.sec3.item4": "Adempiere agli obblighi commerciali, contabili e legali conseguenti alla stipula di accordi B2B formali.",
-
   "privacy.sec4.title": "4. Base Giuridica del Trattamento",
   "privacy.sec4.desc": "Il trattamento dei dati personali si fonda sulle seguenti basi giuridiche:",
   "privacy.sec4.item1": "Comunicazioni precontrattuali avviate su richiesta dell'utente (richieste di contatto o informazioni).",
   "privacy.sec4.item2": "Legittimo interesse alla protezione dell'infrastruttura web, prevenzione dello spam e gestione delle relazioni commerciali.",
   "privacy.sec4.item3": "Obblighi di legge applicabili alle transazioni commerciali stipulate.",
-
   "privacy.sec5.title": "5. Conservazione dei Dati",
   "privacy.sec5.desc": "Conserviamo le informazioni per il tempo ragionevolmente necessario alle comunicazioni di lavoro o secondo quanto richiesto dalla legge:",
   "privacy.sec5.item1": "Comunicazioni di contatto: I messaggi di contatto e le notifiche lead ROI vengono conservati per la durata delle valutazioni tecniche e dei successivi dialoghi commerciali, salvo richiesta di cancellazione.",
   "privacy.sec5.item2": "Documentazione commerciale e contrattuale: Contratti B2B, fatture e registrazioni contabili sono conservati in conformità con i requisiti fiscali e legali applicabili.",
   "privacy.sec5.item3": "Deployment di ingegneria dei clienti: La gestione dei dati, dei modelli e la riservatezza per i progetti Sovereign AI e BIM in outsourcing sono disciplinate da accordi specifici e NDA bilaterali con ciascun cliente.",
-
   "privacy.sec6.title": "6. Infrastrutture e Servizi di Terze Parti",
   "privacy.sec6.desc": "pyBIM non cede né vende dati personali a terzi. Per le operazioni del sito web pubblico vengono impiegati fornitori consolidati:",
   "privacy.sec6.item1": "Cloudflare, Inc. — Hosting edge globale, content delivery, mitigazione DDoS e verifica anti-bot Turnstile.",
   "privacy.sec6.item2": "Resend, Inc. — Servizio di email transazionali utilizzato per recapitare le richieste dei moduli di contatto e le notifiche di stima ROI al supporto pyBIM.",
   "privacy.sec6.item3": "Iubenda — Piattaforma esterna per la gestione e l'hosting della documentazione privacy e cookie.",
-
   "privacy.sec7.title": "7. Misure di Sicurezza",
   "privacy.sec7.desc": "Adottiamo misure tecniche volte a tutelare le informazioni, inclusa la crittografia di trasporto (TLS) per gli endpoint web, la validazione strutturata dei dati API e controlli difensivi anti-bot. Per i flussi di lavoro ingegneristici Sovereign AI dei clienti, pyBIM supporta modelli di esecuzione on-premise air-gapped progettati per funzionare senza telemetria in uscita.",
-
   "privacy.sec8.title": "8. Diritti dell'Utente e Contatti",
   "privacy.sec8.desc": "In conformità con i principi di protezione dei dati, gli utenti possono:",
   "privacy.sec8.item1": "Richiedere l'accesso ai dati personali che li riguardano.",
