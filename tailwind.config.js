@@ -41,8 +41,6 @@ module.exports = {
           accentHover: 'rgb(var(--brand-accentHover) / <alpha-value>)',
           accentAction: 'rgb(var(--brand-accentAction) / <alpha-value>)',
           accentOnAction: 'rgb(var(--brand-accentOnAction) / <alpha-value>)',
-          minor1: '#EAB308',
-          minor2: '#A855F7',
           textPrimary: 'rgb(var(--brand-textPrimary) / <alpha-value>)',
           textSecondary: 'rgb(var(--brand-textSecondary) / <alpha-value>)',
           border: 'rgb(var(--brand-border) / <alpha-value>)',
