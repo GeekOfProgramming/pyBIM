@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/lib/ThemeContext";
 import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
 import CookieConsent from "@/components/ui/CookieConsent";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
+import { THEME_INIT_SCRIPT } from "@/lib/theme-script";
 
 const inter = localFont({
   src: [
@@ -101,6 +102,12 @@ export function generateStaticParams() {
 export default function RootLayout({ children, params }) {
   return (
     <html lang={params?.locale || "en"} className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          id="pybim-theme-init"
+          dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+        />
+      </head>
       <body className="font-sans min-h-screen bg-brand-base text-brand-textPrimary antialiased">
         <ThemeProvider>
           <LanguageProvider>
