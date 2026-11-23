@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2, AlertCircle, ExternalLink, ChevronDown, Chevr
 import { useLanguage } from "@/lib/LanguageContext";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
 import TurnstileWidget from "@/components/common/turnstile-widget";
+import { parseApiResponse, getNetworkErrorMessage } from "@/lib/apiResponse";
 import {
   AUTODESK_CITATION,
   AUTODESK_REFERENCE_HOURS_PER_WEEK,
@@ -314,49 +315,71 @@ export default function RoiMatrixSection() {
       }
 
       // Step C: Server-side verification (Turnstile, Corporate Email, DNS MX, Privacy) and Resend notification dispatch
-      const response = await fetch("/api/roi-matrix/eligibility", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: businessIdentity.name.trim(),
-          companyName: businessIdentity.companyName.trim(),
-          email: businessIdentity.email.trim(),
-          privacyAccepted: businessIdentity.privacyAccepted,
-          turnstileToken,
-          locale: language,
-          idempotencyKey,
-          referenceId: stableReferenceId,
-          attemptTimestamp,
-          quickEstimate: quickValidation.sanitized,
-          useAdvanced: showAdvanced,
-          advancedAssessment: advancedValidation ? advancedValidation.sanitized : null,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || !data.ok) {
+      let response;
+      try {
+        response = await fetch("/api/roi-matrix/eligibility", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: businessIdentity.name.trim(),
+            companyName: businessIdentity.companyName.trim(),
+            email: businessIdentity.email.trim(),
+            privacyAccepted: businessIdentity.privacyAccepted,
+            turnstileToken,
+            locale: language,
+            idempotencyKey,
+            referenceId: stableReferenceId,
+            attemptTimestamp,
+            quickEstimate: quickValidation.sanitized,
+            useAdvanced: showAdvanced,
+            advancedAssessment: advancedValidation ? advancedValidation.sanitized : null,
+          }),
+        });
+      } catch (fetchErr) {
         setVerificationResult({
           ok: false,
-          error: data.error || t("roi.access.err_default"),
+          error: getNetworkErrorMessage(fetchErr, language) || t("roi.access.err_network"),
         });
         if (turnstileRef.current?.reset) turnstileRef.current.reset();
         setTurnstileToken("");
         return;
       }
 
+      const parsed = await parseApiResponse(response, language);
+      if (!parsed.ok) {
+        setVerificationResult({
+          ok: false,
+          error: parsed.error || t("roi.access.err_default"),
+        });
+        if (turnstileRef.current?.reset) turnstileRef.current.reset();
+        setTurnstileToken("");
+        return;
+      }
+      const data = parsed.data;
+
       // Step D: Confirm provider acceptance and trigger browser download of serialized buffer
-      const blob = new Blob([serializedBuffer], {
-        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      });
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = safeFileName;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      setTimeout(() => window.URL.revokeObjectURL(url), 2000);
+      try {
+        const blob = new Blob([serializedBuffer], {
+          type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = safeFileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => window.URL.revokeObjectURL(url), 2000);
+      } catch (downloadErr) {
+        console.error("[ROI WORKBOOK DOWNLOAD FAILED]:", downloadErr);
+        setVerificationResult({
+          ok: false,
+          error: t("roi.access.err_workbook_failed"),
+        });
+        if (turnstileRef.current?.reset) turnstileRef.current.reset();
+        setTurnstileToken("");
+        return;
+      }
 
       // Successfully completed export attempt: clear pending attempt so subsequent exports generate new unique events
       pendingAttemptRef.current = null;
@@ -367,10 +390,10 @@ export default function RoiMatrixSection() {
         fileName: safeFileName,
         data,
       });
-    } catch (_err) {
+    } catch (err) {
       setVerificationResult({
         ok: false,
-        error: t("roi.access.err_network"),
+        error: getNetworkErrorMessage(err, language) || t("roi.access.err_network"),
       });
       if (turnstileRef.current?.reset) turnstileRef.current.reset();
       setTurnstileToken("");
