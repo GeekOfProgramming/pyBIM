@@ -21,11 +21,11 @@ export async function POST(request) {
       );
     }
 
-    // Fail-closed staging policy: Self-registration is intentionally disabled
-    // Production user accounts must be provisioned via managed D1/database storage
+    // Fail-closed security policy: Public self-registration is intentionally disabled
+    // Client Portal accounts are provisioned exclusively by administrative invitation
     return NextResponse.json(
       {
-        error: 'Client Portal self-registration is disabled on this staging environment. Access is granted by invitation only.'
+        error: 'Client Portal self-registration is disabled. Access is granted by invitation only.'
       },
       { status: 403 }
     );
