@@ -44,7 +44,7 @@ import {
  *    - Client-side verification is stateless UX guidance without durable storage.
  */
 export default function RoiMatrixSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const headingId = useId();
   const turnstileRef = useRef(null);
 
