@@ -15,43 +15,17 @@ import {
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
+import { servicesPageData } from "@/lib/data/servicesPageData";
 
 export default function ServicesExecutionRoadmap({ data }) {
   const shouldReduceMotion = useReducedMotion();
   const baseId = useId();
 
-  // Fallback defaults if data is missing
-  const roadmap = data || {
-    tag: "OUR EXECUTION ROADMAP",
-    headline: "Engineering Delivery Today. Intelligent Infrastructure Tomorrow.",
-    subtitle: "pyBIM combines practical BIM engineering services with a phased technology roadmap — from hands-on project delivery to connected automation and private AI infrastructure.",
-    labels: {
-      outcome: "The Outcome",
-      execution: "The Execution",
-      impact: "The Impact",
-      featuredOffering: "FEATURED OFFERING",
-      currentOffering: "CURRENT OFFERING",
-      softwareRoadmap: "SOFTWARE ROADMAP",
-      enterpriseRoadmap: "ENTERPRISE ROADMAP",
-      progressHeading: "Indicative Development Progress",
-      progressNote: "Estimates subject to phased engineering scope"
-    },
-    cards: []
-  };
-
-  const labels = roadmap.labels || {
-    outcome: "The Outcome",
-    execution: "The Execution",
-    impact: "The Impact",
-    featuredOffering: "FEATURED OFFERING",
-    currentOffering: "CURRENT OFFERING",
-    softwareRoadmap: "SOFTWARE ROADMAP",
-    enterpriseRoadmap: "ENTERPRISE ROADMAP",
-    progressHeading: "Indicative Development Progress",
-    progressNote: "Estimates subject to phased engineering scope"
-  };
-
-  const cards = roadmap.cards || [];
+  // Reuse canonical English roadmap data as fallback if data is missing
+  const fallbackRoadmap = servicesPageData.en.roadmap;
+  const roadmap = data || fallbackRoadmap;
+  const labels = roadmap.labels || fallbackRoadmap.labels;
+  const cards = roadmap.cards || fallbackRoadmap.cards;
 
   const getPhaseIcon = (index) => {
     switch (index) {
@@ -131,8 +105,13 @@ export default function ServicesExecutionRoadmap({ data }) {
 
         {/* ========================================================================= */}
         {/* THREE ALIGNED ROADMAP INFORMATION LANES (Shared-Row Subgrid Comparison)   */}
+        {/* Stacked up to lg (1024px) to avoid narrow columns; 3-col subgrid at xl+  */}
         {/* ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-[repeat(9,auto)] gap-8 lg:gap-x-8 lg:gap-y-5 items-stretch">
+        <div
+          role="region"
+          aria-label={labels.timelineAriaLabel || fallbackRoadmap.labels.timelineAriaLabel}
+          className="grid grid-cols-1 xl:grid-cols-3 xl:grid-rows-[repeat(10,auto)] gap-8 xl:gap-x-8 xl:gap-y-5 items-stretch"
+        >
           {cards.map((card, idx) => {
             const isHighlight = Boolean(card.isPrimary);
             const isAvailable = isHighlight;
@@ -148,53 +127,53 @@ export default function ServicesExecutionRoadmap({ data }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className={`group rounded-3xl p-6 sm:p-7 lg:p-8 flex flex-col lg:grid lg:grid-rows-subgrid lg:row-span-9 gap-5 lg:gap-0 transition-all duration-200 relative ${
+                className={`group rounded-3xl p-6 sm:p-7 xl:p-8 flex flex-col xl:grid xl:grid-rows-subgrid xl:row-span-10 gap-5 xl:gap-0 transition-all duration-200 relative min-w-0 ${
                   isHighlight
                     ? "bg-brand-cardElevated border-2 border-brand-primary shadow-lg shadow-brand-primary/10 ring-1 ring-brand-primary/20"
                     : "bg-brand-cardElevated border border-brand-border/90 shadow-sm hover:border-brand-primary/40 hover:shadow-md"
                 }`}
               >
-                {/* Featured Badge for Phase 01 */}
+                {/* Featured Badge for Phase I */}
                 {isHighlight && (
-                  <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-brand-primary to-blue-600 text-white text-technical font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md shadow-brand-primary/20 flex items-center gap-1.5 z-10 pointer-events-none">
-                    <Sparkles className="w-3 h-3 text-white" aria-hidden="true" />
-                    <span>{labels.featuredOffering || "FEATURED OFFERING"}</span>
+                  <div className="absolute -top-3.5 right-5 sm:right-6 max-w-[calc(100%-2.5rem)] bg-gradient-to-r from-brand-primary to-blue-600 text-white text-technical font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md shadow-brand-primary/20 flex items-center gap-1.5 z-10 pointer-events-none">
+                    <Sparkles className="w-3 h-3 text-white shrink-0" aria-hidden="true" />
+                    <span className="truncate">{labels.featuredOffering || fallbackRoadmap.labels.featuredOffering}</span>
                   </div>
                 )}
 
-                {/* Row 1: Header / Category & Status Badge */}
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div 
-                      className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 ${
-                        isHighlight 
-                          ? "bg-brand-primary/10 border border-brand-primary/25" 
-                          : idx === 1
-                          ? "bg-sky-500/10 border border-sky-500/25"
-                          : "bg-cyan-500/10 border border-cyan-500/25"
-                      }`}
-                      aria-hidden="true"
-                    >
-                      {getPhaseIcon(idx)}
-                    </div>
-
-                    <div>
-                      <span className="block text-technical font-mono font-bold uppercase tracking-widest text-brand-primary">
-                        {card.phase || `PHASE 0${idx + 1}`}
-                      </span>
-                      <span className="text-technical font-mono text-brand-textSecondary uppercase block">
-                        {idx === 0 
-                          ? (labels.currentOffering || "CURRENT OFFERING") 
-                          : idx === 1 
-                          ? (labels.softwareRoadmap || "SOFTWARE ROADMAP") 
-                          : (labels.enterpriseRoadmap || "ENTERPRISE ROADMAP")}
-                      </span>
-                    </div>
+                {/* Row 1: Phase Icon, Identifier & Category */}
+                <div className="flex items-start gap-3 min-w-0">
+                  <div
+                    className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 ${
+                      isHighlight
+                        ? "bg-brand-primary/10 border border-brand-primary/25"
+                        : idx === 1
+                        ? "bg-sky-500/10 border border-sky-500/25"
+                        : "bg-cyan-500/10 border border-cyan-500/25"
+                    }`}
+                    aria-hidden="true"
+                  >
+                    {getPhaseIcon(idx)}
                   </div>
 
-                  {/* Status Badge */}
+                  <div className="min-w-0 flex-1">
+                    <span className="block text-technical font-mono font-bold uppercase tracking-widest text-brand-primary">
+                      {card.phase || fallbackRoadmap.cards[idx]?.phase}
+                    </span>
+                    <span className="block text-technical font-mono text-brand-textSecondary uppercase leading-snug break-words">
+                      {idx === 0
+                        ? (labels.currentOffering || fallbackRoadmap.labels.currentOffering)
+                        : idx === 1
+                        ? (labels.softwareRoadmap || fallbackRoadmap.labels.softwareRoadmap)
+                        : (labels.enterpriseRoadmap || fallbackRoadmap.labels.enterpriseRoadmap)}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Row 2: Independent Status Badge Row */}
+                <div className="flex items-start min-w-0">
                   <span
-                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-technical font-mono font-bold uppercase tracking-wider shrink-0 ${
+                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-technical font-mono font-bold uppercase tracking-wider max-w-full ${
                       isAvailable
                         ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30"
                         : idx === 1
@@ -203,117 +182,165 @@ export default function ServicesExecutionRoadmap({ data }) {
                     }`}
                   >
                     {isAvailable ? (
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" aria-hidden="true" />
                     ) : (
-                      <Clock className="w-3.5 h-3.5" aria-hidden="true" />
+                      <Clock className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                     )}
-                    <span>{card.statusTag}</span>
+                    <span className="break-words">{card.statusTag}</span>
                   </span>
                 </div>
 
-                {/* Row 2: Single Phase Title (H3) */}
+                {/* Row 3: Single Phase Title (H3) */}
                 <h3 
                   id={`${baseId}-card-title-${idx}`}
-                  className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25]"
+                  className="text-xl sm:text-[22px] lg:text-card-title font-bold text-brand-textPrimary tracking-tight leading-[1.25] sm:leading-[1.25] lg:leading-[1.25] min-w-0 break-words"
                 >
                   {card.title}
                 </h3>
                 
-                {/* Row 3: Description */}
-                <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed">
+                {/* Row 4: Description */}
+                <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed min-w-0 break-words">
                   {card.description}
                 </p>
 
-                {/* Row 4: Owner-Defined Indicative Progress Bar */}
-                <div className="p-3.5 rounded-2xl bg-brand-surface/60 border border-brand-border/60">
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-technical font-mono font-semibold uppercase tracking-wider text-brand-textSecondary">
-                      {labels.progressHeading || "Indicative Development Progress"}
-                    </span>
-                    <span className={`text-technical font-mono font-bold ${progressStyle.text}`}>
-                      {progress}%
-                    </span>
-                  </div>
+                {/* Row 5: Phase-Specific Commercial Availability / Progress Panel */}
+                <div className="p-3.5 sm:p-4 rounded-2xl bg-brand-surface/60 border border-brand-border/60 flex flex-col justify-between gap-2.5 min-w-0">
+                  {idx === 0 ? (
+                    <>
+                      <span className="text-technical font-mono font-semibold uppercase tracking-wider text-brand-textSecondary">
+                        {labels.availabilityHeading || fallbackRoadmap.labels.availabilityHeading}
+                      </span>
+                      <div className="flex items-center gap-2 text-body-sm font-bold text-emerald-600 dark:text-emerald-400">
+                        <CheckCircle2 className="w-4 h-4 shrink-0" aria-hidden="true" />
+                        <span>{labels.availabilityValue || fallbackRoadmap.labels.availabilityValue}</span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <span className="text-technical font-mono font-semibold uppercase tracking-wider text-brand-textSecondary min-w-0">
+                            {idx === 1
+                              ? (labels.progressHeading || fallbackRoadmap.labels.progressHeading)
+                              : (labels.sharedProgressHeading || fallbackRoadmap.labels.sharedProgressHeading)}
+                          </span>
+                          <span className={`text-technical font-mono font-bold shrink-0 ${progressStyle.text}`}>
+                            {progress}%
+                          </span>
+                        </div>
 
-                  {/* Accessible Progress Bar */}
-                  <div 
-                    role="progressbar"
-                    aria-valuenow={progress}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                    aria-label={`${card.title} - ${labels.progressHeading || "Development progress"}: ${progress}%`}
-                    className={`w-full h-2 rounded-full overflow-hidden ${progressStyle.track}`}
-                  >
-                    <motion.div
-                      className={`h-full rounded-full ${progressStyle.bar}`}
-                      initial={{ width: shouldReduceMotion ? `${progress}%` : "0%" }}
-                      whileInView={{ width: `${progress}%` }}
-                      viewport={{ once: true, margin: "-40px" }}
-                      transition={{ 
-                        duration: shouldReduceMotion ? 0 : 0.85, 
-                        delay: shouldReduceMotion ? 0 : 0.2 + idx * 0.1,
-                        ease: [0.16, 1, 0.3, 1] 
-                      }}
-                    />
-                  </div>
+                        {/* Accessible Progress Bar */}
+                        <div
+                          role="progressbar"
+                          aria-valuenow={progress}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
+                          aria-label={`${card.title} - ${
+                            idx === 1
+                              ? (labels.progressHeading || fallbackRoadmap.labels.progressHeading)
+                              : (labels.sharedProgressHeading || fallbackRoadmap.labels.sharedProgressHeading)
+                          }: ${progress}%`}
+                          className={`w-full h-2 rounded-full overflow-hidden ${progressStyle.track}`}
+                        >
+                          <motion.div
+                            className={`h-full rounded-full ${progressStyle.bar}`}
+                            initial={{ width: shouldReduceMotion ? `${progress}%` : "0%" }}
+                            whileInView={{ width: `${progress}%` }}
+                            viewport={{ once: true, margin: "-40px" }}
+                            transition={{
+                              duration: shouldReduceMotion ? 0 : 0.85,
+                              delay: shouldReduceMotion ? 0 : 0.2 + idx * 0.1,
+                              ease: [0.16, 1, 0.3, 1]
+                            }}
+                          />
+                        </div>
+                      </div>
 
-                  {labels.progressNote && (
-                    <p className="text-technical text-brand-textSecondary/80 mt-2 font-mono">
-                      * {labels.progressNote}
-                    </p>
+                      {idx === 1 ? (
+                        <div className="pt-2 border-t border-brand-border/50 space-y-1 text-technical font-mono">
+                          <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
+                            <span className="text-brand-textSecondary uppercase">
+                              {labels.targetReleaseLabel || fallbackRoadmap.labels.targetReleaseLabel}
+                            </span>
+                            <span className="font-bold text-brand-textPrimary">
+                              {labels.targetReleaseValue || fallbackRoadmap.labels.targetReleaseValue}
+                            </span>
+                          </div>
+                          <p className="text-brand-textSecondary/80 leading-relaxed">
+                            {labels.targetReleaseNote || fallbackRoadmap.labels.targetReleaseNote}
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="pt-2 border-t border-brand-border/50 space-y-1.5 text-technical font-mono">
+                          <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
+                            <span className="text-brand-textSecondary uppercase">
+                              {labels.noReleaseLabel || fallbackRoadmap.labels.noReleaseLabel}
+                            </span>
+                            <span className="font-bold text-brand-textPrimary">
+                              {labels.noReleaseValue || fallbackRoadmap.labels.noReleaseValue}
+                            </span>
+                          </div>
+                          {labels.progressNote && (
+                            <p className="text-brand-textSecondary/80 leading-relaxed">
+                              {labels.progressNote}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
 
-                {/* Row 5: Horizontal Divider */}
+                {/* Row 6: Horizontal Divider */}
                 <div className="border-t border-brand-border/70 w-full my-auto" aria-hidden="true" />
 
-                {/* Row 6: Outcome Block */}
-                <div className="text-body-sm">
+                {/* Row 7: Outcome Block */}
+                <div className="text-body-sm min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <Target className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
                     <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
                       {labels.outcome}:
                     </span>
                   </div>
-                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5">
+                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5 break-words">
                     {card.outcome}
                   </p>
                 </div>
 
-                {/* Row 7: Execution Block */}
-                <div className="text-body-sm">
+                {/* Row 8: Execution Block */}
+                <div className="text-body-sm min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <Terminal className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
                     <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
                       {labels.execution}:
                     </span>
                   </div>
-                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5">
+                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5 break-words">
                     {card.execution}
                   </p>
                 </div>
 
-                {/* Row 8: Impact Block */}
-                <div className="text-body-sm">
+                {/* Row 9: Impact Block */}
+                <div className="text-body-sm min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <Zap className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
                     <span className="text-technical font-mono font-bold uppercase tracking-wider text-brand-textPrimary">
                       {labels.impact}:
                     </span>
                   </div>
-                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5">
+                  <p className="text-body-sm text-brand-textSecondary font-normal leading-relaxed pl-5.5 break-words">
                     {card.impact}
                   </p>
                 </div>
 
-                {/* Row 9: Bottom Baseline CTA Button */}
+                {/* Row 10: Bottom Baseline CTA Button */}
                 <div className="pt-5 border-t border-brand-border/60 w-full mt-auto">
                   <CtaLink
-                    href={card.ctaHref || (isHighlight ? "/contact#audit" : "/contact#priority-queue")}
+                    href={card.ctaHref || fallbackRoadmap.cards[idx]?.ctaHref || (isHighlight ? "/contact#audit" : "/contact#priority-queue")}
                     variant={isHighlight ? "primary" : "secondary"}
                     fullWidth={true}
                   >
-                    {card.ctaText || (isHighlight ? "Discuss Your Project" : "Join Priority Queue")}
+                    {card.ctaText || fallbackRoadmap.cards[idx]?.ctaText}
                   </CtaLink>
                 </div>
 
