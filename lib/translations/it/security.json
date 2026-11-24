@@ -1,17 +1,17 @@
 {
-  "title": "Sicurezza Enterprise & Protocollo di Architettura: Whitepaper CISO",
-  "subtitle": "Protocollo tecnico che distingue le capacità di deployment Sovereign AI per i clienti dalle operazioni del sito web pubblico, con dettagli su architetture di confinamento algoritmico, allineamento agli standard e protezioni edge.",
+  "title": "Sicurezza Dati Ingegneristici & Architettura R&S",
+  "subtitle": "Panoramica tecnica che distingue l'attuale custodia dati dei servizi BIM di Fase I (ACDat/CDE forniti dal cliente e NDA bilaterali) dalla piattaforma cloud pianificata per il 2027 (Fase II, target Q4 2027) e dai concept R&S di Edge AI post-Fase II (senza data di rilascio).",
   "scope_clarification": {
     "title": "Perimetro di Architettura e Modello a Due Zone",
     "badge": "Confine Operativo",
-    "client_zone_title": "Zona 1: Sovereign AI e Ingegneria BIM del Cliente (Capacità di Deployment)",
-    "client_zone_desc": "Topologia di esecuzione on-premise air-gapped progettata per clienti enterprise. Configurabile per operare all'interno della rete LAN aziendale o del VPC privato del cliente. L'architettura supporta LLM locali, esecuzione localizzata di script e plugin Revit C# sviluppati per operare senza trasmettere geometrie o parametri ad API AI pubbliche.",
+    "client_zone_title": "Zona 1: Delivery BIM Attuale & Perimetro R&S Post-Fase II",
+    "client_zone_desc": "Oggi (Fase I), pyBIM eroga modellazione BIM, coordinamento, QA/QC e automazione Revit locale C#/Python all'interno degli ACDat/CDE forniti dal cliente e sotto NDA bilaterali (pyBIM non fornisce oggi una propria piattaforma cloud commerciale). La topologia Edge AI air-gapped illustrata sotto descrive una futura architettura R&S di Fase III il cui sviluppo dedicato inizierà dopo la validazione della Fase II e che non è attualmente disponibile sul mercato.",
     "web_zone_title": "Zona 2: Sito Web Pubblico e Servizi di Contatto (Infrastruttura Attuale)",
     "web_zone_desc": "Ospitato sull'architettura edge di Cloudflare Workers. Gli endpoint pubblici utilizzano Cloudflare Turnstile per la verifica anti-bot a tutela della privacy e Resend per l'invio delle notifiche email transazionali (Contatto e notifiche lead ROI)."
   },
   "block1": {
-    "title": "1. Architettura di Isolamento di Rete (Capacità Zona 1)",
-    "diagram_caption": "Topologia di Esecuzione Air-Gapped Zona 1: Architettura concettuale per il confinamento lato cliente di geometrie BIM e flussi algoritmici nel perimetro LAN aziendale."
+    "title": "1. Topologia Concettuale di Isolamento di Rete (R&S Fase III)",
+    "diagram_caption": "Topologia Concettuale R&S (Non Disponibile Commercialmente): Architettura futura di Fase III studiata per la fase successiva alla validazione della Fase II, orientata all'esecuzione isolata nella rete del cliente."
   },
   "diagram_text": {
     "lan": "PERIMETRO LAN CLIENTE",
@@ -31,55 +31,55 @@
     "rows": [
       {
         "mandate": "ISO 19650-5 (Principi di Sicurezza Informatica)",
-        "requirement": "Prevenzione della dispersione dei metadati e sicurezza del modello",
-        "execution": "Progettato per il deployment offline di LLM e l'esecuzione localizzata all'interno di ambienti controllati dal cliente o CDE crittografati."
+        "requirement": "Tutela dei metadati e custodia del modello",
+        "execution": "L'attuale delivery BIM opera negli ACDat/CDE forniti dal cliente sotto NDA bilaterali; la ricerca di Fase III esplora l'esecuzione offline su reti isolate."
       },
       {
         "mandate": "UNI 11337 (Gestione Digitale)",
-        "requirement": "Gestione sovrana dei dati BIM",
-        "execution": "Script di automazione capaci di operare direttamente sui file Revit locali senza estrazione di geometria verso il cloud."
+        "requirement": "Controllo dei flussi informativi BIM",
+        "execution": "Gli script di automazione di Fase I operano localmente sui file Revit di progetto senza trasmettere geometrie a servizi AI pubblici di terze parti."
       },
       {
         "mandate": "GDPR (Principi Regolamento UE 2016/679)",
-        "requirement": "Minimizzazione dei dati e custodia locale",
-        "execution": "I nodi sovrani operano su reti isolate. Il sito web pubblico raccoglie dati minimi con pratiche di conservazione dichiarate."
+        "requirement": "Minimizzazione dei dati e controllo accessi",
+        "execution": "I file di progetto restano negli ambienti autorizzati dal committente; il sito web raccoglie dati minimi con informative e conservazione dichiarate."
       },
       {
         "mandate": "NDA Bilaterali e Riservatezza",
         "requirement": "Riservatezza dei dati di progetto e integrità CDE",
-        "execution": "Modelli Revit e file IFC dei clienti gestiti attraverso canali CDE concordati, con gestione dei dati disciplinata da contratti bilaterali."
+        "execution": "Modelli Revit e file IFC gestiti esclusivamente attraverso i canali ACDat/CDE del cliente secondo accordi contrattuali bilaterali e NDA."
       }
     ]
   },
   "block3": {
-    "title": "3. Architettura di Custodia Dati Sovereign AI",
-    "notice_title": "AVVISO SUI DEPLOYMENT SOVEREIGN AI DEI CLIENTI",
-    "notice_text": "\"Nelle configurazioni Sovereign Edge AI per i clienti, le architetture pyBIM sono ingegnerizzate per eliminare la telemetria in background. In questa modalità operativa, geometrie BIM proprietarie, parametri e logiche algoritmiche rimangono all'interno del firewall aziendale del cliente senza essere trasmesse ad API AI pubbliche di terze parti.\"",
-    "purge_title": "CICLO DI VITA DELLA MEMORIA EFFIMERA (CAPACITÀ ZONA 1)",
-    "purge_text": "Gli embedding e i vettori di calcolo intermedi della pipeline RAG sono mantenuti in memoria effimera e rilasciati al termine dell'elaborazione. Lo stato persistente dei modelli rimane sotto la custodia dell'Ambiente di Condivisione Dati (CDE) del cliente."
+    "title": "3. Custodia Dati Ingegneristici & Principi Edge AI Futuri",
+    "notice_title": "DISTINZIONE TRA DELIVERY FASE I E RICERCA FASE III",
+    "notice_text": "\"Oggi i dati BIM dei progetti restano negli ambienti ACDat/CDE del cliente sotto NDA bilaterali e gli strumenti locali Revit/Python operano senza inviare geometrie ad API AI pubbliche. Sovereign Enterprise Edge AI è un'architettura R&S post-Fase II — non ancora disponibile sul mercato — progettata per eliminare la telemetria esterna.\"",
+    "purge_title": "DESIGN CONCETTUALE MEMORIA EFFIMERA (R&S FASE III)",
+    "purge_text": "Nell'architettura R&S futura di Fase III (il cui sviluppo dedicato inizierà dopo la validazione della Fase II, senza data annunciata), eventuali vettori temporanei sono pensati per risiedere in memoria volatile e azzerarsi a fine elaborazione."
   },
   "block4": {
     "title": "4. Ingegneria della Sicurezza e Protocolli di Infrastruttura",
-    "sector1_title": "Settore GPU-VPS (Plugin Privati)",
+    "sector1_title": "Automazione Privata & Cloud Connect (Fase I / Target 2027)",
     "sector1_items": [
       {
-        "title": "Supporto Crittografia Dischi",
-        "text": "Supporta la crittografia dei dischi a riposo AES-256 e secure boot su istanze VPS dedicate indicate dal cliente."
+        "title": "Crittografia & Igiene degli Accessi",
+        "text": "Supporto a storage cifrato AES-256 e ambienti isolati per gli strumenti personalizzati di Fase I e i futuri moduli Cloud Connect (target Q4 2027)."
       },
       {
-        "title": "Tunnel di Rete Protetti",
-        "text": "Configurabile per l'accesso amministrativo tramite tunnel autenticati WireGuard o Tailscale, escludendo il traffico non autenticato."
+        "title": "Tunnel di Rete Autenticati",
+        "text": "Accesso controllato tramite tunnel cifrati autenticati (es. WireGuard o Tailscale) quando previsto dalle policy IT del cliente."
       }
     ],
-    "sector2_title": "Settore Edge Appliance (Sovereign AI)",
+    "sector2_title": "Concept Edge Appliance Futuro (R&S Fase III — Senza Data)",
     "sector2_items": [
       {
-        "title": "Architettura OS Hardened",
-        "text": "Supporta distribuzioni Linux rinforzate con controlli di accesso obbligatori quali AppArmor o SELinux."
+        "title": "Architettura OS Hardened in Ricerca",
+        "text": "Architettura concettuale post-Fase II basata su ambienti Linux rinforzati con controlli d'accesso AppArmor o SELinux (non ancora disponibile sul mercato)."
       },
       {
-        "title": "Capacità di Isolamento Hardware",
-        "text": "Può essere distribuito su hardware headless dedicato con porte I/O disabilitate a livello BIOS ove richiesto dal committente."
+        "title": "Concept di Isolamento Locale",
+        "text": "Direzione esplorativa per esecuzione locale dedicata dopo la validazione della Fase II; non costituisce un'offerta commerciale attiva né hardware accreditato."
       }
     ],
     "sector3_title": "Settore Web Pubblico (Cloudflare & Edge)",

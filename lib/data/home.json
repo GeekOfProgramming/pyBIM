@@ -4,7 +4,7 @@
       "badge": "BIM ENGINEERING · PROJECT DELIVERY",
       "title_main": "BIM Engineering That Delivers.",
       "title_highlight": "Technology That Moves It Forward.",
-      "description": "pyBIM supports AEC teams with BIM modeling, model coordination, quality assurance, and structured digital delivery. Our flexible engineering specialists combine established BIM practices with in-house Revit automation and AI-assisted workflows where appropriate.",
+      "description": "pyBIM acts as a BIM Specialist engineering partner—delivering architectural, structural, and MEP BIM modeling, multidisciplinary coordination, model QA/QC, and structured digital deliverables, supported by custom Revit automation and technical assistance within your project CDE.",
       "cta_primary": "Discuss Your BIM Project",
       "cta_secondary": "Explore BIM Services",
       "capability_line": "BIM Modeling · Coordination · Model QA · Digital Delivery",
@@ -13,10 +13,10 @@
         "tag": "pyBIM // ARCHITECTURE",
         "node1_title": "BIM Modeling & Development",
         "node1_badge": "LOD 300–400",
-        "node1_desc": "Multidisciplinary architectural and MEP model authoring with structured parameter schemas.",
+        "node1_desc": "Architectural, structural, and MEP BIM model authoring with structured parameter schemas.",
         "node2_title": "Coordination & Clash Audit",
         "node2_badge": "ISO 19650",
-        "node2_desc": "Automated conflict resolution matrices across design disciplines in shared CDE environments.",
+        "node2_desc": "Federated coordination and clash detection workflows within customer-provided CDE environments.",
         "node3_title": "Model QA & Digital Handover",
         "node3_badge": "VERIFIED",
         "node3_desc": "Automated model health auditing, parameter completeness checks, and IFC compliance verification.",
@@ -271,26 +271,26 @@
       "blueprint_aria_label": "Project Delivery Blueprint: Four-stage engagement process from project brief to BIM delivery."
     },
     "coreArchitects": {
-      "eyebrow": "BEYOND TODAY'S BIM WORKFLOWS",
+      "eyebrow": "SECONDARY PRODUCT ROADMAP",
       "heading": "The Next Layer of BIM Is Taking Shape.",
-      "description": "Alongside our engineering services, we're developing proprietary BIM automation technology and exploring future private AI workflows. Each initiative follows its own development and evaluation process.",
+      "description": "Alongside our active BIM engineering services, pyBIM is developing proprietary BIM automation software and conducting long-horizon private AI research. Neither product is generally available today; each follows an independent validation path.",
       "phase2": {
         "label": "PHASE II",
-        "status": "CONTROLLED PRIVATE TESTING",
+        "status": "70% INTERNAL PROGRESS · PRIVATE EVALUATION",
         "title": "pyBIM Cloud Connect",
-        "positioning": "Connected automation for BIM teams.",
-        "description": "We're developing a Revit-connected automation environment designed to make selected engineering workflows and reusable tools more accessible to BIM teams. Development and evaluation continue in controlled private settings.",
+        "positioning": "Connected Revit automation & planned 2027 cloud management.",
+        "description": "We're developing a Revit-connected automation and cloud management environment planned for commercial launch in 2027. Currently in internal development and private evaluation (70% progress), it is not yet generally available.",
         "metadata": [
           {
             "label": "CURRENT STAGE",
-            "value": "Private evaluation"
+            "value": "Development & private evaluation"
           },
           {
-            "label": "INDICATIVE RELEASE WINDOW",
-            "value": "Q2–Q4 2027"
+            "label": "TARGET COMMERCIAL RELEASE",
+            "value": "Q4 2027"
           }
         ],
-        "timing_note": "Target timing is indicative and subject to development, integration testing, reliability and security review.",
+        "timing_note": "Q4 2027 is an indicative release target, not a guaranteed commitment, and remains subject to integration, reliability, and security validation.",
         "cta": {
           "label": "Apply for Private Access",
           "href": "/contact#priority-queue"
@@ -298,12 +298,12 @@
         "qualification": "Applications are reviewed individually. Submission does not guarantee access or acceptance."
       },
       "phase3": {
-        "eyebrow": "RESEARCH HORIZON",
+        "eyebrow": "POST-PHASE II RESEARCH HORIZON",
         "label": "PHASE III",
-        "status": "ACTIVE R&D",
-        "title": "Private AI Infrastructure",
-        "description": "Exploratory work into private AI environments and human-supervised engineering workflows, with deployment approaches and potential applications subject to ongoing research and technical validation.",
-        "availability_note": "Research-stage initiative. No public release date announced."
+        "status": "30% SHARED FOUNDATIONS · R&D",
+        "title": "Sovereign Enterprise Edge AI",
+        "description": "Long-horizon R&D into engineer-supervised private on-premise AI workflows. Current progress reflects shared infrastructure and foundations developed within Phase II; dedicated Phase III development begins after Phase II completion and final validation.",
+        "availability_note": "Not currently commercially available. No release date announced."
       }
     },
     "strategicEcosystem": {
@@ -357,7 +357,7 @@
       "badge": "INGEGNERIA BIM · CONSEGNA PROGETTUALE",
       "title_main": "Ingegneria BIM che Risponde con Precisione.",
       "title_highlight": "Tecnologia che Fa Progredire i Progetti.",
-      "description": "pyBIM supporta i team AEC con modellazione BIM, coordinamento modelli, controllo qualità e consegna digitale strutturata. I nostri specialisti uniscono pratiche BIM consolidate ad automazione Revit interna e flussi assistiti da intelligenza artificiale mirati.",
+      "description": "pyBIM opera come partner ingegneristico BIM Specialist: modellazione architettonica, strutturale e MEP, coordinamento multidisciplinare, QA/QC dei modelli e deliverable digitali strutturati, supportati da automazione Revit dedicata e assistenza tecnica negli ambienti ACDat/CDE del cliente.",
       "cta_primary": "Discuti il Tuo Progetto BIM",
       "cta_secondary": "Esplora i Servizi BIM",
       "capability_line": "Modellazione BIM · Coordinamento · Model QA · Consegna Digitale",
@@ -366,10 +366,10 @@
         "tag": "pyBIM // ARCHITETTURA",
         "node1_title": "Modellazione & Sviluppo BIM",
         "node1_badge": "LOD 300–400",
-        "node1_desc": "Creazione di modelli architettonici e MEP multidisciplinari con schemi informativi strutturati.",
+        "node1_desc": "Modellazione BIM architettonica, strutturale e MEP con schemi parametrici strutturati.",
         "node2_title": "Coordinamento & Audit Clash",
         "node2_badge": "ISO 19650",
-        "node2_desc": "Matrici di risoluzione automatizzata dei conflitti tra discipline in ambienti CDE condivisi.",
+        "node2_desc": "Flussi di coordinamento su modelli federati e clash detection negli ambienti ACDat/CDE forniti dal cliente.",
         "node3_title": "Model QA & Consegna Digitale",
         "node3_badge": "VERIFICATO",
         "node3_desc": "Audit automatizzato dello stato del modello, verifica completezza parametri e conformità IFC.",
@@ -624,26 +624,26 @@
       "blueprint_aria_label": "Project Delivery Blueprint: Processo di collaborazione in quattro fasi, dal brief di progetto alla consegna BIM."
     },
     "coreArchitects": {
-      "eyebrow": "OLTRE I WORKFLOW BIM ATTUALI",
+      "eyebrow": "ROADMAP PRODOTTO SECONDARIA",
       "heading": "Il Prossimo Livello del BIM Sta Prendendo Forma.",
-      "description": "Accanto ai nostri servizi di ingegneria, stiamo sviluppando tecnologia proprietaria di automazione BIM ed esplorando futuri workflow di intelligenza artificiale privata. Ciascuna iniziativa segue il proprio percorso di sviluppo e valutazione.",
+      "description": "Accanto ai servizi di ingegneria BIM già attivi, pyBIM sviluppa software proprietario di automazione BIM ed esplora future architetture di AI privata. Nessuno di questi prodotti è oggi disponibile sul mercato; ognuno segue un percorso indipendente di validazione.",
       "phase2": {
         "label": "FASE II",
-        "status": "TESTING PRIVATO CONTROLLATO",
+        "status": "70% AVANZAMENTO · VALUTAZIONE PRIVATA",
         "title": "pyBIM Cloud Connect",
-        "positioning": "Automazione connessa per i team BIM.",
-        "description": "Stiamo sviluppando un ambiente di automazione connesso a Revit progettato per rendere flussi di lavoro ingegneristici selezionati e strumenti riutilizzabili più accessibili ai team BIM. Lo sviluppo e la valutazione proseguono in contesti privati controllati.",
+        "positioning": "Automazione connessa a Revit & gestione cloud pianificata per il 2027.",
+        "description": "Stiamo sviluppando una piattaforma di automazione connessa a Revit e gestione cloud pianificata per il rilascio commerciale nel 2027. Attualmente in sviluppo e valutazione privata (70%), non è ancora disponibile al pubblico.",
         "metadata": [
           {
             "label": "FASE ATTUALE",
-            "value": "Valutazione privata"
+            "value": "Sviluppo e valutazione privata"
           },
           {
-            "label": "FINESTRA DI RILASCIO INDICATIVA",
-            "value": "Q2–Q4 2027"
+            "label": "RILASCIO COMMERCIALE TARGET",
+            "value": "Q4 2027"
           }
         ],
-        "timing_note": "Le tempistiche target sono indicative e soggette a sviluppo, test di integrazione, revisione di affidabilità e sicurezza.",
+        "timing_note": "Il Q4 2027 è un obiettivo indicativo di rilascio, non un impegno garantito, e resta soggetto a integrazione, affidabilità e validazioni di sicurezza.",
         "cta": {
           "label": "Richiedi Accesso Privato",
           "href": "/contact#priority-queue"
@@ -651,12 +651,12 @@
         "qualification": "Le richieste vengono esaminate individualmente. L'invio non garantisce l'accesso o l'accettazione."
       },
       "phase3": {
-        "eyebrow": "ORIZZONTE DI RICERCA",
+        "eyebrow": "ORIZZONTE R&S POST-FASE II",
         "label": "FASE III",
-        "status": "R&S ATTIVA",
-        "title": "Infrastruttura AI Privata",
-        "description": "Attività esplorativa su ambienti di intelligenza artificiale privata e flussi di lavoro ingegneristici supervisionati dall'uomo, con modelli di implementazione e potenziali applicazioni soggetti a continua ricerca e convalida tecnica.",
-        "availability_note": "Iniziativa in fase di ricerca. Nessuna data di rilascio pubblico annunciata."
+        "status": "30% BASI CONDIVISE · R&S",
+        "title": "Sovereign Enterprise Edge AI",
+        "description": "Ricerca di lungo periodo su workflow di AI privata on-premise supervisionati da ingegneri. L'attuale avanzamento del 30% riflette infrastruttura condivisa e basi tecnologiche sviluppate nella Fase II; lo sviluppo dedicato alla Fase III inizierà dopo il completamento e la validazione finale della Fase II.",
+        "availability_note": "Non disponibile commercialmente. Nessuna data di rilascio annunciata."
       }
     },
     "strategicEcosystem": {
@@ -710,7 +710,7 @@
       "badge": "BIM-ENGINEERING · PROJEKTABWICKLUNG",
       "title_main": "BIM-Engineering, das verlässlich liefert.",
       "title_highlight": "Technologie, die Projekte voranbringt.",
-      "description": "pyBIM unterstützt AEC-Teams bei BIM-Modellierung, Modellkoordination, Qualitätssicherung und strukturierter digitaler Projektabwicklung. Unsere flexiblen Spezialisten verbinden bewährte BIM-Praxis mit interner Revit-Automatisierung und gezielten KI-gestützten Workflows.",
+      "description": "pyBIM arbeitet als BIM-Specialist-Partner für Architektur-, Tragwerks- und TGA-Modellierung, Fach- und Gesamtkoordination, Modell-QA/QC sowie strukturierte digitale Lieferobjekte — ergänzt durch individuelle Revit-Automatisierung und technische Unterstützung in Ihrem projektbezogenen CDE.",
       "cta_primary": "BIM-Projekt besprechen",
       "cta_secondary": "BIM-Services entdecken",
       "capability_line": "BIM-Modellierung · Koordination · Modell-QA · Digitale Abwicklung",
@@ -719,10 +719,10 @@
         "tag": "pyBIM // ARCHITEKTUR",
         "node1_title": "BIM-Modellierung & Modellentwicklung",
         "node1_badge": "LOD 300–400",
-        "node1_desc": "Multidisziplinäre architektonische und TGA-Modellerstellung mit strukturierten Parameterschemata.",
+        "node1_desc": "Architektur-, Tragwerks- und TGA-BIM-Modellierung mit strukturierten Parameterschemata.",
         "node2_title": "Koordination & Kollisionsprüfung",
         "node2_badge": "ISO 19650",
-        "node2_desc": "Automatisierte Konfliktlösungsmatrizen über Fachdisziplinen hinweg in gemeinsamen CDE-Umgebungen.",
+        "node2_desc": "Gesamtmodell-Koordination und Kollisionsprüfungs-Workflows in kundeneigenen CDE-Umgebungen.",
         "node3_title": "Modell-QA & Digitale Übergabe",
         "node3_badge": "VERIFIZIERT",
         "node3_desc": "Automatisierte Modellprüfung, Parameter-Vollständigkeitsprüfungen und IFC-Konformitätsvalidierung.",
@@ -977,26 +977,26 @@
       "blueprint_aria_label": "Project Delivery Blueprint: Vierstufiger Projektablauf vom Briefing bis zur BIM-Übergabe."
     },
     "coreArchitects": {
-      "eyebrow": "ÜBER HEUTIGE BIM-WORKFLOWS HINAUS",
+      "eyebrow": "SEKUNDÄRE PRODUKT-ROADMAP",
       "heading": "Die nächste Ebene des BIM nimmt Gestalt an.",
-      "description": "Parallel zu unseren Ingenieurdienstleistungen entwickeln wir eigene BIM-Automatisierungstechnologie und erforschen künftige private KI-Workflows. Jede Initiative folgt ihrem eigenen Entwicklungs- und Evaluierungsprozess.",
+      "description": "Parallel zu unseren aktiven BIM-Ingenieurdienstleistungen entwickelt pyBIM eigene BIM-Automatisierungssoftware und erforscht künftige private KI-Workflows. Keines dieser Softwareprodukte ist heute regulär kommerziell verfügbar; jede Initiative folgt einem eigenen Validierungsprozess.",
       "phase2": {
         "label": "PHASE II",
-        "status": "KONTROLLIERTER PRIVATER TESTBETRIEB",
+        "status": "70 % FORTSCHRITT · PRIVATE EVALUIERUNG",
         "title": "pyBIM Cloud Connect",
-        "positioning": "Vernetzte Automatisierung für BIM-Teams.",
-        "description": "Wir entwickeln eine Revit-integrierte Automatisierungsumgebung, die ausgewählte Engineering-Workflows und wiederverwendbare Tools für BIM-Teams zugänglicher macht. Entwicklung und Evaluierung werden in kontrollierten privaten Umgebungen fortgeführt.",
+        "positioning": "Vernetzte Revit-Automatisierung & für 2027 geplantes Cloud-Management.",
+        "description": "Wir entwickeln eine Revit-angebundene Automatisierungs- und Cloud-Management-Plattform mit geplanter kommerzieller Einführung im Jahr 2027. Derzeit befindet sich die Lösung in interner Entwicklung und privater Evaluierung (70 % Fortschritt) und ist noch nicht allgemein verfügbar.",
         "metadata": [
           {
             "label": "AKTUELLE PHASE",
-            "value": "Private Evaluierung"
+            "value": "Entwicklung & private Evaluierung"
           },
           {
-            "label": "INDIKATIVES RELEASE-FENSTER",
-            "value": "Q2–Q4 2027"
+            "label": "ANGESTREBTER KOMMERZIELLER RELEASE",
+            "value": "Q4 2027"
           }
         ],
-        "timing_note": "Der Zielzeitraum ist indikativ und unterliegt Entwicklung, Integrationstests, Zuverlässigkeits- und Sicherheitsprüfungen.",
+        "timing_note": "Q4 2027 ist ein indikatives Ziel ohne verbindliche Zusage und unterliegt laufenden Integrations-, Zuverlässigkeits- und Sicherheitsprüfungen.",
         "cta": {
           "label": "Privaten Zugang anfragen",
           "href": "/contact#priority-queue"
@@ -1004,12 +1004,12 @@
         "qualification": "Bewerbungen werden individuell geprüft. Die Einreichung garantiert keinen Zugang oder Annahme."
       },
       "phase3": {
-        "eyebrow": "FORSCHUNGSHORIZONT",
+        "eyebrow": "FORSCHUNGSHORIZONT NACH PHASE II",
         "label": "PHASE III",
-        "status": "AKTIVE F&E",
-        "title": "Private KI-Infrastruktur",
-        "description": "Explorative Arbeiten zu privaten KI-Umgebungen und menschlich beaufsichtigten Engineering-Workflows, wobei Bereitstellungsansätze und potenzielle Anwendungen fortlaufender Forschung und technischer Validierung unterliegen.",
-        "availability_note": "Initiative im Forschungsstadium. Kein öffentliches Veröffentlichungsdatum angekündigt."
+        "status": "30 % GETEILTE GRUNDLAGEN · F&E",
+        "title": "Sovereign Enterprise Edge AI",
+        "description": "Langfristige Forschung zu ingenieurseitig überwachten, privaten On-Premise-KI-Workflows. Der ausgewiesene Fortschritt von 30 % umfasst geteilte Infrastruktur und technologische Grundlagen aus Phase II; die dedizierte Phase-III-Entwicklung beginnt erst nach Abschluss und finaler Validierung von Phase II.",
+        "availability_note": "Derzeit nicht kommerziell verfügbar. Kein Veröffentlichungsdatum angekündigt."
       }
     },
     "strategicEcosystem": {

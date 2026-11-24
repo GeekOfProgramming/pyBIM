@@ -33,7 +33,7 @@
   "projects.dev.step3_title": "LLM-Engineering-Assistenz",
   "projects.dev.step3_desc": "Gezielte Abfragesynthese, Syntaxvalidierung, Skriptgenerierung",
   "projects.dev.step4_title": "Menschliche Ingenieurprüfung",
-  "projects.dev.step4_desc": "Obligatorische BIM-Manager-Validierung, Konformitätsprüfung, keine ungeprüften Ausgaben",
+  "projects.dev.step4_desc": "Obligatorische Prüfung durch den leitenden BIM-Spezialisten, Anforderungscheck, keine ungeprüften Ausgaben",
   "projects.dev.step5_title": "Verifizierte Projektergebnisse",
   "projects.nav.index_label": "INDEX:",
   "projects.nav.aria_label": "Abschnittsverzeichnis der Erfolgsgeschichten",

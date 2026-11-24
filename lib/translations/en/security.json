@@ -1,17 +1,17 @@
 {
-  "title": "Enterprise Security & Architecture Protocol: CISO Whitepaper",
-  "subtitle": "Technical protocol distinguishing Sovereign AI client deployment capabilities from public website operations, detailing algorithmic containment architectures, standards alignment, and edge protections.",
+  "title": "Engineering Data Security & R&D Architecture",
+  "subtitle": "Technical overview distinguishing current Phase I BIM engineering data custody (client-provided CDEs and bilateral NDAs) from our planned Phase II cloud automation (target Q4 2027) and post-Phase II Edge AI R&D concepts (no announced release date).",
   "scope_clarification": {
     "title": "Architecture Scope & Dual-Zone Model",
     "badge": "Operational Boundary",
-    "client_zone_title": "Zone 1: Client Sovereign AI & BIM Engineering (Deployment Capability)",
-    "client_zone_desc": "Air-gapped on-premise execution topology designed for enterprise clients. Configurable to operate within client corporate LAN or private VPC environments. Architecture supports local LLMs, localized script execution, and C# Revit integrations designed to operate without transmitting geometry or parameters to public AI APIs.",
+    "client_zone_title": "Zone 1: Current BIM Delivery & Post-Phase II On-Premise R&D",
+    "client_zone_desc": "Today (Phase I), pyBIM delivers BIM modeling, coordination, QA/QC, and local C#/Python Revit automation strictly within customer-provided CDEs and bilateral NDAs (pyBIM does not provide its own commercial cloud platform today). The air-gapped Edge AI topology shown below illustrates a conceptual Phase III R&D architecture; dedicated Phase III work starts after Phase II validation and is not currently commercially available.",
     "web_zone_title": "Zone 2: Public Website & Inbound Services (Current Infrastructure)",
     "web_zone_desc": "Hosted on Cloudflare Workers edge architecture. Public endpoints utilize Cloudflare Turnstile for privacy-preserving bot detection and Resend for transactional email notifications (Contact and ROI lead notifications)."
   },
   "block1": {
-    "title": "1. Network Isolation Architecture (Zone 1 Capability)",
-    "diagram_caption": "Zone 1 Air-Gapped Execution Topology: Conceptual architecture for client-side containment of BIM geometry and algorithmic workflows within a corporate LAN perimeter."
+    "title": "1. Conceptual Network Isolation Topology (Phase III R&D)",
+    "diagram_caption": "Conceptual R&D Topology (Not Commercially Available): Future Phase III architecture explored for post-Phase II validation, illustrating isolated execution inside a client network."
   },
   "diagram_text": {
     "lan": "CLIENT LAN PERIMETER",
@@ -31,55 +31,55 @@
     "rows": [
       {
         "mandate": "ISO 19650-5 (Information Security Principles)",
-        "requirement": "Metadata leakage prevention & model security",
-        "execution": "Designed for offline LLM deployment and localized model execution within customer-controlled environments or encrypted CDEs."
+        "requirement": "Metadata protection & model custody",
+        "execution": "Current BIM delivery operates within customer-provided CDEs under bilateral NDAs; planned Phase III R&D explores offline execution inside isolated client networks."
       },
       {
         "mandate": "UNI 11337 (Digital Management)",
-        "requirement": "Sovereign BIM data management",
-        "execution": "Automation scripts capable of executing directly against local Revit files without cloud geometry extraction."
+        "requirement": "Controlled BIM data workflows",
+        "execution": "Phase I automation scripts run locally against project Revit files without sending model geometry to public third-party AI APIs."
       },
       {
         "mandate": "GDPR (EU 2016/679 Principles)",
-        "requirement": "Data minimization & local custody",
-        "execution": "Sovereign nodes operate in isolated networks. Public website collects minimal voluntary inquiry data with published retention practices."
+        "requirement": "Data minimization & access control",
+        "execution": "Project engineering files stay in client-authorized repositories; the public website collects minimal voluntary enquiry data with published retention practices."
       },
       {
         "mandate": "Bilateral NDA & Confidentiality",
         "requirement": "BIM project data privacy & CDE integrity",
-        "execution": "Client Revit models and IFC files managed through agreed CDE channels with data handling governed by bilateral contracts."
+        "execution": "Client Revit models and IFC files are managed exclusively through agreed client CDE channels governed by bilateral contracts and NDAs."
       }
     ]
   },
   "block3": {
-    "title": "3. Sovereign AI Data Custody Architecture",
-    "notice_title": "SOVEREIGN AI CLIENT DEPLOYMENTS NOTICE",
-    "notice_text": "\"For client sovereign edge AI deployments, pyBIM architectures are engineered to eliminate background telemetry. In this configuration, proprietary BIM geometry, structural parameters, and algorithmic logic are retained within the client firewall rather than transmitted to third-party public AI APIs.\"",
-    "purge_title": "EPHEMERAL RAM LIFECYCLE (ZONE 1 CAPABILITY)",
-    "purge_text": "RAG pipeline embeddings and intermediate calculation vectors are held in ephemeral memory and discarded upon script completion. Persistent model state remains under the custody of the client's Common Data Environment (CDE)."
+    "title": "3. Engineering Data Custody & Future Edge AI Principles",
+    "notice_title": "PHASE I DELIVERY VS. PHASE III R&D BOUNDARY",
+    "notice_text": "\"Today, client BIM data remains inside customer-provided CDEs and bilateral NDA environments while local Revit/Python tools run without sending geometry to public AI APIs. Sovereign Enterprise Edge AI is a future post-Phase II R&D architecture—not currently commercially available—designed around the principle of zero background telemetry.\"",
+    "purge_title": "CONCEPTUAL EPHEMERAL MEMORY DESIGN (PHASE III R&D)",
+    "purge_text": "In our planned Phase III R&D architecture (dedicated work begins after Phase II validation, with no announced release date), intermediate vectors are designed to stay in volatile memory and clear upon completion while models remain in the client's CDE."
   },
   "block4": {
     "title": "4. Security Engineering & Infrastructure Protocols",
-    "sector1_title": "GPU-VPS Sector (Private Plugins)",
+    "sector1_title": "Private Automation & Cloud Connect (Phase I / Target 2027)",
     "sector1_items": [
       {
-        "title": "Drive Encryption Support",
-        "text": "Supports AES-256 at-rest disk encryption and secure boot on client-designated private VPS instances."
+        "title": "Encrypted Storage & Access Hygiene",
+        "text": "Supports encrypted storage (AES-256) and isolated project workspaces for custom Phase I tooling and planned 2027 Cloud Connect modules."
       },
       {
-        "title": "Secure Networking Tunnels",
-        "text": "Configurable for administrative access via authenticated WireGuard or Tailscale tunnels, dropping unauthenticated traffic."
+        "title": "Authenticated Transport Tunnels",
+        "text": "Supports access control and encrypted administrative tunnels (such as WireGuard or Tailscale) where required by client IT policies."
       }
     ],
-    "sector2_title": "Edge Appliance Sector (Sovereign AI)",
+    "sector2_title": "Future Edge Appliance Concept (Phase III R&D — No Date)",
     "sector2_items": [
       {
-        "title": "Hardened OS Architecture",
-        "text": "Supports hardened Linux environments with mandatory access controls such as AppArmor or SELinux."
+        "title": "Hardened OS Research Architecture",
+        "text": "Conceptual post-Phase II target architecture evaluating hardened Linux environments with mandatory access controls such as AppArmor or SELinux (not yet commercially available)."
       },
       {
-        "title": "Hardware Isolation Capability",
-        "text": "Can be deployed on headless on-premise hardware with unused physical I/O ports disabled at BIOS level where required."
+        "title": "On-Premise Isolation Concept",
+        "text": "Future R&D concept for local headless execution after Phase II completion and validation; not an active deployment offering or certified defense hardware."
       }
     ],
     "sector3_title": "Public Web Sector (Cloudflare & Edge)",

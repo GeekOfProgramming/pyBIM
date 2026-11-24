@@ -33,7 +33,7 @@
   "projects.dev.step3_title": "LLM Engineering Assistance",
   "projects.dev.step3_desc": "Targeted query synthesis, syntax validation, script generation",
   "projects.dev.step4_title": "Human Engineering Review",
-  "projects.dev.step4_desc": "Mandatory BIM Manager validation, compliance gating, zero unchecked output",
+  "projects.dev.step4_desc": "Mandatory senior BIM specialist QA validation, requirement checks, zero unchecked output",
   "projects.dev.step5_title": "Verified Deliverable",
   "projects.nav.index_label": "INDEX:",
   "projects.nav.aria_label": "Success Stories section index",

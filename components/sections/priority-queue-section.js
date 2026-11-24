@@ -309,7 +309,7 @@ export default function PriorityQueueSection() {
                       <option value="">{t("queue.form.security_ph")}</option>
                       <option value="Standard Corporate NDA (Commercial Projects)">{t("queue.form.sec_opt1")}</option>
                       <option value="Strict ISO 19650 / National Public Tender Mandate (UNI 11337 / DIN)">{t("queue.form.sec_opt2")}</option>
-                      <option value="100% Air-Gapped / Zero External Cloud (Classified / Defense)">{t("queue.form.sec_opt3")}</option>
+                      <option value="100% Air-Gapped / Zero External Cloud (High-Sensitivity Enterprise)">{t("queue.form.sec_opt3")}</option>
                     </select>
                   </div>
                 </div>

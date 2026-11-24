@@ -33,7 +33,7 @@
   "projects.dev.step3_title": "Assistenza Ingegneristica LLM",
   "projects.dev.step3_desc": "Sintesi mirata delle query, validazione sintattica, generazione di script",
   "projects.dev.step4_title": "Revisione Ingegneristica Umana",
-  "projects.dev.step4_desc": "Validazione obbligatoria da parte del BIM Manager, controllo di conformità, nessun output non verificato",
+  "projects.dev.step4_desc": "Validazione obbligatoria da parte dello specialista BIM senior, verifica dei requisiti, nessun output non controllato",
   "projects.dev.step5_title": "Deliverable Verificato",
   "projects.nav.index_label": "INDICE:",
   "projects.nav.aria_label": "Indice delle sezioni dei Casi di Successo",
