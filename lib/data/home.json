@@ -231,47 +231,47 @@
       "diagram_aria_label": "Interactive conceptual BIM model illustrating model geometry, multidisciplinary coordination and information quality checks."
     },
     "systemBenchmarks": {
-      "eyebrow": "YOUR PROJECT, OUR PROCESS",
-      "heading": "From Your Brief to BIM Delivery.",
-      "description": "A structured approach to defining your project scope, coordinating engineering work, reviewing outputs, and preparing BIM deliverables around your requirements.",
-      "process_note": "A typical engagement framework — adapted to each project's scope and requirements.",
+      "eyebrow": "OUR BIM DELIVERY PROCESS",
+      "heading": "From project requirements to BIM delivery.",
+      "description": "A structured engineering workflow that defines the scope, responsibilities, information requirements and deliverables before execution, with coordinated modeling and technical quality reviews throughout the engagement.",
+      "process_note": "The workflow is adapted to the agreed scope and requirements of each project.",
       "output_label": "TYPICAL OUTPUT",
       "stages": [
         {
           "id": "discuss",
-          "label": "DISCUSS",
-          "title": "Start with your brief.",
-          "description": "Share your project objectives, available models or drawings, technical requirements, and the type of BIM support you need.",
-          "output": "Project enquiry and initial requirements"
+          "label": "REQUIREMENTS",
+          "title": "Understand your project.",
+          "description": "Review your project objectives, available drawings and models, required BIM disciplines, information requirements and delivery milestones.",
+          "output": "Initial project requirements"
         },
         {
           "id": "define",
-          "label": "DEFINE",
-          "title": "Agree on the scope.",
-          "description": "Clarify the required disciplines, project responsibilities, model expectations, deliverables, and review criteria before execution.",
-          "output": "Defined scope and deliverables"
+          "label": "SCOPE",
+          "title": "Define the engineering scope.",
+          "description": "Agree on services, responsibilities, deliverables and review criteria, considering ISO 19650 and applicable EIR and BEP requirements.",
+          "output": "Agreed scope and delivery plan"
         },
         {
           "id": "develop",
-          "label": "DEVELOP",
-          "title": "Build and coordinate.",
-          "description": "Our engineering team undertakes the agreed BIM modeling, coordination, and information-management activities, supported by internal tools where appropriate.",
-          "output": "Developed models and coordinated outputs"
+          "label": "EXECUTION",
+          "title": "Develop and coordinate.",
+          "description": "Perform discipline-specific BIM modeling, multidisciplinary coordination and information checks within the agreed project CDE. Apply engineering automation to suitable tasks.",
+          "output": "Developed models and coordination records"
         },
         {
           "id": "handover",
           "label": "HANDOVER",
-          "title": "Review and deliver.",
-          "description": "Review the agreed outputs against project requirements and prepare the model files, supporting documentation, and delivery package.",
+          "title": "Verify and deliver.",
+          "description": "Review model geometry, information consistency and documentation against the agreed requirements before preparing the digital delivery package.",
           "output": "Reviewed BIM deliverables"
         }
       ],
-      "closing_statement": "Your requirements define the workflow.",
+      "closing_statement": "A defined scope, coordinated execution and documented technical reviews.",
       "cta": {
         "label": "Discuss Your BIM Project",
         "href": "/contact#audit"
       },
-      "blueprint_aria_label": "Project Delivery Blueprint: Four-stage engagement process from project brief to BIM delivery."
+      "blueprint_aria_label": "Four-stage BIM delivery process covering project requirements, scope definition, coordinated execution and digital handover."
     },
     "coreArchitects": {
       "eyebrow": "SECONDARY PRODUCT ROADMAP",
@@ -587,47 +587,47 @@
       "diagram_aria_label": "Modello BIM concettuale interattivo che illustra la geometria, il coordinamento multidisciplinare e la verifica delle informazioni."
     },
     "systemBenchmarks": {
-      "eyebrow": "IL TUO PROGETTO, IL NOSTRO PROCESSO",
-      "heading": "Dal Tuo Brief alla Consegna BIM.",
-      "description": "Un approccio strutturato per definire l'ambito del progetto, coordinare le attività ingegneristiche, revisionare gli output e predisporre i deliverable BIM attorno alle tue esigenze.",
-      "process_note": "Un quadro operativo tipico — adattato all'ambito e ai requisiti di ciascun progetto.",
-      "output_label": "OUTPUT TIPICO",
+      "eyebrow": "IL NOSTRO PROCESSO BIM",
+      "heading": "Dai requisiti di progetto alla consegna BIM.",
+      "description": "Un processo operativo strutturato che definisce prestazioni, responsabilità, requisiti informativi ed elaborati prima dell'esecuzione, integrando modellazione coordinata e verifiche tecniche durante lo svolgimento dell'incarico.",
+      "process_note": "Il processo viene adattato alle prestazioni concordate e ai requisiti di ciascun progetto.",
+      "output_label": "RISULTATO PREVISTO",
       "stages": [
         {
           "id": "discuss",
-          "label": "DISCUSSIONE",
-          "title": "Iniziamo dal tuo brief.",
-          "description": "Condividi gli obiettivi di progetto, i modelli o gli elaborati disponibili, i requisiti tecnici e la tipologia di supporto BIM richiesta.",
-          "output": "Richiesta di progetto e requisiti iniziali"
+          "label": "REQUISITI",
+          "title": "Analisi delle esigenze di progetto.",
+          "description": "Esaminiamo gli obiettivi, gli elaborati e i modelli disponibili, le discipline BIM coinvolte, i requisiti informativi e le scadenze di consegna.",
+          "output": "Requisiti iniziali del progetto"
         },
         {
           "id": "define",
           "label": "DEFINIZIONE",
-          "title": "Concordiamo l'ambito.",
-          "description": "Definiamo le discipline richieste, le responsabilità di progetto, i requisiti dei modelli, i deliverable e i criteri di revisione prima dell'esecuzione.",
-          "output": "Ambito e deliverable definiti"
+          "title": "Definizione delle prestazioni.",
+          "description": "Concordiamo le prestazioni, le responsabilità, gli elaborati e i criteri di verifica, considerando UNI 11337, UNI EN ISO 19650, il CI e l'oGI o il pGI, ove applicabili.",
+          "output": "Prestazioni e piano delle consegne concordati"
         },
         {
           "id": "develop",
-          "label": "SVILUPPO",
+          "label": "ESECUZIONE",
           "title": "Modellazione e coordinamento.",
-          "description": "Il nostro team di ingegneri svolge le attività concordate di modellazione BIM, coordinamento e gestione informativa, supportato da strumenti interni ove opportuno.",
-          "output": "Modelli sviluppati e output coordinati"
+          "description": "Eseguiamo la modellazione BIM disciplinare, il coordinamento multidisciplinare e le verifiche informative nell'ACDat di progetto concordato, integrando strumenti di automazione nelle attività appropriate.",
+          "output": "Modelli sviluppati ed elaborati di coordinamento"
         },
         {
           "id": "handover",
           "label": "CONSEGNA",
-          "title": "Revisione e rilascio.",
-          "description": "Revisioniamo gli output concordati rispetto ai requisiti di progetto e predisponiamo i file di modello, la documentazione a supporto e il pacchetto finale di consegna.",
-          "output": "Deliverable BIM verificati"
+          "title": "Verifica e consegna.",
+          "description": "Verifichiamo la geometria, la coerenza informativa dei modelli e la documentazione rispetto ai requisiti concordati prima di predisporre il pacchetto di consegna digitale.",
+          "output": "Modelli ed elaborati BIM verificati"
         }
       ],
-      "closing_statement": "I tuoi requisiti definiscono il flusso di lavoro.",
+      "closing_statement": "Prestazioni definite, esecuzione coordinata e verifiche tecniche documentate.",
       "cta": {
-        "label": "Discuti il Tuo Progetto BIM",
+        "label": "Parliamo del vostro progetto BIM",
         "href": "/contact#audit"
       },
-      "blueprint_aria_label": "Project Delivery Blueprint: Processo di collaborazione in quattro fasi, dal brief di progetto alla consegna BIM."
+      "blueprint_aria_label": "Processo BIM in quattro fasi: analisi dei requisiti, definizione delle prestazioni, esecuzione coordinata e consegna digitale."
     },
     "coreArchitects": {
       "eyebrow": "ROADMAP PRODOTTO SECONDARIA",
@@ -943,47 +943,47 @@
       "diagram_aria_label": "Interaktives schematisches BIM-Modell zur Veranschaulichung von Modellgeometrie, fachübergreifender Koordination und Informationsprüfung."
     },
     "systemBenchmarks": {
-      "eyebrow": "IHR PROJEKT, UNSER PROZESS",
-      "heading": "Von Ihrem Briefing zur BIM-Lieferung.",
-      "description": "Ein strukturierter Ansatz zur Festlegung des Leistungsumfangs, zur Koordination der Ingenieurleistungen, zur Prüfung der Arbeitsstände und zur Bereitstellung passgenauer BIM-Lieferergebnisse.",
-      "process_note": "Ein typischer Projektablauf — abgestimmt auf den Umfang und die Anforderungen jedes Projekts.",
+      "eyebrow": "UNSER BIM-PROJEKTABLAUF",
+      "heading": "Von den Projektanforderungen bis zur BIM-Übergabe.",
+      "description": "Ein strukturierter Arbeitsablauf, der Leistungsumfang, Verantwortlichkeiten, Informationsanforderungen und Lieferobjekte vor Beginn der Bearbeitung festlegt und die Modellierung durch fachübergreifende Koordination und technische Qualitätsprüfungen begleitet.",
+      "process_note": "Der Ablauf wird an den vereinbarten Leistungsumfang und die jeweiligen Projektanforderungen angepasst.",
       "output_label": "TYPISCHES ERGEBNIS",
       "stages": [
         {
           "id": "discuss",
-          "label": "ABSTIMMUNG",
-          "title": "Ausgangspunkt ist Ihr Briefing.",
-          "description": "Teilen Sie Ihre Projektziele, vorhandene Modelle oder Planunterlagen, technische Vorgaben und den gewünschten Umfang der BIM-Unterstützung mit uns.",
-          "output": "Projektanfrage und grundlegende Anforderungen"
+          "label": "ANFORDERUNGEN",
+          "title": "Projektanforderungen erfassen.",
+          "description": "Wir prüfen die Projektziele, vorhandene Planunterlagen und Modelle, beteiligte BIM-Fachdisziplinen, Informationsanforderungen und Übergabetermine.",
+          "output": "Grundlegende Projektanforderungen"
         },
         {
           "id": "define",
           "label": "DEFINITION",
-          "title": "Leistungsumfang vereinbaren.",
-          "description": "Festlegung der beteiligten Fachdisziplinen, Verantwortlichkeiten, Modellerwartungen, Lieferergebnisse und Prüfkriterien vor Beginn der Bearbeitung.",
-          "output": "Definierter Leistungsumfang und Lieferobjekte"
+          "title": "Leistungsumfang festlegen.",
+          "description": "Wir stimmen Leistungen, Verantwortlichkeiten, Lieferobjekte und Prüfkriterien unter Berücksichtigung von DIN EN ISO 19650, VDI 2552 sowie der anwendbaren AIA und des BAP ab.",
+          "output": "Abgestimmter Leistungsumfang und Übergabeplan"
         },
         {
           "id": "develop",
-          "label": "ENTWICKLUNG",
-          "title": "Modellierung und Koordination.",
-          "description": "Unser Ingenieurteam übernimmt die vereinbarte BIM-Modellierung, Koordination und das Informationsmanagement, bei Bedarf unterstützt durch interne Werkzeuge.",
-          "output": "Ausgearbeitete Fachmodelle und koordinierte Ergebnisse"
+          "label": "BEARBEITUNG",
+          "title": "Modellieren und koordinieren.",
+          "description": "Wir erstellen Fachmodelle, übernehmen die fachübergreifende BIM-Koordination und prüfen Modellinformationen im vereinbarten Projekt-CDE. Geeignete Aufgaben werden durch Automatisierung unterstützt.",
+          "output": "Ausgearbeitete Fachmodelle und Koordinationsprotokolle"
         },
         {
           "id": "handover",
           "label": "ÜBERGABE",
-          "title": "Prüfung und Bereitstellung.",
-          "description": "Abgleich der Ergebnisse mit den Projektanforderungen, Aufbereitung der Modelldateien, Begleitdokumentation und Zusammenstellung des Lieferpakets.",
-          "output": "Geprüfte BIM-Lieferergebnisse"
+          "title": "Prüfen und übergeben.",
+          "description": "Wir prüfen Modellgeometrie, Informationskonsistenz und Dokumentation anhand der vereinbarten Anforderungen und bereiten die digitale Übergabe vor.",
+          "output": "Geprüfte BIM-Lieferobjekte"
         }
       ],
-      "closing_statement": "Ihre Anforderungen bestimmen den Projektablauf.",
+      "closing_statement": "Definierte Leistungen, koordinierte Bearbeitung und dokumentierte technische Prüfungen.",
       "cta": {
-        "label": "Besprechen Sie Ihr BIM-Projekt",
+        "label": "BIM-Projekt besprechen",
         "href": "/contact#audit"
       },
-      "blueprint_aria_label": "Project Delivery Blueprint: Vierstufiger Projektablauf vom Briefing bis zur BIM-Übergabe."
+      "blueprint_aria_label": "Vierstufiger BIM-Projektablauf mit Anforderungsanalyse, Leistungsdefinition, koordinierter Bearbeitung und digitaler Übergabe."
     },
     "coreArchitects": {
       "eyebrow": "SEKUNDÄRE PRODUKT-ROADMAP",

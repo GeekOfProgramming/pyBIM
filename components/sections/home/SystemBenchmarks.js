@@ -77,11 +77,11 @@ export default function SystemBenchmarks() {
               transition={{ duration: 0.3, delay: index * 0.06 }}
               className="py-5 md:py-6 lg:py-7 group transition-colors"
             >
-              {/* Responsive Grid: Stacks on mobile/tablet, 2fr 8fr 4fr on desktop (lg:) */}
-              <div className="grid grid-cols-1 lg:[grid-template-columns:minmax(0,2fr)_minmax(0,8fr)_minmax(0,4fr)] gap-5 lg:gap-6 items-start">
+              {/* Responsive Grid: Stacks on mobile/tablet, 2.5fr 7.5fr 4fr on desktop (lg:) */}
+              <div className="grid grid-cols-1 lg:[grid-template-columns:minmax(0,2.5fr)_minmax(0,7.5fr)_minmax(0,4fr)] gap-5 lg:gap-6 items-start">
 
-                {/* Column A: Process Label (~14.3% width on desktop) */}
-                <div className="pt-1">
+                {/* Column A: Process Label */}
+                <div className="pt-1 min-w-0">
                   <div className="flex items-center gap-2.5">
                     <span
                       className="w-2.5 h-0.5 bg-brand-primary/70 rounded-full shrink-0 group-hover:w-4 group-hover:bg-brand-primary transition-all duration-200"
@@ -103,8 +103,8 @@ export default function SystemBenchmarks() {
                   </p>
                 </div>
 
-                {/* Column C: Typical Output (~28.6% width on desktop) */}
-                <div className="lg:pl-6 lg:border-l lg:border-brand-border/40">
+                {/* Column C: Typical Output */}
+                <div className="min-w-0 lg:pl-6 lg:border-l lg:border-brand-border/40">
                   <span className="font-mono text-caption font-bold text-brand-textSecondary/70 tracking-wider uppercase block mb-1.5">
                     {data.output_label}
                   </span>
