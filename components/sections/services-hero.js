@@ -18,97 +18,21 @@ import {
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
+import { servicesPageData } from "@/lib/data/servicesPageData";
 
 export default function ServicesHero({ data }) {
   const shouldReduceMotion = useReducedMotion();
   const [activeNodeIndex, setActiveNodeIndex] = useState(0);
   const tabRefs = useRef([]);
 
-  // Fallback defaults if data is loading or missing
-  const hero = data || {
-    eyebrow: "BIM ENGINEERING · WORKFLOW AUTOMATION",
-    headline1: "Complex BIM Workflows.",
-    headline2: "Engineered to Run Better.",
-    subheadline: "From demanding BIM deliverables to custom Revit automation, pyBIM helps architecture, engineering, and construction teams reduce repetitive work, improve model consistency, and deliver with greater control.",
-    primaryCta: "Discuss Your Project",
-    secondaryCta: "Explore Our Capabilities",
-    primaryCtaHref: "/contact#audit",
-    secondaryCtaHref: "#roadmap",
-    trustBadges: [
-      "ISO 19650-Aligned Workflows",
-      "Autodesk Revit API & IFC4",
-      "Deterministic QA / QC"
-    ],
-    pipeline: {
-      badge: "ILLUSTRATIVE WORKFLOW",
-      monitorLabel: "WORKFLOW_ARCHITECTURE // 4 INTEGRATED PHASES",
-      windowTitle: "pyBIM_ARCHITECTURE // WORKFLOW_SPEC",
-      labels: {
-        framework: "FRAMEWORK // OPENBIM & API",
-        tablistAria: "BIM engineering workflow phases",
-        inspectAria: "Inspect phase",
-        specOverview: "PHASE SPECIFICATION // ARCHITECTURE",
-        pipelineMode: "PROCESS: STRUCTURED DELIVERY",
-        activePhase: "ACTIVE PHASE"
-      },
-      nodes: [
-        {
-          id: "revit",
-          step: "01",
-          title: "Revit Model Ingestion",
-          sub: "Source Geometry & Parameter Sets",
-          badge: "INPUT // .RVT / IFC",
-          meta: "Geometry & Property Sets",
-          icon: "box"
-        },
-        {
-          id: "validation",
-          step: "02",
-          title: "Data Validation",
-          sub: "Algorithmic QA/QC & Schema Auditing",
-          badge: "SCHEMA AUDIT",
-          meta: "EIR & ISO 19650 Rules",
-          icon: "shield"
-        },
-        {
-          id: "engine",
-          step: "03",
-          title: "Automation Engine",
-          sub: "Python & C# Algorithmic Core",
-          badge: "EXECUTION CORE",
-          meta: "Scripted Parameter Pipelines",
-          icon: "cpu"
-        },
-        {
-          id: "deliverables",
-          step: "04",
-          title: "Structured Deliverables",
-          sub: "Standardized OpenBIM & Documentation",
-          badge: "DELIVERABLES",
-          meta: "IFC4 · COBie · Reports",
-          icon: "database"
-        }
-      ],
-      logs: [
-        "[PHASE 01] Standardized ingestion of Revit elements, properties, and IFC classifications.",
-        "[PHASE 02] Rule-based schema validation aligned with project EIR and ISO 19650 guidelines.",
-        "[PHASE 03] Execution of algorithmic parameter injection and coordinate auditing via Revit API.",
-        "[PHASE 04] Deterministic generation of verified IFC4 models, COBie sheets, and audit dossiers."
-      ]
-    }
-  };
+  // Reuse canonical English hero data as fallback if data is loading or missing
+  const fallbackHero = servicesPageData.en.hero;
+  const hero = data || fallbackHero;
 
-  const nodes = hero.pipeline?.nodes || [];
-  const logs = hero.pipeline?.logs || [];
+  const nodes = hero.pipeline?.nodes || fallbackHero.pipeline.nodes;
+  const logs = hero.pipeline?.logs || fallbackHero.pipeline.logs;
   const activeNode = nodes[activeNodeIndex] || nodes[0] || {};
-  const labels = hero.pipeline?.labels || {
-    framework: "FRAMEWORK // OPENBIM & API",
-    tablistAria: "BIM engineering workflow phases",
-    inspectAria: "Inspect phase",
-    specOverview: "PHASE SPECIFICATION // ARCHITECTURE",
-    pipelineMode: "PROCESS: STRUCTURED DELIVERY",
-    activePhase: "ACTIVE PHASE"
-  };
+  const labels = hero.pipeline?.labels || fallbackHero.pipeline.labels;
 
   const getNodeIcon = (iconName, className) => {
     switch (iconName) {
@@ -185,12 +109,12 @@ export default function ServicesHero({ data }) {
   };
 
   // Casing safety for brand: pyBIM is always formatted with lowercase 'py' and uppercase 'BIM'
-  const rawEyebrow = hero.eyebrow || "BIM ENGINEERING · WORKFLOW AUTOMATION";
+  const rawEyebrow = hero.eyebrow || fallbackHero.eyebrow;
 
   return (
     <section 
       id="services-hero"
-      aria-label="Services Hero"
+      aria-labelledby="services-hero-heading"
       className="scroll-mt-28 relative w-full overflow-hidden bg-brand-base pt-16 pb-16 md:pt-24 md:pb-24 lg:pt-28 lg:pb-32 border-b border-brand-border/60 transition-colors"
     >
       {/* Custom Services Hero — Engineering Signal Flow */}
@@ -231,6 +155,7 @@ export default function ServicesHero({ data }) {
 
             {/* Dominant H1 Title */}
             <motion.h1 
+              id="services-hero-heading"
               variants={itemVariants} 
               className="text-4xl sm:text-[44px] lg:text-display font-extrabold tracking-tight text-brand-textPrimary leading-[1.12] sm:leading-[1.12] lg:leading-[1.14] mb-5"
             >
@@ -320,21 +245,21 @@ export default function ServicesHero({ data }) {
                     ) : (
                       <>
                         <span className="normal-case font-bold">pyBIM</span>
-                        {" ARCHITECTURE // WORKFLOW SPEC"}
+                        {" // ENGINEERING WORKFLOW"}
                       </>
                     )}
                   </span>
                 </div>
                 
                 <span className="shrink-0 text-technical font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-blue-500/10 text-blue-700 dark:text-cyan-300 border border-blue-500/20">
-                  {hero.pipeline?.badge || "ILLUSTRATIVE WORKFLOW"}
+                  {hero.pipeline?.badge || fallbackHero.pipeline.badge}
                 </span>
               </div>
 
               {/* Sub-bar: Framework and Monitor Reference */}
               <div className="px-4 sm:px-5 py-2.5 bg-slate-500/[0.04] dark:bg-cyan-950/15 border-b border-brand-border/60 flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 text-caption font-mono text-brand-textSecondary">
-                <span className="leading-tight font-medium">
-                  {hero.pipeline?.monitorLabel || "WORKFLOW ARCHITECTURE // 4 INTEGRATED PHASES"}
+                <span className="leading-tight font-medium min-w-0">
+                  {hero.pipeline?.monitorLabel || fallbackHero.pipeline.monitorLabel}
                 </span>
                 <span className="shrink-0 text-brand-primary font-semibold">
                   {labels.framework}
@@ -345,9 +270,11 @@ export default function ServicesHero({ data }) {
               {/* Original Vector BIM Isometric Process Schematic                       */}
               {/* ===================================================================== */}
               <div className="px-4 sm:px-5 pt-5 pb-3.5 border-b border-brand-border/60 bg-slate-500/[0.02] dark:bg-slate-950/40">
-                <div className="flex items-center justify-between mb-2 text-caption font-mono text-brand-textSecondary">
-                  <span>VECTOR FLOW // SCHEMATIC</span>
-                  <span className="text-brand-primary font-bold">STEP: 0{activeNodeIndex + 1} / 04</span>
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2 text-caption font-mono text-brand-textSecondary">
+                  <span>{labels.schematic || fallbackHero.pipeline.labels.schematic}</span>
+                  <span className="text-brand-primary font-bold">
+                    {labels.stepLabel || fallbackHero.pipeline.labels.stepLabel}: 0{activeNodeIndex + 1} / 04
+                  </span>
                 </div>
 
                 <div className="w-full h-auto py-1" aria-hidden="true">
@@ -388,12 +315,11 @@ export default function ServicesHero({ data }) {
                     />
 
                     {/* 4 Process Nodes along the rail */}
-                    {[
-                      { x: 55, label: "01 INGEST" },
-                      { x: 171.6, label: "02 AUDIT" },
-                      { x: 288.3, label: "03 AUTOMATE" },
-                      { x: 405, label: "04 DELIVER" }
-                    ].map((pt, i) => {
+                    {[55, 171.6, 288.3, 405].map((x, i) => {
+                      const railNode = nodes[i] || fallbackHero.pipeline.nodes[i] || {};
+                      const railStep = railNode.step || `0${i + 1}`;
+                      const railText = railNode.railLabel || fallbackHero.pipeline.nodes[i]?.railLabel || "";
+                      const pt = { x, label: `${railStep} ${railText}`.trim() };
                       const isCurrent = activeNodeIndex === i;
                       const isPassed = activeNodeIndex >= i;
                       return (
@@ -477,61 +403,56 @@ export default function ServicesHero({ data }) {
                       tabIndex={isActive ? 0 : -1}
                       onClick={() => setActiveNodeIndex(index)}
                       onKeyDown={(e) => handleKeyDown(e, index)}
-                      className={`group relative w-full text-left rounded-2xl p-3 sm:p-3.5 transition-all duration-200 cursor-pointer border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 ${
+                      className={`group relative w-full text-left rounded-2xl p-3.5 sm:p-4 min-h-[120px] flex flex-col justify-start transition-all duration-200 cursor-pointer border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 ${
                         isActive
                           ? "bg-blue-50/90 dark:bg-blue-950/40 border-blue-500/60 dark:border-cyan-400/50 shadow-sm ring-1 ring-blue-500/20"
                           : "bg-brand-surface/70 dark:bg-slate-950/40 border-brand-border/70 hover:border-brand-border hover:bg-brand-surface dark:hover:bg-slate-900/60"
                       }`}
                     >
-                      <div className="flex items-start gap-3 w-full">
-                        {/* Step Identifier & Icon */}
-                        <div 
-                          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors mt-0.5 ${
+                      {/* Row 1: Top Row — Fixed Icon, Step Number & Technical Badge */}
+                      <div className="flex items-center justify-between gap-3 w-full">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div
+                            className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                              isActive
+                                ? "bg-brand-primary text-white shadow-sm"
+                                : "bg-slate-200/70 dark:bg-slate-800 text-brand-textSecondary group-hover:text-brand-primary"
+                            }`}
+                          >
+                            {getNodeIcon(node.icon, "w-4 h-4 sm:w-[18px] sm:h-[18px]")}
+                          </div>
+                          <span className="font-mono text-caption font-bold text-brand-primary shrink-0">
+                            {node.step}
+                          </span>
+                        </div>
+
+                        <span
+                          className={`font-mono text-technical font-bold px-2 py-0.5 rounded uppercase tracking-wider shrink-0 whitespace-nowrap ${
                             isActive
-                              ? "bg-brand-primary text-white shadow-sm"
-                              : "bg-slate-200/70 dark:bg-slate-800 text-brand-textSecondary group-hover:text-brand-primary"
+                              ? "bg-blue-600 text-white dark:bg-cyan-400 dark:text-slate-950"
+                              : "bg-brand-surface dark:bg-slate-800 text-brand-textSecondary border border-brand-border/60"
                           }`}
                         >
-                          {getNodeIcon(node.icon, "w-4 h-4 sm:w-5 sm:h-5")}
-                        </div>
-
-                        {/* Title, Badge, Description & Parameter Set */}
-                        <div className="min-w-0 flex-1">
-                          {/* Row 1: Step + Title and Badge */}
-                          <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1">
-                            <div className="flex items-baseline gap-2 min-w-0">
-                              <span className="font-mono text-caption font-bold text-brand-primary shrink-0">
-                                {node.step}
-                              </span>
-                              <span className="text-body-sm font-bold text-brand-textPrimary leading-snug break-words">
-                                {node.title}
-                              </span>
-                            </div>
-
-                            <span 
-                              className={`font-mono text-technical font-bold px-2 py-0.5 rounded uppercase tracking-wider shrink-0 ${
-                                isActive
-                                  ? "bg-blue-600 text-white dark:bg-cyan-400 dark:text-slate-950"
-                                  : "bg-brand-surface dark:bg-slate-800 text-brand-textSecondary border border-brand-border/60"
-                              }`}
-                            >
-                              {node.badge}
-                            </span>
-                          </div>
-
-                          {/* Row 2: Subtitle & Meta */}
-                          <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-0.5 mt-1">
-                            <p className="text-caption text-brand-textSecondary font-normal leading-normal">
-                              {node.sub}
-                            </p>
-                            {node.meta && (
-                              <span className="font-mono text-caption text-brand-textSecondary/80 shrink-0">
-                                {node.meta}
-                              </span>
-                            )}
-                          </div>
-                        </div>
+                          {node.badge}
+                        </span>
                       </div>
+
+                      {/* Row 2: Title Row (Full Card Width for Natural Multiline Wrapping) */}
+                      <span className="block w-full mt-2.5 text-body-sm font-bold text-brand-textPrimary leading-snug break-words">
+                        {node.title}
+                      </span>
+
+                      {/* Row 3: Description Row (Aligned with Title) */}
+                      <p className="w-full mt-1 text-caption text-brand-textSecondary font-normal leading-relaxed break-words">
+                        {node.sub}
+                      </p>
+
+                      {/* Row 4: Metadata Row (Aligned with Description) */}
+                      {node.meta && (
+                        <p className="w-full mt-1.5 font-mono text-caption text-brand-textSecondary/80 leading-snug break-words">
+                          {node.meta}
+                        </p>
+                      )}
 
                       {/* Active Indicator Accent Line */}
                       {isActive && (
@@ -564,15 +485,15 @@ export default function ServicesHero({ data }) {
                 </div>
 
                 {/* Factual Phase Engineering Overview */}
-                <div className="text-white dark:text-slate-200 text-caption leading-relaxed">
+                <div className="text-white dark:text-slate-200 text-caption leading-relaxed min-h-[3.75rem] sm:min-h-[3rem]">
                   {logs[activeNodeIndex] || logs[0]}
                 </div>
 
                 {/* Technical Verification Discipline Metadata */}
                 <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 pt-2.5 mt-2.5 border-t border-slate-700/80 dark:border-slate-800/80 text-caption text-slate-300 dark:text-slate-400">
-                  <span className="flex items-center gap-1.5">
+                  <span className="flex items-center gap-1.5 min-w-0">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-cyan-400 shrink-0" />
-                    <span>{activeNode.meta}</span>
+                    <span className="break-words">{activeNode.meta}</span>
                   </span>
                   <span className="text-blue-400 dark:text-cyan-400 font-semibold shrink-0">
                     [{labels.activePhase}: {activeNode.step}]
