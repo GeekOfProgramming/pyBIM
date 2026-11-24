@@ -310,33 +310,33 @@
       }
     },
     "strategicEcosystem": {
-      "eyebrow": "WHO WE SUPPORT",
-      "heading": "For the Teams That Make Projects Happen.",
-      "description": "pyBIM provides BIM engineering support adapted to the working needs of architecture practices, engineering consultancies, and construction delivery teams.",
+      "eyebrow": "OUR CLIENTS",
+      "heading": "BIM expertise across architecture, engineering and construction.",
+      "description": "We work alongside architecture practices, engineering consultancies and construction companies, providing specialist BIM services adapted to their technical responsibilities, project requirements and delivery objectives.",
       "audiences": [
         {
           "id": "architecture",
           "display": "Architecture.",
           "name": "Architecture Studios",
-          "description": "BIM model development, model updates, and documentation aligned with design information and agreed project requirements.",
-          "capability_line": "Model Development · BIM Documentation"
+          "description": "We support architecture teams with BIM model development, design revisions, model-based drawings and structured information, helping translate architectural design into coordinated digital deliverables.",
+          "capability_line": "Architectural BIM Modeling · Technical Documentation"
         },
         {
           "id": "engineering",
           "display": "Engineering.",
           "name": "Engineering Consultancies",
-          "description": "Discipline-specific model support, multidisciplinary coordination, and structured model information review.",
-          "capability_line": "Coordination · Model QA · Technical Information"
+          "description": "We support engineering teams with structural and MEP modeling, discipline and multidisciplinary BIM coordination, clash detection, technical information checks and customized engineering automation.",
+          "capability_line": "Structural & MEP Modeling · BIM Coordination · Model QA"
         },
         {
           "id": "construction",
           "display": "Construction.",
-          "name": "Contractors & Delivery Teams",
-          "description": "Coordination reviews, model-based documentation, and structured BIM deliverables aligned with the agreed project scope.",
-          "capability_line": "Coordination Reviews · Digital Deliverables"
+          "name": "Contractors & Construction Teams",
+          "description": "We support construction teams with model coordination, interference reviews, quantity extraction and technical documentation, helping prepare coordinated BIM information for construction and digital handover.",
+          "capability_line": "Construction Coordination · Model-Based Documentation"
         }
       ],
-      "closing_statement": "Different project requirements. A collaboration model adapted to your scope."
+      "closing_statement": "Specialist BIM services adapted to your discipline, project scope and delivery requirements."
     },
     "finalProjectCta": {
       "badge": "BIM ENGINEERING · PROJECT DELIVERY",
@@ -666,33 +666,33 @@
       }
     },
     "strategicEcosystem": {
-      "eyebrow": "CHI SUPPORTIAMO",
-      "heading": "Per i Team Che Danno Vita ai Progetti.",
-      "description": "pyBIM fornisce supporto ingegneristico BIM adattato alle esigenze operative di studi di architettura, società di ingegneria e team di esecuzione cantieri.",
+      "eyebrow": "A CHI CI RIVOLGIAMO",
+      "heading": "Competenze BIM per l'architettura, l'ingegneria e le costruzioni.",
+      "description": "Affianchiamo studi di architettura, società di ingegneria e imprese di costruzione con prestazioni BIM specialistiche, definite in funzione delle responsabilità tecniche, dei requisiti informativi e degli obiettivi di consegna.",
       "audiences": [
         {
           "id": "architecture",
           "display": "Architettura.",
-          "name": "Studi di Architettura",
-          "description": "Sviluppo di modelli BIM, aggiornamenti e documentazione allineati alle informazioni di progetto e ai requisiti concordati.",
-          "capability_line": "Sviluppo Modelli · Documentazione BIM"
+          "name": "Studi di architettura",
+          "description": "Supportiamo gli studi di architettura nello sviluppo dei modelli BIM, negli aggiornamenti progettuali, nella produzione di elaborati grafici da modello e nella strutturazione delle informazioni, contribuendo alla predisposizione di consegne digitali coordinate.",
+          "capability_line": "Modellazione architettonica · Elaborati tecnici"
         },
         {
           "id": "engineering",
           "display": "Ingegneria.",
-          "name": "Società di Ingegneria",
-          "description": "Supporto modellazione specialistica per disciplina, coordinamento multidisciplinare e revisione strutturata delle informazioni di modello.",
-          "capability_line": "Coordinamento · Model QA · Informazioni Tecniche"
+          "name": "Studi e società di ingegneria",
+          "description": "Affianchiamo i gruppi di progettazione nella modellazione strutturale e impiantistica, nel coordinamento BIM disciplinare e generale, nella verifica delle interferenze e dei requisiti informativi, anche attraverso strumenti di automazione dedicati.",
+          "capability_line": "Modellazione strutturale e impiantistica · Coordinamento BIM · Verifiche"
         },
         {
           "id": "construction",
           "display": "Costruzioni.",
-          "name": "Imprese & Team di Consegna",
-          "description": "Revisioni di coordinamento, documentazione basata sui modelli ed elaborati BIM strutturati allineati all'ambito contrattuale concordato.",
-          "capability_line": "Revisioni di Coordinamento · Consegne Digitali"
+          "name": "Imprese di costruzione",
+          "description": "Supportiamo le imprese nel coordinamento dei modelli, nella verifica delle interferenze, nell'estrazione delle quantità e nella produzione di documentazione tecnica, predisponendo informazioni BIM coordinate a supporto delle attività esecutive e della consegna digitale.",
+          "capability_line": "Coordinamento per l'esecuzione · Documentazione tecnica"
         }
       ],
-      "closing_statement": "Requisiti di progetto differenti. Un modello di collaborazione su misura per il vostro ambito operativo."
+      "closing_statement": "Prestazioni BIM specialistiche, definite in funzione delle discipline, dell'incarico e dei requisiti di progetto."
     },
     "finalProjectCta": {
       "badge": "INGEGNERIA BIM · CONSEGNA PROGETTUALE",
@@ -1022,33 +1022,33 @@
       }
     },
     "strategicEcosystem": {
-      "eyebrow": "WEN WIR UNTERSTÜTZEN",
-      "heading": "Für die Teams, die Projekte Wirklichkeit werden lassen.",
-      "description": "pyBIM bietet BIM-Engineering-Unterstützung, abgestimmt auf die Arbeitsanforderungen von Architekturbüros, Ingenieurberatungen und Bauausführungsteams.",
+      "eyebrow": "UNSERE ZIELGRUPPEN",
+      "heading": "BIM-Fachkompetenz für Architektur, Ingenieurwesen und Bauausführung.",
+      "description": "Wir unterstützen Architektur- und Ingenieurbüros sowie Bauunternehmen mit spezialisierten BIM-Leistungen, abgestimmt auf ihre technischen Verantwortlichkeiten, Informationsanforderungen und Projektziele.",
       "audiences": [
         {
           "id": "architecture",
           "display": "Architektur.",
           "name": "Architekturbüros",
-          "description": "BIM-Modellerstellung, Modellfortschreibung und Dokumentation, abgestimmt auf Entwurfsinformationen und vereinbarte Projektanforderungen.",
-          "capability_line": "Modellerstellung · BIM-Dokumentation"
+          "description": "Wir unterstützen Architekturbüros bei der BIM-Modellentwicklung, Planungsänderungen, modellbasierten Planunterlagen und der strukturierten Aufbereitung von Modellinformationen für abgestimmte digitale Lieferobjekte.",
+          "capability_line": "BIM-Architekturmodellierung · Planunterlagen"
         },
         {
           "id": "engineering",
           "display": "Ingenieurwesen.",
-          "name": "Ingenieurberatungen",
-          "description": "Fachdisziplinäre Modellierungsunterstützung, multidisziplinäre Koordination und strukturierte Prüfung technischer Modellinformationen.",
-          "capability_line": "Koordination · Modell-QS · Technische Informationen"
+          "name": "Ingenieurbüros und Fachplaner",
+          "description": "Wir unterstützen Fachplanungsteams bei der Tragwerks- und TGA-Modellierung, BIM-Fach- und Gesamtkoordination, Kollisionsprüfung und Prüfung der Informationsanforderungen sowie durch individuell entwickelte Automatisierungswerkzeuge.",
+          "capability_line": "Tragwerks- und TGA-Modellierung · BIM-Koordination · Modellprüfung"
         },
         {
           "id": "construction",
           "display": "Bauausführung.",
-          "name": "Bauunternehmen & Ausführungsteams",
-          "description": "Koordinationsprüfungen, modellbasierte Dokumentation und strukturierte BIM-Deliverables im Einklang mit dem vereinbarten Projektumfang.",
-          "capability_line": "Koordinationsprüfungen · Digitale Deliverables"
+          "name": "Bauunternehmen und Ausführungsteams",
+          "description": "Wir unterstützen Bauunternehmen bei der Modellkoordination, Kollisionsprüfung, modellbasierten Mengenermittlung und technischen Dokumentation. Die abgestimmten BIM-Informationen dienen als Grundlage für die Bauausführung und digitale Übergabe.",
+          "capability_line": "Ausführungskoordination · Technische Dokumentation"
         }
       ],
-      "closing_statement": "Unterschiedliche Projektanforderungen. Ein Kooperationsmodell, abgestimmt auf Ihren Leistungsumfang."
+      "closing_statement": "Spezialisierte BIM-Leistungen, abgestimmt auf Ihre Fachdisziplinen, den Leistungsumfang und die Projektanforderungen."
     },
     "finalProjectCta": {
       "badge": "BIM-ENGINEERING · PROJEKTABWICKLUNG",

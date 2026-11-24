@@ -70,7 +70,7 @@ export default function StrategicEcosystem() {
                 }`}
                 aria-labelledby={`${sectionId}-${audience.id}-title`}
               >
-                <div className={`w-full max-w-4xl ${isShifted ? "lg:mr-0 lg:ml-auto" : "lg:ml-0 lg:mr-auto"}`}>
+                <div className={`w-full max-w-5xl ${isShifted ? "lg:mr-0 lg:ml-auto" : "lg:ml-0 lg:mr-auto"}`}>
 
                   {/* Oversized Expressive Typographic Word */}
                   <div
