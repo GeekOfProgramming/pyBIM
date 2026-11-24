@@ -101,49 +101,49 @@
       ]
     },
     "deploymentModels": {
-      "eyebrow": "HOW pyBIM DELIVERS",
-      "heading": "The Right Expertise. Assembled Around Your Project.",
-      "description": "We organize BIM specialists around each project's technical requirements, support suitable tasks with in-house automation, and keep technical oversight and quality review in the hands of our engineering team.",
-      "diagram_aria_label": "pyBIM Engineering Delivery Network: Connected diagram showing Project Requirements feeding into pyBIM Coordinated Delivery supported by Flexible Engineering, In-House Automation, and Human Quality Review to produce Reviewed BIM Deliverables.",
+      "eyebrow": "HOW pyBIM WORKS",
+      "heading": "Specialist expertise. Coordinated BIM delivery.",
+      "description": "We organize BIM specialists according to the disciplines, information requirements and delivery needs of each project. Technical coordination, purpose-built automation and engineering quality reviews support the work from model development to digital handover.",
+      "diagram_aria_label": "Engineering delivery diagram connecting project requirements, BIM specialists, coordinated execution, automation and technical quality reviews to reviewed BIM deliverables.",
       "input": {
-        "label": "PROJECT INPUT",
+        "label": "PROJECT REQUIREMENTS",
         "title": "Your Project Requirements",
-        "supporting": "Scope · Disciplines · Deliverables",
-        "description": "Project objectives, available documentation, relevant BIM disciplines, and agreed delivery requirements define the starting point."
+        "supporting": "Scope · Disciplines · Information Requirements",
+        "description": "Project documentation, information requirements, relevant disciplines and agreed delivery milestones define the scope of our BIM services."
       },
       "center": {
         "label": "pyBIM ENGINEERING",
-        "title": "pyBIM Coordinated Delivery",
-        "supporting": "Engineering-led project execution",
-        "description": "We assemble suitable BIM expertise, coordinate the agreed work, and use in-house automation where it adds practical value.",
+        "title": "Coordinated BIM Delivery",
+        "supporting": "Specialist modeling · BIM coordination",
+        "description": "We organize the required BIM specialists, coordinate multidisciplinary models and execute the agreed technical services within the project's information management framework.",
         "capabilities": [
           {
             "id": "flexible_engineering",
-            "tag": "LIQUID TEAM APPROACH",
-            "title": "Flexible Engineering Capacity",
-            "description": "A project-fit mix of BIM specialists and technical disciplines, organized around the agreed scope."
+            "tag": "BIM SPECIALISTS",
+            "title": "Project-Specific Engineering Expertise",
+            "description": "Architectural, structural and MEP modeling specialists and BIM coordinators are organized according to the project's technical requirements and delivery needs."
           },
           {
             "id": "automation",
-            "tag": "IN-HOUSE TOOLING",
-            "title": "Purpose-Built Automation",
-            "description": "Revit API, Python and C# tools support suitable repetitive and data-intensive tasks where appropriate."
+            "tag": "IN-HOUSE TOOLS",
+            "title": "Engineering Automation",
+            "description": "Revit API, Python and C# tools support repetitive modeling, data processing and rule-based verification tasks."
           },
           {
             "id": "quality_review",
-            "tag": "HUMAN OVERSIGHT",
-            "title": "Human-Led Quality Review",
-            "description": "Technical checks, model coordination and deliverable review remain under engineering responsibility."
+            "tag": "TECHNICAL QUALITY CONTROL",
+            "title": "Engineering Quality Review",
+            "description": "BIM specialists review model geometry, information consistency and deliverables against agreed project requirements."
           }
         ]
       },
       "output": {
-        "label": "DELIVERY OUTPUT",
+        "label": "PROJECT DELIVERABLES",
         "title": "Reviewed BIM Deliverables",
-        "supporting": "Models · Documentation · Coordination Outputs",
-        "description": "Model files and supporting project documentation are reviewed and prepared according to the agreed delivery scope."
+        "supporting": "Models · Documentation · Coordination",
+        "description": "Reviewed models, technical documentation and coordination records are prepared according to the agreed scope and delivery requirements."
       },
-      "supporting_statement": "Flexible by design. Accountable in delivery."
+      "supporting_statement": "Project-specific expertise. Coordinated execution. Technical accountability."
     },
     "executionPipeline": {
       "eyebrow": "ENGINEERING OUTPUTS",
@@ -455,48 +455,48 @@
     },
     "deploymentModels": {
       "eyebrow": "COME LAVORA pyBIM",
-      "heading": "Le Competenze Giuste. Organizzate Attorno al Tuo Progetto.",
-      "description": "Organizziamo specialisti BIM attorno ai requisiti tecnici di ciascun progetto, supportiamo i task idonei con automazioni interne e manteniamo la supervisione tecnica e il controllo qualità nelle mani del nostro team di ingegneria.",
-      "diagram_aria_label": "Rete di Erogazione Ingegneristica pyBIM: Diagramma connesso che mostra i Requisiti di Progetto convogliati nell'Erogazione Coordinata pyBIM, supportata da Capacità Flessibile, Automazione Interna e Revisione Umana della Qualità per produrre Deliverable BIM Revisionati.",
+      "heading": "Competenze specialistiche. Esecuzione BIM coordinata.",
+      "description": "Organizziamo le competenze dei nostri specialisti BIM in funzione delle discipline, dei requisiti informativi e delle esigenze di consegna di ciascun progetto. Il coordinamento tecnico, gli strumenti di automazione sviluppati internamente e le verifiche di qualità supportano le attività dalla modellazione alla consegna digitale.",
+      "diagram_aria_label": "Schema operativo che collega i requisiti del progetto, le competenze degli specialisti BIM, il coordinamento, l'automazione e le verifiche tecniche alla produzione degli elaborati BIM verificati.",
       "input": {
-        "label": "INPUT DI PROGETTO",
-        "title": "I Requisiti del Tuo Progetto",
-        "supporting": "Ambito · Discipline · Deliverable",
-        "description": "Obiettivi del progetto, documentazione disponibile, discipline BIM pertinenti e requisiti di consegna concordati definiscono il punto di partenza."
+        "label": "REQUISITI DI PROGETTO",
+        "title": "Requisiti informativi e tecnici",
+        "supporting": "Ambito · Discipline · Requisiti informativi",
+        "description": "La documentazione progettuale, il Capitolato Informativo (CI), ove previsto, le discipline coinvolte e le scadenze concordate definiscono l'ambito delle prestazioni BIM."
       },
       "center": {
         "label": "INGEGNERIA pyBIM",
-        "title": "Erogazione Coordinata pyBIM",
-        "supporting": "Esecuzione del progetto guidata dall'ingegneria",
-        "description": "Assembliamo le competenze BIM più idonee, coordiniamo il lavoro concordato e utilizziamo automazioni interne laddove apportano reale valore pratico.",
+        "title": "Esecuzione BIM coordinata",
+        "supporting": "Modellazione specialistica · Coordinamento BIM",
+        "description": "Organizziamo le competenze BIM necessarie, coordiniamo i modelli disciplinari ed eseguiamo le prestazioni tecniche concordate nel rispetto dei requisiti informativi applicabili al progetto.",
         "capabilities": [
           {
             "id": "flexible_engineering",
-            "tag": "APPROCCIO LIQUID TEAM",
-            "title": "Capacità Ingegneristica Flessibile",
-            "description": "Un mix su misura di specialisti BIM e discipline tecniche, organizzato attorno all'ambito concordato."
+            "tag": "SPECIALISTI BIM",
+            "title": "Competenze tecniche su misura",
+            "description": "Specialisti della modellazione architettonica, strutturale e impiantistica e figure di coordinamento BIM vengono organizzati secondo le esigenze tecniche del progetto."
           },
           {
             "id": "automation",
-            "tag": "TOOLING INTERNO",
-            "title": "Automazione Mirata",
-            "description": "Strumenti Revit API, Python e C# supportano task ripetitivi e ad alta intensità di dati dove opportuno."
+            "tag": "STRUMENTI INTERNI",
+            "title": "Automazione dei processi BIM",
+            "description": "Strumenti basati su Revit API, Python e C# supportano la modellazione ripetitiva, l'elaborazione dei dati e le verifiche basate su regole."
           },
           {
             "id": "quality_review",
-            "tag": "SUPERVISIONE UMANA",
-            "title": "Revisione della Qualità Guidata dall'Uomo",
-            "description": "Controlli tecnici, coordinamento dei modelli e revisione degli elaborati rimangono sotto responsabilità ingegneristica."
+            "tag": "CONTROLLO QUALITÀ",
+            "title": "Verifica tecnica dei modelli",
+            "description": "Gli specialisti BIM verificano la geometria, la coerenza informativa dei modelli e gli elaborati rispetto ai requisiti concordati."
           }
         ]
       },
       "output": {
-        "label": "OUTPUT DI CONSEGNA",
-        "title": "Deliverable BIM Revisionati",
-        "supporting": "Modelli · Documentazione · Elaborati di Coordinamento",
-        "description": "I file di modello e la documentazione tecnica a supporto vengono revisionati e preparati secondo l'ambito di fornitura concordato."
+        "label": "ELABORATI DI PROGETTO",
+        "title": "Modelli ed elaborati verificati",
+        "supporting": "Modelli · Documentazione · Coordinamento",
+        "description": "I modelli verificati, la documentazione tecnica e gli elaborati di coordinamento vengono predisposti secondo le prestazioni e le modalità di consegna concordate."
       },
-      "supporting_statement": "Flessibile nella struttura. Responsabile nella consegna."
+      "supporting_statement": "Competenze dedicate. Esecuzione coordinata. Responsabilità tecnica."
     },
     "executionPipeline": {
       "eyebrow": "OUTPUT INGEGNERISTICI",
@@ -807,49 +807,49 @@
       ]
     },
     "deploymentModels": {
-      "eyebrow": "WIE pyBIM LIEFERT",
-      "heading": "Die richtige Expertise. Um Ihr Projekt herum organisiert.",
-      "description": "Wir organisieren BIM-Spezialisten passgenau nach den technischen Anforderungen jedes Projekts, unterstützen geeignete Aufgaben durch interne Automatisierung und belassen die technische Aufsicht und Qualitätsprüfung in den Händen unseres Engineering-Teams.",
-      "diagram_aria_label": "pyBIM Engineering-Liefernetzwerk: Verbundenes Diagramm, das Projektanforderungen über die koordinierte pyBIM-Lieferung, gestützt durch flexible Kapazität, interne Werkzeuge und ingenieurgeführte Qualitätsprüfung, zu geprüften BIM-Deliverables führt.",
+      "eyebrow": "SO ARBEITET pyBIM",
+      "heading": "Fachkompetenz. Koordinierte BIM-Projektabwicklung.",
+      "description": "Wir stellen BIM-Fachkompetenzen entsprechend den Fachdisziplinen, Informationsanforderungen und Übergabezielen des jeweiligen Projekts zusammen. Technische Koordination, intern entwickelte Automatisierungslösungen und fachliche Qualitätsprüfungen unterstützen die Leistungen von der Modellierung bis zur digitalen Übergabe.",
+      "diagram_aria_label": "Ablaufdiagramm, das Projektanforderungen, BIM-Fachkompetenzen, koordinierte Projektabwicklung, Automatisierung und technische Qualitätsprüfungen mit den geprüften BIM-Lieferobjekten verbindet.",
       "input": {
-        "label": "PROJEKT-INPUT",
-        "title": "Ihre Projektanforderungen",
-        "supporting": "Umfang · Fachdisziplinen · Deliverables",
-        "description": "Projektziele, verfügbare Unterlagen, relevante BIM-Fachdisziplinen und vereinbarte Übergabekriterien bilden die Ausgangsbasis."
+        "label": "PROJEKTANFORDERUNGEN",
+        "title": "Informations- und Projektanforderungen",
+        "supporting": "Leistungsumfang · Fachdisziplinen · Informationsbedarf",
+        "description": "Projektunterlagen, Auftraggeber-Informationsanforderungen (AIA), sofern vorgesehen, beteiligte Fachdisziplinen und vereinbarte Übergabetermine definieren den Leistungsumfang."
       },
       "center": {
         "label": "pyBIM ENGINEERING",
-        "title": "Koordinierte pyBIM-Lieferung",
-        "supporting": "Ingenieurgeführte Projektabwicklung",
-        "description": "Wir stellen die passende BIM-Expertise zusammen, koordinieren die vereinbarten Leistungen und setzen interne Automatisierungen gezielt dort ein, wo sie praktischen Mehrwert bieten.",
+        "title": "Koordinierte BIM-Projektabwicklung",
+        "supporting": "Fachmodellierung · BIM-Koordination",
+        "description": "Wir organisieren die erforderlichen BIM-Fachkompetenzen, koordinieren die Fachmodelle und erbringen die vereinbarten technischen Leistungen auf Grundlage der projektspezifischen Informationsanforderungen.",
         "capabilities": [
           {
             "id": "flexible_engineering",
-            "tag": "LIQUID-TEAM-ANSATZ",
-            "title": "Flexible Engineering-Kapazität",
-            "description": "Ein projektspezifischer Mix aus BIM-Spezialisten und Fachdisziplinen, abgestimmt auf den vereinbarten Leistungsumfang."
+            "tag": "BIM-FACHKOMPETENZ",
+            "title": "Projektspezifische Fachkompetenz",
+            "description": "Spezialisten für Architektur-, Tragwerks- und TGA-Modellierung sowie BIM-Koordination werden entsprechend den technischen Projektanforderungen eingesetzt."
           },
           {
             "id": "automation",
             "tag": "INTERNE WERKZEUGE",
-            "title": "Zweckgerichtete Automatisierung",
-            "description": "Revit-API-, Python- und C#-Werkzeuge unterstützen geeignete repetitive und datenintensive Aufgaben, wo zweckmäßig."
+            "title": "BIM-Automatisierung",
+            "description": "Werkzeuge auf Basis der Revit API, Python und C# unterstützen wiederkehrende Modellierungsaufgaben, Datenverarbeitung und regelbasierte Prüfungen."
           },
           {
             "id": "quality_review",
-            "tag": "MENSCHLICHE AUFSICHT",
-            "title": "Ingenieurgeführte Qualitätsprüfung",
-            "description": "Technische Prüfungen, Modellkoordination und Überprüfung der Lieferergebnisse verbleiben in ingenieurmäßiger Verantwortung."
+            "tag": "QUALITÄTSSICHERUNG",
+            "title": "Technische Modellprüfung",
+            "description": "BIM-Fachkräfte prüfen Modellgeometrie, Informationskonsistenz und Lieferobjekte anhand der vereinbarten Projektanforderungen."
           }
         ]
       },
       "output": {
-        "label": "LIEFER-OUTPUT",
-        "title": "Geprüfte BIM-Deliverables",
-        "supporting": "Modelle · Dokumentation · Koordinationsergebnisse",
-        "description": "Modelldateien und begleitende Projektdokumentationen werden geprüft und exakt nach vereinbartem Leistungsumfang aufbereitet."
+        "label": "PROJEKTERGEBNISSE",
+        "title": "Geprüfte BIM-Lieferobjekte",
+        "supporting": "Modelle · Dokumentation · Koordination",
+        "description": "Geprüfte Modelle, technische Unterlagen und Koordinationsprotokolle werden entsprechend dem vereinbarten Leistungsumfang und den Übergabeanforderungen aufbereitet."
       },
-      "supporting_statement": "Flexibel im Aufbau. Verbindlich in der Lieferung."
+      "supporting_statement": "Projektspezifische Fachkompetenz. Koordinierte Abwicklung. Technische Verantwortung."
     },
     "executionPipeline": {
       "eyebrow": "ENGINEERING-LIEFERERGEBNISSE",
