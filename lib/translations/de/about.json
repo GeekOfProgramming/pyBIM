@@ -239,7 +239,7 @@
     "AIA / BAP-Anforderungsprüfung",
     "BIM-Datenqualitätskontrolle",
     "Geometrische & Informatorische Konsistenz",
-    "Qualitätsprüfberichte & Mängelrügen",
+    "Qualitätsprüfberichte & Abweichungsprotokolle",
     "Unterstützung bei der Konfliktbehebung",
     "IFC-Interoperabilitätsprüfung"
   ],
@@ -383,7 +383,7 @@
   "about.impact.v2.subtitle": "pyBIM verbindet Ingenieurkompetenz, strukturiertes Informationsmanagement und den gezielten Einsatz von Technologie für eine konsistentere und effizientere BIM-Projektabwicklung.",
   "about.impact.v2.outcome1.num": "01",
   "about.impact.v2.outcome1.title": "Weniger Routinearbeit",
-  "about.impact.v2.outcome1.desc": "Strukturierte Prozesse und gezielte Automatisierung reduzieren repetitive Aufgaben, sodass sich Ingenieure auf Koordination, technische Prüfung und Projektscheidungen konzentrieren können.",
+  "about.impact.v2.outcome1.desc": "Strukturierte Prozesse und gezielte Automatisierung reduzieren repetitive Aufgaben, sodass sich Ingenieure auf Koordination, technische Prüfung und Projektentscheidungen konzentrieren können.",
   "about.impact.v2.outcome1.diag_step1_title": "Manuelle Aufgaben",
   "about.impact.v2.outcome1.diag_step1_sub": "Wiederkehrende Vorgänge",
   "about.impact.v2.outcome1.diag_step2_title": "Strukturierter Workflow",

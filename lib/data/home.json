@@ -675,7 +675,7 @@
           "id": "engineering",
           "display": "Ingegneria.",
           "name": "Società di Ingegneria",
-          "description": "Supporto modellazione specialistica per disciplina, coordinamento multidisciplinare e revisione strutturata delle informazioni informative.",
+          "description": "Supporto modellazione specialistica per disciplina, coordinamento multidisciplinare e revisione strutturata delle informazioni di modello.",
           "capability_line": "Coordinamento · Model QA · Informazioni Tecniche"
         },
         {
@@ -732,7 +732,7 @@
     },
     "paradigmShift": {
       "badge": "BIM-ENGINEERING-SERVICES",
-      "section_title": "BIM Services, Built Around Your Project.",
+      "section_title": "BIM-Leistungen, abgestimmt auf Ihr Projekt.",
       "section_subtitle": "Von der BIM-Modellentwicklung und multidisziplinären Koordination bis hin zur Informationsprüfung und digitalen Projektabwicklung bietet pyBIM ingenieurtechnische Leistungen, die präzise auf Ihre Projektanforderungen abgestimmt sind.",
       "supporting_positioning": "Ingenieurgeleitete Projektabwicklung, unterstützt durch maßgeschneiderte digitale Workflows.",
       "scope_heading": "Typischer Leistungsumfang",
