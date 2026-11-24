@@ -1,101 +1,101 @@
 {
   "en": {
     "hero": {
-      "badge": "BIM ENGINEERING · PROJECT DELIVERY",
-      "title_main": "BIM Engineering That Delivers.",
-      "title_highlight": "Technology That Moves It Forward.",
-      "description": "pyBIM acts as a BIM Specialist engineering partner—delivering architectural, structural, and MEP BIM modeling, multidisciplinary coordination, model QA/QC, and structured digital deliverables, supported by custom Revit automation and technical assistance within your project CDE.",
+      "badge": "BIM ENGINEERING · MULTIDISCIPLINARY COORDINATION",
+      "title_main": "BIM Engineering Services.",
+      "title_highlight": "From Modeling to Project Delivery.",
+      "description": "pyBIM supports architecture, engineering and construction teams with specialist BIM modeling, multidisciplinary coordination, model quality assurance and structured digital deliverables. Computational design and custom Revit automation extend our engineering capabilities across the project lifecycle.",
       "cta_primary": "Discuss Your BIM Project",
-      "cta_secondary": "Explore BIM Services",
-      "capability_line": "BIM Modeling · Coordination · Model QA · Digital Delivery",
+      "cta_secondary": "Explore Our Services",
+      "capability_line": "ISO 19650 · openBIM / IFC · Revit API",
       "schematic": {
-        "badge": "BIM Delivery Pipeline",
-        "tag": "pyBIM // ARCHITECTURE",
-        "node1_title": "BIM Modeling & Development",
-        "node1_badge": "LOD 300–400",
-        "node1_desc": "Architectural, structural, and MEP BIM model authoring with structured parameter schemas.",
-        "node2_title": "Coordination & Clash Audit",
+        "badge": "BIM Delivery Workflow",
+        "tag": "pyBIM // ENGINEERING",
+        "node1_title": "Multidisciplinary BIM Modeling",
+        "node1_badge": "PROJECT SPEC",
+        "node1_desc": "Architectural, structural and MEP models developed according to project-specific information requirements.",
+        "node2_title": "BIM Coordination & Clash Detection",
         "node2_badge": "ISO 19650",
-        "node2_desc": "Federated coordination and clash detection workflows within customer-provided CDE environments.",
+        "node2_desc": "Federated model coordination, clash detection and issue tracking within the client's CDE.",
         "node3_title": "Model QA & Digital Handover",
-        "node3_badge": "VERIFIED",
-        "node3_desc": "Automated model health auditing, parameter completeness checks, and IFC compliance verification.",
-        "footer_label": "Delivery Standard",
-        "footer_val": "OpenBIM · IFC4 · Revit API"
+        "node3_badge": "QA / QC",
+        "node3_desc": "Model quality checks, parameter validation and IFC deliverables according to project requirements.",
+        "footer_label": "Technical Frameworks",
+        "footer_val": "openBIM · IFC · Revit API"
       }
     },
     "paradigmShift": {
       "badge": "BIM ENGINEERING SERVICES",
-      "section_title": "BIM Services, Built Around Your Project.",
-      "section_subtitle": "From BIM model development and multidisciplinary coordination to information validation and digital deliverables, pyBIM provides engineering-led services tailored to your project requirements.",
-      "supporting_positioning": "Engineering-led delivery, supported by purpose-built digital workflows.",
-      "scope_heading": "Typical Scope",
-      "deliverables_heading": "Typical Deliverables",
+      "section_title": "Specialist BIM services for every project stage.",
+      "section_subtitle": "From discipline-specific modeling to multidisciplinary coordination, model verification and digital handover, we support project teams with defined engineering services and project-specific deliverables.",
+      "supporting_positioning": "Engineering expertise supported by dedicated digital workflows.",
+      "scope_heading": "Scope of services",
+      "deliverables_heading": "Typical deliverables",
       "cta_primary": "Discuss Your Project",
       "cta_secondary": "Explore All BIM Services",
       "services": [
         {
           "id": "modeling_development",
-          "title": "BIM Modeling & Development",
-          "description": "Develop, refine and update BIM models using project documentation, existing model files and agreed information requirements.",
+          "title": "BIM Modeling",
+          "description": "Architectural, structural and MEP model development based on project documentation and information requirements.",
           "scope": [
-            "BIM model development and updates",
-            "Revit-based modeling workflows",
-            "Discipline-specific and multidisciplinary model support",
-            "Model information organization"
+            "Discipline-specific BIM modeling",
+            "Revit model development",
+            "Scan-to-BIM and CAD-to-BIM",
+            "Model updates and information enrichment"
           ],
           "deliverables": [
-            "Updated BIM model files",
-            "Structured model information",
-            "Agreed model outputs and documentation"
+            "RVT and IFC models",
+            "Structured model data",
+            "Model-based drawings"
           ]
         },
         {
           "id": "coordination_clash",
           "title": "BIM Coordination & Clash Detection",
-          "description": "Support multidisciplinary project teams through federated model review, clash identification, coordination checks and structured issue reporting.",
+          "description": "Coordination of discipline models and technical interfaces at project level.",
           "scope": [
-            "Federated model coordination",
-            "Clash detection and interference review",
-            "Coordination issue identification",
-            "Multidisciplinary review support"
+            "Discipline and overall BIM coordination",
+            "Federated model review",
+            "Clash detection and issue tracking",
+            "CDE-based coordination workflows"
           ],
           "deliverables": [
-            "Coordination findings",
-            "Clash or issue reports",
-            "Reviewed models and agreed coordination outputs"
+            "Federated coordination models",
+            "Clash reports and BCF issues",
+            "Coordination records"
           ]
         },
         {
           "id": "model_qa_validation",
-          "title": "BIM Model QA & Information Validation",
-          "description": "Review model structure, parameters, classifications and information consistency against agreed project requirements.",
+          "title": "Model Quality Assurance",
+          "description": "Systematic verification of geometric and information quality against agreed project requirements.",
           "scope": [
-            "Model QA/QC",
-            "Parameter consistency checks",
-            "Naming and classification review",
-            "Information requirements validation"
+            "Geometry and parameter checks",
+            "Classification and naming checks",
+            "EIR and BEP requirements review",
+            "IFC data verification"
           ],
           "deliverables": [
-            "Model review findings",
-            "Information validation reports",
-            "Recommended corrections or agreed QA outputs"
+            "Model QA/QC reports",
+            "Nonconformity records",
+            "Correction recommendations"
           ]
         },
         {
           "id": "documentation_delivery",
-          "title": "BIM Documentation & Digital Delivery",
-          "description": "Prepare structured model outputs and BIM-related documentation to support coordinated project delivery and handover.",
+          "title": "Documentation & Digital Handover",
+          "description": "Preparation of coordinated technical documentation and structured information packages.",
           "scope": [
-            "BIM deliverable preparation",
-            "Model-based documentation",
-            "Output organization",
-            "Digital handover coordination"
+            "Model-based drawings and schedules",
+            "Information extraction",
+            "Deliverable package preparation",
+            "Digital handover support"
           ],
           "deliverables": [
-            "Agreed model and documentation packages",
-            "Structured information exports",
-            "Project-specific digital handover files"
+            "Drawings and schedules",
+            "RVT, IFC and agreed exports",
+            "Structured handover packages"
           ]
         }
       ]
@@ -354,101 +354,101 @@
   },
   "it": {
     "hero": {
-      "badge": "INGEGNERIA BIM · CONSEGNA PROGETTUALE",
-      "title_main": "Ingegneria BIM che Risponde con Precisione.",
-      "title_highlight": "Tecnologia che Fa Progredire i Progetti.",
-      "description": "pyBIM opera come partner ingegneristico BIM Specialist: modellazione architettonica, strutturale e MEP, coordinamento multidisciplinare, QA/QC dei modelli e deliverable digitali strutturati, supportati da automazione Revit dedicata e assistenza tecnica negli ambienti ACDat/CDE del cliente.",
-      "cta_primary": "Discuti il Tuo Progetto BIM",
-      "cta_secondary": "Esplora i Servizi BIM",
-      "capability_line": "Modellazione BIM · Coordinamento · Model QA · Consegna Digitale",
+      "badge": "INGEGNERIA BIM · COORDINAMENTO MULTIDISCIPLINARE",
+      "title_main": "Servizi di ingegneria BIM.",
+      "title_highlight": "Dalla modellazione alla consegna del progetto.",
+      "description": "pyBIM affianca studi di architettura, società di ingegneria e imprese di costruzione con servizi di modellazione BIM specialistica, coordinamento multidisciplinare, verifica dei modelli e produzione di elaborati digitali. La progettazione computazionale e l'automazione personalizzata di Revit integrano le nostre competenze nelle diverse fasi del progetto.",
+      "cta_primary": "Parliamo del vostro progetto BIM",
+      "cta_secondary": "I nostri servizi",
+      "capability_line": "UNI 11337 · UNI EN ISO 19650 · openBIM / IFC",
       "schematic": {
-        "badge": "Pipeline di Consegna BIM",
-        "tag": "pyBIM // ARCHITETTURA",
-        "node1_title": "Modellazione & Sviluppo BIM",
-        "node1_badge": "LOD 300–400",
-        "node1_desc": "Modellazione BIM architettonica, strutturale e MEP con schemi parametrici strutturati.",
-        "node2_title": "Coordinamento & Audit Clash",
-        "node2_badge": "ISO 19650",
-        "node2_desc": "Flussi di coordinamento su modelli federati e clash detection negli ambienti ACDat/CDE forniti dal cliente.",
-        "node3_title": "Model QA & Consegna Digitale",
-        "node3_badge": "VERIFICATO",
-        "node3_desc": "Audit automatizzato dello stato del modello, verifica completezza parametri e conformità IFC.",
-        "footer_label": "Standard di Consegna",
-        "footer_val": "OpenBIM · IFC4 · Revit API"
+        "badge": "Flusso di Consegna BIM",
+        "tag": "pyBIM // INGEGNERIA",
+        "node1_title": "Modellazione BIM multidisciplinare",
+        "node1_badge": "SU SPECIFICA",
+        "node1_desc": "Modelli architettonici, strutturali e impiantistici sviluppati secondo i requisiti informativi del progetto.",
+        "node2_title": "Coordinamento BIM e verifica delle interferenze",
+        "node2_badge": "UNI 11337",
+        "node2_desc": "Coordinamento dei modelli federati, verifica delle interferenze e gestione delle criticità nell'ACDat del cliente.",
+        "node3_title": "Verifica dei modelli e consegna digitale",
+        "node3_badge": "QA / QC",
+        "node3_desc": "Controllo della qualità dei modelli, verifica dei parametri e produzione di file IFC secondo i requisiti del progetto.",
+        "footer_label": "Riferimenti Tecnici",
+        "footer_val": "openBIM · IFC · Revit API"
       }
     },
     "paradigmShift": {
       "badge": "SERVIZI DI INGEGNERIA BIM",
-      "section_title": "Servizi BIM, Strutturati Intorno al Tuo Progetto.",
-      "section_subtitle": "Dallo sviluppo di modelli BIM e coordinamento multidisciplinare alla validazione informativa e deliverable digitali, pyBIM fornisce servizi ingegneristici su misura per i vostri requisiti di progetto.",
-      "supporting_positioning": "Consegna guidata dall'ingegneria, supportata da flussi di lavoro digitali dedicati.",
-      "scope_heading": "Ambito Tipico",
-      "deliverables_heading": "Deliverable Tipici",
-      "cta_primary": "Discuti il Tuo Progetto",
-      "cta_secondary": "Esplora Tutti i Servizi BIM",
+      "section_title": "Servizi BIM specialistici per ogni fase del progetto.",
+      "section_subtitle": "Dalla modellazione disciplinare al coordinamento multidisciplinare, fino alla verifica dei modelli e alla consegna digitale, affianchiamo i gruppi di progettazione con prestazioni tecniche e consegne definite in funzione dei requisiti informativi.",
+      "supporting_positioning": "Competenze ingegneristiche supportate da flussi di lavoro digitali dedicati.",
+      "scope_heading": "Ambito delle prestazioni",
+      "deliverables_heading": "Elaborati e consegne",
+      "cta_primary": "Parliamo del vostro progetto",
+      "cta_secondary": "Tutti i servizi BIM",
       "services": [
         {
           "id": "modeling_development",
-          "title": "Modellazione & Sviluppo BIM",
-          "description": "Sviluppare, perfezionare e aggiornare modelli BIM partendo dalla documentazione di progetto, file di modello esistenti e requisiti informativi concordati.",
+          "title": "Modellazione BIM specialistica",
+          "description": "Sviluppo di modelli architettonici, strutturali e impiantistici sulla base della documentazione e dei requisiti informativi del progetto.",
           "scope": [
-            "Sviluppo e aggiornamento di modelli BIM",
-            "Flussi di modellazione basati su Revit",
-            "Supporto a modelli specialistici e multidisciplinari",
-            "Organizzazione delle informazioni di modello"
+            "Modellazione BIM disciplinare",
+            "Sviluppo di modelli Revit",
+            "Scan-to-BIM e CAD-to-BIM",
+            "Aggiornamento e arricchimento informativo"
           ],
           "deliverables": [
-            "File di modello BIM aggiornati",
-            "Informazioni di modello strutturate",
-            "Elaborati grafici ed estrazioni concordate"
+            "Modelli RVT e IFC",
+            "Dati informativi strutturati",
+            "Elaborati grafici da modello"
           ]
         },
         {
           "id": "coordination_clash",
-          "title": "Coordinamento BIM & Rilevamento Interferenze",
-          "description": "Supportare i team multidisciplinari attraverso revisione di modelli federati, individuazione dei clash, verifiche di coordinamento e reportistica strutturata delle problematiche.",
+          "title": "Coordinamento BIM e verifica delle interferenze",
+          "description": "Coordinamento dei modelli disciplinari e delle interfacce tecniche a livello di progetto.",
           "scope": [
-            "Coordinamento di modelli federati",
-            "Rilevamento interferenze e clash review",
-            "Identificazione delle problematiche di coordinamento",
-            "Supporto alle sessioni di revisione multidisciplinare"
+            "Coordinamento disciplinare e generale BIM",
+            "Verifica dei modelli federati",
+            "Verifica delle interferenze e gestione delle criticità",
+            "Coordinamento nell’ACDat del cliente"
           ],
           "deliverables": [
-            "Evidenze di coordinamento",
-            "Report di clash e anomalie",
-            "Modelli revisionati e output di coordinamento concordati"
+            "Modelli federati di coordinamento",
+            "Report delle interferenze e segnalazioni BCF",
+            "Verbali e registri di coordinamento"
           ]
         },
         {
           "id": "model_qa_validation",
-          "title": "Model QA & Validazione Informativa BIM",
-          "description": "Verificare struttura del modello, parametri, classificazioni e coerenza informativa rispetto ai requisiti di progetto concordati.",
+          "title": "Verifica dei modelli informativi",
+          "description": "Controllo sistematico della qualità geometrica e informativa secondo i requisiti concordati.",
           "scope": [
-            "QA/QC del modello",
-            "Verifiche di coerenza dei parametri",
-            "Revisione delle denominazioni e classificazioni",
-            "Validazione dei requisiti informativi"
+            "Verifica geometrica e dei parametri",
+            "Controllo di classificazioni e denominazioni",
+            "Verifica rispetto al CI e al pGI applicabile",
+            "Verifica dei dati IFC"
           ],
           "deliverables": [
-            "Esiti di revisione del modello",
-            "Report di validazione informativa",
-            "Correzioni raccomandate o output QA concordati"
+            "Rapporti di verifica dei modelli",
+            "Registri delle non conformità",
+            "Indicazioni per le correzioni"
           ]
         },
         {
           "id": "documentation_delivery",
-          "title": "Documentazione BIM & Consegna Digitale",
-          "description": "Predisporre output di modello strutturati e documentazione tecnica BIM a supporto di una consegna coordinata e del passaggio di consegne.",
+          "title": "Documentazione BIM e consegna digitale",
+          "description": "Predisposizione di elaborati tecnici coordinati e pacchetti informativi strutturati.",
           "scope": [
-            "Predisposizione dei deliverable BIM",
-            "Documentazione basata sul modello",
-            "Organizzazione delle esportazioni",
-            "Coordinamento della consegna digitale"
+            "Elaborati grafici e abachi da modello",
+            "Estrazione delle informazioni",
+            "Predisposizione dei pacchetti di consegna",
+            "Supporto alla consegna digitale"
           ],
           "deliverables": [
-            "Pacchetti di modelli e documentazione concordati",
-            "Esportazioni informative strutturate",
-            "File di consegna digitale specifici per il progetto"
+            "Elaborati grafici e abachi",
+            "Modelli RVT, IFC ed esportazioni concordate",
+            "Pacchetti informativi di consegna"
           ]
         }
       ]
@@ -707,101 +707,101 @@
   },
   "de": {
     "hero": {
-      "badge": "BIM-ENGINEERING · PROJEKTABWICKLUNG",
-      "title_main": "BIM-Engineering, das verlässlich liefert.",
-      "title_highlight": "Technologie, die Projekte voranbringt.",
-      "description": "pyBIM arbeitet als BIM-Specialist-Partner für Architektur-, Tragwerks- und TGA-Modellierung, Fach- und Gesamtkoordination, Modell-QA/QC sowie strukturierte digitale Lieferobjekte — ergänzt durch individuelle Revit-Automatisierung und technische Unterstützung in Ihrem projektbezogenen CDE.",
+      "badge": "BIM-ENGINEERING · FACHÜBERGREIFENDE KOORDINATION",
+      "title_main": "BIM-Engineering und Projektabwicklung.",
+      "title_highlight": "Von der Modellierung bis zur digitalen Übergabe.",
+      "description": "pyBIM unterstützt Architektur- und Ingenieurbüros sowie Bauunternehmen mit fachgerechter BIM-Modellierung, Fach- und Gesamtkoordination, Modellqualitätssicherung und strukturierten digitalen Planungsunterlagen. Computational Design und individuelle Revit-Automatisierung ergänzen unsere Leistungen in den verschiedenen Projektphasen.",
       "cta_primary": "BIM-Projekt besprechen",
-      "cta_secondary": "BIM-Services entdecken",
-      "capability_line": "BIM-Modellierung · Koordination · Modell-QA · Digitale Abwicklung",
+      "cta_secondary": "Unsere Leistungen entdecken",
+      "capability_line": "DIN EN ISO 19650 · VDI 2552 · openBIM / IFC",
       "schematic": {
-        "badge": "BIM-Lieferpipeline",
-        "tag": "pyBIM // ARCHITEKTUR",
-        "node1_title": "BIM-Modellierung & Modellentwicklung",
-        "node1_badge": "LOD 300–400",
-        "node1_desc": "Architektur-, Tragwerks- und TGA-BIM-Modellierung mit strukturierten Parameterschemata.",
-        "node2_title": "Koordination & Kollisionsprüfung",
-        "node2_badge": "ISO 19650",
-        "node2_desc": "Gesamtmodell-Koordination und Kollisionsprüfungs-Workflows in kundeneigenen CDE-Umgebungen.",
-        "node3_title": "Modell-QA & Digitale Übergabe",
-        "node3_badge": "VERIFIZIERT",
-        "node3_desc": "Automatisierte Modellprüfung, Parameter-Vollständigkeitsprüfungen und IFC-Konformitätsvalidierung.",
-        "footer_label": "Lieferstandard",
-        "footer_val": "OpenBIM · IFC4 · Revit API"
+        "badge": "BIM-Lieferworkflow",
+        "tag": "pyBIM // ENGINEERING",
+        "node1_title": "Fachübergreifende BIM-Modellierung",
+        "node1_badge": "NACH VORGABE",
+        "node1_desc": "Architektur-, Tragwerks- und TGA-Modelle auf Grundlage der projektspezifischen Informationsanforderungen.",
+        "node2_title": "BIM-Koordination und Kollisionsprüfung",
+        "node2_badge": "VDI 2552",
+        "node2_desc": "Fachübergreifende Modellkoordination, Kollisionsprüfung und Nachverfolgung von Konflikten im CDE des Auftraggebers.",
+        "node3_title": "Modellprüfung und digitale Übergabe",
+        "node3_badge": "QA / QC",
+        "node3_desc": "Modellqualitätsprüfung, Parameterprüfung und IFC-Lieferobjekte gemäß den Projektanforderungen.",
+        "footer_label": "Referenzrahmen",
+        "footer_val": "openBIM · IFC · Revit API"
       }
     },
     "paradigmShift": {
-      "badge": "BIM-ENGINEERING-SERVICES",
-      "section_title": "BIM-Leistungen, abgestimmt auf Ihr Projekt.",
-      "section_subtitle": "Von der BIM-Modellentwicklung und multidisziplinären Koordination bis hin zur Informationsprüfung und digitalen Projektabwicklung bietet pyBIM ingenieurtechnische Leistungen, die präzise auf Ihre Projektanforderungen abgestimmt sind.",
-      "supporting_positioning": "Ingenieurgeleitete Projektabwicklung, unterstützt durch maßgeschneiderte digitale Workflows.",
-      "scope_heading": "Typischer Leistungsumfang",
-      "deliverables_heading": "Typische Ergebnisse",
+      "badge": "BIM-ENGINEERING-LEISTUNGEN",
+      "section_title": "Spezialisierte BIM-Leistungen für jede Projektphase.",
+      "section_subtitle": "Von der Fachmodellierung über die fachübergreifende Koordination bis zur Modellprüfung und digitalen Übergabe unterstützen wir Projektteams mit klar definierten Leistungen und projektspezifischen Ergebnissen.",
+      "supporting_positioning": "Ingenieurtechnische Kompetenz, unterstützt durch gezielte digitale Arbeitsabläufe.",
+      "scope_heading": "Leistungsumfang",
+      "deliverables_heading": "Typische Lieferobjekte",
       "cta_primary": "Projekt besprechen",
-      "cta_secondary": "Alle BIM-Services entdecken",
+      "cta_secondary": "Alle BIM-Leistungen entdecken",
       "services": [
         {
           "id": "modeling_development",
-          "title": "BIM-Modellierung & Modellentwicklung",
-          "description": "Erstellung, Weiterentwicklung und Aktualisierung von BIM-Modellen auf Basis von Projektdokumentation, Bestandsmodellen und vereinbarten Informationsanforderungen.",
+          "title": "BIM-Fachmodellierung",
+          "description": "Erstellung und Weiterentwicklung von Architektur-, Tragwerks- und TGA-Modellen auf Grundlage der Projektunterlagen und Informationsanforderungen.",
           "scope": [
-            "BIM-Modellerstellung und Modellfortschreibung",
-            "Revit-basierte Modellierungs-Workflows",
-            "Fachspezifische und multidisziplinäre Modellierungsunterstützung",
-            "Strukturierte Organisation von Modellinformationen"
+            "Disziplinspezifische BIM-Modellierung",
+            "Revit-Modellentwicklung",
+            "Scan-to-BIM und CAD-to-BIM",
+            "Modellfortschreibung und Informationsanreicherung"
           ],
           "deliverables": [
-            "Aktualisierte BIM-Modelldateien",
-            "Strukturierte Modellinformationen",
-            "Vereinbarte Planauswertungen und Modellexporte"
+            "RVT- und IFC-Modelle",
+            "Strukturierte Modelldaten",
+            "Modellbasierte Planunterlagen"
           ]
         },
         {
           "id": "coordination_clash",
-          "title": "BIM-Koordination & Kollisionsprüfung",
-          "description": "Unterstützung multidisziplinärer Projektteams durch Gesamtmodell-Prüfung, Kollisionserkennung, Koordinationsprüfungen und strukturierte Issue-Berichte.",
+          "title": "BIM-Koordination und Kollisionsprüfung",
+          "description": "Koordination der Fachmodelle und technischen Schnittstellen auf Projektebene.",
           "scope": [
-            "Koordination von Gesamt- und Teilmodellen",
-            "Kollisionsprüfung und geometrische Konfliktanalyse",
-            "Identifikation von Koordinationspunkten",
-            "Begleitung multidisziplinärer Abstimmungsrunden"
+            "BIM-Fach- und Gesamtkoordination",
+            "Prüfung von Koordinationsmodellen",
+            "Kollisionsprüfung und Konfliktverfolgung",
+            "Koordinationsprozesse im kundenseitigen CDE"
           ],
           "deliverables": [
-            "Koordinationsergebnisse",
-            "Kollisions- und Prüfberichte",
-            "Geprüfte Modelle und abgestimmte Koordinationsdateien"
+            "Koordinationsmodelle",
+            "Kollisionsberichte und BCF-Meldungen",
+            "Koordinationsprotokolle"
           ]
         },
         {
           "id": "model_qa_validation",
-          "title": "BIM-Modell-QA & Informationsprüfung",
-          "description": "Prüfung von Modellstruktur, Parametern, Klassifikationen und Informationskonsistenz gemäß den vereinbarten Projektanforderungen.",
+          "title": "Modellqualitätssicherung",
+          "description": "Systematische Prüfung der geometrischen und alphanumerischen Modellqualität anhand vereinbarter Projektanforderungen.",
           "scope": [
-            "Modell-Qualitätssicherung (QA/QC)",
-            "Prüfung der Parameterkonsistenz",
-            "Prüfung von Benennungskonventionen und Klassifikationen",
-            "Validierung der Informationsanforderungen"
+            "Geometrie- und Parameterprüfung",
+            "Prüfung von Klassifikationen und Benennungen",
+            "Prüfung anhand der AIA und des BAP",
+            "Prüfung der IFC-Daten"
           ],
           "deliverables": [
-            "Ergebnisse der Modellprüfung",
-            "Prüfberichte zur Informationsvalidierung",
-            "Korrekturvorschläge und vereinbarte QA-Auswertungen"
+            "Modellprüfberichte",
+            "Abweichungsprotokolle",
+            "Korrekturempfehlungen"
           ]
         },
         {
           "id": "documentation_delivery",
-          "title": "BIM-Dokumentation & Digitale Übergabe",
-          "description": "Aufbereitung strukturierter Modellausgaben und BIM-relevanter Dokumentation für eine koordinierte Projektabwicklung und Übergabe.",
+          "title": "BIM-Dokumentation und digitale Übergabe",
+          "description": "Aufbereitung koordinierter Planungsunterlagen und strukturierter Informationspakete.",
           "scope": [
-            "Erstellung von BIM-Lieferobjekten",
-            "Modellbasierte Dokumentationserstellung",
-            "Organisation von Datenexporten",
-            "Koordination der digitalen Übergabe"
+            "Modellbasierte Pläne und Bauteillisten",
+            "Informationsextraktion",
+            "Aufbereitung der Lieferpakete",
+            "Unterstützung der digitalen Übergabe"
           ],
           "deliverables": [
-            "Abgestimmte Modell- und Dokumentationspakete",
-            "Strukturierte Informationsexporte",
-            "Projektspezifische digitale Übergabedateien"
+            "Pläne und Bauteillisten",
+            "RVT-, IFC- und vereinbarte Exportdateien",
+            "Strukturierte Übergabepakete"
           ]
         }
       ]
