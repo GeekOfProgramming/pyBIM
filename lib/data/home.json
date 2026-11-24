@@ -274,39 +274,39 @@
       "blueprint_aria_label": "Four-stage BIM delivery process covering project requirements, scope definition, coordinated execution and digital handover."
     },
     "coreArchitects": {
-      "eyebrow": "SECONDARY PRODUCT ROADMAP",
-      "heading": "The Next Layer of BIM Is Taking Shape.",
-      "description": "Alongside our active BIM engineering services, pyBIM is developing proprietary BIM automation software and conducting long-horizon private AI research. Neither product is generally available today; each follows an independent validation path.",
+      "eyebrow": "TECHNOLOGY DEVELOPMENT",
+      "heading": "Engineering expertise. Evolving digital capabilities.",
+      "description": "BIM engineering services are the core of our business. Alongside project delivery, we develop proprietary technologies to support the future of BIM automation, cloud-based workflows and private AI.",
       "phase2": {
         "label": "PHASE II",
-        "status": "70% INTERNAL PROGRESS · PRIVATE EVALUATION",
+        "status": "70% DEVELOPMENT PROGRESS",
         "title": "pyBIM Cloud Connect",
-        "positioning": "Connected Revit automation & planned 2027 cloud management.",
-        "description": "We're developing a Revit-connected automation and cloud management environment planned for commercial launch in 2027. Currently in internal development and private evaluation (70% progress), it is not yet generally available.",
+        "positioning": "Revit automation and cloud-based BIM workflows.",
+        "description": "pyBIM Cloud Connect is being developed to connect Revit automation with cloud-based management of BIM workflows. The platform is currently undergoing internal development and private evaluation and is not yet generally available.",
         "metadata": [
           {
             "label": "CURRENT STAGE",
-            "value": "Development & private evaluation"
+            "value": "Development and private evaluation"
           },
           {
             "label": "TARGET COMMERCIAL RELEASE",
             "value": "Q4 2027"
           }
         ],
-        "timing_note": "Q4 2027 is an indicative release target, not a guaranteed commitment, and remains subject to integration, reliability, and security validation.",
+        "timing_note": "The Q4 2027 release target remains subject to final integration, reliability and security validation.",
         "cta": {
-          "label": "Apply for Private Access",
+          "label": "Request Private Access",
           "href": "/contact#priority-queue"
         },
-        "qualification": "Applications are reviewed individually. Submission does not guarantee access or acceptance."
+        "qualification": "Applications are reviewed individually. Access is not guaranteed."
       },
       "phase3": {
-        "eyebrow": "POST-PHASE II RESEARCH HORIZON",
+        "eyebrow": "FUTURE RESEARCH & DEVELOPMENT",
         "label": "PHASE III",
-        "status": "30% SHARED FOUNDATIONS · R&D",
+        "status": "30% SHARED FOUNDATIONS",
         "title": "Sovereign Enterprise Edge AI",
-        "description": "Long-horizon R&D into engineer-supervised private on-premise AI workflows. Current progress reflects shared infrastructure and foundations developed within Phase II; dedicated Phase III development begins after Phase II completion and final validation.",
-        "availability_note": "Not currently commercially available. No release date announced."
+        "description": "Research into private, on-premises AI infrastructure for engineering workflows. The current 30% progress reflects technological foundations shared with Phase II. Dedicated development will begin after Phase II is completed and fully validated.",
+        "availability_note": "Not commercially available. No release date announced."
       }
     },
     "strategicEcosystem": {
@@ -630,39 +630,39 @@
       "blueprint_aria_label": "Processo BIM in quattro fasi: analisi dei requisiti, definizione delle prestazioni, esecuzione coordinata e consegna digitale."
     },
     "coreArchitects": {
-      "eyebrow": "ROADMAP PRODOTTO SECONDARIA",
-      "heading": "Il Prossimo Livello del BIM Sta Prendendo Forma.",
-      "description": "Accanto ai servizi di ingegneria BIM già attivi, pyBIM sviluppa software proprietario di automazione BIM ed esplora future architetture di AI privata. Nessuno di questi prodotti è oggi disponibile sul mercato; ognuno segue un percorso indipendente di validazione.",
+      "eyebrow": "SVILUPPO TECNOLOGICO",
+      "heading": "Competenze ingegneristiche. Tecnologie digitali in evoluzione.",
+      "description": "I servizi di ingegneria BIM rappresentano il centro della nostra attività. Parallelamente alle commesse, sviluppiamo tecnologie proprietarie per l'automazione BIM, la gestione dei processi in cloud e l'intelligenza artificiale privata.",
       "phase2": {
         "label": "FASE II",
-        "status": "70% AVANZAMENTO · VALUTAZIONE PRIVATA",
+        "status": "70% DI AVANZAMENTO",
         "title": "pyBIM Cloud Connect",
-        "positioning": "Automazione connessa a Revit & gestione cloud pianificata per il 2027.",
-        "description": "Stiamo sviluppando una piattaforma di automazione connessa a Revit e gestione cloud pianificata per il rilascio commerciale nel 2027. Attualmente in sviluppo e valutazione privata (70%), non è ancora disponibile al pubblico.",
+        "positioning": "Automazione Revit e gestione dei processi BIM in cloud.",
+        "description": "pyBIM Cloud Connect è una piattaforma in sviluppo che integra l'automazione di Revit con la gestione dei flussi di lavoro BIM in cloud. La piattaforma è attualmente in fase di sviluppo interno e valutazione riservata e non è ancora disponibile sul mercato.",
         "metadata": [
           {
-            "label": "FASE ATTUALE",
-            "value": "Sviluppo e valutazione privata"
+            "label": "STATO ATTUALE",
+            "value": "Sviluppo e valutazione riservata"
           },
           {
-            "label": "RILASCIO COMMERCIALE TARGET",
+            "label": "OBIETTIVO DI LANCIO COMMERCIALE",
             "value": "Q4 2027"
           }
         ],
-        "timing_note": "Il Q4 2027 è un obiettivo indicativo di rilascio, non un impegno garantito, e resta soggetto a integrazione, affidabilità e validazioni di sicurezza.",
+        "timing_note": "Il lancio previsto per il quarto trimestre del 2027 è subordinato alle verifiche finali di integrazione, affidabilità e sicurezza.",
         "cta": {
-          "label": "Richiedi Accesso Privato",
+          "label": "Richiesta di accesso riservato",
           "href": "/contact#priority-queue"
         },
-        "qualification": "Le richieste vengono esaminate individualmente. L'invio non garantisce l'accesso o l'accettazione."
+        "qualification": "Le richieste vengono valutate singolarmente. L'accesso non è garantito."
       },
       "phase3": {
-        "eyebrow": "ORIZZONTE R&S POST-FASE II",
+        "eyebrow": "RICERCA E SVILUPPO FUTURI",
         "label": "FASE III",
-        "status": "30% BASI CONDIVISE · R&S",
+        "status": "30% · BASI TECNOLOGICHE CONDIVISE",
         "title": "Sovereign Enterprise Edge AI",
-        "description": "Ricerca di lungo periodo su workflow di AI privata on-premise supervisionati da ingegneri. L'attuale avanzamento del 30% riflette infrastruttura condivisa e basi tecnologiche sviluppate nella Fase II; lo sviluppo dedicato alla Fase III inizierà dopo il completamento e la validazione finale della Fase II.",
-        "availability_note": "Non disponibile commercialmente. Nessuna data di rilascio annunciata."
+        "description": "Ricerca su infrastrutture di intelligenza artificiale private e on-premise per i processi ingegneristici. L'avanzamento attuale del 30% riguarda le basi tecnologiche condivise con la Fase II. Lo sviluppo dedicato inizierà dopo il completamento e la validazione finale della Fase II.",
+        "availability_note": "Non disponibile sul mercato. Nessuna data di lancio annunciata."
       }
     },
     "strategicEcosystem": {
@@ -986,39 +986,39 @@
       "blueprint_aria_label": "Vierstufiger BIM-Projektablauf mit Anforderungsanalyse, Leistungsdefinition, koordinierter Bearbeitung und digitaler Übergabe."
     },
     "coreArchitects": {
-      "eyebrow": "SEKUNDÄRE PRODUKT-ROADMAP",
-      "heading": "Die nächste Ebene des BIM nimmt Gestalt an.",
-      "description": "Parallel zu unseren aktiven BIM-Ingenieurdienstleistungen entwickelt pyBIM eigene BIM-Automatisierungssoftware und erforscht künftige private KI-Workflows. Keines dieser Softwareprodukte ist heute regulär kommerziell verfügbar; jede Initiative folgt einem eigenen Validierungsprozess.",
+      "eyebrow": "TECHNOLOGIEENTWICKLUNG",
+      "heading": "Ingenieurkompetenz. Digitale Technologien in Entwicklung.",
+      "description": "BIM-Engineering-Leistungen bilden den Kern unseres Geschäfts. Parallel zur Projektabwicklung entwickeln wir eigene Technologien für BIM-Automatisierung, cloudbasierte Arbeitsabläufe und private KI.",
       "phase2": {
         "label": "PHASE II",
-        "status": "70 % FORTSCHRITT · PRIVATE EVALUIERUNG",
+        "status": "70 % ENTWICKLUNGSFORTSCHRITT",
         "title": "pyBIM Cloud Connect",
-        "positioning": "Vernetzte Revit-Automatisierung & für 2027 geplantes Cloud-Management.",
-        "description": "Wir entwickeln eine Revit-angebundene Automatisierungs- und Cloud-Management-Plattform mit geplanter kommerzieller Einführung im Jahr 2027. Derzeit befindet sich die Lösung in interner Entwicklung und privater Evaluierung (70 % Fortschritt) und ist noch nicht allgemein verfügbar.",
+        "positioning": "Revit-Automatisierung und cloudbasierte BIM-Prozesse.",
+        "description": "pyBIM Cloud Connect wird als Plattform entwickelt, die Revit-Automatisierung mit der cloudbasierten Verwaltung von BIM-Arbeitsabläufen verbindet. Die Plattform befindet sich derzeit in der internen Entwicklung und einer geschlossenen Evaluierungsphase und ist noch nicht allgemein verfügbar.",
         "metadata": [
           {
-            "label": "AKTUELLE PHASE",
-            "value": "Entwicklung & private Evaluierung"
+            "label": "AKTUELLER STAND",
+            "value": "Entwicklung und geschlossene Evaluierung"
           },
           {
-            "label": "ANGESTREBTER KOMMERZIELLER RELEASE",
+            "label": "ANGESTREBTE MARKTEINFÜHRUNG",
             "value": "Q4 2027"
           }
         ],
-        "timing_note": "Q4 2027 ist ein indikatives Ziel ohne verbindliche Zusage und unterliegt laufenden Integrations-, Zuverlässigkeits- und Sicherheitsprüfungen.",
+        "timing_note": "Die angestrebte Markteinführung im vierten Quartal 2027 steht unter dem Vorbehalt abschließender Integrations-, Zuverlässigkeits- und Sicherheitsprüfungen.",
         "cta": {
           "label": "Privaten Zugang anfragen",
           "href": "/contact#priority-queue"
         },
-        "qualification": "Bewerbungen werden individuell geprüft. Die Einreichung garantiert keinen Zugang oder Annahme."
+        "qualification": "Anfragen werden einzeln geprüft. Ein Zugang wird nicht garantiert."
       },
       "phase3": {
-        "eyebrow": "FORSCHUNGSHORIZONT NACH PHASE II",
+        "eyebrow": "ZUKÜNFTIGE FORSCHUNG UND ENTWICKLUNG",
         "label": "PHASE III",
-        "status": "30 % GETEILTE GRUNDLAGEN · F&E",
+        "status": "30 % · GEMEINSAME GRUNDLAGEN",
         "title": "Sovereign Enterprise Edge AI",
-        "description": "Langfristige Forschung zu ingenieurseitig überwachten, privaten On-Premise-KI-Workflows. Der ausgewiesene Fortschritt von 30 % umfasst geteilte Infrastruktur und technologische Grundlagen aus Phase II; die dedizierte Phase-III-Entwicklung beginnt erst nach Abschluss und finaler Validierung von Phase II.",
-        "availability_note": "Derzeit nicht kommerziell verfügbar. Kein Veröffentlichungsdatum angekündigt."
+        "description": "Forschung zu privaten, lokal betriebenen KI-Infrastrukturen für ingenieurtechnische Arbeitsabläufe. Der aktuelle Fortschritt von 30 % umfasst die gemeinsamen technologischen Grundlagen aus Phase II. Die eigenständige Entwicklung beginnt nach Abschluss und abschließender Validierung von Phase II.",
+        "availability_note": "Nicht kommerziell verfügbar. Kein Veröffentlichungstermin angekündigt."
       }
     },
     "strategicEcosystem": {

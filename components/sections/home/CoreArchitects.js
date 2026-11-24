@@ -172,19 +172,19 @@ export default function CoreArchitects() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
             {/* Left Column: Identifiers & Badges */}
-            <div className="lg:col-span-4 flex flex-col items-start space-y-2.5">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-caption font-bold text-brand-primary tracking-wider uppercase">
+            <div className="lg:col-span-4 flex flex-col items-start space-y-2.5 min-w-0">
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 min-w-0">
+                <span className="font-mono text-caption font-bold text-brand-primary tracking-wider uppercase shrink-0 whitespace-nowrap">
                   {data.phase3.label}
                 </span>
-                <span className="text-brand-border font-mono" aria-hidden="true">/</span>
-                <span className="font-mono text-caption font-semibold text-brand-textSecondary tracking-wider uppercase">
+                <span className="text-brand-border font-mono shrink-0" aria-hidden="true">/</span>
+                <span className="font-mono text-caption font-semibold text-brand-textSecondary tracking-wider uppercase min-w-0">
                   {data.phase3.eyebrow}
                 </span>
               </div>
 
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-textSecondary font-mono text-caption font-semibold tracking-wider uppercase select-none">
-                <Sparkles className="w-3 h-3 text-brand-primary" aria-hidden="true" />
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-textSecondary font-mono text-caption font-semibold tracking-wider uppercase select-none max-w-full">
+                <Sparkles className="w-3 h-3 text-brand-primary shrink-0" aria-hidden="true" />
                 <span>{data.phase3.status}</span>
               </div>
             </div>
