@@ -345,9 +345,9 @@ export default function ExecutionPipeline() {
                 {/* Interface Callout Badge & Leader Line */}
                 <g className={`transition-all duration-300 ${activeTopicId === "coordination" ? "opacity-100" : "opacity-30"}`}>
                   <polyline points="476,270 410,295 340,295" fill="none" stroke="#D97706" strokeWidth="1.2" />
-                  <rect x="230" y="282" width="105" height="26" rx="5" className="fill-white dark:fill-[#0B132B] stroke-amber-500 shadow-sm" strokeWidth="1" />
-                  <text x="240" y="295" fill="#D97706" fontSize="9" fontFamily="monospace" fontWeight="bold">{data.viewer.annotations?.interface_tag || "INTERFACE 01"}</text>
-                  <text x="240" y="304" className="fill-slate-600 dark:fill-slate-400" fontSize="7.5" fontFamily="monospace">{data.viewer.annotations?.clearance_check || "CLEARANCE CHECK"}</text>
+                  <rect x="218" y="282" width="117" height="26" rx="5" className="fill-white dark:fill-[#0B132B] stroke-amber-500 shadow-sm" strokeWidth="1" />
+                  <text x="228" y="295" fill="#D97706" fontSize="9" fontFamily="monospace" fontWeight="bold">{data.viewer.annotations?.interface_tag || "INTERFACE 01"}</text>
+                  <text x="228" y="304" className="fill-slate-600 dark:fill-slate-400" fontSize="7.5" fontFamily="monospace">{data.viewer.annotations?.clearance_check || "CLEARANCE CHECK"}</text>
                 </g>
               </g>
 
@@ -394,12 +394,12 @@ export default function ExecutionPipeline() {
                 <circle cx="580" cy="105" r="3.5" fill="currentColor" className="text-cyan-600 dark:text-cyan-400" />
 
                 {/* Floating Information QA Technical Card */}
-                <g transform="translate(700, 40)">
+                <g transform="translate(700, 32)">
                   <rect
                     x="0"
                     y="0"
-                    width="190"
-                    height="85"
+                    width="228"
+                    height="106"
                     rx="8"
                     className="fill-white dark:fill-[#0B132B] stroke-cyan-600 dark:stroke-cyan-400"
                     strokeWidth={activeTopicId === "information" ? "1.5" : "1"}
@@ -407,20 +407,21 @@ export default function ExecutionPipeline() {
                   />
                   {/* Card Header */}
                   <text x="12" y="20" className="fill-slate-900 dark:fill-white" fontSize="11" fontFamily="sans-serif" fontWeight="bold">IfcColumn // L03-C2</text>
-                  <circle cx="168" cy="17" r="4.5" fill="#10B981" />
-                  <path d="M 166 17 L 167.5 18.5 L 170.5 15.5" fill="none" stroke="#FFFFFF" strokeWidth="1" />
+                  {/* Neutral Inspection Indicator */}
+                  <circle cx="210" cy="17" r="4.5" className="fill-cyan-500/15 stroke-cyan-600 dark:stroke-cyan-400" strokeWidth="1.2" />
+                  <circle cx="210" cy="17" r="1.5" className="fill-cyan-600 dark:fill-cyan-400" />
 
                   {/* Divider */}
-                  <line x1="12" y1="28" x2="178" y2="28" className="stroke-slate-200 dark:stroke-slate-800" strokeWidth="1" />
+                  <line x1="12" y1="28" x2="216" y2="28" className="stroke-slate-200 dark:stroke-slate-800" strokeWidth="1" />
 
                   {/* Attributes */}
-                  <text x="12" y="42" className="fill-slate-600 dark:fill-slate-400" fontSize="9" fontFamily="monospace">Dim: 400x400 mm</text>
-                  <text x="12" y="55" className="fill-slate-600 dark:fill-slate-400" fontSize="9" fontFamily="monospace">Mat: Concrete_C30/37</text>
-                  <text x="12" y="68" className="fill-slate-600 dark:fill-slate-400" fontSize="9" fontFamily="monospace">FireRating: REI 120</text>
+                  <text x="12" y="43" className="fill-slate-600 dark:fill-slate-400" fontSize="9" fontFamily="monospace">{`${data.viewer.annotations?.dimension_label || "Dim."}: 400 × 400 mm`}</text>
+                  <text x="12" y="57" className="fill-slate-600 dark:fill-slate-400" fontSize="9" fontFamily="monospace">{`${data.viewer.annotations?.material_label || "Material"}: ${language === "it" ? "Calcestruzzo C30/37" : language === "de" ? "Beton C30/37" : "Concrete C30/37"}`}</text>
+                  <text x="12" y="71" className="fill-slate-600 dark:fill-slate-400" fontSize="9" fontFamily="monospace">{`${data.viewer.annotations?.fire_rating_label || "Fire resistance"}: REI 120`}</text>
 
-                  {/* QA Stamp Pill */}
-                  <rect x="110" y="45" width="68" height="18" rx="4" className="fill-emerald-100 dark:fill-emerald-950 stroke-emerald-600 dark:stroke-emerald-500" strokeWidth="0.8" />
-                  <text x="116" y="57" className="fill-emerald-800 dark:fill-emerald-400" fontSize="8" fontFamily="monospace" fontWeight="bold">{data.viewer.annotations?.qa_verified || "QA VERIFIED"}</text>
+                  {/* Neutral Data QA Pill (dedicated row to avoid overlap) */}
+                  <rect x="12" y="80" width="96" height="18" rx="4" className="fill-cyan-50 dark:fill-cyan-950/80 stroke-cyan-600/60 dark:stroke-cyan-500/60" strokeWidth="0.8" />
+                  <text x="18" y="92" className="fill-cyan-800 dark:fill-cyan-300" fontSize="8" fontFamily="monospace" fontWeight="bold">{data.viewer.annotations?.qa_verified || "DATA QA"}</text>
                 </g>
               </g>
 
@@ -493,7 +494,7 @@ export default function ExecutionPipeline() {
               >
                 {/* Left 5 Cols: Topic Overview */}
                 <div className="lg:col-span-5">
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 flex-wrap mb-2">
                     <span className="font-mono text-caption font-bold text-blue-700 dark:text-cyan-400 tracking-wider uppercase px-2 py-0.5 rounded bg-blue-100/70 dark:bg-cyan-950/60 border border-blue-200 dark:border-cyan-800/60">
                       {activeTopic.tag}
                     </span>
@@ -536,8 +537,8 @@ export default function ExecutionPipeline() {
                   </div>
 
                   {/* Explicit Mandatory Disclosure */}
-                  <div className="pt-3 border-t border-slate-200/80 dark:border-slate-800/60 flex items-center gap-2 text-slate-500 dark:text-slate-400">
-                    <Info className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" aria-hidden="true" />
+                  <div className="pt-3 border-t border-slate-200/80 dark:border-slate-800/60 flex items-start gap-2 text-slate-500 dark:text-slate-400">
+                    <Info className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0 mt-0.5" aria-hidden="true" />
                     <p className="font-mono text-caption text-slate-500 dark:text-slate-400 tracking-wide">
                       {data.viewer.disclosure}
                     </p>

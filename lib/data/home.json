@@ -146,15 +146,15 @@
       "supporting_statement": "Project-specific expertise. Coordinated execution. Technical accountability."
     },
     "executionPipeline": {
-      "eyebrow": "ENGINEERING OUTPUTS",
-      "heading": "Inside a BIM Deliverable.",
-      "description": "Explore a conceptual BIM model to see how geometry, coordination review, and structured model information come together during engineering delivery.",
+      "eyebrow": "BIM MODEL INSPECTION",
+      "heading": "Understanding BIM deliverables.",
+      "description": "Explore how model geometry, multidisciplinary coordination and structured information are reviewed throughout BIM project delivery. This interactive illustration presents three key aspects of technical model verification.",
       "viewer": {
-        "header": "BIM Evidence Studio",
-        "status": "Illustrative Engineering Demonstration",
-        "disclosure": "Conceptual BIM illustration — not a client project or an actual Revit model.",
-        "datums_label": "ISO 19650 ELEVATION DATUMS",
-        "quick_inspect_label": "SELECT INSPECTION FOCUS",
+        "header": "BIM Inspection Studio",
+        "status": "Illustrative Model",
+        "disclosure": "Conceptual BIM illustration for demonstration purposes. Not a client project, an actual Revit model or a certified engineering assessment.",
+        "datums_label": "MODEL LEVEL DATUMS",
+        "quick_inspect_label": "SELECT INSPECTION TOPIC",
         "check_prefix": "CHECK",
         "annotations": {
           "level_roof": "ROOF LEVEL",
@@ -162,7 +162,10 @@
           "level_base": "BASE LEVEL",
           "interface_tag": "INTERFACE 01",
           "clearance_check": "CLEARANCE CHECK",
-          "qa_verified": "QA VERIFIED"
+          "qa_verified": "DATA QA",
+          "dimension_label": "Dim.",
+          "material_label": "Material",
+          "fire_rating_label": "Fire resistance"
         }
       },
       "cta": {
@@ -172,20 +175,20 @@
       "visual": {
         "mode": "schematic",
         "image": null,
-        "image_alt": "Conceptual isometric BIM model schematic showing levels, columns, MEP routing, and QA data callouts",
-        "source_note": "pyBIM Conceptual Architecture Engine v1"
+        "image_alt": "Conceptual isometric BIM schematic showing building levels, structural columns, MEP routing and illustrative IFC property information.",
+        "source_note": "pyBIM conceptual BIM illustration"
       },
       "topics": [
         {
           "id": "geometry",
           "title": "Model Geometry",
           "tag": "LEVELS & STRUCTURE",
-          "callout": "Floor Slabs · Structural Grid · Spatial Volumes",
-          "description": "Explore the spatial organization of structural elements, levels, and model geometry in a conceptual BIM representation.",
+          "callout": "Levels · Structural Grid · Geometry",
+          "description": "Inspect the spatial organization of building elements, level datums and structural geometry within a conceptual BIM model.",
           "details": [
-            "Multi-level floor slab plates at defined elevations (L01–L03)",
-            "Extruded structural column grid maintaining load alignment",
-            "Spatial building envelope volume with isometric coordinate fidelity"
+            "Floor slabs at defined model elevations.",
+            "Structural column positions and grid consistency.",
+            "Spatial relationships and geometric organization of model elements."
           ],
           "hotspot": {
             "x": 33,
@@ -195,13 +198,13 @@
         {
           "id": "coordination",
           "title": "Coordination Review",
-          "tag": "INTERFACE INSPECTION",
-          "callout": "MEP Routing · Multidisciplinary Interface Marker",
-          "description": "Inspect an illustrative interface between building elements and engineering systems, highlighting an example issue for multidisciplinary review.",
+          "tag": "INTERFACE CHECK",
+          "callout": "MEP Routing · Clash Detection",
+          "description": "Examine an illustrative interface between structural elements and building services to understand how coordination issues are identified and reviewed.",
           "details": [
-            "Mechanical conduit routing traversing structural bays",
-            "Illustrative clearance inspection marker at service interface",
-            "Multi-discipline coordination review point for engineering oversight"
+            "MEP routing through structural bays.",
+            "Clearance and potential interference checks between disciplines.",
+            "Coordination issue review and identification of required actions."
           ],
           "hotspot": {
             "x": 48,
@@ -212,12 +215,12 @@
           "id": "information",
           "title": "Information QA",
           "tag": "DATA VERIFICATION",
-          "callout": "Classification Schema · Property Sets · QA Audit",
-          "description": "See how model properties, classifications, and information checks contribute to structured BIM deliverables.",
+          "callout": "IFC Classes · Properties · Requirements",
+          "description": "Explore how model properties and structured information are reviewed against project-specific information requirements, including the applicable EIR and BEP.",
           "details": [
-            "Semantic IFC property classification schema (IfcColumn / IfcSlab)",
-            "Structured material specifications and performance parameters",
-            "Engineering deliverable verification prior to release"
+            "IFC entity classes and associated property sets.",
+            "Material, dimensional and performance-related information.",
+            "Information completeness and consistency checks before delivery."
           ],
           "hotspot": {
             "x": 67,
@@ -225,7 +228,7 @@
           }
         }
       ],
-      "diagram_aria_label": "Interactive BIM Evidence Studio: Isometric multi-level conceptual building model demonstrating geometry, coordination review, and information QA."
+      "diagram_aria_label": "Interactive conceptual BIM model illustrating model geometry, multidisciplinary coordination and information quality checks."
     },
     "systemBenchmarks": {
       "eyebrow": "YOUR PROJECT, OUR PROCESS",
@@ -499,46 +502,49 @@
       "supporting_statement": "Competenze dedicate. Esecuzione coordinata. Responsabilità tecnica."
     },
     "executionPipeline": {
-      "eyebrow": "OUTPUT INGEGNERISTICI",
-      "heading": "All'Interno di un Deliverable BIM.",
-      "description": "Esplora un modello BIM concettuale per osservare come geometria, revisione del coordinamento e informazioni strutturate del modello convergono durante la consegna ingegneristica.",
+      "eyebrow": "VERIFICA DEI MODELLI BIM",
+      "heading": "La qualità degli elaborati BIM.",
+      "description": "Scoprite come la geometria dei modelli, il coordinamento multidisciplinare e le informazioni vengono verificati durante lo sviluppo del progetto BIM. Questa rappresentazione interattiva illustra tre aspetti fondamentali della verifica dei modelli informativi.",
       "viewer": {
-        "header": "BIM Evidence Studio",
-        "status": "Dimostrazione Ingegneristica Illustrativa",
-        "disclosure": "Illustrazione BIM concettuale — non costituisce un progetto cliente né un modello Revit effettivo.",
-        "datums_label": "QUOTE DI ELEVAZIONE ISO 19650",
-        "quick_inspect_label": "SELEZIONA FOCUS DI ISPEZIONE",
+        "header": "Verifica del modello BIM",
+        "status": "Modello illustrativo",
+        "disclosure": "Rappresentazione BIM concettuale a scopo dimostrativo. Non costituisce un progetto di un cliente, un modello Revit effettivo o una verifica ingegneristica certificata.",
+        "datums_label": "QUOTE ALTIMETRICHE",
+        "quick_inspect_label": "SELEZIONA IL TIPO DI VERIFICA",
         "check_prefix": "VERIFICA",
         "annotations": {
-          "level_roof": "LIVELLO COPERTURA",
-          "level_mid": "LIVELLO INTERMEDIO",
-          "level_base": "LIVELLO BASE",
+          "level_roof": "COPERTURA",
+          "level_mid": "PIANO INTERMEDIO",
+          "level_base": "PIANO BASE",
           "interface_tag": "INTERFACCIA 01",
-          "clearance_check": "VERIFICA INTERFERENZA",
-          "qa_verified": "QA VERIFICATO"
+          "clearance_check": "INTERFERENZE",
+          "qa_verified": "VERIFICA DATI",
+          "dimension_label": "Dim.",
+          "material_label": "Materiale",
+          "fire_rating_label": "Resistenza al fuoco"
         }
       },
       "cta": {
-        "label": "Discuti il Tuo Progetto BIM",
+        "label": "Parliamo del vostro progetto BIM",
         "href": "/contact#audit"
       },
       "visual": {
         "mode": "schematic",
         "image": null,
-        "image_alt": "Schema concettuale isometrico di modello BIM che illustra livelli, pilastri, percorsi MEP e callout dati di QA",
-        "source_note": "pyBIM Conceptual Architecture Engine v1"
+        "image_alt": "Schema BIM isometrico concettuale con livelli, pilastri strutturali, tracciati impiantistici ed esempi di proprietà IFC.",
+        "source_note": "Rappresentazione BIM concettuale pyBIM"
       },
       "topics": [
         {
           "id": "geometry",
-          "title": "Geometria del Modello",
+          "title": "Geometria del modello",
           "tag": "LIVELLI E STRUTTURE",
-          "callout": "Solai di Piano · Griglia Strutturale · Volumi Spaziali",
-          "description": "Esplora l'organizzazione spaziale di elementi strutturali, livelli e geometria del modello in una rappresentazione BIM concettuale.",
+          "callout": "Quote · Griglia strutturale · Geometria",
+          "description": "Esaminate l'organizzazione spaziale degli elementi costruttivi, le quote altimetriche e la geometria strutturale di un modello BIM concettuale.",
           "details": [
-            "Solai di piano multilivello a quote definite (L01–L03)",
-            "Griglia pilastri strutturali per l'allineamento dei carichi",
-            "Volume dell'involucro edilizio con fedeltà di coordinate isometriche"
+            "Solai modellati a quote altimetriche definite.",
+            "Posizionamento dei pilastri e coerenza della griglia strutturale.",
+            "Relazioni spaziali e organizzazione geometrica degli elementi."
           ],
           "hotspot": {
             "x": 33,
@@ -547,14 +553,14 @@
         },
         {
           "id": "coordination",
-          "title": "Revisione del Coordinamento",
-          "tag": "ISPEZIONE INTERFACCIA",
-          "callout": "Percorso MEP · Marker Interfaccia Multidisciplinare",
-          "description": "Esamina un'interfaccia illustrativa tra elementi costruttivi e impianti, evidenziando un esempio per la revisione multidisciplinare.",
+          "title": "Verifica del coordinamento",
+          "tag": "VERIFICA INTERFERENZE",
+          "callout": "Tracciati impiantistici · Coordinamento",
+          "description": "Esaminate un'interfaccia esemplificativa tra elementi strutturali e impianti per comprendere come vengono individuate e analizzate le criticità di coordinamento.",
           "details": [
-            "Tracciato impiantistico MEP che attraversa le campate strutturali",
-            "Marker illustrativo di verifica interferenza all'interfaccia impiantistica",
-            "Punto di revisione del coordinamento per la supervisione ingegneristica"
+            "Tracciati impiantistici attraverso le campate strutturali.",
+            "Verifica degli spazi liberi e delle potenziali interferenze tra discipline.",
+            "Analisi delle criticità di coordinamento e individuazione delle azioni necessarie."
           ],
           "hotspot": {
             "x": 48,
@@ -563,14 +569,14 @@
         },
         {
           "id": "information",
-          "title": "QA delle Informazioni",
-          "tag": "VERIFICA DATI",
-          "callout": "Schema Classificazione · Property Set · Audit QA",
-          "description": "Scopri come proprietà del modello, classificazioni e verifiche informative contribuiscono a deliverable BIM strutturati.",
+          "title": "Verifica informativa",
+          "tag": "CONTROLLO INFORMAZIONI",
+          "callout": "Classi IFC · Proprietà · Requisiti",
+          "description": "Scoprite come le proprietà dei modelli e le informazioni strutturate vengono verificate rispetto ai requisiti informativi del progetto, al Capitolato Informativo (CI) e al pGI, ove applicabili.",
           "details": [
-            "Schema di classificazione semantica IFC (IfcColumn / IfcSlab)",
-            "Specifiche dei materiali strutturati e parametri prestazionali",
-            "Verifica dei deliverable ingegneristici prima del rilascio"
+            "Classi di entità IFC e relativi insiemi di proprietà.",
+            "Informazioni dimensionali, caratteristiche dei materiali e parametri prestazionali.",
+            "Verifica della completezza e della coerenza informativa prima della consegna."
           ],
           "hotspot": {
             "x": 67,
@@ -578,7 +584,7 @@
           }
         }
       ],
-      "diagram_aria_label": "BIM Evidence Studio Interattivo: Modello concettuale isometrico multilivello che dimostra geometria, revisione del coordinamento e QA delle informazioni."
+      "diagram_aria_label": "Modello BIM concettuale interattivo che illustra la geometria, il coordinamento multidisciplinare e la verifica delle informazioni."
     },
     "systemBenchmarks": {
       "eyebrow": "IL TUO PROGETTO, IL NOSTRO PROCESSO",
@@ -852,15 +858,15 @@
       "supporting_statement": "Projektspezifische Fachkompetenz. Koordinierte Abwicklung. Technische Verantwortung."
     },
     "executionPipeline": {
-      "eyebrow": "ENGINEERING-LIEFERERGEBNISSE",
-      "heading": "Einblick in ein BIM-Lieferergebnis.",
-      "description": "Erkunden Sie ein konzeptionelles BIM-Modell und erleben Sie, wie Geometrie, Koordinationsprüfung und strukturierte Modellinformationen in der Projektabwicklung zusammenwirken.",
+      "eyebrow": "BIM-MODELLPRÜFUNG",
+      "heading": "BIM-Lieferobjekte im Detail.",
+      "description": "Entdecken Sie, wie Modellgeometrie, fachübergreifende Koordination und strukturierte Informationen im Rahmen der BIM-Projektabwicklung geprüft werden. Diese interaktive Darstellung veranschaulicht drei wesentliche Aspekte der technischen Modellprüfung.",
       "viewer": {
-        "header": "BIM Evidence Studio",
-        "status": "Illustrative Engineering-Demonstration",
-        "disclosure": "Konzeptionelle BIM-Illustration — kein reales Kundenprojekt oder tatsächliches Revit-Modell.",
-        "datums_label": "ISO 19650 HÖHENKOTEN",
-        "quick_inspect_label": "PRÜFFOKUS AUSWÄHLEN",
+        "header": "BIM-Modellprüfung",
+        "status": "Beispielmodell",
+        "disclosure": "Schematische BIM-Darstellung zu Demonstrationszwecken. Kein reales Kundenprojekt, kein tatsächliches Revit-Modell und keine zertifizierte ingenieurtechnische Prüfung.",
+        "datums_label": "HÖHENKOTEN",
+        "quick_inspect_label": "PRÜFBEREICH AUSWÄHLEN",
         "check_prefix": "PRÜFUNG",
         "annotations": {
           "level_roof": "DACHEBENE",
@@ -868,30 +874,33 @@
           "level_base": "BASISEBENE",
           "interface_tag": "SCHNITTSTELLE 01",
           "clearance_check": "KOLLISIONSPRÜFUNG",
-          "qa_verified": "QA VERIFIZIERT"
+          "qa_verified": "DATENPRÜFUNG",
+          "dimension_label": "Maße",
+          "material_label": "Material",
+          "fire_rating_label": "Feuerwiderstand"
         }
       },
       "cta": {
-        "label": "Besprechen Sie Ihr BIM-Projekt",
+        "label": "BIM-Projekt besprechen",
         "href": "/contact#audit"
       },
       "visual": {
         "mode": "schematic",
         "image": null,
-        "image_alt": "Konzeptionelles isometrisches BIM-Modellschema mit Geschossebenen, Stützen, TGA-Trassenführung und QA-Datenabrufen",
-        "source_note": "pyBIM Conceptual Architecture Engine v1"
+        "image_alt": "Schematische isometrische BIM-Darstellung mit Geschossebenen, Tragwerksstützen, TGA-Trassen und beispielhaften IFC-Eigenschaften.",
+        "source_note": "Schematische BIM-Darstellung von pyBIM"
       },
       "topics": [
         {
           "id": "geometry",
           "title": "Modellgeometrie",
           "tag": "EBENEN & TRAGWERK",
-          "callout": "Geschossdecken · Tragwerksraster · Raumvolumen",
-          "description": "Erkunden Sie die räumliche Gliederung von Strukturelementen, Ebenen und Modellgeometrie in einer konzeptionellen BIM-Darstellung.",
+          "callout": "Höhenkoten · Tragwerksraster · Geometrie",
+          "description": "Untersuchen Sie die räumliche Anordnung der Bauteile, Höhenkoten und Tragwerksgeometrie innerhalb eines schematischen BIM-Modells.",
           "details": [
-            "Mehrgeschossige Deckenebenen auf definierten Höhenkoten (L01–L03)",
-            "Tragendes Stützenraster zur durchgängigen Lastabtragung",
-            "Räumliches Gebäudehüllenvolumen mit isometrischer Koordinatenpräzision"
+            "Geschossdecken auf definierten Höhenkoten.",
+            "Positionierung der Stützen und Konsistenz des Tragwerksrasters.",
+            "Räumliche Beziehungen und geometrische Anordnung der Modellelemente."
           ],
           "hotspot": {
             "x": 33,
@@ -902,12 +911,12 @@
           "id": "coordination",
           "title": "Koordinationsprüfung",
           "tag": "SCHNITTSTELLENPRÜFUNG",
-          "callout": "TGA-Trasse · Multidisziplinärer Schnittstellenmarker",
-          "description": "Prüfen Sie eine illustrative Schnittstelle zwischen Bauelementen und Gebäudetechnik als Beispiel für die multidisziplinäre Abstimmung.",
+          "callout": "TGA-Trassen · Kollisionsprüfung",
+          "description": "Untersuchen Sie eine beispielhafte Schnittstelle zwischen Tragwerk und Technischer Gebäudeausrüstung, um die Erkennung und Prüfung von Koordinationskonflikten nachzuvollziehen.",
           "details": [
-            "TGA-Leitungstrasse durch strukturelle Deckenfelder",
-            "Illustrativer Kollisionsprüfmarker an der Systemschnittstelle",
-            "Multidisziplinärer Prüfpunkt zur ingenieurmäßigen Qualitätssicherung"
+            "TGA-Trassenführung durch Tragwerksfelder.",
+            "Prüfung von Freiräumen und möglichen Kollisionen zwischen Fachdisziplinen.",
+            "Bewertung von Koordinationskonflikten und Ermittlung erforderlicher Maßnahmen."
           ],
           "hotspot": {
             "x": 48,
@@ -916,14 +925,14 @@
         },
         {
           "id": "information",
-          "title": "Informations-QA",
-          "tag": "DATENVERIFIKATION",
-          "callout": "Klassifikationsschema · Property Sets · QA-Audit",
-          "description": "Erfahren Sie, wie Modelleigenschaften, Klassifikationen und Datenprüfungen zu strukturierten BIM-Lieferergebnissen beitragen.",
+          "title": "Informationsprüfung",
+          "tag": "DATENPRÜFUNG",
+          "callout": "IFC-Klassen · Eigenschaften · Anforderungen",
+          "description": "Erfahren Sie, wie Modelleigenschaften und strukturierte Informationen anhand der projektspezifischen Informationsanforderungen sowie der anwendbaren AIA und des BAP geprüft werden.",
           "details": [
-            "Semantisches IFC-Klassifikationsschema (IfcColumn / IfcSlab)",
-            "Strukturierte Materialkennwerte und Leistungsparameter",
-            "Verifikation der Engineering-Lieferergebnisse vor Freigabe"
+            "IFC-Entitätsklassen und zugehörige Eigenschaftssätze.",
+            "Abmessungen, Materialkennwerte und Leistungsparameter.",
+            "Prüfung der Vollständigkeit und Konsistenz der Informationen vor der Übergabe."
           ],
           "hotspot": {
             "x": 67,
@@ -931,7 +940,7 @@
           }
         }
       ],
-      "diagram_aria_label": "Interaktives BIM Evidence Studio: Isometrisches mehrgeschossiges BIM-Modell zur Veranschaulichung von Geometrie, Koordinationsprüfung und Informations-QA."
+      "diagram_aria_label": "Interaktives schematisches BIM-Modell zur Veranschaulichung von Modellgeometrie, fachübergreifender Koordination und Informationsprüfung."
     },
     "systemBenchmarks": {
       "eyebrow": "IHR PROJEKT, UNSER PROZESS",
