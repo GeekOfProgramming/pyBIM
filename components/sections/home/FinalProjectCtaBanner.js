@@ -21,7 +21,7 @@ export default function FinalProjectCtaBanner() {
           {/* LEFT COLUMN: Value Proposition & Guarantees */}
           <div className="lg:col-span-6 flex flex-col justify-center text-left">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/40 text-blue-600 dark:text-blue-400 font-mono text-caption font-semibold uppercase tracking-wider mb-6 backdrop-blur-sm self-start">
-              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span>{t.badge}</span>
             </div>
 
@@ -70,17 +70,17 @@ export default function FinalProjectCtaBanner() {
                   className="w-full flex items-center justify-center gap-3 bg-brand-accent hover:bg-brand-accentHover text-white py-4 px-6 rounded-xl font-mono font-bold text-body-sm tracking-wider transition-all duration-300 shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 uppercase text-center group"
                 >
                   <span>{t.cta}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
 
               {/* Confidentiality Footer */}
-              <div className="flex items-center justify-between font-mono text-caption text-gray-500 dark:text-slate-400 pt-5 border-t border-gray-200 dark:border-slate-800 leading-normal">
-                <span className="flex items-center gap-1.5 text-gray-600 dark:text-slate-400">
-                  <Lock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  {t.securityNotice}
+              <div className="flex items-start justify-between gap-4 font-mono text-caption text-gray-500 dark:text-slate-400 pt-5 border-t border-gray-200 dark:border-slate-800 leading-normal">
+                <span className="flex items-start gap-1.5 min-w-0 text-gray-600 dark:text-slate-400">
+                  <Lock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span>{t.securityNotice}</span>
                 </span>
-                <span className="text-gray-400 dark:text-slate-500 hidden sm:inline ml-4 shrink-0">{t.locationNotice}</span>
+                <span className="text-gray-400 dark:text-slate-500 hidden sm:inline shrink-0">{t.locationNotice}</span>
               </div>
             </div>
           </div>
