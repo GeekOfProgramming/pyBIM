@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
+import { servicesPageData } from "@/lib/data/servicesPageData";
 
 export default function ServicesEngineeringOutcomes({ data }) {
   const shouldReduceMotion = useReducedMotion();
@@ -21,74 +22,12 @@ export default function ServicesEngineeringOutcomes({ data }) {
   const [selectedIdx, setSelectedIdx] = useState(0);
 
   // Fallback defaults if data is missing or loading
-  const outcomes = data || {
-    tag: "ENGINEERING OUTCOMES",
-    headline: "More Control Across the BIM Delivery Process.",
-    subtitle: "Practical engineering workflows can help teams reduce repetitive operations, improve the consistency of model information, and make better use of their existing BIM environment. The approach and results depend on each project's requirements.",
-    labels: {
-      canvasLabel: "ENGINEERING IMPACT CANVAS",
-      interactiveNote: "Select an outcome to inspect the workflow architecture",
-      activeFocus: "ACTIVE FOCUS",
-      inspectButton: "Inspect Workflow",
-      selectedStatus: "Active",
-      outcome1: {
-        manualHeading: "Manual Operations",
-        items: [
-          { name: "Parameter Transcription", code: "01" },
-          { name: "Repetitive Sheet QA", code: "02" },
-          { name: "Naming Verification", code: "03" }
-        ],
-        routineBadge: "AUTOMATION",
-        routineTitle: "Defined Routine",
-        routineDesc: "Targeted scripts & batch rules",
-        gateBadge: "GATEWAY",
-        gateTitle: "Engineer Review",
-        gateDesc: "Supervision & decisions",
-        footerLeft: "WORKFLOW STRUCTURE",
-        footerRight: "SUPERVISED AUTOMATION"
-      },
-      outcome2: {
-        rulesHeading: "Rule Definition Framework",
-        reportHeading: "EXCEPTION AUDIT REPORT",
-        reportStatus: "REVIEW PROCESS",
-        exceptions: [
-          { name: "Inconsistent Parameter Types", tag: "IDENTIFIED" },
-          { name: "Missing Classification Tags", tag: "FLAGGED" },
-          { name: "Naming Convention Discrepancies", tag: "REPORTED" }
-        ],
-        reportNote: "Clear criteria turn vague model issues into actionable, reviewable line items.",
-        footerLeft: "INFORMATION ASSURANCE",
-        footerRight: "STRUCTURED REPORTING"
-      },
-      outcome3: {
-        envHeading: "Existing Environments",
-        envRvt: "Autodesk Revit",
-        envRvtSub: "Native API & Parameter Workflows",
-        envIfc: "OpenBIM IFC4",
-        envIfcSub: "Vendor-neutral Model Exchange",
-        envBcf: "Issue Tracking",
-        envBcfSub: "Open Issue Collaboration",
-        coreHeading: "CONNECTED WORKFLOW FABRIC",
-        coreBadge: "OPEN ECOSYSTEM",
-        disciplinesLabel: "DISCIPLINES",
-        disciplinesVal: "ARC · STR · MEP",
-        interfaceLabel: "INTERFACE",
-        interfaceVal: "Python / C# / API",
-        coreNote: "Solutions integrate alongside your established software stack, avoiding unnecessary workflow disruptions.",
-        footerLeft: "ECOSYSTEM INTEGRATION",
-        footerRight: "PRACTICAL ADAPTATION"
-      },
-      mobileSummaries: [
-        "PROCESS: REPETITIVE → ROUTINE → REVIEW",
-        "QUALITY: RULES → AUDIT → ACTIONABLE REPORT",
-        "INTEGRATION: REVIT + IFC + BCF WORKFLOW"
-      ]
-    },
-    columns: []
-  };
+  const defaultOutcomes = servicesPageData.en.engineeringOutcomes;
+  const outcomes = data || defaultOutcomes;
 
-  const columns = outcomes.columns || [];
-  const labels = outcomes.labels || {};
+  const columns = outcomes.columns || defaultOutcomes.columns || [];
+  const defaultLabels = defaultOutcomes.labels || {};
+  const labels = outcomes.labels || defaultLabels;
   const activeColumn = columns[selectedIdx] || columns[0] || {};
 
   const getOutcomeIcon = (iconKey, className = "w-5 h-5") => {
@@ -139,9 +78,12 @@ export default function ServicesEngineeringOutcomes({ data }) {
     }
   };
 
-  const c1 = labels.outcome1 || {};
-  const c2 = labels.outcome2 || {};
-  const c3 = labels.outcome3 || {};
+  const c1 = labels.outcome1 || defaultLabels.outcome1 || {};
+  const c2 = labels.outcome2 || defaultLabels.outcome2 || {};
+  const c3 = labels.outcome3 || defaultLabels.outcome3 || {};
+  const dc1 = defaultLabels.outcome1 || {};
+  const dc2 = defaultLabels.outcome2 || {};
+  const dc3 = defaultLabels.outcome3 || {};
 
   return (
     <section 
@@ -215,7 +157,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
                     aria-labelledby={`${baseId}-outcome-heading-${idx}`}
                     onClick={() => setSelectedIdx(idx)}
                     className="absolute inset-0 w-full h-full rounded-2xl cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 z-10"
-                    aria-label={`${col.title} — ${isSelected ? (labels.selectedStatus || "Active") : (labels.inspectButton || "Select Outcome")}`}
+                    aria-label={`${col.title} — ${isSelected ? (labels.selectedStatus || defaultLabels.selectedStatus) : (labels.inspectButton || defaultLabels.inspectButton)}`}
                   />
 
                   {/* Active Indicator Strip */}
@@ -283,7 +225,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
                         }`}
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-current" aria-hidden="true" />
-                        <span>{isSelected ? (labels.selectedStatus || "Active") : (labels.inspectButton || "Inspect Workflow")}</span>
+                        <span>{isSelected ? (labels.selectedStatus || defaultLabels.selectedStatus) : (labels.inspectButton || defaultLabels.inspectButton)}</span>
                         <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                       </span>
                     </div>
@@ -299,7 +241,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
           <div className="lg:col-span-7 sticky top-28">
             <figure 
               className="rounded-3xl bg-brand-cardElevated border border-brand-border shadow-lg p-6 xl:p-8 backdrop-blur-sm relative overflow-hidden"
-              aria-label={`${activeColumn.title} - ${labels.canvasLabel || "ENGINEERING IMPACT CANVAS"}`}
+              aria-label={`${activeColumn.title} - ${labels.canvasLabel || defaultLabels.canvasLabel}`}
             >
               <figcaption className="sr-only">
                 {activeColumn.title}: {activeColumn.desc}
@@ -310,13 +252,13 @@ export default function ServicesEngineeringOutcomes({ data }) {
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" aria-hidden="true" />
                   <span className="font-bold text-brand-textPrimary uppercase tracking-wider">
-                    {labels.canvasLabel || "ENGINEERING IMPACT CANVAS"}
+                    {labels.canvasLabel || defaultLabels.canvasLabel}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <span className="text-technical font-mono text-brand-textSecondary uppercase">
-                    {labels.activeFocus || "ACTIVE FOCUS"}:
+                    {labels.activeFocus || defaultLabels.activeFocus}:
                   </span>
                   <span className="px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-brand-surface border border-brand-border text-brand-primary">
                     {activeColumn.num} · {activeColumn.category}
@@ -345,13 +287,9 @@ export default function ServicesEngineeringOutcomes({ data }) {
                         {/* Step 1: Repeated Manual Operations */}
                         <div className="col-span-4 space-y-2 font-mono text-technical">
                           <span className="block text-caption font-bold text-brand-textSecondary uppercase tracking-wider mb-2">
-                            {c1.manualHeading || "Manual Operations"}
+                            {c1.manualHeading || dc1.manualHeading}
                           </span>
-                          {(c1.items || [
-                            { name: "Parameter Transcription", code: "01" },
-                            { name: "Repetitive Sheet QA", code: "02" },
-                            { name: "Naming Verification", code: "03" }
-                          ]).map((item, i) => (
+                          {(c1.items || dc1.items || []).map((item, i) => (
                             <motion.div
                               key={i}
                               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -10 }}
@@ -392,13 +330,13 @@ export default function ServicesEngineeringOutcomes({ data }) {
                             <Cpu className="w-5 h-5" aria-hidden="true" />
                           </div>
                           <span className="block text-technical font-bold text-brand-primary uppercase tracking-wider mb-1">
-                            {c1.routineBadge || "AUTOMATION"}
+                            {c1.routineBadge || dc1.routineBadge}
                           </span>
                           <span className="text-caption font-bold text-brand-textPrimary block mb-1">
-                            {c1.routineTitle || "Defined Routine"}
+                            {c1.routineTitle || dc1.routineTitle}
                           </span>
                           <span className="text-technical text-brand-textSecondary block leading-snug">
-                            {c1.routineDesc || "Targeted scripts & batch rules"}
+                            {c1.routineDesc || dc1.routineDesc}
                           </span>
                         </div>
 
@@ -425,13 +363,13 @@ export default function ServicesEngineeringOutcomes({ data }) {
                             <Eye className="w-5 h-5" aria-hidden="true" />
                           </div>
                           <span className="block text-technical font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
-                            {c1.gateBadge || "GATEWAY"}
+                            {c1.gateBadge || dc1.gateBadge}
                           </span>
                           <span className="text-caption font-bold text-brand-textPrimary block mb-1">
-                            {c1.gateTitle || "Engineer Review"}
+                            {c1.gateTitle || dc1.gateTitle}
                           </span>
                           <span className="text-technical text-brand-textSecondary block leading-snug">
-                            {c1.gateDesc || "Supervision & decisions"}
+                            {c1.gateDesc || dc1.gateDesc}
                           </span>
                         </div>
 
@@ -439,8 +377,8 @@ export default function ServicesEngineeringOutcomes({ data }) {
 
                       {/* Technical Footnote Banner */}
                       <div className="p-3 rounded-xl bg-brand-surface/60 border border-brand-border/60 flex items-center justify-between text-technical font-mono text-brand-textSecondary">
-                        <span>{c1.footerLeft || "WORKFLOW STRUCTURE"}</span>
-                        <span className="text-brand-primary font-bold">{c1.footerRight || "SUPERVISED AUTOMATION"}</span>
+                        <span>{c1.footerLeft || dc1.footerLeft}</span>
+                        <span className="text-brand-primary font-bold">{c1.footerRight || dc1.footerRight}</span>
                       </div>
                     </motion.div>
                   )}
@@ -463,14 +401,9 @@ export default function ServicesEngineeringOutcomes({ data }) {
                         {/* Information Rules Matrix (Neutral markers, no fake checkmarks) */}
                         <div className="col-span-6 space-y-2.5">
                           <span className="block text-caption font-bold text-brand-textSecondary uppercase tracking-wider mb-2">
-                            {c2.rulesHeading || "Rule Definition Framework"}
+                            {c2.rulesHeading || dc2.rulesHeading}
                           </span>
-                          {[
-                            { rule: "ISO 19650 PropertySets", tag: "SCHEMA" },
-                            { rule: "OmniClass / UniFormat", tag: "CLASSIFICATION" },
-                            { rule: "Model Naming Syntax", tag: "SYNTAX" },
-                            { rule: "Discipline Model Bounds", tag: "COORDINATION" }
-                          ].map((item, i) => (
+                          {(c2.rules || dc2.rules || []).map((item, i) => (
                             <motion.div
                               key={i}
                               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 6 }}
@@ -493,19 +426,15 @@ export default function ServicesEngineeringOutcomes({ data }) {
                         <div className="col-span-6 bg-sky-500/10 dark:bg-sky-950/30 p-5 rounded-2xl border border-sky-500/35 space-y-3">
                           <div className="flex items-center justify-between pb-2 border-b border-sky-500/30 text-technical">
                             <span className="font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
-                              {c2.reportHeading || "EXCEPTION AUDIT REPORT"}
+                              {c2.reportHeading || dc2.reportHeading}
                             </span>
                             <span className="text-brand-textSecondary text-technical">
-                              {c2.reportStatus || "REVIEW PROCESS"}
+                              {c2.reportStatus || dc2.reportStatus}
                             </span>
                           </div>
                           
                           <div className="space-y-2 text-technical">
-                            {(c2.exceptions || [
-                              { name: "Inconsistent Parameter Types", tag: "IDENTIFIED" },
-                              { name: "Missing Classification Tags", tag: "FLAGGED" },
-                              { name: "Naming Convention Discrepancies", tag: "REPORTED" }
-                            ]).map((exc, eIdx) => (
+                            {(c2.exceptions || dc2.exceptions || []).map((exc, eIdx) => (
                               <div key={eIdx} className="p-2.5 rounded-lg bg-brand-card/90 border border-brand-border flex items-center justify-between">
                                 <span className="text-brand-textPrimary font-medium leading-tight">{exc.name}</span>
                                 <span className="px-2 py-0.5 rounded bg-brand-surface font-mono font-bold text-brand-textSecondary text-technical shrink-0 ml-2">
@@ -516,7 +445,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
                           </div>
 
                           <p className="text-technical text-brand-textSecondary pt-1 leading-relaxed">
-                            {c2.reportNote || "Clear criteria turn vague model issues into actionable, reviewable line items."}
+                            {c2.reportNote || dc2.reportNote}
                           </p>
                         </div>
 
@@ -524,8 +453,8 @@ export default function ServicesEngineeringOutcomes({ data }) {
 
                       {/* Technical Footnote Banner */}
                       <div className="p-3 rounded-xl bg-brand-surface/60 border border-brand-border/60 flex items-center justify-between text-technical font-mono text-brand-textSecondary">
-                        <span>{c2.footerLeft || "INFORMATION ASSURANCE"}</span>
-                        <span className="text-sky-600 dark:text-sky-400 font-bold">{c2.footerRight || "STRUCTURED REPORTING"}</span>
+                        <span>{c2.footerLeft || dc2.footerLeft}</span>
+                        <span className="text-sky-600 dark:text-sky-400 font-bold">{c2.footerRight || dc2.footerRight}</span>
                       </div>
                     </motion.div>
                   )}
@@ -548,7 +477,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
                         {/* Source Software Platforms */}
                         <div className="col-span-4 space-y-2.5 text-technical">
                           <span className="block text-caption font-bold text-brand-textSecondary uppercase tracking-wider mb-2">
-                            {c3.envHeading || "Existing Environments"}
+                            {c3.envHeading || dc3.envHeading}
                           </span>
                           
                           <div className="bg-brand-surface p-3 rounded-xl border border-brand-border/70 flex items-center gap-3">
@@ -556,8 +485,8 @@ export default function ServicesEngineeringOutcomes({ data }) {
                               RVT
                             </span>
                             <div className="min-w-0">
-                              <span className="text-brand-textPrimary font-bold block leading-tight">{c3.envRvt || "Autodesk Revit"}</span>
-                              <span className="text-brand-textSecondary text-technical leading-tight block">{c3.envRvtSub || "Native API & Parameter Workflows"}</span>
+                              <span className="text-brand-textPrimary font-bold block leading-tight">{c3.envRvt || dc3.envRvt}</span>
+                              <span className="text-brand-textSecondary text-technical leading-tight block">{c3.envRvtSub || dc3.envRvtSub}</span>
                             </div>
                           </div>
 
@@ -566,8 +495,8 @@ export default function ServicesEngineeringOutcomes({ data }) {
                               IFC
                             </span>
                             <div className="min-w-0">
-                              <span className="text-brand-textPrimary font-bold block leading-tight">{c3.envIfc || "OpenBIM IFC4"}</span>
-                              <span className="text-brand-textSecondary text-technical leading-tight block">{c3.envIfcSub || "Vendor-neutral Model Exchange"}</span>
+                              <span className="text-brand-textPrimary font-bold block leading-tight">{c3.envIfc || dc3.envIfc}</span>
+                              <span className="text-brand-textSecondary text-technical leading-tight block">{c3.envIfcSub || dc3.envIfcSub}</span>
                             </div>
                           </div>
 
@@ -576,8 +505,8 @@ export default function ServicesEngineeringOutcomes({ data }) {
                               BCF
                             </span>
                             <div className="min-w-0">
-                              <span className="text-brand-textPrimary font-bold block leading-tight">{c3.envBcf || "Issue Tracking"}</span>
-                              <span className="text-brand-textSecondary text-technical leading-tight block">{c3.envBcfSub || "Open Issue Collaboration"}</span>
+                              <span className="text-brand-textPrimary font-bold block leading-tight">{c3.envBcf || dc3.envBcf}</span>
+                              <span className="text-brand-textSecondary text-technical leading-tight block">{c3.envBcfSub || dc3.envBcfSub}</span>
                             </div>
                           </div>
                         </div>
@@ -603,26 +532,26 @@ export default function ServicesEngineeringOutcomes({ data }) {
                         <div className="col-span-7 bg-indigo-500/10 dark:bg-indigo-950/30 p-5 rounded-2xl border border-indigo-500/35 space-y-3">
                           <div className="flex items-center justify-between pb-2 border-b border-indigo-500/30 text-technical">
                             <span className="font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
-                              {c3.coreHeading || "CONNECTED WORKFLOW FABRIC"}
+                              {c3.coreHeading || dc3.coreHeading}
                             </span>
                             <span className="text-brand-textSecondary text-technical">
-                              {c3.coreBadge || "OPEN ECOSYSTEM"}
+                              {c3.coreBadge || dc3.coreBadge}
                             </span>
                           </div>
 
                           <div className="grid grid-cols-2 gap-2 text-technical">
                             <div className="p-2.5 rounded-lg bg-brand-card/90 border border-brand-border">
-                              <span className="text-technical text-brand-textSecondary block uppercase mb-0.5">{c3.disciplinesLabel || "DISCIPLINES"}</span>
-                              <span className="font-bold text-brand-textPrimary">{c3.disciplinesVal || "ARC · STR · MEP"}</span>
+                              <span className="text-technical text-brand-textSecondary block uppercase mb-0.5">{c3.disciplinesLabel || dc3.disciplinesLabel}</span>
+                              <span className="font-bold text-brand-textPrimary">{c3.disciplinesVal || dc3.disciplinesVal}</span>
                             </div>
                             <div className="p-2.5 rounded-lg bg-brand-card/90 border border-brand-border">
-                              <span className="text-technical text-brand-textSecondary block uppercase mb-0.5">{c3.interfaceLabel || "INTERFACE"}</span>
-                              <span className="font-bold text-brand-textPrimary">{c3.interfaceVal || "Python / C# / API"}</span>
+                              <span className="text-technical text-brand-textSecondary block uppercase mb-0.5">{c3.interfaceLabel || dc3.interfaceLabel}</span>
+                              <span className="font-bold text-brand-textPrimary">{c3.interfaceVal || dc3.interfaceVal}</span>
                             </div>
                           </div>
 
                           <p className="text-technical text-brand-textSecondary pt-1 leading-relaxed">
-                            {c3.coreNote || "Solutions integrate alongside your established software stack, avoiding unnecessary workflow disruptions."}
+                            {c3.coreNote || dc3.coreNote}
                           </p>
                         </div>
 
@@ -630,8 +559,8 @@ export default function ServicesEngineeringOutcomes({ data }) {
 
                       {/* Technical Footnote Banner */}
                       <div className="p-3 rounded-xl bg-brand-surface/60 border border-brand-border/60 flex items-center justify-between text-technical font-mono text-brand-textSecondary">
-                        <span>{c3.footerLeft || "ECOSYSTEM INTEGRATION"}</span>
-                        <span className="text-indigo-600 dark:text-indigo-400 font-bold">{c3.footerRight || "PRACTICAL ADAPTATION"}</span>
+                        <span>{c3.footerLeft || dc3.footerLeft}</span>
+                        <span className="text-indigo-600 dark:text-indigo-400 font-bold">{c3.footerRight || dc3.footerRight}</span>
                       </div>
                     </motion.div>
                   )}
@@ -640,7 +569,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
 
               {/* Bottom Canvas Interactive Hint */}
               <div className="pt-4 mt-6 border-t border-brand-border/60 flex items-center justify-between text-technical font-mono text-brand-textSecondary">
-                <span>{labels.interactiveNote || "Select an outcome to inspect the workflow architecture"}</span>
+                <span>{labels.interactiveNote || defaultLabels.interactiveNote}</span>
                 <span className="text-brand-textSecondary/60 hidden sm:inline-block">pyBIM</span>
               </div>
 
@@ -655,13 +584,7 @@ export default function ServicesEngineeringOutcomes({ data }) {
         <div className="lg:hidden space-y-6">
           {columns.map((col, idx) => {
             const accent = getOutcomeAccent(idx);
-            const mobileSummary = labels.mobileSummaries?.[idx] || (
-              idx === 0 
-                ? "PROCESS: REPETITIVE → ROUTINE → REVIEW" 
-                : idx === 1 
-                ? "QUALITY: RULES → AUDIT → ACTIONABLE REPORT" 
-                : "INTEGRATION: REVIT + IFC + BCF WORKFLOW"
-            );
+            const mobileSummary = labels.mobileSummaries?.[idx] || defaultLabels.mobileSummaries?.[idx];
 
             return (
               <article
