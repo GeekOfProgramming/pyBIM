@@ -134,16 +134,16 @@ export default function ManifestoHero() {
                 
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-caption font-medium text-brand-textPrimary shadow-sm">
-                    ISO 19650
+                    {t("about.manifesto.chip1")}
                   </span>
                   <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-caption font-medium text-brand-textPrimary shadow-sm">
-                    UNI 11337
+                    {t("about.manifesto.chip2")}
                   </span>
                   <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-caption font-medium text-brand-textPrimary shadow-sm">
-                    Revit API
+                    {t("about.manifesto.chip3")}
                   </span>
                   <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-caption font-medium text-brand-textPrimary shadow-sm">
-                    Python / C#
+                    {t("about.manifesto.chip4")}
                   </span>
                 </div>
               </div>
