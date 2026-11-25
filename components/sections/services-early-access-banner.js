@@ -13,47 +13,16 @@ import {
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
+import { servicesPageData } from "@/lib/data/servicesPageData";
 
 export default function ServicesEarlyAccessBanner({ data }) {
   const shouldReduceMotion = useReducedMotion();
   const baseId = useId();
 
-  // Fallback defaults if data is loading or missing
-  const banner = data || {
-    tag: "ENTERPRISE AI · IN DEVELOPMENT",
-    headline: "Private AI. Designed Around Your BIM Environment.",
-    description: "We're developing enterprise AI infrastructure options that bring local inference and intelligent automation closer to your engineering workflows. Share your deployment, security, and BIM requirements as we shape the next stage of pyBIM.",
-    buttonText: "Join the Enterprise Priority Queue",
-    buttonHref: "/contact#priority-queue",
-    microcopy: "Expression of interest only. Product availability and deployment options are subject to further development and technical review.",
-    diagram: {
-      conceptualArchitecture: "CONCEPTUAL ARCHITECTURE",
-      engineeringData: "ENGINEERING DATA",
-      engineeringDataSub: "Revit · IFC · Model Data",
-      privateAiCore: "PRIVATE AI CORE",
-      privateAiCoreSub: "Controlled Local Inference",
-      bimWorkflows: "BIM WORKFLOWS",
-      bimWorkflowsSub: "Assisted Automation",
-      plannedInfrastructure: "PLANNED INFRASTRUCTURE",
-      coreBadge: "LOCAL CONTROL · CONCEPT",
-      inBadge: "INPUT // 01",
-      outBadge: "OUTPUT // 02"
-    }
-  };
-
-  const diagram = banner.diagram || {
-    conceptualArchitecture: "CONCEPTUAL ARCHITECTURE",
-    engineeringData: "ENGINEERING DATA",
-    engineeringDataSub: "Revit · IFC · Model Data",
-    privateAiCore: "PRIVATE AI CORE",
-    privateAiCoreSub: "Controlled Local Inference",
-    bimWorkflows: "BIM WORKFLOWS",
-    bimWorkflowsSub: "Assisted Automation",
-    plannedInfrastructure: "PLANNED INFRASTRUCTURE",
-    coreBadge: "LOCAL CONTROL · CONCEPT",
-    inBadge: "INPUT // 01",
-    outBadge: "OUTPUT // 02"
-  };
+  // Reuse canonical English banner data as fallback if data is loading or missing
+  const fallbackBanner = servicesPageData.en.ctaBanner;
+  const banner = data || fallbackBanner;
+  const diagram = banner.diagram || fallbackBanner.diagram;
 
   return (
     <section 
@@ -173,7 +142,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
                       </div>
                     </div>
                     <span className="text-technical font-mono text-brand-textSecondary/60 uppercase">
-                      {diagram.inBadge || "INPUT // 01"}
+                      {diagram.inBadge || fallbackBanner.diagram.inBadge}
                     </span>
                   </div>
 
@@ -212,7 +181,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
                       <div className="flex items-center gap-1.5">
                         <ShieldCheck className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
                         <span className="text-technical font-mono font-bold text-brand-primary uppercase">
-                          {diagram.coreBadge || "LOCAL CONTROL · CONCEPT"}
+                          {diagram.coreBadge || fallbackBanner.diagram.coreBadge}
                         </span>
                       </div>
                     </div>
@@ -250,7 +219,7 @@ export default function ServicesEarlyAccessBanner({ data }) {
                       </div>
                     </div>
                     <span className="text-technical font-mono text-brand-textSecondary/60 uppercase">
-                      {diagram.outBadge || "OUTPUT // 02"}
+                      {diagram.outBadge || fallbackBanner.diagram.outBadge}
                     </span>
                   </div>
 
