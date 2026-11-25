@@ -16,29 +16,17 @@ import {
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
+import { servicesPageData } from "@/lib/data/servicesPageData";
 
 export default function ServicesExecutionPipeline({ data }) {
   const shouldReduceMotion = useReducedMotion();
   const baseId = useId();
 
-  const pipeline = data || {
-    tag: "ENGINEERING DELIVERY PROCESS",
-    headline: "From Project Requirements to Reviewed BIM Deliverables.",
-    subtitle: "A structured delivery approach connects project information requirements, practical automation, controlled implementation, and engineering review. Each workflow is adapted to the needs of the project.",
-    labels: {
-      outputLabel: "TYPICAL OUTPUT",
-      illustrativeLabel: "ILLUSTRATIVE PROCESS",
-      mapTitle: "DELIVERY TIMELINE"
-    },
-    steps: []
-  };
+  const defaultPipeline = servicesPageData.en.executionPipeline;
+  const pipeline = data || defaultPipeline;
 
-  const steps = pipeline.steps || [];
-  const labels = pipeline.labels || {
-    outputLabel: "TYPICAL OUTPUT",
-    illustrativeLabel: "ILLUSTRATIVE PROCESS",
-    mapTitle: "DELIVERY TIMELINE"
-  };
+  const steps = pipeline.steps || defaultPipeline.steps || [];
+  const labels = pipeline.labels || defaultPipeline.labels;
 
   const getStageTheme = (idx) => {
     switch (idx) {
@@ -143,9 +131,12 @@ export default function ServicesExecutionPipeline({ data }) {
         <div className="space-y-8 lg:space-y-10">
           {steps.map((step, idx) => {
             const theme = getStageTheme(idx);
+            const defaultStep = defaultPipeline.steps?.[idx] || {};
+            const defaultArtifact = defaultStep.artifact || {};
+            const defaultDiagram = defaultStep.diagram || {};
             const artifact = step.artifact || {};
             const diagram = step.diagram || {};
-            const actionLabel = artifact.actionLabel || "SPEC";
+            const actionLabel = artifact.actionLabel || defaultArtifact.actionLabel || "STAGE";
             const isLast = idx === steps.length - 1;
 
             return (
@@ -230,14 +221,14 @@ export default function ServicesExecutionPipeline({ data }) {
 
                       <div>
                         <span className={`text-technical font-mono font-bold ${theme.accentText} uppercase tracking-wider block`}>
-                          {step.mapLabel || `STAGE 0${idx + 1}`}
+                          {step.mapLabel || defaultStep.mapLabel || `STAGE 0${idx + 1}`}
                         </span>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-2">
                       <span className="text-technical font-mono font-bold text-brand-textSecondary/80 px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border">
-                        {artifact.badge || `PHASE // 0${idx + 1}`}
+                        {artifact.badge || defaultArtifact.badge || `STAGE // 0${idx + 1}`}
                       </span>
                     </div>
                   </div>
@@ -290,7 +281,7 @@ export default function ServicesExecutionPipeline({ data }) {
                           <div className="flex items-center gap-2">
                             <span className={`w-2 h-2 rounded-full ${theme.badgeColor} shrink-0`} aria-hidden="true" />
                             <span className="font-bold text-brand-textPrimary uppercase tracking-wider">
-                              {artifact.heading || "STAGE SPECIFICATION"}
+                              {artifact.heading || defaultArtifact.heading || "STAGE OVERVIEW"}
                             </span>
                           </div>
                           <span className={`px-2 py-0.5 rounded font-bold uppercase tracking-wider ${theme.accentBg} ${theme.accentText} border ${theme.accentBorder}`}>
@@ -306,10 +297,10 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-brand-card p-3 rounded-lg border border-brand-border/70 shadow-sm text-technical font-mono">
                                 <div className="flex items-center gap-1.5 text-brand-textSecondary mb-1 font-semibold">
                                   <FileSpreadsheet className="w-3.5 h-3.5 text-brand-primary shrink-0" aria-hidden="true" />
-                                  <span className="whitespace-normal break-words leading-snug">{diagram.sourceBadge || "CLIENT EIR / BEP"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.sourceBadge || defaultDiagram.sourceBadge}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  {diagram.sourceLabel || "Project Requirements"}
+                                  {diagram.sourceLabel || defaultDiagram.sourceLabel}
                                 </span>
                               </div>
 
@@ -336,10 +327,10 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-brand-primary/10 dark:bg-brand-primary/15 p-3 rounded-lg border border-brand-primary/30 text-technical font-mono shadow-sm">
                                 <div className="flex items-center gap-1.5 text-brand-primary mb-1 font-bold">
                                   <FileCheck2 className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-                                  <span className="whitespace-normal break-words leading-snug">{diagram.targetBadge || "TECHNICAL SCOPE"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.targetBadge || defaultDiagram.targetBadge}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  {diagram.targetLabel || "Defined Acceptance Criteria"}
+                                  {diagram.targetLabel || defaultDiagram.targetLabel}
                                 </span>
                               </div>
                             </div>
@@ -360,10 +351,10 @@ export default function ServicesExecutionPipeline({ data }) {
                                 className="flex-1 bg-brand-card p-3 rounded-lg border border-brand-border/70 text-center shadow-sm"
                               >
                                 <span className="block text-brand-textSecondary font-semibold mb-1 uppercase tracking-wider text-technical">
-                                  {diagram.node1Badge || "RULE LAYER"}
+                                  {diagram.node1Badge || defaultDiagram.node1Badge}
                                 </span>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  {diagram.node1Label || "Parameter Mapping"}
+                                  {diagram.node1Label || defaultDiagram.node1Label}
                                 </span>
                               </motion.div>
 
@@ -400,10 +391,10 @@ export default function ServicesExecutionPipeline({ data }) {
                                 className="flex-1 bg-sky-500/10 dark:bg-sky-950/40 p-3 rounded-lg border border-sky-500/40 text-center shadow-sm"
                               >
                                 <span className="block text-sky-600 dark:text-sky-400 font-bold mb-1 uppercase tracking-wider text-technical">
-                                  {diagram.node2Badge || "LOGIC GATE"}
+                                  {diagram.node2Badge || defaultDiagram.node2Badge}
                                 </span>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  {diagram.node2Label || "Validation Rules"}
+                                  {diagram.node2Label || defaultDiagram.node2Label}
                                 </span>
                               </motion.div>
 
@@ -440,10 +431,10 @@ export default function ServicesExecutionPipeline({ data }) {
                                 className="flex-1 bg-brand-card p-3 rounded-lg border border-brand-border/70 text-center shadow-sm"
                               >
                                 <span className="block text-brand-textSecondary font-semibold mb-1 uppercase tracking-wider text-technical">
-                                  {diagram.node3Badge || "AUTOMATION"}
+                                  {diagram.node3Badge || defaultDiagram.node3Badge}
                                 </span>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  {diagram.node3Label || "API Task Scoping"}
+                                  {diagram.node3Label || defaultDiagram.node3Label}
                                 </span>
                               </motion.div>
                             </div>
@@ -458,10 +449,10 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-brand-card p-3 rounded-lg border border-brand-border/70 shadow-sm text-technical font-mono">
                                 <div className="flex items-center gap-1.5 text-brand-textSecondary mb-1 font-semibold">
                                   <Boxes className="w-3.5 h-3.5 text-indigo-500 shrink-0" aria-hidden="true" />
-                                  <span className="whitespace-normal break-words leading-snug">{diagram.sourceBadge || "MODEL HOST"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.sourceBadge || defaultDiagram.sourceBadge}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  {diagram.sourceLabel || "Revit API Execution"}
+                                  {diagram.sourceLabel || defaultDiagram.sourceLabel}
                                 </span>
                               </div>
 
@@ -488,10 +479,10 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-indigo-500/10 dark:bg-indigo-950/40 p-3 rounded-lg border border-indigo-500/35 text-technical font-mono shadow-sm">
                                 <div className="flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 mb-1 font-bold">
                                   <Layers className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-                                  <span className="whitespace-normal break-words leading-snug">{diagram.targetBadge || "COORDINATION"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.targetBadge || defaultDiagram.targetBadge}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  {diagram.targetLabel || "Synchronized Outputs"}
+                                  {diagram.targetLabel || defaultDiagram.targetLabel}
                                 </span>
                               </div>
                             </div>
@@ -506,10 +497,10 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-brand-card p-3 rounded-lg border border-brand-border/70 shadow-sm text-technical font-mono">
                                 <div className="flex items-center gap-1.5 text-brand-textSecondary mb-1 font-semibold">
                                   <ShieldAlert className="w-3.5 h-3.5 text-emerald-500 shrink-0" aria-hidden="true" />
-                                  <span className="whitespace-normal break-words leading-snug">{diagram.sourceBadge || "AUDIT DOSSIER"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.sourceBadge || defaultDiagram.sourceBadge}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  {diagram.sourceLabel || "BCF Issue Tracking"}
+                                  {diagram.sourceLabel || defaultDiagram.sourceLabel}
                                 </span>
                               </div>
 
@@ -536,10 +527,10 @@ export default function ServicesExecutionPipeline({ data }) {
                               <div className="sm:col-span-5 bg-emerald-500/10 dark:bg-emerald-950/40 p-3 rounded-lg border border-emerald-500/35 text-technical font-mono shadow-sm">
                                 <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 mb-1 font-bold">
                                   <ClipboardCheck className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-                                  <span className="whitespace-normal break-words leading-snug">{diagram.targetBadge || "HANDOVER PACKAGE"}</span>
+                                  <span className="whitespace-normal break-words leading-snug">{diagram.targetBadge || defaultDiagram.targetBadge}</span>
                                 </div>
                                 <span className="text-caption font-bold text-brand-textPrimary block">
-                                  {diagram.targetLabel || "Reviewed Deliverables"}
+                                  {diagram.targetLabel || defaultDiagram.targetLabel}
                                 </span>
                               </div>
                             </div>
