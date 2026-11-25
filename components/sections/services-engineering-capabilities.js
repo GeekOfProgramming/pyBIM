@@ -17,29 +17,20 @@ import {
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import EngineeringBackdrop from "@/components/ui/engineering-backdrop";
+import { servicesPageData } from "@/lib/data/servicesPageData";
 
 export default function ServicesEngineeringCapabilities({ data }) {
   const shouldReduceMotion = useReducedMotion();
   const baseId = useId();
 
   // Fallback defaults if data is loading or missing
-  const capabilities = data || {
-    tag: "ENGINEERING CAPABILITIES",
-    headline: "Turn BIM Requirements Into Repeatable Engineering Workflows.",
-    subtitle: "From model information checks to Revit automation and structured handovers, pyBIM combines engineering expertise with practical software tools to make complex project delivery more manageable.",
-    schematicNotice: "Illustrative engineering schema",
-    exchangeStandard: "OpenBIM Exchange Workflow",
-    exchangeFormat: "IFC4 · BCF",
-    cards: [],
-    buttonText: "Discuss an Engineering Challenge",
-    buttonHref: "/contact",
-    microcopy: "Share your project requirements or a repetitive workflow you'd like to improve. We'll explore a practical starting point."
-  };
+  const defaultCapabilities = servicesPageData.en.coreCapabilities;
+  const capabilities = data || defaultCapabilities;
 
-  const cards = capabilities.cards || [];
-  const schematicNotice = capabilities.schematicNotice || "Illustrative engineering schema";
-  const exchangeStandard = capabilities.exchangeStandard || "OpenBIM Exchange Workflow";
-  const exchangeFormat = capabilities.exchangeFormat || "IFC4 · BCF";
+  const cards = capabilities.cards || defaultCapabilities.cards || [];
+  const schematicNotice = capabilities.schematicNotice || defaultCapabilities.schematicNotice;
+  const exchangeStandard = capabilities.exchangeStandard || defaultCapabilities.exchangeStandard;
+  const exchangeFormat = capabilities.exchangeFormat || defaultCapabilities.exchangeFormat;
 
   const getCapabilityIcon = (idx) => {
     switch (idx) {
@@ -93,6 +84,8 @@ export default function ServicesEngineeringCapabilities({ data }) {
         <div className="space-y-6 lg:space-y-8 mb-14 lg:mb-16">
           {cards.map((card, idx) => {
             const diagram = card.diagram || {};
+            const defaultCard = defaultCapabilities.cards?.[idx] || {};
+            const defaultDiagram = defaultCard.diagram || {};
 
             return (
               <motion.article
@@ -195,11 +188,7 @@ export default function ServicesEngineeringCapabilities({ data }) {
                               />
                             )}
 
-                            {(diagram.items || [
-                              { label: "EIR.Naming_Convention", tag: "SYNTAX RULE", type: "FORMAT" },
-                              { label: "ISO_19650.PropertySets", tag: "SCHEMA REF", type: "STRUCTURE" },
-                              { label: "OmniClass.Classification", tag: "TABLE CODE", type: "TAXONOMY" }
-                            ]).map((item, itemIdx) => (
+                            {(diagram.items || defaultDiagram.items || []).map((item, itemIdx) => (
                               <motion.div
                                 key={itemIdx}
                                 initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
@@ -242,10 +231,10 @@ export default function ServicesEngineeringCapabilities({ data }) {
                             <div className="flex items-center justify-between p-2.5 rounded-lg bg-brand-card/70 border border-brand-border/60 text-technical font-mono">
                               <span className="text-brand-textSecondary flex items-center gap-1.5 font-semibold">
                                 <ShieldCheck className="w-3.5 h-3.5 text-brand-primary" aria-hidden="true" />
-                                {diagram.outputSummary || "STRUCTURED AUDIT DOSSIER"}
+                                {diagram.outputSummary || defaultDiagram.outputSummary}
                               </span>
                               <span className="text-brand-textPrimary font-bold px-2 py-0.5 rounded bg-brand-surface border border-brand-border">
-                                {diagram.statusLabel || "SCHEMA CHECK"}
+                                {diagram.statusLabel || defaultDiagram.statusLabel}
                               </span>
                             </div>
                           </motion.div>
@@ -271,10 +260,10 @@ export default function ServicesEngineeringCapabilities({ data }) {
                                 <Boxes className="w-4 h-4" aria-hidden="true" />
                               </div>
                               <span className="text-caption font-mono font-bold text-brand-textPrimary">
-                                {diagram.modelLabel || ".RVT Model Host"}
+                                {diagram.modelLabel || defaultDiagram.modelLabel}
                               </span>
                               <span className="text-technical font-mono text-brand-textSecondary mt-0.5">
-                                {diagram.modelSub || "Geometry & Instances"}
+                                {diagram.modelSub || defaultDiagram.modelSub}
                               </span>
                             </motion.div>
 
@@ -342,10 +331,10 @@ export default function ServicesEngineeringCapabilities({ data }) {
                                 <Cpu className="w-4 h-4" aria-hidden="true" />
                               </div>
                               <span className="text-caption font-mono font-bold text-sky-600 dark:text-sky-400">
-                                {diagram.codeLabel || "Python & C# Engine"}
+                                {diagram.codeLabel || defaultDiagram.codeLabel}
                               </span>
                               <span className="text-technical font-mono text-sky-700/80 dark:text-sky-300/80 mt-0.5">
-                                {diagram.codeSub || "Revit API Routines"}
+                                {diagram.codeSub || defaultDiagram.codeSub}
                               </span>
                               {/* Station execution core tag */}
                               {diagram.runtimeBadge && (
@@ -419,10 +408,10 @@ export default function ServicesEngineeringCapabilities({ data }) {
                                 <Terminal className="w-4 h-4" aria-hidden="true" />
                               </div>
                               <span className="text-caption font-mono font-bold text-brand-textPrimary">
-                                {diagram.outputLabel || "Parameter Injection"}
+                                {diagram.outputLabel || defaultDiagram.outputLabel}
                               </span>
                               <span className="text-technical font-mono text-brand-textSecondary mt-0.5">
-                                {diagram.outputSub || "Controlled Metadata"}
+                                {diagram.outputSub || defaultDiagram.outputSub}
                               </span>
                             </motion.div>
 
@@ -431,7 +420,7 @@ export default function ServicesEngineeringCapabilities({ data }) {
                           {/* Process Rail Caption */}
                           <div className="flex items-center justify-center p-2 rounded-lg bg-brand-card/70 border border-brand-border/60 text-technical font-mono">
                             <span className="text-brand-textSecondary text-center">
-                              {diagram.caption || "Deterministic parameter updates & scripted routines"}
+                              {diagram.caption || defaultDiagram.caption}
                             </span>
                           </div>
                         </div>
@@ -446,11 +435,7 @@ export default function ServicesEngineeringCapabilities({ data }) {
                             
                             {/* Discipline Sources (Left Column) */}
                             <div className="sm:col-span-5 space-y-2">
-                              {(diagram.disciplines || [
-                                { code: "ARC", name: "Arch", role: "Design Model" },
-                                { code: "STR", name: "Struct", role: "Analytical Model" },
-                                { code: "MEP", name: "Services", role: "Systems Model" }
-                              ]).map((disc, discIdx) => (
+                              {(diagram.disciplines || defaultDiagram.disciplines || []).map((disc, discIdx) => (
                                 <motion.div
                                   key={discIdx}
                                   initial={shouldReduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
@@ -536,10 +521,10 @@ export default function ServicesEngineeringCapabilities({ data }) {
                                 className="p-3.5 rounded-lg bg-teal-500/10 dark:bg-teal-950/40 border border-teal-500/35 text-center font-mono shadow-sm"
                               >
                                 <span className="block text-technical font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider mb-1.5">
-                                  {diagram.coordinationZone || "COORDINATION EXCHANGE LAYER"}
+                                  {diagram.coordinationZone || defaultDiagram.coordinationZone}
                                 </span>
                                 <div className="text-caption font-bold text-teal-700 dark:text-teal-300">
-                                  {diagram.output || "IFC4 / BCF COORDINATED DELIVERABLE"}
+                                  {diagram.output || defaultDiagram.output}
                                 </div>
                               </motion.div>
                             </div>
@@ -550,11 +535,7 @@ export default function ServicesEngineeringCapabilities({ data }) {
                           <div className="flex sm:hidden flex-col gap-2">
                             {/* 3 Discipline Badges Row */}
                             <div className="grid grid-cols-3 gap-1.5">
-                              {(diagram.disciplines || [
-                                { code: "ARC", name: "Arch" },
-                                { code: "STR", name: "Struct" },
-                                { code: "MEP", name: "Services" }
-                              ]).map((disc, discIdx) => (
+                              {(diagram.disciplines || defaultDiagram.disciplines || []).map((disc, discIdx) => (
                                 <div key={discIdx} className="p-1.5 rounded bg-brand-card border border-brand-border/70 text-center font-mono">
                                   <span className="block text-caption font-bold text-brand-primary">{disc.code}</span>
                                   <span className="text-technical text-brand-textSecondary">{disc.name}</span>
@@ -605,10 +586,10 @@ export default function ServicesEngineeringCapabilities({ data }) {
                             {/* Target Box */}
                             <div className="p-2.5 rounded-lg bg-teal-500/10 dark:bg-teal-950/40 border border-teal-500/35 text-center font-mono">
                               <span className="block text-technical font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider mb-1">
-                                {diagram.coordinationZone || "COORDINATION EXCHANGE LAYER"}
+                                {diagram.coordinationZone || defaultDiagram.coordinationZone}
                               </span>
                               <div className="text-caption font-bold text-teal-700 dark:text-teal-300">
-                                {diagram.output || "IFC4 / BCF COORDINATED DELIVERABLE"}
+                                {diagram.output || defaultDiagram.output}
                               </div>
                             </div>
                           </div>
@@ -639,10 +620,10 @@ export default function ServicesEngineeringCapabilities({ data }) {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-6 sm:p-8 lg:p-10 rounded-2xl lg:rounded-3xl bg-brand-card border border-brand-border shadow-sm">
           <div className="shrink-0">
             <CtaLink
-              href={capabilities.buttonHref || "/contact"}
+              href={capabilities.buttonHref || defaultCapabilities.buttonHref || "/contact"}
               variant="primary"
             >
-              {capabilities.buttonText || "Discuss an Engineering Challenge"}
+              {capabilities.buttonText || defaultCapabilities.buttonText}
             </CtaLink>
           </div>
 
