@@ -152,7 +152,7 @@ export default function TeamPartnerModal({ person, onClose }) {
                   <div className="absolute top-4 left-4 z-10">
                     <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase bg-blue-950/70 text-blue-300 border border-blue-500/30 backdrop-blur-sm">
                       <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                      CO-FOUNDER
+                      {t("about.modal.portrait_badge")}
                     </span>
                   </div>
                 </div>

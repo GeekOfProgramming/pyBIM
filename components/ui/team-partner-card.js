@@ -3,7 +3,7 @@ import { UserRound, Compass, Layers } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function TeamPartnerCard({ person, onClick }) {
-  const { language } = useLanguage();
+  const { t, language } = useLanguage();
   const data = person[language] || person.it;
 
   const isApprovedPortrait = Boolean(person.image && !person.image.includes("unsplash.com"));
@@ -71,7 +71,7 @@ export default function TeamPartnerCard({ person, onClick }) {
             <div className="absolute top-4 left-4 z-10">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase bg-blue-950/70 text-blue-300 border border-blue-500/30 backdrop-blur-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                LEADERSHIP
+                {t("about.team.sec1.card_badge")}
               </span>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function TeamPartnerCard({ person, onClick }) {
           {data.role}
         </p>
         <span className="text-[11px] font-mono text-white/50 tracking-wider uppercase mt-1">
-          pyBIM Executive Lead
+          {t("about.team.sec1.card_footer")}
         </span>
       </div>
     </div>
